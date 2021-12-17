@@ -1,29 +1,24 @@
-#  Copyright (c) Microsoft Corporation. All rights reserved.
-#  Licensed under the MIT License.
-
 import os, io
-
 from setuptools import setup, find_packages
 
-path = "../libraries/recognizers-choice"
+path = "libraries/recognizers-choice"
 
 curdir = os.getcwd()
-pardir = os.path.abspath(os.path.join(curdir, os.pardir))
 
 def read(fname):
     return open(os.path.join(path, fname)).read()
 
-VERSION = "__version__"
+VERSION_FILE = "__version__"
 
-with io.open(os.path.join(pardir, VERSION)) as f:
-    version = f.readline()
+with io.open(os.path.join(curdir, "genesys_packages", VERSION_FILE)) as f:
+    VERSION = f.readline()
 
 NAME = 'recognizers-text-choice-genesys'
 REQUIRES = ['recognizers-text', 'regex', 'grapheme']
 
 setup(
     name=NAME,
-    version=version,
+    version=VERSION,
     url='https://github.com/purecloudlabs/Recognizers-Text',
     author='Microsoft',
     description='recognizers-text-choice README',
@@ -31,6 +26,7 @@ setup(
               'entity-extraction', 'parser-library'],
     long_description=read('README.rst'),
     license='MIT',
+    package_dir={'': path},
     packages=find_packages(where=path),
     install_requires=REQUIRES,
     classifiers=[

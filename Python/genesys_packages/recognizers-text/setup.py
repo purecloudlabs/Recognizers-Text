@@ -1,6 +1,3 @@
-#  Copyright (c) Microsoft Corporation. All rights reserved.
-#  Licensed under the MIT License.
-
 import os, io
 from setuptools import setup, find_packages
 
@@ -16,10 +13,8 @@ VERSION_FILE = "__version__"
 with io.open(os.path.join(curdir, "genesys_packages", VERSION_FILE)) as f:
     VERSION = f.readline()
 
-NAME = "recognizers-text"
+NAME = "recognizers-text-genesys"
 REQUIRES = ['emoji==1.1.0', 'multipledispatch']
-
-print(find_packages(where=path))
 
 setup(
     name=NAME,
