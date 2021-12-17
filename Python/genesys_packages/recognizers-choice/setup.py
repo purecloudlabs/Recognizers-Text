@@ -14,7 +14,7 @@ with io.open(os.path.join(curdir, "genesys_packages", VERSION_FILE)) as f:
     VERSION = f.readline()
 
 NAME = 'recognizers-text-choice-genesys'
-REQUIRES = ['recognizers-text', 'regex', 'grapheme']
+REQUIRES = ['recognizers-text-genesys', 'regex', 'grapheme']
 
 setup(
     name=NAME,
