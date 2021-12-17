@@ -34,7 +34,7 @@ timeout(150) {
       }
 
         stage("Test install package and run tests") {
-            dir('pipelines') {
+            dir('Python') {
                 sh """
                     virtualenv -p python3.8 --clear venv
                     . venv/bin/activate
