@@ -1,22 +1,28 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from setuptools import setup, find_packages
 import os, io
+from setuptools import setup, find_packages
 
 path = "../libraries/recognizers-text"
 
-VERSION = "__version__"
+curdir = os.getcwd()
+pardir = os.path.abspath(os.path.join(curdir, os.pardir))
 
-with io.open(os.path.join("..", VERSION)) as f:
-    version = f.readline()
+def read(fname):
+    return open(os.path.join(path, fname)).read()
+
+VERSION_FILE = "__version__"
+
+with io.open(os.path.join(pardir, VERSION_FILE)) as f:
+    VERSION = f.readline()
 
 NAME = "recognizers-text"
 REQUIRES = ['emoji==1.1.0', 'multipledispatch']
 
 setup(
     name=NAME,
-    version=version,
+    version=VERSION,
     url='https://github.com/Microsoft/Recognizers-Text',
     author='Microsoft',
     description='recognizers-text README',

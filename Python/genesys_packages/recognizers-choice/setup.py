@@ -1,19 +1,21 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-import os
+import os, io
 
 from setuptools import setup, find_packages
 
 path = "../libraries/recognizers-choice"
 
+curdir = os.getcwd()
+pardir = os.path.abspath(os.path.join(curdir, os.pardir))
+
 def read(fname):
     return open(os.path.join(path, fname)).read()
 
 VERSION = "__version__"
-ROOT_PATH = os.path.dirname(os.path.abspath(__file__))
 
-with io.open(os.path.join(ROOT_PATH, VERSION)) as f:
+with io.open(os.path.join(pardir, VERSION)) as f:
     version = f.readline()
 
 NAME = 'recognizers-text-choice-genesys'
