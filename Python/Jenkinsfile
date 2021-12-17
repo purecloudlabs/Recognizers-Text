@@ -3,8 +3,7 @@ import com.genesys.jenkins.CI
 
 timeout(150) {
     node('dev_mesos_v2||dev_shared_v2') {
-        LIBRARY = "recognizers-text"
-        LIBRARY_FOLDER = "Recognizers-Text/Python"
+        LIBRARY_FOLDER = "Python"
 
         stage('Clean Checkout') {
         retry(3){
@@ -44,20 +43,19 @@ timeout(150) {
         }
 
         stage("Publish Build Artifacts") {
-            dir(LIBRARY_FOLDER + "/genesys_packages/recognizers-text"){
+            dir(LIBRARY_FOLDER ){
                 def files = findFiles()
 
                files.each{ f ->
-                  if(f.directory) {
-                    echo "This is directory: ${f.name} "
-                  }
+                  echo "This is present: ${f.name} "
+
                }
                 try {
                     sh """
                     ls
                     virtualenv -p python3.8 --clear venv
                     . venv/bin/activate
-                    python setup.py sdist upload -r inin-pypi
+                    python genesys_packages/recognizers-text/setup.py sdist upload -r inin-pypi
 
                     """
 //                     python ./libraries/recognizers-number/setup.py sdist upload -r inin-pypi
