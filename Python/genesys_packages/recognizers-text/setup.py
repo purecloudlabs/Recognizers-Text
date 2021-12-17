@@ -4,17 +4,16 @@
 import os, io
 from setuptools import setup, find_packages
 
-path = "../libraries/recognizers-text"
+path = "libraries/recognizers-text"
 
 curdir = os.getcwd()
-pardir = os.path.abspath(os.path.join(curdir, os.pardir))
 
 def read(fname):
     return open(os.path.join(path, fname)).read()
 
 VERSION_FILE = "__version__"
 
-with io.open(os.path.join(pardir, VERSION_FILE)) as f:
+with io.open(os.path.join(curdir, "genesys_packages", VERSION_FILE)) as f:
     VERSION = f.readline()
 
 NAME = "recognizers-text"
