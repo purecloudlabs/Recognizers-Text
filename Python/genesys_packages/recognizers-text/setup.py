@@ -31,6 +31,7 @@ setup(
               'entity-extraction', 'parser-library'],
     long_description='recognizers-text long README.',
     license='MIT',
+    package_dir={'': path},
     packages=find_packages(where=path),
     install_requires=REQUIRES,
     classifiers=[
