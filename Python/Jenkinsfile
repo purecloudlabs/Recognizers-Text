@@ -45,6 +45,13 @@ timeout(150) {
 
         stage("Publish Build Artifacts") {
             dir(LIBRARY_FOLDER + "/genesys_packages/recognizers-text"){
+                def files = findFiles()
+
+               files.each{ f ->
+                  if(f.directory) {
+                    echo "This is directory: ${f.name} "
+                  }
+               }
                 try {
                     sh """
                     ls
