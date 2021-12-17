@@ -19,6 +19,8 @@ with io.open(os.path.join(curdir, "genesys_packages", VERSION_FILE)) as f:
 NAME = "recognizers-text"
 REQUIRES = ['emoji==1.1.0', 'multipledispatch']
 
+print(find_packages(where=path))
+
 setup(
     name=NAME,
     version=VERSION,
