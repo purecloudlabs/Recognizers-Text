@@ -7,9 +7,8 @@ import os, io
 path = "../libraries/recognizers-text"
 
 VERSION = "__version__"
-ROOT_PATH = os.path.dirname(os.path.abspath(__file__))
 
-with io.open(os.path.join(ROOT_PATH, VERSION)) as f:
+with io.open(os.path.join("..", VERSION)) as f:
     version = f.readline()
 
 NAME = "recognizers-text"
