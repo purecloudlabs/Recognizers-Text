@@ -34,11 +34,13 @@ timeout(150) {
       }
 
         stage("Test install package and run tests") {
-            sh """
-                virtualenv -p python3.8 --clear venv
-                . venv/bin/activate
-                Python/build.sh venv
-                """
+            dir('pipelines') {
+                sh """
+                    virtualenv -p python3.8 --clear venv
+                    . venv/bin/activate
+                    ./build.sh venv
+                    """
+            }
         }
 
 //         stage("Publish Build Artifacts") {
