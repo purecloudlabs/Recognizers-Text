@@ -49,7 +49,7 @@ timeout(150) {
                     sh """
                     virtualenv -p python3.8 --clear venv
                     . venv/bin/activate
-                    python ./genesys_packages/recognizers-text/setup.py sdist upload -r inin-pypi
+                    python genesys_packages/recognizers-text/setup.py sdist upload -r inin-pypi
 
                     """
 //                     python ./libraries/recognizers-number/setup.py sdist upload -r inin-pypi
