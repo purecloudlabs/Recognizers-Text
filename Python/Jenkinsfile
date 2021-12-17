@@ -49,6 +49,7 @@ timeout(150) {
                     sh """
                     virtualenv -p python3.8 --clear venv
                     . venv/bin/activate
+                    ls
                     python setup.py sdist upload -r inin-pypi
 
                     """
