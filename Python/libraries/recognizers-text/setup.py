@@ -2,9 +2,14 @@
 #  Licensed under the MIT License.
 
 from setuptools import setup, find_packages
+import os, io
 
+VERSION_PATH = "../../genesys_packages"
 NAME = "recognizers-text"
-VERSION = "1.0.0.a0"
+VERSION_FILE = "__version__"
+
+with io.open(os.path.join(VERSION_PATH, VERSION_FILE)) as f:
+    VERSION = f.readline()
 REQUIRES = ['emoji==1.1.0', 'multipledispatch']
 
 setup(

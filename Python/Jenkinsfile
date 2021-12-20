@@ -3,7 +3,7 @@ import com.genesys.jenkins.CI
 
 timeout(150) {
     node('dev_mesos_v2||dev_shared_v2') {
-        LIBRARY_FOLDER = "Python"
+        LIBRARY_FOLDER = "Python/libraries"
 
         stage('Clean Checkout') {
         retry(3){
@@ -55,8 +55,7 @@ timeout(150) {
                     ls
                     virtualenv -p python3.8 --clear venv
                     . venv/bin/activate
-                    python genesys_packages/recognizers-text/setup.py sdist upload -r inin-pypi
-                    python genesys_packages/recognizers-choice/setup.py sdist upload -r inin-pypi
+                    python recognizers-text/setup.py sdist upload -r inin-pypi
 
                     """
 //                     python ./libraries/recognizers-number/setup.py sdist upload -r inin-pypi
