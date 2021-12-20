@@ -36,7 +36,7 @@ echo // Installing recognizers-suite
 $1/bin/python -m pip install -e ./libraries/recognizers-suite/
 
 echo // Installing Test Dependencies
-pip install -r ./tests/requirements.txt
+$1/bin/pip install -r ./tests/requirements.txt
 
 echo // Running tests
-pytest --tb=line
+$1/bin/pytest --tb=line
