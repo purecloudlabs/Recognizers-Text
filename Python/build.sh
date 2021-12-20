@@ -1,4 +1,4 @@
-cd Recognizers-Text/Python/libraries/resource-generator
+cd libraries/resource-generator
 
 echo // Installing Resource Generator Dependencies
 pip install -r ./requirements.txt
