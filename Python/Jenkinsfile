@@ -43,21 +43,28 @@ timeout(150) {
         }
 
         stage("Publish Build Artifacts") {
-            dir(LIBRARY_FOLDER + "/recognizers-text"){
-                def files = findFiles()
-
-               files.each{ f ->
-                  echo "This is present: ${f.name} "
-
-               }
-                try {
+            dir(LIBRARY_FOLDER){
+            try {
                     sh """
-                    ls
                     virtualenv -p python3.8 --clear venv
                     . venv/bin/activate
-                    python setup.py sdist upload -r inin-pypi
-
                     """
+                } catch(Exception e) {
+                    echo "Skipping publish of artifact version ${ARTIFACT_VERSION}. Exception is ${e}"
+                }
+            }
+            dir(LIBRARY_FOLDER + "/recognizers-text"){
+
+                try {
+                    sh """
+                    .. venv/bin/activate
+                    python setup.py sdist upload -r inin-pypi
+                    """
+                } catch(Exception e) {
+                    echo "Skipping publish of artifact version ${ARTIFACT_VERSION}. Exception is ${e}"
+                }
+            }
+
 //                     python ./libraries/recognizers-number/setup.py sdist upload -r inin-pypi
 //                     python ./libraries/recognizers-number-with-unit/setup.py sdist upload -r inin-pypi
 //                     python ./libraries/datatypes-timex-expression/setup.py sdist upload -r inin-pypi
@@ -65,10 +72,6 @@ timeout(150) {
 //                     python ./libraries/recognizers-sequence/setup.py sdist upload -r inin-pypi
 //                     python ./libraries/recognizers-choice/setup.py sdist upload -r inin-pypi
 //                     python ./libraries/recognizers-suite/setup.py sdist upload -r inin-pypi
-                } catch(Exception e) {
-                    echo "Skipping publish of artifact version ${ARTIFACT_VERSION}. Exception is ${e}"
-                }
-            }
         }
 
     }
