@@ -64,6 +64,83 @@ timeout(150) {
                     echo "Skipping publish of artifact version ${ARTIFACT_VERSION}. Exception is ${e}"
                 }
             }
+            dir(LIBRARY_FOLDER + "/recognizers-number"){
+
+                try {
+                    sh """
+                    . ../venv/bin/activate
+                    python setup.py sdist upload -r inin-pypi
+                    """
+                } catch(Exception e) {
+                    echo "Skipping publish of artifact version ${ARTIFACT_VERSION}. Exception is ${e}"
+                }
+            }
+            dir(LIBRARY_FOLDER + "/recognizers-number-with-unit"){
+
+                try {
+                    sh """
+                    . ../venv/bin/activate
+                    python setup.py sdist upload -r inin-pypi
+                    """
+                } catch(Exception e) {
+                    echo "Skipping publish of artifact version ${ARTIFACT_VERSION}. Exception is ${e}"
+                }
+            }
+            dir(LIBRARY_FOLDER + "/datatypes-timex-expression"){
+
+                try {
+                    sh """
+                    . ../venv/bin/activate
+                    python setup.py sdist upload -r inin-pypi
+                    """
+                } catch(Exception e) {
+                    echo "Skipping publish of artifact version ${ARTIFACT_VERSION}. Exception is ${e}"
+                }
+            }
+            dir(LIBRARY_FOLDER + "/recognizers-date-time"){
+
+                try {
+                    sh """
+                    . ../venv/bin/activate
+                    python setup.py sdist upload -r inin-pypi
+                    """
+                } catch(Exception e) {
+                    echo "Skipping publish of artifact version ${ARTIFACT_VERSION}. Exception is ${e}"
+                }
+            }
+            dir(LIBRARY_FOLDER + "/recognizers-sequence"){
+
+                try {
+                    sh """
+                    . ../venv/bin/activate
+                    python setup.py sdist upload -r inin-pypi
+                    """
+                } catch(Exception e) {
+                    echo "Skipping publish of artifact version ${ARTIFACT_VERSION}. Exception is ${e}"
+                }
+            }
+            dir(LIBRARY_FOLDER + "/recognizers-choice"){
+
+                try {
+                    sh """
+                    . ../venv/bin/activate
+                    python setup.py sdist upload -r inin-pypi
+                    """
+                } catch(Exception e) {
+                    echo "Skipping publish of artifact version ${ARTIFACT_VERSION}. Exception is ${e}"
+                }
+            }
+            dir(LIBRARY_FOLDER + "/recognizers-suite"){
+
+                try {
+                    sh """
+                    . ../venv/bin/activate
+                    python setup.py sdist upload -r inin-pypi
+                    """
+                } catch(Exception e) {
+                    echo "Skipping publish of artifact version ${ARTIFACT_VERSION}. Exception is ${e}"
+                }
+            }
 
 //                     python ./libraries/recognizers-number/setup.py sdist upload -r inin-pypi
 //                     python ./libraries/recognizers-number-with-unit/setup.py sdist upload -r inin-pypi

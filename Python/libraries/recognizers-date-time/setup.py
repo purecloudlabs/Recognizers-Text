@@ -9,7 +9,7 @@ def read(fname):
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
 
 
-NAME = 'recognizers-text-date-time'
+NAME = 'recognizers-text-date-time-genesys'
 VERSION = '1.0.0.a0'
 REQUIRES = ['recognizers-text', 'recognizers-text-number',
             'recognizers-text-number-with-unit', 'regex', 'datedelta']
