@@ -57,7 +57,7 @@ timeout(150) {
 
                 try {
                     sh """
-                    .. venv/bin/activate
+                    . ../venv/bin/activate
                     python setup.py sdist upload -r inin-pypi
                     """
                 } catch(Exception e) {
