@@ -43,7 +43,7 @@ timeout(150) {
         }
 
         stage("Publish Build Artifacts") {
-            dir(LIBRARY_FOLDER ){
+            dir(LIBRARY_FOLDER + "/recognizers-text"){
                 def files = findFiles()
 
                files.each{ f ->
@@ -55,7 +55,7 @@ timeout(150) {
                     ls
                     virtualenv -p python3.8 --clear venv
                     . venv/bin/activate
-                    python recognizers-text/setup.py sdist upload -r inin-pypi
+                    python setup.py sdist upload -r inin-pypi
 
                     """
 //                     python ./libraries/recognizers-number/setup.py sdist upload -r inin-pypi

@@ -4,7 +4,7 @@
 from setuptools import setup, find_packages
 import os, io
 
-VERSION_PATH = "../genesys_packages"
+VERSION_PATH = "../../genesys_packages"
 NAME = "recognizers-text"
 VERSION_FILE = "__version__"
 
