@@ -1,7 +1,7 @@
 cd libraries/resource-generator
 
 echo // Installing Resource Generator Dependencies
-pip install -r ./requirements.txt
+$1/bin/pip install -r ./requirements.txt
 
 echo // Building Resources
 $1/bin/python index.py ../recognizers-choice/resource-definitions.json
