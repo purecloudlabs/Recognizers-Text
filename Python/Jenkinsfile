@@ -142,13 +142,6 @@ timeout(150) {
                 }
             }
 
-//                     python ./libraries/recognizers-number/setup.py sdist upload -r inin-pypi
-//                     python ./libraries/recognizers-number-with-unit/setup.py sdist upload -r inin-pypi
-//                     python ./libraries/datatypes-timex-expression/setup.py sdist upload -r inin-pypi
-//                     python ./libraries/recognizers-date-time/setup.py sdist upload -r inin-pypi
-//                     python ./libraries/recognizers-sequence/setup.py sdist upload -r inin-pypi
-//                     python ./libraries/recognizers-choice/setup.py sdist upload -r inin-pypi
-//                     python ./libraries/recognizers-suite/setup.py sdist upload -r inin-pypi
         }
 
     }
