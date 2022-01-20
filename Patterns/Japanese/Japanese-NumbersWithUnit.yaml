@@ -616,7 +616,7 @@ CurrencyAmbiguousValues: !list
     - レク
     - プル
     - ブル
-    - \
+    - \\
 AmbiguityFiltersDict: !dictionary
   types: [ string, string ]
   entries:
