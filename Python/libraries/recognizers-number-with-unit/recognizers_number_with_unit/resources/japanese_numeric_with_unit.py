@@ -514,7 +514,7 @@ class JapaneseNumericWithUnit:
                                ("Euro", "€"),
                                ("Pound", "£"),
                                ("Costa Rican colón", "₡")])
-    CurrencyAmbiguousValues = [r'円', r'銭', r'分', r'レク', r'プル', r'ブル', r'\\']
+    CurrencyAmbiguousValues = [r'円', r'銭', r'分', r'レク', r'プル', r'ブル']
     AmbiguityFiltersDict = dict([("五角", "五角大楼"),
                                  ("普尔", "标准普尔")])
     TemperatureSuffixList = dict([("F", "華氏|華氏温度|華氏温度の|°f"),
