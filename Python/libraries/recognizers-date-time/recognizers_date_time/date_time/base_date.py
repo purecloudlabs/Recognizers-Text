@@ -1245,7 +1245,9 @@ class BaseDateParser(DateTimeParser):
                                                                                 + match_year.end() == len(affix.strip())
 
         if success:
-            return self.config.date_extractor.get_year_from_text(match_year)
+            year =  self.config.date_extractor.get_year_from_text(match_year)
+            if Constants.MIN_YEAR_NUM <= year <= Constants.MAX_YEAR_NUM:
+                return year
 
         return Constants.INVALID_YEAR
 
@@ -1284,6 +1286,8 @@ class BaseDateParser(DateTimeParser):
 
             if year != Constants.INVALID_YEAR:
                 ambiguous = False
+            else:
+                year = reference.year
         else:
             # handling relative month
             match = regex.search(
