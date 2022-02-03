@@ -317,7 +317,7 @@ class BaseMergedExtractor(DateTimeExtractor):
 
                 try:
                     for extract_result in extract_results:
-                        if regex_var == extract_result.text:
+                        if regex.search(regex_var, extract_result.text):
                             reg_len = list(filter(lambda x: x.group(), regex.finditer(regex_var_value, text)))
 
                             reg_length = len(reg_len)
