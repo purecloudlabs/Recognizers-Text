@@ -1349,6 +1349,8 @@ class BaseDatePeriodParser(DateTimeParser):
 
         try:
             year = self.config.date_extractor.get_year_from_text(match)
+            if year == Constants.INVALID_YEAR:
+                raise ValueError()
         except ValueError:
             swift = self.config.get_swift_year(order_str)
             if swift < 1:
