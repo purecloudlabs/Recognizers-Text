@@ -139,6 +139,10 @@ class EnglishDateParserConfiguration(DateParserConfiguration):
     def date_token_prefix(self) -> str:
         return self._date_token_prefix
 
+    @property
+    def irish_date(self) -> str:
+        return self._irish_date
+
     # The following three regexes only used in this configuration
     # They are not used in the base parser, therefore they are not extracted
     # If the spanish date parser need the same regexes, they should be extracted
@@ -208,6 +212,8 @@ class EnglishDateParserConfiguration(DateParserConfiguration):
         self._utility_configuration = config.utility_configuration
         self._date_token_prefix = EnglishDateTime.DateTokenPrefix
         self._check_both_before_after = EnglishDateTime.CheckBothBeforeAfter
+        self._irish_date = RegExpUtility.get_safe_reg_exp(
+            EnglishDateTime.IrishRegex)
 
     def get_swift_day(self, source: str) -> int:
         trimmed_text = source.strip().lower()

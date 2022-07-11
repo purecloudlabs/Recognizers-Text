@@ -183,7 +183,9 @@ class EnglishDateExtractorConfiguration(DateExtractorConfiguration):
                 EnglishDateTime.WeekDayOfMonthRegex),
             RegExpUtility.get_safe_reg_exp(EnglishDateTime.SpecialDate),
             RegExpUtility.get_safe_reg_exp(EnglishDateTime.SpecialDayWithNumRegex),
-            RegExpUtility.get_safe_reg_exp(EnglishDateTime.RelativeWeekDayRegex)
+            RegExpUtility.get_safe_reg_exp(EnglishDateTime.RelativeWeekDayRegex),
+            RegExpUtility.get_safe_reg_exp(EnglishDateTime.IrishRegex)
+
         ]
         self._month_end = RegExpUtility.get_safe_reg_exp(
             EnglishDateTime.MonthEnd)

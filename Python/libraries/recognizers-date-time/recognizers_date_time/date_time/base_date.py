@@ -1291,6 +1291,29 @@ class BaseDateParser(DateTimeParser):
 
             return result
 
+        # Handle nth of the nth
+        match = regex.match(self.config.irish_date, trimmed_source)
+        if match:
+            extract_results = self.config.ordinal_extractor.extract(source)
+
+            day = int(self.config.number_parser.parse(extract_results[0]).value)
+            month = int(self.config.number_parser.parse(extract_results[1]).value)
+            year = reference.year
+            year_str = RegExpUtility.get_group(match, Constants.YEAR_GROUP_NAME)
+            if year_str:
+                year = int(year_str) if year_str.isnumeric() else 0
+
+                if 100 > year >= Constants.MIN_TWO_DIGIT_YEAR_PAST_NUM:
+                    year += 1900
+                elif 0 <= year < Constants.MAX_TWO_DIGIT_YEAR_FUTURE_NUM:
+                    year += 2000
+
+            result.timex = DateTimeFormatUtil.luis_date(year, month, day)
+            date = datetime(year, month, day)
+            result.future_value = date
+            result.past_value = date
+            result.success = True
+
         return result
 
     def parse_weekday_of_month(self, source: str, reference: datetime) -> DateTimeParseResult:
