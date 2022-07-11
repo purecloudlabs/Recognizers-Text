@@ -747,5 +747,5 @@ class EnglishDateTime:
     MonthTypeRegex = f'(month(s|ly)?)$'
     QuarterTypeRegex = f'(quarter(s|ly)?)$'
     YearTypeRegex = f'((years?|annual)(ly)?)$'
-    IrishRegex = f'\\b(3[0-1]|2[0-9]|1[0-9]|[0-9])(th|nd|st|rd)\\s(of\\s)(the\\s)(1[1-2]|[0-9])(th|nd|st|rd)\\s({YearRegex}|{TwoDigitYearRegex}?)\\b'
+    IrishRegex = f'\\b(3[0-1]|2[0-9]|1[0-9]|[0-9])(th|nd|st|rd)\\s(of\\s)(the\\s)(1[1-2]|[0-9])(th|nd|st|rd)\\s({{YearRegex}}|{{TwoDigitYearRegex}}?)\\b'
 # pylint: enable=line-too-long
