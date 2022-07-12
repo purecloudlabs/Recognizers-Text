@@ -1344,5 +1344,6 @@ QuarterTypeRegex: !simpleRegex
 YearTypeRegex: !simpleRegex
   def: ((years?|annual)(ly)?)$
 IrishRegex: !nestedRegex
-  def: \b(3[0-1]|2[0-9]|1[0-9]|[0-9])(th|nd|st|rd)\s(of\s)(the\s)(1[1-2]|[0-9])(th|nd|st|rd)\s({YearRegex}|{TwoDigitYearRegex}?)\b
+  def: \b(3[0-1]|2[0-9]|1[0-9]|[0-9])(th|nd|st|rd)\s(of\s)(the\s)(1[1-2]|[0-9])(th|nd|st|rd)\s?({YearRegex}|{TwoDigitYearRegex})?\b
+  references: [ YearRegex, TwoDigitYearRegex ]
 ...
