@@ -879,6 +879,11 @@ class DateParserConfiguration(ABC):
     def check_both_before_after(self) -> bool:
         raise NotImplementedError
 
+    @property
+    @abstractmethod
+    def irish_date(self) -> str:
+        raise NotImplementedError
+
 
 class BaseDateParser(DateTimeParser):
 
