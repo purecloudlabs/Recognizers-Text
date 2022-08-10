@@ -1952,7 +1952,7 @@
         "Text": "1.5 brl",
         "TypeName": "currency",
         "Resolution": {
-          "value": "1.5",
+          "value": "1,5",
           "unit": "Real brasileiro"
         },
         "Start": 0,
