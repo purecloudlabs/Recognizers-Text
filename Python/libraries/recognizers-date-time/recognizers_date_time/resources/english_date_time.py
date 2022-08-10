@@ -90,7 +90,7 @@ class EnglishDateTime:
     FollowedDateUnit = f'^\\s*{DateUnitRegex}'
     NumberCombinedWithDateUnit = f'\\b(?<num>\\d+(\\.\\d*)?){DateUnitRegex}'
     QuarterTermRegex = f'\\b(((?<cardinal>first|1st|second|2nd|third|3rd|fourth|4th)[ -]+quarter)|(q(?<number>[1-4])))\\b'
-    RelativeQuarterTermRegex = f'\\b(?<orderQuarter>{StrictRelativeRegex})\\s+quarter\\b'
+    RelativeQuarterTermRegex = f'\\b(?<orderQuarter>{StrictRelativeRegex})\\s+((?<num>[\\w,]+)\\s+)?quarters?\\b'
     QuarterRegex = f'((the\\s+)?{QuarterTermRegex}(?:((\\s+of)?\\s+|\\s*[,-]\\s*)({YearRegex}|{RelativeRegex}\\s+year))?)|{RelativeQuarterTermRegex}'
     QuarterRegexYearFront = f'(?:{YearRegex}|{RelativeRegex}\\s+year)(\'s)?(?:\\s*-\\s*|\\s+(the\\s+)?)?{QuarterTermRegex}'
     HalfYearTermRegex = f'(?<cardinal>first|1st|second|2nd)\\s+half'

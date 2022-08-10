@@ -1943,5 +1943,21 @@
         "End": 43
       }
     ]
+  },
+  {
+    "Input": "1.5 brl",
+    "NotSupported": "java, javascript",
+    "Results": [
+      {
+        "Text": "1.5 brl",
+        "TypeName": "currency",
+        "Resolution": {
+          "value": "1.5",
+          "unit": "Real brasileiro"
+        },
+        "Start": 0,
+        "End": 6
+      }
+    ]
   }
 ]
