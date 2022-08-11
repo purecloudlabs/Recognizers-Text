@@ -66,7 +66,7 @@ class SpanishNumeric:
     FractionMultiplierRegex = f'(?<fracMultiplier>\\s+(y|con)\\s+(medio|(un|{TwoToNineIntegerRegex})\\s+(medio|terci[oa]?|cuart[oa]|quint[oa]|sext[oa]|s[eé]ptim[oa]|octav[oa]|noven[oa]|d[eé]cim[oa])s?))'
     RoundMultiplierWithFraction = f'(?<multiplier>(?:(mil\\s+millones|mill[oó]n(es)?|bill[oó]n(es)?|trill[oó]n(es)?|cuatrill[oó]n(es)?|quintill[oó]n(es)?|sextill[oó]n(es)?|septill[oó]n(es)?)))(?={FractionMultiplierRegex}?$)'
     RoundMultiplierRegex = f'\\b\\s*({RoundMultiplierWithFraction}|(?<multiplier>(mil))$)'
-    FractionNounRegex = f'(?<=\\b)({AllIntRegex}\\s+((y|con)\\s+)?)?({AllIntRegex}\\s+((({AllOrdinalNumberRegex}|{SufixRoundOrdinalRegex})s|{SpecialFractionInteger})|((y|con)\\s+)?(medi[oa]s?|tercios?))|(medio|un\\s+cuarto\\s+de)\\s+{RoundNumberIntegerRegex})(?=\\b)'
+    FractionNounRegex = f'(?<=\\b)(({AllIntRegex}|{DigitsNumberRegex})\\s+((y|con)\\s+)?)?(({AllIntRegex}|{DigitsNumberRegex})\\s+((({AllOrdinalNumberRegex}|{SufixRoundOrdinalRegex})s|{SpecialFractionInteger})|((y|con)\\s+)?(medi[oa]s?|tercios?))|(medio|un\\s+cuarto\\s+de)\\s+{RoundNumberIntegerRegex})(?=\\b)'
     FractionNounWithArticleRegex = f'(?<=\\b)(({AllIntRegex}|{RoundNumberIntegerRegexWithLocks})\\s+((y|con)\\s+)?)?((un|un[oa])(\\s+)(({AllOrdinalNumberRegex})|({SufixRoundOrdinalRegex}))|(un[ao]?\\s+)?medi[oa]s?|mitad)(?=\\b)'
     FractionPrepositionRegex = f'(?<!{BaseNumbers.CommonCurrencySymbol}\\s*)(?<=\\b)(?<numerator>({AllIntRegex})|((?<!\\.)\\d+))\\s+sobre\\s+(?<denominator>({AllIntRegex})|((\\d+)(?!\\.)))(?=\\b)'
     AllPointRegex = f'((\\s+{ZeroToNineIntegerRegex})+|(\\s+{AllIntRegex}))'
