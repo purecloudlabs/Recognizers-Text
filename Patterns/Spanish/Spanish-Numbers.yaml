@@ -140,7 +140,7 @@ RoundMultiplierRegex: !nestedRegex
   references: [ RoundMultiplierWithFraction ]
 FractionNounRegex: !nestedRegex
   def: (?<=\b)(({AllIntRegex}|{DigitsNumberRegex})\s+((y|con)\s+)?)?(({AllIntRegex}|{DigitsNumberRegex})\s+((({AllOrdinalNumberRegex}|{SufixRoundOrdinalRegex})s|{SpecialFractionInteger})|((y|con)\s+)?(medi[oa]s?|tercios?))|(medio|un\s+cuarto\s+de)\s+{RoundNumberIntegerRegex})(?=\b)
-  references: [ AllIntRegex, AllOrdinalNumberRegex, SpecialFractionInteger, SufixRoundOrdinalRegex, RoundNumberIntegerRegex ]
+  references: [ DigitsNumberRegex, AllIntRegex, AllOrdinalNumberRegex, SpecialFractionInteger, SufixRoundOrdinalRegex, RoundNumberIntegerRegex ]
 FractionNounWithArticleRegex: !nestedRegex
   def: (?<=\b)(({AllIntRegex}|{RoundNumberIntegerRegexWithLocks})\s+((y|con)\s+)?)?((un|un[oa])(\s+)(({AllOrdinalNumberRegex})|({SufixRoundOrdinalRegex}))|(un[ao]?\s+)?medi[oa]s?|mitad)(?=\b)
   references: [ AllIntRegex, AllOrdinalNumberRegex, SufixRoundOrdinalRegex, RoundNumberIntegerRegexWithLocks ]
