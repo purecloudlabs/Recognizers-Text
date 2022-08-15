@@ -3284,6 +3284,7 @@
         "Text": "3 y medio",
         "TypeName": "number",
         "Resolution": {
+          "subtype": "fraction",
           "value": "3,5"
         },
         "Start": 0,
