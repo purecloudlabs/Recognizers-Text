@@ -3275,5 +3275,20 @@
   {
     "Input": "billons",
     "Results": []
+  },
+  {
+    "Input": "3 y medio",
+    "NotSupported": "java, javascript",
+    "Results": [
+      {
+        "Text": "3 y medio",
+        "TypeName": "number",
+        "Resolution": {
+          "value": "3,5"
+        },
+        "Start": 0,
+        "End": 8
+      }
+    ]
   }
 ]
