@@ -189,7 +189,7 @@
       }
     ],
     "NotSupported": "dotnet",
-    "NotSupportedByDesign": "javascript,java"
+    "NotSupportedByDesign": "javascript,python,java"
   },
   {
     "Input": "Een kwartje is 25 cent.",
