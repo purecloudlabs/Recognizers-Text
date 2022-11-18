@@ -1350,6 +1350,7 @@
   },
   {
     "Input": "één uit de 20",
+    "NotSupported": "python",
     "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
