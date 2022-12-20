@@ -847,6 +847,7 @@
       "ReferenceDateTime": "2016-11-07T16:12:00"
     },
     "NotSupportedByDesign": "javascript,java",
+    "NotSupported": "python",
     "Results": [
       {
         "Text": "van 1 's middags tot 4",
@@ -927,6 +928,7 @@
       "ReferenceDateTime": "2016-11-07T16:12:00"
     },
     "NotSupportedByDesign": "javascript,java",
+    "NotSupported": "python",
     "Results": [
       {
         "Text": "van 1:30 's middags tot 4",
@@ -1137,6 +1139,7 @@
       "ReferenceDateTime": "2017-12-01T13:37:00"
     },
     "NotSupportedByDesign": "javascript,java",
+    "NotSupported": "python",
     "Results": [
       {
         "Text": "van 11:01 's ochtends tot 11",
@@ -1216,6 +1219,7 @@
       "ReferenceDateTime": "2017-12-01T13:37:00"
     },
     "NotSupportedByDesign": "javascript,java",
+    "NotSupported": "python",
     "Results": [
       {
         "Text": "van 1:30 's middags tot 3:30",
