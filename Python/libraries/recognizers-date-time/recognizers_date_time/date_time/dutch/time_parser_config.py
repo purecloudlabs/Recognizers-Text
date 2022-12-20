@@ -38,7 +38,12 @@ class DutchTimeParserConfiguration(TimeParserConfiguration):
     def time_zone_parser(self) -> DateTimeParser:
         return self._time_zone_parser
 
+    @property
+    def use_twenty_four_hour_time(self):
+        return self._use_twenty_four_hour_time
+
     def __init__(self, config: BaseDateParserConfiguration):
+        self._use_twenty_four_hour_time = True
         self._time_token_prefix: str = DutchDateTime.TimeTokenPrefix
         self._at_regex: Pattern = RegExpUtility.get_safe_reg_exp(
             DutchDateTime.AtRegex)

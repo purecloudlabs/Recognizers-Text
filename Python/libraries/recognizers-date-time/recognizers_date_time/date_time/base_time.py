@@ -184,6 +184,10 @@ class TimeParserConfiguration:
     def adjust_by_suffix(self, suffix: str, adjust: AdjustParams):
         raise NotImplementedError
 
+    @property
+    def use_twenty_four_hour_time(self):
+        return False
+
 
 class BaseTimeParser(DateTimeParser):
     @property
@@ -390,7 +394,10 @@ class BaseTimeParser(DateTimeParser):
             result.timex += f':{second:02d}'
 
         if 0 < hour <= 12 and not has_pm and not has_am and not has_mid:
-            result.comment = Constants.AM_PM_GROUP_NAME
+            if self.config.use_twenty_four_hour_time:
+                result.comment = Constants.AM_GROUP_NAME
+            else:
+                result.comment = Constants.AM_PM_GROUP_NAME
 
         result.future_value = datetime(year, month, day, hour, minute, second)
         result.past_value = result.future_value
