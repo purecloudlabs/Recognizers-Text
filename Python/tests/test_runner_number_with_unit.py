@@ -50,3 +50,8 @@ def resolution_assert(actual, expected, props):
 def assert_verbose(actual, expected, spec_info):
     assert actual == expected, \
         "Actual: {} | Expected: {} | Context: {}".format(actual, expected, spec_info)
+
+
+def test_test():
+    res = recognize_currency("dollari 345", "it-it")
+    print(res)
