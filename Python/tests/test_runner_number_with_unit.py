@@ -18,6 +18,7 @@ MODELFUNCTION = {
                          get_specs(recognizer='NumberWithUnit', entity='Model'))
 def test_number_with_unit_recognizer(
         culture, model, options, context, source, expected_results):
+
     results = get_results(culture, model, source)
 
     spec_info = model + "Model : " + source
@@ -50,7 +51,3 @@ def assert_verbose(actual, expected, spec_info):
     assert actual == expected, \
         "Actual: {} | Expected: {} | Context: {}".format(actual, expected, spec_info)
 
-
-def test_test():
-    res = recognize_currency("Draai 90°", "nl-nl")
-    print(res)
