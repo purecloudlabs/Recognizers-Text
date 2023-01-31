@@ -1743,5 +1743,25 @@
         "Length": 15
       }
     ]
+  },
+  {
+    "Input": "quién fue el presidente el 23 de 5 de 91",
+    "Results": [
+      {
+        "Text": "23 de 5 de 91",
+        "Type": "date",
+        "Value": {
+          "Timex": "1991-05-23",
+          "FutureResolution": {
+            "date": "1991-05-23"
+          },
+          "PastResolution": {
+            "date": "1991-05-23"
+          }
+        },
+        "Start": 25,
+        "Length": 13
+      }
+    ]
   }
 ]
