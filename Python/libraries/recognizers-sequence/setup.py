@@ -9,11 +9,9 @@ def read(fname):
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
 
 
-NAME = "recognizers-text-sequence-genesys"
-
-VERSION = '1.0.41'
-
-REQUIRES = ['recognizers-text-genesys', 'recognizers-text-number-genesys', 'regex']
+NAME = "recognizers-text-sequence"
+VERSION = "1.0.42"
+REQUIRES = ['recognizers-text', 'recognizers-text-number', 'regex']
 
 setup(
     name=NAME,
