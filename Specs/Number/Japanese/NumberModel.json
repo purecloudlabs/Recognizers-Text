@@ -10101,7 +10101,7 @@
     ]
   },
   {
-    "Input": "3足CONOR",
+    "Input": "3足",
     "NotSupported": "dotnet, javascript, java",
     "Results": [
       {
