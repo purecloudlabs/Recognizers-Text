@@ -1,7 +1,7 @@
 [
   {
     "Input": "だい12",
-    "NotSupported": "python",
+    "NotSupported": "ython",
     "Results": [
       {
         "Text": "だい12",
@@ -18,7 +18,7 @@
   },
   {
     "Input": "第二百五十",
-    "NotSupported": "python",
+    "NotSupported": "ython",
     "Results": [
       {
         "Text": "第二百五十",
@@ -35,7 +35,7 @@
   },
   {
     "Input": "だい二百五十",
-    "NotSupported": "python",
+    "NotSupported": "ython",
     "Results": [
       {
         "Text": "だい二百五十",
@@ -52,7 +52,7 @@
   },
   {
     "Input": "第２５０",
-    "NotSupported": "python",
+    "NotSupported": "ython",
     "Results": [
       {
         "Text": "第250",
@@ -69,7 +69,7 @@
   },
   {
     "Input": "だい２５０",
-    "NotSupported": "python",
+    "NotSupported": "ython",
     "Results": [
       {
         "Text": "だい250",
@@ -86,7 +86,7 @@
   },
   {
     "Input": "だい一億",
-    "NotSupported": "python",
+    "NotSupported": "ython",
     "Results": [
       {
         "Text": "だい一億",
@@ -103,7 +103,7 @@
   },
   {
     "Input": "第一億",
-    "NotSupported": "python",
+    "NotSupported": "ython",
     "Results": [
       {
         "Text": "第一億",
@@ -120,7 +120,7 @@
   },
   {
     "Input": "だい一万回だい十万回",
-    "NotSupported": "python",
+    "NotSupported": "ython",
     "Results": [
       {
         "Text": "だい一万",
@@ -198,7 +198,7 @@
   },
   {
     "Input": "第1位第2位第3位第4位",
-    "NotSupported": "python",
+    "NotSupported": "ython",
     "Results": [
       {
         "Text": "第1",
@@ -265,7 +265,7 @@
   },
   {
     "Input": "第三万回",
-    "NotSupported": "python",
+    "NotSupported": "ython",
     "Results": [
       {
         "Text": "第三万",
@@ -905,7 +905,7 @@
   },
   {
     "Input": "一兆番目の数字はなんですか。",
-    "NotSupportedByDesign": "javascript, java, python",
+    "NotSupportedByDesign": "javascript, java",
     "Results": [
       {
         "Text": "一兆番目",
@@ -1315,7 +1315,7 @@
   },
   {
     "Input": "１兆番目の数字はなんですか。",
-    "NotSupportedByDesign": "javascript, java, python",
+    "NotSupportedByDesign": "javascript, java",
     "Results": [
       {
         "Text": "1兆番目",
@@ -1708,7 +1708,7 @@
   },
   {
     "Input": "1兆番目の数字はなんですか。",
-    "NotSupportedByDesign": "javascript, java, python",
+    "NotSupportedByDesign": "javascript, java",
     "Results": [
       {
         "Text": "1兆番目",
