@@ -146,6 +146,7 @@ class Constants:
     FIRST_TWO_YEAR_NUM = 'firsttwoyearnum'
     LAST_TWO_YEAR_NUM = 'lasttwoyearnum'
     YEAR_CHINESE = 'yearCJK'
+    YEAR_JAPANESE = 'yearCJK'
     OTHER = 'other'
     YEAR_RELATIVE = 'yearrel'
     DAY_OF_MONTH = 'DayOfMonth'

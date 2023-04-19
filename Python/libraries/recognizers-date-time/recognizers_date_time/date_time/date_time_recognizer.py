@@ -5,6 +5,8 @@ from datetime import datetime
 from typing import List
 from recognizers_text import Culture, Recognizer
 from recognizers_text.model import Model, ModelResult
+from .japanese.merged_extractor import JapaneseMergedExtractor
+from .japanese.merged_parser import JapaneseMergedParser
 from .utilities import DateTimeOptions
 from .models import DateTimeModel
 from .base_merged import BaseMergedExtractor, BaseMergedParser
@@ -31,6 +33,7 @@ from .german.merged_parser_config import GermanMergedParserConfiguration
 from .dutch.common_configs import DutchCommonDateTimeParserConfiguration
 from .dutch.merged_extractor_config import DutchMergedExtractorConfiguration
 from .dutch.merged_parser_config import DutchMergedParserConfiguration
+
 
 
 class DateTimeRecognizer(Recognizer[DateTimeOptions]):
@@ -99,6 +102,10 @@ class DateTimeRecognizer(Recognizer[DateTimeOptions]):
             BaseMergedParser(DutchMergedParserConfiguration(
                 DutchCommonDateTimeParserConfiguration()), options),
             BaseMergedExtractor(DutchMergedExtractorConfiguration(), options)
+        ))
+        self.register_model('DateTimeModel', Culture.Japanese, lambda options: DateTimeModel(
+            JapaneseMergedParser(),
+            JapaneseMergedExtractor(options)
         ))
 
     def get_datetime_model(self, culture: str = None, fallback_to_default_culture: bool = True) -> Model:

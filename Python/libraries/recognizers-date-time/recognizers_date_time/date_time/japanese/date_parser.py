@@ -8,35 +8,32 @@ from datetime import datetime, timedelta
 import regex
 
 from recognizers_text import RegExpUtility, ExtractResult
-from recognizers_number import Constants as NumberConstants, ChineseIntegerExtractor
-from .date_extractor import ChineseDateExtractor
-from .duration_extractor import ChineseDurationExtractor
+from recognizers_number import Constants as NumberConstants, JapaneseIntegerExtractor, JapaneseOrdinalExtractor
 
-from ...resources.chinese_date_time import ChineseDateTime
+from ...resources.japanese_date_time import JapaneseDateTime
 from ..constants import TimeTypeConstants, Constants
-from ..utilities import DateTimeResolutionResult, DateTimeFormatUtil, DateUtils, DayOfWeek
+from ..utilities import DateTimeResolutionResult, DateTimeFormatUtil, DateUtils, DayOfWeek, parse_dynasty_year
 from ..parsers import DateTimeParseResult
 from ..base_date import BaseDateParser
-from .date_parser_config import ChineseDateParserConfiguration
-from ..utilities import parse_dynasty_year
+from .date_parser_config import JapaneseDateParserConfiguration
 
 
-class ChineseDateParser(BaseDateParser):
-    integer_extractor = ChineseIntegerExtractor()
+class JapaneseDateParser(BaseDateParser):
+    integer_extractor = JapaneseIntegerExtractor()
+    ordinal_extractor = JapaneseOrdinalExtractor()
 
     def __init__(self):
-        super().__init__(ChineseDateParserConfiguration())
+        super().__init__(JapaneseDateParserConfiguration())
         self.lunar_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.LunarRegex)
+            JapaneseDateTime.LunarRegex)
         self.special_date_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.SpecialDate)
+            JapaneseDateTime.SpecialDate)
         self.token_next_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.NextPrefixRegex)
+            JapaneseDateTime.NextPrefixRegex)
         self.token_last_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.LastPrefixRegex)
+            JapaneseDateTime.LastPrefixRegex)
         self.month_max_days: List[int] = [
             31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
-        self.duration_extractor = ChineseDurationExtractor()
 
     def parse(self, source: ExtractResult, reference: datetime = None) -> Optional[DateTimeParseResult]:
         if reference is None:
@@ -96,7 +93,6 @@ class ChineseDateParser(BaseDateParser):
         trimmed_source = source.strip()
         result = DateTimeResolutionResult()
 
-        # handle "十二日" "明年这个月三日" "本月十一日"
         match = regex.match(self.special_date_regex, trimmed_source)
         if match:
             year_str = RegExpUtility.get_group(match, 'thisyear')
@@ -277,7 +273,7 @@ class ChineseDateParser(BaseDateParser):
         day_str = RegExpUtility.get_group(match, 'day')
         month = 0
         day = 0
-        year_tmp = self.convert_chinese_year_to_number(year_chs)
+        year_tmp = self.convert_japanese_year_to_number(year_chs)
         year = 0 if year_tmp == -1 else year_tmp
 
         if month_str in self.config.month_of_year and day_str in self.config.day_of_month:
@@ -308,8 +304,8 @@ class ChineseDateParser(BaseDateParser):
         result.success = True
         return result
 
-    # convert Chinese Number to Integer
-    def parse_chinese_written_number_to_value(self, source: str) -> int:
+    # convert Japanese Number to Integer
+    def parse_japanese_written_number_to_value(self, source: str) -> int:
         num = -1
         er: ExtractResult = next(
             iter(self.integer_extractor.extract(source)), None)
@@ -318,7 +314,7 @@ class ChineseDateParser(BaseDateParser):
 
         return num
 
-    def convert_chinese_year_to_number(self, source: str) -> int:
+    def convert_japanese_year_to_number(self, source: str) -> int:
         year = 0
         dynasty_year = parse_dynasty_year(source, self.config.dynasty_year_regex, self.config.dynasty_start_year, self.config.dynasty_year_map, self.integer_extractor, self.config.number_parser)
         if dynasty_year is not None:
@@ -369,57 +365,3 @@ class ChineseDateParser(BaseDateParser):
 
         return DateUtils.is_valid_date(year, month, day)
 
-    # Handle cases like "三天前"
-    def parser_duration_with_ago_and_later(self, source: str, reference: datetime) -> DateTimeResolutionResult:
-        result = DateTimeResolutionResult()
-        duration_res = self.duration_extractor.extract(source, reference).pop() if self.duration_extractor.extract(
-            source, reference) else []
-        if duration_res:
-            match = self.config._unit_regex.search(source)
-            if match:
-                suffix = source[duration_res.start + duration_res.length:]
-                src_unit = RegExpUtility.get_group(match, 'unit')
-
-                number_str = source[duration_res.start:match.lastindex - duration_res.start + 1]
-                number = self.parse_chinese_written_number_to_value(number_str)
-
-                if src_unit in self.config.unit_map:
-                    unit_str = self.config.unit_map.get(src_unit)
-
-                    before_match = RegExpUtility.get_matches(ChineseDateExtractor.before_regex, suffix)
-                    if before_match and suffix.startswith(before_match[0]):
-                        if unit_str == Constants.TIMEX_DAY:
-                            date = reference + timedelta(days=-number)
-                        elif unit_str == Constants.TIMEX_WEEK:
-                            date = reference + timedelta(days=-7 * number)
-                        elif unit_str == Constants.TIMEX_MONTH_FULL:
-                            date = reference.replace(month=reference.month-1)
-                        elif unit_str == Constants.TIMEX_YEAR:
-                            date = reference.replace(year=reference.year-1)
-                        else:
-                            return result
-
-                        result.timex = DateTimeFormatUtil.luis_date_from_datetime(date)
-                        result.future_value = result.past_value = date
-                        result.success = True
-                        return result
-
-                    after_match = RegExpUtility.get_matches(ChineseDateExtractor.after_regex, suffix)
-                    if after_match and suffix.startswith(after_match[0]):
-                        if unit_str == Constants.TIMEX_DAY:
-                            date = reference + timedelta(days=number)
-                        elif unit_str == Constants.TIMEX_WEEK:
-                            date = reference + timedelta(days=7 * number)
-                        elif unit_str == Constants.TIMEX_MONTH_FULL:
-                            date = reference.replace(month=reference.month+1)
-                        elif unit_str == Constants.TIMEX_YEAR:
-                            date = reference.replace(year=reference.year+1)
-                        else:
-                            return result
-
-                        result.timex = DateTimeFormatUtil.luis_date_from_datetime(date)
-                        result.future_value = result.past_value = date
-                        result.success = True
-                        return result
-
-        return result

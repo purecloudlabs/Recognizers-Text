@@ -7,50 +7,50 @@ from datedelta import datedelta
 import regex
 
 from recognizers_text import RegExpUtility, ExtractResult
-from recognizers_number import ChineseIntegerExtractor, CJKNumberParser, ChineseNumberParserConfiguration,\
+from recognizers_number import JapaneseIntegerExtractor, CJKNumberParser, JapaneseNumberParserConfiguration,\
     Constants as NumberConstants
 
-from ...resources.chinese_date_time import ChineseDateTime
+from ...resources.japanese_date_time import JapaneseDateTime
 from ..constants import Constants, TimeTypeConstants
 from ..utilities import DateTimeFormatUtil, DateTimeResolutionResult, DateUtils, DayOfWeek
 from ..parsers import DateTimeParseResult
 from ..base_dateperiod import BaseDatePeriodParser
-from .dateperiod_parser_config import ChineseDatePeriodParserConfiguration
+from .dateperiod_parser_config import JapaneseDatePeriodParserConfiguration
 from ..utilities import parse_dynasty_year
 
 
-class ChineseDatePeriodParser(BaseDatePeriodParser):
+class JapaneseDatePeriodParser(BaseDatePeriodParser):
     def __init__(self):
-        super().__init__(ChineseDatePeriodParserConfiguration())
-        self.integer_extractor = ChineseIntegerExtractor()
+        super().__init__(JapaneseDatePeriodParserConfiguration())
+        self.integer_extractor = JapaneseIntegerExtractor()
         self.number_parser = CJKNumberParser(
-            ChineseNumberParserConfiguration())
-        self.year_in_chinese_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.DatePeriodYearInCJKRegex)
+            JapaneseNumberParserConfiguration())
+        self.year_in_japanese_regex = RegExpUtility.get_safe_reg_exp(
+            JapaneseDateTime.DatePeriodYearInCJKRegex)
         self.number_combined_with_unit_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.NumberCombinedWithUnit)
+            JapaneseDateTime.NumberCombinedWithUnit)
         self.unit_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.UnitRegex)
+            JapaneseDateTime.UnitRegex)
         self.year_and_month_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.YearAndMonth)
+            JapaneseDateTime.YearAndMonth)
         self.pure_number_year_and_month_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.PureNumYearAndMonth)
+            JapaneseDateTime.PureNumYearAndMonth)
         self.year_to_year_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.YearToYear)
+            JapaneseDateTime.YearToYear)
         self.year_to_year_suffix_required = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.YearToYearSuffixRequired)
-        self.chinese_year_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.DatePeriodYearInCJKRegex)
+            JapaneseDateTime.YearToYearSuffixRequired)
+        self.japanese_year_regex = RegExpUtility.get_safe_reg_exp(
+            JapaneseDateTime.DatePeriodYearInCJKRegex)
         self.season_with_year_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.SeasonWithYear)
+            JapaneseDateTime.SeasonWithYear)
         self.decade_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.DecadeRegex)
+            JapaneseDateTime.DecadeRegex)
         self.date_this_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.DatePeriodThisRegex)
+            JapaneseDateTime.DatePeriodThisRegex)
         self.date_last_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.DatePeriodLastRegex)
+            JapaneseDateTime.DatePeriodLastRegex)
         self.date_next_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.DatePeriodNextRegex)
+            JapaneseDateTime.DatePeriodNextRegex)
 
     def parse(self, source: ExtractResult, reference: datetime = None) -> Optional[DateTimeParseResult]:
         result_value = None
@@ -218,7 +218,7 @@ class ChineseDatePeriodParser(BaseDatePeriodParser):
 
         before_str = source[:duration_result.start].strip().lower()
         number_str = duration_result.text[:match.start()].strip().lower()
-        number_val = self.__convert_chinese_to_number(number_str)
+        number_val = self.__convert_japanese_to_number(number_str)
         num_str = str(number_val)
 
         return self.__parse_common_duration_with_unit(before_str, source_unit, num_str, reference)
@@ -279,7 +279,7 @@ class ChineseDatePeriodParser(BaseDatePeriodParser):
         result.success = True
         return result
 
-    def __convert_chinese_to_number(self, source: str) -> int:
+    def __convert_japanese_to_number(self, source: str) -> int:
         num = -1
         er = next(iter(self.integer_extractor.extract(source)), None)
 
@@ -301,17 +301,17 @@ class ChineseDatePeriodParser(BaseDatePeriodParser):
 
         year = reference.year
         year_num = RegExpUtility.get_group(match, Constants.YEAR_GROUP_NAME)
-        year_chinese = RegExpUtility.get_group(match, Constants.YEAR_CHINESE)
+        year_japanese = RegExpUtility.get_group(match, Constants.YEAR_JAPANESE)
         year_relative = RegExpUtility.get_group(match, Constants.YEAR_RELATIVE)
 
         if year_num.strip() != '':
             if self.config.is_year_only(year_num):
                 year_num = year_num[:-1]
             year = self._convert_year(year_num, False)
-        elif year_chinese.strip() != '':
-            if self.config.is_year_only(year_chinese):
-                year_chinese = year_chinese[:-1]
-            year = self._convert_year(year_chinese, True)
+        elif year_japanese.strip() != '':
+            if self.config.is_year_only(year_japanese):
+                year_japanese = year_japanese[:-1]
+            year = self._convert_year(year_japanese, True)
         elif year_relative.strip() != '':
             year += self.config.get_swift_day_or_month(year_relative)
 
@@ -347,32 +347,32 @@ class ChineseDatePeriodParser(BaseDatePeriodParser):
                 return result
 
         year_matches = list(regex.finditer(self.config.year_regex, source))
-        chinese_year_matches = list(
-            regex.finditer(self.chinese_year_regex, source))
+        japanese_year_matches = list(
+            regex.finditer(self.japanese_year_regex, source))
 
         begin_year = 0
         end_year = 0
 
         if len(year_matches) == 2:
-            begin_year = self.__convert_chinese_to_number(
+            begin_year = self.__convert_japanese_to_number(
                 RegExpUtility.get_group(year_matches[0], Constants.YEAR_GROUP_NAME))
-            end_year = self.__convert_chinese_to_number(
+            end_year = self.__convert_japanese_to_number(
                 RegExpUtility.get_group(year_matches[1], Constants.YEAR_GROUP_NAME))
-        elif len(chinese_year_matches) == 2:
+        elif len(japanese_year_matches) == 2:
             begin_year = self._convert_year(RegExpUtility.get_group(
-                chinese_year_matches[0], Constants.YEAR_CHINESE), True)
+                japanese_year_matches[0], Constants.YEAR_JAPANESE), True)
             end_year = self._convert_year(RegExpUtility.get_group(
-                chinese_year_matches[1], Constants.YEAR_CHINESE), True)
-        elif len(year_matches) == 1 and len(chinese_year_matches) == 1:
-            if year_matches[0].start() < chinese_year_matches[0].start():
-                begin_year = self.__convert_chinese_to_number(
+                japanese_year_matches[1], Constants.YEAR_JAPANESE), True)
+        elif len(year_matches) == 1 and len(japanese_year_matches) == 1:
+            if year_matches[0].start() < japanese_year_matches[0].start():
+                begin_year = self.__convert_japanese_to_number(
                     RegExpUtility.get_group(year_matches[0], Constants.YEAR_GROUP_NAME))
-                end_year = self.__convert_chinese_to_number(
-                    RegExpUtility.get_group(chinese_year_matches[0], Constants.YEAR_CHINESE))
+                end_year = self.__convert_japanese_to_number(
+                    RegExpUtility.get_group(japanese_year_matches[0], Constants.YEAR_JAPANESE))
             else:
-                begin_year = self.__convert_chinese_to_number(
-                    RegExpUtility.get_group(chinese_year_matches[0], Constants.YEAR_CHINESE))
-                end_year = self.__convert_chinese_to_number(
+                begin_year = self.__convert_japanese_to_number(
+                    RegExpUtility.get_group(japanese_year_matches[0], Constants.YEAR_JAPANESE))
+                end_year = self.__convert_japanese_to_number(
                     RegExpUtility.get_group(year_matches[0], Constants.YEAR_GROUP_NAME))
 
         begin_year = self.__sanitize_year(begin_year)
@@ -402,12 +402,12 @@ class ChineseDatePeriodParser(BaseDatePeriodParser):
     def _parse_year(self, source: str, reference: datetime) -> DateTimeResolutionResult:
         source = source.strip().lower()
         result = DateTimeResolutionResult()
-        is_chinese = False
+        is_japanese = False
 
         match = regex.search(self.config.year_regex, source)
         if not match or len(match.group()) != len(source):
-            match = regex.search(self.year_in_chinese_regex, source)
-            is_chinese = match and len(match.group()) == len(source)
+            match = regex.search(self.year_in_japanese_regex, source)
+            is_japanese = match and len(match.group()) == len(source)
 
         if not match or len(match.group()) != len(source):
             return result
@@ -416,7 +416,7 @@ class ChineseDatePeriodParser(BaseDatePeriodParser):
         if self.config.is_year_only(year_str):
             year_str = year_str[:-1].strip()
 
-        year = self._convert_year(year_str, is_chinese)
+        year = self._convert_year(year_str, is_japanese)
         if len(year_str) == 2:
             if 100 > year >= 30:
                 year += 1900
@@ -433,9 +433,9 @@ class ChineseDatePeriodParser(BaseDatePeriodParser):
         result.success = True
         return result
 
-    def _convert_year(self, year_str: str, is_chinese: bool) -> int:
+    def _convert_year(self, year_str: str, is_japanese: bool) -> int:
         year = -1
-        if is_chinese:
+        if is_japanese:
             dynasty_year = parse_dynasty_year(year_str, self.config.dynasty_year_regex, self.config.dynasty_start_year, self.config.dynasty_year_map, self.integer_extractor, self.number_parser)
             if dynasty_year is not None:
                 return dynasty_year
@@ -518,7 +518,7 @@ class ChineseDatePeriodParser(BaseDatePeriodParser):
 
         year = reference.year
         year_num = RegExpUtility.get_group(match, Constants.YEAR_GROUP_NAME)
-        year_chinese = RegExpUtility.get_group(match, Constants.YEAR_CHINESE)
+        year_japanese = RegExpUtility.get_group(match, Constants.YEAR_JAPANESE)
         year_relative = RegExpUtility.get_group(match, Constants.YEAR_RELATIVE)
         has_year = False
 
@@ -527,11 +527,11 @@ class ChineseDatePeriodParser(BaseDatePeriodParser):
             if self.config.is_year_only(year_num):
                 year_num = year_num[:-1]
             year = self._convert_year(year_num, False)
-        elif year_chinese.strip() != '':
+        elif year_japanese.strip() != '':
             has_year = True
-            if self.config.is_year_only(year_chinese):
-                year_chinese = year_chinese[:-1]
-            year = self._convert_year(year_chinese, True)
+            if self.config.is_year_only(year_japanese):
+                year_japanese = year_japanese[:-1]
+            year = self._convert_year(year_japanese, True)
         elif year_relative.strip() != '':
             has_year = True
             year += self.config.get_swift_day_or_month(year_relative)
@@ -560,7 +560,7 @@ class ChineseDatePeriodParser(BaseDatePeriodParser):
 
         year = reference.year
         year_num = RegExpUtility.get_group(match, Constants.YEAR_GROUP_NAME)
-        year_chinese = RegExpUtility.get_group(match, Constants.YEAR_CHINESE)
+        year_japanese = RegExpUtility.get_group(match, Constants.YEAR_JAPANESE)
         year_relative = RegExpUtility.get_group(match, Constants.YEAR_RELATIVE)
         has_year = False
 
@@ -569,11 +569,11 @@ class ChineseDatePeriodParser(BaseDatePeriodParser):
             if self.config.is_year_only(year_num):
                 year_num = year_num[:-1]
             year = self._convert_year(year_num, False)
-        elif year_chinese.strip() != '':
+        elif year_japanese.strip() != '':
             has_year = True
-            if self.config.is_year_only(year_chinese):
-                year_chinese = year_chinese[:-1]
-            year = self._convert_year(year_chinese, True)
+            if self.config.is_year_only(year_japanese):
+                year_japanese = year_japanese[:-1]
+            year = self._convert_year(year_japanese, True)
         elif year_relative.strip() != '':
             has_year = True
             year += self.config.get_swift_day_or_month(year_relative)
@@ -613,10 +613,10 @@ class ChineseDatePeriodParser(BaseDatePeriodParser):
             return result
 
         decade_str = RegExpUtility.get_group(match, Constants.DECADE)
-        decade = self.__convert_chinese_to_number(decade_str)
+        decade = self.__convert_japanese_to_number(decade_str)
         century_str = RegExpUtility.get_group(match, Constants.CENTURY)
         if century_str != "":
-            century = self.__convert_chinese_to_number(century_str)
+            century = self.__convert_japanese_to_number(century_str)
             input_century = True
         else:
             century_str = RegExpUtility.get_group(match, Constants.REL_CENTURY)
