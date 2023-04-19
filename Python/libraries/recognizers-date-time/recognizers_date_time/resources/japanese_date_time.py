@@ -309,6 +309,7 @@ class JapaneseDateTime:
     YearTerms = [r'年', r'年間', r'去年', r'今年', r'来年']
     ThisYearTerms = [r'今年']
     YearToDateTerms = [r'年初来']
+    MonthToDateTerms = [r'月に入ってから']
     LastYearTerms = [r'去年', r'前の年']
     NextYearTerms = [r'来年', r'翌年']
     YearAfterNextTerms = [r'后年', r'再来年']

@@ -7,7 +7,7 @@ import regex
 from recognizers_number import JapaneseIntegerExtractor, CJKNumberParser, JapaneseNumberParserConfiguration, \
     JapaneseCardinalExtractor
 from recognizers_text import RegExpUtility
-from .date_extractor_config import JapaneseDateExtractorConfiguration
+from .date_extractor import JapaneseDateExtractor
 from ...resources.japanese_date_time import JapaneseDateTime
 from ..base_dateperiod import DatePeriodParserConfiguration
 from .date_parser import JapaneseDateParser
@@ -24,7 +24,7 @@ class JapaneseDatePeriodParserConfiguration(DatePeriodParserConfiguration):
         return self._number_parser
 
     @property
-    def date_extractor(self) -> JapaneseDateExtractorConfiguration:
+    def date_extractor(self) -> JapaneseDateExtractor:
         return self._date_extractor
 
     @property
@@ -289,7 +289,7 @@ class JapaneseDatePeriodParserConfiguration(DatePeriodParserConfiguration):
 
     @property
     def duration_extractor(self):
-        raise NotImplementedError
+        return self._duration_extractor
 
     @property
     def duration_parser(self):
@@ -344,7 +344,7 @@ class JapaneseDatePeriodParserConfiguration(DatePeriodParserConfiguration):
         return self._rest_of_date_regex
 
     @property
-    def token_before_date(self) -> Pattern:
+    def token_before_date(self) -> str:
         return self._token_before_date
 
     @property
@@ -358,7 +358,7 @@ class JapaneseDatePeriodParserConfiguration(DatePeriodParserConfiguration):
     def __init__(self):
         self._integer_extractor = JapaneseIntegerExtractor()
         self._number_parser = CJKNumberParser(JapaneseNumberParserConfiguration())
-        self._date_extractor = JapaneseDateExtractorConfiguration()
+        self._date_extractor = JapaneseDateExtractor()
         self._cardinal_extractor = JapaneseCardinalExtractor()
         self._date_parser = JapaneseDateParser()
 
@@ -426,10 +426,17 @@ class JapaneseDatePeriodParserConfiguration(DatePeriodParserConfiguration):
         self._complex_date_period_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.ComplexDatePeriodRegex)
         self._duration_relative_duration_unit_regex = RegExpUtility.get_safe_reg_exp(
             JapaneseDateTime.DurationRelativeDurationUnitRegex)
+        self._now_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.NowRegex)
         self._unit_map = JapaneseDateTime.ParserConfigurationUnitMap
         self._cardinal_map = JapaneseDateTime.ParserConfigurationCardinalMap
         self._day_of_month = JapaneseDateTime.ParserConfigurationDayOfMonth
         self._season_map = JapaneseDateTime.ParserConfigurationSeasonMap
+        self._token_before_date = ' on '
+        self._all_half_year_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.HalfYearRegex)
+        self._complex_dateperiod_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.ComplexDatePeriodRegex)
+        self._month_of_year = JapaneseDateTime.ParserConfigurationMonthOfYear
+        self._rest_of_date_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.RestOfDateRegex)
+
 
         # TODO When the implementation for these properties is added, change the None values to their respective Regexps
 
@@ -438,25 +445,17 @@ class JapaneseDatePeriodParserConfiguration(DatePeriodParserConfiguration):
         self._ago_regex = None
         self._check_both_before_after = None
         self._relative_decade_regex = None
-        self._all_half_year_regex = None
         self._between_regex = None
-        self._complex_dateperiod_regex = None
-        self._decade_with_century_regex = None
         self._duration_extractor = None
         self._duration_parser = None
-        self._get_swift_day_or_month = None
         self._in_connector_regex = None
         self._less_than_regex = None
         self._month_front_between_regex = None
         self._month_front_simple_cases_regex = None
         self._month_num_with_year = None
         self._month_of_regex = None
-        self._month_of_year = None
         self._month_with_year = None
-        self._now_regex = None
         self._quarter_regex_year_front = None
-        self._rest_of_date_regex = None
-        self._token_before_date = None
         self._unspecific_end_of_range_regex = None
         self._week_of_regex = None
 
@@ -483,6 +482,10 @@ class JapaneseDatePeriodParserConfiguration(DatePeriodParserConfiguration):
     def is_year_to_date(self, source: str) -> bool:
         trimmed_source = source.strip().lower()
         return any(trimmed_source == o for o in JapaneseDateTime.YearToDateTerms)
+
+    def is_month_to_date(self, source: str) -> bool:
+        trimmed_source = source.strip().lower()
+        return any(trimmed_source == o for o in JapaneseDateTime.MonthToDateTerms)
 
     def is_last_year(self, source: str) -> bool:
         trimmed_source = source.strip().lower()
@@ -544,7 +547,3 @@ class JapaneseDatePeriodParserConfiguration(DatePeriodParserConfiguration):
     def is_last_cardinal(self, source) -> bool:
         trimmed_source = source.strip().lower()
         return not self.last_regex.search(trimmed_source) is None
-
-    def is_month_to_date(self, source) -> bool:
-        return False
-

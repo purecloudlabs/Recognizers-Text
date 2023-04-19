@@ -73,8 +73,8 @@ class JapaneseDatePeriodParser(BaseDatePeriodParser):
                 inner_result = self._parse_number_with_unit(
                     source_text, reference)
 
-            if not inner_result.success:
-                inner_result = self._parse_duration(source_text, reference)
+            # if not inner_result.success:
+            #     inner_result = self._parse_duration(source_text, reference)
 
             if not inner_result.success:
                 inner_result = self._parse_year_and_month(
@@ -202,7 +202,6 @@ class JapaneseDatePeriodParser(BaseDatePeriodParser):
     def _parse_duration(self, source: str, reference: datetime) -> DateTimeResolutionResult:
         result = DateTimeResolutionResult()
 
-        # for case "前两年" "后三年"
         duration_result = next(
             iter(self.config.duration_extractor.extract(source, reference)), None)
         if not duration_result:

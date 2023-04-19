@@ -686,6 +686,10 @@ YearToDateTerms: !list
   types: [ string ]
   entries:
     - 年初来
+MonthToDateTerms: !list
+  types: [ string ]
+  entries:
+    - 月に入ってから
 LastYearTerms: !list
   types: [ string ]
   entries:

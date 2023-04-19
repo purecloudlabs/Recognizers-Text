@@ -67,7 +67,6 @@ class JapaneseMergedParser(BaseMergedParser):
         else:
             return None
 
-        # pop, restore the MOD string
         if has_before and result.value:
             result.length += len(mod_str)
             result.start -= len(mod_str)

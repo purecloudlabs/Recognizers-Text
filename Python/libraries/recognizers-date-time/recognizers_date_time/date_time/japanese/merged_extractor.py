@@ -5,10 +5,10 @@ from typing import List
 from datetime import datetime
 import regex
 
-
 from ..base_merged import BaseMergedExtractor
 from ..utilities import DateTimeOptions, ExtractResult, RegExpUtility
 from .merged_extractor_config import JapaneseMergedExtractorConfiguration
+
 
 class JapaneseMergedExtractor(BaseMergedExtractor):
     def __init__(self, options: DateTimeOptions):
@@ -110,7 +110,7 @@ class JapaneseMergedExtractor(BaseMergedExtractor):
                         matches = reg_len
                         new_ers = list(filter(lambda x: list(
                             filter(lambda m: m.start() < x.start + x.length and m.start() +
-                                   len(m.group()) > x.start, matches)), extract_results))
+                                             len(m.group()) > x.start, matches)), extract_results))
                         if len(new_ers) > 0:
                             for item in extract_results:
                                 for i in new_ers:
@@ -151,7 +151,7 @@ class JapaneseMergedExtractor(BaseMergedExtractor):
         for index, dest in enumerate(destination):
             includes_text = dest.text in source.text
             same_boundary = source.start == dest.start or source.start + \
-                source.length == dest.start + dest.length
+                            source.length == dest.start + dest.length
             if includes_text and same_boundary:
                 duplicated.append(index)
 
