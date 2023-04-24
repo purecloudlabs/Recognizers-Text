@@ -545,6 +545,8 @@ class JapaneseDatePeriodParser(BaseDatePeriodParser):
 
         if has_year:
             result.timex = f'{year:02d}-{season}'
+        else:
+            result.timex = season
 
         result.success = True
         return result

@@ -313,7 +313,7 @@
   },
   {
     "Input": "2か月前に戻りました。",
-    "NotSupportedByDesign": "javascript,java",
+    "NotSupportedByDesign": "javascript,python,java",
     "Results": [
       {
         "Text": "2か月前",
@@ -337,7 +337,7 @@
   },
   {
     "Input": "私が1か月前にeメールを送付した相手は誰ですか",
-    "NotSupportedByDesign": "javascript,java",
+    "NotSupportedByDesign": "javascript,python,java",
     "Results": [
       {
         "Text": "1か月前",
@@ -899,7 +899,7 @@
     "Context": {
       "ReferenceDateTime": "2018-06-20T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,java",
+    "NotSupportedByDesign": "javascript,python,java",
     "Results": [
       {
         "Text": "3週間で",
@@ -941,7 +941,7 @@
   },
   {
     "Input": "コルタナ、2営業日でSkype通話を設定してください。",
-    "NotSupportedByDesign": "javascript,java",
+    "NotSupportedByDesign": "javascript,python,java",
     "Results": [
       {
         "Text": "2営業日で",
@@ -1415,7 +1415,7 @@
   },
   {
     "Input": "2か月前に帰ってきました。",
-    "NotSupportedByDesign": "javascript, java",
+    "NotSupportedByDesign": "javascript,python,java",
     "Results": [
       {
         "Text": "2か月前",
@@ -1427,7 +1427,7 @@
   },
   {
     "Input": "二か月前に帰ってきました。",
-    "NotSupportedByDesign": "javascript, java",
+    "NotSupportedByDesign": "javascript,python,java",
     "Results": [
       {
         "Text": "二か月前",
@@ -1553,7 +1553,7 @@
     "Context": {
       "ReferenceDateTime": "2018-06-20T00:00:00"
     },
-    "NotSupported": "ython,java,javascript",
+    "NotSupported": "python,java,javascript",
     "NotSupportedByDesign": "javascript, java",
     "Results": [
       {

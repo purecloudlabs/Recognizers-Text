@@ -236,7 +236,7 @@ class JapaneseDatePeriodExtractorConfiguration(DatePeriodExtractorConfiguration)
         return self._duration_unit_regex
 
     @property
-    def season_regex(self) -> Pattern:
+    def season_regex(self):
         return self._season_regex
 
     @property
@@ -399,7 +399,7 @@ class JapaneseDatePeriodExtractorConfiguration(DatePeriodExtractorConfiguration)
         self._month_suffix_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.MonthSuffixRegex)
         self._unit_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.UnitRegex)
         self._duration_unit_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.DurationUnitRegex)
-        self._season_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.SeasonRegex)
+        self._season_regex = JapaneseDateTime.SeasonRegex
         self._from_prefix = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.DateTimePeriodFromPrefixRegex)
         self._from_suffix = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.DateTimePeriodFromSuffixRegex)
 
