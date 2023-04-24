@@ -35,7 +35,6 @@ from .dutch.merged_extractor_config import DutchMergedExtractorConfiguration
 from .dutch.merged_parser_config import DutchMergedParserConfiguration
 
 
-
 class DateTimeRecognizer(Recognizer[DateTimeOptions]):
     def __init__(self, target_culture: str = None,
                  options: DateTimeOptions = DateTimeOptions.NONE,
