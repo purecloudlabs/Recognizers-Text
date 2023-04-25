@@ -702,7 +702,7 @@
     "Context": {
       "ReferenceDateTime": "2018-03-20T22:16:00"
     },
-    "NotSupportedByDesign": "javascript,java",
+    "NotSupportedByDesign": "javascript,python,java",
     "Results": [
       {
         "Text": "来週の火曜日",
@@ -1736,7 +1736,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript, java",
+    "NotSupportedByDesign": "javascript, python, java",
     "Results": [
       {
         "Text": "次の日曜日",
@@ -1808,7 +1808,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript, java",
+    "NotSupportedByDesign": "javascript, python, java",
     "Results": [
       {
         "Text": "来週の日曜日",
@@ -1953,7 +1953,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript, java",
+    "NotSupportedByDesign": "javascript, python, java",
     "Results": [
       {
         "Text": "来週の金曜日",
@@ -3170,7 +3170,7 @@
     "Context": {
       "ReferenceDateTime": "2018-03-20T22:16:00"
     },
-    "NotSupportedByDesign": "javascript, java",
+    "NotSupportedByDesign": "javascript, python, java",
     "Results": [
       {
         "Text": "来週の木曜日",
@@ -3194,7 +3194,7 @@
     "Context": {
       "ReferenceDateTime": "2018-03-20T22:16:00"
     },
-    "NotSupportedByDesign": "javascript, java",
+    "NotSupportedByDesign": "javascript, python, java",
     "Results": [
       {
         "Text": "来週の日曜日",

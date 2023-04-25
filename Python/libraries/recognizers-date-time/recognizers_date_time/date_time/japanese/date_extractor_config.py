@@ -6,6 +6,7 @@ from typing import List, Pattern, Dict
 from recognizers_text import RegExpUtility
 from recognizers_number import JapaneseIntegerExtractor, JapaneseOrdinalExtractor, CJKNumberParser, \
     JapaneseNumberParserConfiguration
+from ..constants import Constants
 from ...resources import JapaneseDateTime
 from ..base_date import DateExtractorConfiguration
 from ...resources.base_date_time import BaseDateTime
@@ -162,6 +163,46 @@ class JapaneseDateExtractorConfiguration(DateExtractorConfiguration):
         return self._date_regex_list
 
     @property
+    def date_regex_list_1(self) -> Pattern:
+        return self._date_regex_list_1
+
+    @property
+    def date_regex_list_2(self) -> Pattern:
+        return self._date_regex_list_2
+
+    @property
+    def date_regex_list_3(self) -> Pattern:
+        return self._date_regex_list_3
+
+    @property
+    def date_regex_list_4(self) -> Pattern:
+        return self._date_regex_list_4
+
+    @property
+    def date_regex_list_5(self) -> Pattern:
+        return self._date_regex_list_5
+
+    @property
+    def date_regex_list_6(self) -> Pattern:
+        return self._date_regex_list_6
+
+    @property
+    def date_regex_list_7(self) -> Pattern:
+        return self._date_regex_list_7
+
+    @property
+    def date_regex_list_8(self) -> Pattern:
+        return self._date_regex_list_8
+
+    @property
+    def date_regex_list_9(self) -> Pattern:
+        return self._date_regex_list_9
+
+    @property
+    def date_regex_list_10(self) -> Pattern:
+        return self._date_regex_list_10
+
+    @property
     def implicit_date_list(self) -> List[Pattern]:
         return self._implicit_date_list
 
@@ -276,30 +317,33 @@ class JapaneseDateExtractorConfiguration(DateExtractorConfiguration):
         self._dynasty_start_year_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.DynastyStartYear)
         self._day_of_week = JapaneseDateTime.ParserConfigurationDayOfWeek
         self._month_of_year = JapaneseDateTime.ParserConfigurationMonthOfYear
+        self._date_regex_list_1 = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.DateRegexList1)
+        self._date_regex_list_2 = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.DateRegexList2)
+        self._date_regex_list_3 = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.DateRegexList3)
+        self._date_regex_list_4 = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.DateRegexList4)
+        self._date_regex_list_5 = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.DateRegexList5)
+        self._date_regex_list_6 = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.DateRegexList6)
+        self._date_regex_list_7 = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.DateRegexList7)
+        self._date_regex_list_8 = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.DateRegexList8)
+        self._date_regex_list_9 = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.DateRegexList9)
+        self._date_regex_list_10 = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.DateRegexList10)
 
         self._date_regex_list = [
-            RegExpUtility.get_safe_reg_exp(JapaneseDateTime.DateRegexList1),
-            RegExpUtility.get_safe_reg_exp(JapaneseDateTime.DateRegexList2),
-            RegExpUtility.get_safe_reg_exp(JapaneseDateTime.DateRegexList3),
-            RegExpUtility.get_safe_reg_exp(JapaneseDateTime.DateRegexList4),
-            RegExpUtility.get_safe_reg_exp(JapaneseDateTime.DateRegexList5),
-            RegExpUtility.get_safe_reg_exp(JapaneseDateTime.DateRegexList6),
-            RegExpUtility.get_safe_reg_exp(JapaneseDateTime.DateRegexList7),
-            RegExpUtility.get_safe_reg_exp(JapaneseDateTime.DateRegexList8),
-            RegExpUtility.get_safe_reg_exp(JapaneseDateTime.DateRegexList9),
-            RegExpUtility.get_safe_reg_exp(JapaneseDateTime.DateRegexList10)
+            self.date_regex_list_1, self.date_regex_list_10, self.date_regex_list_2, self.date_regex_list_9,
+            self.date_regex_list_3, self.date_regex_list_4, self.date_regex_list_5
         ]
+
         self._implicit_date_list = [
-            RegExpUtility.get_safe_reg_exp(JapaneseDateTime.SpecialDayWithNumRegex),
-            RegExpUtility.get_safe_reg_exp(JapaneseDateTime.SpecialDayRegex),
-            RegExpUtility.get_safe_reg_exp(JapaneseDateTime.DateThisRegex),
-            RegExpUtility.get_safe_reg_exp(JapaneseDateTime.DateLastRegex),
-            RegExpUtility.get_safe_reg_exp(JapaneseDateTime.DateNextRegex),
-            RegExpUtility.get_safe_reg_exp(JapaneseDateTime.WeekDayRegex),
-            RegExpUtility.get_safe_reg_exp(JapaneseDateTime.WeekDayOfMonthRegex),
-            RegExpUtility.get_safe_reg_exp(JapaneseDateTime.SpecialDate),
-            RegExpUtility.get_safe_reg_exp(JapaneseDateTime.WeekDayAndDayRegex)
+            self.special_day_with_num_regex, self.special_day_regex, self.this_regex, self.last_regex,
+            self.week_day_regex, self._week_day_of_month, self.special_date_regex, self.week_day_and_day_regex
         ]
+
+        if JapaneseDateTime.DefaultLanguageFallback == Constants.DEFAULT_LANGUAGE_FALLBACK_DMY:
+            self._date_regex_list.extend([JapaneseDateTime.DateRegexList7, JapaneseDateTime.DateRegexList6,
+                                          JapaneseDateTime.DateRegexList8])
+        else:
+            self._date_regex_list.extend([JapaneseDateTime.DateRegexList6, JapaneseDateTime.DateRegexList7,
+                                          JapaneseDateTime.DateRegexList8])
 
         self._check_both_before_after = False
 
