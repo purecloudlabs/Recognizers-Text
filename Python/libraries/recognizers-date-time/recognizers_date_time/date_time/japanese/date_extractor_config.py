@@ -339,11 +339,9 @@ class JapaneseDateExtractorConfiguration(DateExtractorConfiguration):
         ]
 
         if JapaneseDateTime.DefaultLanguageFallback == Constants.DEFAULT_LANGUAGE_FALLBACK_DMY:
-            self._date_regex_list.extend([JapaneseDateTime.DateRegexList7, JapaneseDateTime.DateRegexList6,
-                                          JapaneseDateTime.DateRegexList8])
+            self._date_regex_list.extend([self.date_regex_list_7, self.date_regex_list_6, self.date_regex_list_8])
         else:
-            self._date_regex_list.extend([JapaneseDateTime.DateRegexList6, JapaneseDateTime.DateRegexList7,
-                                          JapaneseDateTime.DateRegexList8])
+            self._date_regex_list.extend([self.date_regex_list_6, self.date_regex_list_7, self.date_regex_list_8])
 
         self._check_both_before_after = False
 
