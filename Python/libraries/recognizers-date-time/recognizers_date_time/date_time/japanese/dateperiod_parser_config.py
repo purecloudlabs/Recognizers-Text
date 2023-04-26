@@ -344,7 +344,7 @@ class JapaneseDatePeriodParserConfiguration(DatePeriodParserConfiguration):
         return self._rest_of_date_regex
 
     @property
-    def token_before_date(self) -> str:
+    def token_before_date(self):
         return self._token_before_date
 
     @property
@@ -431,7 +431,7 @@ class JapaneseDatePeriodParserConfiguration(DatePeriodParserConfiguration):
         self._cardinal_map = JapaneseDateTime.ParserConfigurationCardinalMap
         self._day_of_month = JapaneseDateTime.ParserConfigurationDayOfMonth
         self._season_map = JapaneseDateTime.ParserConfigurationSeasonMap
-        self._token_before_date = ' on '
+        self._token_before_date = ''
         self._all_half_year_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.HalfYearRegex)
         self._complex_dateperiod_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.ComplexDatePeriodRegex)
         self._month_of_year = JapaneseDateTime.ParserConfigurationMonthOfYear
@@ -473,7 +473,7 @@ class JapaneseDatePeriodParserConfiguration(DatePeriodParserConfiguration):
 
     def is_year_only(self, source: str) -> bool:
         trimmed_source = source.strip().lower()
-        return any(trimmed_source.endswith(o) for o in JapaneseDateTime.YearTerms)
+        return any(trimmed_source.startswith(o) or trimmed_source.endswith(o) for o in JapaneseDateTime.YearTerms)
 
     def is_this_year(self, source: str) -> bool:
         trimmed_source = source.strip().lower()
@@ -528,7 +528,7 @@ class JapaneseDatePeriodParserConfiguration(DatePeriodParserConfiguration):
         return value
 
     def get_swift_year(self, source: str) -> int:
-        value = 0
+        value = -10
 
         if self.after_next_year_regex.search(source):
             value = 2
