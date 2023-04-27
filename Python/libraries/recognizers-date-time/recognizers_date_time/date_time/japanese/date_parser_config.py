@@ -211,6 +211,14 @@ class JapaneseDateParserConfiguration(DateParserConfiguration):
     def week_day_and_day_of_month_regex(self) -> any:
         return self._week_day_and_day_of_month_regex
 
+    @property
+    def token_next_regex(self) -> Pattern:
+        return self._token_next_regex
+
+    @property
+    def token_last_regex(self) -> Pattern:
+        return self._token_last_regex
+
     def get_swift_day(self, source: str) -> int:
         source = source.strip().lower()
         swift = 0
@@ -278,6 +286,8 @@ class JapaneseDateParserConfiguration(DateParserConfiguration):
         self._week_day_and_day_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.WeekDayAndDayRegex)
         self._duration_relative_duration_unit_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.DurationRelativeDurationUnitRegex)
         self._special_day_with_num_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.SpecialDayWithNumRegex)
+        self._token_next_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.NextPrefixRegex)
+        self._token_last_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.LastPrefixRegex)
 
         self._cardinal_map = JapaneseDateTime.ParserConfigurationCardinalMap
         self._unit_map = JapaneseDateTime.ParserConfigurationUnitMap

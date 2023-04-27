@@ -8,30 +8,19 @@ from datetime import datetime, timedelta
 import regex
 
 from recognizers_text import RegExpUtility, ExtractResult
-from recognizers_number import Constants as NumberConstants, JapaneseIntegerExtractor, JapaneseOrdinalExtractor
+from recognizers_number import Constants as NumberConstants
 
-from ...resources.japanese_date_time import JapaneseDateTime
 from ..constants import TimeTypeConstants, Constants
-from ..utilities import DateTimeResolutionResult, DateTimeFormatUtil, DateUtils, DayOfWeek, parse_dynasty_year
+from ..utilities import DateTimeResolutionResult, DateTimeFormatUtil, DateUtils, parse_dynasty_year, TimexUtil
 from ..parsers import DateTimeParseResult
 from ..base_date import BaseDateParser
 from .date_parser_config import JapaneseDateParserConfiguration
 
 
 class JapaneseDateParser(BaseDateParser):
-    integer_extractor = JapaneseIntegerExtractor()
-    ordinal_extractor = JapaneseOrdinalExtractor()
 
     def __init__(self):
         super().__init__(JapaneseDateParserConfiguration())
-        self.lunar_regex = RegExpUtility.get_safe_reg_exp(
-            JapaneseDateTime.LunarRegex)
-        self.special_date_regex = RegExpUtility.get_safe_reg_exp(
-            JapaneseDateTime.SpecialDate)
-        self.token_next_regex = RegExpUtility.get_safe_reg_exp(
-            JapaneseDateTime.NextPrefixRegex)
-        self.token_last_regex = RegExpUtility.get_safe_reg_exp(
-            JapaneseDateTime.LastPrefixRegex)
         self.month_max_days: List[int] = [
             31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
@@ -46,12 +35,13 @@ class JapaneseDateParser(BaseDateParser):
             inner_result = self.parse_basic_regex_match(source_text, reference)
 
             if not inner_result.success:
-                inner_result = self.parse_implicit_date(source_text, reference)
-
-            if not inner_result.success:
                 inner_result = self.parse_weekday_of_month(
                     source_text, reference)
 
+            if not inner_result.success:
+                inner_result = self.parse_implicit_date(source_text, reference)
+
+            # TODO add parser_duration_with_ago_and_later once duration parser is added
             if not inner_result.success:
                 inner_result = self.parser_duration_with_ago_and_later(
                     source_text, reference)
@@ -75,7 +65,7 @@ class JapaneseDateParser(BaseDateParser):
         return result
 
     def __parse_lunar_calendar(self, source: str) -> bool:
-        return regex.match(self.lunar_regex, source.strip()) is not None
+        return regex.match(self.config.lunar_regex, source.strip()) is not None
 
     def parse_basic_regex_match(self, source: str, reference: datetime) -> DateTimeParseResult:
         trimmed_source = source.strip()
@@ -93,7 +83,7 @@ class JapaneseDateParser(BaseDateParser):
         trimmed_source = source.strip()
         result = DateTimeResolutionResult()
 
-        match = regex.match(self.special_date_regex, trimmed_source)
+        match = regex.match(self.config.special_date_regex, trimmed_source)
         if match:
             year_str = RegExpUtility.get_group(match, 'thisyear')
             month_str = RegExpUtility.get_group(match, 'thismonth')
@@ -109,12 +99,12 @@ class JapaneseDateParser(BaseDateParser):
 
             if month_str:
                 has_month = True
-                if regex.search(self.token_next_regex, month_str):
+                if regex.search(self.config.token_next_regex, month_str):
                     month += 1
                     if month == Constants.MAX_MONTH + 1:
                         month = Constants.MIN_MONTH
                         year += 1
-                elif regex.search(self.token_last_regex, month_str):
+                elif regex.search(self.config.token_last_regex, month_str):
                     month -= 1
                     if month == Constants.MIN_MONTH - 1:
                         month = Constants.MAX_MONTH
@@ -122,9 +112,9 @@ class JapaneseDateParser(BaseDateParser):
 
                 if year_str:
                     has_year = True
-                    if regex.search(self.token_next_regex, year_str):
+                    if regex.search(self.config.token_next_regex, year_str):
                         year += 1
-                    elif regex.search(self.token_last_regex, year_str):
+                    elif regex.search(self.config.token_last_regex, year_str):
                         year -= 1
 
             result.timex = DateTimeFormatUtil.luis_date(
@@ -185,7 +175,7 @@ class JapaneseDateParser(BaseDateParser):
             return result
 
         # handle "today", "the day before yesterday"
-        match = regex.match(self.config.special_day_regex, trimmed_source)
+        match = self.config.special_day_regex.match(trimmed_source)
         if match and match.start() == 0 and len(match.group()) == len(trimmed_source):
             swift = self.config.get_swift_day(match.group())
             value = reference + timedelta(days=swift)
@@ -196,8 +186,89 @@ class JapaneseDateParser(BaseDateParser):
             result.success = True
             return result
 
+        # handle 2 Sundays from now
+        match = self.config.special_day_with_num_regex.match(trimmed_source)
+        if match and match.start() == 0 and len(match.group()) == len(trimmed_source):
+
+            num_ers = self.config.integer_extractor.extract(trimmed_source)
+            weekday_str = RegExpUtility.get_group(match, 'weekday')
+
+            if weekday_str and num_ers:
+                num = int(self.config.number_parser.parse(num_ers[0]).value)
+                value = reference
+
+                if value.isoweekday() > self.config.day_of_week.get(weekday_str):
+                    num -= 1
+
+                while num > 0:
+                    value = DateUtils.next(value, self.config.day_of_week.get(weekday_str))
+
+                result.timex = DateTimeFormatUtil.luis_date_from_datetime(value)
+                result.future_value = result.past_value = DateUtils.safe_create_from_min_value(value.year, value.month,
+                                                                                               value.day)
+                result.success = True
+                return result
+
+        # TODO Add DurationRelativeDurationUnitRegex check once duration parser is added
+
+        match = self.config.week_day_and_day_regex.match(trimmed_source)
+        if match and match.start() == 0 and len(match.group()) == len(trimmed_source):
+
+            month = reference.month
+            year = reference.year
+            day_str = RegExpUtility.get_group(match, 'day')
+            day = self.parse_cjk_written_number_to_value(day_str)
+
+            pivot_date = DateUtils.safe_create_from_min_value(year, month, 1)
+            days_in_month = self.get_month_max_day(year, month)
+
+            if days_in_month >= day:
+                pivot_date = DateUtils.safe_create_from_min_value(year, month, day)
+            else:
+                pivot_date += datedelta(months=+1)
+                pivot_date = DateUtils.safe_create_from_min_value(pivot_date.year, pivot_date.month, pivot_date.day)
+
+            num_week_day = pivot_date.isoweekday()
+            weekday_str = RegExpUtility.get_group(match, 'weekday')
+            week_day = self.config.day_of_week.get(weekday_str)
+
+            if pivot_date != reference.min:
+                if num_week_day == week_day:
+                    result.future_value = result.past_value = DateUtils.safe_create_from_min_value(year, month, day)
+                    result.timex = DateTimeFormatUtil.luis_date_from_datetime(reference)
+                else:
+                    future_value = past_value = pivot_date
+
+                    while self.config.day_of_week.get(str(future_value)) != week_day or future_value.day != day\
+                            or future_value < reference:
+                        future_value += datedelta(months=+1)
+                        tmp = self.get_month_max_day(future_value.year, future_value.month)
+
+                        if tmp >= day:
+                            future_value = DateUtils.safe_create_from_min_value(future_value.year, future_value.month, day)
+
+                    result.future_value = future_value
+
+                    while self.config.day_of_week.get(str(past_value)) != week_day or past_value.day != day \
+                            or past_value > reference:
+                        past_value += datedelta(months=-1)
+                        tmp = self.get_month_max_day(past_value.year, past_value.month)
+
+                        if tmp >= day:
+                            past_value = DateUtils.safe_create_from_min_value(past_value.year, past_value.month,
+                                                                                day)
+                    result.past_value = past_value
+
+                    if week_day == 0:
+                        week_day = 7
+
+                    result.timex = TimexUtil.generate_weekday_timex(week_day)
+
+            result.success = True
+            return result
+
         # handle "this Friday"
-        match = regex.match(self.config.this_regex, trimmed_source)
+        match = self.config.this_regex.match(trimmed_source)
         if match and match.start() == 0 and len(match.group()) == len(trimmed_source):
             weekday_str = RegExpUtility.get_group(match, 'weekday')
             value = DateUtils.this(
@@ -268,12 +339,12 @@ class JapaneseDateParser(BaseDateParser):
     def match_to_date(self, match, reference: datetime) -> DateTimeResolutionResult:
         result = DateTimeResolutionResult()
         year_str = RegExpUtility.get_group(match, 'year')
-        year_chs = RegExpUtility.get_group(match, Constants.YEAR_CJK_GROUP_NAME)
+        year_cjk = RegExpUtility.get_group(match, Constants.YEAR_CJK_GROUP_NAME)
         month_str = RegExpUtility.get_group(match, 'month')
         day_str = RegExpUtility.get_group(match, 'day')
         month = 0
         day = 0
-        year_tmp = self.convert_japanese_year_to_number(year_chs)
+        year_tmp = self.convert_cjk_year_to_number(year_cjk)
         year = 0 if year_tmp == -1 else year_tmp
 
         if month_str in self.config.month_of_year and day_str in self.config.day_of_month:
@@ -304,20 +375,22 @@ class JapaneseDateParser(BaseDateParser):
         result.success = True
         return result
 
-    # convert Japanese Number to Integer
-    def parse_japanese_written_number_to_value(self, source: str) -> int:
+    # convert CJK Number to Integer
+    def parse_cjk_written_number_to_value(self, source: str) -> int:
         num = -1
         er: ExtractResult = next(
-            iter(self.integer_extractor.extract(source)), None)
+            iter(self.config.integer_extractor.extract(source)), None)
         if er and er.type == NumberConstants.SYS_NUM_INTEGER:
             num = int(self.config.number_parser.parse(er).value)
 
         return num
 
-    def convert_japanese_year_to_number(self, source: str) -> int:
+    def convert_cjk_year_to_number(self, source: str) -> int:
         year = 0
-        dynasty_year = parse_dynasty_year(source, self.config.dynasty_year_regex, self.config.dynasty_start_year, self.config.dynasty_year_map, self.integer_extractor, self.config.number_parser)
-        if dynasty_year is not None:
+        dynasty_year = parse_dynasty_year(source, self.config.dynasty_year_regex, self.config.dynasty_start_year,
+                                          self.config.dynasty_year_map, self.config.integer_extractor,
+                                          self.config.number_parser)
+        if dynasty_year is not None and dynasty_year > 0:
             return dynasty_year
 
         er: ExtractResult = next(

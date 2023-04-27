@@ -1132,6 +1132,10 @@ class TimexUtil:
                f'{DateTimeFormatUtil.luis_date(end.year, end.month, end.day)},{date_period_timex})'
 
     @staticmethod
+    def generate_weekday_timex(weekday):
+        return f"({Constants.TIMEX_FUZZY_YEAR}{Constants.DATE_TIMEX_CONNECTOR}{Constants.TIMEX_FUZZY_WEEK}{Constants.DATE_TIMEX_CONNECTOR}{weekday})"
+
+    @staticmethod
     def _process_double_timex(resolution_dic: Dict[str, object], future_key: str, past_key: str, origin_timex: str):
         timexes = origin_timex.split(Constants.COMPOSTIE_TIMEX_DELIMITER)
         if not future_key in resolution_dic or not past_key in resolution_dic or len(timexes) != 2:
