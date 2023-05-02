@@ -162,7 +162,7 @@ MonthRegex: !simpleRegex
 #This is a look-behind assertion. Some cases should extract two digits as year like 11/25/16, where 16 means 2016. 
 #The assertion determines if not connected with am/pm or hour separator (:), which should be a time.
 DateYearRegex: !nestedRegex
-  def: (?<year>{BaseDateTime.FourDigitYearRegex}|{TwoDigitYearRegex})
+  def: (?<year>{BaseDateTime.FourDigitYearRegex}|\'?{TwoDigitYearRegex})
   references: [ BaseDateTime.FourDigitYearRegex, TwoDigitYearRegex ]
 OnRegex: !nestedRegex
   def: (?<=\bam\s+)({DayRegex}s?)\b
@@ -218,7 +218,7 @@ DateExtractor6: !nestedRegex
   def: ^[.]
   references: [ WeekDayRegex ]
 DateExtractor7: !nestedRegex
-  def: ({DayRegex}\s*[\.]\s*{MonthNumRegex}[\.]){BaseDateTime.CheckDecimalRegex}
+  def: \b({DayRegex}\s*[\.]\s*{MonthNumRegex}[\.]){BaseDateTime.CheckDecimalRegex}
   references: [ MonthNumRegex, DayRegex, BaseDateTime.CheckDecimalRegex ]
 DateExtractor8: !nestedRegex
   def: (?<=\b(am)\s+){DayRegex}[/\\\.]{MonthNumRegex}([/\\\.]{DateYearRegex})?{BaseDateTime.CheckDecimalRegex}\b
@@ -271,7 +271,7 @@ AmPmPrefixRegex: !simpleRegex
 CommonDatePrefixRegex: !simpleRegex
   def: ^[\.]
 LessThanOneHour: !nestedRegex
-  def: \b(?<lth>(ein(er?)?\s+)?((drei)?viertel|halb(en?)?)(\s*stunden?)?)|{BaseDateTime.DeltaMinuteRegex}(\s+(min(uten?)?))|{DeltaMinuteNumRegex}(\s+(min(uten?)?))
+  def: \b(?<lth>(ein(er?)?\s+)?((drei)?viertel|halb(en?)?)(\s*stunden?)?)|{BaseDateTime.DeltaMinuteRegex}(\s+(min(uten?)?)|(?=\s+(nach|vor)))|{DeltaMinuteNumRegex}(\s+(min(uten?)?)|(?=\s+(nach|vor)))
   references: [ BaseDateTime.DeltaMinuteRegex, DeltaMinuteNumRegex ]
 WrittenTimeRegex: !nestedRegex
   def: (um\s*)?(?<writtentime>{HourNumRegex}(\s*{OclockRegex}\s*)({MinuteNumRegex}|{MinuteNumRegex}und(?<tens>zwanzig|dreißig|vierzig|fünfzig)))

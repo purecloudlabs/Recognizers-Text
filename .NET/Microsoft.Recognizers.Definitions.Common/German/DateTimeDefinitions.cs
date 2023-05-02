@@ -104,7 +104,7 @@ namespace Microsoft.Recognizers.Definitions.German
       public static readonly string DateExtractor4 = $@"\b({DayRegex}\s*{MonthNumRegex}\s*{DateYearRegex})\b";
       public static readonly string DateExtractor5 = $@"\b(({WeekDayRegex})(\s+|\s*,\s*))?({DayRegex}\s*[/\\\-\.]\s*({MonthNumRegex}|{MonthRegex})\s*[/\\\-\.]\s*{DateYearRegex})\b(?!\s*[/\\\-\.]\s*\d+)";
       public static readonly string DateExtractor6 = $@"^[.]";
-      public static readonly string DateExtractor7 = $@"({DayRegex}\s*[\.]\s*{MonthNumRegex}[\.]){BaseDateTime.CheckDecimalRegex}";
+      public static readonly string DateExtractor7 = $@"\b({DayRegex}\s*[\.]\s*{MonthNumRegex}[\.]){BaseDateTime.CheckDecimalRegex}";
       public static readonly string DateExtractor8 = $@"(?<=\b(am)\s+){DayRegex}[/\\\.]{MonthNumRegex}([/\\\.]{DateYearRegex})?{BaseDateTime.CheckDecimalRegex}\b";
       public static readonly string DateExtractor9 = $@"\b({DayRegex}\s*/\s*{MonthNumRegex}((\s+|\s*,\s*){DateYearRegex})?){BaseDateTime.CheckDecimalRegex}\b";
       public static readonly string DateExtractor10 = $@"^[.]";
@@ -125,7 +125,7 @@ namespace Microsoft.Recognizers.Definitions.German
       public const string NightRegex = @"\b(mitternacht|(nachts?|primetime|abends?))\b";
       public const string AmPmPrefixRegex = @"\b((((um|gegen)\s*)?(?<suffix>(((?<am>am morgen)|((früh|spät)\s*)?morgens|früh|(vor|nach)mittags?)|(?<pm>((früh|spät)\s*)?(nachmittags?|abends?)|mitternachts?))|(in der\s*)?(?<pm>nachts?)))\s*(um|gegen|von)\s*)";
       public const string CommonDatePrefixRegex = @"^[\.]";
-      public static readonly string LessThanOneHour = $@"\b(?<lth>(ein(er?)?\s+)?((drei)?viertel|halb(en?)?)(\s*stunden?)?)|{BaseDateTime.DeltaMinuteRegex}(\s+(min(uten?)?))|{DeltaMinuteNumRegex}(\s+(min(uten?)?))";
+      public static readonly string LessThanOneHour = $@"\b(?<lth>(ein(er?)?\s+)?((drei)?viertel|halb(en?)?)(\s*stunden?)?)|{BaseDateTime.DeltaMinuteRegex}(\s+(min(uten?)?)|(?=\s+(nach|vor)))|{DeltaMinuteNumRegex}(\s+(min(uten?)?)|(?=\s+(nach|vor)))";
       public static readonly string WrittenTimeRegex = $@"(um\s*)?(?<writtentime>{HourNumRegex}(\s*{OclockRegex}\s*)({MinuteNumRegex}|{MinuteNumRegex}und(?<tens>zwanzig|dreißig|vierzig|fünfzig)))";
       public static readonly string TimePrefix = $@"(?<prefix>({LessThanOneHour})(\s*(vor(\W)?|nach(\W)?))?)";
       public static readonly string TimeSuffix = $@"(?<suffix>{AmRegex}|{PmRegex}|{OclockRegex})";

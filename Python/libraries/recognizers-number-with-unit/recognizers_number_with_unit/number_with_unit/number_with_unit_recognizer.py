@@ -6,6 +6,10 @@ from typing import List
 from recognizers_text import Culture, Recognizer
 from recognizers_text.model import Model, ModelResult
 from recognizers_number.culture import CultureInfo
+from .dutch.extractors import DutchCurrencyExtractorConfiguration, DutchTemperatureExtractorConfiguration, \
+    DutchDimensionExtractorConfiguration, DutchAgeExtractorConfiguration
+from .dutch.parsers import DutchCurrencyParserConfiguration, DutchTemperatureParserConfiguration, \
+    DutchDimensionParserConfiguration, DutchAgeParserConfiguration
 from .models import CurrencyModel, TemperatureModel, DimensionModel, AgeModel, ExtractorParserModel
 from .extractors import NumberWithUnitExtractor, BaseMergedUnitExtractor
 from .parsers import NumberWithUnitParser, BaseMergedUnitParser
@@ -61,6 +65,8 @@ from .german.extractors import GermanCurrencyExtractorConfiguration
 from .german.parsers import GermanCurrencyParserConfiguration
 from .italian.extractors import ItalianCurrencyExtractorConfiguration
 from .italian.parsers import ItalianCurrencyParserConfiguration
+from .japanese.extractors import JapaneseCurrencyExtractorConfiguration
+from .japanese.parsers import JapaneseCurrencyParserConfiguration
 
 
 class NumberWithUnitOptions(IntFlag):
@@ -261,6 +267,19 @@ class NumberWithUnitRecognizer(Recognizer[NumberWithUnitOptions]):
                 BaseMergedUnitExtractor(
                     GermanCurrencyExtractorConfiguration()),
                 BaseMergedUnitParser(GermanCurrencyParserConfiguration()))
+        ]))
+        # endregion
+
+        # region Japanese
+        self.register_model('CurrencyModel', Culture.Japanese, lambda options: CurrencyModel([
+            ExtractorParserModel(
+                BaseMergedUnitExtractor(
+                    JapaneseCurrencyExtractorConfiguration()),
+                BaseMergedUnitParser(JapaneseCurrencyParserConfiguration())),
+            ExtractorParserModel(
+                NumberWithUnitExtractor(
+                    EnglishCurrencyExtractorConfiguration()),
+                NumberWithUnitParser(EnglishCurrencyParserConfiguration()))
         ]))
         # endregion
 
