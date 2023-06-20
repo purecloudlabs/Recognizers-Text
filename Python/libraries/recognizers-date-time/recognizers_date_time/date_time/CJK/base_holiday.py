@@ -10,9 +10,9 @@ from recognizers_text.extractor import ExtractResult
 from recognizers_number import Constants as NumberConstants
 from recognizers_date_time.date_time.constants import Constants, TimeTypeConstants
 from recognizers_date_time.date_time.extractors import DateTimeExtractor
-from recognizers_date_time.date_time.parsers import DateTimeParseResult
+from recognizers_date_time.date_time.parsers import DateTimeParseResult, DateTimeParser
 from recognizers_date_time.date_time.utilities import DateTimeOptionsConfiguration, Token, merge_all_tokens, \
-    DateTimeFormatUtil, DateTimeResolutionResult, DateTimeParser
+    DateTimeFormatUtil, DateTimeResolutionResult
 from recognizers_number import BaseNumberExtractor, BaseNumberParser
 
 
