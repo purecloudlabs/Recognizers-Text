@@ -121,15 +121,15 @@ class BaseCJKSetExtractor(DateTimeExtractor):
             if regex.search(self.config.last_regex, er.text):
                 continue
 
-            before_str = text[0:er.start].strip()
-            before_match = RegExpUtility.match_end(self.config.each_prefix_regex, before_str, True)
-            if before_match and before_match.success:
-                ret.append(Token(before_match.start(), er.start + er.length))
+            before_str = text[0:er.start]
+            before_match = regex.search(self.config.each_prefix_regex, before_str)
+            if before_match:
+                ret.append(Token(before_match.start(), er.length))
             else:
                 after_str = text[er.start + er.length:]
-                after_match = RegExpUtility.match_begin(self.config.each_prefix_regex, after_str, False)
-                if after_match and after_match.success:
-                    ret.append(Token(er.start, er.start + er.length + after_match.index - after_match.length))
+                after_match = regex.search(self.config.each_suffix_regex, after_str)
+                if after_match:
+                    ret.append(Token(er.start, er.start + er.length + len(after_match.group())))
         return ret
 
     def match_each_unit(self, text: str) -> List[Token]:
@@ -148,10 +148,9 @@ class BaseCJKSetExtractor(DateTimeExtractor):
             if match:
                 ret.append(Token(match.start(), match.start() + match.end() + er.length))
             elif er.type == Constants.SYS_DATETIME_TIME or er.type == Constants.SYS_DATETIME_DATE:
-                if er.type == Constants.SYS_DATETIME_TIME:
-                    each_regex = self.config.each_day_regex
-                else:
-                    each_regex = self.config.each_date_unit_regex
+                each_regex = self.config.each_day_regex if er.type == Constants.SYS_DATETIME_TIME \
+                    else self.config.each_date_unit_regex
+
                 match = regex.search(each_regex, before_str)
                 if match:
                     ret.append(Token(match.start(), match.start() + match.end() + er.length))
@@ -252,39 +251,43 @@ class BaseCJKSetParser(DateTimeParser):
     def parse(self, extract_result: ExtractResult, reference_date: datetime = None):
         if reference_date is None:
             reference_date = datetime.now()
+
         value = None
         if extract_result.type == self.parser_type_name:
-            inner_result = self.parse_each_duration(extract_result.text, reference_date)
+            inner_result = self.parse_each_unit(extract_result.text, reference_date)
 
-        # NOTE: Please do not change the order of following function
-        # we must consider datetime before date
-        if not inner_result.success:
-            inner_result = self.parse_each(self.config.date_time_extractor,
-                                           self.config.date_time_parser,
-                                           extract_result.text, reference_date)
-        if not inner_result.success:
-            inner_result = self.parse_each(self.config.date_extractor,
-                                           self.config.date_parser,
-                                           extract_result.text,
-                                           reference_date)
-        if not inner_result.success:
-            inner_result = self.parse_each(self.config.time_period_extractor,
-                                           self.config.time_period_parser,
-                                           extract_result.text, reference_date)
-        if not inner_result.success:
-            inner_result = self.parse_each(self.config.time_extractor,
-                                           self.config.time_parser,
-                                           extract_result.text, reference_date)
+            if not inner_result.success:
+                inner_result = self.parse_each_duration(extract_result.text, reference_date)
 
-        if inner_result.success:
-            inner_result.future_resolution = {
-                TimeTypeConstants.SET: str(inner_result.future_value)
-            }
-            inner_result.past_resolution = {
-                TimeTypeConstants.SET: str(inner_result.past_value)
-            }
+            # NOTE: Please do not change the order of following function
+            # we must consider datetime before date
+            if not inner_result.success:
+                inner_result = self.parse_each(self.config.date_time_extractor,
+                                               self.config.date_time_parser,
+                                               extract_result.text,
+                                               reference_date)
+            if not inner_result.success:
+                inner_result = self.parse_each(self.config.date_extractor,
+                                               self.config.date_parser,
+                                               extract_result.text, reference_date)
+            if not inner_result.success:
+                inner_result = self.parse_each(self.config.time_period_extractor,
+                                               self.config.time_period_parser,
+                                               extract_result.text, reference_date)
+            if not inner_result.success:
+                inner_result = self.parse_each(self.config.time_extractor,
+                                               self.config.time_parser,
+                                               extract_result.text, reference_date)
 
-            value = inner_result
+            if inner_result.success:
+                inner_result.future_resolution = {
+                    TimeTypeConstants.SET: str(inner_result.future_value)
+                }
+                inner_result.past_resolution = {
+                    TimeTypeConstants.SET: str(inner_result.past_value)
+                }
+
+                value = inner_result
 
         ret = DateTimeParseResult(
             text=extract_result.text,
@@ -305,10 +308,10 @@ class BaseCJKSetParser(DateTimeParser):
         ret = DateTimeResolutionResult()
         ers = self.config.duration_extractor.extract(text, ref_date)
 
-        if len(ers) != 1 or text[ers[0].start + ers[0].length:]:
+        if len(ers) != 1 or not text[ers[0].start + ers[0].length:].strip():
             return ret
 
-        after_str = text[ers[0].start:]
+        after_str = text[ers[0].start + ers[0].length:]
         matches = regex.match(self.config.each_prefix_regex, after_str)
         if matches:
             pr = self.config.duration_parser.parse(ers[0], datetime.now())
@@ -319,15 +322,14 @@ class BaseCJKSetParser(DateTimeParser):
 
     def parse_each_unit(self, text: str) -> DateTimeResolutionResult:
         ret = DateTimeResolutionResult()
-
-        match = self.config.each_unit_regex.search(text)
+        # handle "each month"
+        match = regex.match(self.config.each_unit_regex, text)
         if match:
-            source_unit = RegExpUtility.get_group(match, 'unit')
+            source_unit = RegExpUtility.get_group(match, Constants.UNIT)
             if source_unit and source_unit in self.config.unit_map:
                 get_matched_unit_timex = self.config.get_matched_unit_timex(source_unit)
-                if not get_matched_unit_timex.matched:
-                    return ret
-                ret = resolve_set(get_matched_unit_timex.timex)
+                if get_matched_unit_timex.matched:
+                    ret = resolve_set(ret, get_matched_unit_timex.timex)
 
         return ret
 
@@ -340,21 +342,21 @@ class BaseCJKSetParser(DateTimeParser):
             before_str = text[0:er.start].strip()
             match = regex.search(self.config.each_prefix_regex, before_str)
 
-            if match and match.end() + er.length == len(text):
+            if match and (match.end() - match.start() + er.length == len(text)):
                 success = True
             elif er.type == Constants.SYS_DATETIME_TIME or er.type == Constants.SYS_DATETIME_DATE:
-                if er.type == Constants.SYS_DATETIME_TIME:
-                    each_regex = self.config.each_day_regex
-                else:
-                    each_regex = self.config.each_date_unit_regex
+                # Cases like "every day at 2pm" or "every year on April 15th"
+                each_regex = self.config.each_day_regex if er.type == Constants.SYS_DATETIME_TIME \
+                    else self.config.each_date_unit_regex
 
-                match = regex.search(each_regex, before_str)
-                if match and match.end() - match.start() + er.length == len(text):
+                match = regex.match(each_regex, before_str)
+                if match and (match.end() - match.start() + er.length == len(text)):
                     success = True
 
             if success:
                 pr = parser.parse(er, ref_date)
-                ret = resolve_set(pr.timex_str)
+                ret = resolve_set(ret, pr.timex_str)
+                break
 
         return ret
 
