@@ -1,6 +1,6 @@
 from abc import abstractmethod
 from datetime import datetime
-from typing import Pattern, List, Dict, Optional
+from typing import Pattern, List, Dict
 
 import regex
 
@@ -9,7 +9,7 @@ from recognizers_date_time.date_time.extractors import DateTimeExtractor
 from recognizers_date_time.date_time.parsers import DateTimeParser, DateTimeParseResult
 from recognizers_date_time.date_time.base_datetime import MatchedTimex
 from recognizers_date_time.date_time.utilities import DateTimeOptionsConfiguration, Token, RegExpUtility, \
-    merge_all_tokens, DateTimeResolutionResult, SetHandler
+    merge_all_tokens, DateTimeResolutionResult, resolve_set
 from recognizers_text.extractor import ExtractResult
 
 
@@ -240,7 +240,7 @@ class CJKSetParserConfiguration(DateTimeOptionsConfiguration):
         raise NotImplementedError
 
 
-class BaseCJKSetParser(DateTimeExtractor):
+class BaseCJKSetParser(DateTimeParser):
 
     @property
     def parser_type_name(self) -> str:
@@ -312,7 +312,7 @@ class BaseCJKSetParser(DateTimeExtractor):
         matches = regex.match(self.config.each_prefix_regex, after_str)
         if matches:
             pr = self.config.duration_parser.parse(ers[0], datetime.now())
-            ret = SetHandler.resolve_set(ret, pr.timex_str)
+            ret = resolve_set(pr.timex_str)
             return ret
 
         return ret
@@ -327,7 +327,7 @@ class BaseCJKSetParser(DateTimeExtractor):
                 get_matched_unit_timex = self.config.get_matched_unit_timex(source_unit)
                 if not get_matched_unit_timex.matched:
                     return ret
-                ret = SetHandler.resolve_set(ret, get_matched_unit_timex.timex)
+                ret = resolve_set(get_matched_unit_timex.timex)
 
         return ret
 
@@ -354,7 +354,7 @@ class BaseCJKSetParser(DateTimeExtractor):
 
             if success:
                 pr = parser.parse(er, ref_date)
-                ret = SetHandler.resolve_set(ret, pr.timex_str)
+                ret = resolve_set(pr.timex_str)
 
         return ret
 

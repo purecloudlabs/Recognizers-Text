@@ -12,7 +12,7 @@ from recognizers_date_time.date_time.constants import Constants, TimeTypeConstan
 from recognizers_date_time.date_time.extractors import DateTimeExtractor
 from recognizers_date_time.date_time.parsers import DateTimeParseResult
 from recognizers_date_time.date_time.utilities import DateTimeOptionsConfiguration, Token, merge_all_tokens, \
-    DateTimeFormatUtil, DateTimeResolutionResult
+    DateTimeFormatUtil, DateTimeResolutionResult, DateTimeParser
 from recognizers_number import BaseNumberExtractor, BaseNumberParser
 
 
@@ -102,7 +102,7 @@ class CJKHolidayParserConfiguration(DateTimeOptionsConfiguration):
         raise NotImplementedError
 
 
-class BaseCJKHolidayParser(DateTimeExtractor):
+class BaseCJKHolidayParser(DateTimeParser):
     @property
     def parser_type_name(self) -> str:
         return Constants.SYS_DATETIME_TIME
@@ -110,11 +110,8 @@ class BaseCJKHolidayParser(DateTimeExtractor):
     def __init__(self, config: CJKHolidayParserConfiguration):
         self.config = config
 
-    def parse(self, ext_result: ExtractResult):
-        return self.parse(ext_result, datetime.now())
-
     def parse(self, source: ExtractResult, reference: datetime = None) -> Optional[DateTimeParseResult]:
-        reference_date = reference
+        reference_date = reference if reference is not None else datetime.now()
         value = None
 
         if source.type == self.parser_type_name:
