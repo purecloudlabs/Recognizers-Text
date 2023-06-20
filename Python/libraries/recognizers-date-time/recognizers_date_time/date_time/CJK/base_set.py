@@ -254,7 +254,7 @@ class BaseCJKSetParser(DateTimeParser):
 
         value = None
         if extract_result.type == self.parser_type_name:
-            inner_result = self.parse_each_unit(extract_result.text, reference_date)
+            inner_result = self.parse_each_unit(extract_result.text)
 
             if not inner_result.success:
                 inner_result = self.parse_each_duration(extract_result.text, reference_date)

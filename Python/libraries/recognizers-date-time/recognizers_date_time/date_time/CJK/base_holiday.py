@@ -2,7 +2,7 @@ from abc import abstractmethod
 from datetime import datetime
 from datedelta import datedelta
 import regex
-from typing import List, Pattern, Callable, Dict, Optional
+from typing import List, Pattern, Callable, Dict, Optional, Match
 
 from recognizers_date_time import DateUtils
 from recognizers_text import Metadata
@@ -91,14 +91,12 @@ class CJKHolidayParserConfiguration(DateTimeOptionsConfiguration):
     def lunar_holiday_regex(self) -> Pattern:
         raise NotImplementedError
 
-    @property
     @abstractmethod
-    def get_swift_year(self) -> str:
+    def get_swift_year(self, source: str) -> str:
         raise NotImplementedError
 
-    @property
     @abstractmethod
-    def sanitize_year_token(self) -> str:
+    def sanitize_year_token(self, source: str) -> str:
         raise NotImplementedError
 
 
@@ -142,7 +140,7 @@ class BaseCJKHolidayParser(DateTimeParser):
             if holiday in self.config.fixed_holidays_dict:
                 return value + datedelta(years=1)
             if holiday in self.config.holiday_func_dict:
-                value = self.config.holiday_func_dictionary[holiday](reference_date.year + 1)
+                value = self.config.holiday_func_dict[holiday](reference_date.year + 1)
         return value
 
     def get_past_value(self, value: datetime, reference_date: datetime, holiday: str) -> datetime:
@@ -150,18 +148,19 @@ class BaseCJKHolidayParser(DateTimeParser):
             if holiday in self.config.fixed_holidays_dict:
                 return value + datedelta(years=-1)
             if holiday in self.config.holiday_func_dict:
-                value = self.config.holiday_func_dictionary[holiday](reference_date.year - 1)
+                value = self.config.holiday_func_dict[holiday](reference_date.year - 1)
         return value
 
     def parse_holiday_regex_match(self, text: str, reference_date: datetime) -> DateTimeResolutionResult:
         for pattern in self.config.holiday_regex_list:
-            match = pattern.search(text)
+            match = pattern.match(text)
             if match and match.pos == 0 and match.endpos == len(text):
                 # Value string will be set in Match2Date method
                 result = self.match_to_date(match, reference_date)
                 return result
+        return DateTimeResolutionResult()
 
-    def match_to_date(self, match: Pattern, reference_date: datetime) -> DateTimeResolutionResult:
+    def match_to_date(self, match: Match, reference_date: datetime) -> DateTimeResolutionResult:
         result = DateTimeResolutionResult()
         holiday_str = match.group('holiday')
 
@@ -179,7 +178,7 @@ class BaseCJKHolidayParser(DateTimeParser):
         elif year_cjk:
             has_year = True
             year_cjk = self.config.sanitize_year_token(year_cjk)
-            year = self.convert_to_year(year_cjk)
+            year = self.convert_to_integer(year_cjk)
 
         elif year_relative:
             has_year = True
@@ -226,7 +225,7 @@ class BaseCJKHolidayParser(DateTimeParser):
 
         er = self.config.integer_extractor.extract(year_cjk)
         if er and er[0].type == NumberConstants.SYS_NUM_INTEGER:
-            num = int(self.config.number_parser.parse(er[0]).value)
+            num = self.config.number_parser.parse(er[0]).value
 
         if num < 10:
             num = 0
@@ -234,7 +233,7 @@ class BaseCJKHolidayParser(DateTimeParser):
                 num *= 10
                 er = self.config.integer_extractor.extract(ch)
                 if er and er[0].type == NumberConstants.SYS_NUM_INTEGER:
-                    num += int(self.config.number_parser.parse(er[0]).value)
+                    num += self.config.number_parser.parse(er[0]).value
 
             year = num
         else:
@@ -242,4 +241,8 @@ class BaseCJKHolidayParser(DateTimeParser):
         return -1 if year == 0 else year
 
     def is_lunar_calendar(self, text: str):
-        return self.config.lunar_holiday_regex.search(text) is not None
+        source = text.strip().lower()
+        match = regex.match(self.config.lunar_holiday_regex, source)
+        if match:
+            return True
+        return False
