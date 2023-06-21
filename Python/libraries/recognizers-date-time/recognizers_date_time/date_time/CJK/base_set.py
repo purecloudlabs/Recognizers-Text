@@ -9,7 +9,7 @@ from recognizers_date_time.date_time.extractors import DateTimeExtractor
 from recognizers_date_time.date_time.parsers import DateTimeParser, DateTimeParseResult
 from recognizers_date_time.date_time.base_datetime import MatchedTimex
 from recognizers_date_time.date_time.utilities import DateTimeOptionsConfiguration, Token, RegExpUtility, \
-    merge_all_tokens, DateTimeResolutionResult, resolve_set
+    merge_all_tokens, DateTimeResolutionResult, SetHandler
 from recognizers_text.extractor import ExtractResult
 
 
@@ -94,9 +94,6 @@ class BaseCJKSetExtractor(DateTimeExtractor):
     def __init__(self, config: CJKSetExtractorConfiguration):
         self.config = config
 
-    def extract(self, text: str) -> List[ExtractResult]:
-        return self.extract(text, datetime.now())
-
     def extract(self, text: str, reference: datetime = None) -> List[ExtractResult]:
         if reference is None:
             reference = datetime.now()
@@ -148,6 +145,7 @@ class BaseCJKSetExtractor(DateTimeExtractor):
             if match:
                 ret.append(Token(match.start(), match.start() + match.end() + er.length))
             elif er.type == Constants.SYS_DATETIME_TIME or er.type == Constants.SYS_DATETIME_DATE:
+                # Cases like "every day at 2pm" or "every year on April 15th"
                 each_regex = self.config.each_day_regex if er.type == Constants.SYS_DATETIME_TIME \
                     else self.config.each_date_unit_regex
 
@@ -315,7 +313,7 @@ class BaseCJKSetParser(DateTimeParser):
         matches = regex.match(self.config.each_prefix_regex, after_str)
         if matches:
             pr = self.config.duration_parser.parse(ers[0], datetime.now())
-            ret = resolve_set(pr.timex_str)
+            ret = SetHandler.resolve_set(pr.timex_str)
             return ret
 
         return ret
@@ -329,7 +327,7 @@ class BaseCJKSetParser(DateTimeParser):
             if source_unit and source_unit in self.config.unit_map:
                 get_matched_unit_timex = self.config.get_matched_unit_timex(source_unit)
                 if get_matched_unit_timex.matched:
-                    ret = resolve_set(ret, get_matched_unit_timex.timex)
+                    ret = SetHandler.resolve_set(ret, get_matched_unit_timex.timex)
 
         return ret
 
@@ -355,7 +353,7 @@ class BaseCJKSetParser(DateTimeParser):
 
             if success:
                 pr = parser.parse(er, ref_date)
-                ret = resolve_set(ret, pr.timex_str)
+                ret = SetHandler.resolve_set(ret, pr.timex_str)
                 break
 
         return ret
