@@ -1,4 +1,4 @@
-from typing import Dict, List
+from typing import Dict, List, Tuple
 from datetime import datetime
 
 from datedelta import datedelta
@@ -164,6 +164,18 @@ class TimexUtil:
                f'{DateTimeFormatUtil.luis_date(end_date.year, end_date.month, end_date.day)},{duration_timex})'
 
     @staticmethod
+    def generate_split_date_time_period_timex(date_timex: str, time_range_timex: str):
+        split = time_range_timex.split(Constants.TIME_TIMEX_PREFIX[0])
+        timex: str = None
+        if len(split) == 4:
+            timex = split[0] + date_timex + Constants.TIME_TIMEX_PREFIX + split[1] + date_timex + \
+                Constants.TIME_TIMEX_PREFIX + split[2] + Constants.TIME_TIMEX_PREFIX + split[3]
+        elif len(split) == 2:
+            timex = date_timex + time_range_timex
+
+        return timex
+
+    @staticmethod
     def _process_double_timex(resolution_dic: Dict[str, object], future_key: str, past_key: str, origin_timex: str):
         timexes = origin_timex.split(Constants.COMPOSTIE_TIMEX_DELIMITER)
         if not future_key in resolution_dic or not past_key in resolution_dic or len(timexes) != 2:
@@ -234,6 +246,16 @@ class TimexUtil:
             end = len(timex)
         hour = int(timex[start:end - start])
         return hour
+
+    @staticmethod
+    def parse_hours_from_time_period_timex(timex: str) -> Tuple[str, str]:
+        hour1 = 0
+        hour2 = 0
+        time_list = timex.split(Constants.TIMEX_SEPARATOR[0])
+        if len(time_list) > 2:
+            hour1 = TimexUtil.parse_hour_from_time_timex(time_list[0])
+            hour2 = TimexUtil.parse_hour_from_time_timex(time_list[1])
+        return tuple(hour1, hour2)
 
     @staticmethod
     def generate_date_time_timex(date_time: datetime) -> str:

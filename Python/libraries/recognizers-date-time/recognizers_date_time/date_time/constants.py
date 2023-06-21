@@ -133,6 +133,7 @@ class Constants:
     TIMEX_FUZZY_DAY: str = "XX"
     DATE_TIMEX_CONNECTOR: str = "-"
     TIME_TIMEX_CONNECTOR: str = ":"
+    TIMEX_SEPARATOR: str = ","
     GENERAL_PERIOD_PREFIX: str = "P"
     TIME_TIMEX_PREFIX: str = "T"
 
@@ -200,7 +201,7 @@ class Constants:
     SECOND_HALF_GROUP_NAME = 'secondHalf'
     HALF_TAG_GROUP_NAME = "halfTag"
     UNIT_GROUP_NAME = "unit"
-    WITHIN_GROUP_NAME = 'within'
+    WITHIN_GROUP_NAME = "within"
     SPECIAL_GROUP_NAME = 'special'
     HALF_GROUP_NAME = 'half'
     QUARTER_GROUP_NAME = 'quarter'
