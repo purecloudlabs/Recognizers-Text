@@ -108,8 +108,6 @@ class Constants:
 
     MAX_TWO_DIGIT_YEAR_FUTURE_NUM: int = int(BaseDateTime.MaxTwoDigitYearFutureNum)
     MIN_TWO_DIGIT_YEAR_PAST_NUM: int = int(BaseDateTime.MinTwoDigitYearPastNum)
-    BASE_YEAR_PAST_CENTURY = 1900
-    BASE_YEAR_CURRENT_CENTURY = 2000
 
     BASE_YEAR_PAST_CENTURY = 1900
     BASE_YEAR_CURRENT_CENTURY = 2000
@@ -202,6 +200,9 @@ class Constants:
     HALF_TAG_GROUP_NAME = "halfTag"
     UNIT_GROUP_NAME = "unit"
     WITHIN_GROUP_NAME = "within"
+    EARLY_PREFIX_GROUP_NAME = "EarlyPrefix"
+    MID_PREFIX_GROUP_NAME = "MidPrefix"
+    LATE_PREFIX_GROUP_NAME = "LatePrefix"
     SPECIAL_GROUP_NAME = 'special'
     HALF_GROUP_NAME = 'half'
     QUARTER_GROUP_NAME = 'quarter'
@@ -294,6 +295,9 @@ class Constants:
     UNTIL_MOD = "until"
     SINCE_MOD = "since"
     APPROX_MOD = "approx"
+    EARLY_MOD = "start"
+    MID_MOD = "mid"
+    LATE_MOD = "end"
 
     # Holidays
     # These should not be constants, they should go on the resources files for English

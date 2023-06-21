@@ -176,6 +176,36 @@ class TimexUtil:
         return timex
 
     @staticmethod
+    def generate_relative_unit_date_time_period_timex(begin_date_time: datetime, end_date_time: datetime,
+                                                      reference_time: datetime, unit_str: str, swift: int):
+        prefix: str = Constants.GENERAL_PERIOD_PREFIX + Constants.TIME_TIMEX_PREFIX
+        duration_timex = ''
+        if unit_str == Constants.TIMEX_DAY:
+            end_date_time = DateUtils.safe_create_from_value(begin_date_time.year,
+                                                             begin_date_time.month,
+                                                             begin_date_time.day)
+            end_date_time = end_date_time + timedelta(days=1, seconds=-1)
+            duration_timex = prefix + (end_date_time - begin_date_time).total_seconds() + Constants.TIMEX_SECOND
+
+        elif unit_str == Constants.TIMEX_HOUR:
+            begin_date_time = begin_date_time if swift > 0 else reference_time + timedelta(hours=swift)
+            end_date_time = reference_time + timedelta(hours=swift) if swift > 0 else end_date_time
+            duration_timex = prefix + "1" + Constants.TIMEX_HOUR
+
+        elif unit_str == Constants.TIMEX_MINUTE:
+            begin_date_time = begin_date_time if swift > 0 else reference_time + timedelta(hours=swift)
+            end_date_time = reference_time + timedelta(hours=swift) if swift > 0 else end_date_time
+            duration_timex = prefix + "1" + Constants.TIMEX_MINUTE
+
+        elif unit_str == Constants.TIMEX_SECOND:
+            begin_date_time = begin_date_time if swift > 0 else reference_time + timedelta(hours=swift)
+            end_date_time = reference_time + timedelta(hours=swift) if swift > 0 else end_date_time
+            duration_timex = prefix + "1" + Constants.TIMEX_SECOND
+        else:
+            return ''
+
+        return TimexUtil.generate_date_time_period_timex(begin_date_time, end_date_time, duration_timex)
+    @staticmethod
     def _process_double_timex(resolution_dic: Dict[str, object], future_key: str, past_key: str, origin_timex: str):
         timexes = origin_timex.split(Constants.COMPOSTIE_TIMEX_DELIMITER)
         if not future_key in resolution_dic or not past_key in resolution_dic or len(timexes) != 2:
