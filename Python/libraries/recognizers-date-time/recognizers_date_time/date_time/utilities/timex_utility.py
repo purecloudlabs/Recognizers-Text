@@ -261,6 +261,12 @@ class TimexUtil:
             return DateTimeFormatUtil.to_iso_week_timex(monday)
 
     @staticmethod
+    def generate_weekday_timex(weekday: int):
+        return f'{Constants.TIMEX_FUZZY_YEAR}{Constants.DATE_TIMEX_CONNECTOR}{Constants.TIMEX_FUZZY_WEEK}' \
+               f'{Constants.DATE_TIMEX_CONNECTOR}{weekday}'
+
+
+    @staticmethod
     def generate_decade_timex(begin_year, total_last_year, decade, input_century) -> str:
 
         if input_century:

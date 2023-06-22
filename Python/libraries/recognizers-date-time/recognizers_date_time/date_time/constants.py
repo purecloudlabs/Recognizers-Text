@@ -179,6 +179,8 @@ class Constants:
     MONTH_FROM_GROUP_NAME = "monthFrom"
     MONTH_TO_GROUP_NAME = "monthTo"
     YEAR_GROUP_NAME = 'year'
+    THIS_YEAR_GROUP_NAME = 'thisyear'
+    THIS_MONTH_GROUP_NAME = 'thismonth'
     FULL_YEAR_GROUP_NAME = 'fullyear'
     HOUR_NUM_GROUP_NAME = 'hournum'
     TENS_GROUP_NAME = 'tens'
