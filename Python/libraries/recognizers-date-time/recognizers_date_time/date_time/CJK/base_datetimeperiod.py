@@ -678,7 +678,7 @@ class BaseCJKDateTimePeriodParser(DateTimeParser):
         timex_hours = TimexUtil.parse_hours_from_time_period_timex(pr2.timex_str)
         ampm_desc_regex_match = regex.match(self.config.am_pm_desc_regex, text)
 
-        if ampm_desc_regex_match and timex_hours[0] < Constants.HALF_DAY_HOUR_COUNT\
+        if ampm_desc_regex_match and timex_hours[0] < Constants.HALF_DAY_HOUR_COUNT \
                 and timex_hours[1] < Constants.HALF_DAY_HOUR_COUNT:
             ret.comment = Constants.COMMENT_AMPM
 
@@ -1199,9 +1199,9 @@ class BaseCJKDateTimePeriodParser(DateTimeParser):
 
             if match:
                 if pr.value:
-                    start_time = pr.value.future_value
-                    start_time = start_time.year, start_time.month, start_time.day
-                    end_time = start_time
+                    start_time: datetime = pr.value.future_value
+                    start_time = datetime(start_time.year, start_time.month, start_time.day)
+                    end_time: datetime = start_time
 
                     if RegExpUtility.get_group(match, Constants.EARLY_PREFIX_GROUP_NAME):
                         end_time = end_time + timedelta(hours=Constants.HALF_DAY_HOUR_COUNT)
@@ -1209,7 +1209,7 @@ class BaseCJKDateTimePeriodParser(DateTimeParser):
 
                     elif RegExpUtility.get_group(match, Constants.MID_PREFIX_GROUP_NAME):
                         start_time = start_time + timedelta(hours=Constants.HALF_DAY_HOUR_COUNT -
-                                                                  Constants.HALF_MID_DAY_DURATION_HOUR_COUNT)
+                                                            Constants.HALF_MID_DAY_DURATION_HOUR_COUNT)
                         end_time = end_time + timedelta(
                             hours=Constants.HALF_DAY_HOUR_COUNT + Constants.HALF_MID_DAY_DURATION_HOUR_COUNT)
                         ret.mod = Constants.MID_MOD
