@@ -1,18 +1,18 @@
 from typing import Pattern, Tuple
-from recognizers_date_time.date_time.utilities import DateTimeResolutionResult, RegExpUtility
+from recognizers_date_time.date_time.utilities import DateTimeResolutionResult, RegExpUtility, Constants
 
 
 class SetHandler:
     @staticmethod
     def weekday_group_match_tuple(match: Pattern) -> Tuple[str, int]:
-        weekday = RegExpUtility.get_group(match, 'weekday')
+        weekday = RegExpUtility.get_group(match, Constants.WEEKDAY_GROUP_NAME)
         d = 1
         tup = (weekday, d)
         return tup
 
     @staticmethod
     def weekday_group_match_string(match: Pattern) -> str:
-        weekday = RegExpUtility.get_group(match, 'weekday')
+        weekday = RegExpUtility.get_group(match, Constants.WEEKDAY_GROUP_NAME)
         return weekday
 
     @staticmethod

@@ -121,7 +121,7 @@ class BaseCJKSetExtractor(DateTimeExtractor):
             before_str = text[0:er.start]
             before_match = regex.search(self.config.each_prefix_regex, before_str)
             if before_match:
-                ret.append(Token(before_match.start(), er.length))
+                ret.append(Token(before_match.start(), er.start + er.length))
             else:
                 after_str = text[er.start + er.length:]
                 after_match = regex.search(self.config.each_suffix_regex, after_str)
