@@ -1,7 +1,7 @@
 from abc import abstractmethod
 from datetime import datetime, timedelta
 from collections import namedtuple
-from typing import List, Optional, Pattern, Dict, Match
+from typing import List, Pattern, Dict, Match
 
 import regex
 
@@ -9,8 +9,9 @@ from recognizers_text.extractor import Extractor, ExtractResult
 from recognizers_text.parser import Parser, ParseResult
 from recognizers_date_time.date_time.constants import Constants
 from recognizers_date_time.date_time import DateTimeExtractor, DateTimeParser
-from recognizers_date_time.date_time.utilities import DateTimeOptionsConfiguration, Token, ExtractResultExtension, \
-    RegExpUtility, DateTimeParseResult, DateTimeResolutionResult, TimexUtil, DateUtils, DateTimeFormatUtil
+from recognizers_date_time.date_time.utilities import DateTimeOptionsConfiguration, Token, merge_all_tokens, \
+    ExtractResultExtension, RegExpUtility, DateTimeParseResult, DateTimeResolutionResult, \
+    TimexUtil, DateUtils, DateTimeFormatUtil, TimeTypeConstants
 
 MatchedIndex = namedtuple('MatchedIndex', ['matched', 'index'])
 MatchedTimeRegex = namedtuple(
@@ -142,12 +143,31 @@ class BaseCJKDateTimePeriodExtractor(DateTimeExtractor):
     def __init__(self, config: CJKDateTimePeriodExtractorConfiguration):
         self.config = config
 
-    def extract(self, source: str, reference_time: datetime = None) -> List[ExtractResult]:
+    def extract(self, text: str, reference_time: datetime = None) -> List[ExtractResult]:
         if reference_time is None:
             reference_time = datetime.now()
         # Date and time Extractions should be extracted from the text only once,
         # and shared in the methods below, passed by value
 
+        date_ers = self.config.single_date_extractor.extract(text, reference_time)
+        time_ers = self.config.single_time_extractor.extract(text, reference_time)
+        time_range_ers = self.config.time_period_extractor.extract(text, reference_time)
+        date_time_ers = self.config.single_date_time_extractor.extract(text, reference_time)
+
+        tokens: List[Token] = list()
+
+        tokens.extend(self.merge_date_and_time_period(text, date_ers, time_range_ers))
+        tokens.extend(self.merge_two_time_points(text, date_time_ers, time_ers))
+        tokens.extend(self.match_duration(text, reference_time))
+        tokens.extend(self.match_relative_unit(text))
+        tokens.extend(self.match_date_with_period_suffix(text, date_ers))
+        tokens.extend(self.match_number_with_unit(text))
+        tokens.extend(self.match_night(text, reference_time))
+        tokens.extend(self.merge_date_with_time_period_suffix(text, date_ers, time_ers))
+
+        return merge_all_tokens(tokens, text, self.extractor_type_name)
+
+    # merge Date and Time period
     def merge_date_and_time_period(self, text: str, data_ers: List[ExtractResult], time_range_ers: List[ExtractResult]) \
             -> List[Token]:
         ret: List[Token] = list()
@@ -168,7 +188,7 @@ class BaseCJKDateTimePeriodExtractor(DateTimeExtractor):
             time_points.append(time_range_ers[j])
             j += 1
 
-        time_points = sorted(time_points, key=lambda x: x.start)
+        time_points = list(sorted(time_points, key=lambda x: x.start))
 
         # merge {Date} {TimePeriod}
         idx = 0
@@ -178,8 +198,9 @@ class BaseCJKDateTimePeriodExtractor(DateTimeExtractor):
                 middle_begin = time_points[idx].start + time_points[idx].length
                 middle_end = time_points[idx + 1].start
 
-                middle_str = text[middle_begin: middle_end - middle_begin].strip().lower()
-                if middle_str and RegExpUtility.is_exact_match(self.config.preposition_regex, middle_str, True):
+                middle_str = text[middle_begin: middle_end - middle_begin].strip()
+                preposition_regex_match = regex.match(self.config.preposition_regex, middle_str)
+                if middle_str or preposition_regex_match:
                     period_begin = time_points[idx].start
                     period_end = time_points[idx + 1].start + time_points[idx + 1].length
                     ret.append(Token(period_begin, period_end))
@@ -191,6 +212,7 @@ class BaseCJKDateTimePeriodExtractor(DateTimeExtractor):
 
     def merge_two_time_points(self, text: str, date_time_ers: List[ExtractResult], time_ers: List[ExtractResult]) \
             -> List[Token]:
+
         ret: List[Token] = list()
         time_points: List[ExtractResult] = list()
 
@@ -207,7 +229,7 @@ class BaseCJKDateTimePeriodExtractor(DateTimeExtractor):
         while j < len(time_ers):
             time_points.append(time_ers[j])
 
-        time_points = sorted(time_points, key=lambda x: x.start)
+        time_points = list(sorted(time_points, key=lambda x: x.start))
 
         # merge "{TimePoint} to {TimePoint}", "between {TimePoint} and {TimePoint}"
         idx = 0
@@ -221,7 +243,7 @@ class BaseCJKDateTimePeriodExtractor(DateTimeExtractor):
             middle_begin = time_points[idx].start + time_points[idx].length
             middle_end = time_points[idx + 1].start
 
-            middle_str = text[middle_begin: middle_end - middle_begin].strip().lower()
+            middle_str = text[middle_begin: middle_end - middle_begin].strip()
 
             # handle "{TimePoint} to {TimePoint}"
             if RegExpUtility.is_exact_match(self.config.till_regex, middle_str, True):
@@ -229,14 +251,14 @@ class BaseCJKDateTimePeriodExtractor(DateTimeExtractor):
                 period_end = time_points[idx + 1].start + time_points[idx + 1].length
 
                 # handle "from"
-                before_str = time_points[idx].start
+                before_str = time_points[0:period_begin]
                 match_from = self.config.get_from_token_index(before_str)
                 from_token_index = match_from if match_from.matched else self.config.get_between_token_index(before_str)
 
                 if from_token_index.matched:
                     period_begin = from_token_index.index
                 else:
-                    after_str = text[period_end:len(text) - period_end]
+                    after_str = text[period_end:]
                     after_token_index = self.config.get_from_token_index(after_str)
                     if after_token_index.matched:
                         period_end += after_token_index.index
@@ -251,10 +273,10 @@ class BaseCJKDateTimePeriodExtractor(DateTimeExtractor):
                 period_end = time_points[idx + 1].start + time_points[idx + 1].length
 
                 # handle "between"
-                after_str = text[period_end:len(text) - period_end]
+                after_str = text[period_end:]
                 after_token_between_index = self.config.get_between_token_index(after_str)
                 if after_token_between_index.matched:
-                    ret.append(Token(period_begin, period_end + idx))
+                    ret.append(Token(period_begin, period_end + after_token_between_index.index))
                     idx += 2
                     continue
 
@@ -264,7 +286,6 @@ class BaseCJKDateTimePeriodExtractor(DateTimeExtractor):
 
     def match_night(self, text: str, reference_time: datetime) -> List[Token]:
         ret: List[Token] = list()
-        text = text.strip().lower()
 
         matches = regex.finditer(self.config.specific_time_of_day_regex, text)
         ret.extend(map(lambda x: Token(x.start(), x.end()), matches))
@@ -276,11 +297,11 @@ class BaseCJKDateTimePeriodExtractor(DateTimeExtractor):
 
         for er in ers:
             after_str = text[er.start + er.length]
-            match = regex.search(self.config.time_of_day_regex, after_str)
+            match = regex.match(self.config.time_of_day_regex, after_str)
             if match:
                 middle_str = after_str[0:match.start()]
                 if not middle_str.strip() or regex.search(self.config.preposition_regex, middle_str):
-                    ret.append(Token(er.start, er.start + er.length + match.end()))
+                    ret.append(Token(er.start, er.start + er.length + match.start() + match.end()))
         return ret
 
     # Cases like "2015年1月1日の2時以降", "On January 1, 2015 after 2:00"
@@ -288,12 +309,12 @@ class BaseCJKDateTimePeriodExtractor(DateTimeExtractor):
                                            time_ers: List[ExtractResult]) -> List[Token]:
         ret: List[Token] = list()
 
-        if not date_ers:
+        if not any(date_ers):
             return ret
-        if not time_ers:
+        if not any(time_ers):
             return ret
 
-        ers = date_ers
+        ers: [Match] = date_ers
         ers.extend(time_ers)
 
         ers = sorted(ers, key=lambda x: x.start)
@@ -307,8 +328,8 @@ class BaseCJKDateTimePeriodExtractor(DateTimeExtractor):
                 break
 
             if ers[i].type == Constants.SYS_DATETIME_DATE and ers[j].type == Constants.SYS_DATETIME_TIME:
-                middle_begin = ers[i].start + ers[i].length
-                middle_end = ers[j].start
+                middle_begin = ers[i].start + (ers[i].length or 0)
+                middle_end = ers[j].start or 0
 
                 if middle_begin > middle_end:
                     i = j + 1
@@ -318,8 +339,8 @@ class BaseCJKDateTimePeriodExtractor(DateTimeExtractor):
 
                 match = regex.match(self.config.before_after_regex, middle_str)
                 if match:
-                    begin = ers[i].start
-                    end = ers[j].start + ers[j].length
+                    begin = ers[i].start or 0
+                    end = (ers[j].start or 0) + (ers[j].length or 0)
                     ret.append(Token(begin, end))
 
                 i = j + 1
@@ -330,13 +351,13 @@ class BaseCJKDateTimePeriodExtractor(DateTimeExtractor):
     # Extract patterns that involve durations e.g. "Within 5 hours from now"
     def match_duration(self, text: str, reference: datetime) -> List[Token]:
         ret: List[Token] = list()
-        text = text.strip().lower()
         duration_extractions: List[ExtractResult] = self.config.duration_extractor.extract(text, reference)
 
         for duration_extraction in duration_extractions:
             if not regex.search(self.config.unit_regex, duration_extraction.text):
                 continue
-            duration = Token(duration_extraction.start, duration_extraction.start + duration_extraction.length)
+            duration = Token(duration_extraction.start or 0,
+                             (duration_extraction.start + duration_extraction.length or 0))
             before_str = text[0:duration.start]
             after_str = text[duration.start + duration.length:].strip()
 
@@ -350,10 +371,10 @@ class BaseCJKDateTimePeriodExtractor(DateTimeExtractor):
             in_prefix_match = regex.match(self.config.this_regex, before_str)
             in_prefix = True if in_prefix_match else False
 
-            if match.groups(Constants.WITHIN_GROUP_NAME):
+            if RegExpUtility.get_group(match, Constants.WITHIN_GROUP_NAME):
                 start_token = in_prefix_match.start() if in_prefix else duration.start
                 within_length = len(RegExpUtility.get_group(match, Constants.WITHIN_GROUP_NAME))
-                end_token = duration.end + (match.start() + match.end() if in_prefix else 0)
+                end_token = duration.end + (0 if in_prefix else match.start() + match.end())
 
                 match = regex.match(self.config.unit_regex, text[duration.start:duration.length])
 
@@ -368,18 +389,19 @@ class BaseCJKDateTimePeriodExtractor(DateTimeExtractor):
     def match_relative_unit(self, text: str) -> List[Token]:
         ret: List[Token] = list()
         matches = list(regex.finditer(self.config.rest_of_date_regex, text))
-        ret.extend(map(lambda x: Token(x.start(), x.end()), matches))
+        ret.extend(map(lambda x: Token(x.start(), x.start() + x.end()), matches))
         return ret
 
+    # For cases like "Early in the day Wednesday"
     def match_date_with_period_suffix(self, text: str, date_ers: List[ExtractResult]) -> List[Token]:
         ret: List[Token] = list()
 
         for date_er in date_ers:
-            date_str_end = date_er.start + date_er.length
+            date_str_end = int(date_er.start + date_er.length)
             after_str = text[date_str_end: len(text) - date_str_end]
             match_after = RegExpUtility.match_begin(self.config.time_period_left_regex, after_str, True)
             if match_after.success:
-                ret.append(Token(date_er.start, date_str_end + match_after.index + match_after.length))
+                ret.append(Token(int(date_er.start), date_str_end + match_after.index + match_after.length))
 
         return ret
 
@@ -390,18 +412,19 @@ class BaseCJKDateTimePeriodExtractor(DateTimeExtractor):
         ers = self.config.cardinal_extractor.extract(text)
 
         for er in ers:
-            after_str = text[er.start + er.length:]
+            after_str = text[(er.start + er.length) or 0:]
             followed_unit_match = RegExpUtility.match_begin(self.config.followed_unit, after_str, True)
 
             if followed_unit_match.success:
-                durations.append(Token(er.start, er.start + er.length + len(followed_unit_match.group())))
+                durations.append(Token(er.start or 0, (er.start + er.length) or 0 +
+                                       len(followed_unit_match.group())))
 
             past_regex_match = RegExpUtility.match_begin(self.config.past_regex, after_str, True)
             if past_regex_match.success:
-                durations.append(Token(er.start, er.start + er.length + len(past_regex_match.group())))
+                durations.append(Token(er.start or 0, (er.start + er.length) or 0 + len(past_regex_match.group())))
 
         for match in RegExpUtility.get_matches(self.config.unit_regex, text):
-            durations.append(Token(match.start(), match.end()))
+            durations.append(Token(match.start(), match.start() + match.end()))
 
         for duration in durations:
             before_str = text[0:duration.start]
@@ -562,10 +585,73 @@ class BaseCJKDateTimePeriodParser(DateTimeParser):
     def __init__(self, config: CJKDateTimePeriodParserConfiguration):
         self.config = config
 
-    def parse(self, source: ExtractResult, reference: datetime = None) -> Optional[DateTimeParseResult]:
-        reference_date = reference if reference is not None else datetime.now()
-
+    def parse(self, source: ExtractResult, reference: datetime = None) -> DateTimeParseResult:
+        reference_time = reference if reference is not None else datetime.now()
         value = None
+
+        if source.type == self.parser_type_name:
+            inner_result = self.merge_date_and_time_period(source.text, reference_time)
+
+            if not inner_result.success:
+                inner_result = self.merge_two_time_points(source.text, reference_time)
+
+            if not inner_result.success:
+                inner_result = self.parse_duration(source.text, reference_time)
+
+            if not inner_result.success:
+                inner_result = self.parse_specific_night(source.text, reference_time)
+
+            if not inner_result.success:
+                inner_result = self.parse_number_with_unit(source.text, reference_time)
+
+            if not inner_result.success:
+                inner_result = self.parse_relative_unit(source.text, reference_time)
+
+            if not inner_result.success:
+                inner_result = self.parse_date_with_period_suffix(source.text, reference_time)
+
+            if not inner_result.success:
+                inner_result = self.parse_date_with_time_period_suffix(source.text, reference_time)
+
+            if inner_result.success:
+                if inner_result.mod == Constants.BEFORE_MOD:
+                    # Cases like "last tuesday by 2:00 pm" there is no StartTime
+                    inner_result.future_resolution = {
+                        TimeTypeConstants.END_DATETIME: DateTimeFormatUtil
+                        .format_date_time(datetime(inner_result.future_value))
+                    }
+                    inner_result.past_resolution = {
+                        TimeTypeConstants.END_DATETIME: DateTimeFormatUtil
+                        .format_date_time(datetime(inner_result.past_value))
+                    }
+                else:
+                    inner_result.future_resolution = {
+                        TimeTypeConstants.START_DATETIME: DateTimeFormatUtil.
+                        format_date_time(datetime(inner_result.future_value))[0],
+                        TimeTypeConstants.END_DATETIME: DateTimeFormatUtil.
+                        format_date_time(datetime(inner_result.future_value))[1]
+                    }
+
+                    inner_result.past_resolution = {
+                        TimeTypeConstants.START_DATETIME: DateTimeFormatUtil.
+                        format_date_time(datetime(inner_result.past_value))[0],
+                        TimeTypeConstants.END_DATETIME: DateTimeFormatUtil.
+                        format_date_time(datetime(inner_result.past_value))[1]
+                    }
+
+                value = inner_result
+
+        ret = DateTimeResolutionResult(
+            text=source.text,
+            start=source.start,
+            length=source.length,
+            type=source.type,
+            date=source.data,
+            value=value,
+            timex_str='' if not value else value.timex,
+            resolution_str=''
+        )
+        return ret
 
     def filter_result(self, query: str, candidare_results: List[DateTimeParseResult]) -> List[DateTimeParseResult]:
         return candidare_results
@@ -592,8 +678,8 @@ class BaseCJKDateTimePeriodParser(DateTimeParser):
         timex_hours = TimexUtil.parse_hours_from_time_period_timex(pr2.timex_str)
         ampm_desc_regex_match = regex.match(self.config.am_pm_desc_regex, text)
 
-        if ampm_desc_regex_match and timex_hours[0] < Constants.HALF_DAY_HOUR_COUNT and timex_hours[
-            1] < Constants.HALF_DAY_HOUR_COUNT:
+        if ampm_desc_regex_match and timex_hours[0] < Constants.HALF_DAY_HOUR_COUNT\
+                and timex_hours[1] < Constants.HALF_DAY_HOUR_COUNT:
             ret.comment = Constants.COMMENT_AMPM
 
         if timex_hours[0] > Constants.DAY_HOUR_COUNT:
@@ -628,11 +714,12 @@ class BaseCJKDateTimePeriodParser(DateTimeParser):
 
         return ret
 
+    # Cases like "last tuesday by 2:00pm"
     def parse_date_with_time_period_suffix(self, text: str, reference_time: datetime):
         ret = DateTimeResolutionResult()
 
-        date_er = self.config.date_extractor(text, reference_time)
-        time_er = self.config.time_extractor(text, reference_time)
+        date_er = self.config.date_extractor.extract(text, reference_time)
+        time_er = self.config.time_extractor.extract(text, reference_time)
 
         if len(date_er) > 0 and len(time_er) > 0:
             match = RegExpUtility.match_end(self.config.past_regex, text, True)
@@ -643,12 +730,12 @@ class BaseCJKDateTimePeriodParser(DateTimeParser):
             date_pr = self.config.date_parser.parse(date_er[0], reference_time)
             time_pr = self.config.time_parser.parse(time_er[0], reference_time)
 
-            if not date_pr and not time_pr:
-                time_resolution_result: DateTimeResolutionResult = time_pr.value
-                date_resolution_result: DateTimeResolutionResult = date_pr.value
-                future_date_value: datetime = date_resolution_result.future_value
-                past_date_value: datetime = date_resolution_result.past_value
-                future_time_value: datetime = time_resolution_result.future_value
+            if date_pr and time_pr:
+                time_resolution_result = time_pr.value
+                date_resolution_result = date_pr.value
+                future_date_value = date_resolution_result.future_value
+                past_date_value = date_resolution_result.past_value
+                future_time_value = time_resolution_result.future_value
                 past_time_value: datetime = time_resolution_result.past_value
 
                 ret.comment = time_resolution_result.comment
@@ -667,7 +754,7 @@ class BaseCJKDateTimePeriodParser(DateTimeParser):
                                                                   past_date_value.minute,
                                                                   past_date_value.second)
 
-                ret.sub_date_time_entities = list(date_pr, time_pr)
+                ret.sub_date_time_entities = [date_pr, time_pr]
                 ret.success = True
 
         return ret
@@ -695,7 +782,7 @@ class BaseCJKDateTimePeriodParser(DateTimeParser):
 
         # cases including 'within' are processed in ParseDuration
         if RegExpUtility.get_group(match, Constants.WITHIN_GROUP_NAME):
-            return self.pare_duration(text, reference_time)
+            return self.parse_duration(text, reference_time)
 
         match_weekday = regex.match(self.config.weekday_regex, text)
 
@@ -914,8 +1001,8 @@ class BaseCJKDateTimePeriodParser(DateTimeParser):
                 return ret
 
             pr = self.config.date_parser.parse(ers[0], reference_time)
-            future_date = datetime.date(pr.value.future_value)
-            past_date = datetime.date(pr.value.past_value)
+            future_date = pr.value.future_value
+            past_date = pr.value.past_value
 
             ret.timex = pr.timex_str + time_str
 
@@ -1113,7 +1200,7 @@ class BaseCJKDateTimePeriodParser(DateTimeParser):
             if match:
                 if pr.value:
                     start_time = pr.value.future_value
-                    start_time = datetime.date(start_time.year, start_time.month, start_time.day)
+                    start_time = start_time.year, start_time.month, start_time.day
                     end_time = start_time
 
                     if RegExpUtility.get_group(match, Constants.EARLY_PREFIX_GROUP_NAME):
@@ -1121,8 +1208,10 @@ class BaseCJKDateTimePeriodParser(DateTimeParser):
                         ret.mod = Constants.EARLY_MOD
 
                     elif RegExpUtility.get_group(match, Constants.MID_PREFIX_GROUP_NAME):
-                        start_time = start_time + timedelta(hours=Constants.HALF_DAY_HOUR_COUNT - Constants.HALF_MID_DAY_DURATION_HOUR_COUNT)
-                        end_time = end_time + timedelta(hours=Constants.HALF_DAY_HOUR_COUNT + Constants.HALF_MID_DAY_DURATION_HOUR_COUNT)
+                        start_time = start_time + timedelta(hours=Constants.HALF_DAY_HOUR_COUNT -
+                                                                  Constants.HALF_MID_DAY_DURATION_HOUR_COUNT)
+                        end_time = end_time + timedelta(
+                            hours=Constants.HALF_DAY_HOUR_COUNT + Constants.HALF_MID_DAY_DURATION_HOUR_COUNT)
                         ret.mod = Constants.MID_MOD
 
                     elif RegExpUtility.get_group(match, Constants.LATE_PREFIX_GROUP_NAME):
