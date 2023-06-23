@@ -189,7 +189,7 @@ class BaseCJKDatePeriodExtractor(DateTimeExtractor):
                 idx += 1
                 continue
 
-            middle_str = source[middle_begin:middle_end - middle_begin]
+            middle_str = source[middle_begin:middle_end - middle_begin].strip()
 
             if self.config.till_regex.exact_match(middle_str):
                 period_begin = er[idx].start
@@ -1084,18 +1084,18 @@ class BaseCJKDatePeriodParser(DateTimeExtractor):
                 end_year = self.convert_cjk_to_integer(year_match[1].get_group(Constants.YEAR_GROUP_NAME))
 
             elif len(year_in_cjk_match) == 2:
-                begin_year = self.convert_cjk_to_integer(year_in_cjk_match[0].get_group(Constants.YEAR_GROUP_NAME))
-                end_year = self.convert_cjk_to_integer(year_in_cjk_match[1].get_group(Constants.YEAR_GROUP_NAME))
+                begin_year = self.convert_cjk_to_integer(year_in_cjk_match[0].get_group(Constants.YEAR_CJK_GROUP_NAME))
+                end_year = self.convert_cjk_to_integer(year_in_cjk_match[1].get_group(Constants.YEAR_CJK_GROUP_NAME))
 
             elif len(year_in_cjk_match) == 1 and len(year_match) == 1:
 
                 if year_match[0].start < year_in_cjk_match[0].start:
-                    begin_year = self.convert_cjk_to_integer(year_match[0].get_group(Constants.YEAR_GROUP_NAME))
-                    end_year = self.convert_cjk_to_integer(year_in_cjk_match[1].get_group(Constants.YEAR_GROUP_NAME))
+                    begin_year = int(year_match[0].get_group(Constants.YEAR_GROUP_NAME))
+                    end_year = self.convert_cjk_to_integer(year_in_cjk_match[0].get_group(Constants.YEAR_CJK_GROUP_NAME))
 
                 else:
-                    begin_year = self.convert_cjk_to_integer(year_in_cjk_match[0].get_group(Constants.YEAR_GROUP_NAME))
-                    end_year = self.convert_cjk_to_integer(year_match[1].get_group(Constants.YEAR_GROUP_NAME))
+                    begin_year = self.convert_cjk_to_integer(year_in_cjk_match[0].get_group(Constants.YEAR_CJK_GROUP_NAME))
+                    end_year = int(year_match[0].get_group(Constants.YEAR_GROUP_NAME))
 
             if 100 > begin_year >= self.config.two_num_year:
                 begin_year += Constants.BASE_YEAR_PAST_CENTURY
@@ -2094,6 +2094,29 @@ class BaseCJKDatePeriodParser(DateTimeExtractor):
                                 f'{DateTimeFormatUtil.luis_date(end_date.year, end_date.month, end_date.day)},' \
                                 f'P{num_str}{unit_str[0]})'
                     ret.future_value = ret.past_value = [begin_date, end_date]
+                    ret.success = True
+                    return ret
+
+                if self.config.future_regex.exact_match(before_str):
+                    if unit_str == Constants.TIMEX_DAY:
+                        begin_date = reference
+                        end_date = reference + datedelta(days=num_str)
+                    elif unit_str == Constants.TIMEX_WEEK:
+                        begin_date = reference
+                        end_date = reference + datedelta(days=7 * num_str)
+                    elif unit_str == Constants.TIMEX_MONTH_FULL:
+                        begin_date = reference
+                        end_date = reference + datedelta(months=num_str)
+                    elif unit_str == Constants.TIMEX_YEAR:
+                        begin_date = reference
+                        end_date = reference + datedelta(years=num_str)
+                    else:
+                        return ret
+
+                    ret.timex = f'({DateTimeFormatUtil.luis_date(begin_date.year, begin_date.month, begin_date.day) + datedelta(days=1)},' \
+                                f'{DateTimeFormatUtil.luis_date(end_date.year, end_date.month, end_date.day) + datedelta(days=1)},' \
+                                f'P{num_str}{unit_str[0]})'
+                    ret.future_value = ret.past_value = [begin_date + datedelta(days=1), end_date + datedelta(days=1)]
                     ret.success = True
                     return ret
         return ret
