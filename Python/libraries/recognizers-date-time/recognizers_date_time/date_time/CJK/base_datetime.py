@@ -6,7 +6,7 @@ import regex
 
 from recognizers_text import MetaData
 from recognizers_date_time.date_time.date_extractor import DateExtractor
-from recognizers_text.extractor import ExtractResult
+from recognizers_text.extractor import ExtractResult, Extractor
 from recognizers_number.number.extractors import BaseNumberExtractor
 from recognizers_number.number.parsers import BaseNumberParser
 from recognizers_date_time.date_time.constants import Constants, TimeTypeConstants
@@ -84,7 +84,7 @@ class CJKDateTimeExtractorConfiguration(DateTimeOptionsConfiguration):
         raise NotImplementedError
 
 
-class BaseCJKDateTimeExtractor(DateTimeExtractor):
+class BaseCJKDateTimeExtractor(Extractor):
     @property
     def extractor_type_name(self) -> str:
         return Constants.SYS_DATETIME_DATETIME

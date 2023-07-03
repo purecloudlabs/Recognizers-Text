@@ -5,11 +5,11 @@ from collections import namedtuple
 
 from recognizers_text.extractor import ExtractResult
 from recognizers_text.meta_data import MetaData
-from recognizers_date_time.date_time.constants import Constants
-from recognizers_date_time.date_time.extractors import DateTimeExtractor
-from recognizers_date_time.date_time.parsers import DateTimeParser, DateTimeParseResult
-from recognizers_date_time.date_time.CJK.base_configs import CJKCommonDateTimeParserConfiguration
-from recognizers_date_time.date_time.utilities import DateTimeOptions, RegExpUtility, ExtractResultExtension, \
+from ..constants import Constants
+from ..extractors import DateTimeExtractor
+from ..parsers import DateTimeParser, DateTimeParseResult
+from ..CJK.base_configs import CJKCommonDateTimeParserConfiguration
+from ..utilities import DateTimeOptions, RegExpUtility, ExtractResultExtension, \
     DateTimeOptionsConfiguration, DateTimeResolutionResult, MergedParserUtil
 
 MatchedIndex = namedtuple('MatchedIndex', ['matched', 'index'])
@@ -128,7 +128,7 @@ class BaseCJKMergedDateTimeExtractor(DateTimeExtractor):
     def extractor_type_name(self) -> str:
         return Constants.SYS_DATETIME_MERGED
 
-    def __init__(self, config: CJKMergedExtractorConfiguration):
+    def __init__(self, config: CJKMergedExtractorConfiguration, options: DateTimeOptions):
         self.config = config
 
     def extract(self, source: str, reference: datetime = None) -> List[ExtractResult]:
@@ -138,22 +138,22 @@ class BaseCJKMergedDateTimeExtractor(DateTimeExtractor):
         result = self.config.date_extractor.extract(source, reference)
 
         # The order is important, since there can be conflicts in merging
-        result = self.add_to(
-            result, self.config.time_extractor.extract(source, reference))
-        result = self.add_to(
-            result, self.config.duration_extractor.extract(source, reference))
+        # result = self.add_to(
+        #     result, self.config.time_extractor.extract(source, reference))
+        # result = self.add_to(
+        #     result, self.config.duration_extractor.extract(source, reference))
         result = self.add_to(
             result, self.config.date_period_extractor.extract(source, reference))
-        result = self.add_to(
-            result, self.config.date_time_extractor.extract(source, reference))
-        result = self.add_to(
-            result, self.config.time_period_extractor.extract(source, reference))
-        result = self.add_to(
-            result, self.config.date_time_period_extractor.extract(source, reference))
-        result = self.add_to(
-            result, self.config.set_extractor.extract(source, reference))
-        result = self.add_to(
-            result, self.config.holiday_extractor.extract(source, reference))
+        # result = self.add_to(
+        #     result, self.config.date_time_extractor.extract(source, reference))
+        # result = self.add_to(
+        #     result, self.config.time_period_extractor.extract(source, reference))
+        # result = self.add_to(
+        #     result, self.config.date_time_period_extractor.extract(source, reference))
+        # result = self.add_to(
+        #     result, self.config.set_extractor.extract(source, reference))
+        # result = self.add_to(
+        #     result, self.config.holiday_extractor.extract(source, reference))
 
         result = self.filter_unspecific_date_period(result)
 
@@ -352,14 +352,13 @@ class BaseCJKMergedDateTimeParser(DateTimeParser):
     def parser_type_name(self) -> str:
         return Constants.SYS_DATETIME_MERGED
 
-    def __init__(self, config: CJKMergedParserConfiguration):
+    def __init__(self, config: CJKMergedParserConfiguration, options):
         self.config = config
+        self.options = options
 
     def parse(self, er: ExtractResult, reference: datetime = None) -> Optional[DateTimeParseResult]:
         if not reference:
             reference = datetime.now()
-
-        pr = DateTimeParseResult()
 
         #  push, save the MOD string
         has_inclusive_modifier = False

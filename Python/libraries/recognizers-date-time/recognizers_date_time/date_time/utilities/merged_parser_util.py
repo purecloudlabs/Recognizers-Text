@@ -69,7 +69,7 @@ class MergedParserUtil:
         res[DateTimeResolutionKey.is_lunar] = is_lunar
 
         has_time_zone = False
-        if val.timezone_resolution:
+        if hasattr(val, 'timezone_resolution'):
             if slot_type == Constants.SYS_DATETIME_TIMEZONE:
                 #  single timezone
                 res[Constants.RESOLVE_TIMEZONE] = {
@@ -83,8 +83,8 @@ class MergedParserUtil:
                 res[Constants.TIMEZONE_TEXT] = val.timezone_resolution.timezone_text
                 res[Constants.UTC_OFFSET_MINS_KEY] = str(val.timezone_resolution.utc_offset_mins)
 
-        past_resolution_str: DateTimeResolutionResult = slot.value.past_resolution
-        future_resolution_str: DateTimeResolutionResult = slot.value.future_resolution
+        past_resolution_str = slot.value.past_resolution
+        future_resolution_str = slot.value.future_resolution
 
         if type_output == Constants.SYS_DATETIME_DATETIMEALT and len(past_resolution_str) > 0:
             type_output = MergedParserUtil.determine_resolution_datetime_type(past_resolution_str)
@@ -93,22 +93,23 @@ class MergedParserUtil:
         resolution_future = MergedParserUtil.generate_resolution(slot_type, future_resolution_str, mod)
 
         # If past and future are same, keep only one
-        if resolution_future == resolution_past:
-            if len(resolution_past) > 0:
-                res[Constants.RESOLVE_KEY] = resolution_past
-        else:
-            if len(resolution_past) > 0:
-                res[Constants.RESOLVE_TO_PAST_KEY] = resolution_past
-            if len(resolution_future) > 0:
-                res[Constants.RESOLVE_TO_FUTURE_KEY] = resolution_past
+        if resolution_future and resolution_past:
+            if resolution_future == resolution_past:
+                if len(resolution_past) > 0:
+                    res[Constants.RESOLVE_KEY] = resolution_past
+            else:
+                if len(resolution_past) > 0:
+                    res[Constants.RESOLVE_TO_PAST_KEY] = resolution_past
+                if len(resolution_future) > 0:
+                    res[Constants.RESOLVE_TO_FUTURE_KEY] = resolution_future
 
         # If 'ampm', double our resolution accordingly
         if comment and comment == Constants.COMMENT_AMPM:
             if res[Constants.RESOLVE_KEY]:
-                MergedParserUtil.resolve_ampm(res, Constants.RESOLVE_KEY)
+                res = MergedParserUtil.resolve_ampm(res, Constants.RESOLVE_KEY)
             else:
-                MergedParserUtil.resolve_ampm(res, Constants.RESOLVE_TO_PAST_KEY)
-                MergedParserUtil.resolve_ampm(res, Constants.RESOLVE_TO_FUTURE_KEY)
+                res = MergedParserUtil.resolve_ampm(res, Constants.RESOLVE_TO_PAST_KEY)
+                res = MergedParserUtil.resolve_ampm(res, Constants.RESOLVE_TO_FUTURE_KEY)
 
         #  If WeekOf and in CalendarMode, modify the past part of our resolution
         if (config.options and DateTimeOptions.CALENDAR) != 0 and comment and comment == Constants.COMMENT_WEEK_OF:
@@ -119,7 +120,7 @@ class MergedParserUtil:
                                                  Constants.RESOLVE_TO_PAST_KEY, timex)
 
         for p in res.values():
-            if type(p) == Dict[str, str]:
+            if isinstance(p, dict):
                 value = {}
                 value[DateTimeResolutionKey.timex] = timex
                 value[DateTimeResolutionKey.mod] = mod
@@ -136,14 +137,15 @@ class MergedParserUtil:
                 value.update(p)
                 resolutions.update(value)
 
-        if len(resolution_past) == 0 and len(resolution_future) == 0 and not val.timezone_resolution:
+        if resolution_past and resolution_future and len(resolution_past) == 0 and len(resolution_future) == 0 \
+                and not val.timezone_resolution:
             not_resolved = {
                 DateTimeResolutionKey.timex: timex,
                 ResolutionKey.type: type_output,
                 ResolutionKey.value: "not resolved"
             }
             resolutions.update(not_resolved)
-        return {ResolutionKey.value_set: resolutions}
+        return {ResolutionKey.value_set: [resolutions]}
 
     @staticmethod
     def determine_datetime_type(dt_type: str, has_mod: bool, config: DateTimeOptionsConfiguration) -> str:
@@ -322,19 +324,22 @@ class MergedParserUtil:
             resolution: Dict[str, str] = resolution_dict[key_name]
             resolution_pm: Dict[str, str] = dict()
 
-            if DateTimeResolutionKey not in resolution_dict:
+            if DateTimeResolutionKey.timex not in resolution_dict:
                 return resolution_dict
             timex = resolution_dict[DateTimeResolutionKey.timex]
             resolution_dict.pop(key_name)
             resolution_dict[key_name + 'Am'] = resolution
 
             if resolution_dict[ResolutionKey.type] == Constants.SYS_DATETIME_TIME:
-                resolution_pm[DateTimeResolutionKey.start] = DateTimeFormatUtil.to_pm(
-                    resolution[DateTimeResolutionKey.start])
+
+                resolution_pm[ResolutionKey.value] = DateTimeFormatUtil.to_pm(resolution[ResolutionKey.value])
+                resolution_pm[DateTimeResolutionKey.timex] = DateTimeFormatUtil.to_pm(timex)
+
             elif resolution_dict[ResolutionKey.type] == Constants.SYS_DATETIME_DATETIME:
                 split = resolution[ResolutionKey.value].split(' ')
                 resolution_pm[ResolutionKey.value] = split[0] + ' ' + DateTimeFormatUtil.to_pm((split[1]))
                 resolution_pm[DateTimeResolutionKey.timex] = DateTimeFormatUtil.all_str_to_pm(timex)
+
             elif resolution_dict[ResolutionKey.type] == Constants.SYS_DATETIME_TIMEPERIOD:
                 if DateTimeResolutionKey.start in resolution:
                     resolution_pm[DateTimeResolutionKey.start] = DateTimeFormatUtil.to_pm(
