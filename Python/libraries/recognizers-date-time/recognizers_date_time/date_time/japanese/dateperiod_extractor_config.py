@@ -479,7 +479,7 @@ class JapaneseDatePeriodExtractorConfiguration(CJKDatePeriodExtractorConfigurati
 
     def get_between_token_index(self, source : str) -> MatchedIndex:
         match = self.zhijian_regex.match(source)
-        if match.success:
+        if match and match.success:
             index = match.length
             return MatchedIndex(True, index)
         return MatchedIndex(False, -1)
@@ -487,7 +487,7 @@ class JapaneseDatePeriodExtractorConfiguration(CJKDatePeriodExtractorConfigurati
     def get_from_token_index(self, source: str) -> MatchedIndex:
 
         match = RegExpUtility.match_end(self._from_prefix, source, trim=True)
-        if match.success:
+        if match and match.success:
             return MatchedIndex(True, match.start())
         else:
             match = RegExpUtility.match_begin(self._from_suffix, source, trim=True)

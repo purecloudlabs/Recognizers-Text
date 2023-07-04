@@ -354,12 +354,19 @@ class JapaneseDatePeriodParserConfiguration(CJKDatePeriodParserConfiguration):
     def week_of_regex(self) -> Pattern:
         return self._week_of_regex
 
+    @property
+    def time_of_day(self) -> Pattern:
+        return self._time_of_day
+
+    @property
+    def two_num_year(self) -> int:
+        return self._two_num_year
+
     def __init__(self, config: CJKDateParserConfiguration):
         super().__init__()
         self._integer_extractor = JapaneseIntegerExtractor()
         self._number_parser = CJKNumberParser(JapaneseNumberParserConfiguration())
         self._date_extractor = BaseCJKDateExtractor(JapaneseDateExtractorConfiguration())
-        # self._date_extractor = config.date_extractor
         self._cardinal_extractor = JapaneseCardinalExtractor()
         self._date_parser = BaseCJKDateParser(JapaneseDateParserConfiguration(config))
 
@@ -384,6 +391,7 @@ class JapaneseDatePeriodParserConfiguration(CJKDatePeriodParserConfiguration):
             JapaneseDateTime.ParserConfigurationAfterNextYearRegex)
         self._last_year_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.ParserConfigurationLastYearRegex)
         self._this_year_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.ParserConfigurationThisYearRegex)
+        self._time_of_day = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.TimeOfDayRegex)
 
         self._year_to_year = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.YearToYear)
         self._year_to_year_suffix_required = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.YearToYearSuffixRequired)
@@ -437,6 +445,7 @@ class JapaneseDatePeriodParserConfiguration(CJKDatePeriodParserConfiguration):
         self._complex_dateperiod_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.ComplexDatePeriodRegex)
         self._month_of_year = JapaneseDateTime.ParserConfigurationMonthOfYear
         self._rest_of_date_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.RestOfDateRegex)
+        self._two_num_year = int(JapaneseDateTime.TwoNumYear)
 
         # TODO When the implementation for these properties is added, change the None values to their respective Regexps
 
@@ -458,6 +467,10 @@ class JapaneseDatePeriodParserConfiguration(CJKDatePeriodParserConfiguration):
         self._quarter_regex_year_front = None
         self._unspecific_end_of_range_regex = None
         self._week_of_regex = None
+
+    def to_month_number(self, month_str: str) -> int:
+        return self.month_of_year[month_str] % 12 if self.month_of_year[month_str] > 12 \
+            else self.month_of_year[month_str]
 
     def is_month_only(self, source: str) -> bool:
         trimmed_source = source.strip().lower()
@@ -547,7 +560,3 @@ class JapaneseDatePeriodParserConfiguration(CJKDatePeriodParserConfiguration):
     def is_last_cardinal(self, source) -> bool:
         trimmed_source = source.strip().lower()
         return not self.last_regex.search(trimmed_source) is None
-
-    def to_month_number(self, month_str: str) -> int:
-        return self.month_of_year[month_str] % 12 if self.month_of_year[month_str] > 12 \
-            else self.month_of_year[month_str]

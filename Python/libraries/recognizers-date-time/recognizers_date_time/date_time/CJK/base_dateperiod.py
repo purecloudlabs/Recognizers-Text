@@ -1000,7 +1000,7 @@ class BaseCJKDatePeriodParser(DateTimeParser):
         if not match:
             match = RegExpUtility.exact_match(self.config.month_day_range, source, trim=True)
 
-        if match.success:
+        if match and match.success:
             days = match.get_group(Constants.DAY_GROUP_NAME)
             begin_day = self.config.day_of_month[days[0]]
             end_day = self.config.day_of_month[days[1]]
@@ -1047,7 +1047,7 @@ class BaseCJKDatePeriodParser(DateTimeParser):
         else:
             match = RegExpUtility.exact_match(self.config.special_year_regex, source, trim=True)
 
-            if match.success:
+            if match and match.success:
                 value = reference + datedelta(years=self.config.get_swift_year(match))
                 ret.timex = DateTimeFormatUtil.luis_date_from_datetime(value)
                 ret.future_value = ret.past_value = value
@@ -1438,8 +1438,7 @@ class BaseCJKDatePeriodParser(DateTimeParser):
         ret = DateTimeResolutionResult()
         year = reference.year
         month = reference.month
-        future_year = year
-        past_year = year
+        future_year = past_year = year
 
         is_reference_date_period = False
 
@@ -1463,7 +1462,7 @@ class BaseCJKDatePeriodParser(DateTimeParser):
         if match:
             month_str = match.get_group(Constants.MONTH_GROUP_NAME)
 
-            if self.config.is_this_year(source):
+            if self.config.is_this_year(trimmed_source):
                 ret.timex = TimexUtil.generate_year_timex(reference)
                 ret.future_value = ret.past_value = [DateUtils.safe_create_from_min_value(year, 1, 1), reference]
                 ret.success = True
@@ -1555,8 +1554,8 @@ class BaseCJKDatePeriodParser(DateTimeParser):
                     return ret
 
                 if self.config.is_month_only(trimmed_source):
-                    month = reference + datedelta(months=swift)
-                    year = reference + datedelta(months=swift)
+                    month = reference.month + datedelta(months=swift)
+                    year = reference.year + datedelta(years=swift)
                     ret.timex = DateTimeFormatUtil.luis_date(year, month, reference.day)
                     ret.timex = TimexUtil.generate_month_timex() if is_reference_date_period else \
                         DateTimeFormatUtil.luis_date(year, month, 1)
@@ -1569,7 +1568,7 @@ class BaseCJKDatePeriodParser(DateTimeParser):
                     trimmed_source, has_half, is_first_half = self.handle_with_half_year(match, trimmed_source)
                     swift = 0 if has_half else swift
 
-                    year = reference + datedelta(years=swift)
+                    year = int(reference.year) + swift
 
                     if self.config.is_last_year(trimmed_source):
                         year -= 1
@@ -1580,7 +1579,7 @@ class BaseCJKDatePeriodParser(DateTimeParser):
                     elif self.config.is_year_after_next(trimmed_source):
                         year += 2
 
-                    return self.handle_year_result(ret, has_half, is_first_half, is_reference_date_period, year)
+                    return self.handle_year_result(ret, year, is_reference_date_period, has_half, is_first_half)
 
         else:
             return ret
@@ -1589,8 +1588,8 @@ class BaseCJKDatePeriodParser(DateTimeParser):
 
         ret.future_value = [DateUtils.safe_create_from_min_value(future_year, month, 1),
                             DateUtils.safe_create_from_min_value(future_year, month, 1) + datedelta(months=1)]
-        ret.future_value = [DateUtils.safe_create_from_min_value(past_year, month, 1),
-                            DateUtils.safe_create_from_min_value(past_year, month, 1) + datedelta(months=1)]
+        ret.past_value = [DateUtils.safe_create_from_min_value(past_year, month, 1),
+                          DateUtils.safe_create_from_min_value(past_year, month, 1) + datedelta(months=1)]
 
         ret.success = True
 

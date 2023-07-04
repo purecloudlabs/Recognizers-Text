@@ -382,7 +382,8 @@ class BaseCJKMergedDateTimeParser(DateTimeParser):
             around_match_prefix = RegExpUtility.match_begin(self.config.around_prefix_regex, er.text, True)
             around_match_suffix = RegExpUtility.match_end(self.config.around_suffix_regex, er.text, True)
 
-            if before_match and not MergedParserUtil.is_duration_with_ago_and_later(er):
+            # TODO add 'not MergedParserUtil.is_duration_with_ago_and_later(er)' once duration extractor implemented
+            if before_match:
                 has_before = True
                 er.start += before_match.start()
                 er.length -= len(before_match.group())
@@ -391,7 +392,8 @@ class BaseCJKMergedDateTimeParser(DateTimeParser):
                 if before_match.get_group(Constants.INCLUDE_GROUP_NAME):
                     has_inclusive_modifier = True
 
-            elif after_match and not MergedParserUtil.is_duration_with_ago_and_later(er) and not since_match_suffix:
+            # TODO add 'not MergedParserUtil.is_duration_with_ago_and_later(er)' once duration_extractor implemented
+            elif after_match and not since_match_suffix:
                 has_after = True
                 er.start += after_match.start()
                 er.length -= len(after_match.group())

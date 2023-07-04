@@ -139,8 +139,8 @@ class RegExpUtility:
         return ConditionalMatch(match, success)
 
     @staticmethod
-    def is_exact_match(regex: Pattern, text: str, trim: bool):
-        match = regex.match(text)
+    def is_exact_match(regexp: Pattern, text: str, trim: bool):
+        match = regexp.match(text)
 
         length = len(text.strip()) if trim else len(text)
 

@@ -3,7 +3,7 @@
 
 from typing import Pattern, List, Dict
 
-from recognizers_text import RegExpUtility
+from recognizers_text import RegExpUtility, DefinitionLoader
 from ..CJK import CJKMergedExtractorConfiguration
 from ..CJK.base_dateperiod import BaseCJKDatePeriodExtractor
 from ..CJK.base_date import BaseCJKDateExtractor
@@ -147,7 +147,7 @@ class JapaneseMergedExtractorConfiguration(CJKMergedExtractorConfiguration):
         self._ambiguous_range_modifier_prefix = RegExpUtility.get_safe_reg_exp(
             JapaneseDateTime.AmbiguousRangeModifierPrefix)
 
-        self._ambiguity_filters_dict = JapaneseDateTime.AmbiguityFiltersDict
+        self._ambiguity_filters_dict = DefinitionLoader.load_ambiguity_filters(JapaneseDateTime.AmbiguityFiltersDict)
         self._day_of_month = JapaneseDateTime.ParserConfigurationDayOfMonth
 
         # TODO When the implementation for these properties is added, change the None values to their respective Regexps

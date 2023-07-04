@@ -8,7 +8,6 @@ from recognizers_number import JapaneseIntegerExtractor, JapaneseOrdinalExtracto
     JapaneseNumberParserConfiguration
 from ..CJK.base_date import CJKDateExtractorConfiguration
 from ..constants import Constants
-from ..base_date import BaseDateExtractor
 from ...resources import JapaneseDateTime
 from ...resources.base_date_time import BaseDateTime
 
@@ -25,7 +24,7 @@ class JapaneseDateExtractorConfiguration(CJKDateExtractorConfiguration):
 
     @property
     def duration_extractor(self):
-        raise NotImplementedError
+        return self._duration_extractor
 
     @property
     def number_parser(self) -> CJKNumberParser:
@@ -280,18 +279,17 @@ class JapaneseDateExtractorConfiguration(CJKDateExtractorConfiguration):
         return self._for_the_regex
 
     @property
-    def ambiguity_date_filters_dict(self) -> Dict[Pattern, Pattern]:
-        return self._ambiguity_date_filters_dict
+    def preposition_regex(self) -> Pattern:
+        return self._preposition_regex
 
     @property
-    def base_date_extractor(self) -> BaseDateExtractor:
-        return self._base_date_extractor
+    def ambiguity_date_filters_dict(self) -> Dict[Pattern, Pattern]:
+        return self._ambiguity_date_filters_dict
 
     def __init__(self):
         self._integer_extractor = JapaneseIntegerExtractor()
         self._ordinal_extractor = JapaneseOrdinalExtractor()
         self._number_parser = CJKNumberParser(JapaneseNumberParserConfiguration())
-        self._base_date_extractor = BaseDateExtractor(config=self)
 
         self._week_day_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.WeekDayRegex)
         self._lunar_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.LunarRegex)
@@ -307,6 +305,7 @@ class JapaneseDateExtractorConfiguration(CJKDateExtractorConfiguration):
         self._week_day_start_end = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.WeekDayStartEnd)
         self._datetime_period_unit_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.DateTimePeriodUnitRegex)
         self._range_connector_symbol_regex = RegExpUtility.get_safe_reg_exp(BaseDateTime.RangeConnectorSymbolRegex)
+        self._preposition_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.PrepositionRegex)
         self._month_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.MonthRegex)
         self._day_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.DayRegex)
         self._date_day_regex_in_CJK = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.DateDayRegexInCJK)
