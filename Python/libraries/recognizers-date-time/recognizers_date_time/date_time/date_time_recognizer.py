@@ -31,7 +31,7 @@ from .german.merged_parser_config import GermanMergedParserConfiguration
 from .dutch.common_configs import DutchCommonDateTimeParserConfiguration
 from .dutch.merged_extractor_config import DutchMergedExtractorConfiguration
 from .dutch.merged_parser_config import DutchMergedParserConfiguration
-from .CJK.base_merged import BaseCJKMergedDateTimeParser, BaseCJKMergedDateTimeExtractor
+from .CJK.base_merged import BaseCJKMergedDateTimeExtractor, BaseCJKMergedDateTimeParser
 from .japanese.merged_extractor_config import JapaneseMergedExtractorConfiguration
 from .japanese.merged_parser_config import JapaneseMergedParserConfiguration
 from .japanese.common_configs import JapaneseCommonDateTimeParserConfiguration
@@ -61,6 +61,13 @@ class DateTimeRecognizer(Recognizer[DateTimeOptions]):
         self.register_model('DateTimeModel', Culture.Chinese, lambda options: DateTimeModel(
             ChineseMergedParser(),
             ChineseMergedExtractor(options)
+        ))
+
+        self.register_model('DateTimeModel', Culture.Japanese, lambda options: DateTimeModel(
+            BaseCJKMergedDateTimeParser(JapaneseMergedParserConfiguration(
+                JapaneseCommonDateTimeParserConfiguration()
+            )),
+            BaseCJKMergedDateTimeExtractor(JapaneseMergedExtractorConfiguration())
         ))
 
         self.register_model('DateTimeModel', Culture.Spanish, lambda options: DateTimeModel(
@@ -103,12 +110,6 @@ class DateTimeRecognizer(Recognizer[DateTimeOptions]):
             BaseMergedParser(DutchMergedParserConfiguration(
                 DutchCommonDateTimeParserConfiguration()), options),
             BaseMergedExtractor(DutchMergedExtractorConfiguration(), options)
-        ))
-
-        self.register_model('DateTimeModel', Culture.Japanese, lambda options: DateTimeModel(
-            BaseCJKMergedDateTimeParser(JapaneseMergedParserConfiguration(
-                JapaneseCommonDateTimeParserConfiguration()), options),
-            BaseCJKMergedDateTimeExtractor(JapaneseMergedExtractorConfiguration(), options)
         ))
 
     def get_datetime_model(self, culture: str = None, fallback_to_default_culture: bool = True) -> Model:

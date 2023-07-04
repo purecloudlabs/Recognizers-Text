@@ -93,15 +93,14 @@ class MergedParserUtil:
         resolution_future = MergedParserUtil.generate_resolution(slot_type, future_resolution_str, mod)
 
         # If past and future are same, keep only one
-        if resolution_future and resolution_past:
-            if resolution_future == resolution_past:
-                if len(resolution_past) > 0:
-                    res[Constants.RESOLVE_KEY] = resolution_past
-            else:
-                if len(resolution_past) > 0:
-                    res[Constants.RESOLVE_TO_PAST_KEY] = resolution_past
-                if len(resolution_future) > 0:
-                    res[Constants.RESOLVE_TO_FUTURE_KEY] = resolution_future
+        if resolution_future == resolution_past:
+            if len(resolution_past) > 0:
+                res[Constants.RESOLVE_KEY] = resolution_past
+        else:
+            if len(resolution_past) > 0:
+                res[Constants.RESOLVE_TO_PAST_KEY] = resolution_past
+            if len(resolution_future) > 0:
+                res[Constants.RESOLVE_TO_FUTURE_KEY] = resolution_future
 
         # If 'ampm', double our resolution accordingly
         if comment and comment == Constants.COMMENT_AMPM:
@@ -145,7 +144,7 @@ class MergedParserUtil:
                 ResolutionKey.value: "not resolved"
             }
             resolutions.append(not_resolved)
-        return {ResolutionKey.value_set: [resolutions]}
+        return {ResolutionKey.value_set: resolutions}
 
     @staticmethod
     def determine_datetime_type(dt_type: str, has_mod: bool, config: DateTimeOptionsConfiguration) -> str:
@@ -364,6 +363,7 @@ class MergedParserUtil:
                         end -= datetime.timedelta(hours=Constants.HALF_DAY_HOUR_COUNT)
                     else:
                         end += datetime.timedelta(hours=Constants.HALF_DAY_HOUR_COUNT)
+
             resolution_dict[key_name + "Pm"] = resolution_pm
         return resolution_dict
 

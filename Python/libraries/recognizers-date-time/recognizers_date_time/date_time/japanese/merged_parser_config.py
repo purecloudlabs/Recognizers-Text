@@ -4,14 +4,13 @@ from typing import Pattern
 
 from recognizers_text import RegExpUtility
 from .common_configs import JapaneseCommonDateTimeParserConfiguration
-from ..japanese import JapaneseDateParserConfiguration, JapaneseDatePeriodParserConfiguration
-from ..CJK.base_date import BaseCJKDateParser
-from ..CJK.base_dateperiod import BaseCJKDatePeriodParser
-from ..CJK.base_merged import CJKMergedParserConfiguration
+from recognizers_date_time.date_time.japanese import JapaneseDateParserConfiguration, JapaneseDatePeriodParserConfiguration
+from recognizers_date_time.date_time.CJK.base_date import BaseCJKDateParser
+from recognizers_date_time.date_time.CJK.base_dateperiod import BaseCJKDatePeriodParser
+from recognizers_date_time.date_time.CJK.base_merged import CJKMergedParserConfiguration
 
 from ...resources.japanese_date_time import JapaneseDateTime, BaseDateTime
 from ..parsers import DateTimeParser
-
 
 class JapaneseMergedParserConfiguration(JapaneseCommonDateTimeParserConfiguration, CJKMergedParserConfiguration):
 

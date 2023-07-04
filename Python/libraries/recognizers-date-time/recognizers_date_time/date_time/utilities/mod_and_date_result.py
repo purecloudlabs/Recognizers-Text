@@ -3,8 +3,8 @@ from typing import List
 
 from datedelta import datedelta
 
-from ..constants import Constants
-from .duration_parsing_util import DurationParsingUtil
+from recognizers_date_time.date_time.utilities import DurationParsingUtil
+from recognizers_date_time.date_time import Constants
 
 
 class ModAndDateResult:

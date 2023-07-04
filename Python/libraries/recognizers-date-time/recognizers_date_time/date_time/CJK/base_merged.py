@@ -5,11 +5,11 @@ from collections import namedtuple
 
 from recognizers_text.extractor import ExtractResult
 from recognizers_text.meta_data import MetaData
-from ..constants import Constants
-from ..extractors import DateTimeExtractor
-from ..parsers import DateTimeParser, DateTimeParseResult
-from ..CJK.base_configs import CJKCommonDateTimeParserConfiguration
-from ..utilities import DateTimeOptions, RegExpUtility, ExtractResultExtension, \
+from recognizers_date_time.date_time.constants import Constants
+from recognizers_date_time.date_time.extractors import DateTimeExtractor
+from recognizers_date_time.date_time.parsers import DateTimeParser, DateTimeParseResult
+from recognizers_date_time.date_time.CJK.base_configs import CJKCommonDateTimeParserConfiguration
+from recognizers_date_time.date_time.utilities import DateTimeOptions, RegExpUtility, ExtractResultExtension, \
     DateTimeOptionsConfiguration, DateTimeResolutionResult, MergedParserUtil
 
 MatchedIndex = namedtuple('MatchedIndex', ['matched', 'index'])
@@ -138,16 +138,16 @@ class BaseCJKMergedDateTimeExtractor(DateTimeExtractor):
         result = self.config.date_extractor.extract(source, reference)
 
         # The order is important, since there can be conflicts in merging
-        # result = self.add_to(
-        #     result, self.config.time_extractor.extract(source, reference))
+        result = self.add_to(
+            result, self.config.time_extractor.extract(source, reference))
         # result = self.add_to(
         #     result, self.config.duration_extractor.extract(source, reference))
         result = self.add_to(
             result, self.config.date_period_extractor.extract(source, reference))
         # result = self.add_to(
         #     result, self.config.date_time_extractor.extract(source, reference))
-        # result = self.add_to(
-        #     result, self.config.time_period_extractor.extract(source, reference))
+        result = self.add_to(
+            result, self.config.time_period_extractor.extract(source, reference))
         # result = self.add_to(
         #     result, self.config.date_time_period_extractor.extract(source, reference))
         # result = self.add_to(
@@ -372,76 +372,77 @@ class BaseCJKMergedDateTimeParser(DateTimeParser):
         mod_str_prefix = ""
         mod_str_suffix = ""
 
-        if er.meta_data and er.meta_data.has_mod:
-            before_match = RegExpUtility.match_end(self.config.before_regex, er.text, True)
-            after_match = RegExpUtility.match_end(self.config.after_regex, er.text, True)
-            until_match = RegExpUtility.match_begin(self.config.until_regex, er.text, True)
-            since_match_prefix = RegExpUtility.match_begin(self.config.since_prefix_regex, er.text, True)
-            since_match_suffix = RegExpUtility.match_end(self.config.since_suffix_regex, er.text, True)
-            equal_match = RegExpUtility.match_begin(self.config.equal_regex, er.text, True)
-            around_match_prefix = RegExpUtility.match_begin(self.config.around_prefix_regex, er.text, True)
-            around_match_suffix = RegExpUtility.match_end(self.config.around_suffix_regex, er.text, True)
+        if er.meta_data:
+            if er.meta_data.has_mod:
+                before_match = RegExpUtility.match_end(self.config.before_regex, er.text, True)
+                after_match = RegExpUtility.match_end(self.config.after_regex, er.text, True)
+                until_match = RegExpUtility.match_begin(self.config.until_regex, er.text, True)
+                since_match_prefix = RegExpUtility.match_begin(self.config.since_prefix_regex, er.text, True)
+                since_match_suffix = RegExpUtility.match_end(self.config.since_suffix_regex, er.text, True)
+                equal_match = RegExpUtility.match_begin(self.config.equal_regex, er.text, True)
+                around_match_prefix = RegExpUtility.match_begin(self.config.around_prefix_regex, er.text, True)
+                around_match_suffix = RegExpUtility.match_end(self.config.around_suffix_regex, er.text, True)
 
-            # TODO add 'not MergedParserUtil.is_duration_with_ago_and_later(er)' once duration extractor implemented
-            if before_match:
-                has_before = True
-                er.start += before_match.start()
-                er.length -= len(before_match.group())
-                er.text = er.text[er.length]
-                mod_str = before_match.group()
-                if before_match.get_group(Constants.INCLUDE_GROUP_NAME):
-                    has_inclusive_modifier = True
+                # TODO add 'not MergedParserUtil.is_duration_with_ago_and_later(er)' once duration extractor implemented
+                if before_match:
+                    has_before = True
+                    er.start += before_match.start()
+                    er.length -= len(before_match.group())
+                    er.text = er.text[er.length]
+                    mod_str = before_match.group()
+                    if before_match.get_group(Constants.INCLUDE_GROUP_NAME):
+                        has_inclusive_modifier = True
 
-            # TODO add 'not MergedParserUtil.is_duration_with_ago_and_later(er)' once duration_extractor implemented
-            elif after_match and not since_match_suffix:
-                has_after = True
-                er.start += after_match.start()
-                er.length -= len(after_match.group())
-                er.text = er.text[after_match.start():]
-                mod_str = after_match.group()
-                if after_match.get_group(Constants.INCLUDE_GROUP_NAME):
-                    has_inclusive_modifier = True
+                # TODO add 'not MergedParserUtil.is_duration_with_ago_and_later(er)' once duration_extractor implemented
+                elif after_match and not since_match_suffix:
+                    has_after = True
+                    er.start += after_match.start()
+                    er.length -= len(after_match.group())
+                    er.text = er.text[after_match.start():]
+                    mod_str = after_match.group()
+                    if after_match.get_group(Constants.INCLUDE_GROUP_NAME):
+                        has_inclusive_modifier = True
 
-            elif until_match:
-                has_until = True
-                er.start += until_match.length
-                er.length -= until_match.length
-                er.text = er.text[until_match.length]
-                mod_str = until_match.group()
+                elif until_match:
+                    has_until = True
+                    er.start += until_match.length
+                    er.length -= until_match.length
+                    er.text = er.text[until_match.length]
+                    mod_str = until_match.group()
 
-            elif equal_match:
-                has_equal = True
-                er.start += equal_match.length
-                er.length -= equal_match.length
-                er.text = er.text[equal_match.length]
-                mod_str = equal_match.group()
+                elif equal_match:
+                    has_equal = True
+                    er.start += equal_match.length
+                    er.length -= equal_match.length
+                    er.text = er.text[equal_match.length]
+                    mod_str = equal_match.group()
 
-            else:
-                if since_match_prefix:
-                    has_since = True
-                    er.start += since_match_prefix.length
-                    er.length -= since_match_prefix.length
-                    er.text = er.text[since_match_prefix.length]
-                    mod_str = since_match_prefix.group()
+                else:
+                    if since_match_prefix:
+                        has_since = True
+                        er.start += since_match_prefix.length
+                        er.length -= since_match_prefix.length
+                        er.text = er.text[since_match_prefix.length]
+                        mod_str = since_match_prefix.group()
 
-                if since_match_suffix:
-                    has_since = True
-                    er.length -= since_match_suffix.length
-                    er.text = er.text[since_match_suffix.start:]
-                    mod_str = since_match_suffix.group()
+                    if since_match_suffix:
+                        has_since = True
+                        er.length -= since_match_suffix.length
+                        er.text = er.text[since_match_suffix.start:]
+                        mod_str = since_match_suffix.group()
 
-                if around_match_prefix:
-                    has_around = True
-                    er.start += around_match_prefix.length
-                    er.length -= around_match_prefix.length
-                    er.text = er.text[around_match_prefix.length]
-                    mod_str = around_match_prefix.group()
+                    if around_match_prefix:
+                        has_around = True
+                        er.start += around_match_prefix.length
+                        er.length -= around_match_prefix.length
+                        er.text = er.text[around_match_prefix.length]
+                        mod_str = around_match_prefix.group()
 
-                if around_match_suffix:
-                    has_around = True
-                    er.length -= around_match_suffix.length
-                    er.text = er.text[around_match_suffix.start:]
-                    mod_str = around_match_suffix.group()
+                    if around_match_suffix:
+                        has_around = True
+                        er.length -= around_match_suffix.length
+                        er.text = er.text[around_match_suffix.start:]
+                        mod_str = around_match_suffix.group()
 
         #  Parse extracted datetime mention
         pr = self.parse_result(er, reference)
