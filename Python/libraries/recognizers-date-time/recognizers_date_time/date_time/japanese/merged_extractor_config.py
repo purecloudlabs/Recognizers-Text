@@ -33,6 +33,7 @@ class JapaneseMergedExtractorConfiguration(CJKMergedExtractorConfiguration):
     def date_period_extractor(self) -> DateTimeExtractor:
         return self._date_period_extractor
 
+    @property
     def before_regex(self) -> Pattern:
         return self._before_regex
 
@@ -45,13 +46,6 @@ class JapaneseMergedExtractorConfiguration(CJKMergedExtractorConfiguration):
         return self._after_regex
 
     @property
-    def before_regex(self) -> Pattern:
-        return self._before_regex
-
-    @property
-    def unspecified_date_period_regex(self) -> Pattern:
-        return self._unspecified_date_period_regex
-
     def until_regex(self) -> Pattern:
         return self._until_regex
 
@@ -70,7 +64,6 @@ class JapaneseMergedExtractorConfiguration(CJKMergedExtractorConfiguration):
     @property
     def around_suffix_regex(self) -> Pattern:
         return self._around_suffix_regex
-
 
     @property
     def equal_regex(self) -> Pattern:
@@ -122,7 +115,7 @@ class JapaneseMergedExtractorConfiguration(CJKMergedExtractorConfiguration):
 
     @property
     def time_extractor(self):
-        return self._time_zone_extractor
+        return self._time_extractor
 
     @property
     def duration_extractor(self):
@@ -176,7 +169,6 @@ class JapaneseMergedExtractorConfiguration(CJKMergedExtractorConfiguration):
         self._superfluous_word_matcher = None
         self._fail_fast_regex = None
         self._suffix_after_regex = None
-        self._potential_ambiguous_range_regex = None
         self._around_regex = None
         self._term_filter_regexes = None
         self._datetime_alt_extractor = None
@@ -184,7 +176,6 @@ class JapaneseMergedExtractorConfiguration(CJKMergedExtractorConfiguration):
 
         self._duration_extractor = None
         self._date_time_extractor = None
-        self._time_period_extractor = None
         self._date_time_period_extractor = None
         self._set_extractor = None
         self._holiday_extractor = None

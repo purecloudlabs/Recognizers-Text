@@ -231,6 +231,11 @@ class JapaneseDateParserConfiguration(CJKDateParserConfiguration):
     def token_last_regex(self) -> Pattern:
         return self._token_last_regex
 
+    @property
+    def strict_week_day_regex(self):
+        return self._strict_week_day_regex
+
+
     def get_swift_day(self, source: str) -> int:
         source = source.strip().lower()
         swift = 0
@@ -304,6 +309,7 @@ class JapaneseDateParserConfiguration(CJKDateParserConfiguration):
         self._next_re = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.NextPrefixRegex)
         self._last_re = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.LastPrefixRegex)
         self._this_re = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.ThisPrefixRegex)
+        self._strict_week_day_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.WeekDayRegex)
 
         self._cardinal_map = JapaneseDateTime.ParserConfigurationCardinalMap
 

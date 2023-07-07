@@ -136,7 +136,7 @@ class BaseCJKDateExtractor(DateTimeExtractor, AbstractYearExtractor):
                 if not match:
                     match = self.config.after_regex.match(suffix)
 
-                if match and suffix.strip().startswith(match.group()):
+                if match and suffix.strip().startswith(match.get_group()):
                     meta_data = MetaData()
                     meta_data.is_duration_date_with_weekday = True
                     # "Extend extraction with weekdays like in "Friday two weeks from now", "in 3 weeks on Monday""
@@ -569,10 +569,10 @@ class BaseCJKDateParser(DateTimeParser):
         # handle "十二日" "明年这个月三日" "本月十一日"
         match = RegExpUtility.exact_match(self.config.special_date, source_text, trim=True)
 
-        if match:
-            year_str = match.group(Date_Constants.THIS_YEAR_GROUP_NAME)
-            month_str = match.group(Date_Constants.THIS_MONTH_GROUP_NAME)
-            day_str = match.group(Date_Constants.DAY_GROUP_NAME)
+        if match and match.success:
+            year_str = match.get_group(Date_Constants.THIS_YEAR_GROUP_NAME)
+            month_str = match.get_group(Date_Constants.THIS_MONTH_GROUP_NAME)
+            day_str = match.get_group(Date_Constants.DAY_GROUP_NAME)
 
             month = reference.month
             year = reference.year
@@ -666,10 +666,10 @@ class BaseCJKDateParser(DateTimeParser):
         # handle cases like "昨日", "明日", "大后天"
         match = RegExpUtility.exact_match(self.config.special_day_regex, source_text, trim=True)
 
-        if match:
+        if match and match.success:
             value = reference + datedelta(days=self.config.get_swift_day(match.value))
             ret.timex = DateTimeFormatUtil.luis_date_from_datetime(value)
-            ret.future_value = DateUtils.safe_create_from_value(DateUtils.min_value, value.year, value.month, value.day)
+            ret.future_value = ret.past_value = DateUtils.safe_create_from_value(DateUtils.min_value, value.year, value.month, value.day)
             ret.success = True
 
             return ret
@@ -677,7 +677,7 @@ class BaseCJKDateParser(DateTimeParser):
         # Handle "今から2日曜日" (2 Sundays from now)
         exact_match = RegExpUtility.exact_match(self.config.special_day_with_num_regex, source_text, trim=True)
 
-        if exact_match:
+        if exact_match and exact_match.success:
             num_ers = self.config.integer_extractor.extract(source_text)
             weekday_str = exact_match.get_group(Date_Constants.WEEKDAY_GROUP_NAME)
 
@@ -690,7 +690,7 @@ class BaseCJKDateParser(DateTimeParser):
                     num -= 1
 
                 while num > 0:
-                    value = DateUtils.next(value, DayOfWeek(self.config.day_of_week[weekday_str]))
+                    value = DateUtils.next(value, self.get_day_of_week(weekday_str))
                     num -= 1
 
                 ret.timex = DateTimeFormatUtil.luis_date_from_datetime(value)
@@ -834,9 +834,9 @@ class BaseCJKDateParser(DateTimeParser):
 
         match = RegExpUtility.exact_match(self.config.next_regex, source_text, trim=True)
 
-        if match:
+        if match and match.success:
             weekday_key = match.get_group(Date_Constants.WEEKDAY_GROUP_NAME)
-            value = DateUtils.next(reference, DayOfWeek(self.config.day_of_week[weekday_key]))
+            value = DateUtils.next(reference, self.get_day_of_week(weekday_key))
 
             result.timex = DateTimeFormatUtil.luis_date_from_datetime(value)
             result.future_value = result.past_value = DateUtils.safe_create_from_min_value(value.year, value.month,
@@ -849,9 +849,9 @@ class BaseCJKDateParser(DateTimeParser):
 
         match = RegExpUtility.exact_match(self.config.this_regex, source_text, trim=True)
 
-        if match:
-            weekday_key = match.group(Date_Constants.WEEKDAY_GROUP_NAME)
-            value = DateUtils.this(reference, DayOfWeek(self.config.day_of_week[weekday_key]))
+        if match and match.success:
+            weekday_key = match.get_group(Date_Constants.WEEKDAY_GROUP_NAME)
+            value = DateUtils.this(reference, self.get_day_of_week(weekday_key))
 
             result.timex = DateTimeFormatUtil.luis_date_from_datetime(value)
             result.future_value = result.past_value = DateUtils.safe_create_from_min_value(value.year, value.month,
@@ -865,9 +865,9 @@ class BaseCJKDateParser(DateTimeParser):
 
         match = RegExpUtility.exact_match(self.config.last_regex, source_text, trim=True)
 
-        if match:
-            weekday_key = match.group(Date_Constants.WEEKDAY_GROUP_NAME)
-            value = DateUtils.last(reference, DayOfWeek(self.config.day_of_week[weekday_key]))
+        if match and match.success:
+            weekday_key = match.get_group(Date_Constants.WEEKDAY_GROUP_NAME)
+            value = DateUtils.last(reference, self.get_day_of_week(weekday_key))
 
             result.timex = DateTimeFormatUtil.luis_date_from_datetime(value)
             result.future_value = result.past_value = DateUtils.safe_create_from_min_value(value.year, value.month,
@@ -883,7 +883,7 @@ class BaseCJKDateParser(DateTimeParser):
 
         if match:
             weekday_str = match.group(Date_Constants.WEEKDAY_GROUP_NAME)
-            weekday = DayOfWeek(self.config.day_of_week[weekday_str])
+            weekday = self.get_day_of_week(weekday_str)
             value = DateUtils.this(reference, weekday)
 
             if weekday < int(DayOfWeek.MONDAY):
@@ -916,9 +916,9 @@ class BaseCJKDateParser(DateTimeParser):
         if not match:
             return ret
 
-        cardinal_str = match.get_group(Date_Constants.CARDINAL)
-        weekday_str = match.get_group(Date_Constants.WEEKDAY_GROUP_NAME)
-        month_str = match.get_group(Date_Constants.MONTH_GROUP_NAME)
+        cardinal_str = match.group(Date_Constants.CARDINAL)
+        weekday_str = match.group(Date_Constants.WEEKDAY_GROUP_NAME)
+        month_str = match.group(Date_Constants.MONTH_GROUP_NAME)
         no_year = False
 
         if RegExpUtility.exact_match(self.config.last_week_day_regex, cardinal_str, trim=True):
@@ -1014,7 +1014,7 @@ class BaseCJKDateParser(DateTimeParser):
 
     def compute_date(self, cardinal: int, weekday: int, month: int, year: int) -> datetime:
         first_day = DateUtils.safe_create_from_value(DateUtils.min_value, year, month, 1)
-        first_weekday = DateUtils.this(first_day, DayOfWeek(weekday))
+        first_weekday = DateUtils.this(first_day, self.get_day_of_week(weekday))
 
         if weekday == 0:
             weekday = int(DayOfWeek.SUNDAY)
@@ -1030,7 +1030,7 @@ class BaseCJKDateParser(DateTimeParser):
     def is_lunar_calendar(self, text: str) -> bool:
         trimmed_source = text.strip()
         is_lunar_match = self.config.lunar_regex.match(trimmed_source)
-        return is_lunar_match and is_lunar_match.success
+        return is_lunar_match
 
     # Judge if a date is valid
     @staticmethod
@@ -1138,7 +1138,7 @@ class BaseCJKDateParser(DateTimeParser):
 
         if er:
             if er[0].type == Num_Constants.SYS_NUM_INTEGER:
-                num = self.config.number_parser.parse(er[0])
+                num = self.config.number_parser.parse(er[0]).value
 
         if num < 10:
             num = 0
@@ -1161,3 +1161,11 @@ class BaseCJKDateParser(DateTimeParser):
         if not DateUtils.is_leap_year(year) and month == 2:
             max_day -= 1
         return max_day
+
+    def get_day_of_week(self, weekday_key: any) -> DayOfWeek:
+        if type(weekday_key) == str:
+            return DayOfWeek.SUNDAY if self.config.day_of_week[weekday_key] == 0 \
+                else DayOfWeek(self.config.day_of_week[weekday_key])
+        elif type(weekday_key) == int:
+            return DayOfWeek.SUNDAY if weekday_key == 0 \
+                else DayOfWeek(weekday_key)

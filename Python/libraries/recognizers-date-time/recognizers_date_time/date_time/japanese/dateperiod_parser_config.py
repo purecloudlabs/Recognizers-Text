@@ -7,7 +7,8 @@ from recognizers_number import JapaneseIntegerExtractor, CJKNumberParser, Japane
     JapaneseCardinalExtractor
 from recognizers_text import RegExpUtility
 from ..CJK.base_date import BaseCJKDateExtractor, BaseCJKDateParser, CJKDateParserConfiguration
-from . import JapaneseDateExtractorConfiguration, JapaneseDateParserConfiguration
+from .date_extractor_config import JapaneseDateExtractorConfiguration
+from .date_parser_config import JapaneseDateParserConfiguration
 from ..CJK.base_dateperiod import CJKDatePeriodParserConfiguration
 from ...resources.japanese_date_time import JapaneseDateTime
 
@@ -103,24 +104,24 @@ class JapaneseDatePeriodParserConfiguration(CJKDatePeriodParserConfiguration):
         return self._year_regex
 
     @property
-    def year_cjk_regex(self) -> Pattern:
-        return self._year_cjk_regex
+    def year_in_cjk_regex(self) -> Pattern:
+        return self._year_in_cjk_regex
 
     @property
-    def month_to_month_regex(self) -> Pattern:
-        return self._month_to_month_regex
+    def month_to_month(self) -> Pattern:
+        return self._month_to_month
 
     @property
-    def month_to_month_regex_suffix_required(self) -> Pattern:
-        return self._month_to_month_regex_suffix_required
+    def month_to_month_suffix_required(self) -> Pattern:
+        return self._month_to_month_suffix_required
 
     @property
     def day_to_day(self) -> Pattern:
         return self._day_to_day
 
     @property
-    def month_day_range_regex(self) -> Pattern:
-        return self._month_day_range_regex
+    def month_day_range(self) -> Pattern:
+        return self._month_day_range
 
     @property
     def day_regex_for_period(self) -> Pattern:
@@ -205,6 +206,10 @@ class JapaneseDatePeriodParserConfiguration(CJKDatePeriodParserConfiguration):
     @property
     def season_regex(self) -> Pattern:
         return self._season_regex
+
+    @property
+    def season_with_year(self) -> Pattern:
+        return self._season_with_year
 
     @property
     def quarter_regex(self) -> Pattern:
@@ -396,12 +401,12 @@ class JapaneseDatePeriodParserConfiguration(CJKDatePeriodParserConfiguration):
         self._year_to_year = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.YearToYear)
         self._year_to_year_suffix_required = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.YearToYearSuffixRequired)
         self._year_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.YearRegex)
-        self._year_cjk_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.DateYearInCJKRegex)
-        self._month_to_month_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.MonthToMonth)
-        self._month_to_month_regex_suffix_required = RegExpUtility.get_safe_reg_exp(
+        self._year_in_cjk_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.DateYearInCJKRegex)
+        self._month_to_month = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.MonthToMonth)
+        self._month_to_month_suffix_required = RegExpUtility.get_safe_reg_exp(
             JapaneseDateTime.MonthToMonthSuffixRequired)
         self._day_to_day = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.DayToDay)
-        self._month_day_range_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.MonthDayRange)
+        self._month_day_range = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.MonthDayRange)
         self._day_regex_for_period = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.DayRegexForPeriod)
         self._month_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.MonthRegex)
         self._special_month_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.SpecialMonthRegex)
@@ -424,6 +429,7 @@ class JapaneseDatePeriodParserConfiguration(CJKDatePeriodParserConfiguration):
         self._which_week_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.WhichWeekRegex)
         self._first_last_of_year_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.FirstLastOfYearRegex)
         self._season_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.SeasonRegex)
+        self._season_with_year = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.SeasonWithYear)
         self._quarter_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.QuarterRegex)
         self._decade_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.DecadeRegex)
         self._century_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.CenturyRegex)

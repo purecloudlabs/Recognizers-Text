@@ -12,14 +12,19 @@ from recognizers_number.number.japanese.extractors import JapaneseIntegerExtract
 from recognizers_number.number.cjk_parsers import CJKNumberParser
 
 from recognizers_date_time.resources.japanese_date_time import JapaneseDateTime
-from recognizers_date_time.date_time.CJK import CJKCommonDateTimeParserConfiguration, BaseCJKTimeExtractor, \
-    BaseCJKTimePeriodExtractor, BaseCJKTimeParser, BaseCJKTimePeriodParser, BaseCJKDateParser, BaseCJKDateExtractor,\
+from recognizers_date_time.date_time.CJK import BaseCJKTimeExtractor, BaseCJKTimePeriodExtractor, BaseCJKTimeParser, \
+    BaseCJKTimePeriodParser, BaseCJKDateParser, BaseCJKDateExtractor,\
     CJKDateParserConfiguration, BaseCJKDatePeriodExtractor, BaseCJKDatePeriodParser
-from recognizers_date_time.date_time.japanese import JapaneseTimeExtractorConfiguration, \
-    JapaneseTimePeriodExtractorConfiguration, JapaneseTimePeriodParserConfiguration, JapaneseTimeParserConfiguration,\
-    JapaneseDateExtractorConfiguration, JapaneseDatePeriodExtractorConfiguration, JapaneseDateParserConfiguration, \
-    JapaneseDatePeriodParserConfiguration
-
+from recognizers_date_time.date_time.japanese.time_extractor_config import JapaneseTimeExtractorConfiguration
+from recognizers_date_time.date_time.japanese.timeperiod_extractor_config import \
+    JapaneseTimePeriodExtractorConfiguration
+from recognizers_date_time.date_time.japanese.timeperiod_parser_config import JapaneseTimePeriodParserConfiguration
+from recognizers_date_time.date_time.japanese.time_parser_config import JapaneseTimeParserConfiguration
+from recognizers_date_time.date_time.japanese.date_extractor_config import JapaneseDateExtractorConfiguration
+from recognizers_date_time.date_time.japanese.dateperiod_extractor_config import \
+    JapaneseDatePeriodExtractorConfiguration
+from recognizers_date_time.date_time.japanese.date_parser_config import JapaneseDateParserConfiguration
+from recognizers_date_time.date_time.japanese.dateperiod_parser_config import JapaneseDatePeriodParserConfiguration
 from recognizers_date_time.date_time.extractors import DateTimeExtractor
 from recognizers_date_time.date_time.parsers import DateTimeParser
 from recognizers_date_time.date_time.base_timezone import BaseTimeZoneParser

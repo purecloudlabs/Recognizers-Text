@@ -4,13 +4,9 @@ from typing import Pattern
 
 from recognizers_text import RegExpUtility
 from .common_configs import JapaneseCommonDateTimeParserConfiguration
-from recognizers_date_time.date_time.japanese import JapaneseDateParserConfiguration, JapaneseDatePeriodParserConfiguration
-from recognizers_date_time.date_time.CJK.base_date import BaseCJKDateParser
-from recognizers_date_time.date_time.CJK.base_dateperiod import BaseCJKDatePeriodParser
 from recognizers_date_time.date_time.CJK.base_merged import CJKMergedParserConfiguration
 
 from ...resources.japanese_date_time import JapaneseDateTime, BaseDateTime
-from ..parsers import DateTimeParser
 
 class JapaneseMergedParserConfiguration(JapaneseCommonDateTimeParserConfiguration, CJKMergedParserConfiguration):
 
@@ -62,42 +58,6 @@ class JapaneseMergedParserConfiguration(JapaneseCommonDateTimeParserConfiguratio
     def since_regex(self) -> Pattern:
         return self._since_regex
 
-    @property
-    def date_parser(self) -> DateTimeParser:
-        return self._date_parser
-
-    @property
-    def date_period_parser(self) -> BaseCJKDatePeriodParser:
-        return self._date_period_parser
-
-    @property
-    def time_parser(self):
-        raise NotImplementedError
-
-    @property
-    def date_time_parser(self):
-        raise NotImplementedError
-
-    @property
-    def time_period_parser(self):
-        raise NotImplementedError
-
-    @property
-    def date_time_period_parser(self):
-        raise NotImplementedError
-
-    @property
-    def duration_parser(self):
-        raise NotImplementedError
-
-    @property
-    def set_parser(self):
-        raise NotImplementedError
-
-    @property
-    def holiday_parser(self):
-        raise NotImplementedError
-
     def __init__(self, config):
 
         super().__init__()
@@ -112,17 +72,7 @@ class JapaneseMergedParserConfiguration(JapaneseCommonDateTimeParserConfiguratio
         self._until_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.ParserConfigurationUntil)
         self._year_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.YearRegex)
 
-        self._date_period_parser = BaseCJKDatePeriodParser(JapaneseDatePeriodParserConfiguration(self))
-        self._date_parser = BaseCJKDateParser(JapaneseDateParserConfiguration(self))
-
         # TODO When the implementation for these properties is added, change the None values to their respective Regexps
         self._around_regex = None
         self._suffix_after = None
         self._since_regex = None
-        self._time_parser = None
-        self._date_time_parser = None
-        self._time_period_parser = None
-        self._date_time_period_parser = None
-        self._duration_parser = None
-        self._set_parser = None
-        self._holiday_parser = None

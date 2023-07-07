@@ -345,11 +345,11 @@ class TimexUtil:
             end_str = DateTimeFormatUtil.luis_date(begin_year + total_last_year, 1, 1)
 
         else:
-            begin_year_str = Constants.TIMEX_FUZZY_TWO_DIGIT_YEAR + decade
+            begin_year_str = f'{Constants.TIMEX_FUZZY_TWO_DIGIT_YEAR}{decade}'
             begin_str = DateTimeFormatUtil.luis_date(-1, 1, 1)
             begin_str = begin_str.replace(Constants.TIMEX_FUZZY_YEAR, begin_year_str)
 
-            end_year_str = Constants.TIMEX_FUZZY_TWO_DIGIT_YEAR + f'{((decade + total_last_year) % 100):02d}'
+            end_year_str = f'{Constants.TIMEX_FUZZY_TWO_DIGIT_YEAR}{((decade + total_last_year) % 100):02d}'
             end_str = DateTimeFormatUtil.luis_date(-1, 1, 1)
             end_str = end_str.replace(Constants.TIMEX_FUZZY_YEAR, end_year_str)
 

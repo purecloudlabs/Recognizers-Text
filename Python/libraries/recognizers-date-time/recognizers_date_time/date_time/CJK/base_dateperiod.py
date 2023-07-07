@@ -11,7 +11,7 @@ from recognizers_date_time.date_time.base_date import BaseDateParser
 from recognizers_date_time.date_time.base_dateperiod import BaseDatePeriodParser
 from recognizers_date_time.date_time.parsers import DateTimeParser, DateTimeParseResult
 from recognizers_date_time.date_time.utilities import DateTimeOptionsConfiguration, DateTimeExtractor, \
-    merge_all_tokens, ExtractResultExtension, Token, DateContext,  DateTimeResolutionResult, TimeTypeConstants, \
+    merge_all_tokens, ExtractResultExtension, Token, DateContext, DateTimeResolutionResult, TimeTypeConstants, \
     DateTimeFormatUtil, DateUtils, TimexUtil, DayOfWeek, DurationParsingUtil, DateTimeOptions
 from recognizers_date_time.date_time.utilities.mod_and_date_result import ModAndDateResult
 from recognizers_number import BaseNumberParser, BaseNumberExtractor
@@ -193,7 +193,7 @@ class BaseCJKDatePeriodExtractor(DateTimeExtractor):
 
             middle_str = source[middle_begin:middle_end - middle_begin].strip()
 
-            if RegExpUtility.exact_match(self.config.till_regex, middle_str, trim=True):
+            if RegExpUtility.exact_match(self.config.till_regex, middle_str, trim=True).success:
                 period_begin = er[idx].start
                 period_end = er[idx + 1].start + er[idx].length
 
@@ -201,14 +201,14 @@ class BaseCJKDatePeriodExtractor(DateTimeExtractor):
                 after_str = source[period_end:]
                 match = RegExpUtility.match_begin(self.config.range_suffix_regex, after_str, trim=True)
 
-                if match:
+                if match and match.success:
                     period_end = period_end + match.index + match.length
 
                 # handle prefix
                 before_str = source[:period_begin]
                 match = RegExpUtility.match_end(self.config.range_prefix_regex, before_str, trim=True)
 
-                if match:
+                if match and match.success:
                     period_begin = match.index
 
                 ret.append(Token(period_begin, period_end))
@@ -229,7 +229,7 @@ class BaseCJKDatePeriodExtractor(DateTimeExtractor):
             after_str = source[er.start + er.length:]
             match = RegExpUtility.match_begin(self.config.followed_unit, after_str, trim=True)
 
-            if match:
+            if match and match.success:
                 durations.append(Token(er.start, er.start + er.length + match.length))
 
         if self.config.number_combined_with_unit.match(source):
@@ -246,25 +246,25 @@ class BaseCJKDatePeriodExtractor(DateTimeExtractor):
             # Cases like 'first 2 weeks of 2018' (2021年的前2周)
             match = RegExpUtility.match_end(self.config.first_last_of_year_regex, before_str, trim=True)
 
-            if match:
+            if match and match.success:
                 # Check if the unit is compatible (day, week,  month)
                 duration_str = source[duration.start:duration.length]
                 unit_match = self.config.unit_regex.match(duration_str)
 
-                if unit_match.get_group(Constants.UNIT_OF_YEAR_GROUP_NAME):
-                    ret.append(Token(match.start(), duration.end))
+                if unit_match.group(Constants.UNIT_OF_YEAR_GROUP_NAME):
+                    ret.append(Token(match.start, duration.end))
                     continue
 
             match = RegExpUtility.match_end(self.config.past_regex, before_str, trim=True)
 
-            if match:
-                ret.append(Token(match.start(), duration.end))
+            if match and match.success:
+                ret.append(Token(match.index, duration.end))
                 continue
 
             match = RegExpUtility.match_end(self.config.future_regex, before_str, trim=True)
 
-            if match:
-                ret.append(Token(match.start(), duration.end))
+            if match and match.success:
+                ret.append(Token(match.index, duration.end))
 
         return ret
 
@@ -733,7 +733,7 @@ class BaseCJKDatePeriodParser(DateTimeParser):
 
         year_match_for_end_date = self.config.year_regex.match(end_date_str)
 
-        if year_match_for_end_date and year_match_for_end_date.length == len(end_date_str):
+        if year_match_for_end_date and (year_match_for_end_date.end() - year_match_for_end_date.start()) == len(end_date_str):
             is_end_date_pure_year = True
 
         relative_match_for_start_date = self.config.relative_regex.match(start_date_str)
@@ -867,8 +867,8 @@ class BaseCJKDatePeriodParser(DateTimeParser):
     def get_year_from_text(self, match: Match) -> int:
         year = Constants.INVALID_YEAR
 
-        year_str = match.get_group(Constants.YEAR_GROUP_NAME)
-        written_year_str = match.get_group(Constants.FULL_YEAR_GROUP_NAME)
+        year_str = match.group(Constants.YEAR_GROUP_NAME)
+        written_year_str = match.groupdict().get(Constants.FULL_YEAR_GROUP_NAME)
 
         if year_str and year_str != written_year_str:
             year = self.convert_cjk_to_integer(year_str)
@@ -878,7 +878,7 @@ class BaseCJKDatePeriodParser(DateTimeParser):
             elif 0 <= year < Constants.MAX_TWO_DIGIT_YEAR_FUTURE_NUM:
                 year += Constants.BASE_YEAR_CURRENT_CENTURY
         else:
-            first_two_year_num_str = match.get_group(Constants.FIRST_TWO_YEAR_NUM)
+            first_two_year_num_str = match.group(Constants.FIRST_TWO_YEAR_NUM)
 
             if first_two_year_num_str:
                 er = ExtractResult()
@@ -893,8 +893,8 @@ class BaseCJKDatePeriodParser(DateTimeParser):
 
                 if last_two_year_num_str:
                     er.text = last_two_year_num_str
-                    er.start = match.get_group(Constants.LAST_TWO_YEAR_NUM).start
-                    er.length = match.get_group(Constants.LAST_TWO_YEAR_NUM).length
+                    er.start = match.group(Constants.LAST_TWO_YEAR_NUM).start
+                    er.length = match.group(Constants.LAST_TWO_YEAR_NUM).length
 
                     last_two_year_num = self.config.number_parser.parse(er)
 
@@ -912,8 +912,8 @@ class BaseCJKDatePeriodParser(DateTimeParser):
                 if written_year_str:
                     er = ExtractResult
                     er.text = written_year_str
-                    er.start = match.get_group(Constants.FULL_YEAR_GROUP_NAME).start
-                    er.length = match.get_group(Constants.FULL_YEAR_GROUP_NAME).length
+                    er.start = match.group(Constants.FULL_YEAR_GROUP_NAME).start
+                    er.length = match.group(Constants.FULL_YEAR_GROUP_NAME).length
 
                     year = int(self.config.number_parser.parse(er).value)
 
@@ -948,13 +948,13 @@ class BaseCJKDatePeriodParser(DateTimeParser):
                                                              self.config.integer_extractor,
                                                              self.config.number_parser)
 
-        if dynasty_year > 0:
+        if dynasty_year and dynasty_year > 0:
             return dynasty_year
 
         er = self.config.integer_extractor.extract(year_cjk_str)
 
         if er and er[0].type == Num_Constants.SYS_NUM_INTEGER:
-            num = self.config.number_parser.parse(er[0])
+            num = int(self.config.number_parser.parse(er[0]).value)
 
         if num < 10:
             num = 0
@@ -995,18 +995,18 @@ class BaseCJKDatePeriodParser(DateTimeParser):
         no_year = False
         input_year = False
 
-        match = RegExpUtility.exact_match(self.config.simple_cases_regex, source, trim=True)
+        match = self.config.simple_cases_regex.search(source)
 
         if not match:
-            match = RegExpUtility.exact_match(self.config.month_day_range, source, trim=True)
+            match = self.config.month_day_range.search(source)
 
-        if match and match.success:
-            days = match.get_group(Constants.DAY_GROUP_NAME)
+        if match:
+            days = RegExpUtility.get_group_list(match, Constants.DAY_GROUP_NAME)
             begin_day = self.config.day_of_month[days[0]]
             end_day = self.config.day_of_month[days[1]]
 
-            month_str = match.get_group(Constants.MONTH_GROUP_NAME)
-            year_str = match.get_group(Constants.YEAR_GROUP_NAME)
+            month_str = match.group(Constants.MONTH_GROUP_NAME)
+            year_str = match.group(Constants.YEAR_GROUP_NAME)
 
             if year_str:
                 year = self.parse_num_year(year_str)
@@ -1018,7 +1018,7 @@ class BaseCJKDatePeriodParser(DateTimeParser):
             if month_str:
                 month = self.config.to_month_number(month_str)
             else:
-                month_str = match.get_group(Constants.REL_MONTH)
+                month_str = match.group(Constants.REL_MONTH)
                 this_match = self.config.this_regex.match(month_str)
                 next_match = self.config.next_regex.match(month_str)
 
@@ -1057,12 +1057,12 @@ class BaseCJKDatePeriodParser(DateTimeParser):
 
             return ret
 
-        future_past_begin_dates = DateUtils.generate_dates(no_year, reference, year, month, begin_day)
-        future_past_end_dates = DateUtils.generate_dates(no_year, reference, year, month, end_day)
+        future_begin_dates, past_begin_dates = DateUtils.generate_dates(no_year, reference, year, month, begin_day)
+        future_end_dates, past_end_dates = DateUtils.generate_dates(no_year, reference, year, month, end_day)
 
         ret.timex = f'({begin_luis_str},{end_luis_str},P{end_day - begin_day}D)'
-        ret.future_value = [future_past_begin_dates.future, future_past_end_dates.future]
-        ret.past_value = [future_past_begin_dates.past, future_past_end_dates.past]
+        ret.future_value = [future_begin_dates, future_end_dates]
+        ret.past_value = [past_begin_dates, past_end_dates]
         ret.success = True
 
         return ret
@@ -1082,12 +1082,12 @@ class BaseCJKDatePeriodParser(DateTimeParser):
             end_year = 0
 
             if len(year_match) == 2:
-                begin_year = self.convert_cjk_to_integer(year_match[0].get_group(Constants.YEAR_GROUP_NAME))
-                end_year = self.convert_cjk_to_integer(year_match[1].get_group(Constants.YEAR_GROUP_NAME))
+                begin_year = self.convert_cjk_to_integer(year_match[0].group(Constants.YEAR_GROUP_NAME))
+                end_year = self.convert_cjk_to_integer(year_match[1].group(Constants.YEAR_GROUP_NAME))
 
             elif len(year_in_cjk_match) == 2:
-                begin_year = self.convert_cjk_to_integer(year_in_cjk_match[0].get_group(Constants.YEAR_CJK_GROUP_NAME))
-                end_year = self.convert_cjk_to_integer(year_in_cjk_match[1].get_group(Constants.YEAR_CJK_GROUP_NAME))
+                begin_year = self.convert_cjk_to_integer(year_in_cjk_match[0].group(Constants.YEAR_CJK_GROUP_NAME))
+                end_year = self.convert_cjk_to_integer(year_in_cjk_match[1].group(Constants.YEAR_CJK_GROUP_NAME))
 
             elif len(year_in_cjk_match) == 1 and len(year_match) == 1:
 
@@ -1130,7 +1130,7 @@ class BaseCJKDatePeriodParser(DateTimeParser):
             match = self.config.month_to_month_suffix_required.match(source)
 
         if match:
-            month_match = self.config.month_regex.get_matches(source)
+            month_match = RegExpUtility.get_matches(self.config.month_regex, source)
 
             begin_month = 0
             end_month = 0
@@ -1139,11 +1139,11 @@ class BaseCJKDatePeriodParser(DateTimeParser):
                 begin_month = self.config.to_month_number(month_match[0].get_group(Constants.MONTH_GROUP_NAME))
                 end_month = self.config.to_month_number(month_match[1].get_group(Constants.MONTH_GROUP_NAME))
 
-            elif match.get_group(Constants.MONTH_FROM_GROUP_NAME) and match.get_group(Constants.MONTH_TO_GROUP_NAME):
-                begin_month = self.config.to_month_number(match.get_group(Constants.MONTH_FROM_GROUP_NAME))
-                end_month = self.config.to_month_number(match.get_group(Constants.MONTH_TO_GROUP_NAME))
+            elif match.group(Constants.MONTH_FROM_GROUP_NAME) and match.group(Constants.MONTH_TO_GROUP_NAME):
+                begin_month = self.config.to_month_number(match.group(Constants.MONTH_FROM_GROUP_NAME))
+                end_month = self.config.to_month_number(match.group(Constants.MONTH_TO_GROUP_NAME))
 
-            year_match = self.config.year_regex.get_matches(source)
+            year_match = RegExpUtility.get_matches(self.config.year_regex, source)
             has_year = False
 
             if len(year_match) > 0 and match.get_group(Constants.YEAR_GROUP_NAME):
@@ -1211,7 +1211,7 @@ class BaseCJKDatePeriodParser(DateTimeParser):
                 end_date_for_future_resolution = DateUtils.safe_create_from_min_value(end_year_for_future_resolution,
                                                                                       end_month, 1)
 
-                day_match = self.config.day_regex_for_period.get_matches(source)
+                day_match = RegExpUtility.get_matches(self.config.day_regex_for_period, source)
 
                 # handle cases like 2019年2月1日から3月まで
                 if day_match and match.get_group(Constants.DAY_GROUP_NAME):
@@ -1248,19 +1248,19 @@ class BaseCJKDatePeriodParser(DateTimeParser):
         match = self.config.day_to_day.match(source)
 
         if match:
-            day_match_match = self.config.day_regex_for_period.get_matches(source)
+            day_match_match = list(regex.finditer(self.config.day_regex_for_period, source))
 
             begin_day = end_day = 0
 
             if len(day_match_match) == 2:
-                day_from = day_match_match[0].get_group(Constants.DAY_GROUP_NAME)
-                day_to = day_match_match[1].get_group(Constants.DAY_GROUP_NAME)
+                day_from = RegExpUtility.get_group(day_match_match[0], Constants.DAY_GROUP_NAME)
+                day_to = RegExpUtility.get_group(day_match_match[1], Constants.DAY_GROUP_NAME)
 
                 begin_day = self.config.day_of_month[day_from]
                 end_day = self.config.day_of_month[day_to]
 
-            elif match.get_group(Constants.HALF_GROUP_NAME):
-                er = self.config.duration_extractor.extract(match.get_group(Constants.HALF_GROUP_NAME), reference)
+            elif match.group(Constants.HALF_GROUP_NAME):
+                er = self.config.duration_extractor.extract(match.group(Constants.HALF_GROUP_NAME), reference)
                 pr = self.config.duration_parser.parse(er[0], reference)
 
                 num = TimexUtil.parse_number_from_duration_timex(pr.timex_str)
@@ -1278,12 +1278,12 @@ class BaseCJKDatePeriodParser(DateTimeParser):
             begin_year_for_future_resolution = reference.year
             end_year_for_future_resolution = reference.year
 
-            curr_month = reference.month
             curr_day = reference.day
-            duration_months = 0
+            duration_months = duration_days = 0
 
             relative_month = self.config.relative_month_regex.match(source)
-            curr_month += self.config.get_swift_month(relative_month.value)
+            curr_month = reference + datedelta(months=self.config.get_swift_month(relative_month.value)) \
+                if relative_month else reference.month
 
             begin_month_for_past_resolution = curr_month
             end_month_for_past_resolution = curr_month
@@ -1367,7 +1367,7 @@ class BaseCJKDatePeriodParser(DateTimeParser):
                                                                      alt_end)
 
                 ret.past_value = [begin_date_for_past_resolution, end_date_for_past_resolution]
-                ret.past_value = [begin_date_for_future_resolution, end_date_for_future_resolution]
+                ret.future_value = [begin_date_for_future_resolution, end_date_for_future_resolution]
                 ret.success = True
 
         return ret
@@ -1377,10 +1377,10 @@ class BaseCJKDatePeriodParser(DateTimeParser):
         ret = DateTimeResolutionResult()
         match = RegExpUtility.exact_match(self.config.year_and_month, source, trim=True)
 
-        if not match:
-            match = RegExpUtility.exact_match(self.config.pure_num_year_and_month,source, trim=True)
+        if not match or not match.success:
+            match = RegExpUtility.exact_match(self.config.pure_num_year_and_month, source, trim=True)
 
-        if not match:
+        if not match or not match.success:
             return ret
 
         year = reference.year
@@ -1408,15 +1408,15 @@ class BaseCJKDatePeriodParser(DateTimeParser):
                 year += 1
 
         if 100 > year >= self.config.two_num_year:
-            year += Constants.BASE_YEAR_PAST_CENTURY
+            year += int(Constants.BASE_YEAR_PAST_CENTURY)
         elif year < self.config.two_num_year:
-            year += Constants.BASE_YEAR_CURRENT_CENTURY
+            year += int(Constants.BASE_YEAR_CURRENT_CENTURY)
 
         month_str = match.get_group(Constants.MONTH_GROUP_NAME)
 
         if month_str:
             month = self.config.to_month_number(month_str)
-        elif RegExpUtility.exact_match(self.config.wom_last_regex, cardinal_str, trim=True):
+        elif RegExpUtility.exact_match(self.config.wom_last_regex, cardinal_str, trim=True).success:
             month = 12
         else:
             month = self.config.cardinal_map[cardinal_str]
@@ -1447,19 +1447,19 @@ class BaseCJKDatePeriodParser(DateTimeParser):
 
         # For cases "that week|month|year"
         if not match:
-            match = RegExpUtility.exact_match(self.config.reference_date_period_regex,trimmed_source, trim=True)
+            match = RegExpUtility.exact_match(self.config.reference_date_period_regex, trimmed_source, trim=True)
 
-            if match:
+            if match and match.success:
                 is_reference_date_period = True
                 ret.mod = TimeTypeConstants.REF_UNDEF_MOD
 
         if not match:
             match = RegExpUtility.exact_match(self.config.later_early_period_regex, trimmed_source, trim=True)
 
-            if match:
+            if match and match.success:
                 self.parse_later_early_period(source, reference)
 
-        if match:
+        if match and match.success:
             month_str = match.get_group(Constants.MONTH_GROUP_NAME)
 
             if self.config.is_this_year(trimmed_source):
@@ -1541,9 +1541,10 @@ class BaseCJKDatePeriodParser(DateTimeParser):
                     begin_date = DateUtils.this(reference, DayOfWeek.SATURDAY) + datedelta(days=7 * swift)
                     end_date = DateUtils.this(reference, DayOfWeek.SUNDAY) + datedelta(days=7 * swift)
 
-                    match = RegExpUtility.exact_match(self.config.reference_date_period_regex, trimmed_source, trim=True)
+                    match = RegExpUtility.exact_match(self.config.reference_date_period_regex, trimmed_source,
+                                                      trim=True)
 
-                    if match:
+                    if match and match.success:
                         is_reference_date_period = True
                         ret.mod = TimeTypeConstants.REF_UNDEF_MOD
 
@@ -1554,8 +1555,8 @@ class BaseCJKDatePeriodParser(DateTimeParser):
                     return ret
 
                 if self.config.is_month_only(trimmed_source):
-                    month = reference.month + datedelta(months=swift)
-                    year = reference.year + datedelta(years=swift)
+                    month = int(reference.month + swift)
+                    year = int(reference.year + swift)
                     ret.timex = DateTimeFormatUtil.luis_date(year, month, reference.day)
                     ret.timex = TimexUtil.generate_month_timex() if is_reference_date_period else \
                         DateTimeFormatUtil.luis_date(year, month, 1)
@@ -1613,7 +1614,7 @@ class BaseCJKDatePeriodParser(DateTimeParser):
 
         match = RegExpUtility.exact_match(self.config.later_early_period_regex, trimmed_source, trim=True)
 
-        if match:
+        if match and match.success:
             if match.get_group(Constants.EARLY_PREFIX):
                 early_prefix = True
                 trimmed_source = str(match.get_group(Constants.SUFFIX_GROUP_NAME))
@@ -1909,11 +1910,11 @@ class BaseCJKDatePeriodParser(DateTimeParser):
         ret = DateTimeResolutionResult()
         match = RegExpUtility.exact_match(self.config.year_regex, source, trim=True)
 
-        if match:
+        if match and match.success:
             year_str = match.value
 
             # Handle like "2016年上半年"，"2017年下半年"
-            year_str = self.handle_with_half_year(match, year_str)
+            year_str = self.handle_with_half_year(match, year_str)[0]
 
             # Trim() to handle extra whitespaces like '07 年'
             if self.config.is_year_only(year_str):
@@ -1925,11 +1926,11 @@ class BaseCJKDatePeriodParser(DateTimeParser):
 
         match = RegExpUtility.exact_match(self.config.year_in_cjk_regex, source, trim=True)
 
-        if match:
+        if match and match.success:
             year_str = match.value
 
             # Handle like "二零一七年上半年"，"二零一七年下半年"
-            year_str = self.handle_with_half_year(match, year_str)
+            year_str = self.handle_with_half_year(match, year_str)[0]
 
             if self.config.is_year_only(year_str):
                 year_str = year_str[:len(year_str) - 1]
@@ -2005,7 +2006,7 @@ class BaseCJKDatePeriodParser(DateTimeParser):
             match = self.config.week_with_week_day_range_regex.match(source)
 
             if match:
-                week_prefix = str(match.get_group(Constants.WEEK_GROUP_NAME).value)
+                week_prefix = str(match.group(Constants.WEEK_GROUP_NAME).value)
 
                 # Check if weekPrefix is already included in the extractions otherwise include it
                 if week_prefix:
@@ -2069,26 +2070,27 @@ class BaseCJKDatePeriodParser(DateTimeParser):
         match = self.config.number_combined_with_unit.match(source)
 
         if match:
-            src_unit = match.get_group(Constants.UNIT_GROUP_NAME)
+            src_unit = match.group(Constants.UNIT_GROUP_NAME)
 
-            before_str = source[:match.index]
+            before_str = source[:match.start()]
 
             if src_unit in self.config.unit_map:
                 unit_str = self.config.unit_map[src_unit]
-                num_str = match.get_group(Constants.NUM)
+                num_str = match.group(Constants.NUM)
+                num_int = int(num_str)
 
-                if RegExpUtility.exact_match(self.config.past_regex, before_str, trim=True):
+                if RegExpUtility.exact_match(self.config.past_regex, before_str, trim=True).success:
                     if unit_str == Constants.TIMEX_DAY:
-                        begin_date = reference - datedelta(days=num_str)
+                        begin_date = reference - datedelta(days=num_int)
                         end_date = reference
                     elif unit_str == Constants.TIMEX_WEEK:
-                        begin_date = reference - datedelta(days=7 * num_str)
+                        begin_date = reference - datedelta(days=7 * num_int)
                         end_date = reference
                     elif unit_str == Constants.TIMEX_MONTH_FULL:
-                        begin_date = reference - datedelta(months=num_str)
+                        begin_date = reference - datedelta(months=num_int)
                         end_date = reference
                     elif unit_str == Constants.TIMEX_YEAR:
-                        begin_date = reference - datedelta(years=num_str)
+                        begin_date = reference - datedelta(years=num_int)
                         end_date = reference
                     else:
                         return ret
@@ -2100,19 +2102,19 @@ class BaseCJKDatePeriodParser(DateTimeParser):
                     ret.success = True
                     return ret
 
-                if RegExpUtility.exact_match(self.config.future_regex, before_str, trim=True):
+                if RegExpUtility.exact_match(self.config.future_regex, before_str, trim=True).success:
                     if unit_str == Constants.TIMEX_DAY:
                         begin_date = reference
-                        end_date = reference + datedelta(days=num_str)
+                        end_date = reference + datedelta(days=num_int)
                     elif unit_str == Constants.TIMEX_WEEK:
                         begin_date = reference
-                        end_date = reference + datedelta(days=7 * num_str)
+                        end_date = reference + datedelta(days=7 * num_int)
                     elif unit_str == Constants.TIMEX_MONTH_FULL:
                         begin_date = reference
-                        end_date = reference + datedelta(months=num_str)
+                        end_date = reference + datedelta(months=num_int)
                     elif unit_str == Constants.TIMEX_YEAR:
                         begin_date = reference
-                        end_date = reference + datedelta(years=num_str)
+                        end_date = reference + datedelta(years=num_int)
                     else:
                         return ret
 
@@ -2144,7 +2146,7 @@ class BaseCJKDatePeriodParser(DateTimeParser):
             before_str = source[:duration_res[0].start]
             after_str = source[duration_res[0].start + duration_res[0].length]
 
-            matches = self.config.unit_regex.get_matches(duration_res[0].text)
+            matches = RegExpUtility.get_matches(self.config.unit_regex, duration_res[0].text)
             match_business_days = RegExpUtility.exact_match(self.config.duration_unit_regex, source, trim=True)
 
             # handle duration cases like "5 years 1 month 21 days" and "multiple business days"
@@ -2172,7 +2174,8 @@ class BaseCJKDatePeriodParser(DateTimeParser):
 
                     if self.config.unit_regex.match(src_unit).groups(Constants.UNIT_OF_YEAR_GROUP_NAME):
                         #  Patterns like 'first 2 weeks of 2018' are considered only if the unit is compatible
-                        prefix_match = RegExpUtility.exact_match(self.config.first_last_of_year_regex, before_str, trim=True)
+                        prefix_match = RegExpUtility.exact_match(self.config.first_last_of_year_regex, before_str,
+                                                                 trim=True)
 
                     is_of_year_match = prefix_match.success
                     is_past_match = prefix_match.groups(Constants.LAST_GROUP_NAME)
@@ -2190,7 +2193,7 @@ class BaseCJKDatePeriodParser(DateTimeParser):
                         prefix_match = RegExpUtility.exact_match(self.config.future_regex, after_str, trim=True)
                         is_future = prefix_match.success
 
-                    if is_future and not RegExpUtility.exact_match(self.config.future_regex, after_str, trim=True).\
+                    if is_future and not RegExpUtility.exact_match(self.config.future_regex, after_str, trim=True). \
                             get_groups(Constants.WITHIN_GROUP_NAME):
                         # for the "within" case it should start from the current day
                         begin_date = begin_date + datedelta(days=1)
@@ -2305,7 +2308,7 @@ class BaseCJKDatePeriodParser(DateTimeParser):
                     # In GetModAndDate, this "future" resolution will add one day to beginDate/endDate,
                     # but for the "within" case it should start from the current day.
 
-                    if RegExpUtility.exact_match(self.config.future_regex, after_str, trim=True).\
+                    if RegExpUtility.exact_match(self.config.future_regex, after_str, trim=True). \
                             get_group(Constants.WITHIN_GROUP_NAME):
                         begin_date = begin_date - datedelta(days=1)
                         end_date = end_date - datedelta(days=1)
@@ -2412,7 +2415,7 @@ class BaseCJKDatePeriodParser(DateTimeParser):
         ret = DateTimeResolutionResult()
         match = RegExpUtility.exact_match(self.config.which_week_regex, source, trim=True)
 
-        if match:
+        if match and match.success:
             num = int(match.get_group(Constants.NUMBER))
             if num == 0:
                 return ret
@@ -2433,7 +2436,7 @@ class BaseCJKDatePeriodParser(DateTimeParser):
             ret.past_value = [value, value + datedelta(days=7)]
             ret.success = True
 
-            return ret
+        return ret
 
     def get_week_of_month(self, cardinal_str: str, month: int, year: int, reference: datetime, no_year: bool) \
             -> DateTimeResolutionResult:
@@ -2470,7 +2473,7 @@ class BaseCJKDatePeriodParser(DateTimeParser):
 
     def get_monday_of_target_week(self, cardinal_str: str, month: int, year: int) -> datetime:
 
-        if RegExpUtility.exact_match(self.config.wom_last_regex, cardinal_str, trim=True):
+        if RegExpUtility.exact_match(self.config.wom_last_regex, cardinal_str, trim=True).success:
             last_thursday = DateUtils.get_last_thursday(year, month)
             result = DateUtils.this(last_thursday, DayOfWeek.MONDAY)
         else:
@@ -2488,7 +2491,7 @@ class BaseCJKDatePeriodParser(DateTimeParser):
         #  Sometimes it can also be "4th week of month" depends on specific year and month
         #  But as we only have one Timex, we use "5" to indicate it's the "last week"
 
-        if RegExpUtility.exact_match(self.config.wom_last_regex, cardinal_str, trim=True):
+        if RegExpUtility.exact_match(self.config.wom_last_regex, cardinal_str, trim=True).success:
             cardinal = 5
         else:
             cardinal = self.config.cardinal_map[cardinal_str]
@@ -2517,7 +2520,7 @@ class BaseCJKDatePeriodParser(DateTimeParser):
 
             year = reference.year + datedelta(years=swift)
 
-        if RegExpUtility.exact_match(self.config.wom_last_regex, cardinal_str, trim=True):
+        if RegExpUtility.exact_match(self.config.wom_last_regex, cardinal_str, trim=True).success:
             target_week_monday = DateUtils.this(DateUtils.get_last_thursday(year), DayOfWeek.MONDAY)
             ret.timex = TimexUtil.generate_week_timex(target_week_monday)
         else:
@@ -2543,14 +2546,14 @@ class BaseCJKDatePeriodParser(DateTimeParser):
         ret = DateTimeResolutionResult()
         match = RegExpUtility.exact_match(self.config.season_with_year, source, trim=True)
 
-        if match:
+        if match and match.success:
 
             # parse year
             year = reference.year
             has_year = False
-            year_num = match.get_group(Constants.YEAR_GROUP_NAME).value
-            year_cjk = match.get_group(Constants.YEAR_CJK_GROUP_NAME).value
-            year_rel = match.get_group(Constants.YEAR_RELATIVE).value
+            year_num = match.get_group(Constants.YEAR_GROUP_NAME)
+            year_cjk = match.get_group(Constants.YEAR_CJK_GROUP_NAME)
+            year_rel = match.get_group(Constants.YEAR_RELATIVE)
 
             if year_num:
                 has_year = True
@@ -2616,14 +2619,14 @@ class BaseCJKDatePeriodParser(DateTimeParser):
         ret = DateTimeResolutionResult()
         match = RegExpUtility.exact_match(self.config.quarter_regex, source, trim=True)
 
-        if not match:
+        if not match or not match.success:
             return ret
 
         # parse year
         year = reference.year
-        year_num = match.get_group(Constants.YEAR_GROUP_NAME).value
-        year_cjk = match.get_group(Constants.YEAR_CJK_GROUP_NAME).value
-        year_rel = match.get_group(Constants.YEAR_RELATIVE).value
+        year_num = match.get_group(Constants.YEAR_GROUP_NAME)
+        year_cjk = match.get_group(Constants.YEAR_CJK_GROUP_NAME)
+        year_rel = match.get_group(Constants.YEAR_RELATIVE)
 
         if year_num:
             if self.config.is_year_only(year_num):
@@ -2679,13 +2682,13 @@ class BaseCJKDatePeriodParser(DateTimeParser):
     def parse_decade(self, source: str, reference: datetime) -> DateTimeResolutionResult:
         ret = DateTimeResolutionResult()
 
-        century = (reference.year / 100) + 1
+        century = int((reference.year / 100) + 1)
         decade_last_year = 10
         input_century = False
 
         match = RegExpUtility.exact_match(self.config.decade_regex, source, trim=True)
 
-        if match:
+        if match and match.success:
             decade_str = match.get_group(Constants.DECADE)
             decade = int(decade_str)
 
@@ -2753,7 +2756,7 @@ class BaseCJKDatePeriodParser(DateTimeParser):
 
         match = RegExpUtility.exact_match(self.config.century_regex, source, trim=True)
 
-        if match:
+        if match and match.success:
             century_str = match.get_group(Constants.CENTURY)
 
             if century_str:
@@ -2834,7 +2837,7 @@ class BaseCJKDatePeriodParser(DateTimeParser):
         ret = DateTimeResolutionResult()
         match = self.config.complex_date_period_regex.match(source)
 
-        if match:
+        if match and match.success:
             future_begin = DateUtils.min_value()
             future_end = DateUtils.min_value()
             past_begin = DateUtils.min_value()

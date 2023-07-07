@@ -6,7 +6,7 @@ from typing import List, Pattern, Dict
 from recognizers_text import Extractor, Parser, RegExpUtility
 from recognizers_number import JapaneseNumberExtractor, JapaneseNumberParserConfiguration, BaseNumberParser, \
     JapaneseCardinalExtractor, JapaneseOrdinalExtractor
-from . import JapaneseDateExtractorConfiguration
+from .date_extractor_config import JapaneseDateExtractorConfiguration
 from ..CJK.base_date import BaseCJKDateExtractor
 from ..CJK.base_dateperiod import CJKDatePeriodExtractorConfiguration
 from ...resources.base_date_time import BaseDateTime
