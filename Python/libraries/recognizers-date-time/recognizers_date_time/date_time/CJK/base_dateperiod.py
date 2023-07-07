@@ -1001,7 +1001,7 @@ class BaseCJKDatePeriodParser(DateTimeParser):
             match = self.config.month_day_range.search(source)
 
         if match:
-            days = RegExpUtility.get_group_list(match, Constants.DAY_GROUP_NAME)
+            days = match.captures(Constants.DAY_GROUP_NAME)
             begin_day = self.config.day_of_month[days[0]]
             end_day = self.config.day_of_month[days[1]]
 

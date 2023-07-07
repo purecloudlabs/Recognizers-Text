@@ -21,7 +21,7 @@ class UnspecificDateTimeTerms(IntEnum):
     NONE = 0,
     NonSpecificYear = 1
     NonSpecificMonth = 2
-    NonSpecificDay =  3
+    NonSpecificDay = 3
 
 
 class TimexUtil:
@@ -94,20 +94,20 @@ class TimexUtil:
         return result
 
     @staticmethod
-    def generate_date_period_timex_unit_count(begin, end, timex_type, equal_duration_length=True):
+    def generate_date_period_timex_unit_count(begin, end, timex_type, equal_duration_length=True) -> str:
         unit_count = 'XX'
 
         if equal_duration_length:
             if timex_type == 0:
-                unit_count = (end - begin).days
+                unit_count = int((end - begin).days)
 
             if timex_type == 1:
-                unit_count = (end - begin).days / 7
+                unit_count = int((end - begin).days / 7)
             if timex_type == 2:
-                unit_count = ((end.year - begin.year) * 12) + (end.month - begin.month)
+                unit_count = int(((end.year - begin.year) * 12) + (end.month - begin.month))
             if timex_type == 3:
-                unit_count = (end.year - begin.year) + ((end.mont - begin.month) / 12.0)
-        return unit_count
+                unit_count = int((end.year - begin.year) + ((end.month - begin.month) / 12.0))
+        return str(unit_count)
 
     @staticmethod
     def generate_date_period_timex_str(begin, end, timex_type, timex1, timex2):
@@ -155,7 +155,6 @@ class TimexUtil:
             return f'({DateTimeFormatUtil.luis_date(begin_year, begin_month, begin_day)},' \
                    f'{DateTimeFormatUtil.luis_date(end_year, end_month, end_day)},{date_period_timex})'
 
-
         alternative = False
         if alternative_begin is None and alternative_end is None:
             alternative_begin = datetime.now()
@@ -164,7 +163,8 @@ class TimexUtil:
             alternative = True
 
         equal_duration_length = (end - begin).days == (alternative_end - alternative_begin).days or \
-                                datetime.now() == alternative_end == alternative_begin
+                                alternative == False
+
         unit_count = TimexUtil.generate_date_period_timex_unit_count(begin, end, timex_type, equal_duration_length)
         date_period_timex = f'P{unit_count}{date_period_timex_type_to_suffix[timex_type]}'
 
