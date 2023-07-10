@@ -3,65 +3,33 @@
 
 from typing import Pattern, Dict
 
-from recognizers_number import JapaneseIntegerExtractor, CJKNumberParser, JapaneseNumberParserConfiguration, \
-    JapaneseCardinalExtractor
+from recognizers_number import JapaneseIntegerExtractor, CJKNumberParser
 from recognizers_text import RegExpUtility
-from ..CJK.base_date import BaseCJKDateExtractor, BaseCJKDateParser, CJKDateParserConfiguration
-from .date_extractor_config import JapaneseDateExtractorConfiguration
-from .date_parser_config import JapaneseDateParserConfiguration
-from ..CJK.base_dateperiod import CJKDatePeriodParserConfiguration
-from ...resources.japanese_date_time import JapaneseDateTime
+from recognizers_date_time.date_time.CJK.base_date import BaseCJKDateExtractor, BaseCJKDateParser
+from recognizers_date_time.date_time.japanese.date_extractor_config import JapaneseDateExtractorConfiguration
+from recognizers_date_time.date_time.CJK.base_dateperiod import CJKDatePeriodParserConfiguration
+from recognizers_date_time.date_time.japanese.dateperiod_extractor_config import \
+    JapaneseDatePeriodExtractorConfiguration
+from recognizers_date_time.resources.japanese_date_time import JapaneseDateTime
 
 
 class JapaneseDatePeriodParserConfiguration(CJKDatePeriodParserConfiguration):
 
     @property
-    def integer_extractor(self) -> JapaneseIntegerExtractor:
-        return self._integer_extractor
+    def wom_last_regex(self) -> Pattern:
+        return self._wom_last_regex
 
     @property
-    def number_parser(self) -> CJKNumberParser:
-        return self._number_parser
+    def wom_previous_regex(self) -> Pattern:
+        return self._wom_previous_regex
 
     @property
-    def date_extractor(self) -> BaseCJKDateExtractor:
-        return self._date_extractor
+    def wom_next_regex(self) -> Pattern:
+        return self._wom_next_regex
 
     @property
-    def cardinal_extractor(self) -> JapaneseCardinalExtractor:
-        return self._cardinal_extractor
-
-    @property
-    def date_parser(self) -> BaseCJKDateParser:
-        return self._date_parser
-
-    @property
-    def dynasty_year_regex(self) -> Pattern:
-        return self._dynasty_year_regex
-
-    @property
-    def dynasty_start_year(self) -> Pattern:
-        return self._dynasty_start_year
-
-    @property
-    def dynasty_year_map(self) -> Dict[str, int]:
-        return self._dynasty_year_map
-
-    @property
-    def simple_cases_regex(self) -> Pattern:
-        return self._simple_cases_regex
-
-    @property
-    def this_regex(self) -> Pattern:
-        return self._this_regex
-
-    @property
-    def next_regex(self) -> Pattern:
-        return self._next_regex
-
-    @property
-    def last_regex(self) -> Pattern:
-        return self._last_regex
+    def month_of_year(self) -> Dict[str, int]:
+        return self._month_of_year
 
     @property
     def next_month_regex(self) -> Pattern:
@@ -92,6 +60,82 @@ class JapaneseDatePeriodParserConfiguration(CJKDatePeriodParserConfiguration):
         return self._this_year_regex
 
     @property
+    def date_extractor(self) -> BaseCJKDateExtractor:
+        return self._date_extractor
+
+    @property
+    def duration_extractor(self):
+        return self._duration_extractor
+
+    @property
+    def cardinal_extractor(self):
+        return self._cardinal_extractor
+
+    @property
+    def duration_parser(self):
+        raise self._duration_parser
+
+    @property
+    def date_parser(self) -> BaseCJKDateParser:
+        return self._date_parser
+
+    @property
+    def integer_extractor(self) -> JapaneseIntegerExtractor:
+        return self._integer_extractor
+
+    @property
+    def number_parser(self) -> CJKNumberParser:
+        return self._number_parser
+
+    @property
+    def dynasty_year_map(self) -> Dict[str, int]:
+        return self._dynasty_year_map
+
+    @property
+    def unit_map(self) -> Dict[str, int]:
+        return self._unit_map
+
+    @property
+    def cardinal_map(self) -> Dict[str, int]:
+        return self._cardinal_map
+
+    @property
+    def day_of_month(self) -> Dict[str, int]:
+        return self._day_of_month
+
+    @property
+    def season_map(self) -> Dict[str, int]:
+        return self._season_map
+
+    @property
+    def dynasty_start_year(self) -> Pattern:
+        return self._dynasty_start_year
+
+    @property
+    def token_before_date(self) -> str:
+        return self._token_before_date
+
+    @property
+    def dynasty_year_regex(self) -> Pattern:
+        return self._dynasty_year_regex
+
+    @property
+    def simple_cases_regex(self) -> Pattern:
+        return self._simple_cases_regex
+
+    @property
+    def this_regex(self) -> Pattern:
+        return self._this_regex
+
+    @property
+    def next_regex(self) -> Pattern:
+        return self._next_regex
+
+    @property
+    def last_regex(self) -> Pattern:
+        return self._last_regex
+
+    @property
     def year_to_year(self) -> Pattern:
         return self._year_to_year
 
@@ -102,126 +146,6 @@ class JapaneseDatePeriodParserConfiguration(CJKDatePeriodParserConfiguration):
     @property
     def year_regex(self) -> Pattern:
         return self._year_regex
-
-    @property
-    def year_in_cjk_regex(self) -> Pattern:
-        return self._year_in_cjk_regex
-
-    @property
-    def month_to_month(self) -> Pattern:
-        return self._month_to_month
-
-    @property
-    def month_to_month_suffix_required(self) -> Pattern:
-        return self._month_to_month_suffix_required
-
-    @property
-    def day_to_day(self) -> Pattern:
-        return self._day_to_day
-
-    @property
-    def month_day_range(self) -> Pattern:
-        return self._month_day_range
-
-    @property
-    def day_regex_for_period(self) -> Pattern:
-        return self._day_regex_for_period
-
-    @property
-    def month_regex(self) -> Pattern:
-        return self._month_regex
-
-    @property
-    def special_month_regex(self) -> Pattern:
-        return self._special_month_regex
-
-    @property
-    def special_year_regex(self) -> Pattern:
-        return self._special_year_regex
-
-    @property
-    def year_and_month(self) -> Pattern:
-        return self._year_and_month
-
-    @property
-    def pure_num_year_and_month(self) -> Pattern:
-        return self._pure_num_year_and_month
-
-    @property
-    def simple_year_and_month(self) -> Pattern:
-        return self._simple_year_and_month
-
-    @property
-    def one_word_period_regex(self) -> Pattern:
-        return self._one_word_period_regex
-
-    @property
-    def number_combined_with_unit(self) -> Pattern:
-        return self._number_combined_with_unit
-
-    @property
-    def past_regex(self) -> Pattern:
-        return self._past_regex
-
-    @property
-    def future_regex(self) -> Pattern:
-        return self._future_regex
-
-    @property
-    def week_with_week_day_range_regex(self) -> Pattern:
-        return self._week_with_week_day_range_regex
-
-    @property
-    def unit_regex(self) -> Pattern:
-        return self._unit_regex
-
-    @property
-    def duration_unit_regex(self) -> Pattern:
-        return self._duration_unit_regex
-
-    @property
-    def week_of_year_regex(self) -> Pattern:
-        return self._week_of_year_regex
-
-    @property
-    def week_of_month_regex(self) -> Pattern:
-        return self._week_of_month_regex
-
-    @property
-    def week_of_date_regex(self) -> Pattern:
-        return self._week_of_date_regex
-
-    @property
-    def month_of_date_regex(self) -> Pattern:
-        return self._month_of_date_regex
-
-    @property
-    def which_week_regex(self) -> Pattern:
-        return self._which_week_regex
-
-    @property
-    def first_last_of_year_regex(self) -> Pattern:
-        return self._first_last_of_year_regex
-
-    @property
-    def season_regex(self) -> Pattern:
-        return self._season_regex
-
-    @property
-    def season_with_year(self) -> Pattern:
-        return self._season_with_year
-
-    @property
-    def quarter_regex(self) -> Pattern:
-        return self._quarter_regex
-
-    @property
-    def decade_regex(self) -> Pattern:
-        return self._decade_regex
-
-    @property
-    def century_regex(self) -> Pattern:
-        return self._century_regex
 
     @property
     def relative_regex(self) -> Pattern:
@@ -252,141 +176,198 @@ class JapaneseDatePeriodParserConfiguration(CJKDatePeriodParserConfiguration):
         return self._duration_relative_duration_unit_regex
 
     @property
-    def unit_map(self) -> Dict[str, int]:
-        return self._unit_map
+    def year_in_cjk_regex(self) -> Pattern:
+        return self._year_in_cjk_regex
 
     @property
-    def cardinal_map(self) -> Dict[str, int]:
-        return self._cardinal_map
+    def month_to_month(self) -> Pattern:
+        return self._month_to_month
 
     @property
-    def day_of_month(self) -> Dict[str, int]:
-        return self._day_of_month
+    def month_to_month_suffix_required(self) -> Pattern:
+        return self._month_to_month_suffix_required
 
     @property
-    def season_map(self) -> Dict[str, int]:
-        return self._season_map
+    def month_regex(self) -> Pattern:
+        return self._month_regex
 
     @property
-    def ago_regex(self) -> Pattern:
-        return self._ago_regex
+    def year_and_month(self) -> Pattern:
+        return self._year_and_month
 
     @property
-    def all_half_year_regex(self) -> Pattern:
-        return self._all_half_year_regex
+    def pure_num_year_and_month(self) -> Pattern:
+        return self._pure_num_year_and_month
 
     @property
-    def between_regex(self) -> Pattern:
-        return self._between_regex
+    def one_word_period_regex(self) -> Pattern:
+        return self._one_word_period_regex
 
     @property
-    def check_both_before_after(self) -> Pattern:
-        return self._check_both_before_after
+    def number_combined_with_unit(self) -> Pattern:
+        return self._number_combined_with_unit
 
     @property
-    def complex_dateperiod_regex(self) -> Pattern:
-        return self._complex_dateperiod_regex
+    def past_regex(self) -> Pattern:
+        return self._past_regex
 
     @property
-    def decade_with_century_regex(self) -> Pattern:
-        return self._decade_with_century_regex
+    def future_regex(self) -> Pattern:
+        return self._future_regex
 
     @property
-    def duration_extractor(self):
-        return self._duration_extractor
+    def week_with_week_day_range_regex(self) -> Pattern:
+        return self._week_with_week_day_range_regex
 
     @property
-    def duration_parser(self):
-        raise NotImplementedError
+    def unit_regex(self) -> Pattern:
+        return self._unit_regex
 
     @property
-    def later_regex(self) -> Pattern:
-        return self._later_regex
+    def duration_unit_regex(self) -> Pattern:
+        return self._duration_unit_regex
 
     @property
-    def in_connector_regex(self) -> Pattern:
-        return self._in_connector_regex
+    def week_of_month_regex(self) -> Pattern:
+        return self._week_of_month_regex
 
     @property
-    def less_than_regex(self) -> Pattern:
-        return self._less_than_regex
+    def week_of_year_regex(self) -> Pattern:
+        return self._week_of_year_regex
 
     @property
-    def month_front_between_regex(self) -> Pattern:
-        return self._month_front_between_regex
+    def week_of_date_regex(self) -> Pattern:
+        return self._week_of_date_regex
 
     @property
-    def month_front_simple_cases_regex(self) -> Pattern:
-        return self._month_front_simple_cases_regex
+    def month_of_date_regex(self) -> Pattern:
+        return self._month_of_date_regex
 
     @property
-    def month_num_with_year(self) -> Pattern:
-        return self._month_num_with_year
+    def which_week_regex(self) -> Pattern:
+        return self._which_week_regex
 
     @property
-    def month_of_regex(self) -> Pattern:
-        return self._month_of_regex
+    def first_last_of_year_regex(self) -> Pattern:
+        return self._first_last_of_year_regex
 
     @property
-    def month_of_year(self) -> Pattern:
-        return self._month_of_year
+    def season_with_year(self) -> Pattern:
+        return self._season_with_year
 
     @property
-    def month_with_year(self) -> Pattern:
-        return self._month_with_year
+    def quarter_regex(self) -> Pattern:
+        return self._quarter_regex
 
     @property
-    def now_regex(self) -> Pattern:
-        return self._now_regex
+    def decade_regex(self) -> Pattern:
+        return self._decade_regex
 
     @property
-    def quarter_regex_year_front(self) -> Pattern:
-        return self._quarter_regex_year_front
+    def century_regex(self) -> Pattern:
+        return self._century_regex
 
     @property
-    def rest_of_date_regex(self) -> Pattern:
-        return self._rest_of_date_regex
+    def day_to_day(self) -> Pattern:
+        return self._day_to_day
 
     @property
-    def token_before_date(self):
-        return self._token_before_date
+    def month_day_range(self) -> Pattern:
+        return self._month_day_range
 
     @property
-    def unspecific_end_of_range_regex(self) -> Pattern:
-        return self._unspecific_end_of_range_regex
+    def day_regex_for_period(self) -> Pattern:
+        return self._day_regex_for_period
 
     @property
-    def week_of_regex(self) -> Pattern:
-        return self._week_of_regex
+    def simple_year_and_month(self) -> Pattern:
+        return self._simple_year_and_month
 
     @property
-    def time_of_day(self) -> Pattern:
-        return self._time_of_day
+    def special_month_regex(self) -> Pattern:
+        return self._special_month_regex
+
+    @property
+    def special_year_regex(self) -> Pattern:
+        return self._special_year_regex
 
     @property
     def two_num_year(self) -> int:
         return self._two_num_year
 
-    def __init__(self, config: CJKDateParserConfiguration):
-        super().__init__()
-        self._integer_extractor = JapaneseIntegerExtractor()
-        self._number_parser = CJKNumberParser(JapaneseNumberParserConfiguration())
-        self._date_extractor = BaseCJKDateExtractor(JapaneseDateExtractorConfiguration())
-        self._cardinal_extractor = JapaneseCardinalExtractor()
-        self._date_parser = BaseCJKDateParser(JapaneseDateParserConfiguration(config))
+    @property
+    def date_point_with_ago_and_later(self) -> Pattern:
+        return self.date_period_with_ago_and_later
 
-        self._dynasty_year_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.DynastyYearRegex)
-        self._dynasty_start_year = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.DynastyStartYear)
-        self._dynasty_year_map = JapaneseDateTime.DynastyYearMap
-        self._simple_cases_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.SimpleCasesRegex)
-        self._this_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.DateThisRegex)
-        self._next_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.DateNextRegex)
+    def __init__(self, config):
+        super().__init__()
+        self._integer_extractor = config.integer_extractor
+        self._number_parser = config.number_parser
+        self._date_extractor = config.date_extractor
+        self._duration = config.duration_extractor
+        self._cardinal_extractor = config.cardinal_extractor
+        self._date_parser = config.date_parser
+
+        self._dynasty_year_regex = JapaneseDateExtractorConfiguration().dynasty_year_regex
+        self._dynasty_start_year = JapaneseDateExtractorConfiguration().dynasty_start_year_regex
+        self._dynasty_year_map = JapaneseDateExtractorConfiguration().dynasty_year_map
+        self._simple_cases_regex = JapaneseDatePeriodExtractorConfiguration().simple_cases_regex
+        self._this_regex = JapaneseDatePeriodExtractorConfiguration().this_regex
+        self._next_regex = JapaneseDatePeriodExtractorConfiguration().next_regex
+        self._last_regex = JapaneseDatePeriodExtractorConfiguration().last_regex
+
+        self._year_to_year = JapaneseDatePeriodExtractorConfiguration().year_to_year
+        self._year_to_year_suffix_required = JapaneseDatePeriodExtractorConfiguration().year_to_year_suffix_required
+        self._year_regex = JapaneseDatePeriodExtractorConfiguration().year_regex
+        self._year_in_cjk_regex = JapaneseDatePeriodExtractorConfiguration().year_in_cjk_regex
+        self._month_to_month = JapaneseDatePeriodExtractorConfiguration().month_to_month
+        self._month_to_month_suffix_required = JapaneseDatePeriodExtractorConfiguration().month_to_month_suffix_required
+        self._day_to_day = JapaneseDatePeriodExtractorConfiguration().day_to_day
+        self._month_day_range = JapaneseDatePeriodExtractorConfiguration().month_day_range
+        self._day_regex_for_period = JapaneseDatePeriodExtractorConfiguration().day_regex_for_period
+        self._month_regex = JapaneseDatePeriodExtractorConfiguration().month_regex
+        self._special_month_regex = JapaneseDatePeriodExtractorConfiguration().special_month_regex
+        self._special_year_regex = JapaneseDatePeriodExtractorConfiguration().special_year_regex
+        self._year_and_month = JapaneseDatePeriodExtractorConfiguration().year_and_month
+        self._pure_num_year_and_month = JapaneseDatePeriodExtractorConfiguration().pure_num_year_and_month
+        self._simple_year_and_month = JapaneseDatePeriodExtractorConfiguration().simple_year_and_month
+        self._one_word_period_regex = JapaneseDatePeriodExtractorConfiguration().one_word_period_regex
+        self._number_combined_with_unit = JapaneseDatePeriodExtractorConfiguration().number_combined_with_unit
+        self._past_regex = JapaneseDatePeriodExtractorConfiguration().past_regex
+        self._future_regex = JapaneseDatePeriodExtractorConfiguration().future_regex
+        self._week_with_week_day_range_regex = JapaneseDatePeriodExtractorConfiguration().week_with_weekday_range_regex
+        self._unit_regex = JapaneseDatePeriodExtractorConfiguration().unit_regex
+        self._duration_unit_regex = JapaneseDatePeriodExtractorConfiguration().duration_unit_regex
+        self._week_of_month_regex = JapaneseDatePeriodExtractorConfiguration().week_of_month_regex
+        self._week_of_year_regex = JapaneseDatePeriodExtractorConfiguration().week_of_year_regex
+        self._week_of_date_regex = JapaneseDatePeriodExtractorConfiguration().week_of_date_regex
+        self._month_of_date_regex = JapaneseDatePeriodExtractorConfiguration().month_of_date_regex
+        self._which_week_regex = JapaneseDatePeriodExtractorConfiguration().which_week_regex
+        self._first_last_of_year_regex = JapaneseDatePeriodExtractorConfiguration().first_last_of_year_regex
+        self._season_with_year = JapaneseDatePeriodExtractorConfiguration().season_with_year_regex
+        self._quarter_regex = JapaneseDatePeriodExtractorConfiguration().quarter_regex
+        self._decade_regex = JapaneseDatePeriodExtractorConfiguration().decade_regex
+        self._century_regex = JapaneseDatePeriodExtractorConfiguration().century_regex
+        self._relative_regex = JapaneseDateExtractorConfiguration().relative_regex
+        self._relative_month_regex = JapaneseDateExtractorConfiguration().relative_month_regex
+        self._later_early_period_regex = JapaneseDatePeriodExtractorConfiguration().later_early_period_regex
+        self._date_period_with_ago_and_later = JapaneseDatePeriodExtractorConfiguration().date_point_with_ago_and_later
+        self._reference_date_period_regex = JapaneseDatePeriodExtractorConfiguration().reference_date_period_regex
+        self._complex_date_period_regex = JapaneseDatePeriodExtractorConfiguration().complex_date_period_regex
+        self._duration_relative_duration_unit_regex = JapaneseDateExtractorConfiguration().\
+            duration_relative_duration_unit_regex
+        self._unit_map = JapaneseDateTime.ParserConfigurationUnitMap
+        self._cardinal_map = JapaneseDateTime.ParserConfigurationCardinalMap
+        self._day_of_month = JapaneseDateTime.ParserConfigurationDayOfMonth
+        self._season_map = JapaneseDateTime.ParserConfigurationSeasonMap
+        self._month_of_year = JapaneseDateTime.ParserConfigurationMonthOfYear
+        self._token_before_date = ''
+
         self._wom_previous_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.WoMPreviousRegex)
         self._wom_next_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.WoMNextRegex)
         self._wom_last_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.WoMLastRegex)
         self._next_prefix_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.NextPrefixRegex)
         self._after_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.AfterRegex)
-        self._last_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.DateLastRegex)
         self._next_month_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.ParserConfigurationNextMonthRegex)
         self._after_next_month_regex = RegExpUtility.get_safe_reg_exp(
             JapaneseDateTime.ParserConfigurationAfterNextMonthRegex)
@@ -396,83 +377,11 @@ class JapaneseDatePeriodParserConfiguration(CJKDatePeriodParserConfiguration):
             JapaneseDateTime.ParserConfigurationAfterNextYearRegex)
         self._last_year_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.ParserConfigurationLastYearRegex)
         self._this_year_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.ParserConfigurationThisYearRegex)
-        self._time_of_day = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.TimeOfDayRegex)
-
-        self._year_to_year = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.YearToYear)
-        self._year_to_year_suffix_required = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.YearToYearSuffixRequired)
-        self._year_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.YearRegex)
-        self._year_in_cjk_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.DateYearInCJKRegex)
-        self._month_to_month = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.MonthToMonth)
-        self._month_to_month_suffix_required = RegExpUtility.get_safe_reg_exp(
-            JapaneseDateTime.MonthToMonthSuffixRequired)
-        self._day_to_day = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.DayToDay)
-        self._month_day_range = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.MonthDayRange)
-        self._day_regex_for_period = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.DayRegexForPeriod)
-        self._month_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.MonthRegex)
-        self._special_month_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.SpecialMonthRegex)
-        self._special_year_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.SpecialYearRegex)
-        self._year_and_month = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.YearAndMonth)
-        self._pure_num_year_and_month = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.PureNumYearAndMonth)
-        self._simple_year_and_month = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.SimpleYearAndMonth)
-        self._one_word_period_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.OneWordPeriodRegex)
-        self._number_combined_with_unit = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.NumberCombinedWithUnit)
-        self._past_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.PastRegex)
-        self._future_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.FutureRegex)
-        self._week_with_week_day_range_regex = RegExpUtility.get_safe_reg_exp(
-            JapaneseDateTime.WeekWithWeekDayRangeRegex)
-        self._unit_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.UnitRegex)
-        self._duration_unit_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.DurationUnitRegex)
-        self._week_of_month_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.WeekOfMonthRegex)
-        self._week_of_year_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.WeekOfYearRegex)
-        self._week_of_date_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.WeekOfDateRegex)
-        self._month_of_date_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.MonthOfDateRegex)
-        self._which_week_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.WhichWeekRegex)
-        self._first_last_of_year_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.FirstLastOfYearRegex)
-        self._season_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.SeasonRegex)
-        self._season_with_year = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.SeasonWithYear)
-        self._quarter_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.QuarterRegex)
-        self._decade_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.DecadeRegex)
-        self._century_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.CenturyRegex)
-        self._relative_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.RelativeRegex)
-        self._relative_month_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.RelativeMonthRegex)
-        self._later_early_period_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.LaterEarlyPeriodRegex)
-        self._date_period_with_ago_and_later = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.DatePointWithAgoAndLater)
-        self._reference_date_period_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.ReferenceDatePeriodRegex)
-        self._complex_date_period_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.ComplexDatePeriodRegex)
-        self._duration_relative_duration_unit_regex = RegExpUtility.get_safe_reg_exp(
-            JapaneseDateTime.DurationRelativeDurationUnitRegex)
-        self._now_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.NowRegex)
-        self._unit_map = JapaneseDateTime.ParserConfigurationUnitMap
-        self._cardinal_map = JapaneseDateTime.ParserConfigurationCardinalMap
-        self._day_of_month = JapaneseDateTime.ParserConfigurationDayOfMonth
-        self._season_map = JapaneseDateTime.ParserConfigurationSeasonMap
-        self._token_before_date = ''
-        self._all_half_year_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.HalfYearRegex)
-        self._complex_dateperiod_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.ComplexDatePeriodRegex)
-        self._month_of_year = JapaneseDateTime.ParserConfigurationMonthOfYear
-        self._rest_of_date_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.RestOfDateRegex)
         self._two_num_year = int(JapaneseDateTime.TwoNumYear)
-
         # TODO When the implementation for these properties is added, change the None values to their respective Regexps
 
-        self._decade_with_century_regex = None
-        self._later_regex = None
-        self._ago_regex = None
-        self._check_both_before_after = None
-        self._relative_decade_regex = None
-        self._between_regex = None
         self._duration_extractor = None
         self._duration_parser = None
-        self._in_connector_regex = None
-        self._less_than_regex = None
-        self._month_front_between_regex = None
-        self._month_front_simple_cases_regex = None
-        self._month_num_with_year = None
-        self._month_of_regex = None
-        self._month_with_year = None
-        self._quarter_regex_year_front = None
-        self._unspecific_end_of_range_regex = None
-        self._week_of_regex = None
 
     def to_month_number(self, month_str: str) -> int:
         return self.month_of_year[month_str] % 12 if self.month_of_year[month_str] > 12 \
@@ -502,10 +411,6 @@ class JapaneseDatePeriodParserConfiguration(CJKDatePeriodParserConfiguration):
         trimmed_source = source.strip().lower()
         return any(trimmed_source == o for o in JapaneseDateTime.YearToDateTerms)
 
-    def is_month_to_date(self, source: str) -> bool:
-        trimmed_source = source.strip().lower()
-        return any(trimmed_source == o for o in JapaneseDateTime.MonthToDateTerms)
-
     def is_last_year(self, source: str) -> bool:
         trimmed_source = source.strip().lower()
         return any(trimmed_source == o for o in JapaneseDateTime.LastYearTerms)
@@ -522,19 +427,8 @@ class JapaneseDatePeriodParserConfiguration(CJKDatePeriodParserConfiguration):
         trimmed_source = source.strip().lower()
         return any(trimmed_source == o for o in JapaneseDateTime.YearBeforeLastTerms)
 
-    def get_swift_day_or_month(self, source: str) -> int:
-        source = source.strip().lower()
-        if self._next_prefix_regex.search(source):
-            return 1
-        if self._after_regex.search(source):
-            return 2
-        if self._last_regex.search(source):
-            return -1
-        if self._next_regex.search(source):
-            return 1
-        return 0
-
     def get_swift_month(self, source: str) -> int:
+        # Current month: 今月
         value = 0
 
         if self.next_month_regex.search(source):
@@ -553,16 +447,10 @@ class JapaneseDatePeriodParserConfiguration(CJKDatePeriodParserConfiguration):
             value = 2
         elif self.next_year_regex.search(source):
             value = 1
-        elif self._last_year_regex.search(source):
+        elif self.last_year_regex.search(source):
             value = -1
         elif self.this_year_regex.search(source):
+            # Current year: 今年
             value = 0
 
         return value
-
-    def is_future(self, source) -> bool:
-        return not self.this_regex.search(source) or self.next_regex.search(source) is None
-
-    def is_last_cardinal(self, source) -> bool:
-        trimmed_source = source.strip().lower()
-        return not self.last_regex.search(trimmed_source) is None

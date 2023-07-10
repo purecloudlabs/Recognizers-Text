@@ -1353,18 +1353,14 @@ class BaseCJKDatePeriodParser(DateTimeParser):
                 end_date_for_future_resolution = DateUtils.safe_create_from_min_value(end_year_for_future_resolution,
                                                                                       end_month_for_future_resolution,
                                                                                       end_day)
+
                 if relative_month:
                     ret.timex = TimexUtil.generate_date_period_timex(begin_date_for_future_resolution,
                                                                      end_date_for_future_resolution, 0)
                 else:
-                    # Creating an alternative begining and end with an unspecified year an month will then use
-                    # fuzzy year and month for this
-                    alt_begin = DateUtils.safe_create_from_min_value(-1, -1, begin_date_for_future_resolution.day)
-                    alt_end = DateUtils.safe_create_from_min_value(-1, -1, end_date_for_future_resolution.day)
-
                     ret.timex = TimexUtil.generate_date_period_timex(begin_date_for_future_resolution,
-                                                                     end_date_for_future_resolution, 0, alt_begin,
-                                                                     alt_end)
+                                                                     end_date_for_future_resolution, 0,
+                                                                     has_year=False, has_month=False)
 
                 ret.past_value = [begin_date_for_past_resolution, end_date_for_past_resolution]
                 ret.future_value = [begin_date_for_future_resolution, end_date_for_future_resolution]

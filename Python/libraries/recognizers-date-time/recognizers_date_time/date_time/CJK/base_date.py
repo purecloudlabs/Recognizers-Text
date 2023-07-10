@@ -434,7 +434,7 @@ class CJKDateParserConfiguration(CJKCommonDateTimeParserConfiguration):
         raise NotImplementedError
 
     @abstractmethod
-    def next_month_regex(self, source: str) -> bool:
+    def next_month_regex(self) -> Pattern:
         raise NotImplementedError
 
     @abstractmethod
@@ -1014,11 +1014,15 @@ class BaseCJKDateParser(DateTimeParser):
     def compute_date(self, cardinal: int, weekday: int, month: int, year: int) -> datetime:
         first_day = DateUtils.safe_create_from_value(DateUtils.min_value, year, month, 1)
         first_weekday = DateUtils.this(first_day, self.get_day_of_week(weekday))
+        day_of_week_of_first_day = first_day.isoweekday()
 
         if weekday == 0:
             weekday = int(DayOfWeek.SUNDAY)
 
-        if weekday < first_day.isoweekday():
+        if day_of_week_of_first_day == 0:
+            day_of_week_of_first_day = 7
+
+        if weekday < day_of_week_of_first_day:
             first_weekday = DateUtils.next(first_day, DayOfWeek(weekday))
 
         first_weekday = first_weekday + datedelta(days=7 * (cardinal - 1))
