@@ -3,6 +3,10 @@
 
 from typing import List, Pattern, Dict
 
+from recognizers_date_time.date_time.extractors import DateTimeExtractor
+from recognizers_date_time.date_time.parsers import DateTimeParser
+from recognizers_date_time.date_time.CJK.base_configs import CJKCommonDateTimeParserConfiguration
+from recognizers_number import BaseNumberExtractor, BaseNumberParser
 from recognizers_text import RegExpUtility
 from recognizers_date_time.date_time.japanese.date_extractor_config import JapaneseDateExtractorConfiguration
 from recognizers_date_time.date_time.CJK.base_date import CJKDateParserConfiguration
@@ -40,22 +44,28 @@ class JapaneseDateParserConfiguration(CJKDateParserConfiguration):
     def plus_four_day_regex(self) -> Pattern:
         return self._plus_four_day_regex
 
-    def integer_extractor(self):
+    @property
+    def integer_extractor(self) -> BaseNumberExtractor:
         return self._integer_extractor
 
-    def ordinal_extractor(self):
+    @property
+    def ordinal_extractor(self) -> BaseNumberExtractor:
         return self._ordinal_extractor
 
-    def number_parser(self):
+    @property
+    def number_parser(self) -> BaseNumberParser:
         return self._number_parser
 
-    def date_extractor(self):
+    @property
+    def date_extractor(self) -> DateTimeExtractor:
         return self._date_extractor
 
-    def duration_extractor(self):
+    @property
+    def duration_extractor(self) -> DateTimeExtractor:
         return self._duration_extractor
 
-    def duration_parser(self):
+    @property
+    def duration_parser(self) -> DateTimeParser:
         return self._duration_parser
 
     @property
@@ -204,7 +214,7 @@ class JapaneseDateParserConfiguration(CJKDateParserConfiguration):
             swift = -1
         return swift
 
-    def __init__(self, config: CJKDateParserConfiguration):
+    def __init__(self, config: CJKCommonDateTimeParserConfiguration):
         super().__init__()
         self._integer_extractor = config.integer_extractor
         self._ordinal_extractor = config.ordinal_extractor
@@ -234,8 +244,8 @@ class JapaneseDateParserConfiguration(CJKDateParserConfiguration):
         self._last_regex = JapaneseDateExtractorConfiguration().last_regex
         self._week_day_of_month_regex = JapaneseDateExtractorConfiguration().week_day_of_month_regex
         self._week_day_and_day_regex = JapaneseDateExtractorConfiguration().week_day_and_day_regex
-        self._duration_relative_duration_unit_regex = JapaneseDateExtractorConfiguration(). \
-            duration_relative_duration_unit_regex
+        self._duration_relative_duration_unit_regex = \
+            JapaneseDateExtractorConfiguration().duration_relative_duration_unit_regex
         self._special_day_with_num_regex = JapaneseDateExtractorConfiguration().special_day_with_num_regex
 
         self._cardinal_map = config.cardinal_map

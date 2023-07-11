@@ -1503,7 +1503,7 @@ class BaseCJKDatePeriodParser(DateTimeParser):
             else:
                 swift = 0
                 if next_match:
-                    if next_match.get_group(Constants.AFTER_MOD):
+                    if next_match.group(Constants.AFTER_MOD):
                         swift = 2
                     else:
                         swift = 1

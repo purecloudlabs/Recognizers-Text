@@ -2,8 +2,8 @@
 #  Licensed under the MIT License.
 from typing import Dict
 
+from recognizers_date_time.date_time.CJK.base_configs import CJKCommonDateTimeParserConfiguration
 from recognizers_date_time.date_time.base_timezone import BaseTimeZoneParser
-from recognizers_date_time.date_time.CJK import CJKDateParserConfiguration
 from recognizers_date_time.date_time.utilities.datetime_utility_config import DateTimeUtilityConfiguration
 from recognizers_number import BaseNumberExtractor
 
@@ -30,7 +30,7 @@ from recognizers_date_time.date_time.extractors import DateTimeExtractor
 from recognizers_date_time.date_time.parsers import DateTimeParser
 
 
-class JapaneseCommonDateTimeParserConfiguration(CJKDateParserConfiguration):
+class JapaneseCommonDateTimeParserConfiguration(CJKCommonDateTimeParserConfiguration):
 
     @property
     def cardinal_extractor(self) -> BaseNumberExtractor:
