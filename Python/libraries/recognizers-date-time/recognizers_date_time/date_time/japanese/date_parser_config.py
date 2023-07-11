@@ -205,15 +205,6 @@ class JapaneseDateParserConfiguration(CJKDateParserConfiguration):
             swift = -2
         return swift
 
-    def get_swift_month(self, source: str) -> int:
-        source = source.strip().lower()
-        swift = 0
-        if source.startswith(JapaneseDateTime.ParserConfigurationNextMonthRegex):
-            swift = 1
-        elif source.startswith(JapaneseDateTime.ParserConfigurationLastMonthRegex):
-            swift = -1
-        return swift
-
     def __init__(self, config: CJKCommonDateTimeParserConfiguration):
         super().__init__()
         self._integer_extractor = config.integer_extractor

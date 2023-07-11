@@ -433,12 +433,14 @@ class CJKDateParserConfiguration(CJKCommonDateTimeParserConfiguration):
     def is_cardinal_last(self, source: str) -> bool:
         raise NotImplementedError
 
+    @property
     @abstractmethod
     def next_month_regex(self) -> Pattern:
         raise NotImplementedError
 
+    @property
     @abstractmethod
-    def get_swift_month(self, trimmed_source) -> int:
+    def last_month_regex(self) -> Pattern:
         raise NotImplementedError
 
     @property
@@ -928,7 +930,13 @@ class BaseCJKDateParser(DateTimeParser):
         weekday = self.config.day_of_week[weekday_str]
 
         if not month_str:
-            swift = self.config.get_swift_month(trimmed_source)
+            swift = 0
+
+            if RegExpUtility.match_begin(self.config.next_month_regex, trimmed_source, trim=True).success:
+                swift = 1
+            elif RegExpUtility.match_begin(self.config.last_month_regex, trimmed_source, trim=True):
+                swift = -1
+
             temp = reference + datedelta(months=swift)
             month = temp.month
             year = temp.year
