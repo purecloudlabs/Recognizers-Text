@@ -4,6 +4,8 @@ import calendar
 
 from datedelta import datedelta
 
+from recognizers_date_time import Constants
+
 
 class DayOfWeek(IntEnum):
     MONDAY = 1
@@ -17,8 +19,6 @@ class DayOfWeek(IntEnum):
 
 class DateUtils:
     min_value = datetime(1, 1, 1, 0, 0, 0, 0)
-    INVALID_MONTH = -2147483648
-    WEEK_DAY_COUNT = 7
 
     # Generate future/past date for cases without specific year like "Feb 29th"
     @staticmethod
@@ -51,7 +51,7 @@ class DateUtils:
 
                 if past_date >= reference and DateUtils.is_valid_date(year, month, day):
                     past_date = DateUtils.safe_create_from_min_value(year - 1, month, day)
-        return future_date, past_date
+        return [future_date, past_date]
 
     @staticmethod
     def int_try_parse(value):
@@ -171,10 +171,10 @@ class DateUtils:
         return dayOfWeek.get(day)
 
     @staticmethod
-    def get_first_thursday(year: int, month: int = INVALID_MONTH) -> datetime:
+    def get_first_thursday(year: int, month: int = Constants.INVALID_MONTH) -> datetime:
         target_month = month
 
-        if month == DateUtils.INVALID_MONTH:
+        if month == Constants.INVALID_MONTH:
             target_month = 1
 
         first_day = DateUtils.safe_create_from_min_value(year, target_month, 1)
@@ -182,15 +182,15 @@ class DateUtils:
 
         # Thursday falls into previous year or previous month
         if first_thursday.month != target_month:
-            first_thursday = first_day + datedelta(days=DateUtils.WEEK_DAY_COUNT)
+            first_thursday = first_day + datedelta(days=Constants.WEEK_DAY_COUNT)
 
             return first_thursday
 
     @staticmethod
-    def get_last_thursday(year: int, month: int = INVALID_MONTH) -> datetime:
+    def get_last_thursday(year: int, month: int = Constants.INVALID_MONTH) -> datetime:
         target_month = month
 
-        if month == DateUtils.INVALID_MONTH:
+        if month == Constants.INVALID_MONTH:
             target_month = 12
 
         last_day = DateUtils.get_last_day(year, target_month)
@@ -198,6 +198,6 @@ class DateUtils:
 
         # Thursday falls into next year or next month
         if last_thursday.month != target_month:
-            last_thursday = last_thursday - datedelta(days=DateUtils.WEEK_DAY_COUNT)
+            last_thursday = last_thursday - datedelta(days=Constants.WEEK_DAY_COUNT)
 
         return last_thursday

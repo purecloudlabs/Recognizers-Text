@@ -114,7 +114,7 @@ class CJKMergedExtractorConfiguration(DateTimeOptionsConfiguration):
 
     @property
     @abstractmethod
-    def ambiguous_range_modifier_regex(self) -> Pattern:
+    def ambiguous_range_modifier_prefix(self) -> Pattern:
         raise NotImplementedError
 
     @property
