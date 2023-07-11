@@ -1339,7 +1339,7 @@
   },
   {
     "Input": "コルタナ、アントニオと25分の会議を今週の水曜日から金曜日で調整して。",
-    "NotSupportedByDesign": "javascript,java",
+    "NotSupportedByDesign": "javascript,python,java",
     "Results": [
       {
         "Text": "今週の水曜日から金曜日",

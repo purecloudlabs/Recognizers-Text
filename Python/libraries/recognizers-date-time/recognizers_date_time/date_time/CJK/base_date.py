@@ -922,7 +922,7 @@ class BaseCJKDateParser(DateTimeParser):
         month_str = match.group(Date_Constants.MONTH_GROUP_NAME)
         no_year = False
 
-        if RegExpUtility.exact_match(self.config.last_week_day_regex, cardinal_str, trim=True):
+        if RegExpUtility.exact_match(self.config.last_week_day_regex, cardinal_str, trim=True).success:
             cardinal = 5
         else:
             cardinal = self.config.cardinal_map.get(cardinal_str)
@@ -932,7 +932,7 @@ class BaseCJKDateParser(DateTimeParser):
         if not month_str:
             swift = 0
 
-            if RegExpUtility.match_begin(self.config.next_month_regex, trimmed_source, trim=True).success:
+            if RegExpUtility.match_begin(self.config.next_month_regex, trimmed_source, trim=True):
                 swift = 1
             elif RegExpUtility.match_begin(self.config.last_month_regex, trimmed_source, trim=True):
                 swift = -1

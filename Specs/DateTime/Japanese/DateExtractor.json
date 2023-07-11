@@ -193,7 +193,7 @@
   },
   {
     "Input": "来週の日曜日に戻ります。",
-    "NotSupportedByDesign": "javascript,python,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "来週の日曜日",
@@ -584,7 +584,7 @@
   },
   {
     "Input": "コルタナが今週の金曜日か来週の火曜日にスカイプ通話を手配してくれます。",
-    "NotSupportedByDesign": "javascript,python,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "今週の金曜日",

@@ -107,7 +107,7 @@ class JapaneseMergedExtractorConfiguration(CJKMergedExtractorConfiguration):
     def ambiguity_filters_dict(self) -> {}:
         return self._ambiguity_filters_dict
 
-    def __init__(self, config):
+    def __init__(self):
         super().__init__()
         self._ambiguity_filters_dict = DefinitionLoader.load_ambiguity_filters(JapaneseDateTime.AmbiguityFiltersDict)
         self._date_extractor = BaseCJKDateExtractor(JapaneseDateExtractorConfiguration())
