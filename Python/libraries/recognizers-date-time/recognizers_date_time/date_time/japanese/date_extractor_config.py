@@ -4,8 +4,7 @@
 from typing import List, Pattern, Dict
 
 from recognizers_text import RegExpUtility
-from recognizers_number import JapaneseIntegerExtractor, JapaneseOrdinalExtractor, CJKNumberParser, \
-    JapaneseNumberParserConfiguration
+from recognizers_number import JapaneseIntegerExtractor
 from recognizers_date_time.date_time.CJK.base_date import CJKDateExtractorConfiguration
 from recognizers_date_time.date_time.constants import Constants
 from recognizers_date_time.date_time.extractors import DateTimeExtractor
@@ -140,8 +139,8 @@ class JapaneseDateExtractorConfiguration(CJKDateExtractorConfiguration):
         return self._dynasty_year_regex
 
     @property
-    def dynasty_start_year_regex(self) -> Pattern:
-        return self._dynasty_start_year_regex
+    def dynasty_start_year(self) -> str:
+        return self._dynasty_start_year
 
     @property
     def dynasty_year_map(self) -> Dict[str, int]:
@@ -158,10 +157,6 @@ class JapaneseDateExtractorConfiguration(CJKDateExtractorConfiguration):
     @property
     def duration_extractor(self) -> DateTimeExtractor:
         return self._duration_extractor
-
-    @property
-    def number_parser(self) -> CJKNumberParser:
-        return self._number_parser
 
     @property
     def ambiguity_date_filters_dict(self) -> Dict[Pattern, Pattern]:
@@ -200,10 +195,15 @@ class JapaneseDateExtractorConfiguration(CJKDateExtractorConfiguration):
         # 2015/12/23
         self._date_regex_list_10 = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.DateRegexList10)
 
+        # 2016/12 (this is not a Date)
+        # self._date_regex_list_11 = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.DateRegexList11)
+
         self._date_regex_list = [
             self._date_regex_list_1, self._date_regex_list_10, self._date_regex_list_2, self._date_regex_list_9,
             self._date_regex_list_3, self._date_regex_list_4, self._date_regex_list_5
         ]
+
+        # Regex precedence where the order between D and M varies is controlled by DefaultLanguageFallback
 
         if JapaneseDateTime.DefaultLanguageFallback == Constants.DEFAULT_LANGUAGE_FALLBACK_DMY:
             self._date_regex_list.extend([self._date_regex_list_7, self._date_regex_list_6, self._date_regex_list_8])
@@ -211,8 +211,6 @@ class JapaneseDateExtractorConfiguration(CJKDateExtractorConfiguration):
             self._date_regex_list.extend([self._date_regex_list_6, self._date_regex_list_7, self._date_regex_list_8])
 
         self._integer_extractor = JapaneseIntegerExtractor()
-        self._ordinal_extractor = JapaneseOrdinalExtractor()
-        self._number_parser = CJKNumberParser(JapaneseNumberParserConfiguration())
 
         self._week_day_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.WeekDayRegex)
         self._lunar_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.LunarRegex)
@@ -223,7 +221,6 @@ class JapaneseDateExtractorConfiguration(CJKDateExtractorConfiguration):
         self._week_day_of_month = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.WeekDayOfMonthRegex)
         self._special_date_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.SpecialDate)
         self._special_day_with_num_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.SpecialDayWithNumRegex)
-        self._preposition_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.PrepositionRegex)
         self._month_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.MonthRegex)
         self._day_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.DayRegex)
         self._date_day_regex_in_CJK = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.DateDayRegexInCJK)
@@ -243,12 +240,8 @@ class JapaneseDateExtractorConfiguration(CJKDateExtractorConfiguration):
         self._next_prefix_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.NextPrefixRegex)
         self._date_unit_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.UnitRegex)
         self._dynasty_year_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.DynastyYearRegex)
-        self._dynasty_start_year_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.DynastyStartYear)
+        self._dynasty_start_year = JapaneseDateTime.DynastyStartYear
         self._dynasty_year_map = JapaneseDateTime.DynastyYearMap
-        self._day_of_week = JapaneseDateTime.ParserConfigurationDayOfWeek
-        self._month_of_year = JapaneseDateTime.ParserConfigurationMonthOfYear
-
-        self._check_both_before_after = False
 
         self._datetime_period_unit_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.DateTimePeriodUnitRegex)
         self._before_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.BeforeRegex)
