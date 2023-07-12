@@ -228,7 +228,7 @@ class JapaneseDateParserConfiguration(CJKDateParserConfiguration):
         self._before_regex = JapaneseDateExtractorConfiguration().before_regex
         self._after_regex = JapaneseDateExtractorConfiguration().after_regex
         self._dynasty_year_regex = JapaneseDateExtractorConfiguration().dynasty_year_regex
-        self._dynasty_start_year = JapaneseDateExtractorConfiguration().dynasty_start_year_regex
+        self._dynasty_start_year = JapaneseDateExtractorConfiguration().dynasty_start_year
         self._dynasty_year_map = JapaneseDateExtractorConfiguration().dynasty_year_map
         self._next_regex = JapaneseDateExtractorConfiguration().next_regex
         self._this_regex = JapaneseDateExtractorConfiguration().this_regex

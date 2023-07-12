@@ -309,7 +309,7 @@ class JapaneseDatePeriodParserConfiguration(CJKDatePeriodParserConfiguration):
         self._date_parser = config.date_parser
 
         self._dynasty_year_regex = JapaneseDateExtractorConfiguration().dynasty_year_regex
-        self._dynasty_start_year = JapaneseDateExtractorConfiguration().dynasty_start_year_regex
+        self._dynasty_start_year = JapaneseDateExtractorConfiguration().dynasty_start_year
         self._dynasty_year_map = JapaneseDateExtractorConfiguration().dynasty_year_map
         self._simple_cases_regex = JapaneseDatePeriodExtractorConfiguration().simple_cases_regex
         self._this_regex = JapaneseDatePeriodExtractorConfiguration().this_regex

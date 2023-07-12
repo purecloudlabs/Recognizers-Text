@@ -4,7 +4,7 @@
 from typing import List, Pattern, Dict
 
 from recognizers_text import RegExpUtility
-from recognizers_number import JapaneseIntegerExtractor
+from recognizers_number import JapaneseIntegerExtractor, CJKNumberParser, JapaneseNumberParserConfiguration
 from recognizers_date_time.date_time.CJK.base_date import CJKDateExtractorConfiguration
 from recognizers_date_time.date_time.constants import Constants
 from recognizers_date_time.date_time.extractors import DateTimeExtractor
@@ -162,6 +162,10 @@ class JapaneseDateExtractorConfiguration(CJKDateExtractorConfiguration):
     def ambiguity_date_filters_dict(self) -> Dict[Pattern, Pattern]:
         return self._ambiguity_date_filters_dict
 
+    @property
+    def number_parser(self) -> CJKNumberParser:
+        return self._number_parser
+
     def __init__(self):
         self._duration_extractor = None
 
@@ -211,6 +215,7 @@ class JapaneseDateExtractorConfiguration(CJKDateExtractorConfiguration):
             self._date_regex_list.extend([self._date_regex_list_6, self._date_regex_list_7, self._date_regex_list_8])
 
         self._integer_extractor = JapaneseIntegerExtractor()
+        self._number_parser = CJKNumberParser(JapaneseNumberParserConfiguration())
 
         self._week_day_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.WeekDayRegex)
         self._lunar_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.LunarRegex)
