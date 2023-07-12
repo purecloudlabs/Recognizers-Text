@@ -28,10 +28,8 @@ class DateContext:
     def process_date_entity_resolution(self, resolution_result: DateTimeResolutionResult) -> DateTimeResolutionResult:
         if not self.is_empty():
             resolution_result.timex = TimexUtil.set_timex_with_context(resolution_result.timex, self)
-            resolution_result.future_value = self.__set_date_with_context(resolution_result.future_value,
-                                                                          resolution_result.future_value.year)
-            resolution_result.past_value = self.__set_date_with_context(resolution_result.past_value,
-                                                                        resolution_result.past_value.year)
+            resolution_result.future_value = self.__set_date_with_context(resolution_result.future_value)
+            resolution_result.past_value = self.__set_date_with_context(resolution_result.past_value)
         return resolution_result
 
     def process_date_period_entity_resolution(self, resolution_result: DateTimeResolutionResult) -> DateTimeResolutionResult:

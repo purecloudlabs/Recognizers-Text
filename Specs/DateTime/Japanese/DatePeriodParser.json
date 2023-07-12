@@ -3333,7 +3333,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,java",
+    "NotSupportedByDesign": "javascript,python,java",
     "Results": [
       {
         "Text": "2015年1月1日から2018年2月5日の間",
@@ -4351,7 +4351,7 @@
   },
   {
     "Input": "2015年11月1日から2016年12月4日まで",
-    "NotSupportedByDesign": "javascript,java",
+    "NotSupportedByDesign": "javascript,python,java",
     "Results": [
       {
         "Text": "2015年11月1日から2016年12月4日まで",
@@ -4602,7 +4602,7 @@
   },
   {
     "Input": "2015/11/1から2016/12/4まで",
-    "NotSupportedByDesign": "javascript,java",
+    "NotSupportedByDesign": "javascript,python,java",
     "Results": [
       {
         "Text": "2015/11/1から2016/12/4まで",
