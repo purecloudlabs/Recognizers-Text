@@ -13,8 +13,8 @@ from .base_date_time import BaseDateTime
 # pylint: disable=line-too-long
 
 
-class SpanishDateTime:
-    LangMarker = 'Spa'
+class CatalanDateTime:
+    LangMarker = 'Cat'
     CheckBothBeforeAfter = False
     TillRegex = f'(?<till>\\b(hasta|hacia|al?)\\b(\\s+(el|la(s)?)\\b)?|{BaseDateTime.RangeConnectorSymbolRegex})'
     StrictTillRegex = f'(?<till>\\b(hasta|hacia|al?)(\\s+(el|la(s)?))?\\b|{BaseDateTime.RangeConnectorSymbolRegex}(?!\\s*[qt][1-4](?!(\\s+de|\\s*,\\s*))))'

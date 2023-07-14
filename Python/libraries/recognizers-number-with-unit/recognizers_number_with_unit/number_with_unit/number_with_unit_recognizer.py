@@ -17,6 +17,14 @@ from .english.parsers import (EnglishCurrencyParserConfiguration,
                               EnglishTemperatureParserConfiguration,
                               EnglishDimensionParserConfiguration,
                               EnglishAgeParserConfiguration)
+from .catalan.extractors import (CatalanCurrencyExtractorConfiguration,
+                                 CatalanTemperatureExtractorConfiguration,
+                                 CatalanDimensionExtractorConfiguration,
+                                 CatalanAgeExtractorConfiguration)
+from .catalan.parsers import (CatalanCurrencyParserConfiguration,
+                              CatalanTemperatureParserConfiguration,
+                              CatalanDimensionParserConfiguration,
+                              CatalanAgeParserConfiguration)
 from .chinese.extractors import (ChineseCurrencyExtractorConfiguration,
                                  ChineseTemperatureExtractorConfiguration,
                                  ChineseDimensionExtractorConfiguration,
@@ -206,6 +214,25 @@ class NumberWithUnitRecognizer(Recognizer[NumberWithUnitOptions]):
                 NumberWithUnitExtractor(PortugueseAgeExtractorConfiguration()),
                 NumberWithUnitParser(PortugueseAgeParserConfiguration()))
         ]))
+        # endregion
+
+        # region Catalan
+        self.register_model('CurrencyModel', Culture.Catalan, lambda options: CurrencyModel(
+            [ExtractorParserModel(BaseMergedUnitExtractor(CatalanCurrencyExtractorConfiguration(
+            )), BaseMergedUnitParser(CatalanCurrencyParserConfiguration()))]
+        ))
+        self.register_model('TemperatureModel', Culture.Catalan, lambda options: TemperatureModel(
+            [ExtractorParserModel(NumberWithUnitExtractor(CatalanTemperatureExtractorConfiguration(
+            )), NumberWithUnitParser(CatalanTemperatureParserConfiguration()))]
+        ))
+        self.register_model('DimensionModel', Culture.Catalan, lambda options: DimensionModel(
+            [ExtractorParserModel(NumberWithUnitExtractor(CatalanDimensionExtractorConfiguration(
+            )), NumberWithUnitParser(CatalanDimensionParserConfiguration()))]
+        ))
+        self.register_model('AgeModel', Culture.Catalan, lambda options: AgeModel(
+            [ExtractorParserModel(NumberWithUnitExtractor(CatalanAgeExtractorConfiguration(
+            )), NumberWithUnitParser(CatalanAgeParserConfiguration()))]
+        ))
         # endregion
 
         # region Spanish

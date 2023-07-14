@@ -65,7 +65,7 @@ class EnglishDateTime:
     MonthRegex = f'\\b{MonthRegexNoWordBoundary}'
     WrittenMonthRegex = f'(((the\\s+)?month of\\s+)?{MonthRegex})'
     MonthSuffixRegex = f'(?<msuf>(?:(in|of|on)\\s+)?({RelativeMonthRegex}|{WrittenMonthRegex}))'
-    DateUnitRegex = f'(?<unit>(decade|year|(?<uoy>month|week)|(?<business>(business\\s+|week\\s*))?(?<uoy>day)|fortnight|weekend)(?<plural>s)?|(?<=(^|\\s)\\d{{1,4}})[ymwd])\\b'
+    DateUnitRegex = f'(?<unit>(decade|year|(?<uoy>month|week|fortnight)|(?<business>(business\\s+|week\\s*))?(?<uoy>day)|fortnight|weekend)(?<plural>s)?|(?<=(^|\\s)\\d{{1,4}})[ymwd])\\b'
     DateTokenPrefix = 'on '
     TimeTokenPrefix = 'at '
     TokenBeforeDate = 'on '
@@ -153,7 +153,7 @@ class EnglishDateTime:
     LunchRegex = f'\\blunchtime\\b'
     NightRegex = f'\\b(mid)?night\\b'
     CommonDatePrefixRegex = f'^[\\.]'
-    LessThanOneHour = f'(?<lth>(a\\s+)?quarter|three quarter(s)?|half( an hour)?|{BaseDateTime.DeltaMinuteRegex}(\\s+(minutes?|mins?))|{DeltaMinuteNumRegex}(\\s+(minutes?|mins?)))'
+    LessThanOneHour = f'(?<lth>(a\\s+)?quarter|three quarter(s)?|half( an hour)?|{BaseDateTime.DeltaMinuteRegex}(\\s+(minutes?|mins?)|(?=\\s+past))|{DeltaMinuteNumRegex}(\\s+(minutes?|mins?)|(?=\\s+past)))'
     WrittenTimeRegex = f'(?<writtentime>{HourNumRegex}\\s+{MinuteNumRegex}(\\s+(minutes?|mins?))?)'
     TimePrefix = f'(?<prefix>{LessThanOneHour}\\s+(past|to))'
     TimeSuffix = f'(?<suffix>{AmRegex}|{PmRegex}|{OclockRegex})'
@@ -225,7 +225,7 @@ class EnglishDateTime:
     EachPrefixRegex = f'\\b(?<each>(each|every|once an?)\\s*$)'
     SetEachRegex = f'\\b(?<each>(each|every)(?<other>\\s+(other|alternate))?\\s*)(?!the|that)\\b'
     SetLastRegex = f'(?<last>following|next|upcoming|this|{LastNegPrefix}last|past|previous|current)'
-    EachDayRegex = f'^\\s*(each|every)\\s*day\\b'
+    EachDayRegex = f'\\s*((each|every)\\s*day)|daily\\b'
     DurationFollowedUnit = f'(^\\s*{DurationUnitRegex}\\s+{SuffixAndRegex})|(^\\s*{SuffixAndRegex}?(\\s+|-)?{DurationUnitRegex})'
     NumberCombinedWithDurationUnit = f'\\b(?<num>\\d+(\\.\\d*)?)(-)?{DurationUnitRegex}'
     AnUnitRegex = f'(\\b((?<half>(half)\\s+)?an?|another)|(?<half>(1/2|½|half)))\\s+{DurationUnitRegex}'
@@ -329,8 +329,8 @@ class EnglishDateTime:
                     ("weekend", "WE"),
                     ("fortnights", "2W"),
                     ("fortnight", "2W"),
-                    ("weekdays", "D"),
-                    ("weekday", "D"),
+                    ("weekdays", "WD"),
+                    ("weekday", "WD"),
                     ("days", "D"),
                     ("day", "D"),
                     ("d", "D"),
@@ -763,6 +763,8 @@ class EnglishDateTime:
     DoubleMultiplierRegex = f'^(bi)(-|\\s)?'
     HalfMultiplierRegex = f'^(semi)(-|\\s)?'
     DayTypeRegex = f'((week)?da(il)?ys?)$'
+    WeekDayTypeRegex = f'(weekday?)$'
+    FortNightRegex = f'(fortnight?)$'
     WeekTypeRegex = f'(week(s|ly)?)$'
     WeekendTypeRegex = f'(weekends?)$'
     MonthTypeRegex = f'(month(s|ly)?)$'

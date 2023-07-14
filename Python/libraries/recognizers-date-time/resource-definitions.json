@@ -141,6 +141,22 @@
                 "class TimeZoneDefinitions:"
             ],
             "footer": [ "# pylint: enable=line-too-long" ]
+        },
+        {
+            "input": [
+                "Catalan", "Catalan-DateTime"
+            ],
+            "output": "catalan_date_time",
+            "header": [
+                "from .base_date_time import BaseDateTime",
+                "# pylint: disable=line-too-long",
+                "",
+                "",
+                "class CatalanDateTime:"
+            ],
+            "footer": [
+                "# pylint: enable=line-too-long"
+            ]
         }
     ]
 }

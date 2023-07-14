@@ -4,6 +4,7 @@
 class Culture:
     Chinese: str = 'zh-cn'
     Dutch: str = 'nl-nl'
+    Catalan: str = 'ca-es'
     English: str = 'en-us'
     EnglishOthers: str = 'en-*'
     French: str = 'fr-fr'
@@ -22,6 +23,7 @@ class Culture:
             Culture.English,
             Culture.EnglishOthers,
             Culture.Dutch,
+            Culture.Catalan,
             Culture.Chinese,
             Culture.French,
             Culture.Italian,
