@@ -266,7 +266,7 @@ OneHalfTokens: [un, mitjà]
 HalfADozenRegex: !simpleRegex
   def: mitjana\s+docena
 DigitalNumberRegex: !nestedRegex
-  def: ((?<=\b)(mil(lions)?|billions?|trillions?|(dozen|dz|doz)s?)(?=\b))|((?<=(\d|\b))
+  def: ((?<=\b)(mil(lions)?|billions?|trillions?|(dozen|dz|doz)s?)(?=\b))|((?<=(\d|\b)))
   references: [ BaseNumbers.MultiplierLookupRegex ]
 CardinalNumberMap: !dictionary
   types: [ string, long ]
@@ -556,131 +556,131 @@ OrdinalNumberMap: !dictionary
     bilionssimes: 10000000000000
     bilionèsims: 1000000000000
     bilionèsimes: 1000000000000
-  PrefixCardinalMap: !dictionary
-    types: [ string, long ]
-    entries:
-      dos: 2
-      tres: 3
-      quatre: 4
-      cinc: 5
-      sis: 6
-      set: 7
-      vuit: 8
-      nou: 9
-      deu: 10
-      onze: 11
-      dotze: 12
-      tretze: 13
-      catorze: 14
-      quinze: 15
-      setze: 16
-      disset: 17
-      divuit: 18
-      dinou: 19
-      vint: 20
-      ventiuna: 21
-      vint-i-un: 21
-      vint-i-dos: 22
-      vint-i-tres: 23
-      vint-i-quatre: 24
-      vint-i-cinc: 25
-      vint-i-sis: 26
-      vint-i-set: 27
-      vint-i-vuit: 28
-      vint-i-nou: 29
-      trenta: 30
-      quaranta: 40
-      cinquanta: 50
-      seixanta: 60
-      setanta: 70
-      vuitanta: 80
-      noranta: 90
-      cent: 100
-      dos-cents: 200
-      tres-cents: 300
-      quatre-cents: 400
-      cinc-cents: 500
-      sis-cents: 600
-      set-cents: 700
-      vuit-cents: 800
-      nou-cents: 900
-  SuffixOrdinalMap: !dictionary
-    types: [ string, long ]
-    entries:
-      mil·lèsim: 1000
-      milionsim: 1000000
-      bilionssim: 1000000000000
-  RoundNumberMap: !dictionary
-    types: [ string, long ]
-    entries:
-      mil: 1000
-      mil·lèsim: 1000
-      milió: 1000000
-      milions: 1000000
-      milionsim: 1000000
-      billó: 1000000000000
-      bilió: 10000000000000
-      bilions: 1000000000000
-      bilionssim: 1000000000000
-      trilió: 1000000000000000000
-      trilions: 1000000000000000000
-      dotzena: 12
-      dotzenes: 12
-      dz: 12
-      dou: 12
-      dzs: 12
-      dous: 12
-      k: 1000
-      m: 1000000
-      g: 1000000000
-      b: 1000000000
-      t: 1000000000000
-  AmbiguityFiltersDict: !dictionary
-    types: [ string, string ]
-    entries:
-      '^[.]': ''
-  RelativeReferenceOffsetMap: !dictionary
-    types: [ string, string ]
-    entries:
-      propera: 1
-      proper: 1
-      properes: 1
-      propers: 1
-      anterior: -1
-      anteriors: -1
-      actual: 0
-      actuals: 0
-      següent: 1
-      següents: 1
-      ultima: 0
-      darrera: 0
-      últim: 0
-      ultimes: 0
-      ultims: 0
-      darreres: 0
-      darrers: 0
-      penultima: -1
-      penultim: -1
-      penúltima: -1
-      penúltim: -1
-      penultimes: -1
-      penultims: -1
-      penúltimes: -1
-      penúltims: -1
-      antepenultima: -2
-      antepenultim: -2
-      antepenúltima: -2
-      antepenúltim: -2
-      antepenultimes: -2
-      antepenultims: -2
-      antepenúltimes: -2
-      antepenúltims: -2
-      abans de l'últim: -1
-      abans de la darrera: -1
-      abans del darrer: -1
-      anterior a la darrera: -1
-      anterior a l'últim: -1
-      anterior a l'última: -1
+PrefixCardinalMap: !dictionary
+  types: [ string, long ]
+  entries:
+    dos: 2
+    tres: 3
+    quatre: 4
+    cinc: 5
+    sis: 6
+    set: 7
+    vuit: 8
+    nou: 9
+    deu: 10
+    onze: 11
+    dotze: 12
+    tretze: 13
+    catorze: 14
+    quinze: 15
+    setze: 16
+    disset: 17
+    divuit: 18
+    dinou: 19
+    vint: 20
+    ventiuna: 21
+    vint-i-un: 21
+    vint-i-dos: 22
+    vint-i-tres: 23
+    vint-i-quatre: 24
+    vint-i-cinc: 25
+    vint-i-sis: 26
+    vint-i-set: 27
+    vint-i-vuit: 28
+    vint-i-nou: 29
+    trenta: 30
+    quaranta: 40
+    cinquanta: 50
+    seixanta: 60
+    setanta: 70
+    vuitanta: 80
+    noranta: 90
+    cent: 100
+    dos-cents: 200
+    tres-cents: 300
+    quatre-cents: 400
+    cinc-cents: 500
+    sis-cents: 600
+    set-cents: 700
+    vuit-cents: 800
+    nou-cents: 900
+SuffixOrdinalMap: !dictionary
+  types: [ string, long ]
+  entries:
+    mil·lèsim: 1000
+    milionsim: 1000000
+    bilionssim: 1000000000000
+RoundNumberMap: !dictionary
+  types: [ string, long ]
+  entries:
+    mil: 1000
+    mil·lèsim: 1000
+    milió: 1000000
+    milions: 1000000
+    milionsim: 1000000
+    billó: 1000000000000
+    bilió: 10000000000000
+    bilions: 1000000000000
+    bilionssim: 1000000000000
+    trilió: 1000000000000000000
+    trilions: 1000000000000000000
+    dotzena: 12
+    dotzenes: 12
+    dz: 12
+    dou: 12
+    dzs: 12
+    dous: 12
+    k: 1000
+    m: 1000000
+    g: 1000000000
+    b: 1000000000
+    t: 1000000000000
+AmbiguityFiltersDict: !dictionary
+  types: [ string, string ]
+  entries:
+    '^[.]': ''
+RelativeReferenceOffsetMap: !dictionary
+  types: [ string, string ]
+  entries:
+    propera: 1
+    proper: 1
+    properes: 1
+    propers: 1
+    anterior: -1
+    anteriors: -1
+    actual: 0
+    actuals: 0
+    següent: 1
+    següents: 1
+    ultima: 0
+    darrera: 0
+    últim: 0
+    ultimes: 0
+    ultims: 0
+    darreres: 0
+    darrers: 0
+    penultima: -1
+    penultim: -1
+    penúltima: -1
+    penúltim: -1
+    penultimes: -1
+    penultims: -1
+    penúltimes: -1
+    penúltims: -1
+    antepenultima: -2
+    antepenultim: -2
+    antepenúltima: -2
+    antepenúltim: -2
+    antepenultimes: -2
+    antepenultims: -2
+    antepenúltimes: -2
+    antepenúltims: -2
+    abans de l'últim: -1
+    abans de la darrera: -1
+    abans del darrer: -1
+    anterior a la darrera: -1
+    anterior a l'últim: -1
+    anterior a l'última: -1
 RelativeReferenceRelativeToMap: !dictionary
   types: [ string, string ]
   entries:

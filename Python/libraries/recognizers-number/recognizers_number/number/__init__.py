@@ -4,6 +4,7 @@
 from .models import *
 from .extractors import *
 from .parsers import *
+from .catalan import *
 from .english import *
 from .dutch import *
 from .german import *
