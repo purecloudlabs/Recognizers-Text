@@ -119,6 +119,18 @@
                 "class DutchNumeric:"
             ],
             "footer": [ "# pylint: enable=line-too-long" ]
+        },
+        {
+            "input": [ "Catalan", "Catalan-Numbers" ],
+            "output": "catalan_numeric",
+            "header": [
+                "from .base_numbers import BaseNumbers",
+                "# pylint: disable=line-too-long",
+                "",
+                "",
+                "class CatalanNumeric:"
+            ],
+            "footer": [ "# pylint: enable=line-too-long" ]
         }
     ]
 }
