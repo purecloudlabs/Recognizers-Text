@@ -3,801 +3,782 @@
 AgeSuffixList: !dictionary
   types: [ string, string ]
   entries:
-    Año: años|año
-    Mes: meses|mes
-    Semana: semanas|semana
-    Día: dias|días|día|dia
-# @TODO: This is a workaround. A redesign of Age is necessary to properly address the issue.
+    Any: anys|any
+    Mes: mesos|mes
+    Setmana: setmanes|setmana
+    Dia: dies|día|dia
 AmbiguousAgeUnitList: !list
   types: [ string ]
   entries:
-    - años
-    - año
-    - meses
+    - anys
+    - any
+    - mesos
     - mes
-    - semanas
-    - semana
-    - dias
-    - días
-    - día
+    - setmanes
+    - setmana
+    - dies
     - dia
-#AreaExtractorConfiguration
 AreaSuffixList: !dictionary
   types: [ string, string ]
   entries:
-    Kilómetro cuadrado: kilómetro cuadrado|kilómetros cuadrados|km2|km^2|km²
-    Hectómetro cuadrado: hectómetro cuadrado|hectómetros cuadrados|hm2|hm^2|hm²|hectárea|hectáreas
-    Decámetro cuadrado: decámetro cuadrado|decámetros cuadrados|dam2|dam^2|dam²|área|áreas
-    Metro cuadrado: metro cuadrado|metros cuadrados|m2|m^2|m²
-    Decímetro cuadrado: decímetro cuadrado|decímetros cuadrados|dm2|dm^2|dm²
-    Centímetro cuadrado: centímetro cuadrado|centímetros cuadrados|cm2|cm^2|cm²
-    Milímetro cuadrado: milímetro cuadrado|milímetros cuadrados|mm2|mm^2|mm²
-    Pulgada cuadrado: pulgada cuadrada|pulgadas cuadradas
-    Pie cuadrado: pie cuadrado|pies cuadrados|pie2|pie^2|pie²|ft2|ft^2|ft²
-    Yarda cuadrado: yarda cuadrada|yardas cuadradas|yd2|yd^2|yd²
+    Quilòmetre quadrat: quilòmetre quadrat|quilòmetres quadrats|km2|km^2|km²
+    Hectòmetre quadrat: hectòmetre quadrat|hectòmetres quadrats|hm2|hm^2|hm²|hectàrea|hectàrees
+    Decàmetre quadrat: decàmetre quadrat|decàmetres quadrats|dam2|dam^2|dam²|àrea|àrees
+    Metre quadrat: metre quadrat|metres quadrats|m2|m^2|m²
+    Decímetre quadrat: decímetre quadrat|decímetres quadrats|dm2|dm^2|dm²
+    Centímetre quadrat: centímetre quadrat|centímetres quadrats|cm2|cm^2|cm²
+    Mil·límetre quadrat: mil·límetre quadrat|mil·límetres quadrats|mm2|mm^2|mm²
+    Polzada quadrada: polzada quadrada|polzades quadrades
+    Peu quadrat: peu quadrat|peus quadrats|peu2|peu^2|peu²|ft2|ft^2|ft²
+    Yarda quadrada: yarda quadrada|yardes quadrades|yd2|yd^2|yd²
     Acre: acre|acres
 AreaAmbiguousValues: !list
   types: [ string ]
   entries:
-    - área
-    - áreas
-#CurrencyExtractorConfiguration
+    - àrea
+    - àrees
 CurrencySuffixList: !dictionary
-  # Reference Source: https://es.wikipedia.org/wiki/Anexo:Monedas_circulantes
   types: [ string, string ]
   entries:
-    # General Units
-    Dólar: dólar|dólares|dolar|dolares
-    Peso: peso|pesos
-    Rublo: rublo|rublos
-    Libra: libra|libras
-    Florín: florín|florines
-    Dinar: dinar|dinares
-    Franco: franco|francos
-    Rupia: rupia|rupias
-    Escudo: escudo|escudos
-    Chelín: chelín|chelines
-    Lira: lira|liras
+    entries:
+    Dòlar: dòlar|dòlars
+    Peso: pes|pesos
+    Ruble: ruble|rubles
+    Lliura: lliura|lliures
+    Florí: florí|florins
+    Dinar: dinar|dinars
+    Franco: franc|francs
+    Rupia: rupia|rupies
+    Escut: escut|escuts
+    Xelí: xelí|xelins
+    Lira: lira|lires
     Centavo: centavo|centavos
-    Céntimo: céntimo|céntimos
-    Centésimo: centésimo|centésimos
-    Penique: penique|peniques
+    Cèntim: cèntim|cèntims
+    Centèsim: centèsim|centèsims
+    Penny: penny|pennys
     #Euro
     Euro: euro|euros|€|eur
-    Céntimo de Euro: céntimo de euro|céntimos de euros
-    #Dólar del Caribe Oriental
-    Dólar del Caribe Oriental: dólar del caribe oriental|dólares del caribe oriental|ec$|xcd
-    Centavo del Caribe Oriental: centavo del caribe oriental|centavos del caribe oriental
-    #Franco CFA de África Occidental
-    Franco CFA de África Occidental: franco cfa de África occidental|francos cfa de África occidental|fcfa|xof
-    Céntimo de CFA de África Occidental: céntimo de cfa de África occidental|céntimos de cfa de África occidental
-    #Franco CFA de África Central
-    Franco CFA de África Central: franco cfa de África central|francos cfa de África central|xaf
-    Céntimo de CFA de África Central: céntimo de cfa de África central|céntimos de cfa de África central
-    #Abjasia
-    Apsar: apsar|apsares
-    #Afganistán
-    Afgani afgano: afgani afgano|؋|afn|afganis|afgani
+    Cèntim d'Euro: cèntim d'euro|cèntims d'euros
+    #Dòlar del Carib Oriental
+    Dòlar del Carib Oriental: dòlar del carib oriental|dòlars del carib oriental|ec$|xcd
+    Cèntim del Carib Oriental: cèntim del carib oriental|cèntims del carib oriental
+    #Franco CFA d'Àfrica Occidental
+    Franco CFA d'Àfrica Occidental: franco cfa d'Àfrica occidental|francs cfa d'Àfrica occidental|fcfa|xof
+    Cèntim de CFA d'Àfrica Occidental: cèntim de cfa d'Àfrica occidental|cèntims de cfa d'Àfrica occidental
+    #Franco CFA d'Àfrica Central
+    Franco CFA d'Àfrica Central: franco cfa d'Àfrica central|francs cfa d'Àfrica central|xaf
+    Cèntim de CFA d'Àfrica Central: cèntim de cfa d'Àfrica central|cèntims de cfa d'Àfrica central
+    #Abkhàzia
+    Apsar: apsar|apsars
+    #Afganistan
+    Afgani afganès: afgani afganès|؋|afn|afganis|afgani
     Pul: pul|puls
-    #Albania
-    Lek albanés: lek|lekë|lekes|lek albanés
+    #Albània
+    Lek albanès: lek|lekë|lekes|lek albanès
     Qindarka: qindarka|qindarkë|qindarkas
-    #Alderney -> Libra británica | Libra de Guernsey
-    #Alemania -> Euro
+    #Alderney -> Lliura britànica | Lliura de Guernsey
+    #Alemanya -> Euro
     #Andorra -> Euro
     #Angola
-    Kwanza angoleño: kwanza angoleño|kwanzas angoleños|kwanza angoleños|kwanzas angoleño|kwanzas|aoa|kz
-    Cêntimo angoleño: cêntimo angoleño|cêntimo|cêntimos
-    #Anguila -> Dólar del Caribe Oriental
-    #Antigua y Barbuda -> Dólar del Caribe Oriental
-    #Antillas Neerlandesas
-    Florín antillano neerlandés: florín antillano neerlandés|florínes antillano neerlandés|ƒ antillano neerlandés|ang|naƒ
-    Cent antillano neerlandés: cent|centen
-    #Arabia Saudita
-    Riyal saudí: riyal saudí|riyales saudí|sar
-    Halalá saudí: halalá saudí|hallalah
-    #Argelia
-    Dinar argelino: dinar argelino|dinares argelinos|dzd
-    Céntimo argelino: centimo argelino|centimos argelinos
+    Kwanza angolès: kwanza angolès|kwanzas angolans|kwanza angolans|kwanzas|aoa|kz
+    Cèntim angolès: cèntim angolès|cèntim|cèntims
+    #Anguilla -> Dòlar del Carib Oriental
+    #Antigua i Barbuda -> Dòlar del Carib Oriental
+    #Antilles Neerlandeses
+    Florí antillà neerlandès: florí antillà neerlandès|florins antillans neerlandesos|ƒ antillà neerlandès|ang|naƒ
+    Cent antillà neerlandès: cent|cèntims
+    #Aràbia Saudita
+    Riyal saudita: riyal saudita|riyals saudites|sar
+    Halalà saudita: halalà saudita|hallalah
+    #Algèria
+    Dinar algerià: dinar algerià|dinars algerians|dzd
+    Cèntim algerià: cèntim algerià|cèntims algerians
     #Argentina
-    Peso argentino: peso argentino|pesos argentinos|ar$|ars
-    Centavo argentino: centavo argentino|centavos argentinos|ctvo.|ctvos.
-    #Armenia
-    Dram armenio: dram armenio|dram armenios|dram|դր.
-    Luma armenio: luma armenio|luma armenios
+    Peso argentí: peso argentí|pesos argentins|ar$|ars
+    Centavo argentí: centavo argentí|centavos argentins|ctvo.|ctvos.
+    #Armènia
+    Dram armeni: dram armeni|drams armenis|dram|դր.
+    Luma armeni: luma armeni|luma armenis
     #Aruba
-    Florín arubeño: florín arubeño|florines arubeños|ƒ arubeños|aƒ|awg
-    Yotin arubeño: yotin arubeño|yotines arubeños
-    #Australia
-    Dólar australiano: dólar australiano|dólares australianos|a$|aud
-    Centavo australiano: centavo australiano|centavos australianos
-    #Austria -> Euro
-    #Azerbaiyán
+    Florí arubenc: florí arubenc|florins arubencs|ƒ arubencs|aƒ|awg
+    Yotin arubenc: yotin arubenc|yotins arubencs
+    #Austràlia
+    Dòlar australià: dòlar australià|dòlars australians|a$|aud
+    Centau australià: centau australià|centaus australians
+    #Àustria -> Euro
+    #Azerbaidjan
     Manat azerí: manat azerí|man|azn
     Qəpik azerí: qəpik azerí|qəpik
-    #Bahamas
-    Dólar bahameño: dólar bahameño|dólares bahameños|b$|bsd
-    Centavo bahameño: centavo bahameño|centavos bahameños
-    #Baréin
-    Dinar bahreiní: dinar bahreiní|dinares bahreinies|bhd
-    Fil bahreiní: fil bahreiní|fils bahreinies
-    #Bangladés
-    Taka bangladeshí: taka bangladeshí|takas bangladeshí|bdt
-    Poisha bangladeshí: poisha bangladeshí|poishas bangladeshí
+    #Bahames
+    Dòlar bahamenc: dòlar bahamenc|dòlars bahamencs|b$|bsd
+    Centau bahamenc: centau bahamenc|centaus bahamencs
+    #Bahrain
+    Dinar bahrainí: dinar bahrainí|dinars bahrainins|bhd
+    Fíl bahrainí: fíl bahrainí|fíls bahrainins
+    #Bangla Desh
+    Taka bangladeshí: taka bangladeshí|takas bangladeshins|bdt
+    Poisha bangladeshí: poisha bangladeshí|poishas bangladeshins
     #Barbados
-    Dólar de Barbados: dólar de barbados|dólares de barbados|bbd
-    Centavo de Barbados: centavo de barbados|centavos de barbados
-    #Bélgica -> Euro
-    #Belice
-    Dólar beliceño: dólar beliceño|dólares beliceños|bz$|bzd
-    Centavo beliceño: centavo beliceño|centavos beliceños
-    #Benín -> Franco CFA de África Occidental
-    #Bermudas
-    Dólar bermudeño: dólar bermudeño|dólares bermudeños|bd$|bmd
-    Centavo bermudeño: centavo bermudeño|centavos bermudeños
-    #Bielorrusia
-    Rublo bielorruso: rublo bielorruso|rublos bielorrusos|byr
-    Kópek bielorruso: kópek bielorruso|kópeks bielorrusos|kap
-    #Birmania
-    Kyat birmano: kyat birmano|kyats birmanos|mmk
-    Pya birmano: pya birmano|pyas birmanos
-    #Bolivia
-    Boliviano: boliviano|bolivianos|bob|bs
-    Centésimo Boliviano: centésimo boliviano|centésimos bolivianos
-    #Bosnia y Herzegovina
-    Marco bosnioherzegovino: marco convertible|marco bosnioherzegovino|marcos convertibles|marcos bosnioherzegovinos|bam
-    Feningas bosnioherzegovino: feninga convertible|feninga bosnioherzegovina|feningas convertibles
-    #Botsuana
+    Dòlar de Barbados: dòlar de barbados|dòlars de barbados|bbd
+    Centau de Barbados: centau de barbados|centaus de barbados
+    #Bèlgica -> Euro
+    #Belize
+    Dòlar belit: dòlar belit|dòlars belitans|bz$|bzd
+    Centau belit: centau belit|centaus belitans
+    #Benín -> Franco CFA d'Àfrica Occidental
+    #Bermudes
+    Dòlar bermudià: dòlar bermudià|dòlars bermudians|bd$|bmd
+    Centau bermudià: centau bermudià|centaus bermudians
+    #Bielorússia
+    Rubla bielorussa: rubla bielorussa|rubles bielorussos|byr
+    Kopek bielorús: kópek bielorús|kópeks bielorussos|kap
+    #Birmània
+    Kyat birmà: kyat birmà|kyats birmans|mmk
+    Pya birmà: pya birmà|pyas birmans
+    #Bolívia
+    Bolivià: bolivià|bolivians|bob|bs
+    Centèsim bolivià: centèsim bolivià|centèsims bolivians
+    #Bòsnia i Hercegovina
+    Marc convertible: marco convertible|marco bosnioherzegovino|marcos convertibles|marcos bosnioherzegovinos|bam
+    Fening convertible: feninga convertible|feninga bosnioherzegovina|feningas convertibles
+    #Botswana
     Pula: pula|bwp
     Thebe: thebe
     #Brasil
-    Real brasileño: real brasileño|reales brasileños|r$|brl
-    Centavo brasileño: centavo brasileño|centavos brasileños
-    #Brunéi
-    Dólar de Brunéi: dólar de brunei|dólares de brunéi|bnd
-    Sen de Brunéi: sen|sen de brunéi
-    #Bulgaria
-    Lev búlgaro: lev búlgaro|leva búlgaros|lv|bgn
-    Stotinki búlgaro: stotinka búlgaro|stotinki búlgaros
-    #Burkina Faso -> Franco CFA de África Occidental
+    Real brasiler: real brasiler|reals brasilers|r$|brl
+    Centau brasiler: centau brasiler|centaus brasilers
+    #Brunei
+    Dòlar de Brunei: dòlar de brunei|dòlars de brunéi|bnd
+    Sen de Brunei: sen|sen de brunéi
+    #Bulgària
+    Lev búlgar: lev búlgar|leva búlgars|lv|bgn
+    Stotinki búlgar: stotinka búlgar|stotinki búlgars
     #Burundi
-    Franco de Burundi: franco de burundi|francos de burundi|fbu|fib
-    Céntimo Burundi: céntimo burundi|céntimos burundies
-    #Bután
-    Ngultrum butanés: ngultrum butanés|ngultrum butaneses|btn
-    Chetrum  butanés: chetrum butanés|chetrum butaneses
+    Franco de Burundi: franco de burundi|francs de Burundi|fbu|fib
+    Cèntim Burundi: cèntim burundi|cèntims burundesos
+    #Butan
+    Ngultrum butanès: ngultrum butanès|ngultrums butanesos|btn
+    Chetrum butanès: chetrum butanès|chetrum butanesos
     #Cabo Verde
-    Escudo caboverdiano: escudo caboverdiano|escudos caboverdianos|cve
-    #Camboya
-    Riel camboyano: riel camboyano|rieles camboyanos|khr
-    #Camerún -> Franco CFA de África Central
-    #Canadá
-    Dólar canadiense: dólar canadiense|dólares canadienses|c$|cad
-    Centavo canadiense: centavo canadiense|centavos canadienses
-    #Chad -> Franco CFA de África Central
-    #Chile
-    Peso chileno: peso chileno|pesos chilenos|cpl
-    #China
-    Yuan chino: yuan chino|yuanes chinos|yuan|yuanes|renminbi|rmb|cny|￥
-    #Chipre -> Euro
-    #Colombia
-    Peso colombiano: peso colombiano|pesos colombianos|cop|col$
-    Centavo colombiano: centavo colombiano|centavos colombianos
-    #Comoras
-    Franco comorano: franco comorano|francos comoranos|kmf|₣
-    #Congo, República del -> Franco CFA de África Central
-    #Congo, República Democrática del
-    Franco congoleño: franco congoleño|francos congoleños|cdf
-    Céntimo congoleño: céntimo congoleño|céntimos congoleños
-    #Corea del Norte
-    Won norcoreano: won norcoreano|wŏn norcoreano|wŏn norcoreanos|kpw
-    Chon norcoreano: chon norcoreano|chŏn norcoreano|chŏn norcoreanos|chon norcoreanos
-    #Corea del Sur
-    Won surcoreano: wŏn surcoreano|won surcoreano|wŏnes surcoreanos|wones surcoreanos|krw
-    Chon surcoreano: chon surcoreano|chŏn surcoreano|chŏn surcoreanos|chon surcoreanos
-    #Costa de Marfil -> Franco CFA de África Occidental
+    Escut capverdià: escut capverdià|escuts capverdians|cve
+    #Cambodja
+    Riel cambodjà: riel cambodjà|rieles cambodians|khr
+    #Canadà
+    Dòlar canadenc: dòlar canadenc|dòlars canadencs|cad|c$
+    Cent canadenc: cent canadenc|cents canadencs
+    #Xile
+    Peso xilè: peso xilè|pesos xilens|cpl
+    #Xina
+    Iuan xinès: iuan xinès|iuanes xinesos|yuan|renminbi|rmb|cny|￥
+    #Colòmbia
+    Peso colombià: peso colombià|pesos colombians|cop|col$
+    Cent colombià: cent colombià|cents colombians
+    #Comores
+    Franco comorià: franco comorià|francs comorians|kmf|₣
+    #República Democràtica del Congo
+    Franco congolès: franco congolès|francs congoleños|cdf
+    Cèntim congolès: cèntim congolès|cèntims congoleños
+    #Corea del Nord
+    Won nord-coreà: won nord-coreà|wŏn nord-coreà|wŏns nord-coreans|kpw
+    Chon nord-coreà: chon nord-coreà|chŏn nord-coreà|chŏns nord-coreans|chon nord-coreans
+    #Corea del Sud
+    Won sud-coreà: wŏn sud-coreà|won sud-coreà|wŏns sud-coreans|wones sud-coreans|krw
+    Chon sud-coreà: chon sud-coreà|chŏn sud-coreà|chŏns sud-coreans|chon sud-coreans
     #Costa Rica
-    Colón costarricense: colón costarricense|colones costarricenses|crc
-    #Croacia
-    Kuna croata: kuna croata|kuna croatas|hrk
-    Lipa croata: lipa croata|lipa croatas
+    Colón costaranyenc: colón costaranyenc|colons costaranyencs|crc
+    #Croàcia
+    Kuna croata: kuna croata|kunes croates|hrk
+    Lipa croata: lipa croata|lipes croates
     #Cuba
-    Peso cubano: peso cubano|pesos cubanos|cup
-    Peso cubano convertible: peso cubano convertible|pesos cubanos convertible|cuc
+    Peso cubà: peso cubà|pesos cubans|cup
+    Peso cubà convertible: peso cubà convertible|pesos cubans convertibles|cuc
     #Dinamarca
-    Corona danesa: corona danesa|coronas danesas|dkk
-    #Dominica -> Dólar del Caribe Oriental
-    #Ecuador -> Dólar estadounidense
-    #Egipto
-    Libra egipcia: libra egipcia|libras egipcias|egp|l.e.
-    Piastra egipcia: piastra egipcia|piastras egipcias
+    Corona danesa: corona danesa|corones daneses|dkk
+    #Dominica -> Dòlar del Carib Oriental
+    #Ecuador -> Dòlar estatunidenc
+    #Egipte
+    Lliura egípcia: lliura egípcia|lliures egípcies|egp|l.e.
+    Piastre egípcia: piastre egípcia|piastres egípcies
     #El Salvador
-    Colón salvadoreño: colón salvadoreño|colones salvadoreños|svc
-    #Emiratos Árabes Unidos
-    Dirham de los Emiratos Árabes Unidos: dirham|dirhams|dirham de los emiratos Árabes unidos|aed|dhs
+    Colón salvadoreny: colón salvadoreny|colons salvadoreny|svc
+    #Emirats Àrabs Units
+    Dirham dels Emirats Àrabs Units: dirham|dirhams|dirham dels emirats àrabs units|aed|dhs
     #Eritrea
     Nakfa: nakfa|nfk|ern
-    Céntimo de Nakfa: céntimo de nakfa|céntimos de nakfa
-    #Eslovaquia -> Euro
-    #Eslovenia -> Euro
-    #España -> Euro
-    Peseta: peseta|pesetas|pts.|ptas.|esp
-    #Estados Unidos
-    Dólar estadounidense: dólar estadounidense|dólares estadounidenses|usd|u$d|us$
-    #Estonia
-    Corona estonia: corona estonia|coronas estonias|eek
-    Senti estonia: senti estonia|senti estonias
-    #Etiopía
-    Birr etíope: birr etíope|birr etíopes|br|etb
-    Santim etíope: santim etíope|santim etíopes
-    #Filipinas
-    Peso filipino: peso filipino|pesos filipinos|php
-    #Finlandia -> Euro
-    Marco finlandés: marco finlandés|marcos finlandeses
-    #Fiyi
-    Dólar fiyiano: dólar fiyiano|dólares fiyianos|fj$|fjd
-    Centavo fiyiano: centavo fiyiano|centavos fiyianos
-    #Francia -> Euro
-    #Gabón -> Franco CFA de África Central
-    #Gambia
+    Cèntim de nakfa: céntim de nakfa|cèntims de nakfa
+    #Eslovàquia -> Euro
+    #Eslovènia -> Euro
+    #Espanya -> Euro
+    Peseta: peseta|pesetes|pts.|ptas.|esp
+    #Estats Units
+    Dòlar estatunidenc: dòlar estatunidenc|dòlars estatunidencs|usd|u$d|us$
+    #Estònia
+    Corona estoniana: corona estoniana|corones estonianes|eek
+    Senti estonià: senti estonià|sentis estonians
+    #Etiòpia
+    Birr etíop: birr etíop|birrs etíops|br|etb
+    Santim etíop: santim etíop|santims etíops
+    #Filipines
+    Peso filipí: peso filipí|pesos filipins|php
+    #Finlàndia -> Euro
+    Marc finlandès: marc finlandès|marcs finlandesos
+    #Fiji
+    Dòlar fijià: dòlar fijià|dòlars fijians|fj$|fjd
+    Cent fijià: cent fijià|cents fijians
+    #França -> Euro
+    #Gabon -> Franco CFA d'Àfrica Central
+    #Gàmbia
     Dalasi: dalasi|gmd
     Bututs: butut|bututs
-    #Georgia
-    Lari georgiano: lari georgiano|lari georgianos|gel
-    Tetri georgiano: tetri georgiano|tetri georgianos
+    #Geòrgia
+    Lari georgià: lari georgià|laris georgians|gel
+    Tetri georgià: tetri georgià|tetris georgians
     #Ghana
     Cedi: cedi|ghs|gh₵
     Pesewa: pesewa
     #Gibraltar
-    Libra gibraltareña: libra gibraltareña|libras gibraltareñas|gip
-    Penique gibraltareña: penique gibraltareña|peniques gibraltareñas
-    #Granada -> Dólar del Caribe Oriental
-    #Grecia -> Euro
+    Lliura gibraltarenya: lliura gibraltarenya|lliures gibraltarenyes|gip
+    Penic gibraltareny: penic gibraltareny|penics gibraltarenyos
+    #Granada -> Dòlar del Carib Oriental
+    #Grècia -> Euro
     #Guatemala
-    Quetzal guatemalteco: quetzal guatemalteco|quetzales guatemaltecos|quetzal|quetzales|gtq
-    Centavo guatemalteco: centavo guatemalteco|centavos guatemaltecos
+    Quetzal guatemalenc: quetzal guatemalenc|quetzals guatemalencs|quetzal|quetzals|gtq
+    Cent guatemalenc: cent guatemalenc|cents guatemalencs
     #Guernsey
-    Libra de Guernsey: libra de guernsey|libras de guernsey|ggp
-    Penique de Guernsey: penique de guernsey|peniques de guernsey
+    Lliura de Guernsey: lliura de Guernsey|lliures de Guernsey|ggp
+    Penic de Guernsey: penic de Guernsey|penics de Guernsey
     #Guinea
-    Franco guineano: franco guineano|francos guineanos|gnf|fg
-    Céntimo guineano: céntimo guineano|céntimos guineanos
-    #Guinea-Bisáu -> Franco CFA de África Occidental
-    #Guinea Ecuatorial -> Franco CFA de África Central
+    Franco guineà: franco guineà|francs guineans|gnf|fg
+    Cèntim guineà: cèntim guineà|cèntims guineans
+    #Guinea-Bissau -> Franco CFA d'Àfrica Occidental
+    #Guinea Equatorial -> Franco CFA d'Àfrica Central
     #Guyana
-    Dólar guyanés: dólar guyanés|dólares guyaneses|gyd|gy
+    Dòlar guyanès: dòlar guyanès|dòlars guyanesos|gyd|gy
     #Haití
-    Gourde haitiano: gourde haitiano|gourde haitianos|htg
-    Céntimo haitiano: céntimo haitiano|céntimos haitianos
+    Gourde haitià: gourde haitià|gourdes haitianes|htg
+    Cèntim haitià: cèntim haitià|cèntims haitians
     #Honduras
-    Lempira hondureño: lempira hondureño|lempira hondureños|hnl
-    Centavo hondureño: centavo hondureño|centavos hondureño
+    Lempira hondureny: lempira hondureny|lempires hondurenys|hnl
+    Centavo hondureny: centavo hondureny|centavos hondureny
     #Hong Kong
-    Dólar de Hong Kong: dólar de hong kong|dólares de hong kong|hk$|hkd
-    #Hungría
-    Forinto húngaro: forinto húngaro|forinto húngaros|huf
-    #India
-    Rupia india: rupia india|rupias indias|inr
-    Paisa india: paisa india|paise indias
-    #Indonesia
-    Rupia indonesia: rupia indonesia|rupias indonesias|idr
-    Sen indonesia: sen indonesia|sen indonesias
-    #Irán
-    Rial iraní: rial iraní|rial iranies|irr
-    #Irak
-    Dinar iraquí: dinar iraquí|dinares iraquies|iqd
-    Fil iraquí: fil iraquí|fils iraquies
+    Dòlar de Hong Kong: dòlar de Hong Kong|dòlars de Hong Kong|HK$|HKD
+    #Hongria
+    Forint hongarès: forint hongarès|forints hongaresos|HUF
+    #Índia
+    Rupia índia: rupia índia|rupies índies|INR
+    Paisa índia: paisa índia|paise índies
+    #Indonèsia
+    Rupia indonèsia: rupia indonèsia|rupies indoneses|IDR
+    Sen indonèsia: sen indonèsia|sen indonesos
+    #Iran
+    Rial iranià: rial iranià|rials iranians|IRR
+    #Iraq
+    Dinar iraquià: dinar iraquià|dinars iraquians|IQD
+    Fil iraquià: fil iraquià|fils iraquians
     #Irlanda -> Euro
-    #Isla Ascensión -> Libra se Santa Elena
-    #Isla de Man
-    Libra manesa: libra manesa|libras manesas|imp
-    Penique manes: penique manes|peniques maneses
-    #Islandia
-    Corona islandesa: corona islandesa|coronas islandesas|isk|íkr
-    Aurar islandes: aurar islandes|aurar islandeses
-    #Islas Caimán
-    Dólar de las Islas Caimán: dólar de las islas caimán|dólares de las islas caimán|ci$|kyd
-    #Islas Cocos -> Dólar australiano
-    #Islas Cook
-    Dólar de las Islas Cook: dólar de las islas cook|dólares de las islas cook
-    #Islas Feroe
-    Corona feroesa: corona feroesa|coronas feroesas|fkr
-    #Islas Georgias del Sur y Sandwich del Sur
-    #Islas Malvinas
-    Libra malvinense: libra malvinense|libras malvinenses|fk£|fkp
-    #Islas Marianas del Norte -> Dólar estadounidense
-    #Islas Marshall -> Dólar estadounidense
-    #Islas Pitcairn -> Dólar neozelandés
-    #Islas Salomón
-    Dólar de las Islas Salomón: dólar de las islas salomón|dólares de las islas salomón|sbd
-    #Islas Turcas y Caicos -> Dólar estadounidense
-    #Islas Vírgenes Británicas -> Dólar estadounidense
+    #Illa de l'Ascensió -> Lliura de Santa Helena
+    #Illa de Man
+    Lliura manesa: lliura manesa|lliures maneses|IMP
+    Penic manés: penic manés|penics manesos
+    #Islàndia
+    Corona islandesa: corona islandesa|corones islandeses|ISK|Íkr
+    Aurar islandesos: aurar islandesos
+    #Illes Caiman
+    Dòlar de les illes Caiman: dòlar de les illes Caiman|dòlars de les illes Caiman|CI$|KYD
+    #Illes Cocos -> Dòlar australià
+    #Illes Cook
+    Dòlar de les illes Cook: dòlar de les illes Cook|dòlars de les illes Cook
+    #Illes Fèroe
+    Corona feroesa: corona feroesa|corones feroeses|FKR
+    #Illes Geòrgies del Sud i Sandwich del Sud
+    #Illes Malvines
+    Lliura malvinense: lliura malvinense|lliures malvineses|FK£|FKP
+    #Illes Mariannes del Nord -> Dòlar estatunidenc
+    #Illes Marshall -> Dòlar estatunidenc
+    #Illes Pitcairn -> Dòlar neozelandès
+    #Illes Salomó
+    Dòlar de les illes Salomó: dòlar de les illes Salomó|dòlars de les illes Salomó|SBD
+    #Illes Turks i Caicos -> Dòlar estatunidenc
+    #Illes Verges Britàniques -> Dòlar estatunidenc
     #Israel
-    Nuevo shéquel: nuevo shéquel|nuevos shéquel|ils
+    Nou xéquel: nou xéquel|nous xéquels|ILS
     Agorot: agorot
-    #Italia -> Euro
+    #Itàlia -> Euro
     #Jamaica
-    Dólar jamaiquino: dólar jamaiquino|dólares jamaiquinos|j$|ja$|jmd
-    #Japón
-    Yen: yen|yenes|jpy
+    Dòlar jamaicà: dòlar jamaicà|dòlars jamaicans|J$|JA$|JMD
+    #Japó
+    Ien: ien|iens|JPY
     #Jersey
-    Libra de Jersey: libra de jersey|libras de jersey|jep
-    #Jordania
-    Dinar jordano: dinar jordano|dinares jordanos|jd|jod
-    Piastra jordano: piastra jordano|piastras jordanos
-    #Kazajistán
-    Tenge kazajo: tenge|tenge kazajo|kzt
-    #Kenia
-    Chelín keniano: chelín keniano|chelines kenianos|ksh|kes
-    #Kirguistán
-    Som kirguís: som kirguís|kgs
-    Tyiyn: tyiyn
+    Lliura de Jersey: lliura de Jersey|lliures de Jersey|JEP
+    #Jordània
+    Dinar jordà: dinar jordà|dinars jordans|JD|JOD
+    Piastra jordana: piastra jordana|piastras jordanesos
+    #Kazakhstan
+    Tenge kazakh: tenge kazakh|tenges kazakhs|KZT
+    #Kenya
+    Xíling kenyà: xíling kenyà|xílings kenyans|KES
+    Cèntim kenyà: cèntim kenyà|cèntims kenyans
+    #Kirguizistan
+    Som kirguís: som kirguís|soms kirguisos|KGS
+    Tyiyn kirguís: tyiyn kirguís|tyiyns kirguisos
     #Kiribati
-    Dólar de Kiribati: dólar de kiribati|dólares de kiribati
-    #Kosovo -> Euro
+    Dòlar de Kiribati: dòlar de Kiribati|dòlars de Kiribati|AUD
     #Kuwait
-    Dinar kuwaití: dinar kuwaití|dinares kuwaití
+    Dinar kuwaitià: dinar kuwaitià|dinars kuwaitians|KWD
     #Laos
-    Kip laosiano: kip|kip laosiano|kip laosianos|lak
-    Att laosiano: att|att laosiano|att laosianos
-    #Lesoto
-    Loti: loti|maloti|lsl
-    Sente: sente|lisente
-    #Letonia -> Euro
-    #Líbano
-    Libra libanesa: libra libanesa|libras libanesas|lbp
-    #Liberia
-    Dólar liberiano: dólar liberiano|dólares liberianos|l$|lrd
-    #Libia
-    Dinar libio: dinar libio|dinares libios|ld|lyd
-    Dirham libio: dirham libio|dirhams libios
-    #Liechtenstein -> Franco suizo
-    #Lituania -> Euro
-    Litas lituana: litas lituana|litai lituanas|ltl
-    #Luxemburgo -> Euro
-    #Macao
-    Pataca macaense: pataca macaense|patacas macaenses|mop$|mop
-    Avo macaense: avo macaense|avos macaenses
-    Ho macaense: ho macaense|ho macaenses
-    #Macedonia, República de
-    Denar macedonio: denar macedonio|denare macedonios|den|mkd
-    Deni macedonio: deni macedonio|deni macedonios
+    Kip laosià: kip laosià|kips laosians|LAK
+    #Lesotho
+    Loti lesothià: loti lesothià|maloti lesothians|LSL
+    Cèntim lesothià: cèntim lesothià|cèntims lesothians
+    #Letònia -> Euro
+    #Líban
+    Lliura llibanesa: lliura llibanesa|lliures llibaneses|LBP
+    #Libèria
+    Dòlar liberiano: dòlar liberiano|dòlars liberians|LRD
+    #Líbia
+    Dinar libi: dinar libi|dinars libis|LYD
+    #Liechtenstein -> Franco suís
+    #Lituània -> Euro
+    #Luxemburg -> Euro
+    #Macau
+    Pataca de Macau: pataca de Macau|pataques de Macau|MOP
+    #Macedònia del Nord
+    Denar macedoni: denar macedoni|denars macedonis|MKD
     #Madagascar
-    Ariary malgache: ariary malgache|ariary malgaches|mga
-    Iraimbilanja malgache: iraimbilanja malgache|iraimbilanja malgaches
-    #Malasia
-    Ringgit malayo: ringgit malayo|ringgit malayos|rm|myr
-    Sen malayo: sen malayo|sen malayos
-    #Malaui
-    Kwacha malauí: kwacha malauí|mk|mwk
-    Támbala malauí: támbala malauí
-    #Maldivas
-    Rupia de Maldivas: rupia de maldivas|rupias de maldivas|mvr
-    #Malí -> Franco CFA de África Occidental
+    Ariary malgaix: ariary malgaix|ariaries malgaixos|MGA
+    Iraimbilanja malgaix: iraimbilanja malgaix|iraimbilanjas malgaixos
+    #Malàisia
+    Ringgit malai: ringgit malai|ringgits malais|MYR
+    Sen malai: sen malai|sens malais
+    #Malawi
+    Kwacha malawià: kwacha malawià|kwachas malawians|MWK
+    #Maldives
+    Rufiyaa de les Maldives: rufiyaa de les Maldives|rufiyaas de les Maldives|MVR
+    Laari de les Maldives: laari de les Maldives|laaris de les Maldives
+    #Mali -> Franco CFA d'Àfrica Occidental
     #Malta -> Euro
-    #Marruecos
-    Dirham marroquí: dirham marroquí|dirhams marroquies|mad
-    #Mauricio
-    Rupia de Mauricio: rupia de Mauricio|rupias de Mauricio|mur
-    #Mauritania
-    Uguiya: uguiya|uguiyas|mro
-    Jum: jum|jums
-    #México
-    Peso mexicano: peso mexicano|pesos mexicanos|mxn|mxn$|mxn $|mex$
-    Centavo mexicano: centavo mexicano|centavos mexicanos
-    #Micronesia, Estados Federados de -> Dólar estadounidense
-    #Moldavia
-    Leu moldavo: leu moldavo|lei moldavos|mdl
-    Ban moldavo: ban moldavo|bani moldavos
-    #Mónaco -> Euro
-    #Mongolia
-    Tugrik mongol: tugrik mongol|tugrik|tugrik mongoles|tug|mnt
+    #Marroc
+    Dirham marroquí: dirham marroquí|dirhams marroquins|mad|MAD
+    Cèntim marroquí: cèntim marroquí|cèntims marroquins
+    #Martinica -> Euro
+    #Maurici
+    Rupia mauriciana: rupia mauriciana|rupies mauricianes|MUR
+    Cèntim mauricià: cèntim mauricià|cèntims mauricians
+    #Mauritània -> Ouguiya maurità
+    #Mayotte -> Euro
+    #Mèxic
+    Peso mexicà: peso mexicà|pesos mexicans|MXN
+    Centavo mexicà: centavo mexicà|centavos mexicans
+    #Micronèsia -> Dòlar estatunidenc
+    #Moçambic
+    Metical moçambiqueny: metical moçambiqueny|meticals moçambiquenys|MZN
+    Centavo moçambiqueny: centavo moçambiqueny|centavos moçambiquenys
+    #Moldàvia
+    Leu moldau: leu moldau|lei moldaus|MDL
+    #Mònaco -> Euro
+    #Mongòlia
+    Tögrög mongol: tögrög mongol|tögrögs mongols|MNT
     #Montenegro -> Euro
-    #Montserrat -> Dólar del Caribe Oriental
-    #Mozambique
-    Metical mozambiqueño: metical|metical mozambiqueño|meticales|meticales mozambiqueños|mtn|mzn
-    #Nagorno Karabaj
-    Dram de Nagorno Karabaj: dram de nagorno karabaj|drams de nagorno karabaj
-    Luma de Nagorno Karabaj: luma de nagorno karabaj
-    #Namibia
-    Dólar namibio: dólar namibio|dólares namibios|n$|nad
-    Centavo namibio: centavo namibio|centavos namibios
-    #Nauru -> Dólar australiano
+    #Montserrat -> Dòlar estatunidenc
+    #Myanmar (Birmània)
+    Kyat de Myanmar: kyat de Myanmar|kyats de Myanmar|MMK
+    #Namíbia
+    Dòlar namibià: dòlar namibià|dòlars namibians|NAD
+    #Nauru -> Dòlar australià
     #Nepal
-    Rupia nepalí: rupia nepalí|rupias nepalies|npr
-    Paisa nepalí: paisa nepalí|paisas nepalies
+    Rupia nepalesa: rupia nepalesa|rupies nepaleses|npr
+    Paisa nepalès: paisa nepalès|paisas nepaleses
     #Nicaragua
-    Córdoba nicaragüense: córdoba nicaragüense|córdobas nicaragüenses|nio
-    Centavo nicaragüense: centavo nicaragüense|centavos nicaragüenses
-    #Níger -> Franco CFA de África Occidental
-    #Nigeria
+    Còrdova nicaragüenca: còrdova nicaragüenca|còrdobes nicaragüencs|nio
+    Cent nicaragüenc: cent nicaragüenc|cents nicaragüencs
+    #Níger -> Franco CFA d'Àfrica Occidental
+    #Nigèria
     Naira: naira|ngn
     Kobo: kobo
-    #Niue -> Dólar neozelandés
+    #Niue -> Dòlar neozelandès
     #Noruega
-    Corona noruega: corona noruega|coronas noruegas|nok
-    #Nueva Caledonia
-    Franco CFP: franco cfp|francos cfp|xpf
-    #Nueva Zelanda
-    Dólar neozelandés: dólar neozelandés|dólares neozelandeses|dólar de nueva zelanda|dólares de nueva zelanda|nz$|nzd
-    Centavo neozelandés: centavo neozelandés|centavo de nueva zelanda|centavos de nueva zelanda|centavos neozelandeses
-    #Omán
-    Rial omaní: rial omaní|riales omanies|omr
-    Baisa omaní: baisa omaní|baisa omanies
-    #Osetia del Sur -> Rublo ruso
-    #Países Bajos -> Euro
-    Florín neerlandés: florín neerlandés|florines neerlandeses|nlg
-    #Pakistán
-    Rupia pakistaní: rupia pakistaní|rupias pakistanies|pkr
-    Paisa pakistaní: paisa pakistaní|paisas pakistanies
-    #Palaos -> Dólar estadounidense
-    #Palestina -> Nuevo shéquel | Dinar jordano
-    #Panamá
-    Balboa panameño: balboa panameño|balboa panameños|pab
-    Centésimo panameño: centésimo panameño|centésimos panameños
-    #Papúa Nueva Guinea
+    Corona noruega: corona noruega|corones noruegues|nok
+    #Nova Caledònia
+    Franco CFP: franco cfp|francs cfp|xpf
+    #Nova Zelanda
+    Dòlar neozelandès: dòlar neozelandès|dòlars neozelandesos|dòlar de nova zelanda|dòlars de nova zelanda|nz$|nzd
+    Cent neozelandès: cent neozelandès|cent de nova zelanda|cents de nova zelanda|cents neozelandesos
+    #Oman
+    Rial omaní: rial omaní|rials omanis|omr
+    Baixa omaní: baixa omaní|baixes omanis
+    #Ossètia del Sud -> Ruble rus
+    #Països Baixos -> Euro
+    Florí neerlandès: florí neerlandès|florins neerlandesos|nlg
+    #Pakistan
+    Rupia pakistanesa: rupia pakistanesa|rupies pakistaneses|pkr
+    Paisa pakistanesa: paisa pakistanesa|paisas pakistaneses
+    #Palaos -> Dòlar dels Estats Units
+    #Palestina -> Nou xéquel | Dinar jordà
+    #Panamà
+    Balboa panameny: balboa panameny|balboes panamenys|pab
+    Centèsim panameny: centèsim panameny|centèsims panamenys
+    #Papua Nova Guinea
     Kina: kina|pkg|pgk
     Toea: toea
-    #Paraguay
-    Guaraní: guaraní|guaranies|gs|pyg
+    #Paraguai
+    Guaraní: guaraní|guaranís|gs|pyg
     #Perú
-    Sol: sol|soles|nuevo sol|pen|s#.
-    Céntimo de sol: céntimo de sol|céntimos de sol
-    #Polinesia Francesa -> Franco CFP
-    #Polonia
+    Sol: sol|soles|nou sol|pen|s#.
+    Centim de sol: centim de sol|centims de sol
+    #Polinèsia Francesa -> Franco CFP
+    #Polònia
     Złoty: złoty|esloti|eslotis|zł|pln
     Groszy: groszy
     #Portugal -> Euro
     #Qatar
-    Riyal qatarí: riyal qatarí|riyal qataries|qr|qar
-    Dirham qatarí: dirham qatarí|dirhams qataries
-    #Reino Unido
-    Libra esterlina: libra esterlina|libras esterlinas|gbp
-    #República Centroafricana -> Franco CFA de África Central
-    #República Checa
-    Corona checa: corona checa|coronas checas|kc|czk
+    Riyal qatari: riyal qatari|riyals qataris|qr|qar
+    Dirham qatari: dirham qatari|dirhams qataris
+    #Regne Unit
+    Lliura esterlina: lliura esterlina|lliures esterlines|gbp
+    #República Centreafricana -> Franco CFA d'Àfrica Central
+    #República Txeca
+    Corona txeca: corona txeca|corones txeques|kc|czk
     #República Dominicana
-    Peso dominicano: peso dominicano|pesos dominicanos|rd$|dop
-    Centavo dominicano: centavo dominicano|centavos dominicanos
-    #República Turca del Norte de Chipre ->Lira turca
+    Peso dominicà: peso dominicà|pesos dominicans|rd$|dop
+    Cent dominicà: cent dominicà|cents dominicans
+    #República Turca del Nord de Xipre -> Lira turca
     #Ruanda
-    Franco ruandés: franco ruandés|francos ruandeses|rf|rwf
-    Céntimo ruandés: céntimo ruandés|céntimos ruandeses
-    #Rumania
-    Leu rumano: leu rumano|lei rumanos|ron
-    Ban rumano: ban rumano|bani rumanos
-    #Rusia
-    Rublo ruso: rublo ruso|rublos rusos|rub
-    Kopek ruso: kopek ruso|kopeks rusos
+    Franco rwandès: franco rwandès|francs rwandesos|rf|rwf
+    Centim rwandès: centim rwandès|centims rwandesos
+    #Romania
+    Leu romanès: leu romanès|lei romanesos|ron
+    Ban romanès: ban romanès|bani romanesos
+    #Rússia
+    Ruble rus: ruble rus|rubles russos|rub
+    Kopek rus: kopek rus|kopeks russos
     #Sahara Occidental -> Dirham marroquí | Dinar argelino
     #Samoa
     Tala: tala|tālā|ws$|sat|wst
     Sene: sene
     #San Cristóbal y Nieves -> Dólar del Caribe Oriental
     #San Marino -> Euro
-    #Santa Elena, Ascensión y Tristán de Acuña
-    Libra de Santa Helena: libra de santa helena|libras de santa helena|shp
-    Penique de Santa Helena: penique de santa helena|peniques de santa helena
+    #Santa Helena, Ascensión y Tristán de Acuña
+    Lliura de Santa Helena: lliura de santa helena|lliures de santa helena|shp
+    Penic de Santa Helena: penic de santa helena|penics de santa helena
     #Santa Lucía -> Dólar del Caribe Oriental
     #Santo Tomé y Príncipe
     Dobra: dobra
     #San Vicente y las Granadinas -> Dólar del Caribe Oriental
-    #Senegal -> Franco CFA de África Occidental
+    #Senegal -> Franco CFA d'Àfrica Occidental
     #Serbia
-    Dinar serbio: dinar serbio|dinares serbios|rsd
-    Para serbio: para serbio|para serbios
+    Dinar serbi: dinar serbi|dinars serbis|rsd
+    Para serbi: para serbi|paras serbis
     #Seychelles
-    Rupia de Seychelles: rupia de seychelles|rupias de seychelles|scr
-    Centavo de Seychelles: centavo de seychelles|centavos de seychelles
-    #Sierra Leona
+    Rupia de les Seychelles: rupia de les seychelles|rupies de les seychelles|scr
+    Cent de les Seychelles: cent de les seychelles|cents de les seychelles
+    #Sierra Leone
     Leone: leone|le|sll
     #Singapur
-    Dólar de Singapur: dólar de singapur|dólares de singapur|sgb
-    Centavo de Singapur: centavo de Singapur|centavos de Singapur
-    #Siria
-    Libra siria: libra siria|libras sirias|s£|syp
-    Piastra siria: piastra siria|piastras sirias
-    #Somalia
-    Chelín somalí: chelín somalí|chelines somalies|sos
-    Centavo somalí: centavo somalí|centavos somalies
-    #Somalilandia
-    Chelín somalilandés: chelín somalilandés|chelines somalilandeses
-    Centavo somalilandés: centavo somalilandés|centavos somalilandeses
+    Dòlar de Singapur: dòlar de singapur|dòlars de singapur|sgb
+    Cent de Singapur: cent de Singapur|cents de Singapur
+    #Síria
+    Lliura sirià: lliura sirià|lliures sirianes|s£|syp
+    Piastra sirià: piastra sirià|piastres sirianes
+    #Somàlia
+    Xel·lí somali: xel·lí somali|xel·lins somalis|sos
+    Cent somali: cent somali|cents somalis
+    #Somalilàndia
+    Xel·lí somalilandès: xel·lí somalilandès|xel·lins somalilandesos
+    Cent somalilandès: cent somalilandès|cents somalilandesos
     #Sri Lanka
-    Rupia de Sri Lanka: rupia de Sri Lanka|rupias de Sri Lanka|lkr
-    Céntimo de Sri Lanka: céntimo de Sri Lanka|céntimos de Sri Lanka
-    #Suazilandia
+    Rupia de Sri Lanka: rupia de Sri Lanka|rupies de Sri Lanka|lkr
+    Cèntim de Sri Lanka: cèntim de Sri Lanka|cèntims de Sri Lanka
+    #Swazilàndia
     Lilangeni: lilangeni|emalangeni|szl
-    #Sudáfrica
-    Rand sudafricano: rand|rand sudafricano|zar
-    #Sudán
-    Libra sudanesa: libra sudanesa|libras sudanesas|sdg
-    Piastra sudanesa: piastra sudanesa|piastras sudanesas
-    #Sudán del Sur
-    Libra sursudanesa: libra sursudanesa|libras sursudanesa|ssp
-    Piastra sursudanesa: piastra sursudanesa|piastras sursudanesas
-    #Suecia
-    Corona sueca: corona sueca|coronas suecas|sek
-    #Suiza
-    Franco suizo: franco suizo|francos suizos|sfr|chf
-    Rappen suizo: rappen suizo|rappens suizos
+    #Sud-àfrica
+    Rand sud-africà: rand|rand sud-africà|zar
+    #Sudan
+    Lliura sudanesa: lliura sudanesa|lliures sudaneses|sdg
+    Piastra sudanesa: piastra sudanesa|piastres sudaneses
+    #Sudan del Sud
+    Lliura sud-sudanesa: lliura sud-sudanesa|lliures sud-sudaneses|ssp
+    Piastra sud-sudanesa: piastra sud-sudanesa|piastres sud-sudaneses
+    #Suècia
+    Corona sueca: corona sueca|corones sueques|sek
+    #Suïssa
+    Franco suís: franco suís|francs suïssos|sfr|chf
+    Rappen suís: rappen suís|rappens suïssos
     #Surinam
-    Dólar surinamés: óolar surinamés|dólares surinameses|srd
-    Centavo surinamés: centavo surinamés|centavos surinamés
-    #Tailandia
-    Baht tailandés: baht tailandés|baht tailandeses|thb
-    Satang tailandés: satang tailandés|satang tailandeses
-    #Taiwán
-    Nuevo dólar taiwanés: nuevo dólar taiwanés|dólar taiwanés|dólares taiwaneses|twd
-    Centavo taiwanés: centavo taiwanés|centavos taiwaneses
-    #Tanzania
-    Chelín tanzano: chelín tanzano|chelines tanzanos|tzs
-    Centavo tanzano: centavo tanzano|centavos tanzanos
-    #Tayikistán
-    Somoni tayiko: somoni tayiko|somoni|tjs
+    Dòlar surinamès: dòlar surinamès|dòlars surinamesos|srd
+    Cent surinamès: cent surinamès|cents surinamesos
+    #Tailàndia
+    Baht tailandès: baht tailandès|bahts tailandesos|thb
+    Satang tailandès: satang tailandès|satangs tailandesos
+    #Taiwan
+    Nou dòlar de Taiwan: nou dòlar de Taiwan|dòlar de Taiwan|dòlars taiwanesos|twd
+    Cent de Taiwan: cent de Taiwan|cents taiwanesos
+    #Tanzània
+    Xel·lí tanzà: xel·lí tanzà|xel·lins tanzans|tzs
+    Cent tanzà: cent tanzà|cents tanzans
+    #Tadjikistan
+    Somoni tadjik: somoni tadjik|somoni|tjs
     Diram: diram|dirams
-    #Territorio Británico del Océano Índico -> Dólar estadounidense
-    #Timor Oriental -> Dólar estadounidense
-    #Togo -> Franco CFA de África Occidental
+    #Territori Britànic de l'Oceà Índic -> Dòlar americà
+    #Timor Oriental -> Dòlar americà
+    #Togo -> Franco CFA d'Àfrica Occidental
     #Tonga
-    Paʻanga: dólar tongano|dólares tonganos|paʻanga|pa'anga|top
+    Paʻanga: dòlar tongà|dòlars tongans|paʻanga|pa'anga|top
     Seniti: seniti
     #Transnistria
-    Rublo de Transnistria: rublo de transnistria|rublos de transnistria
+    Ruble de Transnistria: ruble de transnistria|rubles de transnistria
     Kopek de Transnistria: kopek de transnistria|kopeks de transnistria
-    #Trinidad y Tobago
-    Dólar trinitense: dólar trinitense|dólares trinitenses|ttd
-    Centavo trinitense: centavo trinitense|centavos trinitenses
+    #Trinitat i Tobago
+    Dòlar trinitense: dòlar trinitense|dòlars trinitenses|ttd
+    Cent trinitense: cent trinitense|cents trinitenses
     #Tristán de Acuña -> Libra de Santa Helena
     #Túnez
-    Dinar tunecino: dinar tunecino|dinares tunecinos|tnd
-    Millime tunecino: millime tunecino|millimes tunecinos
-    #Turquía
-    Lira turca: lira turca|liras turcas|try
-    Kuruş turca: kuruş turca|kuruş turcas
-    #Turkmenistán
-    Manat turkmeno: manat turkmeno|manat turkmenos|tmt
-    Tennesi turkmeno: tennesi turkmeno|tenge turkmeno
+    Dinar tunisià: dinar tunisià|dinars tunisians|tnd
+    Millime tunisià: millime tunisià|millimes tunisians
+    #Turquia
+    Lira turca: lira turca|liras turques|try
+    Kuruş turc: kuruş turc|kuruş turcs
+    #Turkmenistan
+    Manat turcman: manat turcman|manats turcmans|tmt
+    Tennesi turcman: tennesi turcman|tenge turcman
     #Tuvalu
-    Dólar tuvaluano: dólar tuvaluano|dólares tuvaluanos
-    Centavo tuvaluano: centavo tuvaluano|centavos tuvaluanos
-    #Ucrania
-    Grivna: grivna|grivnas|uah
-    Kopiyka: kopiyka|kópeks
+    Dòlar tuvaluà: dòlar tuvaluà|dòlars tuvalulans
+    Cent tuvaluà: cent tuvaluà|cents tuvalulans
+    #Ucraïna
+    Hrivna: hrivna|hrivnes|uah
+    Kopiyka: kopiyka|kopeks
     #Uganda
-    Chelín ugandés: chelín ugandés|chelines ugandeses|ugx
-    Centavo ugandés: centavo ugandés|centavos ugandeses
-    #Uruguay
-    Peso uruguayo: peso uruguayo|pesos uruguayos|uyu
-    Centésimo uruguayo: centésimo uruguayo|centésimos uruguayos
-    #Uzbekistán
-    Som uzbeko: som uzbeko|som uzbekos|uzs
-    Tiyin uzbeko: tiyin uzbeko|tiyin uzbekos
+    Xel·lí ugandès: xel·lí ugandès|xelins ugandesos|ugx
+    Cent ugandès: cent ugandès|cents ugandesos
+    #Uruguai
+    Peso uruguaià: peso uruguaià|pesos uruguaians|uyu
+    Centèsim uruguaià: centèsim uruguaià|centèsims uruguaians
+    #Uzbekistan
+    Som uzbek: som uzbek|soms uzbeks|uzs
+    Tiyin uzbek: tiyin uzbek|tiyins uzbeks
     #Vanuatu
     Vatu: vatu|vuv
-    #Vaticano, Ciudad del -> Euro
-    #Venezuela
-    Bolívar fuerte: bolívar fuerte|bolívar|bolívares|vef
-    Céntimo de bolívar: céntimo de bolívar|céntimos de bolívar
+    #Ciutat del Vaticà -> Euro
+    #Veneçuela
+    Bolívar fort: bolívar fort|bolívar|bolívares|vef
+    Cèntim de bolívar: cèntim de bolívar|cèntims de bolívar
     #Vietnam
-    Đồng vietnamita: Đồng vietnamita|dong vietnamita|dong vietnamitas|vnd
-    Hào vietnamita: Hào vietnamita|hao vietnamita|hao vietnamitas
-    #Wallis y Futuna -> Franco CFP
-    #Yemen
-    Rial yemení: rial yemení|riales yemenies|yer
-    Fils yemení: fils yemení|fils yemenies
-    #Yibuti
-    Franco yibutiano: franco yibutiano|francos yibutianos|djf
-    #Yugoslavia
-    Dinar yugoslavo: dinar yugoslavo|dinares yugoslavos|yud
-    #Zambia
-    Kwacha zambiano: kwacha zambiano|kwacha zambianos|zmw
-    Ngwee zambiano: ngwee zambiano|ngwee zambianos
-    #Zimbabue -> Dólar Estadounidense
-#CC
+    Đồng vietnamita: đồng vietnamita|dong vietnamita|dongs vietnamites|vnd
+    Hào vietnamita: hào vietnamita|hao vietnamita|haos vietnamites
+    #Wallis i Futuna -> Franco CFP
+    #Iemen
+    Rial iemenita: rial iemenita|rials iemenites|yer
+    Fils iemenita: fils iemenita|fils iemenites
+    #Djibouti
+    Franco djiboutià: franco djiboutià|francs djiboutians|djf
+    #Iugoslàvia
+    Dinar iugoslau: dinar iugoslau|dinars iugoslaus|yud
+    #Zàmbia
+    Kwacha zambià: kwacha zambià|kwachas zambians|zmw
+    Ngwee zambià: ngwee zambià|ngwees zambians
+    #Zimbabwe -> Dòlar dels Estats Units
+    #CC
     Bitcoin: bitcoin|bitcoins|btc|xbt|₿
     Millibitcoin: millibitcoin|millibitcoins|milibitcoin|milibitcoins
     Satoshi: satoshi|satoshis
 CurrencyNameToIsoCodeMap: !dictionary
   types: [ string, string ]
   entries:
-    Afgani afgano: AFN
+    Afganès afganès: AFN
     Euro: EUR
-    Lek albanés: ALL
-    Kwanza angoleño: AOA
-    Dram armenio: AMD
-    Florín arubeño: AWG
+    Lek albanès: ALL
+    Kwanza angolès: AOA
+    Dram armeni: AMD
+    Florí arubeny: AWG
     Taka bangladeshí: BDT
-    Ngultrum butanés: BTN
-    Boliviano: BOB
-    Marco bosnioherzegovino: BAM
+    Ngultrum butanès: BTN
+    Bolivià: BOB
+    Marc bosniohercegoví: BAM
     Pula: BWP
-    Real brasileño: BRL
-    Lev búlgaro: BGN
-    Riel camboyano: KHR
-    Escudo caboverdiano: CVE
-    Colón costarricense: CRC
+    Reial brasiler: BRL
+    Lev búlgar: BGN
+    Riel cambodjà: KHR
+    Escut capverdià: CVE
+    Colom costa-riqueny: CRC
     Kuna croata: HRK
-    Corona checa: CZK
+    Corona txeca: CZK
     Nakfa: ERN
-    Birr etíope: ETB
+    Birr etíop: ETB
     Dalasi: GMD
-    Lari georgiano: GEL
+    Lari georgià: GEL
     Cedi: GHS
-    Quetzal guatemalteco: GTQ
-    Gourde haitiano: HTG
-    Lempira hondureño: HNL
-    Forinto húngaro: HUF
-    Rial iraní: IRR
-    Rial yemení: YER
-    Nuevo shéquel: ILS
-    Yen: JPY
-    Tenge kazajo: KZT
-    Chelín keniano: KES
-    Won norcoreano: KPW
-    Won surcoreano: KRW
+    Quetzal guatemalenc: GTQ
+    Gourde haitià: HTG
+    Lempira hondureny: HNL
+    Forint hongarès: HUF
+    Rial iranià: IRR
+    Rial iemenita: YER
+    Nou shéquel: ILS
+    Ien: JPY
+    Tenge kazakh: KZT
+    Xíling kenià: KES
+    Won nord-coreà: KPW
+    Won sud-coreà: KRW
     Som kirguís: KGS
-    Kip laosiano: LAK
+    Kip laosià: LAK
     Loti: LSL
-    Rand sudafricano: ZAR
-    Pataca macaense: MOP
-    Denar macedonio: MKD
-    Ariary malgache: MGA
+    Rand sud-africà: ZAR
+    Pataca macaenca: MOP
+    Denar macedoni: MKD
+    Ariary malgaix: MGA
     Kwacha malauí: MWK
-    Ringgit malayo: MYR
+    Ringgit malai: MYR
     Uguiya: MRO
     Tugrik mongol: MNT
-    Metical mozambiqueño: MZN
-    Kyat birmano: MMK
-    Córdoba nicaragüense: NIO
+    Metical moçambiquès: MZN
+    Kyat birmà: MMK
+    Còrdova nicaragüenc: NIO
     Naira: NGN
     Lira turca: TRY
     Rial omaní: OMR
-    Balboa panameño: PAB
+    Balboa panameny: PAB
     Kina: PGK
     Guaraní: PYG
     Sol: PEN
     Złoty: PLN
-    Riyal qatarí: QAR
-    Riyal saudí: SAR
+    Riyal qatarià: QAR
+    Riyal saudita: SAR
     Tala: WST
-    São Tomé and Príncipe dobra: STN
-    Leone: SLL
+    São Tomé and Príncep dobra: STN
+    Lleó: SLL
     Lilangeni: SZL
     Somoni tayiko: TJS
-    Baht tailandés: THB
+    Baht tailandès: THB
     Grivna: UAH
     Vatu: VUV
-    Bolívar fuerte: VEF
-    Kwacha zambiano: ZMW
+    Bolívar fort: VEF
+    Kwacha zambià: ZMW
     Dirham marroquí: MAD
-    Dirham de los Emiratos Árabes Unidos: AED
-    Manat azerí: AZN
-    Manat turkmeno: TMT
-    Chelín somalí: SOS
-    Chelín tanzano: TZS
-    Chelín ugandés: UGX
-    Leu rumano: RON
-    Leu moldavo: MDL
-    Rupia nepalí: NPR
-    Rupia pakistaní: PKR
-    Rupia india: INR
+    Dirham dels Emirats Àrabs Units: AED
+    Manat àzeri: AZN
+    Manat turcman: TMT
+    Xíling somali: SOS
+    Xíling tanzà: TZS
+    Xíling ugandès: UGX
+    Leu romanès: RON
+    Leu moldau: MDL
+    Rupia nepalesa: NPR
+    Rupia pakistanesa: PKR
+    Rupia índia: INR
     Rupia de Seychelles: SCR
-    Rupia de Mauricio: MUR
-    Rupia de Maldivas: MVR
+    Rupia de Maurici: MUR
+    Rupia de Maldives: MVR
     Rupia de Sri Lanka: LKR
-    Rupia indonesia: IDR
+    Rupia indonèsia: IDR
     Corona danesa: DKK
     Corona noruega: NOK
     Corona islandesa: ISK
     Corona sueca: SEK
-    Franco CFA de África Occidental: XOF
-    Franco CFA de África Central: XAF
-    Franco comorano: KMF
-    Franco congoleño: CDF
+    Franco CFA d'Àfrica Occidental: XOF
+    Franco CFA d'Àfrica Central: XAF
+    Franco comorà: KMF
+    Franco congolès: CDF
     Burundian franc: BIF
-    Franco yibutiano: DJF
+    Franco gibutià: DJF
     Franco CFP: XPF
-    Franco guineano: GNF
-    Franco suizo: CHF
-    Franco ruandés: RWF
-    Rublo ruso: RUB
+    Franco guineà: GNF
+    Franc suís: CHF
+    Franco ruandès: RWF
+    Ruble rus: RUB
     Transnistrian ruble: PRB
     New Belarusian ruble: BYN
-    Dinar argelino: DZD
-    Dinar bahreiní: BHD
-    Dinar iraquí: IQD
-    Dinar jordano: JOD
+    Dinar algerià: DZD
+    Dinar bahrainès: BHD
+    Dinar iraquià: IQD
+    Dinar jordà: JOD
     Kuwaiti dinar: KWD
-    Dinar libio: LYD
-    Dinar serbio: RSD
-    Dinar tunecino: TND
-    Peso argentino: ARS
-    Chilean peso: CLP
-    Peso colombiano: COP
-    Peso cubano convertible: CUC
-    Peso cubano: CUP
-    Peso dominicano: DOP
-    Peso mexicano: MXN
-    Peso uruguayo: UYU
-    Libra esterlina: GBP
-    Libra de Santa Helena: SHP
-    Libra egipcia: EGP
-    Libra malvinense: FKP
-    Libra gibraltareña: GIP
-    Libra manesa: IMP
-    Libra de Jersey: JEP
-    Libra libanesa: LBP
-    Libra sursudanesa: SSP
-    Libra sudanesa: SDG
-    Libra siria: SYP
-    Dólar estadounidense: USD
-    Dólar australiano: AUD
-    Dólar bahameño: BSD
-    Dólar de Barbados: BBD
-    Dólar beliceño: BZD
-    Dólar bermudeño: BMD
-    Dólar de Brunéi: BND
-    Dólar de Singapur: SGD
-    Dólar canadiense: CAD
-    Dólar de las Islas Caimán: KYD
-    Dólar neozelandés: NZD
-    Dólar fiyiano: FJD
-    Dólar guyanés: GYD
-    Dólar de Hong Kong: HKD
-    Dólar jamaiquino: JMD
-    Dólar liberiano: LRD
-    Dólar namibio: NAD
-    Dólar de las Islas Salomón: SBD
-    Dólar surinamés: SRD
-    Nuevo dólar taiwanés: TWD
-    Dólar trinitense: TTD
+    Dinar libi: LYD
+    Dinar serbi: RSD
+    Dinar tunisià: TND
+    Pes argentí: ARS
+    Xile pes: CLP
+    Pes colombià: COP
+    Pes cubà convertible: CUC
+    Pes cubà: CUP
+    Pes dominicà: DOP
+    Pes mexicà: MXN
+    Pes uruguaià: UYU
+    Balança esterlina: GBP
+    Balança de Santa Helena: SHP
+    Balança egípcia: EGP
+    Balança malvinenca: FKP
+    Balança gibraltarenya: GIP
+    Balança manesa: IMP
+    Balança de Jersey: JEP
+    Balança libanesa: LBP
+    Balança sursudanesa: SSP
+    Balança sudanesa: SDG
+    Balança siriana: SYP
+    Dòlar nord-americà: USD
+    Dòlar australià: AUD
+    Dòlar de Bahames: BSD
+    Dòlar de Barbados: BBD
+    Dòlar bel·liceny: BZD
+    Dòlar bermudeny: BMD
+    Dòlar de Brunéi: BND
+    Dòlar de Singapur: SGD
+    Dòlar canadenc: CAD
+    Dòlar de les Illes Caiman: KYD
+    Dòlar neozelandès: NZD
+    Dòlar fiià: FJD
+    Dòlar guyanès: GYD
+    Dòlar de Hong Kong: HKD
+    Dòlar jamaiquí: JMD
+    Dòlar liberià: LRD
+    Dòlar namíbi: NAD
+    Dòlar de les Illes Salomó: SBD
+    Dòlar surinamés: SRD
+    Nou dòlar taiwanès: TWD
+    Dòlar trinitenc: TTD
     Tuvaluan dollar: TVD
-    Yuan chino: CNY
+    Yuan xinès: CNY
     Rial: __RI
-    Chelín: __S
+    Xíling: __S
     Som: __SO
     Dirham: __DR
     Dinar: _DN
-    Dólar: __D
+    Dòlar: __D
     Manat: __MA
     Rupia: __R
     Corona: __K
     Franco: __F
-    Marco: __M
-    Rublo: __RB
-    Peso: __PE
-    Libra: __P
-    Tristan da Cunha libra: _TP
-    South Georgia and the South Sandwich Islands libra: _SP
-    Somaliland chelín: _SS
-    Pitcairn Islands dólar: _PND
-    Palauan dólar: _PD
-    Niue dólar: _NID
-    Nauruan dólar: _ND
-    Micronesian dólar: _MD
-    Kiribati dólar: _KID
-    Guernsey libra: _GGP
+    Marc: __M
+    Ruble: __RB
+    Pes: __PE
+    Balança: __P
+    Tristan da Cunha lliura: _TP
+    South Georgia and the South Sandwich Islands lliura: _SP
+    Somaliland xíling: _SS
+    Pitcairn Islands dòlar: _PND
+    Palau dòlar: _PD
+    Niu dòlar: _NID
+    Nauruan dòlar: _ND
+    Micronesian dòlar: _MD
+    Kiribati dòlar: _KID
+    Guernsey lliura: _GGP
     Faroese corona: _FOK
-    Cook Islands dólar: _CKD
-    British Virgin Islands dólar: _BD
-    Ascension libra: _AP
-    Alderney libra: _ALP
+    Cook Islands dòlar: _CKD
+    British Virgin Islands dòlar: _BD
+    Ascensió lliura: _AP
+    Alderney lliura: _ALP
     Abkhazian apsar: _AA
     Bitcoin: _XBT
 FractionalUnitNameToCodeMap: !dictionary
   types: [ string, string ]
   entries:
     Jiao: JIAO
-    Kópek: KOPEK
     Kopek: KOPEK
     Pul: PUL
     Cent: CENT
     Qindarka: QINDARKE
     Penique: PENNY
     Santeem: SANTEEM
-    Cêntimo: CENT
-    Centavo: CENT
+    Cèntim: CENT
+    Centau: CENT
     Luma: LUMA
     Qəpik: QƏPIK
     Fils: FILS
@@ -807,12 +788,11 @@ FractionalUnitNameToCodeMap: !dictionary
     Centime: CENTIME
     Chetrum: CHETRUM
     Paisa: PAISA
-    Feningas: FENING
+    Feninges: FENING
     Thebe: THEBE
     Sen: SEN
     Stotinka: STOTINKA
     Fen: FEN
-    Céntimo: CENT
     Lipa: LIPA
     Haléř: HALER
     Øre: ØRE
@@ -831,7 +811,7 @@ FractionalUnitNameToCodeMap: !dictionary
     Jeon: JEON
     Tyiyn: TYIYN
     Att: ATT
-    Sente: SENTE
+    Sent: SENT
     Dirham: DIRHAM
     Rappen: RAPPEN
     Avo: AVO
@@ -842,17 +822,16 @@ FractionalUnitNameToCodeMap: !dictionary
     Khoums: KHOUMS
     Ban: BAN
     Möngö: MONGO
-    Pya: PYA
+    Pya: PIA
     Kobo: KOBO
     Kuruş: KURUS
-    Baisa: BAISA
-    Centésimo: CENTESIMO
+    Baixa: BAISSA
     Toea: TOEA
-    Sentimo: SENTIMO
+    Sentim: SENTIM
     Grosz: GROSZ
     Sene: SENE
     Halala: HALALA
-    Para: PARA
+    Per: PER
     Öre: ORE
     Diram: DIRAM
     Satang: SATANG
@@ -861,57 +840,57 @@ FractionalUnitNameToCodeMap: !dictionary
     Tennesi: TENNESI
     Kopiyka: KOPIYKA
     Tiyin: TIYIN
-    Hào: HAO
+    Hao: HAO
     Ngwee: NGWEE
     Millibitcoin: MILLIBITCOIN
     Satoshi: SATOSHI
 CompoundUnitConnectorRegex: !simpleRegex
-    def: (?<spacer>y|con)
+    def: (?<spacer>i|amb)
 MultiplierRegex: !simpleRegex
-  def: \s*\b(((mil\s+)?mi|bi|cuatri|quinti|sexti|septi)ll[oó]n|mil)(es)?\b
+  def: \s*\b(((mil\s+)?milió|bi|cuatri|quint|sext|sept)i)(ll|ls)?\b
 CurrencyPrefixList: !dictionary
   types: [ string, string ]
   entries:
     Dobra: db|std
-    Dólar: $|dólar|dólares|dolar|dolares
-    Dólar estadounidense: us$|u$d|usd
-    Dólar del Caribe Oriental: ec$|xcd
-    Dólar australiano: a$|aud
-    Dólar bahameño: b$|bsd
-    Dólar de Barbados: bds$|bbd
-    Dólar beliceño: bz$|bzd
-    Dólar bermudeño: bd$|bmd
-    Dólar de Brunéi: brunéi $|bnd
-    Dólar de Singapur: s$|sgd
-    Dólar canadiense: c$|can$|cad
-    Dólar de las Islas Caimán: ci$|kyd
-    Dólar neozelandés: nz$|nzd
-    Dólar fiyiano: fj$|fjd
-    Dólar guyanés: gy$|gyd
-    Dólar de Hong Kong: hk$|hkd
-    Dólar jamaiquino: j$|ja$|jmd
-    Dólar liberiano: l$|lrd
-    Dólar namibio: n$|nad
-    Dólar de las Islas Salomón: si$|sbd
-    Nuevo dólar taiwanés: nt$|twd
-#Other prefix
-    Peso mexicano: mxn|mxn$|mxn $|mex$
-    Real brasileño: r$|brl
+    Dòlar: $|dòlar|dòlars|dolar|dolars
+    Dòlar nord-americà: us$|u$d|usd
+    Dòlar del Carib Oriental: ec$|xcd
+    Dòlar australià: a$|aud
+    Dòlar de Bahames: b$|bsd
+    Dòlar de Barbados: bds$|bbd
+    Dòlar bel·liceny: bz$|bzd
+    Dòlar de Bermuda: bd$|bmd
+    Dòlar de Brunei: brunei $|bnd
+    Dòlar de Singapur: s$|sgd
+    Dòlar canadenc: c$|can$|cad
+    Dòlar de les Illes Caiman: ci$|kyd
+    Dòlar neozelandès: nz$|nzd
+    Dòlar fiià: fj$|fjd
+    Dòlar guyanès: gy$|gyd
+    Dòlar de Hong Kong: hk$|hkd
+    Dòlar jamaiquí: j$|ja$|jmd
+    Dòlar liberià: l$|lrd
+    Dòlar namíbi: n$|nad
+    Dòlar de les Illes Salomó: si$|sbd
+    Nou dòlar taiwanès: nt$|twd
+    #Other prefix
+    Pes mexicà: mxn|mxn$|mxn $|mex$
+    Real brasiler: r$|brl
     Guaraní: ₲|gs.|pyg
-    Dólar trinitense: tt$|ttd
-    Yuan chino: ￥|cny|rmb
-    Yen: ¥|jpy
+    Dòlar trinitenc: tt$|ttd
+    Yuan xinès: ¥|cny|rmb
+    Ien: ¥|jpy
     Euro: €|eur
-    Florín: ƒ
-    Libra: £
-    Colón costarricense: ₡
+    Florí: ƒ
+    Balança: £
+    Colom costa-riqueny: ₡
     Lira turca: ₺
 #CC
     Bitcoin: ₿|btc|xbt
 AmbiguousCurrencyUnitList: !list
   types: [ string ]
   entries:
-    - le
+    - li
     - db
     - std
 #DimensionExtractorConfiguration
@@ -945,37 +924,37 @@ AmbiguousDimensionUnitList: !list
   types: [ string ]
   entries:
     - al
-    - mi
-    - área
-    - áreas
-    - pie
-    - pies
+    - el meu
+    - àrea
+    - àrees
+    - peu
+    - peus
     - '"'
 #LengthExtractorConfiguration
 LengthSuffixList: !dictionary
   types: [ string, string ]
   entries:
-    Kilómetro: km|kilometro|kilómetro|kilometros|kilómetros
-    Hectómetro: hm|hectometro|hectómetro|hectometros|hectómetros
-    Decámetro: decametro|decámetro|decametros|decámetros|dam
-    Metro: m|m.|metro|metros
-    Decímetro: dm|decimetro|decímetro|decimetros|decímetros
-    Centímetro: cm|centimetro|centímetro|centimetros|centimetros
-    Milímetro: mm|milimetro|milímetro|milimetros|milímetros
-    Micrómetro: µm|um|micrometro|micrómetro|micrometros|micrómetros|micrón|micrónes
-    Nanómetro: nm|nanometro|nanómetro|nanometros|nanómetros
-    Picómetro: pm|picometro|picómetro|picometros|picómetros
-    Milla: mi|milla|millas
-    Yarda: yd|yarda|yardas
-    Pulgada: pulgada|pulgadas|"
-    Pie: pie|pies|ft
-    Año luz: año luz|años luz|al
+    Quilòmetre: km|quilòmetre|quilòmetre|quilòmetres|quilòmetres
+    Hectòmetre: hm|hectometre|hectòmetre|hectometres|hectòmetres
+    Decàmetre: decametre|decàmetre|decametres|decàmetres|dam
+    Metro: m|m.|metre|metres
+    Decímetre: dm|decimetre|decímetre|decimetres|decímetres
+    Centímetre: cm|centimetre|centímetre|centimetres|centimetres
+    Mil·límetre: mm|mil·límetre|mil·límetre|mil·límetres|mil·límetres
+    Micròmetre: µm|um|micrometre|micròmetre|micrometres|micròmetres|micró|microns
+    Nanòmetre: nm|nanòmetre|nanòmetre|nanòmetres|nanòmetres
+    Picòmetre: pm|picòmetre|picòmetre|picòmetres|picòmetres
+    Milla: la meva|milla|milles
+    Yarda: id|yarda|yardes
+    Polze: polzada|polzades|"
+    Peu: peu|peus|ft
+    Any llum: any llum|anys llum|al
 AmbiguousLengthUnitList: !list
   types: [ string ]
   entries:
-    - mi
-    - área
-    - áreas
+    - el meu
+    - àrea
+    - àrees
     - '"'
 #SpanishNumberWithUnitExtractorConfiguration
 BuildPrefix: !simpleRegex
@@ -987,73 +966,73 @@ ConnectorToken: de
 SpeedSuffixList: !dictionary
   types: [ string, string ]
   entries:
-    Metro por segundo: metro/segundo|m/s|metro por segundo|metros por segundo|metros por segundos
-    Kilómetro por hora: km/h|kilómetro por hora|kilometro por hora|kilómetros por hora|kilometros por hora|kilómetro/hora|kilometro/hora|kilómetros/hora|kilometros/hora
-    Kilómetro por minuto: km/min|kilómetro por minuto|kilometro por minuto|kilómetros por minuto|kilometros por minuto|kilómetro/minuto|kilometro/minuto|kilómetros/minuto|kilometros/minuto
-    Kilómetro por segundo: km/seg|kilómetro por segundo|kilometro por segundo|kilómetros por segundo|kilometros por segundo|kilómetro/segundo|kilometro/segundo|kilómetros/segundo|kilometros/segundo
-    Milla por hora: mph|milla por hora|mi/h|milla/hora|millas/hora|millas por hora
-    Nudo: kt|nudo|nudos|kn
-    Pie por segundo: ft/s|pie/s|ft/seg|pie/seg|pie por segundo|pies por segundo
-    Pie por minuto: ft/min|pie/min|pie por minuto|pies por minuto
-    Yarda por minuto: yardas por minuto|yardas/minuto|yardas/min
-    Yarda por segundo: yardas por segundo|yardas/segundo|yardas/seg
+    Metro per segon: metre/segon|m/s|metre per segon|metres per segon|metres per segons
+    Quilòmetre per hora: km/h|kilòmetre per hora|kilòmetre per hora|kilòmetres per hora|kilòmetres per hora|kilòmetre/hora|kilòmetre/hora|kilòmetres/hora|kilòmetres/hora
+    Quilòmetre per minut: km/min|kilòmetre per minut|kilòmetre per minut|kilòmetres per minut|kilòmetres per minut|kilòmetre/minut|kilòmetre/minut|kilòmetres/minut|kilòmetres/minut
+    Quilòmetre per segon: km/seg|quilòmetre per segon|quilòmetre per segon|quilòmetres per segon|quilòmetres per segon|quilòmetre/segon|quilòmetre/segon|quilòmetres/segon|quilòmetres/segon
+    Milla per hora: mph|milla per hora|la meva/h|milla/hora|milles/hora|milles per hora
+    Nus: kt|nus|nusos|kn
+    Peu per segon: ft/s|peu/s|ft/seg|peu/seg|peu per segon|peus per segon
+    Peu per minut: peu/min|peu/min|peu per minut|peus per minut
+    Iarda per minut: iardes per minut|iardes/minut|iardes/min
+    Iarda per segon: iardes per segon|iardes/segon|iardes/seg
 AmbiguousSpeedUnitList: !list
   types: [ string ]
   entries:
-    - nudo
-    - nudos
+    - nus
+    - nusos
 #TemperatureExtractorConfiguration
 TemperatureSuffixList: !dictionary
   types: [ string, string ]
   entries:
     Kelvin: k|K|kelvin
     Rankine: r|rankine
-    Grado Celsius: °c|° c|ºc|º c|grado c|grados c|grado celsius|grados celsius|celsius|grado centígrado|grados centígrados|centígrado|centígrados
-    Grado Fahrenheit: °f|° f|ºf|º f|grado f|grados f|grado fahrenheit|grados fahrenheit|fahrenheit
-    Grado Réaumur: °r|°re|grados r|grado réaumur|grados réaumur|réaumur
-    Grado Delisle: °d|grados d|grado delisle|grados delisle|delisle
-    Grado: °|grados|grado
+    Grau Celsius: °c|° c|ºc|º c|grau c|graus c|grau celsius|graus celsius|celsius|grau centígrad|graus centígrads|centígrads|centígrads
+    Grau Fahrenheit: °f|° f|ºf|º f|grau f|graus f|grau fahrenheit|graus fahrenheit|fahrenheit
+    Grau Réaumur: °r|°re|graus r|grau réaumur|graus réaumur|réaumur
+    Grau Delisle: °d|graus d|grau delisle|graus delisle|delisle
+    Grau: °|graus|grau
 #VolumeExtractorConfiguration
 VolumeSuffixList: !dictionary
   types: [ string, string ]
   entries:
-    Kilómetro cúbico: kilómetro cúbico|kilómetros cúbico|km3|km^3|km³
-    Hectómetro cúbico: hectómetro cúbico|hectómetros cúbico|hm3|hm^3|hm³
-    Decámetro cúbico: decámetro cúbico|decámetros cúbico|dam3|dam^3|dam³
-    Metro cúbico: metro cúbico|metros cúbico|m3|m^3|m³
-    Decímetro cúbico: decímetro cúbico|decímetros cúbico|dm3|dm^3|dm³
-    Centímetro cúbico: centímetro cúbico|centímetros cúbico|cc|cm3|cm^3|cm³
-    Milímetro cúbico: milímetro cúbico|milímetros cúbico|mm3|mm^3|mm³
-    Pulgada cúbica: pulgada cúbica|pulgadas cúbicas
-    Pie cúbico: pie cúbico|pies cúbicos|pie3|pie^3|pie³|ft3|ft^3|ft³
-    Yarda cúbica: yarda cúbica|yardas cúbicas|yd3|yd^3|yd³
-    Hectolitro: hectolitro|hectolitros|hl
-    Litro: litro|litros|lts|l
-    Mililitro: mililitro|mililitros|ml
-    Galón: galón|galones
-    Pinta: pinta|pintas
-    Barril: barril|barriles|bbl
-    Onza líquida: onza líquida|onzas líquidas
+    Quilòmetre cúbic: quilòmetre cúbic|quilòmetres cúbic|km3|km^3|km³
+    Hectòmetre cúbic: hectòmetre cúbic|hectòmetres cúbic|hm3|hm^3|hm³
+    Decàmetre cúbic: decàmetre cúbic|decàmetres cúbic|dam3|dam^3|dam³
+    Metre cúbic: metre cúbic|metres cúbic|m3|m^3|m³
+    Decímetre cúbic: decímetre cúbic|decímetres cúbic|dm3|dm^3|dm³
+    Centímetre cúbic: centímetre cúbic|centímetres cúbic|cc|cm3|cm^3|cm³
+    Mil·límetre cúbic: mil·límetre cúbic|mil·límetres cúbic|mm3|mm^3|mm³
+    Polzada cúbica: polzada cúbica|polzades cúbiques
+    Peu cúbic: peu cúbic|peus cúbics|peu3|peu^3|peu|ft3|ft^3|ft³
+    Yarda cúbica: iarda cúbica|iardes cúbiques|id3|id^3|id³
+    Hectolitre: hectolitre|hectolitres|hl
+    Litre: litre|litres|lts|l
+    Mililitre: mil·lilitre|mil·lilitres|ml
+    Galó: galó|galons
+    Pinta: pinta|pintes
+    Barril: barril|barrils|bbl
+    Unça líquida: unça líquida|unces líquides
 #WeightExtractorConfiguration
 WeightSuffixList: !dictionary
   types: [ string, string ]
   entries:
-    Tonelada métrica: tonelada métrica|toneladas métricas|t.métrica|t métrica|t. métrica|tonelada metrica|toneladas metricas|t.metrica|t metrica|t. metrica
-    Tonelada: ton|tonelada|toneladas|t
-    Kilogramo: kg|kilogramo|kilogramos
-    Hectogramo: hg|hectogramo|hectogramos
-    Decagramo: dag|decagramo|decagramos
-    Gramo: g|gr|gramo|gramos
-    Decigramo: dg|decigramo|decigramos
-    Centigramo: cg|centigramo|centigramos
-    Miligramo: mg|miligramo|miligramos
-    Microgramo: µg|ug|microgramo|microgramos
-    Nanogramo: ng|nanogramo|nanogramos
-    Picogramo: pg|picogramo|picogramos
-    Libra: lb|libra|libras
-    Onza: oz|onza|onzas
-    Grano: grano|granos
-    Quilate: ct|quilate|quilates
+    Tona mètrica: tona mètrica|tones mètriques|t.mètrica|t mètrica|t. mètrica|tona mètrica|tones mètriques|t.metrica|t metrica|t. metrica
+    Tona: ton|tona|tones|t
+    Quilogram: kg|quilogram|quilograms
+    Hectogram: hg|hectogram|hectograms
+    Decagram: dag|decagram|decagrams
+    Gram: g|gr|gram|grams
+    Decigram: dg|decigram|decigrams
+    Centigram: cg|centigram|centigrams
+    Mil·ligram: mg|mil·ligram|mil·ligrams
+    Microgram: µg|ug|microgram|micrograms
+    Nanogram: ng|nanogram|nanograms
+    Picogram: pg|picogram|picograms
+    Balança: lb|lliura|lliures
+    Unça: oz|unça|unces
+    Gra: gra|grans
+    Quirat: ct|quilate|quilats
 AmbiguousWeightUnitList: !list
   types: [ string ]
   entries:
@@ -1063,14 +1042,14 @@ AmbiguousWeightUnitList: !list
 AngleSuffixList: !dictionary
   types: [ string, string ]
   entries:
-    Degree: grado|grados|°
-    Radian: radián|radian|radianes|rad
-    Turn: vuelta|vueltas
+    Degree: grau|graus|°
+    Radian: radian|radian|radians|rad
+    Turn: tornada|voltes
 AmbiguousAngleUnitList: !list
   types: [ string ]
   entries:
-    - vuelta
-    - vueltas
+    - tornada
+    - voltes
 AmbiguityFiltersDict: !dictionary
   types: [ string, string ]
   entries:
@@ -1078,9 +1057,9 @@ AmbiguityFiltersDict: !dictionary
 TemperatureAmbiguityFiltersDict: !dictionary
   types: [ string, string ]
   entries:
-    \b(grados?|°)$: \b((grados?|°)\s*(angolo|rotaci[oó]n)|(gira(r|do|torio)?|angolo|rotaci[oó]n)(\s+(\p{L}+|\d+)){0,4}\s*(grados?\b|°))
+    \b(graus?|°)$: \b((graus?|°)\s*(angle|rotaci[oó])(\s+(\p{L}+|\d+)){0,4}\s*(graus?\b|°)|(gir|giratòria)(\s+(\p{L}+|\d+)){0,4}\s*(graus?\b|°))
 DimensionAmbiguityFiltersDict: !dictionary
   types: [ string, string ]
   entries:
-    \b(grados?|°)$: \b((grados?|°)\s*(c(elsius|entígrado)?|f(ah?renheit)?)|(temperatura)(\s+(\p{L}+|\d+)){0,4}\s*(grados?\b|°))
+    \b(graus?|°)$: \b((graus?|°)\s*(c(entígrad|elsius)?|f(ah?renheit)?)|(temperatura)(\s+(\p{L}+|\d+)){0,4}\s*(graus?\b|°))
 ...
