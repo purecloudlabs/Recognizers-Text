@@ -103,7 +103,7 @@ RelativeOrdinalRegex: !simpleRegex
 ComplexOrdinalRegex: !nestedRegex
   def: (({OverThousandOrdinalRegex}(\s)?)?{UnderThousandOrdinalRegex}|{OverThousandOrdinalRegex})
   references: [OverThousandOrdinalRegex, UnderThousandOrdinalRegex]
-SufixRoundOrdinalRegex: !nestedRegex
+SuffixRoundOrdinalRegex: !nestedRegex
   def: (({AllIntRegex})({SimpleRoundOrdinalRegex}))
   references: [AllIntRegex, SimpleRoundOrdinalRegex]
 ComplexRoundOrdinalRegex: !nestedRegex
@@ -139,11 +139,11 @@ RoundMultiplierRegex: !nestedRegex
   def: \b\s*({RoundMultiplierWithFraction}|(?<multiplier>(mil))$)
   references: [ RoundMultiplierWithFraction ]
 FractionNounRegex: !nestedRegex
-  def: (?<=\b)({AllIntRegex}\s+((i|amb)\s+)?)?({AllIntRegex}\s+((({AllOrdinalNumberRegex}|{SufixRoundOrdinalRegex})s|{SpecialFractionInteger})|((i|amb)\s+)?(mig|terç[oa]|quart[oa]|quint[oa]|sext[oa]|sèptim[oa]|vuitè[na]|novè[na]))|(mig|un\s+quart\s+de)\s+{RoundNumberIntegerRegex})(?=\b)
-  references: [ AllIntRegex, AllOrdinalNumberRegex, SpecialFractionInteger, SufixRoundOrdinalRegex, RoundNumberIntegerRegex ]
+  def: (?<=\b)({AllIntRegex}\s+((i|amb)\s+)?)?({AllIntRegex}\s+((({AllOrdinalNumberRegex}|{SuffixRoundOrdinalRegex})s|{SpecialFractionInteger})|((i|amb)\s+)?(mig|terç[oa]|quart[oa]|quint[oa]|sext[oa]|sèptim[oa]|vuitè[na]|novè[na]))|(mig|un\s+quart\s+de)\s+{RoundNumberIntegerRegex})(?=\b)
+  references: [ AllIntRegex, AllOrdinalNumberRegex, SpecialFractionInteger, SuffixRoundOrdinalRegex, RoundNumberIntegerRegex ]
 FractionNounWithArticleRegex: !nestedRegex
-  def: (?<=\b)(({AllIntRegex}|{RoundNumberIntegerRegexWithLocks})\s+((i|amb)\s+)?)?((un|una)(\s+)(({AllOrdinalNumberRegex})|({SufixRoundOrdinalRegex}))|(un[oa]?\s+)?mig|mitjà)(?=\b)
-  references: [ AllIntRegex, AllOrdinalNumberRegex, SufixRoundOrdinalRegex, RoundNumberIntegerRegexWithLocks ]
+  def: (?<=\b)(({AllIntRegex}|{RoundNumberIntegerRegexWithLocks})\s+((i|amb)\s+)?)?((un|una)(\s+)(({AllOrdinalNumberRegex})|({SuffixRoundOrdinalRegex}))|(un[oa]?\s+)?mig|mitjà)(?=\b)
+  references: [ AllIntRegex, AllOrdinalNumberRegex, SuffixRoundOrdinalRegex, RoundNumberIntegerRegexWithLocks ]
 FractionPrepositionRegex: !nestedRegex
   def: (?<!{BaseNumbers.CommonCurrencySymbol}\s*)(?<=\b)(?<numerator>({AllIntRegex})|((?<!.)\d+))\s+sobre\s+(?<denominator>({AllIntRegex})|((\d+)(?!.)))(?=\b)
   references: [ AllIntRegex, BaseNumbers.CommonCurrencySymbol ]
@@ -209,8 +209,8 @@ MoreRegexNoNumberSucceed: !simpleRegex
   def: (\b(m[áa]s|major(es)?|superior(es)?)((?!\s+(que|del?|al?))|\s+((que|del?)(?!(\s*\d+))))|(per sobre)(?!(\s*\d+)))\b
 LessRegexNoNumberSucceed: !simpleRegex
   def: (\b(menys|r(es)?|inferior(es)?)((?!\s+(que|del?|al?))|\s+((que|del?|al?)(?!(\s*\d+))))|(per sota)(?!(\s*\d+)))\b
-EqualRegexNo: !simpleRegex
-  def: (igual(es)?|equivalent(s)?|equivalen?)(\s
+EqualRegexNoNumberSucceed: !simpleRegex
+  def: (\b(iguals?|equivalents?|equivalen?)(?!\s+(a|que|de)?(\s*\d+))?(\s+(a|que|de))?)(\b)
 OneNumberRangeMoreRegex1: !nestedRegex
   def: ({MoreOrEqual}|{MoreRegex})\s*((el|les?|els)\s+)?(?<number1>({NumberSplitMark}.)+)
   references: [ MoreOrEqual, MoreRegex, NumberSplitMark ]
