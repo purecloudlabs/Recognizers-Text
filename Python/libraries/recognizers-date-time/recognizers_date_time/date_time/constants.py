@@ -15,6 +15,7 @@ class Constants:
     SYS_DATETIME_DURATION: str = 'duration'
     SYS_DATETIME_SET: str = 'set'
     SYS_DATETIME_TIMEZONE: str = 'timezone'
+    SYS_DATETIME_DATETIMEALT: str = 'datetimealt'
 
     SYS_DATETIME_MERGED: str = 'datetimeV2'
 
@@ -44,13 +45,46 @@ class Constants:
     MIN_MONTH: int = 1
     MAX_MONTH: int = 12
     INVALID_YEAR = -2147483648
+    INVALID_MONTH = -2147483648
     INVALID_HOUR = -2147483648
     INVALID_MINUTE = -2147483648
     INVALID_SECOND = -2147483648
 
     COMMENT_KEY: str = 'Comment'
     COMMENT_AMPM = 'ampm'
+    COMMENT_AM = 'am'
     COMMENT_DOUBLETIMEX = "doubleTimex"
+
+    # Default boundaries for time of day resolution
+    EARLY_MORNING_BEGIN_HOUR = 4
+    EARLY_MORNING_END_HOUR = 8
+    MORNING_BEGIN_HOUR = 8
+    MORNING_END_HOUR = 12
+    MID_DAY_BEGIN_HOUR = 11
+    MID_DAY_END_HOUR = 13
+    AFTERNOON_BEGIN_HOUR = 12
+    AFTERNOON_END_HOUR = 16
+    EVENING_BEGIN_HOUR = 16
+    EVENING_END_HOUR = 20
+    DAYTIME_BEGIN_HOUR = 8
+    DAYTIME_END_HOUR = 18
+    NIGHTTIME_BEGIN_HOUR = 0
+    NIGHTTIME_END_HOUR = 8
+    BUSINESS_BEGIN_HOUR = 8
+    BUSINESS_END_HOUR = 18
+    NIGHT_BEGIN_HOUR = 20
+    NIGHT_END_HOUR = 23
+    NIGHT_END_MINUTE = 59
+    MEAL_TIME_BREAKFAST_BEGIN_HOUR = 8
+    MEAL_TIME_BREAKFAST_END_HOUR = 12
+    MEAL_TIME_BRUNCH_BEGIN_HOUR = 8
+    MEAL_TIME_BRUNCH_END_HOUR = 12
+    MEAL_TIME_LUNCH_BEGIN_HOUR = 11
+    MEAL_TIME_LUNCH_END_HOUR = 13
+    MEAL_TIME_DINNER_BEGIN_HOUR = 16
+    MEAL_TIME_DINNER_END_HOUR = 20
+
+
 
     # Failed connector extraction
     INVALID_CONNECTOR_CODE = -1
@@ -60,9 +94,12 @@ class Constants:
 
     HALF_DAY_HOUR_COUNT = 12
     DAY_HOUR_COUNT = 24
+    DAY_HOUR_START = 0
     HOUR_SECOND_COUNT = 3600
     MINUTE_SECOND_COUNT = 60
     HALF_MID_DAY_DURATION_HOUR_COUNT = 2
+    WEEK_DAY_COUNT = 7
+    CENTURY_YEARS_COUNT = 100
 
     # specifies the priority interpreting month and day order
     DEFAULT_LANGUAGE_FALLBACK_MDY: str = 'MDY'
@@ -71,6 +108,9 @@ class Constants:
 
     MAX_TWO_DIGIT_YEAR_FUTURE_NUM: int = int(BaseDateTime.MaxTwoDigitYearFutureNum)
     MIN_TWO_DIGIT_YEAR_PAST_NUM: int = int(BaseDateTime.MinTwoDigitYearPastNum)
+
+    BASE_YEAR_PAST_CENTURY = 1900
+    BASE_YEAR_CURRENT_CENTURY = 2000
 
     # Timex
     TIMEX_YEAR: str = "Y"
@@ -85,11 +125,13 @@ class Constants:
     TIMEX_SECOND: str = "S"
     TIMEX_FUZZY: str = 'X'
     TIMEX_FUZZY_YEAR: str = "XXXX"
+    TIMEX_FUZZY_TWO_DIGIT_YEAR = "XX"
     TIMEX_FUZZY_MONTH: str = "XX"
     TIMEX_FUZZY_WEEK: str = "WXX"
     TIMEX_FUZZY_DAY: str = "XX"
     DATE_TIMEX_CONNECTOR: str = "-"
     TIME_TIMEX_CONNECTOR: str = ":"
+    TIMEX_SEPARATOR: str = ","
     GENERAL_PERIOD_PREFIX: str = "P"
     TIME_TIMEX_PREFIX: str = "T"
 
@@ -109,8 +151,12 @@ class Constants:
     INVALID_DATE_STRING = "0001-01-01"
     COMPOSTIE_TIMEX_DELIMITER = "|"
 
+    # Timex non-constant
+    DURATION_UNIT_CHAR = ['D', 'W', 'M', 'Y', 'B']
+
     # Groups' names for named groups in regexes
     NEXT_GROUP_NAME = "next"
+    LAST_GROUP_NAME = "last"
     AM_GROUP_NAME = 'am'
     PM_GROUP_NAME = 'pm'
     AM_PM_GROUP_NAME = 'ampm'
@@ -129,11 +175,38 @@ class Constants:
     WEEK_GROUP_NAME = 'week'
     WEEKDAY_GROUP_NAME = 'weekday'
     MONTH_GROUP_NAME = 'month'
+    MONTH_FROM_GROUP_NAME = "monthFrom"
+    MONTH_TO_GROUP_NAME = "monthTo"
     YEAR_GROUP_NAME = 'year'
+    THIS_YEAR_GROUP_NAME = 'thisyear'
+    THIS_MONTH_GROUP_NAME = 'thismonth'
     FULL_YEAR_GROUP_NAME = 'fullyear'
     HOUR_NUM_GROUP_NAME = 'hournum'
     TENS_GROUP_NAME = 'tens'
     YEAR_CJK_GROUP_NAME = 'yearCJK'
+    UNIT_OF_YEAR_GROUP_NAME = 'uoy'
+    LATER_GROUP_NAME = 'later'
+    FEW_GROUP_NAME = 'few'
+    LESS_GROUP_NAME = 'less'
+    MORE_GROUP_NAME = 'more'
+    SPECIFIC_END_OF_GROUP_NAME = "SpecificEndOf"
+    TOMORROW_GROUP_NAME = "tomorrow"
+    YESTERDAY_GROUP_NAME = "yesterday"
+    REST_OF_GROUP_NAME = "restof"
+    TO_DATE_GROUP_NAME = "toDate"
+    HALF_GROUP_NAME = "half"
+    FIRST_HALF_GROUP_NAME = 'firstHalf'
+    SECOND_HALF_GROUP_NAME = 'secondHalf'
+    HALF_TAG_GROUP_NAME = "halfTag"
+    UNIT_GROUP_NAME = "unit"
+    WITHIN_GROUP_NAME = "within"
+    EARLY_PREFIX_GROUP_NAME = "EarlyPrefix"
+    MID_PREFIX_GROUP_NAME = "MidPrefix"
+    LATE_PREFIX_GROUP_NAME = "LatePrefix"
+    SPECIAL_GROUP_NAME = 'special'
+    HALF_GROUP_NAME = 'half'
+    QUARTER_GROUP_NAME = 'quarter'
+    THREE_QUARTER_GROUP_NAME = 'threequarter'
 
     TIME_OF_DAY_GROUP_NAME = 'timeOfDay'
     BUSINESS_DAY_GROUP_NAME = 'business'
@@ -141,6 +214,7 @@ class Constants:
     RIGHT_AM_PM_GROUP_NAME = 'rightDesc'
     MEALTIME_GROUP_NAME = 'mealTime'
     HOLIDAY_GROUP_NAME = 'holiday'
+    ANOTHER_GROUP_NAME = 'another'
 
     REL_MONTH = 'relmonth'
     FIRST_TWO_YEAR_NUM = 'firsttwoyearnum'
@@ -148,6 +222,7 @@ class Constants:
     YEAR_CHINESE = 'yearCJK'
     OTHER = 'other'
     YEAR_RELATIVE = 'yearrel'
+    FOUR_DIGIT_YEAR_GROUP_NAME = "FourDigitYear"
     DAY_OF_MONTH = 'DayOfMonth'
 
     NEW_TIME = 'newTime'
@@ -169,7 +244,15 @@ class Constants:
     MID_MORNING = 'midmorning'
     MID_NIGHT = 'midnight'
 
+    #  Include the date mentioned, to make "before" -> "until" or "after" -> "since". Such as "on or earlier than 1/1/2016".
+    INCLUDE_GROUP_NAME = "include"
+
     CARDINAL = 'cardinal'
+
+    DECADE_UNIT = '10Y'
+    FORTNIGHT_UNIT = '2W'
+    QUARTER_UNIT = '3MON'
+    WEEKEND_UNIT = 'WE'
 
     DECADE = 'decade'
     CENTURY = 'century'
@@ -198,10 +281,23 @@ class Constants:
     REL_LATE = 'RelLate'
     COMMENT_EARLY = 'early'
     COMMENT_LATE = 'late'
+    COMMENT_WEEK_OF = "WeekOf"
+    COMMENT_MONTH_OF = "MonthOf"
 
     HALF = 'half'
 
     HAS_MOD = 'mod'
+    LESS_THAN_MOD = 'less'
+    MORE_THAN_MOD = 'more'
+
+    BEFORE_MOD = "before"
+    AFTER_MOD = "after"
+    UNTIL_MOD = "until"
+    SINCE_MOD = "since"
+    APPROX_MOD = "approx"
+    EARLY_MOD = "start"
+    MID_MOD = "mid"
+    LATE_MOD = "end"
 
     # Holidays
     # These should not be constants, they should go on the resources files for English
@@ -225,9 +321,8 @@ class Constants:
     UTC_OFFSET_MINS_KEY = "utcOffsetMins"
     POSITIVE_SIGN = 1
     NEGATIVE_SIGN = -1
-
-    # hours of one half day
-    HALF_DAY_HOUR_COUNT = 12
+    RESOLVE_TIMEZONE = "resolveTimeZone"
+    TIMEZONE_TEXT = "timezoneText"
 
 
 class TimeTypeConstants:
@@ -243,6 +338,7 @@ class TimeTypeConstants:
     VALUE: str = 'value'
     START_TIME: str = 'startTime'
     END_TIME: str = 'endTime'
+    DATETIME_ALT = "dateTimeAlt"
 
     START: str = 'start'
     END: str = 'end'

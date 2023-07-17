@@ -31,7 +31,13 @@ from .german.merged_parser_config import GermanMergedParserConfiguration
 from .dutch.common_configs import DutchCommonDateTimeParserConfiguration
 from .dutch.merged_extractor_config import DutchMergedExtractorConfiguration
 from .dutch.merged_parser_config import DutchMergedParserConfiguration
-
+from .CJK.base_merged import BaseCJKMergedDateTimeExtractor, BaseCJKMergedDateTimeParser
+from .japanese.merged_extractor_config import JapaneseMergedExtractorConfiguration
+from .japanese.merged_parser_config import JapaneseMergedParserConfiguration
+from .japanese.common_configs import JapaneseCommonDateTimeParserConfiguration
+from .catalan.common_configs import CatalanCommonDateTimeParserConfiguration
+from .catalan.merged_extractor_config import CatalanMergedExtractorConfiguration
+from .catalan.merged_parser_config import CatalanMergedParserConfiguration
 
 class DateTimeRecognizer(Recognizer[DateTimeOptions]):
     def __init__(self, target_culture: str = None,
@@ -48,9 +54,22 @@ class DateTimeRecognizer(Recognizer[DateTimeOptions]):
             BaseMergedExtractor(EnglishMergedExtractorConfiguration(), options)
         ))
 
+        self.register_model('DateTimeModel', Culture.EnglishOthers, lambda options: DateTimeModel(
+            BaseMergedParser(EnglishMergedParserConfiguration(
+                EnglishCommonDateTimeParserConfiguration(dmyDateFormat=True)), options),
+            BaseMergedExtractor(EnglishMergedExtractorConfiguration(dmyDateFormat=True), options)
+        ))
+
         self.register_model('DateTimeModel', Culture.Chinese, lambda options: DateTimeModel(
             ChineseMergedParser(),
             ChineseMergedExtractor(options)
+        ))
+
+        self.register_model('DateTimeModel', Culture.Japanese, lambda options: DateTimeModel(
+            BaseCJKMergedDateTimeParser(JapaneseMergedParserConfiguration(
+                JapaneseCommonDateTimeParserConfiguration()
+            ), options),
+            BaseCJKMergedDateTimeExtractor(JapaneseMergedExtractorConfiguration(), options)
         ))
 
         self.register_model('DateTimeModel', Culture.Spanish, lambda options: DateTimeModel(
@@ -93,6 +112,12 @@ class DateTimeRecognizer(Recognizer[DateTimeOptions]):
             BaseMergedParser(DutchMergedParserConfiguration(
                 DutchCommonDateTimeParserConfiguration()), options),
             BaseMergedExtractor(DutchMergedExtractorConfiguration(), options)
+        ))
+
+        self.register_model('DateTimeModel', Culture.Catalan, lambda options: DateTimeModel(
+            BaseMergedParser(CatalanMergedParserConfiguration(
+                CatalanCommonDateTimeParserConfiguration()), options),
+            BaseMergedExtractor(CatalanMergedExtractorConfiguration(), options)
         ))
 
     def get_datetime_model(self, culture: str = None, fallback_to_default_culture: bool = True) -> Model:

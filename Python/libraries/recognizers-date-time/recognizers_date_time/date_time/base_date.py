@@ -5,6 +5,7 @@ from abc import ABC, abstractmethod
 from typing import List, Optional, Pattern, Dict, Match
 from datetime import datetime, timedelta
 
+from dateutil.relativedelta import relativedelta
 from recognizers_date_time.date_time.abstract_year_extractor import AbstractYearExtractor
 from datedelta import datedelta
 from recognizers_text.extractor import ExtractResult
@@ -506,9 +507,9 @@ class BaseDateExtractor(DateTimeExtractor, AbstractYearExtractor):
                     end_index = (start_index + result_length) + len(match.group())
 
                     start_index, end_index = self.extend_with_week_day_and_year(start_index, end_index,
-                                                                                self.config.month_of_year[RegExpUtility.get_group(
-                                                                                    match, Constants.MONTH_GROUP_NAME).lower() or str(
-                                                                                    reference.month)], num, source, reference)
+                                                       self.config.month_of_year[RegExpUtility.get_group(
+                                                           match, Constants.MONTH_GROUP_NAME).lower() or str(
+                                                           reference.month)], num, source, reference)
 
                     ret.append(Token(start_index, end_index))
         return ret
@@ -517,7 +518,7 @@ class BaseDateExtractor(DateTimeExtractor, AbstractYearExtractor):
         index = 0
         match_year = self.config.year_suffix.match(affix)
 
-        success = not (match_year and match_year.start()) if not in_prefix else match_year and match_year.start() \
+        success = not (match_year and match_year.start())  if not in_prefix else match_year and match_year.start() \
             + match_year.end() == len(affix.strip())
 
         if success:
@@ -1243,10 +1244,9 @@ class BaseDateParser(DateTimeParser):
                 pivot_date = DateUtils.safe_create_from_min_value(year, month, day)
             else:
                 # Add 1 month is enough, since 1, 3, 5, 7, 8, 10, 12 months has 31 days
-                pivot_date = datetime(year, month, day) + datedelta(months=1)
-                pivot_date = DateUtils.safe_create_from_min_value(pivot_date.year, pivot_date.month, pivot_date.day)
+                pivot_date = DateUtils.safe_create_from_min_value(year, month + 1, day)
 
-            num_week_day_int = pivot_date.isoweekday()
+            num_week_day_int = pivot_date.isoweekday() % 7
             extracted_week_day_str = match.group(Constants.WEEKDAY_GROUP_NAME)
             week_day = self.config.day_of_week.get(extracted_week_day_str)
 
@@ -1260,10 +1260,10 @@ class BaseDateParser(DateTimeParser):
                     future_date = pivot_date
                     past_date = pivot_date
 
-                    while future_date.isoweekday() != week_day or future_date.day != day or future_date < reference:
+                    while future_date.isoweekday() % 7 != week_day or future_date.day != day or future_date < reference:
                         # Increase the futureDate month by month to find the expected date (the "day" is the weekday) and
                         # make sure the futureDate not less than the referenceDate.
-                        future_date += datedelta(months=1)
+                        future_date += relativedelta(months=1)
                         tmp_days_in_month = calendar.monthrange(future_date.year, future_date.month)[1]
                         if tmp_days_in_month >= day:
                             # For months like January 31, after add 1 month, February 31 won't be returned, so the day should be revised ASAP.
@@ -1271,11 +1271,11 @@ class BaseDateParser(DateTimeParser):
 
                     result.future_value = future_date
 
-                    while past_date.isoweekday() != week_day or past_date.day != day or past_date > reference:
+                    while past_date.isoweekday() % 7 != week_day or past_date.day != day or past_date > reference:
                         # Decrease the pastDate month by month to find the expected date (the "day" is the weekday) and
                         # make sure the pastDate not larger than the referenceDate.
-                        past_date += datedelta(months=-1)
-                        tmp_days_in_month = calendar.monthrange(past_date.year, future_date.month)[1]
+                        past_date -= relativedelta(months=1)
+                        tmp_days_in_month = calendar.monthrange(past_date.year, past_date.month)[1]
                         if tmp_days_in_month >= day:
                             # For months like March 31, after minus 1 month, February 31 won't be returned, so the day should be revised ASAP.
                             past_date = DateUtils.safe_create_from_value(DateUtils.min_value, past_date.year, past_date.month, day)
@@ -1382,7 +1382,7 @@ class BaseDateParser(DateTimeParser):
         match_year = self.config.date_extractor.config.year_suffix.match(affix)
 
         success = not (match_year and match_year.start()) if not in_prefix else match_year and match_year.start() \
-            + match_year.end() == len(affix.strip())
+                                                                                + match_year.end() == len(affix.strip())
 
         if success:
             year = self.config.date_extractor.get_year_from_text(match_year)
@@ -1417,8 +1417,13 @@ class BaseDateParser(DateTimeParser):
         if match:
             month = self.config.month_of_year.get(match.group())
             day = num
-            suffix = trimmed_source[match.end():]
-            prefix = trimmed_source[0: match.start()]
+
+            prefix_end = min(ers[0].start, match.start())
+            prefix = trimmed_source[0:prefix_end]
+
+            suffix_start = max(ers[0].start + ers[0].length, match.end())
+            suffix = trimmed_source[suffix_start:]
+
             year = self._get_year_in_affix(suffix, False)
 
             if year == Constants.INVALID_YEAR and self.config.check_both_before_after:
@@ -1472,7 +1477,7 @@ class BaseDateParser(DateTimeParser):
                 future_date = future_date.replace(year=future_date.year+1)
 
             if past_date >= reference:
-                past_date = past_date.replace(year=past_date.year+1)
+                past_date = past_date.replace(year=past_date.year-1)
         else:
             result.timex = DateTimeFormatUtil.luis_date(year, month, day)
 

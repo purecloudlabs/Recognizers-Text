@@ -746,6 +746,110 @@
     ]
   },
   {
+    "Input": "I'll go back on April first 2021.",
+    "NotSupported": "javascript",
+    "Results": [
+      {
+        "Text": "April first 2021",
+        "Type": "date",
+        "Start": 16,
+        "Length": 16
+      }
+    ]
+  },
+  {
+    "Input": "I'll go back Jun third 2023",
+    "NotSupported": "javascript",
+    "Results": [
+      {
+        "Text": "Jun third 2023",
+        "Type": "date",
+        "Start": 13,
+        "Length": 14
+      }
+    ]
+  },
+  {
+    "Input": "I'll go back September the second 2025.",
+    "NotSupported": "javascript",
+    "Results": [
+      {
+        "Text": "September the second 2025",
+        "Type": "date",
+        "Start": 13,
+        "Length": 25
+      }
+    ]
+  },
+  {
+    "Input": "I'll go back March one 2020",
+    "NotSupported": "javascript",
+    "Results": [
+      {
+        "Text": "March one 2020",
+        "Type": "date",
+        "Start": 13,
+        "Length": 14
+      }
+    ]
+  },
+  {
+    "Input": "I'll go back Aug twelve 2024.",
+    "NotSupported": "javascript",
+    "Results": [
+      {
+        "Text": "Aug twelve 2024",
+        "Type": "date",
+        "Start": 13,
+        "Length": 15
+      }
+    ]
+  },
+  {
+    "Input": "I'll go back February twenty fifth",
+    "Results": [
+      {
+        "Text": "February twenty fifth",
+        "Type": "date",
+        "Start": 13,
+        "Length": 21
+      }
+    ]
+  },
+  {
+    "Input": "I'll go back on Nov the twelfth.",
+    "Results": [
+      {
+        "Text": "Nov the twelfth",
+        "Type": "date",
+        "Start": 16,
+        "Length": 15
+      }
+    ]
+  },
+  {
+    "Input": "I'll go back January thirty one",
+    "Results": [
+      {
+        "Text": "January thirty one",
+        "Type": "date",
+        "Start": 13,
+        "Length": 18
+      }
+    ]
+  },
+  {
+    "Input": "I'll go back Oct twenty three.",
+    "Results": [
+      {
+        "Text": "Oct twenty three",
+        "Type": "date",
+        "Start": 13,
+        "Length": 16
+      }
+    ]
+  },
+  {
     "Input": "i went back two months ago",
     "Results": [
       {
@@ -1285,7 +1389,7 @@
     "NotSupported": "javascript, python",
     "Results": [
       {
-        "Text": "the 20th next month",
+        "Text": "20th next month",
         "Type": "date",
         "Start": 12,
         "Length": 19
@@ -1329,7 +1433,7 @@
   },
   {
     "Input": "on september the twenty-first nineteen seventy eight",
-    "NotSupported": "javascript, python",
+    "NotSupported": "javascript",
     "Results": [
       {
         "Text": "september the twenty-first nineteen seventy eight",
@@ -1341,7 +1445,7 @@
   },
   {
     "Input": "on september 10, nineteen zero one",
-    "NotSupported": "javascript, python",
+    "NotSupported": "javascript",
     "Results": [
       {
         "Text": "september 10, nineteen zero one",
@@ -1353,7 +1457,7 @@
   },
   {
     "Input": "on the tenth of september, two thousand",
-    "NotSupported": "javascript, python",
+    "NotSupported": "javascript",
     "Results": [
       {
         "Text": "tenth of september, two thousand",
@@ -1620,7 +1724,7 @@
   },
   {
     "Input": "i'll go back twenty second of june 2017",
-    "NotSupported": "python,javascript",
+    "NotSupported": "javascript",
     "Results": [
       {
         "Text": "twenty second of june 2017",
@@ -1632,7 +1736,7 @@
   },
   {
     "Input": "i'll go back twenty-second of june 2017",
-    "NotSupported": "python,javascript",
+    "NotSupported": "javascript",
     "Results": [
       {
         "Text": "twenty-second of june 2017",
@@ -1678,6 +1782,61 @@
         "Type": "date",
         "Start": 18,
         "Length": 17
+      }
+    ]
+  },
+  {
+    "Input": "Book me a trip on Monday 8th",
+    "Results": [
+      {
+        "Text": "Monday 8th",
+        "Type": "date",
+        "Start": 18,
+        "Length": 10
+      }
+    ]
+  },
+  {
+    "Input": "the photograph appeared in the 01/07 issue of the magazine",
+    "Results": [
+      {
+        "Text": "the 01/07",
+        "Type": "date",
+        "Start": 27,
+        "Length": 9
+      }
+    ]
+  },
+  {
+    "Input": "the contract is expected to start on 10/11",
+    "Results": [
+      {
+        "Text": "10/11",
+        "Type": "date",
+        "Start": 37,
+        "Length": 5
+      }
+    ]
+  },
+  {
+    "Input": "the software used in the 11/3/2020 election can be easily hacked",
+    "Results": [
+      {
+        "Text": "the 11/3/2020",
+        "Type": "date",
+        "Start": 21,
+        "Length": 13
+      }
+    ]
+  },
+  {
+    "Input": "this article was published on 06/10/2020",
+    "Results": [
+      {
+        "Text": "06/10/2020",
+        "Type": "date",
+        "Start": 30,
+        "Length": 10
       }
     ]
   }
