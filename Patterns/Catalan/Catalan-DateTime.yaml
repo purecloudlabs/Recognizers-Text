@@ -150,7 +150,7 @@ PrefixDayRegex: !nestedRegex
 CenturySuffixRegex: !simpleRegex
   def: (^segle)\b
 SeasonRegex: !nestedRegex
-  def: \b(?<season>(([ú]ltim[oa]|estiu|el|la|(pròxim[oa]s?|següent)|{PrefixPeriodRegex})\s+)?(?<seas>primavera|estiu|tardor|hivern)((\s+(del?|en)|\s*,\s*)?\s+({YearRegex}|(?<order>pròxim|[ú]ltim|aquest)\s+any))?)\b
+  def: \b(?<season>(([ú]ltim[oa]|estiu|el|la|(pròxim[oa]s?|següent)|{PrefixPeriodRegex})\s+)?(?<seas>primavera|estiu|tardor|hivern)((\s+(del?|en)|\s*,\s*)?\s+({YearRegex}|(?<order>pròxim|[ú]ltim|aquest)\s+any))?))\b
   references: [ YearRegex, PrefixPeriodRegex ]
 WhichWeekRegex: !nestedRegex
   def: \b(setmana)(\s*)(?<number>5[0-3]|[1-4]\d|0?[1-9])(\s+del?\s+({YearRegex}|(?<order>pròxim|[ú]ltim|aquest)\s+any|any\s+(?<order>passat)))?\b
@@ -528,7 +528,7 @@ SetEachRegex: !nestedRegex
   def: (?<each>({EachExpression})\s*)
   references: [ EachExpression ]
 LaterEarlyPeriodRegex: !nestedRegex
-  def: \b(({PrefixPeriodRegex})\s+(?<suffix>{OneWordPeriodRegex}|(?<FourDigitYear>{BaseDateTime.FourDigitYearRegex}))|({UnspecificEndOfRangeRegex}))\b
+  def: \b(({PrefixPeriodRegex})\s+(?<suffix>{OneWordPeriodRegex}|(?<FourDigitYear>{BaseDateTime.FourDigitYearRegex}))|({UnspecificEndOfRangeRegex})))\b
   references: [OneWordPeriodRegex, UnspecificEndOfRangeRegex, PrefixPeriodRegex, BaseDateTime.FourDigitYearRegex]
 RelativeWeekRegex: !simpleRegex
   def: (((la|el)\s+)?(((proper[ae]|pròxim[ae]|[úu]ltimoa?|darrer[ae])\s+setmanes?)|(setmanes?\s+(que\s+ve|passad[oa]))))
