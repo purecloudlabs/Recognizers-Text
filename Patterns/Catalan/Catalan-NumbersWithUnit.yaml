@@ -40,7 +40,6 @@ AreaAmbiguousValues: !list
 CurrencySuffixList: !dictionary
   types: [ string, string ]
   entries:
-    entries:
     Dòlar: dòlar|dòlars
     Peso: pes|pesos
     Ruble: ruble|rubles
