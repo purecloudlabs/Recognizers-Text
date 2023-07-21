@@ -21,8 +21,6 @@ from .dateperiod_extractor_config import CatalanDatePeriodExtractorConfiguration
 from .timeperiod_extractor_config import CatalanTimePeriodExtractorConfiguration
 from .datetime_extractor_config import CatalanDateTimeExtractorConfiguration
 from .datetimeperiod_extractor_config import CatalanDateTimePeriodExtractorConfiguration
-from recognizers_number import BaseNumberExtractor
-from recognizers_number.number.catalan.extractors import CatalanCardinalExtractor
 
 
 class CatalanSetExtractorConfiguration(SetExtractorConfiguration):
@@ -87,39 +85,39 @@ class CatalanSetExtractorConfiguration(SetExtractorConfiguration):
         return self._date_time_period_extractor
 
     @property
-    def cardinal_extractor(self) -> BaseNumberExtractor:
-        return self._cardinal_extractor
+    def duration_unit_regex(self) -> Pattern:
+        return self._duration_unit_regex
 
-    def __init__(self):
-        self._last_regex = RegExpUtility.get_safe_reg_exp(
-            CatalanDateTime.LastDateRegex)
-        self._periodic_regex = RegExpUtility.get_safe_reg_exp(
-            CatalanDateTime.PeriodicRegex)
-        self._each_unit_regex = RegExpUtility.get_safe_reg_exp(
-            CatalanDateTime.EachUnitRegex)
-        self._each_prefix_regex = RegExpUtility.get_safe_reg_exp(
-            CatalanDateTime.EachPrefixRegex)
-        self._each_day_regex = RegExpUtility.get_safe_reg_exp(
-            CatalanDateTime.EachDayRegex)
-        self._before_each_day_regex = RegExpUtility.get_safe_reg_exp(
-            CatalanDateTime.BeforeEachDayRegex)
-        self._set_each_regex = RegExpUtility.get_safe_reg_exp(
-            CatalanDateTime.SetEachRegex)
-        self._set_week_day_regex = RegExpUtility.get_safe_reg_exp(
-            CatalanDateTime.SetWeekDayRegex)
-
+    def __init__(self, dmyDateFormat=False):
         self._duration_extractor = BaseDurationExtractor(
             CatalanDurationExtractorConfiguration())
         self._time_extractor = BaseTimeExtractor(
             CatalanTimeExtractorConfiguration())
         self._date_extractor = BaseDateExtractor(
-            CatalanDateExtractorConfiguration())
+            CatalanDateExtractorConfiguration(dmyDateFormat))
         self._date_time_extractor = BaseDateTimeExtractor(
-            CatalanDateTimeExtractorConfiguration())
+            CatalanDateTimeExtractorConfiguration(dmyDateFormat))
         self._date_period_extractor = BaseDatePeriodExtractor(
-            CatalanDatePeriodExtractorConfiguration())
+            CatalanDatePeriodExtractorConfiguration(dmyDateFormat))
         self._time_period_extractor = BaseTimePeriodExtractor(
             CatalanTimePeriodExtractorConfiguration())
         self._date_time_period_extractor = BaseDateTimePeriodExtractor(
-            CatalanDateTimePeriodExtractorConfiguration())
-        self._cardinal_extractor = CatalanCardinalExtractor()
+            CatalanDateTimePeriodExtractorConfiguration(dmyDateFormat))
+        self._last_regex = RegExpUtility.get_safe_reg_exp(
+            CatalanDateTime.SetLastRegex)
+        self._each_prefix_regex = RegExpUtility.get_safe_reg_exp(
+            CatalanDateTime.EachPrefixRegex)
+        self._periodic_regex = RegExpUtility.get_safe_reg_exp(
+            CatalanDateTime.PeriodicRegex)
+        self._each_unit_regex = RegExpUtility.get_safe_reg_exp(
+            CatalanDateTime.EachUnitRegex)
+        self._each_day_regex = RegExpUtility.get_safe_reg_exp(
+            CatalanDateTime.EachDayRegex)
+        self._set_week_day_regex = RegExpUtility.get_safe_reg_exp(
+            CatalanDateTime.SetWeekDayRegex)
+        self._set_each_regex = RegExpUtility.get_safe_reg_exp(
+            CatalanDateTime.SetEachRegex)
+        self._duration_unit_regex = RegExpUtility.get_safe_reg_exp(
+            CatalanDateTime.DurationUnitRegex
+        )
+        self._before_each_day_regex = None

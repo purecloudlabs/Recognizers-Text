@@ -5,7 +5,7 @@ from typing import Dict, List, Pattern
 
 from recognizers_text.culture import Culture
 from recognizers_text.extractor import Extractor
-from recognizers_text.utilities import RegExpUtility
+from recognizers_text.utilities import RegExpUtility, DefinitionLoader
 from recognizers_number.culture import CultureInfo
 from recognizers_number.number.models import NumberMode
 from recognizers_number.number.catalan.extractors import CatalanNumberExtractor
@@ -19,7 +19,11 @@ from recognizers_number_with_unit.resources.base_units import BaseUnits
 class CatalanNumberWithUnitExtractorConfiguration(NumberWithUnitExtractorConfiguration):
     @property
     def ambiguity_filters_dict(self) -> Dict[Pattern, Pattern]:
-        return None
+        return DefinitionLoader.load_ambiguity_filters(CatalanNumericWithUnit.AmbiguityFiltersDict)
+
+    @property
+    def dimension_ambiguity_filters_dict(self) -> Dict[Pattern, Pattern]:
+        return DefinitionLoader.load_ambiguity_filters(CatalanNumericWithUnit.DimensionAmbiguityFiltersDict)
 
     @property
     def unit_num_extractor(self) -> Extractor:
@@ -35,7 +39,7 @@ class CatalanNumberWithUnitExtractorConfiguration(NumberWithUnitExtractorConfigu
 
     @property
     def connector_token(self) -> str:
-        return CatalanNumericWithUnit.ConnectorToken
+        return ''
 
     @property
     def compound_unit_connector_regex(self) -> Pattern:
@@ -69,6 +73,10 @@ class CatalanNumberWithUnitExtractorConfiguration(NumberWithUnitExtractorConfigu
 
 class CatalanAgeExtractorConfiguration(CatalanNumberWithUnitExtractorConfiguration):
     @property
+    def ambiguity_filters_dict(self) -> Dict[Pattern, Pattern]:
+        return CatalanNumericWithUnit.AmbiguityFiltersDict
+
+    @property
     def extract_type(self) -> str:
         return Constants.SYS_UNIT_AGE
 
@@ -87,11 +95,16 @@ class CatalanAgeExtractorConfiguration(CatalanNumberWithUnitExtractorConfigurati
     def __init__(self, culture_info: CultureInfo = None):
         super().__init__(culture_info)
         self._suffix_list = CatalanNumericWithUnit.AgeSuffixList
-        self._prefix_list = dict()
+        self._prefix_list = CatalanNumericWithUnit.AgePrefixList
         self._ambiguous_unit_list = CatalanNumericWithUnit.AmbiguousAgeUnitList
 
 
 class CatalanCurrencyExtractorConfiguration(CatalanNumberWithUnitExtractorConfiguration):
+
+    @property
+    def ambiguity_filters_dict(self) -> Dict[Pattern, Pattern]:
+        return CatalanNumericWithUnit.AmbiguityFiltersDict
+
     @property
     def extract_type(self) -> str:
         return Constants.SYS_UNIT_CURRENCY
@@ -116,6 +129,11 @@ class CatalanCurrencyExtractorConfiguration(CatalanNumberWithUnitExtractorConfig
 
 
 class CatalanDimensionExtractorConfiguration(CatalanNumberWithUnitExtractorConfiguration):
+
+    @property
+    def ambiguity_filters_dict(self) -> Dict[Pattern, Pattern]:
+        return CatalanNumericWithUnit.AmbiguityFiltersDict
+
     @property
     def extract_type(self) -> str:
         return Constants.SYS_UNIT_DIMENSION
@@ -134,7 +152,6 @@ class CatalanDimensionExtractorConfiguration(CatalanNumberWithUnitExtractorConfi
 
     def __init__(self, culture_info: CultureInfo = None):
         super().__init__(culture_info)
-
         self._suffix_list = {
             **CatalanNumericWithUnit.InformationSuffixList,
             **CatalanNumericWithUnit.AreaSuffixList,
@@ -143,16 +160,22 @@ class CatalanDimensionExtractorConfiguration(CatalanNumberWithUnitExtractorConfi
             **CatalanNumericWithUnit.VolumeSuffixList,
             **CatalanNumericWithUnit.WeightSuffixList
         }
-
         self._prefix_list = dict()
         self._ambiguous_unit_list = CatalanNumericWithUnit.AmbiguousDimensionUnitList +\
             CatalanNumericWithUnit.AmbiguousAngleUnitList +\
+            CatalanNumericWithUnit.AmbiguousAreaUnitList +\
             CatalanNumericWithUnit.AmbiguousLengthUnitList +\
             CatalanNumericWithUnit.AmbiguousSpeedUnitList +\
+            CatalanNumericWithUnit.AmbiguousVolumeUnitList +\
             CatalanNumericWithUnit.AmbiguousWeightUnitList
 
 
 class CatalanTemperatureExtractorConfiguration(CatalanNumberWithUnitExtractorConfiguration):
+
+    @property
+    def ambiguity_filters_dict(self) -> Dict[Pattern, Pattern]:
+        return CatalanNumericWithUnit.AmbiguityFiltersDict
+
     @property
     def extract_type(self) -> str:
         return Constants.SYS_UNIT_TEMPERATURE
@@ -177,6 +200,6 @@ class CatalanTemperatureExtractorConfiguration(CatalanNumberWithUnitExtractorCon
         super().__init__(culture_info)
         self._suffix_list = CatalanNumericWithUnit.TemperatureSuffixList
         self._prefix_list = dict()
-        self._ambiguous_unit_list = []
+        self._ambiguous_unit_list = CatalanNumericWithUnit.AmbiguousTemperatureUnitList
         self._ambiguous_unit_number_multiplier_regex = RegExpUtility.get_safe_reg_exp(
             BaseUnits.AmbiguousUnitNumberMultiplierRegex)

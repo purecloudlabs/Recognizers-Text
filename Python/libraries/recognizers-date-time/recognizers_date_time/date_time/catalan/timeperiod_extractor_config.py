@@ -12,9 +12,8 @@ from ..base_timeperiod import TimePeriodExtractorConfiguration, MatchedIndex
 from ..base_time import BaseTimeExtractor
 from ..base_timezone import BaseTimeZoneExtractor
 from .time_extractor_config import CatalanTimeExtractorConfiguration
-from .base_configs import CatalanDateTimeUtilityConfiguration
-from ..utilities import DateTimeOptions
 from .timezone_extractor_config import CatalanTimeZoneExtractorConfiguration
+from ..utilities import DateTimeOptions
 
 
 class CatalanTimePeriodExtractorConfiguration(TimePeriodExtractorConfiguration):
@@ -26,10 +25,6 @@ class CatalanTimePeriodExtractorConfiguration(TimePeriodExtractorConfiguration):
     @property
     def dmy_date_format(self) -> bool:
         return self._dmy_date_format
-
-    @property
-    def options(self):
-        return self._options
 
     @property
     def simple_cases_regex(self) -> List[Pattern]:
@@ -52,6 +47,10 @@ class CatalanTimePeriodExtractorConfiguration(TimePeriodExtractorConfiguration):
         return self._single_time_extractor
 
     @property
+    def time_zone_extractor(self) -> DateTimeExtractor:
+        return self._time_zone_extractor
+
+    @property
     def integer_extractor(self) -> Extractor:
         return self._integer_extractor
 
@@ -64,63 +63,82 @@ class CatalanTimePeriodExtractorConfiguration(TimePeriodExtractorConfiguration):
         return self._pure_number_regex
 
     @property
-    def time_zone_extractor(self) -> DateTimeExtractor:
-        return self._time_zone_extractor
+    def hour_regex(self) -> Pattern:
+        return self._hour_regex
+
+    @property
+    def period_hour_num_regex(self) -> Pattern:
+        return self._period_hour_num_regex
+
+    @property
+    def period_desc_regex(self) -> Pattern:
+        return self._period_desc_regex
+
+    @property
+    def pm_regex(self) -> Pattern:
+        return self._pm_regex
+
+    @property
+    def am_regex(self) -> Pattern:
+        return self._am_regex
+
+    @property
+    def preposition_regex(self) -> Pattern:
+        return self._preposition_regex
+
+    @property
+    def specific_time_of_day_regex(self) -> Pattern:
+        return self._specific_time_of_day_regex
+
+    @property
+    def time_unit_regex(self) -> Pattern:
+        return self._time_unit_regex
+
+    @property
+    def time_followed_unit(self) -> Pattern:
+        return self._time_followed_unit
+
+    @property
+    def time_number_combined_with_unit(self):
+        return self._time_number_combined_with_unit
 
     def __init__(self):
         super().__init__()
-        self._single_time_extractor = BaseTimeExtractor(
-            CatalanTimeExtractorConfiguration())
-        self._integer_extractor = CatalanIntegerExtractor()
-        self.utility_configuration = CatalanDateTimeUtilityConfiguration()
-
+        self._check_both_before_after = CatalanDateTime.CheckBothBeforeAfter
         self._simple_cases_regex: List[Pattern] = [
             RegExpUtility.get_safe_reg_exp(CatalanDateTime.PureNumFromTo),
             RegExpUtility.get_safe_reg_exp(CatalanDateTime.PureNumBetweenAnd),
             RegExpUtility.get_safe_reg_exp(CatalanDateTime.SpecificTimeFromTo),
             RegExpUtility.get_safe_reg_exp(CatalanDateTime.SpecificTimeBetweenAnd)
         ]
-
         self._till_regex: Pattern = RegExpUtility.get_safe_reg_exp(
             CatalanDateTime.TillRegex)
         self._time_of_day_regex: Pattern = RegExpUtility.get_safe_reg_exp(
             CatalanDateTime.TimeOfDayRegex)
         self._general_ending_regex: Pattern = RegExpUtility.get_safe_reg_exp(
             CatalanDateTime.GeneralEndingRegex)
-
-        self.from_regex = RegExpUtility.get_safe_reg_exp(
-            CatalanDateTime.FromRegex)
-        self.range_connector_regex = RegExpUtility.get_safe_reg_exp(
-            CatalanDateTime.RangeConnectorRegex)
-        self.between_regex = RegExpUtility.get_safe_reg_exp(
-            CatalanDateTime.BetweenRegex)
+        self._single_time_extractor = BaseTimeExtractor(
+            CatalanTimeExtractorConfiguration())
+        self._integer_extractor = CatalanIntegerExtractor()
+        self._time_zone_extractor = BaseTimeZoneExtractor(
+            CatalanTimeZoneExtractorConfiguration())
         self._token_before_date = CatalanDateTime.TokenBeforeDate
         self._pure_number_regex = [CatalanDateTime.PureNumFromTo, CatalanDateTime.PureNumFromTo]
         self._options = DateTimeOptions.NONE
-        self._time_zone_extractor = BaseTimeZoneExtractor(
-            CatalanTimeZoneExtractorConfiguration())
-        self._check_both_before_after = CatalanDateTime.CheckBothBeforeAfter
 
     def get_from_token_index(self, source: str) -> MatchedIndex:
-        match = self.from_regex.search(source)
-        if match:
-            return MatchedIndex(True, match.start())
-
-        return MatchedIndex(False, -1)
+        index = -1
+        if source.endswith('from'):
+            index = source.rfind('from')
+            return MatchedIndex(matched=True, index=index)
+        return MatchedIndex(matched=False, index=index)
 
     def get_between_token_index(self, source: str) -> MatchedIndex:
-        match = self.between_regex.search(source)
-        if match:
-            return MatchedIndex(True, match.start())
+        index = -1
+        if source.endswith('between'):
+            index = source.rfind('between')
+            return MatchedIndex(matched=True, index=index)
+        return MatchedIndex(matched=False, index=index)
 
-        return MatchedIndex(False, -1)
-
-    def has_connector_token(self, source: str) -> MatchedIndex:
-        match = self.range_connector_regex.search(source)
-        if match:
-            return MatchedIndex(True, match.start())
-
-        return MatchedIndex(False, -1)
-
-    def is_connector_token(self, source: str) -> MatchedIndex:
-        return self.range_connector_regex.search(source)
+    def is_connector_token(self, source: str):
+        return source == "and"

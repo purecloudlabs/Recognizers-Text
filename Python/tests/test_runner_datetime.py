@@ -34,7 +34,6 @@ def test_datetime_extractor(
     result = extractor.extract(source, reference_datetime)
 
     spec_info = type(extractor).__name__ + " : " + source
-
     assert len(result) == len(expected_results)
     for actual, expected in zip(result, expected_results):
         simple_extractor_assert(spec_info, actual, expected, 'text', 'Text', True)

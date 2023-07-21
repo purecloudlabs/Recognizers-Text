@@ -2,12 +2,13 @@
 #  Licensed under the MIT License.
 
 from typing import Pattern, List, NamedTuple
+import regex
 
 from recognizers_text.utilities import RegExpUtility
 from recognizers_number.number.models import NumberMode, LongFormatMode
 from recognizers_number.resources import BaseNumbers
 from recognizers_number.resources.catalan_numeric import CatalanNumeric
-from recognizers_number.number.extractors import ReVal, ReRe, BaseNumberExtractor, BasePercentageExtractor
+from recognizers_number.number.extractors import ReVal, ReRe, BaseNumberExtractor, BasePercentageExtractor, BaseMergedNumberExtractor
 from recognizers_number.number.constants import Constants
 
 
@@ -24,7 +25,13 @@ class CatalanNumberExtractor(BaseNumberExtractor):
     def _extract_type(self) -> str:
         return Constants.SYS_NUM
 
+    @property
+    def _negative_number_terms(self) -> Pattern:
+        return self.__negative_number_terms
+
     def __init__(self, mode: NumberMode = NumberMode.DEFAULT):
+        self.__negative_number_terms = RegExpUtility.get_safe_reg_exp(
+            CatalanNumeric.NegativeNumberTermsRegex)
         self.__regexes: List[ReVal] = list()
         cardinal_ex: CatalanCardinalExtractor = None
 
@@ -32,8 +39,8 @@ class CatalanNumberExtractor(BaseNumberExtractor):
             cardinal_ex = CatalanCardinalExtractor(
                 CatalanNumeric.PlaceHolderPureNumber)
         elif mode is NumberMode.CURRENCY:
-            self.__regexes.append(
-                ReVal(re=CatalanNumeric.CurrencyRegex, val='IntegerNum'))
+            self.__regexes.append(ReVal(re=RegExpUtility.get_safe_reg_exp(
+                CatalanNumeric.CurrencyRegex), val='IntegerNum'))
 
         if cardinal_ex is None:
             cardinal_ex = CatalanCardinalExtractor()
@@ -75,8 +82,7 @@ class CatalanCardinalExtractor(BaseNumberExtractor):
 
 class CatalanIntegerExtractor(BaseNumberExtractor):
     @property
-    def regexes(self) -> List[
-            NamedTuple('re_val', [('re', Pattern), ('val', str)])]:
+    def regexes(self) -> List[NamedTuple('re_val', [('re', Pattern), ('val', str)])]:
         return self.__regexes
 
     @property
@@ -86,87 +92,97 @@ class CatalanIntegerExtractor(BaseNumberExtractor):
     def __init__(self, placeholder: str = CatalanNumeric.PlaceHolderDefault):
         self.__regexes = [
             ReVal(
-                re=CatalanNumeric.NumbersWithPlaceHolder(placeholder),
+                re=RegExpUtility.get_safe_reg_exp(
+                    CatalanNumeric.NumbersWithPlaceHolder(placeholder)),
                 val='IntegerNum'),
             ReVal(
-                re=CatalanNumeric.NumbersWithSuffix,
+                re=RegExpUtility.get_safe_reg_exp(
+                    CatalanNumeric.NumbersWithSuffix, regex.S),
                 val='IntegerNum'),
             ReVal(
-                re=self._generate_format_regex(LongFormatMode.INTEGER_DOT,
-                                               placeholder),
+                re=RegExpUtility.get_safe_reg_exp(self._generate_format_regex(
+                    LongFormatMode.INTEGER_COMMA, placeholder)),
                 val='IntegerNum'),
             ReVal(
-                re=self._generate_format_regex(LongFormatMode.INTEGER_BLANK,
-                                               placeholder),
+                re=RegExpUtility.get_safe_reg_exp(self._generate_format_regex(
+                    LongFormatMode.INTEGER_BLANK, placeholder)),
                 val='IntegerNum'),
             ReVal(
-                re=self._generate_format_regex(
-                    LongFormatMode.INTEGER_NO_BREAK_SPACE, placeholder),
+                re=RegExpUtility.get_safe_reg_exp(self._generate_format_regex(
+                    LongFormatMode.INTEGER_NO_BREAK_SPACE, placeholder)),
                 val='IntegerNum'),
             ReVal(
-                re=CatalanNumeric.RoundNumberIntegerRegexWithLocks,
+                re=RegExpUtility.get_safe_reg_exp(
+                    CatalanNumeric.RoundNumberIntegerRegexWithLocks),
                 val='IntegerNum'),
             ReVal(
-                re=CatalanNumeric.NumbersWithDozenSuffix,
+                re=RegExpUtility.get_safe_reg_exp(
+                    CatalanNumeric.NumbersWithDozenSuffix),
                 val='IntegerNum'),
             ReVal(
-                re=CatalanNumeric.AllIntRegexWithLocks,
-                val='IntegerSpa'),
+                re=RegExpUtility.get_safe_reg_exp(
+                    CatalanNumeric.AllIntRegexWithLocks),
+                val='IntegerEng'),
             ReVal(
-                re=CatalanNumeric.AllIntRegexWithDozenSuffixLocks,
-                val='IntegerSpa')
+                re=RegExpUtility.get_safe_reg_exp(
+                    CatalanNumeric.AllIntRegexWithDozenSuffixLocks),
+                val='IntegerEng')
         ]
 
 
 class CatalanDoubleExtractor(BaseNumberExtractor):
     @property
-    def regexes(self) -> List[
-            NamedTuple('re_val', [('re', Pattern), ('val', str)])]:
+    def regexes(self) -> List[NamedTuple('re_val', [('re', Pattern), ('val', str)])]:
         return self.__regexes
 
     @property
     def _extract_type(self) -> str:
         return Constants.SYS_NUM_DOUBLE
 
-    def __init__(self, placeholder: str = CatalanNumeric.PlaceHolderDefault):
+    def __init__(self, placeholder):
         self.__regexes = [
             ReVal(
-                re=CatalanNumeric.DoubleDecimalPointRegex(placeholder),
+                re=RegExpUtility.get_safe_reg_exp(
+                    CatalanNumeric.DoubleDecimalPointRegex(placeholder)),
                 val='DoubleNum'),
             ReVal(
-                re=CatalanNumeric.DoubleWithoutIntegralRegex(placeholder),
+                re=RegExpUtility.get_safe_reg_exp(
+                    CatalanNumeric.DoubleWithoutIntegralRegex(placeholder)),
                 val='DoubleNum'),
             ReVal(
-                re=CatalanNumeric.DoubleWithMultiplierRegex,
+                re=RegExpUtility.get_safe_reg_exp(self._generate_format_regex(
+                    LongFormatMode.DOUBLE_COMMA_DOT, placeholder)),
                 val='DoubleNum'),
             ReVal(
-                re=CatalanNumeric.DoubleWithRoundNumber,
+                re=RegExpUtility.get_safe_reg_exp(self._generate_format_regex(
+                    LongFormatMode.DOUBLE_NO_BREAK_SPACE_DOT, placeholder)),
                 val='DoubleNum'),
             ReVal(
-                re=CatalanNumeric.DoubleAllFloatRegex,
-                val='DoubleSpa'),
+                re=RegExpUtility.get_safe_reg_exp(
+                    CatalanNumeric.DoubleWithMultiplierRegex, regex.S),
+                val='DoubleNum'),
             ReVal(
-                re=CatalanNumeric.DoubleExponentialNotationRegex,
+                re=RegExpUtility.get_safe_reg_exp(
+                    CatalanNumeric.DoubleWithRoundNumber),
+                val='DoubleNum'),
+            ReVal(
+                re=RegExpUtility.get_safe_reg_exp(
+                    CatalanNumeric.DoubleAllFloatRegex),
+                val='DoubleEng'),
+            ReVal(
+                re=RegExpUtility.get_safe_reg_exp(
+                    CatalanNumeric.DoubleExponentialNotationRegex),
                 val='DoublePow'),
             ReVal(
-                re=CatalanNumeric.DoubleCaretExponentialNotationRegex,
-                val='DoublePow'),
-            ReVal(
-                re=self._generate_format_regex(LongFormatMode.DOUBLE_DOT_COMMA,
-                                               placeholder),
-                val='DoubleNum'),
-            ReVal(
-                re=self._generate_format_regex(
-                    LongFormatMode.DOUBLE_NO_BREAK_SPACE_COMMA,
-                    placeholder),
-                val='DoubleNum')
+                re=RegExpUtility.get_safe_reg_exp(
+                    CatalanNumeric.DoubleCaretExponentialNotationRegex),
+                val='DoublePow')
         ]
 
 
 class CatalanFractionExtractor(BaseNumberExtractor):
     @property
-    def regexes(self) -> List[
-            NamedTuple('re_val', [('re', Pattern), ('val', str)])]:
+    def regexes(self) -> List[NamedTuple('re_val', [('re', Pattern), ('val', str)])]:
         return self.__regexes
 
     @property
@@ -176,30 +192,34 @@ class CatalanFractionExtractor(BaseNumberExtractor):
     def __init__(self, mode):
         self.__regexes = [
             ReVal(
-                re=CatalanNumeric.FractionNotationRegex,
+                re=RegExpUtility.get_safe_reg_exp(
+                    CatalanNumeric.FractionNotationWithSpacesRegex),
                 val='FracNum'),
             ReVal(
-                re=CatalanNumeric.FractionNotationWithSpacesRegex,
+                re=RegExpUtility.get_safe_reg_exp(
+                    CatalanNumeric.FractionNotationRegex),
                 val='FracNum'),
             ReVal(
-                re=CatalanNumeric.FractionNounRegex,
-                val='FracSpa'),
+                re=RegExpUtility.get_safe_reg_exp(
+                    CatalanNumeric.FractionNounRegex),
+                val='FracEng'),
             ReVal(
-                re=CatalanNumeric.FractionNounWithArticleRegex,
-                val='FracSpa')
+                re=RegExpUtility.get_safe_reg_exp(
+                    CatalanNumeric.FractionNounWithArticleRegex),
+                val='FracEng')
         ]
 
         if mode != NumberMode.Unit:
             self.__regexes.append(
                 ReVal(
-                    re=CatalanNumeric.FractionPrepositionRegex,
-                    val='FracSpa'))
+                    re=RegExpUtility.get_safe_reg_exp(
+                        CatalanNumeric.FractionPrepositionRegex),
+                    val='FracEng'))
 
 
 class CatalanOrdinalExtractor(BaseNumberExtractor):
     @property
-    def regexes(self) -> List[
-            NamedTuple('re_val', [('re', Pattern), ('val', str)])]:
+    def regexes(self) -> List[NamedTuple('re_val', [('re', Pattern), ('val', str)])]:
         return self.__regexes
 
     @property
@@ -212,16 +232,37 @@ class CatalanOrdinalExtractor(BaseNumberExtractor):
                 re=CatalanNumeric.OrdinalSuffixRegex,
                 val='OrdinalNum'),
             ReVal(
-                re=CatalanNumeric.OrdinalNounRegex,
-                val='OrdSpa')
+                re=CatalanNumeric.OrdinalNumericRegex,
+                val='OrdinalNum'),
+            ReVal(
+                re=CatalanNumeric.OrdinalEnglishRegex,
+                val='OrdEng'),
+            ReVal(
+                re=CatalanNumeric.OrdinalRoundNumberRegex,
+                val='OrdEng')
         ]
 
 
 class CatalanPercentageExtractor(BasePercentageExtractor):
     def __init__(self):
-        super().__init__(CatalanNumberExtractor())
+        super().__init__(CatalanNumberExtractor(NumberMode.DEFAULT))
 
     def get_definitions(self) -> List[str]:
         return [
+            CatalanNumeric.NumberWithSuffixPercentage,
             CatalanNumeric.NumberWithPrefixPercentage
         ]
+
+
+class CatalanMergedNumberExtractor(BaseMergedNumberExtractor):
+
+    @property
+    def _round_number_integer_regex_with_locks(self) -> Pattern:
+        return RegExpUtility.get_safe_reg_exp(CatalanNumeric.RoundNumberIntegerRegexWithLocks)
+
+    @property
+    def _connector_regex(self) -> Pattern:
+        return RegExpUtility.get_safe_reg_exp(CatalanNumeric.ConnectorRegex)
+
+    def __init__(self, mode: NumberMode = NumberMode.DEFAULT):
+        self._number_extractor = CatalanNumberExtractor(mode)

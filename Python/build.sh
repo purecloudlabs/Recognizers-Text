@@ -39,4 +39,4 @@ echo // Installing Test Dependencies
 pip install -r ./tests/requirements.txt
 
 #echo // Running tests
-#pytest --tb=line
+pytest --tb=line

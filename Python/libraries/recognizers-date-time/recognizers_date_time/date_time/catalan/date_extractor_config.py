@@ -12,7 +12,6 @@ from ..base_date import DateExtractorConfiguration
 from ..utilities import DateTimeUtilityConfiguration
 from .duration_extractor_config import CatalanDurationExtractorConfiguration
 from .base_configs import CatalanDateTimeUtilityConfiguration
-from ..constants import Constants
 from ...resources.base_date_time import BaseDateTime
 
 
@@ -22,7 +21,7 @@ class CatalanDateExtractorConfiguration(DateExtractorConfiguration):
         return self._week_day_start
 
     @property
-    def check_both_before_after(self) -> bool:
+    def check_both_before_after(self) -> Pattern:
         return self._check_both_before_after
 
     @property
@@ -40,6 +39,10 @@ class CatalanDateExtractorConfiguration(DateExtractorConfiguration):
     @property
     def week_day_end(self) -> Pattern:
         return self._week_day_end
+
+    @property
+    def week_day_start(self) -> Pattern:
+        return self._week_day_start
 
     @property
     def of_month(self) -> Pattern:
@@ -133,26 +136,49 @@ class CatalanDateExtractorConfiguration(DateExtractorConfiguration):
     def week_day_and_day_regex(self) -> Pattern:
         return self._week_day_and_day_regex
 
-    def __init__(self):
-        self._check_both_before_after = False
-        if CatalanDateTime.DefaultLanguageFallback == Constants.DEFAULT_LANGUAGE_FALLBACK_DMY:
+    @property
+    def month_regex(self) -> Pattern:
+        return self._month_regex
+
+    @property
+    def month_num_regex(self) -> Pattern:
+        return self._month_num_regex
+
+    @property
+    def year_regex(self) -> Pattern:
+        return self._year_regex
+
+    @property
+    def written_month_regex(self) -> Pattern:
+        return self._written_month_regex
+
+    @property
+    def month_suffix_regex(self) -> Pattern:
+        return self._month_suffix_regex
+
+    def __init__(self, dmyDateFormat=False):
+        self._check_both_before_after = CatalanDateTime.CheckBothBeforeAfter
+        if dmyDateFormat:
             date_extractor_4 = CatalanDateTime.DateExtractor5
             date_extractor_5 = CatalanDateTime.DateExtractor8
-            date_extractor_6 = CatalanDateTime.DateExtractor9
+            date_extractor_6 = CatalanDateTime.DateExtractor9L
+            date_extractor_7 = CatalanDateTime.DateExtractor9S
             date_extractor_8 = CatalanDateTime.DateExtractor4
-            date_extractor_7 = CatalanDateTime.DateExtractor6
-            date_extractor_9 = CatalanDateTime.DateExtractor7
+            date_extractor_9 = CatalanDateTime.DateExtractor6
+            date_extractor_10 = CatalanDateTime.DateExtractor7L
+            date_extractor_11 = CatalanDateTime.DateExtractor7S
         else:
             date_extractor_4 = CatalanDateTime.DateExtractor4
             date_extractor_5 = CatalanDateTime.DateExtractor6
-            date_extractor_6 = CatalanDateTime.DateExtractor7
+            date_extractor_6 = CatalanDateTime.DateExtractor7L
+            date_extractor_7 = CatalanDateTime.DateExtractor7S
             date_extractor_8 = CatalanDateTime.DateExtractor5
-            date_extractor_7 = CatalanDateTime.DateExtractor8
-            date_extractor_9 = CatalanDateTime.DateExtractor9
+            date_extractor_9 = CatalanDateTime.DateExtractor8
+            date_extractor_10 = CatalanDateTime.DateExtractor9L
+            date_extractor_11 = CatalanDateTime.DateExtractor9S
 
         self._date_regex_list = [
             RegExpUtility.get_safe_reg_exp(CatalanDateTime.DateExtractor1),
-            RegExpUtility.get_safe_reg_exp(CatalanDateTime.DateExtractor2),
             RegExpUtility.get_safe_reg_exp(CatalanDateTime.DateExtractor3),
             RegExpUtility.get_safe_reg_exp(date_extractor_4),
             RegExpUtility.get_safe_reg_exp(date_extractor_5),
@@ -160,9 +186,10 @@ class CatalanDateExtractorConfiguration(DateExtractorConfiguration):
             RegExpUtility.get_safe_reg_exp(date_extractor_7),
             RegExpUtility.get_safe_reg_exp(date_extractor_8),
             RegExpUtility.get_safe_reg_exp(date_extractor_9),
-            RegExpUtility.get_safe_reg_exp(CatalanDateTime.DateExtractor10),
+            RegExpUtility.get_safe_reg_exp(date_extractor_10),
+            RegExpUtility.get_safe_reg_exp(date_extractor_11),
+            RegExpUtility.get_safe_reg_exp(CatalanDateTime.DateExtractorA),
         ]
-
         self._implicit_date_list = [
             RegExpUtility.get_safe_reg_exp(CatalanDateTime.OnRegex),
             RegExpUtility.get_safe_reg_exp(CatalanDateTime.RelaxedOnRegex),
@@ -170,15 +197,17 @@ class CatalanDateExtractorConfiguration(DateExtractorConfiguration):
             RegExpUtility.get_safe_reg_exp(CatalanDateTime.ThisRegex),
             RegExpUtility.get_safe_reg_exp(CatalanDateTime.LastDateRegex),
             RegExpUtility.get_safe_reg_exp(CatalanDateTime.NextDateRegex),
-            RegExpUtility.get_safe_reg_exp(CatalanDateTime.WeekDayRegex),
+            RegExpUtility.get_safe_reg_exp(CatalanDateTime.SingleWeekDayRegex),
             RegExpUtility.get_safe_reg_exp(
                 CatalanDateTime.WeekDayOfMonthRegex),
-            RegExpUtility.get_safe_reg_exp(CatalanDateTime.SpecialDateRegex),
+            RegExpUtility.get_safe_reg_exp(CatalanDateTime.SpecialDate),
+            RegExpUtility.get_safe_reg_exp(CatalanDateTime.SpecialDayWithNumRegex),
+            RegExpUtility.get_safe_reg_exp(CatalanDateTime.RelativeWeekDayRegex)
         ]
         self._month_end = RegExpUtility.get_safe_reg_exp(
-            CatalanDateTime.MonthEndRegex)
+            CatalanDateTime.MonthEnd)
         self._of_month = RegExpUtility.get_safe_reg_exp(
-            CatalanDateTime.OfMonthRegex)
+            CatalanDateTime.OfMonth)
         self._date_unit_regex = RegExpUtility.get_safe_reg_exp(
             CatalanDateTime.DateUnitRegex)
         self._for_the_regex = RegExpUtility.get_safe_reg_exp(
@@ -213,6 +242,9 @@ class CatalanDateExtractorConfiguration(DateExtractorConfiguration):
         self._week_day_end = RegExpUtility.get_safe_reg_exp(
             CatalanDateTime.WeekDayEnd
         )
+        self._week_day_start = RegExpUtility.get_safe_reg_exp(
+            CatalanDateTime.WeekDayStart
+        )
         self._more_than_regex = RegExpUtility.get_safe_reg_exp(
             CatalanDateTime.MoreThanRegex
         )
@@ -235,3 +267,22 @@ class CatalanDateExtractorConfiguration(DateExtractorConfiguration):
             CatalanDateTime.WeekDayStart
         )
         self._check_both_before_after = CatalanDateTime.CheckBothBeforeAfter
+
+        self._month_regex = RegExpUtility.get_safe_reg_exp(
+            CatalanDateTime.MonthRegex
+        )
+        self._month_num_regex = RegExpUtility.get_safe_reg_exp(
+            CatalanDateTime.MonthNumRegex
+        )
+        self._year_regex = RegExpUtility.get_safe_reg_exp(
+            CatalanDateTime.YearRegex
+        )
+        self._day_regex = RegExpUtility.get_safe_reg_exp(
+            CatalanDateTime.DayRegex
+        )
+        self._written_month_regex = RegExpUtility.get_safe_reg_exp(
+            CatalanDateTime.WrittenMonthRegex
+        )
+        self._month_suffix_regex = RegExpUtility.get_safe_reg_exp(
+            CatalanDateTime.MonthSuffixRegex
+        )

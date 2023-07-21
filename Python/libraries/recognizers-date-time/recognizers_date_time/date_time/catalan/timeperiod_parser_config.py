@@ -5,14 +5,14 @@ from typing import Pattern, Dict
 
 from recognizers_text.utilities import RegExpUtility
 from recognizers_text.extractor import Extractor
+from recognizers_number.number.catalan.extractors import CatalanIntegerExtractor
 from ...resources.catalan_date_time import CatalanDateTime
 from ..extractors import DateTimeExtractor
 from ..parsers import DateTimeParser
 from ..base_configs import BaseDateParserConfiguration, DateTimeUtilityConfiguration
 from ..base_timeperiod import TimePeriodParserConfiguration, MatchedTimeRegex
-from ..constants import Constants
 from ..utilities import TimexUtil
-from ..base_timezone import BaseTimeZoneParser
+from ..constants import Constants
 
 
 class CatalanTimePeriodParserConfiguration(TimePeriodParserConfiguration):
@@ -29,8 +29,16 @@ class CatalanTimePeriodParserConfiguration(TimePeriodParserConfiguration):
         return self._integer_extractor
 
     @property
+    def time_zone_parser(self) -> DateTimeParser:
+        return self._time_zone_parser
+
+    @property
     def pure_number_from_to_regex(self) -> Pattern:
         return self._pure_number_from_to_regex
+
+    @property
+    def pure_number_between_and_regex(self) -> Pattern:
+        return self._pure_number_between_and_regex
 
     @property
     def specific_time_from_to_regex(self) -> Pattern:
@@ -39,10 +47,6 @@ class CatalanTimePeriodParserConfiguration(TimePeriodParserConfiguration):
     @property
     def specific_time_between_and_regex(self) -> Pattern:
         return self._specific_time_between_and_regex
-
-    @property
-    def pure_number_between_and_regex(self) -> Pattern:
-        return self._pure_number_between_and_regex
 
     @property
     def time_of_day_regex(self) -> Pattern:
@@ -60,16 +64,11 @@ class CatalanTimePeriodParserConfiguration(TimePeriodParserConfiguration):
     def utility_configuration(self) -> DateTimeUtilityConfiguration:
         return self._utility_configuration
 
-    @property
-    def time_zone_parser(self) -> DateTimeParser:
-        return self._time_zone_parser
-
     def __init__(self, config: BaseDateParserConfiguration):
         self._time_extractor = config.time_extractor
         self._time_parser = config.time_parser
-        self._integer_extractor = config.integer_extractor
-        self._numbers = config.numbers
-        self._utility_configuration = config.utility_configuration
+        self._time_zone_parser = config.time_zone_parser
+        self._integer_extractor = CatalanIntegerExtractor()
         self._pure_number_from_to_regex = RegExpUtility.get_safe_reg_exp(
             CatalanDateTime.PureNumFromTo)
         self._pure_number_between_and_regex = RegExpUtility.get_safe_reg_exp(
@@ -82,7 +81,8 @@ class CatalanTimePeriodParserConfiguration(TimePeriodParserConfiguration):
             CatalanDateTime.TimeOfDayRegex)
         self._till_regex = RegExpUtility.get_safe_reg_exp(
             CatalanDateTime.TillRegex)
-        self._time_zone_parser = config.time_zone_parser
+        self._numbers = CatalanDateTime.Numbers
+        self._utility_configuration = config.utility_configuration
 
     def get_matched_timex_range(self, source: str) -> MatchedTimeRegex:
         trimmed_text = source.strip().lower()
@@ -95,16 +95,26 @@ class CatalanTimePeriodParserConfiguration(TimePeriodParserConfiguration):
         end_min = 0
 
         time_of_day = ""
-        if any(trimmed_text.endswith(o) for o in CatalanDateTime.EarlyMorningTermList):
-            time_of_day = Constants.EARLY_MORNING
-        elif any(trimmed_text.endswith(o) for o in CatalanDateTime.MorningTermList):
+        if any(trimmed_text.endswith(o) for o in CatalanDateTime.MorningTermList):
             time_of_day = Constants.MORNING
         elif any(trimmed_text.endswith(o) for o in CatalanDateTime.AfternoonTermList):
             time_of_day = Constants.AFTERNOON
         elif any(trimmed_text.endswith(o) for o in CatalanDateTime.EveningTermList):
             time_of_day = Constants.EVENING
+        elif any(trimmed_text == o for o in CatalanDateTime.DaytimeTermList):
+            time_of_day = Constants.DAYTIME
         elif any(trimmed_text.endswith(o) for o in CatalanDateTime.NightTermList):
             time_of_day = Constants.NIGHT
+        elif any(trimmed_text.endswith(o) for o in CatalanDateTime.BusinessHourSplitStrings):
+            time_of_day = Constants.BUSINESS_HOUR
+        elif any(trimmed_text.endswith(o) for o in CatalanDateTime.MealtimeBreakfastTermList):
+            time_of_day = Constants.MEALTIME_BREAKFAST
+        elif any(trimmed_text.endswith(o) for o in CatalanDateTime.MealtimeBrunchTermList):
+            time_of_day = Constants.MEALTIME_BRUNCH
+        elif any(trimmed_text.endswith(o) for o in CatalanDateTime.MealtimeLunchTermList):
+            time_of_day = Constants.MEALTIME_LUNCH
+        elif any(trimmed_text.endswith(o) for o in CatalanDateTime.MealtimeDinnerTermList):
+            time_of_day = Constants.MEALTIME_DINNER
         else:
             return MatchedTimeRegex(
                 matched=False,

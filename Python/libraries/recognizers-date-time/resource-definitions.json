@@ -169,6 +169,17 @@
             "footer": [
                 "# pylint: enable=line-too-long"
             ]
+        },
+        {
+            "input": [ "Catalan", "Catalan-TimeZone" ],
+            "output": "catalan_time_zone",
+            "header": [
+                "# pylint: disable=line-too-long",
+                "",
+                "",
+                "class TimeZoneDefinitions:"
+            ],
+            "footer": [ "# pylint: enable=line-too-long" ]
         }
     ]
 }

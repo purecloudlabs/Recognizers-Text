@@ -98,21 +98,20 @@ class CatalanSetParserConfiguration(SetParserConfiguration):
 
     def __init__(self, config: BaseDateParserConfiguration):
         self._duration_extractor = config.duration_extractor
-        self._time_extractor = config.time_extractor
-        self._date_extractor = config.date_extractor
-        self._date_time_extractor = config.date_time_extractor
-        self._date_period_extractor = config.date_period_extractor
-        self._time_period_extractor = config.time_period_extractor
-        self._date_time_period_extractor = config.date_time_period_extractor
         self._duration_parser = config.duration_parser
+        self._time_extractor = config.time_extractor
         self._time_parser = config.time_parser
+        self._date_extractor = config.date_extractor
         self._date_parser = config.date_parser
+        self._date_time_extractor = config.date_time_extractor
         self._date_time_parser = config.date_time_parser
+        self._date_period_extractor = config.date_period_extractor
         self._date_period_parser = config.date_period_parser
+        self._time_period_extractor = config.time_period_extractor
         self._time_period_parser = config.time_period_parser
+        self._date_time_period_extractor = config.date_time_period_extractor
         self._date_time_period_parser = config.date_time_period_parser
         self._unit_map = CatalanDateTime.UnitMap
-
         self._each_prefix_regex = RegExpUtility.get_safe_reg_exp(
             CatalanDateTime.EachPrefixRegex)
         self._periodic_regex = RegExpUtility.get_safe_reg_exp(
@@ -128,17 +127,17 @@ class CatalanSetParserConfiguration(SetParserConfiguration):
 
     def get_matched_daily_timex(self, text: str) -> MatchedTimex:
         trimmed_text = text.strip().lower()
-        timex = ''
-
-        if trimmed_text.endswith('diario') or trimmed_text.endswith('diariamente'):
+        if trimmed_text == 'daily':
             timex = 'P1D'
-        elif trimmed_text == 'semanalmente':
+        elif trimmed_text == 'weekly':
             timex = 'P1W'
-        elif trimmed_text == 'quincenalmente':
+        elif trimmed_text == 'biweekly':
             timex = 'P2W'
-        elif trimmed_text == 'mensualmente':
+        elif trimmed_text == 'monthly':
             timex = 'P1M'
-        elif trimmed_text == 'anualmente':
+        elif trimmed_text == 'quarterly':
+            timex = 'P3M'
+        elif trimmed_text in ('yearly', 'annually', 'annual'):
             timex = 'P1Y'
         else:
             return MatchedTimex(False, None)
@@ -147,18 +146,13 @@ class CatalanSetParserConfiguration(SetParserConfiguration):
 
     def get_matched_unit_timex(self, text: str) -> MatchedTimex:
         trimmed_text = text.strip().lower()
-        timex = ''
-
-        if (
-            trimmed_text == 'día' or trimmed_text == 'dia' or
-            trimmed_text == 'días' or trimmed_text == 'dias'
-        ):
+        if trimmed_text == 'day':
             timex = 'P1D'
-        elif trimmed_text == 'semana' or trimmed_text == 'semanas':
+        elif trimmed_text == 'week':
             timex = 'P1W'
-        elif trimmed_text == 'mes' or trimmed_text == 'meses':
+        elif trimmed_text == 'month':
             timex = 'P1M'
-        elif trimmed_text == 'año' or trimmed_text == 'años':
+        elif trimmed_text == 'year':
             timex = 'P1Y'
         else:
             return MatchedTimex(False, None)

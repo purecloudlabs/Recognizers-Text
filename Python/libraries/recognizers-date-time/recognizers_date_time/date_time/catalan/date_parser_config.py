@@ -142,7 +142,7 @@ class CatalanDateParserConfiguration(DateParserConfiguration):
 
     # The following three regexes only used in this configuration
     # They are not used in the base parser, therefore they are not extracted
-    # If the catalan date parser need the same regexes, they should be extracted
+    # If the spanish date parser need the same regexes, they should be extracted
     _relative_day_regex = RegExpUtility.get_safe_reg_exp(
         CatalanDateTime.RelativeDayRegex)
     _next_prefix_regex = RegExpUtility.get_safe_reg_exp(
@@ -150,7 +150,7 @@ class CatalanDateParserConfiguration(DateParserConfiguration):
     _past_prefix_regex = RegExpUtility.get_safe_reg_exp(
         CatalanDateTime.PreviousPrefixRegex)
 
-    def __init__(self, config: BaseDateParserConfiguration):
+    def __init__(self, config: BaseDateParserConfiguration, dmyDateFormat=False):
         self._ordinal_extractor = config.ordinal_extractor
         self._integer_extractor = config.integer_extractor
         self._cardinal_extractor = config.cardinal_extractor
@@ -163,8 +163,7 @@ class CatalanDateParserConfiguration(DateParserConfiguration):
         self._day_of_week = config.day_of_week
         self._unit_map = config.unit_map
         self._cardinal_map = config.cardinal_map
-        self._date_regex = (
-            CatalanDateExtractorConfiguration()).date_regex_list
+        self._date_regex = CatalanDateExtractorConfiguration(dmyDateFormat)._date_regex_list
         self._on_regex = RegExpUtility.get_safe_reg_exp(
             CatalanDateTime.OnRegex)
         self._special_day_regex = RegExpUtility.get_safe_reg_exp(
@@ -200,40 +199,46 @@ class CatalanDateParserConfiguration(DateParserConfiguration):
         self._check_both_before_after = CatalanDateTime.CheckBothBeforeAfter
 
     def get_swift_day(self, source: str) -> int:
-        trimmed_text = self.__normalize(source.strip().lower())
+        trimmed_text = source.strip().lower()
         swift = 0
-
-        # TODO: add the relative day logic if needed. If yes, the whole method should be abstracted.
-        if trimmed_text == 'hoy' or trimmed_text == 'el dia':
+        matches = regex.search(
+            CatalanDateParserConfiguration._relative_day_regex, source)
+        if trimmed_text == 'today':
             swift = 0
-        elif trimmed_text == 'mañana' or trimmed_text.endswith('dia siguiente') or trimmed_text.endswith('el dia de mañana') or trimmed_text.endswith('proximo dia'):
+        elif trimmed_text == 'tomorrow' or trimmed_text == 'tmr':
             swift = 1
-        elif trimmed_text == 'ayer':
+        elif trimmed_text == 'yesterday':
             swift = -1
-        elif trimmed_text.endswith('pasado mañana') or trimmed_text.endswith('dia despues de mañana'):
+        elif trimmed_text.endswith('day after tomorrow') or trimmed_text.endswith('day after tmr'):
             swift = 2
-        elif trimmed_text.endswith('anteayer') or trimmed_text.endswith('dia antes de ayer'):
+        elif trimmed_text.endswith('day before yesterday'):
             swift = -2
-        elif trimmed_text.endswith('ultimo dia'):
+        elif trimmed_text.endswith('day after'):
+            swift = 1
+        elif trimmed_text.endswith('day before'):
             swift = -1
+        elif matches:
+            swift = self.get_swift(source)
 
         return swift
 
     def get_swift_month(self, source: str) -> int:
+        return self.get_swift(source)
+
+    def get_swift(self, source: str) -> int:
         trimmed_text = source.strip().lower()
         swift = 0
-
-        if regex.search(CatalanDateParserConfiguration._next_prefix_regex, trimmed_text):
+        next_prefix_matches = regex.search(
+            CatalanDateParserConfiguration._next_prefix_regex, trimmed_text)
+        past_prefix_matches = regex.search(
+            CatalanDateParserConfiguration._past_prefix_regex, trimmed_text)
+        if next_prefix_matches:
             swift = 1
-
-        if regex.search(CatalanDateParserConfiguration._past_prefix_regex, trimmed_text):
+        elif past_prefix_matches:
             swift = -1
 
         return swift
 
     def is_cardinal_last(self, source: str) -> bool:
         trimmed_text = source.strip().lower()
-        return not regex.search(CatalanDateParserConfiguration._past_prefix_regex, trimmed_text) is None
-
-    def __normalize(self, source: str) -> str:
-        return source.replace('á', 'a').replace('é', 'e').replace('í', 'i').replace('ó', 'o').replace('ú', 'u')
+        return trimmed_text == 'last'

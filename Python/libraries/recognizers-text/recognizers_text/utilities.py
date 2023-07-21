@@ -87,7 +87,6 @@ class ConditionalMatch:
 class RegExpUtility:
     @staticmethod
     def get_safe_reg_exp(source: str, flags: int = regex.I | regex.S) -> Pattern:
-        print(f"Regex is {source}")
         return regex.compile(source, flags=flags)
 
     @staticmethod

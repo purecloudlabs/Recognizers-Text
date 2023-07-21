@@ -3,13 +3,12 @@
 
 from typing import List, Pattern, Dict
 import regex
+from ..parsers import DateTimeParser
 
 from recognizers_text.utilities import RegExpUtility
 from ...resources.catalan_date_time import CatalanDateTime
 from ..base_time import TimeParserConfiguration, AdjustParams
 from ..base_configs import BaseDateParserConfiguration, DateTimeUtilityConfiguration
-from .time_extractor_config import CatalanTimeExtractorConfiguration
-from ..parsers import DateTimeParser
 
 
 class CatalanTimeParserConfiguration(TimeParserConfiguration):
@@ -20,6 +19,10 @@ class CatalanTimeParserConfiguration(TimeParserConfiguration):
     @property
     def at_regex(self) -> Pattern:
         return self._at_regex
+
+    @property
+    def meal_time_regex(self) -> Pattern:
+        return self._meal_time_regex
 
     @property
     def time_regexes(self) -> List[Pattern]:
@@ -41,83 +44,94 @@ class CatalanTimeParserConfiguration(TimeParserConfiguration):
         self._time_token_prefix: str = CatalanDateTime.TimeTokenPrefix
         self._at_regex: Pattern = RegExpUtility.get_safe_reg_exp(
             CatalanDateTime.AtRegex)
-        self._time_regexes: List[Pattern] = CatalanTimeExtractorConfiguration.get_time_regex_list(
-        )
+        self._meal_time_regex: Pattern = RegExpUtility.get_safe_reg_exp(
+            CatalanDateTime.MealTimeRegex)
+        self._time_regexes: List[Pattern] = [
+            RegExpUtility.get_safe_reg_exp(CatalanDateTime.TimeRegex1),
+            RegExpUtility.get_safe_reg_exp(CatalanDateTime.TimeRegex2),
+            RegExpUtility.get_safe_reg_exp(CatalanDateTime.TimeRegex3),
+            RegExpUtility.get_safe_reg_exp(CatalanDateTime.TimeRegex4),
+            RegExpUtility.get_safe_reg_exp(CatalanDateTime.TimeRegex5),
+            RegExpUtility.get_safe_reg_exp(CatalanDateTime.TimeRegex6),
+            RegExpUtility.get_safe_reg_exp(CatalanDateTime.TimeRegex7),
+            RegExpUtility.get_safe_reg_exp(CatalanDateTime.TimeRegex8),
+            RegExpUtility.get_safe_reg_exp(CatalanDateTime.TimeRegex9),
+            RegExpUtility.get_safe_reg_exp(CatalanDateTime.TimeRegex10),
+            RegExpUtility.get_safe_reg_exp(CatalanDateTime.TimeRegex11),
+            RegExpUtility.get_safe_reg_exp(CatalanDateTime.ConnectNumRegex)
+        ]
+        self._numbers: Dict[str, int] = CatalanDateTime.Numbers
+        self._time_zone_parser = config.time_zone_parser
+        self._utility_configuration = config.utility_configuration
         self.less_than_one_hour = RegExpUtility.get_safe_reg_exp(
             CatalanDateTime.LessThanOneHour)
-        self.time_suffix = RegExpUtility.get_safe_reg_exp(
-            CatalanDateTime.TimeSuffix)
-
-        self._utility_configuration = config.utility_configuration
-        self._numbers: Dict[str, int] = config.numbers
-        self._time_zone_parser = config.time_zone_parser
+        self.time_suffix_full = RegExpUtility.get_safe_reg_exp(
+            CatalanDateTime.TimeSuffixFull)
+        self.lunch_regex = RegExpUtility.get_safe_reg_exp(
+            CatalanDateTime.LunchRegex)
+        self.night_regex = RegExpUtility.get_safe_reg_exp(
+            CatalanDateTime.NightRegex)
+        self.ish_regex = RegExpUtility.get_safe_reg_exp(
+            CatalanDateTime.IshRegex)
 
     def adjust_by_prefix(self, prefix: str, adjust: AdjustParams):
         delta_min = 0
         prefix = prefix.strip().lower()
-
-        if prefix.startswith('cuarto') or prefix.startswith('y cuarto'):
-            delta_min = 15
-        elif prefix.startswith('menos cuarto'):
-            delta_min = -15
-        elif prefix.startswith('media') or prefix.startswith('y media'):
+        if prefix.startswith('half'):
             delta_min = 30
+        elif prefix.startswith('a quarter') or prefix.startswith('quarter'):
+            delta_min = 15
         elif prefix.startswith('three quarter'):
             delta_min = 45
         else:
             match = regex.search(self.less_than_one_hour, prefix)
-            if match:
-                min_str = RegExpUtility.get_group(match, 'deltamin')
-                if min_str:
-                    delta_min = int(min_str)
-                else:
-                    min_str = RegExpUtility.get_group(
-                        match, 'deltaminnum').lower()
-                    delta_min = self.numbers.get(min_str)
-
-        if (
-            prefix.endswith('pasadas') or prefix.endswith('pasados') or
-            prefix.endswith('pasadas las') or prefix.endswith('pasados las') or
-            prefix.endswith('pasadas de las') or prefix.endswith(
-                'pasados de las')
-        ):
-            # deltaMin it's positive
-            pass
-        elif (
-            prefix.endswith('para la') or prefix.endswith('para las') or
-            prefix.endswith('antes de la') or prefix.endswith('antes de las')
-        ):
+            min_str = RegExpUtility.get_group(match, 'deltamin')
+            if min_str:
+                delta_min = int(min_str)
+            else:
+                min_str = RegExpUtility.get_group(match, 'deltaminnum').lower()
+                delta_min = self.numbers[min_str]
+        if prefix.endswith('to'):
             delta_min = delta_min * -1
-
         adjust.minute += delta_min
-
         if adjust.minute < 0:
             adjust.minute += 60
             adjust.hour -= 1
-
         adjust.has_minute = True
 
     def adjust_by_suffix(self, suffix: str, adjust: AdjustParams):
         suffix = suffix.strip().lower()
-
         delta_hour = 0
-        match = regex.match(self.time_suffix, suffix)
-
-        if match and match.group() == suffix:
+        match = regex.search(self.time_suffix_full, suffix)
+        if match is not None and match.start() == 0 and match.group() == suffix:
             oclock_str = RegExpUtility.get_group(match, 'oclock')
             if not oclock_str:
                 am_str = RegExpUtility.get_group(match, 'am')
                 if am_str:
                     if adjust.hour >= 12:
                         delta_hour -= 12
-
-                    adjust.has_am = True
-
+                    else:
+                        adjust.has_am = True
                 pm_str = RegExpUtility.get_group(match, 'pm')
                 if pm_str:
                     if adjust.hour < 12:
                         delta_hour = 12
-
-                    adjust.has_pm = True
-
+                    if regex.search(self.lunch_regex, pm_str):
+                        # for hour >= 10 and < 12
+                        if 10 <= adjust.hour <= 12:
+                            delta_hour = 0
+                            if adjust.hour == 12:
+                                adjust.has_pm = True
+                            else:
+                                adjust.has_am = True
+                        else:
+                            adjust.has_pm = True
+                    elif regex.search(self.night_regex, pm_str):
+                        if adjust.hour <= 3 or adjust.hour == 12:
+                            if adjust.hour == 12:
+                                adjust.hour = 0
+                            delta_hour = 0
+                            adjust.has_am = True
+                        else:
+                            adjust.has_pm = True
         adjust.hour = (adjust.hour + delta_hour) % 24

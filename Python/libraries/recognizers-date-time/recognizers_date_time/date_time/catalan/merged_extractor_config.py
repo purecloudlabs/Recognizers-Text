@@ -4,7 +4,7 @@
 from typing import List, Pattern
 
 from recognizers_text.extractor import Extractor
-from recognizers_text.utilities import RegExpUtility, DefinitionLoader
+from recognizers_text.utilities import RegExpUtility
 from recognizers_number import CatalanIntegerExtractor
 from ...resources.catalan_date_time import CatalanDateTime
 from ..extractors import DateTimeExtractor
@@ -28,6 +28,8 @@ from .datetimeperiod_extractor_config import CatalanDateTimePeriodExtractorConfi
 from .set_extractor_config import CatalanSetExtractorConfiguration
 from .holiday_extractor_config import CatalanHolidayExtractorConfiguration
 from ...resources.base_date_time import BaseDateTime
+from ..base_timezone import BaseTimeZoneExtractor
+from .timezone_extractor_config import CatalanTimeZoneExtractorConfiguration
 
 
 class CatalanMergedExtractorConfiguration(MergedExtractorConfiguration):
@@ -36,24 +38,8 @@ class CatalanMergedExtractorConfiguration(MergedExtractorConfiguration):
         return self._check_both_before_after
 
     @property
-    def time_zone_extractor(self):
-        return self._time_zone_extractor
-
-    @property
     def datetime_alt_extractor(self):
         return self._datetime_alt_extractor
-
-    @property
-    def term_filter_regexes(self) -> List[Pattern]:
-        return self._term_filter_regexes
-
-    @property
-    def fail_fast_regex(self) -> Pattern:
-        return self._fail_fast_regex
-
-    @property
-    def superfluous_word_matcher(self) -> Pattern:
-        return self._superfluous_work_matcher
 
     @property
     def ambiguity_filters_dict(self) -> Pattern:
@@ -90,6 +76,10 @@ class CatalanMergedExtractorConfiguration(MergedExtractorConfiguration):
     @property
     def holiday_extractor(self) -> DateTimeExtractor:
         return self._holiday_extractor
+
+    @property
+    def time_zone_extractor(self):
+        return self._time_zone_extractor
 
     @property
     def duration_extractor(self) -> DateTimeExtractor:
@@ -140,32 +130,53 @@ class CatalanMergedExtractorConfiguration(MergedExtractorConfiguration):
         return self._preposition_suffix_regex
 
     @property
-    def ambiguous_range_modifier_prefix(self) -> None:
-        return None
+    def ambiguous_range_modifier_prefix(self) -> Pattern:
+        return self._ambiguous_range_modifier_prefix
 
     @property
-    def potential_ambiguous_range_regex(self) -> None:
-        return None
+    def potential_ambiguous_range_regex(self) -> Pattern:
+        return self._from_to_regex
 
     @property
     def number_ending_pattern(self) -> Pattern:
         return self._number_ending_pattern
 
     @property
-    def filter_word_regex_list(self) -> List[Pattern]:
-        return self._filter_word_regex_list
+    def superfluous_word_matcher(self) -> Pattern:
+        return self._superfluous_word_matcher
 
-    def __init__(self):
-        self._ambiguity_filters_dict = None
-        self._superfluous_work_matcher = None
-        self._fail_fast_regex = None
-        self._term_filter_regexes = None
-        self._datetime_alt_extractor = None
-        self._time_zone_extractor = None
-        self._before_regex = RegExpUtility.get_safe_reg_exp(
-            CatalanDateTime.BeforeRegex)
+    @property
+    def fail_fast_regex(self) -> Pattern:
+        return self._fail_fast_regex
+
+    @property
+    def term_filter_regexes(self) -> List[Pattern]:
+        return self._term_filter_regexes
+
+    def __init__(self, dmyDateFormat=False):
+        self._integer_extractor = CatalanIntegerExtractor()
+        self._date_extractor = BaseDateExtractor(
+            CatalanDateExtractorConfiguration(dmyDateFormat))
+        self._time_extractor = BaseTimeExtractor(
+            CatalanTimeExtractorConfiguration())
+        self._duration_extractor = BaseDurationExtractor(
+            CatalanDurationExtractorConfiguration())
+        self._date_period_extractor = BaseDatePeriodExtractor(
+            CatalanDatePeriodExtractorConfiguration(dmyDateFormat))
+        self._time_period_extractor = BaseTimePeriodExtractor(
+            CatalanTimePeriodExtractorConfiguration())
+        self._date_time_extractor = BaseDateTimeExtractor(
+            CatalanDateTimeExtractorConfiguration(dmyDateFormat))
+        self._date_time_period_extractor = BaseDateTimePeriodExtractor(
+            CatalanDateTimePeriodExtractorConfiguration(dmyDateFormat))
+        self._set_extractor = BaseSetExtractor(
+            CatalanSetExtractorConfiguration(dmyDateFormat))
+        self._holiday_extractor = BaseHolidayExtractor(
+            CatalanHolidayExtractorConfiguration())
         self._after_regex = RegExpUtility.get_safe_reg_exp(
             CatalanDateTime.AfterRegex)
+        self._before_regex = RegExpUtility.get_safe_reg_exp(
+            CatalanDateTime.BeforeRegex)
         self._since_regex = RegExpUtility.get_safe_reg_exp(
             CatalanDateTime.SinceRegex)
         self._from_to_regex = RegExpUtility.get_safe_reg_exp(
@@ -178,34 +189,25 @@ class CatalanMergedExtractorConfiguration(MergedExtractorConfiguration):
             CatalanDateTime.AmbiguousRangeModifierPrefix)
         self._number_ending_pattern = RegExpUtility.get_safe_reg_exp(
             CatalanDateTime.NumberEndingPattern)
-
-        self._date_extractor = BaseDateExtractor(
-            CatalanDateExtractorConfiguration())
-        self._time_extractor = BaseTimeExtractor(
-            CatalanTimeExtractorConfiguration())
-        self._date_time_extractor = BaseDateTimeExtractor(
-            CatalanDateTimeExtractorConfiguration())
-        self._date_period_extractor = BaseDatePeriodExtractor(
-            CatalanDatePeriodExtractorConfiguration())
-        self._time_period_extractor = BaseTimePeriodExtractor(
-            CatalanTimePeriodExtractorConfiguration())
-        self._date_time_period_extractor = BaseDateTimePeriodExtractor(
-            CatalanDateTimePeriodExtractorConfiguration())
-        self._duration_extractor = BaseDurationExtractor(
-            CatalanDurationExtractorConfiguration())
-        self._set_extractor = BaseSetExtractor(
-            CatalanSetExtractorConfiguration())
-        self._holiday_extractor = BaseHolidayExtractor(
-            CatalanHolidayExtractorConfiguration())
-        self._integer_extractor = CatalanIntegerExtractor()
-        self._filter_word_regex_list = []
+        self._term_filter_regexes = [
+            RegExpUtility.get_safe_reg_exp(CatalanDateTime.OneOnOneRegex),
+            RegExpUtility.get_safe_reg_exp(CatalanDateTime.SingleAmbiguousTermsRegex)
+        ]
         self._unspecified_date_period_regex = RegExpUtility.get_safe_reg_exp(
             CatalanDateTime.UnspecificDatePeriodRegex
         )
+        self._ambiguity_filters_dict = CatalanDateTime.AmbiguityFiltersDict
         self._around_regex = CatalanDateTime.AroundRegex
         self._equal_regex = BaseDateTime.EqualRegex
         self._suffix_after_regex = RegExpUtility.get_safe_reg_exp(
             CatalanDateTime.SuffixAfterRegex
         )
+        self._superfluous_word_matcher = CatalanDateTime.SuperfluousWordList
+        self._fail_fast_regex = RegExpUtility.get_safe_reg_exp(
+            CatalanDateTime.FailFastRegex
+        )
         self._check_both_before_after = CatalanDateTime.CheckBothBeforeAfter
-        self._ambiguity_filters_dict = DefinitionLoader.load_ambiguity_filters(CatalanDateTime.AmbiguityFiltersDict)
+        self._time_zone_extractor = BaseTimeZoneExtractor(
+            CatalanTimeZoneExtractorConfiguration())
+        # TODO When the implementation for these properties is added, change the None values to their respective Regexps
+        self._datetime_alt_extractor = None

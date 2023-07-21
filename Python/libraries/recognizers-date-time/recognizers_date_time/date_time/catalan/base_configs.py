@@ -7,18 +7,18 @@ from recognizers_date_time.date_time.base_date import DateTimeUtilityConfigurati
 from recognizers_date_time.resources.catalan_date_time import CatalanDateTime
 
 
-class  CatalanDateTimeUtilityConfiguration(DateTimeUtilityConfiguration):
+class CatalanDateTimeUtilityConfiguration(DateTimeUtilityConfiguration):
     @property
     def date_unit_regex(self) -> Pattern:
         return self._date_unit_regex
 
     @property
-    def check_both_before_after(self) -> Pattern:
-        return self._check_both_before_after
-
-    @property
     def range_prefix_regex(self) -> Pattern:
         return self._range_prefix_regex
+
+    @property
+    def check_both_before_after(self) -> Pattern:
+        return self._check_both_before_after
 
     @property
     def ago_regex(self) -> Pattern:
@@ -62,29 +62,29 @@ class  CatalanDateTimeUtilityConfiguration(DateTimeUtilityConfiguration):
 
     def __init__(self):
         self._later_regex = RegExpUtility.get_safe_reg_exp(
-             CatalanDateTime.LaterRegex)
+            CatalanDateTime.LaterRegex)
         self._ago_regex = RegExpUtility.get_safe_reg_exp(
-             CatalanDateTime.AgoRegex)
+            CatalanDateTime.AgoRegex)
         self._in_connector_regex = RegExpUtility.get_safe_reg_exp(
-             CatalanDateTime.InConnectorRegex)
+            CatalanDateTime.InConnectorRegex)
         self._range_unit_regex = RegExpUtility.get_safe_reg_exp(
-             CatalanDateTime.RangeUnitRegex)
+            CatalanDateTime.RangeUnitRegex)
         self._am_desc_regex = RegExpUtility.get_safe_reg_exp(
-             CatalanDateTime.AmDescRegex)
+            CatalanDateTime.AmDescRegex)
         self._pm_desc__regex = RegExpUtility.get_safe_reg_exp(
-             CatalanDateTime.PmDescRegex)
+            CatalanDateTime.PmDescRegex)
         self._am_pm_desc_regex = RegExpUtility.get_safe_reg_exp(
-             CatalanDateTime.AmPmDescRegex)
+            CatalanDateTime.AmPmDescRegex)
         self._time_unit_regex = RegExpUtility.get_safe_reg_exp(
-             CatalanDateTime.TimeUnitRegex)
+            CatalanDateTime.TimeUnitRegex)
         self._within_next_prefix_regex = RegExpUtility.get_safe_reg_exp(
-             CatalanDateTime.WithinNextPrefixRegex)
+            CatalanDateTime.WithinNextPrefixRegex)
         self._common_date_prefix_regex = RegExpUtility.get_safe_reg_exp(
-             CatalanDateTime.CommonDatePrefixRegex)
-        self._check_both_before_after =  CatalanDateTime.CheckBothBeforeAfter
+            CatalanDateTime.CommonDatePrefixRegex)
+        self._check_both_before_after = CatalanDateTime.CheckBothBeforeAfter
         self._range_prefix_regex = RegExpUtility.get_safe_reg_exp(
-             CatalanDateTime.RangePrefixRegex
+            CatalanDateTime.RangePrefixRegex
         )
         self._date_unit_regex = RegExpUtility.get_safe_reg_exp(
-             CatalanDateTime.DateUnitRegex
+            CatalanDateTime.DateUnitRegex
         )

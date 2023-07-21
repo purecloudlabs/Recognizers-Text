@@ -1,7 +1,7 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from recognizers_text.culture import Culture
+from recognizers_text import Culture
 from recognizers_text.extractor import Extractor
 from recognizers_text.parser import Parser
 from recognizers_number.culture import CultureInfo
@@ -23,7 +23,7 @@ class CatalanNumberWithUnitParserConfiguration(NumberWithUnitParserConfiguration
 
     @property
     def connector_token(self) -> str:
-        return CatalanNumericWithUnit.ConnectorToken
+        return ''
 
     def __init__(self, culture_info: CultureInfo):
         if culture_info is None:
@@ -39,6 +39,7 @@ class CatalanAgeParserConfiguration(CatalanNumberWithUnitParserConfiguration):
     def __init__(self, culture_info: CultureInfo = None):
         super().__init__(culture_info)
         self.add_dict_to_unit_map(CatalanNumericWithUnit.AgeSuffixList)
+        self.add_dict_to_unit_map(CatalanNumericWithUnit.AgePrefixList)
 
 
 class CatalanCurrencyParserConfiguration(CatalanNumberWithUnitParserConfiguration):

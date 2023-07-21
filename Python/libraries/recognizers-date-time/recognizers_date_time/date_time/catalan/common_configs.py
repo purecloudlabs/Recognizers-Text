@@ -7,23 +7,24 @@ from recognizers_number import BaseNumberExtractor, BaseNumberParser
 from recognizers_number.number.catalan.parsers import CatalanNumberParserConfiguration
 from recognizers_number.number.catalan.extractors import CatalanCardinalExtractor, CatalanIntegerExtractor, CatalanOrdinalExtractor
 
-from ...resources.catalan_date_time import CatalanDateTime
+from ...resources.catalan_date_time import BaseDateTime, CatalanDateTime
 from ..extractors import DateTimeExtractor
 from ..parsers import DateTimeParser
 from ..base_configs import BaseDateParserConfiguration, DateTimeUtilityConfiguration
 from ..base_date import BaseDateExtractor, BaseDateParser
-from ..base_time import BaseTimeExtractor, BaseTimeParser
+from ..base_time import BaseTimeExtractor
 from ..base_duration import BaseDurationExtractor, BaseDurationParser
 from ..base_dateperiod import BaseDatePeriodExtractor, BaseDatePeriodParser
 from ..base_timeperiod import BaseTimePeriodExtractor, BaseTimePeriodParser
 from ..base_datetime import BaseDateTimeExtractor, BaseDateTimeParser
 from ..base_datetimeperiod import BaseDateTimePeriodExtractor, BaseDateTimePeriodParser
-from ..base_timezone import BaseTimeZoneParser
+
 from .base_configs import CatalanDateTimeUtilityConfiguration
 from .date_extractor_config import CatalanDateExtractorConfiguration
 from .date_parser_config import CatalanDateParserConfiguration
 from .time_extractor_config import CatalanTimeExtractorConfiguration
 from .time_parser_config import CatalanTimeParserConfiguration
+from .parsers import CatalanTimeParser
 from .duration_extractor_config import CatalanDurationExtractorConfiguration
 from .duration_parser_config import CatalanDurationParserConfiguration
 from .dateperiod_extractor_config import CatalanDatePeriodExtractorConfiguration
@@ -34,13 +35,10 @@ from .datetime_extractor_config import CatalanDateTimeExtractorConfiguration
 from .datetime_parser_config import CatalanDateTimeParserConfiguration
 from .datetimeperiod_extractor_config import CatalanDateTimePeriodExtractorConfiguration
 from .datetimeperiod_parser_config import CatalanDateTimePeriodParserConfiguration
+from ..base_timezone import BaseTimeZoneParser
 
 
 class CatalanCommonDateTimeParserConfiguration(BaseDateParserConfiguration):
-    @property
-    def time_zone_parser(self) -> DateTimeParser:
-        return self._time_zone_parser
-
     @property
     def check_both_before_after(self) -> Pattern:
         return self._check_both_before_after
@@ -56,6 +54,10 @@ class CatalanCommonDateTimeParserConfiguration(BaseDateParserConfiguration):
     @property
     def ordinal_extractor(self) -> BaseNumberExtractor:
         return self._ordinal_extractor
+
+    @property
+    def time_zone_parser(self) -> BaseTimeZoneParser:
+        return self._time_zone_parser
 
     @property
     def number_parser(self) -> BaseNumberParser:
@@ -142,10 +144,6 @@ class CatalanCommonDateTimeParserConfiguration(BaseDateParserConfiguration):
         return self._cardinal_map
 
     @property
-    def day_of_month(self) -> Dict[str, int]:
-        return self._day_of_month
-
-    @property
     def day_of_week(self) -> Dict[str, int]:
         return self._day_of_week
 
@@ -157,11 +155,10 @@ class CatalanCommonDateTimeParserConfiguration(BaseDateParserConfiguration):
     def utility_configuration(self) -> DateTimeUtilityConfiguration:
         return self._utility_configuration
 
-    def __init__(self):
+    def __init__(self, dmyDateFormat=False):
         BaseDateParserConfiguration.__init__(self)
 
         self._utility_configuration = CatalanDateTimeUtilityConfiguration()
-        self._time_zone_parser = BaseTimeZoneParser()
         self._unit_map = CatalanDateTime.UnitMap
         self._unit_value_map = CatalanDateTime.UnitValueMap
         self._season_map = CatalanDateTime.SeasonMap
@@ -170,32 +167,34 @@ class CatalanCommonDateTimeParserConfiguration(BaseDateParserConfiguration):
         self._month_of_year = CatalanDateTime.MonthOfYear
         self._numbers = CatalanDateTime.Numbers
         self._double_numbers = CatalanDateTime.DoubleNumbers
-        self._check_both_before_after = CatalanDateTime.CheckBothBeforeAfter
         self._cardinal_extractor = CatalanCardinalExtractor()
         self._integer_extractor = CatalanIntegerExtractor()
         self._ordinal_extractor = CatalanOrdinalExtractor()
-
+        self._check_both_before_after = CatalanDateTime.CheckBothBeforeAfter
+        self._day_of_month = {
+            **BaseDateTime.DayOfMonthDictionary, **CatalanDateTime.DayOfMonth}
+        self._time_zone_parser = BaseTimeZoneParser()
         self._number_parser = BaseNumberParser(
             CatalanNumberParserConfiguration())
         self._date_extractor = BaseDateExtractor(
-            CatalanDateExtractorConfiguration())
+            CatalanDateExtractorConfiguration(dmyDateFormat))
         self._time_extractor = BaseTimeExtractor(
             CatalanTimeExtractorConfiguration())
         self._duration_extractor = BaseDurationExtractor(
             CatalanDurationExtractorConfiguration())
         self._date_period_extractor = BaseDatePeriodExtractor(
-            CatalanDatePeriodExtractorConfiguration())
+            CatalanDatePeriodExtractorConfiguration(dmyDateFormat))
         self._time_period_extractor = BaseTimePeriodExtractor(
             CatalanTimePeriodExtractorConfiguration())
         self._date_time_extractor = BaseDateTimeExtractor(
-            CatalanDateTimeExtractorConfiguration())
+            CatalanDateTimeExtractorConfiguration(dmyDateFormat))
         self._date_time_period_extractor = BaseDateTimePeriodExtractor(
-            CatalanDateTimePeriodExtractorConfiguration())
+            CatalanDateTimePeriodExtractorConfiguration(dmyDateFormat))
         self._duration_parser = BaseDurationParser(
             CatalanDurationParserConfiguration(self))
         self._date_parser = BaseDateParser(
-            CatalanDateParserConfiguration(self))
-        self._time_parser = BaseTimeParser(
+            CatalanDateParserConfiguration(self, dmyDateFormat))
+        self._time_parser = CatalanTimeParser(
             CatalanTimeParserConfiguration(self))
         self._date_period_parser = BaseDatePeriodParser(
             CatalanDatePeriodParserConfiguration(self))

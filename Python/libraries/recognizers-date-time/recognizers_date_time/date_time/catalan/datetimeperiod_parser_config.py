@@ -2,18 +2,19 @@
 #  Licensed under the MIT License.
 
 from typing import Pattern, Dict
+import regex
 
 from recognizers_text.utilities import RegExpUtility
 from ...resources.catalan_date_time import CatalanDateTime
 from ..base_datetimeperiod import DateTimePeriodParserConfiguration, MatchedTimeRange
-from ..constants import Constants
+from ..constants import Constants, TimeTypeConstants
 from ..extractors import DateTimeExtractor
 from ..parsers import DateTimeParser
 from ..base_configs import BaseDateParserConfiguration
-from ..base_timezone import BaseTimeZoneParser
 
 
 class CatalanDateTimePeriodParserConfiguration(DateTimePeriodParserConfiguration):
+
     @property
     def time_of_day_regex(self) -> Pattern:
         return self._time_of_day_regex
@@ -25,6 +26,61 @@ class CatalanDateTimePeriodParserConfiguration(DateTimePeriodParserConfiguration
     @property
     def within_next_prefix_regex(self):
         return self._within_next_prefix_regex
+
+    def __init__(self, config: BaseDateParserConfiguration):
+        self._time_of_day_regex = RegExpUtility.get_safe_reg_exp(CatalanDateTime.TimeOfDayRegex)
+        self._future_suffix_regex = RegExpUtility.get_safe_reg_exp(CatalanDateTime.FutureSuffixRegex)
+        self._within_next_prefix_regex = RegExpUtility.get_safe_reg_exp(CatalanDateTime.WithinNextPrefixRegex)
+        self._previous_prefix_regex = RegExpUtility.get_safe_reg_exp(CatalanDateTime.PreviousPrefixRegex)
+        self._cardinal_extractor = config.cardinal_extractor
+        self._am_desc_regex = RegExpUtility.get_safe_reg_exp(CatalanDateTime.AmDescRegex)
+        self._pm_desc_regex = RegExpUtility.get_safe_reg_exp(CatalanDateTime.PmDescRegex)
+        self._token_before_date = CatalanDateTime.TokenBeforeDate
+        self._token_before_time = CatalanDateTime.TokenBeforeTime
+        self._check_both_before_after = CatalanDateTime.CheckBothBeforeAfter
+        self._pure_number_from_to_regex = RegExpUtility.get_safe_reg_exp(
+            CatalanDateTime.PureNumFromTo)
+        self._pure_number_between_and_regex = RegExpUtility.get_safe_reg_exp(
+            CatalanDateTime.PureNumBetweenAnd)
+        self._period_time_of_day_with_date_regex = RegExpUtility.get_safe_reg_exp(
+            CatalanDateTime.PeriodTimeOfDayWithDateRegex)
+        self._specific_time_of_day_regex = RegExpUtility.get_safe_reg_exp(
+            CatalanDateTime.PeriodSpecificTimeOfDayRegex)
+        self._past_regex = RegExpUtility.get_safe_reg_exp(
+            CatalanDateTime.PreviousPrefixRegex)
+        self._future_regex = RegExpUtility.get_safe_reg_exp(
+            CatalanDateTime.NextPrefixRegex)
+        self._relative_time_unit_regex = RegExpUtility.get_safe_reg_exp(
+            CatalanDateTime.RelativeTimeUnitRegex)
+        self._rest_of_date_time_regex = RegExpUtility.get_safe_reg_exp(
+            CatalanDateTime.RestOfDateTimeRegex)
+        self._numbers = config.numbers
+        self._unit_map = config.unit_map
+        self._date_extractor = config.date_extractor
+        self._time_extractor = config.time_extractor
+        self._date_time_extractor = config.date_time_extractor
+        self._time_period_extractor = config.time_period_extractor
+        self._duration_extractor = config.duration_extractor
+        self._date_parser = config.date_parser
+        self._time_parser = config.time_parser
+        self._date_time_parser = config.date_time_parser
+        self._time_period_parser = config.time_period_parser
+        self._duration_parser = config.duration_parser
+        self._time_zone_parser = config.time_zone_parser
+        self.morning_start_end_regex = RegExpUtility.get_safe_reg_exp(
+            CatalanDateTime.MorningStartEndRegex)
+        self.afternoon_start_end_regex = RegExpUtility.get_safe_reg_exp(
+            CatalanDateTime.AfternoonStartEndRegex)
+        self.evening_start_end_regex = RegExpUtility.get_safe_reg_exp(
+            CatalanDateTime.EveningStartEndRegex)
+        self.night_start_end_regex = RegExpUtility.get_safe_reg_exp(
+            CatalanDateTime.NightStartEndRegex)
+        self._prefix_day_regex = RegExpUtility.get_safe_reg_exp(
+            CatalanDateTime.PrefixDayRegex)
+        self._after_regex = RegExpUtility.get_safe_reg_exp(
+            CatalanDateTime.AfterRegex)
+        self._before_regex = RegExpUtility.get_safe_reg_exp(
+            CatalanDateTime.BeforeRegex)
 
     @property
     def previous_prefix_regex(self):
@@ -42,65 +98,6 @@ class CatalanDateTimePeriodParserConfiguration(DateTimePeriodParserConfiguration
     def pm_desc_regex(self):
         return self._pm_desc_regex
 
-    def __init__(self, config: BaseDateParserConfiguration):
-        self._time_of_day_regex = RegExpUtility.get_safe_reg_exp(CatalanDateTime.TimeOfDayRegex)
-        self._future_suffix_regex = RegExpUtility.get_safe_reg_exp(CatalanDateTime.FutureSuffixRegex)
-        self._within_next_prefix_regex = RegExpUtility.get_safe_reg_exp(CatalanDateTime.WithinNextPrefixRegex)
-        self._previous_prefix_regex = RegExpUtility.get_safe_reg_exp(CatalanDateTime.PreviousPrefixRegex)
-        self._date_extractor = config.date_extractor
-        self._time_extractor = config.time_extractor
-        self._date_time_extractor = config.date_time_extractor
-        self._time_period_extractor = config.time_period_extractor
-        self._cardinal_extractor = config.cardinal_extractor
-        self._duration_extractor = config.duration_extractor
-        self.number_parser = config.number_parser
-        self._date_parser = config.date_parser
-        self._time_parser = config.time_parser
-        self._date_time_parser = config.date_time_parser
-        self._time_period_parser = config.time_period_parser
-        self._duration_parser = config.duration_parser
-        self._unit_map = config.unit_map
-        self._numbers = config.numbers
-
-        self._am_desc_regex = RegExpUtility.get_safe_reg_exp(CatalanDateTime.AmDescRegex)
-        self._pm_desc_regex = RegExpUtility.get_safe_reg_exp(CatalanDateTime.PmDescRegex)
-        self._prefix_day_regex = RegExpUtility.get_safe_reg_exp(CatalanDateTime.PrefixDayRegex)
-        self._after_regex = RegExpUtility.get_safe_reg_exp(CatalanDateTime.AfterRegex)
-        self._before_regex = RegExpUtility.get_safe_reg_exp(CatalanDateTime.BeforeRegex)
-        self._token_before_date = CatalanDateTime.TokenBeforeDate
-        self._token_before_time = CatalanDateTime.TokenBeforeTime
-        self._check_both_before_after = CatalanDateTime.CheckBothBeforeAfter
-        self.next_prefix_regex = RegExpUtility.get_safe_reg_exp(
-            CatalanDateTime.NextPrefixRegex)
-        self._previous_prefix_regex = RegExpUtility.get_safe_reg_exp(
-            CatalanDateTime.PastRegex)
-        self.this_prefix_regex = RegExpUtility.get_safe_reg_exp(
-            CatalanDateTime.ThisPrefixRegex)
-
-        self._pure_number_from_to_regex = RegExpUtility.get_safe_reg_exp(
-            CatalanDateTime.PureNumFromTo)
-        self._pure_number_between_and_regex = RegExpUtility.get_safe_reg_exp(
-            CatalanDateTime.PureNumBetweenAnd)
-        self._specific_time_of_day_regex = RegExpUtility.get_safe_reg_exp(
-            CatalanDateTime.SpecificTimeOfDayRegex)
-        self._time_of_day_regex = RegExpUtility.get_safe_reg_exp(
-            CatalanDateTime.TimeOfDayRegex)
-        self._past_regex = RegExpUtility.get_safe_reg_exp(
-            CatalanDateTime.PastRegex)
-        self._future_regex = RegExpUtility.get_safe_reg_exp(
-            CatalanDateTime.FutureRegex)
-        self.number_combined_with_unit_regex = RegExpUtility.get_safe_reg_exp(
-            CatalanDateTime.DateTimePeriodNumberCombinedWithUnit)
-        self.unit_regex = RegExpUtility.get_safe_reg_exp(
-            CatalanDateTime.UnitRegex)
-        self._period_time_of_day_with_date_regex = RegExpUtility.get_safe_reg_exp(
-            CatalanDateTime.PeriodTimeOfDayWithDateRegex)
-        self._relative_time_unit_regex = RegExpUtility.get_safe_reg_exp(
-            CatalanDateTime.RelativeTimeUnitRegex)
-        self._rest_of_date_time_regex = RegExpUtility.get_safe_reg_exp(
-            CatalanDateTime.RestOfDateTimeRegex)
-        self._time_zone_parser = config.time_zone_parser
-
     @property
     def before_regex(self):
         return self._before_regex
@@ -114,7 +111,7 @@ class CatalanDateTimePeriodParserConfiguration(DateTimePeriodParserConfiguration
         return self._prefix_day_regex
 
     @property
-    def token_before_date(self):
+    def token_before_date(self) -> str:
         return self._token_before_date
 
     @property
@@ -202,55 +199,47 @@ class CatalanDateTimePeriodParserConfiguration(DateTimePeriodParserConfiguration
         return self._time_period_parser
 
     @property
-    def time_zone_parser(self) -> DateTimeParser:
-        return self._time_zone_parser
-
-    @property
     def duration_parser(self) -> DateTimeParser:
         return self._duration_parser
 
+    @property
+    def time_zone_parser(self) -> DateTimeParser:
+        return self._time_zone_parser
+
     def get_matched_time_range(self, source: str):
-        trimmed_source = source.strip().lower()
-        time_str = ''
+        trimmed_source = source.strip()
+
         begin_hour = 0
         end_hour = 0
         end_min = 0
-
-        if trimmed_source.endswith('madrugada'):
-            time_str = 'TDA'
-            begin_hour = 4
-            end_hour = 8
-        elif trimmed_source.endswith('mañana'):
+        if regex.search(self.morning_start_end_regex, source):
             time_str = 'TMO'
             begin_hour = 8
             end_hour = Constants.HALF_DAY_HOUR_COUNT
-        elif 'pasado mediodia' in trimmed_source or 'pasado el mediodia' in trimmed_source:
+        elif regex.search(self.afternoon_start_end_regex, source):
             time_str = 'TAF'
             begin_hour = Constants.HALF_DAY_HOUR_COUNT
             end_hour = 16
-        elif trimmed_source.endswith('tarde'):
+        elif regex.search(self.evening_start_end_regex, source):
             time_str = 'TEV'
             begin_hour = 16
             end_hour = 20
-        elif trimmed_source.endswith('noche'):
+        elif regex.search(self.night_start_end_regex, source):
             time_str = 'TNI'
             begin_hour = 20
             end_hour = 23
             end_min = 59
         else:
-            time_str = None
+            time_str = ''
             return MatchedTimeRange(time_str, begin_hour, end_hour, end_min, False)
 
         return MatchedTimeRange(time_str, begin_hour, end_hour, end_min, True)
 
     def get_swift_prefix(self, source: str) -> int:
-        trimmed_source = source.strip().lower()
-        swift = 0
+        if source.startswith('next'):
+            return 1
 
-        # TODO: replace with regex
-        if self.previous_prefix_regex.search(trimmed_source) or trimmed_source == 'anoche':
-            swift = -1
-        elif self.next_prefix_regex.search(trimmed_source):
-            swift = 1
+        if source.startswith('last'):
+            return -1
 
-        return swift
+        return 0

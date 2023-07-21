@@ -106,12 +106,16 @@ class CatalanDateTimeParserConfiguration(DateTimeParserConfiguration):
     def __init__(self, config: BaseDateParserConfiguration):
         self._token_before_date = CatalanDateTime.TokenBeforeDate
         self._token_before_time = CatalanDateTime.TokenBeforeTime
+        self._date_extractor = config.date_extractor
+        self._time_extractor = config.time_extractor
+        self._date_parser = config.date_parser
+        self._time_parser = config.time_parser
         self._now_regex = RegExpUtility.get_safe_reg_exp(
             CatalanDateTime.NowRegex)
         self._am_time_regex = RegExpUtility.get_safe_reg_exp(
-            CatalanDateTime.AmTimeRegex)
+            CatalanDateTime.AMTimeRegex)
         self._pm_time_regex = RegExpUtility.get_safe_reg_exp(
-            CatalanDateTime.PmTimeRegex)
+            CatalanDateTime.PMTimeRegex)
         self._simple_time_of_today_after_regex = RegExpUtility.get_safe_reg_exp(
             CatalanDateTime.SimpleTimeOfTodayAfterRegex)
         self._simple_time_of_today_before_regex = RegExpUtility.get_safe_reg_exp(
@@ -123,19 +127,7 @@ class CatalanDateTimeParserConfiguration(DateTimeParserConfiguration):
         self._unspecific_end_of_regex = RegExpUtility.get_safe_reg_exp(
             CatalanDateTime.UnspecificEndOfRegex)
         self._unit_regex = RegExpUtility.get_safe_reg_exp(
-            CatalanDateTime.UnitRegex)
-
-        self.next_prefix_regex = RegExpUtility.get_safe_reg_exp(
-            CatalanDateTime.NextPrefixRegex)
-        self.previous_prefix_regex = RegExpUtility.get_safe_reg_exp(
-            CatalanDateTime.PreviousPrefixRegex)
-        self.last_night_time_regex = RegExpUtility.get_safe_reg_exp(
-            CatalanDateTime.LastNightTimeRegex)
-
-        self._date_extractor = config.date_extractor
-        self._time_extractor = config.time_extractor
-        self._date_parser = config.date_parser
-        self._time_parser = config.time_parser
+            CatalanDateTime.TimeUnitRegex)
         self._numbers = config.numbers
         self._cardinal_extractor = config.cardinal_extractor
         self._number_parser = config.number_parser
@@ -145,46 +137,36 @@ class CatalanDateTimeParserConfiguration(DateTimeParserConfiguration):
         self._utility_configuration = config.utility_configuration
 
     def have_ambiguous_token(self, source: str, matched_text: str) -> bool:
-        return 'esta mañana' in source.lower() and 'mañana' in matched_text.lower()
+        return False
 
     def get_matched_now_timex(self, source: str) -> MatchedTimex:
         source = source.strip().lower()
-        timex = ''
 
-        if source.endswith('ahora') or source.endswith('mismo') or source.endswith('momento'):
-            timex = 'PRESENT_REF'
-        elif (
-            source.endswith('posible') or source.endswith('pueda') or
-            source.endswith('puedas') or source.endswith('podamos') or
-            source.endswith('puedan')
-        ):
-            timex = 'FUTURE_REF'
-        elif source.endswith('mente'):
-            timex = 'PAST_REF'
-        else:
-            return MatchedTimex(False, None)
+        if source.endswith('now'):
+            return MatchedTimex(True, 'PRESENT_REF')
+        elif source in ['recently', 'previously']:
+            return MatchedTimex(True, 'PAST_REF')
+        elif source in ['as soon as possible', 'asap']:
+            return MatchedTimex(True, 'FUTURE_REF')
 
-        return MatchedTimex(True, timex)
+        return MatchedTimex(False, None)
 
     def get_swift_day(self, source: str) -> int:
         source = source.strip().lower()
-        swift = 0
 
-        if self.previous_prefix_regex.search(source) or self.last_night_time_regex.search(source):
-            swift = -1
-        elif self.next_prefix_regex.search(source):
-            swift = 1
+        if source.startswith('next'):
+            return 1
+        elif source.startswith('last'):
+            return -1
 
-        return swift
+        return 0
 
     def get_hour(self, source: str, hour: int) -> int:
         source = source.strip().lower()
-        result = hour
 
-        # TODO: replace with a regex
-        if (source.endswith('mañana') or source.endswith('madrugada')) and hour >= 12:
-            result -= 12
-        elif not (source.endswith('mañana') or source.endswith('madrugada')) and hour < 12:
-            result += 12
+        if source.endswith('morning') and hour >= 12:
+            return hour - 12
+        elif not source.endswith('morning') and hour < 12 and not (source.endswith('night') and hour < 6):
+            return hour + 12
 
-        return result
+        return hour

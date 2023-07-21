@@ -6,14 +6,19 @@ from typing import Pattern, Dict
 from recognizers_text.utilities import RegExpUtility
 from recognizers_number.number.extractors import BaseNumberExtractor
 from recognizers_number.number.parsers import BaseNumberParser
+from recognizers_number.number.catalan.extractors import CatalanCardinalExtractor
+from recognizers_number.number.catalan.parsers import CatalanNumberParserConfiguration
 from ...resources.catalan_date_time import CatalanDateTime
-
 from ..extractors import DateTimeExtractor
 from ..base_duration import DurationParserConfiguration, BaseDurationExtractor
 from .duration_extractor_config import CatalanDurationExtractorConfiguration
 
 
 class CatalanDurationParserConfiguration(DurationParserConfiguration):
+    @property
+    def options(self):
+        return self._cardinal_extractor
+
     @property
     def cardinal_extractor(self) -> BaseNumberExtractor:
         return self._cardinal_extractor
@@ -62,21 +67,22 @@ class CatalanDurationParserConfiguration(DurationParserConfiguration):
     def double_numbers(self) -> Dict[str, float]:
         return self._double_numbers
 
+    @property
     def duration_extractor(self) -> DateTimeExtractor:
         return self._duration_extractor
 
     def __init__(self, config):
-        self._duration_extractor = None
-        self.duration_extractor = BaseDurationExtractor(
+        self._duration_extractor = BaseDurationExtractor(
             CatalanDurationExtractorConfiguration(), False)
-        self._cardinal_extractor: BaseNumberExtractor = config.cardinal_extractor
-        self._number_parser: BaseNumberParser = config.number_parser
+        self._cardinal_extractor: BaseNumberExtractor = CatalanCardinalExtractor()
+        self._number_parser: BaseNumberParser = BaseNumberParser(
+            CatalanNumberParserConfiguration())
         self._followed_unit: Pattern = RegExpUtility.get_safe_reg_exp(
-            CatalanDateTime.FollowedUnit)
+            CatalanDateTime.DurationFollowedUnit)
         self._suffix_and_regex: Pattern = RegExpUtility.get_safe_reg_exp(
             CatalanDateTime.SuffixAndRegex)
         self._number_combined_with_unit: Pattern = RegExpUtility.get_safe_reg_exp(
-            CatalanDateTime.DurationNumberCombinedWithUnit)
+            CatalanDateTime.NumberCombinedWithDurationUnit)
         self._an_unit_regex: Pattern = RegExpUtility.get_safe_reg_exp(
             CatalanDateTime.AnUnitRegex)
         self._all_date_unit_regex: Pattern = RegExpUtility.get_safe_reg_exp(

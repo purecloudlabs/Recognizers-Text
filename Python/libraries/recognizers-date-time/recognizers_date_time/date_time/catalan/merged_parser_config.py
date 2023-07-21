@@ -3,14 +3,11 @@
 
 from typing import Pattern
 
+from ...resources.base_date_time import BaseDateTime
 from recognizers_text.utilities import RegExpUtility
+
 from .holiday_parser_config import CatalanHolidayParserConfiguration
 from .set_parser_config import CatalanSetParserConfiguration
-from .dateperiod_parser_config import CatalanDatePeriodParserConfiguration
-from .timeperiod_parser_config import CatalanTimePeriodParserConfiguration
-from .datetimeperiod_parser_config import CatalanDateTimePeriodParserConfiguration
-from .common_configs import CatalanCommonDateTimeParserConfiguration
-from .parsers import CatalanDateTimePeriodParser
 from ..base_date import BaseDateParser
 from ..base_time import BaseTimeParser
 from ..base_datetime import BaseDateTimeParser
@@ -21,11 +18,10 @@ from ..base_datetimeperiod import BaseDateTimePeriodParser
 from ..base_duration import BaseDurationParser
 from ..base_set import BaseSetParser
 from ..base_merged import MergedParserConfiguration
-from ...resources.catalan_date_time import CatalanDateTime, BaseDateTime
-from ..parsers import DateTimeParser
+from ...resources.catalan_date_time import CatalanDateTime
 
 
-class CatalanMergedParserConfiguration(CatalanCommonDateTimeParserConfiguration, MergedParserConfiguration):
+class CatalanMergedParserConfiguration(MergedParserConfiguration):
     @property
     def around_regex(self) -> Pattern:
         return self._around_regex
@@ -44,79 +40,75 @@ class CatalanMergedParserConfiguration(CatalanCommonDateTimeParserConfiguration,
 
     @property
     def before_regex(self) -> Pattern:
-        return self._before_regex
+        return self.__before_regex
 
     @property
     def after_regex(self) -> Pattern:
-        return self._after_regex
+        return self.__after_regex
 
     @property
     def since_regex(self) -> Pattern:
-        return self._since_regex
+        return self.__since_regex
 
     @property
     def date_parser(self) -> BaseDateParser:
-        return self._date_parser
+        return self.__date_parser
 
     @property
     def holiday_parser(self) -> BaseHolidayParser:
-        return self._holiday_parser
+        return self.__holiday_parser
 
     @property
     def time_parser(self) -> BaseTimeParser:
-        return self._time_parser
-
-    @property
-    def time_zone_parser(self) -> DateTimeParser:
-        return self._time_zone_parser
+        return self.__time_parser
 
     @property
     def date_time_parser(self) -> BaseDateTimeParser:
-        return self._date_time_parser
+        return self.__date_time_parser
 
     @property
     def date_period_parser(self) -> BaseDatePeriodParser:
-        return self._date_period_parser
+        return self.__date_period_parser
 
     @property
     def time_period_parser(self) -> BaseTimePeriodParser:
-        return self._time_period_parser
+        return self.__time_period_parser
 
     @property
     def date_time_period_parser(self) -> BaseDateTimePeriodParser:
-        return self._date_time_period_parser
+        return self.__date_time_period_parser
 
     @property
     def duration_parser(self) -> BaseDurationParser:
-        return self._duration_parser
+        return self.__duration_parser
 
     @property
     def set_parser(self) -> BaseSetParser:
-        return self._set_parser
+        return self.__set_parser
 
     def __init__(self, config):
-        CatalanCommonDateTimeParserConfiguration.__init__(self)
-        self._time_zone_parser = config.time_zone_parser
-        self._equal_regex = RegExpUtility.get_safe_reg_exp(BaseDateTime.EqualRegex)
+        self._equal_regex = RegExpUtility.get_safe_reg_exp(
+            BaseDateTime.EqualRegex)
         self._suffix_after = RegExpUtility.get_safe_reg_exp(
             CatalanDateTime.SuffixAfterRegex)
         self._year_regex = RegExpUtility.get_safe_reg_exp(
             CatalanDateTime.YearRegex)
         self._around_regex = RegExpUtility.get_safe_reg_exp(
             CatalanDateTime.AroundRegex)
-        self._before_regex = RegExpUtility.get_safe_reg_exp(
+        self.__before_regex = RegExpUtility.get_safe_reg_exp(
             CatalanDateTime.BeforeRegex)
-        self._after_regex = RegExpUtility.get_safe_reg_exp(
+        self.__after_regex = RegExpUtility.get_safe_reg_exp(
             CatalanDateTime.AfterRegex)
-        self._since_regex = RegExpUtility.get_safe_reg_exp(
+        self.__since_regex = RegExpUtility.get_safe_reg_exp(
             CatalanDateTime.SinceRegex)
-
-        self._date_period_parser = BaseDatePeriodParser(
-            CatalanDatePeriodParserConfiguration(self))
-        self._time_period_parser = BaseTimePeriodParser(
-            CatalanTimePeriodParserConfiguration(self))
-        self._date_time_period_parser = CatalanDateTimePeriodParser(
-            CatalanDateTimePeriodParserConfiguration(self))
-        self._set_parser = BaseSetParser(CatalanSetParserConfiguration(config))
-        self._holiday_parser = BaseHolidayParser(
+        self.__holiday_parser = BaseHolidayParser(
             CatalanHolidayParserConfiguration(config))
+        self.__date_parser = config.date_parser
+        self.__time_parser = config.time_parser
+        self.__date_time_parser = config.date_time_parser
+        self.__date_period_parser = config.date_period_parser
+        self.__time_period_parser = config.time_period_parser
+        self.__date_time_period_parser = config.date_time_period_parser
+        self.__duration_parser = config.duration_parser
+        self.__set_parser = BaseSetParser(
+            CatalanSetParserConfiguration(config))

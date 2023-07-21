@@ -1,5 +1,5 @@
 ---
-LangMarker: Spa
+LangMarker: Eng
 QuotedTextRegex1: !simpleRegex
   def: (“([^“”]+)”)
 QuotedTextRegex2: !simpleRegex
@@ -11,7 +11,7 @@ QuotedTextRegex4: !simpleRegex
 QuotedTextRegex5: !simpleRegex
   def: (`([^`]+)`)
 QuotedTextRegex6: !simpleRegex
-  def: («([^«»]+)»)
+  def: (123456)
 QuotedTextRegex7: !simpleRegex
   def: (123456)
 QuotedTextRegex8: !simpleRegex

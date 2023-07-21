@@ -1,13 +1,12 @@
----
 LangMarker: Cat
 #Boolean Recognizers
 TokenizerRegex: !simpleRegex
-  def: '[^\w\d\u00E0-\u00FC]'
+  def: '[^\w\d]'
 SkinToneRegex: !simpleRegex
   def: '(\uD83C\uDFFB|\uD83C\uDFFC|\uD83C\uDFFD|\uD83C\uDFFE|\uD83C\uDFFF)'
 TrueRegex: !nestedRegex
-  def: \b(veritat|veritable|sí|sip|s|si|cert|per suposat|ok)\b|(\uD83D\uDC4D|\uD83D\uDC4C){SkinToneRegex}?
+  def: \b(true|yes|yep|yup|yeah|y|sure|ok|agree)\b|(\uD83D\uDC4D|\uD83D\uDC4C|\u0001f44c){SkinToneRegex}?
   references: [ SkinToneRegex ]
 FalseRegex: !nestedRegex
-  def: \b(fals|no|nop|n|no)\b|(\uD83D\uDC4E|\u270B|\uD83D\uDD90){SkinToneRegex}?
+  def: \b(false|nope|nop|no|not\s+ok|disagree)\b|(\uD83D\uDC4E|\u270B|\uD83D\uDD90|\u0001F44E|\u0001F590){SkinToneRegex}?
   references: [ SkinToneRegex ]
