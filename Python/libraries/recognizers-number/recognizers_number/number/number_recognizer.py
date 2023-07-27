@@ -3,7 +3,6 @@
 
 from enum import IntFlag
 from typing import List
-
 from recognizers_text import Culture, Recognizer, Model
 from recognizers_number.culture import CultureInfo
 from recognizers_number.number.models import NumberMode, NumberModel, OrdinalModel, PercentModel, ModelResult

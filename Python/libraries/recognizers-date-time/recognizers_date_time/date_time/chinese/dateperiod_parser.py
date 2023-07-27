@@ -7,7 +7,7 @@ from datedelta import datedelta
 import regex
 
 from recognizers_text import RegExpUtility, ExtractResult
-from recognizers_number import ChineseIntegerExtractor, CJKNumberParser, ChineseNumberParserConfiguration,\
+from recognizers_number import ChineseIntegerExtractor, CJKNumberParser, ChineseNumberParserConfiguration, \
     Constants as NumberConstants
 
 from ...resources.chinese_date_time import ChineseDateTime
@@ -16,7 +16,6 @@ from ..utilities import DateTimeFormatUtil, DateTimeResolutionResult, DateUtils,
 from ..parsers import DateTimeParseResult
 from ..base_dateperiod import BaseDatePeriodParser
 from .dateperiod_parser_config import ChineseDatePeriodParserConfiguration
-from ..utilities import parse_chinese_dynasty_year
 
 
 class ChineseDatePeriodParser(BaseDatePeriodParser):
@@ -223,7 +222,8 @@ class ChineseDatePeriodParser(BaseDatePeriodParser):
 
         return self.__parse_common_duration_with_unit(before_str, source_unit, num_str, reference)
 
-    def __parse_common_duration_with_unit(self, before: str, unit: str, num: str, reference: datetime) -> DateTimeResolutionResult:
+    def __parse_common_duration_with_unit(self, before: str, unit: str, num: str,
+                                          reference: datetime) -> DateTimeResolutionResult:
         result = DateTimeResolutionResult()
 
         unit_str = self.config.unit_map[unit]
@@ -436,7 +436,12 @@ class ChineseDatePeriodParser(BaseDatePeriodParser):
     def _convert_year(self, year_str: str, is_chinese: bool) -> int:
         year = -1
         if is_chinese:
-            dynasty_year = parse_chinese_dynasty_year(year_str, self.config.dynasty_year_regex, self.config.dynasty_start_year, self.config.dynasty_year_map, self.integer_extractor, self.number_parser)
+            dynasty_year = DateTimeFormatUtil.parse_dynasty_year(year_str,
+                                                                 self.config.dynasty_year_regex,
+                                                                 self.config.dynasty_start_year,
+                                                                 self.config.dynasty_year_map,
+                                                                 self.integer_extractor,
+                                                                 self.number_parser)
             if dynasty_year is not None:
                 return dynasty_year
 
@@ -478,7 +483,7 @@ class ChineseDatePeriodParser(BaseDatePeriodParser):
                 past_date = past_date + timedelta(days=-7)
 
         result.timex = (
-            'XXXX' if no_year else f'{year:04d}') + f'-{month:02d}-W{cardinal:02d}'
+                           'XXXX' if no_year else f'{year:04d}') + f'-{month:02d}-W{cardinal:02d}'
 
         days_to_add = 6 if self._inclusive_end_period else 7
         result.future_value = [future_date,

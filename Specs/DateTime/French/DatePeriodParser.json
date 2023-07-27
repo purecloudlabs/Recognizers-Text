@@ -7143,7 +7143,7 @@
   },
   {
     "Input": "Montrez-moi les records d'août 99",
-    "NotSupportedByDesign": "javascript,java",
+    "NotSupported": "javascript, java",
     "Results": [
       {
         "Text": "août 99",
@@ -7161,6 +7161,29 @@
         },
         "Start": 26,
         "Length": 7
+      }
+    ]
+  },
+  {
+    "Input": "Montrez-moi les records d'août '99",
+    "NotSupported": "javascript, java",
+    "Results": [
+      {
+        "Text": "août '99",
+        "Type": "daterange",
+        "Value": {
+          "Timex": "1999-08",
+          "FutureResolution": {
+            "startDate": "1999-08-01",
+            "endDate": "1999-09-01"
+          },
+          "PastResolution": {
+            "startDate": "1999-08-01",
+            "endDate": "1999-09-01"
+          }
+        },
+        "Start": 26,
+        "Length": 8
       }
     ]
   }
