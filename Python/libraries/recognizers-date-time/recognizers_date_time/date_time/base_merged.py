@@ -217,22 +217,22 @@ class BaseMergedExtractor(DateTimeExtractor):
         # The order is important, since there can be conflicts in merging
         result = self.add_to(
             result, self.config.date_extractor.extract(source, reference), source)
-        result = self.add_to(
-            result, self.config.time_extractor.extract(source, reference), source)
-        result = self.add_to(
-            result, self.config.date_period_extractor.extract(source, reference), source)
-        result = self.add_to(
-            result, self.config.duration_extractor.extract(source, reference), source)
-        result = self.add_to(
-            result, self.config.time_period_extractor.extract(source, reference), source)
-        result = self.add_to(
-            result, self.config.date_time_period_extractor.extract(source, reference), source)
-        result = self.add_to(
-            result, self.config.date_time_extractor.extract(source, reference), source)
-        result = self.add_to(
-            result, self.config.set_extractor.extract(source, reference), source)
-        result = self.add_to(
-            result, self.config.holiday_extractor.extract(source, reference), source)
+        # result = self.add_to(
+        #     result, self.config.time_extractor.extract(source, reference), source)
+        # result = self.add_to(
+        #     result, self.config.date_period_extractor.extract(source, reference), source)
+        # result = self.add_to(
+        #     result, self.config.duration_extractor.extract(source, reference), source)
+        # result = self.add_to(
+        #     result, self.config.time_period_extractor.extract(source, reference), source)
+        # result = self.add_to(
+        #     result, self.config.date_time_period_extractor.extract(source, reference), source)
+        # result = self.add_to(
+        #     result, self.config.date_time_extractor.extract(source, reference), source)
+        # result = self.add_to(
+        #     result, self.config.set_extractor.extract(source, reference), source)
+        # result = self.add_to(
+        #     result, self.config.holiday_extractor.extract(source, reference), source)
 
         if (self.options & DateTimeOptions.ENABLE_PREVIEW) != 0:
             self.add_to(result, self.config.time_zone_extractor.extract(source, reference), source)
@@ -246,12 +246,12 @@ class BaseMergedExtractor(DateTimeExtractor):
         if (self.options & DateTimeOptions.EXTENDED_TYPES) != 0:
             result = self.config.datetime_alt_extractor.extract(result, source, reference)
 
-        result = self.filter_unespecific_date_period(result)
+        # result = self.filter_unespecific_date_period(result)
 
         # Remove common ambiguous cases
         result = self._filter_ambiguity(result, source)
 
-        result = self.add_mod(result, source)
+        # result = self.add_mod(result, source)
 
         # filtering
         if self.options & DateTimeOptions.CALENDAR:
@@ -775,23 +775,23 @@ class BaseMergedParser(DateTimeParser):
 
         if source.type == Constants.SYS_DATETIME_DATE:
             result = self.config.date_parser.parse(source, reference)
-            if not result.value:
-                result = self.config.holiday_parser.parse(source, reference)
-        elif source.type == Constants.SYS_DATETIME_TIME:
-            result = self.config.time_parser.parse(source, reference)
-        elif source.type == Constants.SYS_DATETIME_DATETIME:
-            result = self.config.date_time_parser.parse(source, reference)
-        elif source.type == Constants.SYS_DATETIME_DATEPERIOD:
-            result = self.config.date_period_parser.parse(source, reference)
-        elif source.type == Constants.SYS_DATETIME_TIMEPERIOD:
-            result = self.config.time_period_parser.parse(source, reference)
-        elif source.type == Constants.SYS_DATETIME_DATETIMEPERIOD:
-            result = self.config.date_time_period_parser.parse(
-                source, reference)
-        elif source.type == Constants.SYS_DATETIME_DURATION:
-            result = self.config.duration_parser.parse(source, reference)
-        elif source.type == Constants.SYS_DATETIME_SET:
-            result = self.config.set_parser.parse(source, reference)
+            # if not result.value:
+            #     result = self.config.holiday_parser.parse(source, reference)
+        # elif source.type == Constants.SYS_DATETIME_TIME:
+        #     result = self.config.time_parser.parse(source, reference)
+        # elif source.type == Constants.SYS_DATETIME_DATETIME:
+        #     result = self.config.date_time_parser.parse(source, reference)
+        # elif source.type == Constants.SYS_DATETIME_DATEPERIOD:
+        #     result = self.config.date_period_parser.parse(source, reference)
+        # elif source.type == Constants.SYS_DATETIME_TIMEPERIOD:
+        #     result = self.config.time_period_parser.parse(source, reference)
+        # elif source.type == Constants.SYS_DATETIME_DATETIMEPERIOD:
+        #     result = self.config.date_time_period_parser.parse(
+        #         source, reference)
+        # elif source.type == Constants.SYS_DATETIME_DURATION:
+        #     result = self.config.duration_parser.parse(source, reference)
+        # elif source.type == Constants.SYS_DATETIME_SET:
+        #     result = self.config.set_parser.parse(source, reference)
         else:
             return None
 
