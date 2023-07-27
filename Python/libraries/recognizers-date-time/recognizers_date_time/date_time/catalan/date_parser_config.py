@@ -186,18 +186,11 @@ class CatalanDateParserConfiguration(DateParserConfiguration):
         trimmed_text = self.__normalize(source.strip().lower())
         swift = 0
 
-        # TODO: add the relative day logic if needed. If yes, the whole method should be abstracted.
-        if trimmed_text == 'hoy' or trimmed_text == 'el dia':
+        if trimmed_text == 'avui':
             swift = 0
-        elif trimmed_text == 'mañana' or trimmed_text.endswith('dia siguiente') or trimmed_text.endswith('el dia de mañana') or trimmed_text.endswith('proximo dia'):
+        elif trimmed_text == 'mati' or trimmed_text == 'dema':
             swift = 1
-        elif trimmed_text == 'ayer':
-            swift = -1
-        elif trimmed_text.endswith('pasado mañana') or trimmed_text.endswith('dia despues de mañana'):
-            swift = 2
-        elif trimmed_text.endswith('anteayer') or trimmed_text.endswith('dia antes de ayer'):
-            swift = -2
-        elif trimmed_text.endswith('ultimo dia'):
+        elif trimmed_text == 'ahir':
             swift = -1
 
         return swift
@@ -219,4 +212,5 @@ class CatalanDateParserConfiguration(DateParserConfiguration):
         return not regex.search(CatalanDateParserConfiguration._past_prefix_regex, trimmed_text) is None
 
     def __normalize(self, source: str) -> str:
-        return source.replace('á', 'a').replace('é', 'e').replace('í', 'i').replace('ó', 'o').replace('ú', 'u')
+        return source.replace('á', 'a').replace('é', 'e').replace('í', 'i').replace('ó', 'o').\
+            replace('ú', 'u').replace('à', 'a')
