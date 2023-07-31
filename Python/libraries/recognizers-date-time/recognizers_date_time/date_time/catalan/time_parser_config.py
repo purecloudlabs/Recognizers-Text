@@ -53,13 +53,14 @@ class CatalanTimeParserConfiguration(TimeParserConfiguration):
         delta_min = 0
         prefix = prefix.strip().lower()
 
-        if prefix.startswith('cuarto') or prefix.startswith('y cuarto'):
+        if prefix.startswith('quart') or prefix.startswith('i quart'):
             delta_min = 15
-        elif prefix.startswith('menos cuarto'):
+        elif prefix.startswith('menys quart'):
             delta_min = -15
-        elif prefix.startswith('media') or prefix.startswith('y media'):
+        elif prefix.startswith('mitjana') or prefix.startswith('i mitjana') or \
+                prefix.startswith('i mitja') or prefix.startswith(('mitja')):
             delta_min = 30
-        elif prefix.startswith('three quarter'):
+        elif prefix.startswith('tres quarts'):
             delta_min = 45
         else:
             match = regex.search(self.less_than_one_hour, prefix)
@@ -73,16 +74,16 @@ class CatalanTimeParserConfiguration(TimeParserConfiguration):
                     delta_min = self.numbers.get(min_str)
 
         if (
-            prefix.endswith('pasadas') or prefix.endswith('pasados') or
-            prefix.endswith('pasadas las') or prefix.endswith('pasados las') or
-            prefix.endswith('pasadas de las') or prefix.endswith(
-                'pasados de las')
+                prefix.endswith('passades') or prefix.endswith('passats') or
+                prefix.endswith('passades les') or prefix.endswith('passats les') or
+                prefix.endswith('passades de les') or prefix.endswith(
+            'passats de les')
         ):
             # deltaMin it's positive
             pass
         elif (
-            prefix.endswith('para la') or prefix.endswith('para las') or
-            prefix.endswith('antes de la') or prefix.endswith('antes de las')
+                prefix.endswith('per a la') or prefix.endswith('per a les') or
+                prefix.endswith('abans de la') or prefix.endswith('abans de les')
         ):
             delta_min = delta_min * -1
 
