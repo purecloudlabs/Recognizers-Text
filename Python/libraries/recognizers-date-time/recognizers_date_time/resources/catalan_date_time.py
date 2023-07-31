@@ -25,7 +25,7 @@ class CatalanDateTime:
     # ImplicitDayRegex = f'(the\\s*)?(?<day>(?:3[0-1]|[0-2]?\\d)(?:th|nd|rd|st))\\b'
     MonthNumRegex = f'(?<month>1[0-2]|(0)?[1-9])\\b'
     WrittenDayRegex = f'(?<day>un|dos|tres|quatre|cinc|cinc|sis|set|vuit|nou|nou|deu|onze|dotze|dotze|tretze|catorze|quinze|setze|mor disset|mor divuit|dinnou|vint|vint-i-un|vint-i-dos|vint-i-tres|vint-i-quatre|vint-i-cinc|vint-i-sis|vint-i-set|vint-i-vuit|vint-i-nou|trenta|trenta-un)'
-    OclockRegex = f'(?<oclock>en\\s+punto)'
+    OclockRegex = f'(?<oclock>en\\s+punt(o)?)'
     AmDescRegex = f'({BaseDateTime.BaseAmDescRegex})'
     PmDescRegex = f'({BaseDateTime.BasePmDescRegex})'
     AmPmDescRegex = f'({BaseDateTime.BaseAmPmDescRegex})'
@@ -127,41 +127,42 @@ class CatalanDateTime:
     DateExtractor9 = f'\\b({WeekDayRegex}\\s+)?(?<!\\d[.,]){DayRegex}\\s*(/|\\bde(l?)\\b)\\s*{MonthNumRegex}((\\s+|\\s*,\\s*|\\s+d[e\']\\s?){DateYearRegex})?\\b{BaseDateTime.CheckDecimalRegex}(?!\\s*[/\\\\\\.]\\s*\\d+)'
     DateExtractor10 = f'\\b(?<!\\d[.,])(({YearRegex}\\s*[/\\\\\\-\\.]\\s*({MonthNumRegex}|{MonthRegex})\\s*[/\\\\\\-\\.]\\s*{DayRegex}(?!\\s*[/\\\\\\-\\.]\\s*\\d+))|({MonthRegex}\\s*[/\\\\\\-\\.]\\s*{BaseDateTime.FourDigitYearRegex}\\s*[/\\\\\\-\\.]\\s*{DayRegex})|({DayRegex}\\s*[/\\\\\\-\\.]\\s*{BaseDateTime.FourDigitYearRegex}\\s*[/\\\\\\-\\.]\\s*{MonthRegex}))'
 
-    # HourRegex = f'\\b(?<!\\d[,.])(?<hour>2[0-4]|[0-1]?\\d)'
-    # HourNumRegex = f'\\b(?<hournum>cero|una|dos|tres|cuatro|cinco|seis|siete|ocho|nueve|diez|once|doce)\\b'
-    # MinuteNumRegex = f'(?<minnum>uno?|d[óo]s|tr[eé]s|cuatro|cinco|s[eé]is|siete|ocho|nueve|diez|once|doce|trece|catorce|quince|diecis[eé]is|diecisiete|dieciocho|diecinueve|veinte|treinta|cuarenta|cincuenta)'
-    # DeltaMinuteNumRegex = f'(?<deltaminnum>uno?|d[óo]s|tr[eé]s|cuatro|cinco|s[eé]is|siete|ocho|nueve|diez|once|doce|trece|catorce|quince|diecis[eé]is|diecisiete|dieciocho|diecinueve|veinte|treinta|cuarenta|cincuenta)'
-    # PmRegex = f'(?<pm>((por|de|a|en)\\s+la)\\s+(tarde|noche))'
-    # AmRegex = f'(?<am>((por|de|a|en)\\s+la)\\s+(mañana|madrugada))'
-    # AmTimeRegex = f'(?<am>(esta|(por|de|a|en)\\s+la)\\s+(mañana|madrugada))'
-    # PmTimeRegex = f'(?<pm>(esta|(por|de|a|en)\\s+la)\\s+(tarde|noche))'
-    # NightTimeRegex = f'(noche)'
-    # LastNightTimeRegex = f'(anoche)'
-    # NowTimeRegex = f'(ahora|mismo|momento)'
-    # RecentlyTimeRegex = f'(mente)'
+    HourRegex = f'\\b(?<!\\d[,.])(?<hour>2[0-4]|[0-1]?\\d)'
+    HourNumRegex = f'\\b(?<hournum>zero|una|dues|tres|quatre|cinc|sis|set|vuit|nou|deu|deu|onze|dotze)\\b'
+    MinuteNumRegex = f'(?<minnum>u(n)?|dos|tres|quatre|cinc|sis|set|vuit|nou|deu|onze|dotze|tretze|catorze|quinze|setze|disset|divuit|dinou|vint|trenta|quaranta|cinquanta)'
+    DeltaMinuteNumRegex = f'(?<deltaminnum>u(n)?|dos|tres|quatre|cinc|sis|set|vuit|nou|deu|onze|dotze|tretze|catorze|quinze|setze|disset|divuit|dinou|vint|trenta|quaranta|cinquanta)'
+    PmRegex = f'(?<pm>((de|a)\\s+la)\\s+(tarda|nit))'
+    AmRegex = f'(?<am>((de|a)\\s+la)|(al)\\s+(matí|matinada))'
+    AmTimeRegex = f'(?<am>(aquesta|(de|a)\\s+la)|(aquest)\\s+(matí|matinada))'
+    PmTimeRegex = f'(?<pm>(aquesta|(de|a)\\s+la)\\s+(tarda|nit))'
+    NightTimeRegex = f'(nit)'
+    LastNightTimeRegex = f'(ahir a la nit)'
+    NowTimeRegex = f'(ara|mateix|moment)'
+    RecentlyTimeRegex = f'(ment)'
     # AsapTimeRegex = f'(posible|pueda[ns]?|podamos)'
-    # LessThanOneHour = f'(?<lth>((\\s+y\\s+)?cuarto|(\\s*)menos cuarto|(\\s+y\\s+)media|{BaseDateTime.DeltaMinuteRegex}(\\s+(minutos?|mins?))|{DeltaMinuteNumRegex}(\\s+(minutos?|mins?))))'
-    # TensTimeRegex = f'(?<tens>diez|veint(i|e)|treinta|cuarenta|cincuenta)'
-    # WrittenTimeRegex = f'(?<writtentime>{HourNumRegex}\\s*((y|(?<prefix>menos))\\s+)?(({TensTimeRegex}(\\s*y\\s+)?)?{MinuteNumRegex}))'
-    # TimePrefix = f'(?<prefix>{LessThanOneHour}(\\s+(pasad[ao]s)\\s+(de\\s+las|las)?|\\s+(para|antes\\s+de)?\\s+(las?))?)'
-    # TimeSuffix = f'(?<suffix>({LessThanOneHour}\\s+)?({AmRegex}|{PmRegex}|{OclockRegex}))'
-    # GeneralDescRegex = f'({DescRegex}|(?<suffix>{AmRegex}|{PmRegex}))'
-    # BasicTime = f'(?<basictime>{WrittenTimeRegex}|{HourNumRegex}|{BaseDateTime.HourRegex}:{BaseDateTime.MinuteRegex}(:{BaseDateTime.SecondRegex})?|{BaseDateTime.HourRegex})'
-    # MidTimeRegex = f'(?<mid>((?<midnight>media\\s*noche)|(?<midearlymorning>media\\s*madrugada)|(?<midmorning>media\\s*mañana)|(?<midafternoon>media\\s*tarde)|(?<midday>medio\\s*d[ií]a)))'
-    # AtRegex = f'\\b((?<=\\b((a|de(sde)?)\\s+las?|al)\\s+)(({WrittenTimeRegex}|{HourNumRegex}|{BaseDateTime.HourRegex})\\b(\\s*\\bh\\b)?(DescRegex)?|{MidTimeRegex})|{MidTimeRegex})'
-    # ConnectNumRegex = f'({BaseDateTime.HourRegex}(?<min>[0-5][0-9])\\s*{DescRegex})'
-    # TimeRegexWithDotConnector = f'({BaseDateTime.HourRegex}\\.{BaseDateTime.MinuteRegex})'
-    # TimeRegex1 = f'(\\b{TimePrefix}\\s+)?({WrittenTimeRegex}|{HourNumRegex}|{BaseDateTime.HourRegex})\\s*({DescRegex}|\\s*\\bh\\b)'
-    # TimeRegex2 = f'(\\b{TimePrefix}\\s+)?(t)?{BaseDateTime.HourRegex}(\\s*)?:(\\s*)?{BaseDateTime.MinuteRegex}((\\s*)?:(\\s*)?{BaseDateTime.SecondRegex})?(\\s*({DescRegex}|\\bh\\b)|\\b)'
-    # TimeRegex3 = f'\\b(({TimePrefix}\\s+)?{TimeRegexWithDotConnector}(\\s*({DescRegex}|{TimeSuffix}|\\bh\\b))|((las\\s+{TimeRegexWithDotConnector})(?!\\s*(por\\s+cien(to)?|%))(\\s*({DescRegex}|{TimeSuffix}|\\bh\\b)|\\b)))'
-    # TimeRegex4 = f'\\b(({DescRegex}?)|({BasicTime}\\s*)?({GeneralDescRegex}?)){TimePrefix}(\\s*({HourNumRegex}|{BaseDateTime.HourRegex}))?(\\s+{TensTimeRegex}(\\s*(y\\s+)?{MinuteNumRegex})?)?(\\s*({OclockRegex}|{DescRegex}|\\bh\\b)|\\b)'
-    # TimeRegex5 = f'\\b({TimePrefix}|{BasicTime}{TimePrefix})\\s+(\\s*{DescRegex})?{BasicTime}?\\s*{TimeSuffix}\\b'
-    # TimeRegex6 = f'({BasicTime}(\\s*{DescRegex})?\\s+{TimeSuffix}\\b)'
-    # TimeRegex7 = f'\\b{TimeSuffix}\\s+a\\s+las\\s+{BasicTime}((\\s*{DescRegex}|\\bh\\b)|\\b)'
-    # TimeRegex8 = f'\\b{TimeSuffix}\\s+{BasicTime}((\\s*{DescRegex})|\\b)'
-    # TimeRegex9 = f'\\b(?<writtentime>{HourNumRegex}\\s+({TensTimeRegex}\\s*)(y\\s+)?{MinuteNumRegex}?)\\b'
-    # TimeRegex11 = f'\\b({WrittenTimeRegex})(\\s+{DescRegex})?\\b'
-    # TimeRegex12 = f'(\\b{TimePrefix}\\s+)?{BaseDateTime.HourRegex}(\\s*h\\s*){BaseDateTime.MinuteRegex}(\\s*{DescRegex})?'
+    LessThanOneHour = f'(?<lth>((\\s+i\\s+)?quart|(\\s*)menys quart|(\\s+i\\s+)mitjana|{BaseDateTime.DeltaMinuteRegex}(\\s+(minuts?|mins?))|{DeltaMinuteNumRegex}(\\s+(minuts?|mins?))))'
+    TensTimeRegex = f'(?<tens>deu|vint|trenta|quaranta|cinquanta)'
+    WrittenTimeRegex = f'(?<writtentime>{HourNumRegex}\\s*((i|(?<prefix>menys))\\s+)?(({TensTimeRegex}(\\s*i\\s+)?)?{MinuteNumRegex}))'
+    TimePrefix = f'(?<prefix>{LessThanOneHour}(\\s+(passades)\\s+(de\\s+les|les)?|\\s+(per\\s+a|abans\\s+de)?\\s+(les?))?)'
+    TimeSuffix = f'(?<suffix>({LessThanOneHour}\\s+)?({AmRegex}|{PmRegex}|{OclockRegex}))'
+    GeneralDescRegex = f'({DescRegex}|(?<suffix>{AmRegex}|{PmRegex}))'
+    BasicTime = f'(?<basictime>{WrittenTimeRegex}|{HourNumRegex}|{BaseDateTime.HourRegex}:{BaseDateTime.MinuteRegex}(:{BaseDateTime.SecondRegex})?|{BaseDateTime.HourRegex})'
+    MidTimeRegex = f'(?<mid>((?<midnight>mitja\\s*nit)|(?<midearlymorning>mitja\\s*matinada)|(?<midmorning>mig\\s*matí)|(?<midafternoon>mitja\\s*tarda)|(?<midday>mig\\s*dia)))'
+    AtRegex = f'\\b((?<=\\b((a)\\s+les?|al)\\s+)(({WrittenTimeRegex}|{HourNumRegex}|{BaseDateTime.HourRegex})\\b?(DescRegex)?|{MidTimeRegex})|{MidTimeRegex})'
+    ConnectNumRegex = f'({BaseDateTime.HourRegex}(?<min>[0-5][0-9])\\s*{DescRegex})'
+    TimeRegexWithDotConnector = f'({BaseDateTime.HourRegex}\\.{BaseDateTime.MinuteRegex})'
+    TimeRegex1 = f'(\\b{TimePrefix}\\s+)?({WrittenTimeRegex}|{HourNumRegex}|{BaseDateTime.HourRegex})\\s*({DescRegex})'
+    TimeRegex2 = f'(\\b{TimePrefix}\\s+)?(t)?{BaseDateTime.HourRegex}(\\s*)?:(\\s*)?{BaseDateTime.MinuteRegex}((\\s*)?:(\\s*)?{BaseDateTime.SecondRegex})?(\\s*({DescRegex})|\\b)'
+    TimeRegex3 = f'\\b(({TimePrefix}\\s+)?{TimeRegexWithDotConnector}(\\s*({DescRegex}|{TimeSuffix}))|((les\\s+{TimeRegexWithDotConnector})(?!\\s*(per\\s+cent?|%))(\\s*({DescRegex}|{TimeSuffix})|\\b)))'
+    TimeRegex4 = f'\\b(({DescRegex}?)|({BasicTime}\\s*)?({GeneralDescRegex}?)){TimePrefix}(\\s*({HourNumRegex}|{BaseDateTime.HourRegex}))?(\\s+{TensTimeRegex}(\\s*(i\\s+)?{MinuteNumRegex})?)?(\\s*({OclockRegex}|{DescRegex})|\\b)'
+    TimeRegex5 = f'\\b({TimePrefix}|{BasicTime}{TimePrefix})\\s+(\\s*{DescRegex})?{BasicTime}?\\s*{TimeSuffix}\\b'
+    TimeRegex6 = f'({BasicTime}(\\s*{DescRegex})?\\s+{TimeSuffix}\\b)'
+    TimeRegex7 = f'\\b{TimeSuffix}\\s+a\\s+les\\s+{BasicTime}((\\s*{DescRegex})|\\b)'
+    TimeRegex8 = f'\\b{TimeSuffix}\\s+{BasicTime}((\\s*{DescRegex})|\\b)'
+    TimeRegex9 = f'\\b(?<writtentime>{HourNumRegex}\\s+({TensTimeRegex}\\s*)(i\\s+)?{MinuteNumRegex}?)\\b'
+    TimeRegex11 = f'\\b({WrittenTimeRegex})(\\s+{DescRegex})?\\b'
+    TimeRegex12 = f'(\\b{TimePrefix}\\s+)?{BaseDateTime.HourRegex}(\\s*){BaseDateTime.MinuteRegex}(\\s*{DescRegex})?'
+
     # PrepositionRegex = f'(?<prep>^(,\\s*)?(a(l)?|en|de(l)?)?(\\s*(la(s)?|el|los))?$)'
     # LaterEarlyRegex = f'((?<early>temprano)|(?<late>fin(al)?(\\s+de)?|m[aá]s\\s+tarde))'
     # NowRegex = f'\\b(?<now>(justo\\s+)?ahora(\\s+mismo)?|en\\s+este\\s+momento|tan\\s+pronto\\s+como\\s+sea\\s+posible|tan\\s+pronto\\s+como\\s+(pueda|puedas|podamos|puedan)|lo\\s+m[aá]s\\s+pronto\\s+posible|recientemente|previamente|este entonces)\\b'
@@ -490,56 +491,48 @@ class CatalanDateTime:
                         ("07", 7),
                         ("08", 8),
                         ("09", 9)])
-    # Numbers = dict([("cero", 0),
-    #                 ("un", 1),
-    #                 ("una", 1),
-    #                 ("uno", 1),
-    #                 ("dos", 2),
-    #                 ("dós", 2),
-    #                 ("tres", 3),
-    #                 ("trés", 3),
-    #                 ("cuatro", 4),
-    #                 ("cinco", 5),
-    #                 ("seis", 6),
-    #                 ("séis", 6),
-    #                 ("siete", 7),
-    #                 ("ocho", 8),
-    #                 ("nueve", 9),
-    #                 ("diez", 10),
-    #                 ("once", 11),
-    #                 ("doce", 12),
-    #                 ("docena", 12),
-    #                 ("docenas", 12),
-    #                 ("trece", 13),
-    #                 ("catorce", 14),
-    #                 ("quince", 15),
-    #                 ("dieciseis", 16),
-    #                 ("dieciséis", 16),
-    #                 ("diecisiete", 17),
-    #                 ("dieciocho", 18),
-    #                 ("diecinueve", 19),
-    #                 ("veinte", 20),
-    #                 ("veinti", 20),
-    #                 ("ventiuna", 21),
-    #                 ("ventiuno", 21),
-    #                 ("veintiun", 21),
-    #                 ("veintiún", 21),
-    #                 ("veintiuno", 21),
-    #                 ("veintiuna", 21),
-    #                 ("veintidos", 22),
-    #                 ("veintidós", 22),
-    #                 ("veintitres", 23),
-    #                 ("veintitrés", 23),
-    #                 ("veinticuatro", 24),
-    #                 ("veinticinco", 25),
-    #                 ("veintiseis", 26),
-    #                 ("veintiséis", 26),
-    #                 ("veintisiete", 27),
-    #                 ("veintiocho", 28),
-    #                 ("veintinueve", 29),
-    #                 ("treinta", 30),
-    #                 ("cuarenta", 40),
-    #                 ("cincuenta", 50)])
+    Numbers = dict([("zero", 0),
+                    ("un", 1),
+                    ("una", 1),
+                    ("dos", 2),
+                    ("tres", 3),
+                    ("trés", 3),
+                    ("quatre", 4),
+                    ("cinc", 5),
+                    ("sis", 6),
+                    ("set", 7),
+                    ("vuit", 8),
+                    ("nou", 9),
+                    ("deu", 10),
+                    ("onze", 11),
+                    ("dotze", 12),
+                    ("docena", 12),
+                    ("dotzenes", 12),
+                    ("tretze", 13),
+                    ("catorze", 14),
+                    ("quinze", 15),
+                    ("setze", 16),
+                    ("disset", 17),
+                    ("divuit", 18),
+                    ("dinou", 19),
+                    ("vint", 20),
+                    ("veinti", 20),
+                    ("ventiuna", 21),
+                    ("ventiuno", 21),
+                    ("vint-i-un", 21),
+                    ("vint-i-una", 21),
+                    ("vint-i-dos", 22),
+                    ("vint-i-tres", 23),
+                    ("vint-i-quatre", 24),
+                    ("vint-i-cinc", 25),
+                    ("vint-i-sis", 26),
+                    ("vint-sis", 26),
+                    ("vint-i-set", 27),
+                    ("vint-i-vuit", 28),
+                    ("vint-i-nou", 29),
+                    ("treinta", 30),
+                    ("quaranta", 40),
+                    ("cinquanta", 50)])
     # HolidayNames = dict([("padres", ["diadelpadre"]),
     #                      ("madres", ["diadelamadre"]),
     #                      ("acciondegracias", ["diadegracias", "diadeacciondegracias", "acciondegracias"]),

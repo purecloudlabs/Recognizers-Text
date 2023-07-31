@@ -217,8 +217,8 @@ class BaseMergedExtractor(DateTimeExtractor):
         # The order is important, since there can be conflicts in merging
         result = self.add_to(
             result, self.config.date_extractor.extract(source, reference), source)
-        # result = self.add_to(
-        #     result, self.config.time_extractor.extract(source, reference), source)
+        result = self.add_to(
+            result, self.config.time_extractor.extract(source, reference), source)
         # result = self.add_to(
         #     result, self.config.date_period_extractor.extract(source, reference), source)
         # result = self.add_to(
@@ -777,8 +777,8 @@ class BaseMergedParser(DateTimeParser):
             result = self.config.date_parser.parse(source, reference)
             # if not result.value:
             #     result = self.config.holiday_parser.parse(source, reference)
-        # elif source.type == Constants.SYS_DATETIME_TIME:
-        #     result = self.config.time_parser.parse(source, reference)
+        elif source.type == Constants.SYS_DATETIME_TIME:
+            result = self.config.time_parser.parse(source, reference)
         # elif source.type == Constants.SYS_DATETIME_DATETIME:
         #     result = self.config.date_time_parser.parse(source, reference)
         # elif source.type == Constants.SYS_DATETIME_DATEPERIOD:

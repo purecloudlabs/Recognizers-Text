@@ -172,7 +172,7 @@ class CatalanMergedExtractorConfiguration(MergedExtractorConfiguration):
 
         self._date_extractor = BaseDateExtractor(
             CatalanDateExtractorConfiguration())
-        self._time_extractor = None
+        self._time_extractor = BaseTimeExtractor(CatalanTimeExtractorConfiguration())
         self._date_time_extractor = None
         self._date_period_extractor = None
         self._time_period_extractor = None

@@ -152,7 +152,7 @@ class CatalanCommonDateTimeParserConfiguration(BaseDateParserConfiguration):
 
     @property
     def utility_configuration(self) -> DateTimeUtilityConfiguration:
-        return None
+        return self._utility_configuration
 
     def __init__(self):
         BaseDateParserConfiguration.__init__(self)
@@ -165,7 +165,7 @@ class CatalanCommonDateTimeParserConfiguration(BaseDateParserConfiguration):
         self._cardinal_map = None
         self._day_of_week = CatalanDateTime.DayOfWeek
         self._month_of_year = CatalanDateTime.MonthOfYear
-        self._numbers = None
+        self._numbers = CatalanDateTime.Numbers
         self._double_numbers = None
         self._check_both_before_after = CatalanDateTime.CheckBothBeforeAfter
         self._cardinal_extractor = CatalanCardinalExtractor()
@@ -176,7 +176,7 @@ class CatalanCommonDateTimeParserConfiguration(BaseDateParserConfiguration):
             CatalanNumberParserConfiguration())
         self._date_extractor = BaseDateExtractor(
             CatalanDateExtractorConfiguration())
-        self._time_extractor = None
+        self._time_extractor = BaseTimeExtractor(CatalanTimeExtractorConfiguration())
         self._duration_extractor = None
         self._date_period_extractor = None
         self._time_period_extractor = None
@@ -185,7 +185,7 @@ class CatalanCommonDateTimeParserConfiguration(BaseDateParserConfiguration):
         self._duration_parser = None
         self._date_parser = BaseDateParser(
             CatalanDateParserConfiguration(self))
-        self._time_parser = None
+        self._time_parser = BaseTimeParser(CatalanTimeParserConfiguration(self))
         self._date_period_parser = None
         self._time_period_parser = None
         self._date_time_parser = None

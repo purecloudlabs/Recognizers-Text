@@ -41,8 +41,7 @@ class CatalanTimeExtractorConfiguration(TimeExtractorConfiguration):
         )
         self._at_regex: Pattern = RegExpUtility.get_safe_reg_exp(
             CatalanDateTime.AtRegex)
-        self._time_before_after_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            CatalanDateTime.TimeBeforeAfterRegex)
+        self._time_before_after_regex: Pattern = RegExpUtility.get_safe_reg_exp(f'^[.]')
         self._time_zone_extractor = self._timezone_extractor = BaseTimeZoneExtractor(
             CatalanTimeZoneExtractorConfiguration())
         # TODO When the implementation for these properties is added, change the None values to the respective Regexps
