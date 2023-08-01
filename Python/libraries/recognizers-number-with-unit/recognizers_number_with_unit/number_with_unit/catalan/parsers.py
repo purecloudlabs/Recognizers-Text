@@ -18,6 +18,10 @@ class CatalanNumberWithUnitParserConfiguration(NumberWithUnitParserConfiguration
     def internal_number_extractor(self) -> Extractor:
         return self._internal_number_extractor
 
+    @property
+    def connector_token(self) -> str:
+        return None
+
     def __init__(self, culture_info: CultureInfo):
         if culture_info is None:
             culture_info = CultureInfo(Culture.Catalan)
