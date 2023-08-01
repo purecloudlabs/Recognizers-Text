@@ -30,6 +30,10 @@ class CatalanNumberWithUnitExtractorConfiguration(NumberWithUnitExtractorConfigu
         return self._build_suffix
 
     @property
+    def connector_token(self) -> str:
+        return None
+
+    @property
     def compound_unit_connector_regex(self) -> Pattern:
         return self._compound_unit_connector_regex
 
