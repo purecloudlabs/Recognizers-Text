@@ -3,13 +3,12 @@ from recognizers_text.utilities import RegExpUtility
 from ...resources.catalan_date_time import CatalanDateTime
 from ..base_time import TimeExtractorConfiguration
 from ..base_timezone import BaseTimeZoneExtractor
-from .timezone_extractor_config import CatalanTimeZoneExtractorConfiguration
 
 
 class CatalanTimeExtractorConfiguration(TimeExtractorConfiguration):
     @property
     def time_zone_extractor(self):
-        return self._time_zone_extractor
+        return None
 
     @property
     def options(self):
@@ -42,9 +41,6 @@ class CatalanTimeExtractorConfiguration(TimeExtractorConfiguration):
         self._at_regex: Pattern = RegExpUtility.get_safe_reg_exp(
             CatalanDateTime.AtRegex)
         self._time_before_after_regex: Pattern = RegExpUtility.get_safe_reg_exp(f'^[.]')
-        self._time_zone_extractor = self._timezone_extractor = BaseTimeZoneExtractor(
-            CatalanTimeZoneExtractorConfiguration())
-        # TODO When the implementation for these properties is added, change the None values to the respective Regexps
         self._ish_regex: Pattern = None
 
     @staticmethod

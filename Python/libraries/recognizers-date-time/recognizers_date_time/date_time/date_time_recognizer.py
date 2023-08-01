@@ -8,6 +8,7 @@ from recognizers_text.model import Model, ModelResult
 from .utilities import DateTimeOptions
 from .models import DateTimeModel
 from .base_merged import BaseMergedExtractor, BaseMergedParser
+from .base_minimal_merged import MinimalMergedExtractor, MinimalMergedParser
 from .english.common_configs import EnglishCommonDateTimeParserConfiguration
 from .english.merged_extractor_config import EnglishMergedExtractorConfiguration
 from .english.merged_parser_config import EnglishMergedParserConfiguration
@@ -116,9 +117,9 @@ class DateTimeRecognizer(Recognizer[DateTimeOptions]):
         ))
 
         self.register_model('DateTimeModel', Culture.Catalan, lambda options: DateTimeModel(
-            BaseMergedParser(CatalanMergedParserConfiguration(
+            MinimalMergedParser(CatalanMergedParserConfiguration(
                 CatalanCommonDateTimeParserConfiguration()), options),
-            BaseMergedExtractor(CatalanMergedExtractorConfiguration(), options)
+            MinimalMergedExtractor(CatalanMergedExtractorConfiguration(), options)
         ))
 
     def get_datetime_model(self, culture: str = None, fallback_to_default_culture: bool = True) -> Model:

@@ -4,10 +4,8 @@ from recognizers_number import (BaseNumberExtractor, BaseNumberParser,
 from recognizers_text.utilities import RegExpUtility
 from ...resources.catalan_date_time import CatalanDateTime
 from ..extractors import DateTimeExtractor
-from ..base_duration import BaseDurationExtractor
 from ..base_date import DateExtractorConfiguration
 from ..utilities import DateTimeUtilityConfiguration
-from .duration_extractor_config import CatalanDurationExtractorConfiguration
 from .base_configs import CatalanDateTimeUtilityConfiguration
 from ..constants import Constants
 from ...resources.base_date_time import BaseDateTime
@@ -88,7 +86,7 @@ class CatalanDateExtractorConfiguration(DateExtractorConfiguration):
 
     @property
     def duration_extractor(self) -> DateTimeExtractor:
-        return self._duration_extractor
+        return None
 
     @property
     def strict_relative_regex(self) -> Pattern:
@@ -186,7 +184,6 @@ class CatalanDateExtractorConfiguration(DateExtractorConfiguration):
         self._integer_extractor = CatalanIntegerExtractor()
         self._number_parser = BaseNumberParser(
             CatalanNumberParserConfiguration())
-        self._duration_extractor = RegExpUtility.get_safe_reg_exp(f'^[.]')
         self._utility_configuration = CatalanDateTimeUtilityConfiguration()
         self._range_connector_symbol_regex = RegExpUtility.get_safe_reg_exp(
             BaseDateTime.RangeConnectorSymbolRegex

@@ -35,11 +35,11 @@ class CatalanDateParserConfiguration(DateParserConfiguration):
 
     @property
     def duration_extractor(self) -> DateTimeExtractor:
-        return self._duration_extractor
+        return None
 
     @property
     def duration_parser(self) -> DateTimeParser:
-        return self._duration_parser
+        return None
 
     @property
     def number_parser(self) -> BaseNumberParser:
@@ -146,9 +146,7 @@ class CatalanDateParserConfiguration(DateParserConfiguration):
         self._integer_extractor = config.integer_extractor
         self._cardinal_extractor = config.cardinal_extractor
         self._date_extractor = config.date_extractor
-        self._duration_extractor = config.duration_extractor
         self._number_parser = config.number_parser
-        self._duration_parser = config.duration_parser
         self._month_of_year = config.month_of_year
         self._day_of_month = config.day_of_month
         self._day_of_week = config.day_of_week
