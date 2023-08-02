@@ -137,7 +137,7 @@ class CatalanDoubleExtractor(BaseNumberExtractor):
                 val='DoubleNum'),
             ReVal(
                 re=CatalanNumeric.DoubleAllFloatRegex,
-                val='DoubleSpa'),
+                val='DoubleCat'),
             ReVal(
                 re=CatalanNumeric.DoubleExponentialNotationRegex,
                 val='DoublePow'),
