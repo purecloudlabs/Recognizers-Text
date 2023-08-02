@@ -21,36 +21,36 @@ namespace Microsoft.Recognizers.Text.Number.Japanese
             {
                 {
                     // (-)2.5, can avoid cases like ip address xx.xx.xx.xx
-                    new Regex(NumbersDefinitions.DoubleSpecialsCharsWithNegatives, RegexFlags, RegexTimeOut),
+                    new Regex(NumbersDefinitions.DoubleSpecialsCharsWithNegatives, RegexFlags),
                     RegexTagGenerator.GenerateRegexTag(Constants.DOUBLE_PREFIX, Constants.NUMBER_SUFFIX)
                 },
                 {
                     // (-).2
-                    new Regex(NumbersDefinitions.SimpleDoubleSpecialsChars, RegexFlags, RegexTimeOut),
+                    new Regex(NumbersDefinitions.SimpleDoubleSpecialsChars, RegexFlags),
                     RegexTagGenerator.GenerateRegexTag(Constants.DOUBLE_PREFIX, Constants.NUMBER_SUFFIX)
                 },
                 {
                     // えは九・二三二一三一二
-                    new Regex(NumbersDefinitions.DoubleRoundNumberSpecialsChars, RegexFlags, RegexTimeOut),
+                    new Regex(NumbersDefinitions.DoubleRoundNumberSpecialsChars, RegexFlags),
                     RegexTagGenerator.GenerateRegexTag(Constants.DOUBLE_PREFIX, Constants.NUMBER_SUFFIX)
                 },
                 {
                     // １５.２万
-                    new Regex(NumbersDefinitions.DoubleWithThousandsRegex, RegexFlags, RegexTimeOut),
+                    new Regex(NumbersDefinitions.DoubleWithThousandsRegex, RegexFlags),
                     RegexTagGenerator.GenerateRegexTag(Constants.DOUBLE_PREFIX, Constants.JAPANESE)
                 },
                 {
                     // 2e6, 21.2e0
-                    new Regex(NumbersDefinitions.DoubleExponentialNotationRegex, RegexFlags, RegexTimeOut),
+                    new Regex(NumbersDefinitions.DoubleExponentialNotationRegex, RegexFlags),
                     RegexTagGenerator.GenerateRegexTag(Constants.DOUBLE_PREFIX, Constants.POWER_SUFFIX)
                 },
                 {
-                    new Regex(NumbersDefinitions.DoubleExponentialNotationKanjiRegex, RegexFlags, RegexTimeOut),
+                    new Regex(NumbersDefinitions.DoubleExponentialNotationKanjiRegex, RegexFlags),
                     RegexTagGenerator.GenerateRegexTag(Constants.DOUBLE_PREFIX, Constants.POWER_SUFFIX)
                 },
                 {
                     // 2^5
-                    new Regex(NumbersDefinitions.DoubleScientificNotationRegex, RegexFlags, RegexTimeOut),
+                    new Regex(NumbersDefinitions.DoubleScientificNotationRegex, RegexFlags),
                     RegexTagGenerator.GenerateRegexTag(Constants.DOUBLE_PREFIX, Constants.POWER_SUFFIX)
                 },
                 {
@@ -70,24 +70,24 @@ namespace Microsoft.Recognizers.Text.Number.Japanese
                 case CJKNumberExtractorMode.Default:
                     // Uses an allow list to avoid extracting "西九条" from "九"
                     regexes.Add(
-                        new Regex(NumbersDefinitions.DoubleSpecialsChars, RegexFlags, RegexTimeOut),
+                        new Regex(NumbersDefinitions.DoubleSpecialsChars, RegexFlags),
                         RegexTagGenerator.GenerateRegexTag(Constants.DOUBLE_PREFIX, Constants.NUMBER_SUFFIX));
 
                     // 1.0 K
                     regexes.Add(
-                        new Regex(NumbersDefinitions.DoubleWithMultiplierRegex, RegexFlags, RegexTimeOut),
+                        new Regex(NumbersDefinitions.DoubleWithMultiplierRegex, RegexFlags),
                         RegexTagGenerator.GenerateRegexTag(Constants.DOUBLE_PREFIX, Constants.NUMBER_SUFFIX));
                     break;
 
                 case CJKNumberExtractorMode.ExtractAll:
                     // Uses no allow lists and extracts all potential numbers (useful in Units, for example).
                     regexes.Add(
-                        new Regex(NumbersDefinitions.DoubleSpecialsCharsAggressive, RegexFlags, RegexTimeOut),
+                        new Regex(NumbersDefinitions.DoubleSpecialsCharsAggressive, RegexFlags),
                         RegexTagGenerator.GenerateRegexTag(Constants.DOUBLE_PREFIX, Constants.NUMBER_SUFFIX));
 
                     // 1.0 K
                     regexes.Add(
-                        new Regex(NumbersDefinitions.DoubleWithMultiplierAggressiveRegex, RegexFlags, RegexTimeOut),
+                        new Regex(NumbersDefinitions.DoubleWithMultiplierAggressiveRegex, RegexFlags),
                         RegexTagGenerator.GenerateRegexTag(Constants.DOUBLE_PREFIX, Constants.NUMBER_SUFFIX));
                     break;
             }

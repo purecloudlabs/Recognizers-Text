@@ -12,27 +12,27 @@ namespace Microsoft.Recognizers.Text.DateTime.Hindi
     public class HindiDateTimeParserConfiguration : BaseDateTimeOptionsConfiguration, IDateTimeParserConfiguration
     {
         public static readonly Regex AmTimeRegex =
-             new Regex(DateTimeDefinitions.AMTimeRegex, RegexFlags, RegexTimeOut);
+             new Regex(DateTimeDefinitions.AMTimeRegex, RegexFlags);
 
         public static readonly Regex PmTimeRegex =
-            new Regex(DateTimeDefinitions.PMTimeRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.PMTimeRegex, RegexFlags);
 
         private const RegexOptions RegexFlags = RegexOptions.Singleline | RegexOptions.ExplicitCapture;
 
         private static readonly Regex NowTimeRegex =
-            new Regex(DateTimeDefinitions.NowTimeRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.NowTimeRegex, RegexFlags);
 
         private static readonly Regex RecentlyTimeRegex =
-            new Regex(DateTimeDefinitions.RecentlyTimeRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.RecentlyTimeRegex, RegexFlags);
 
         private static readonly Regex AsapTimeRegex =
-            new Regex(DateTimeDefinitions.AsapTimeRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.AsapTimeRegex, RegexFlags);
 
         private static readonly Regex NextPrefixRegex =
-            new Regex(DateTimeDefinitions.NextPrefixRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.NextPrefixRegex, RegexFlags);
 
         private static readonly Regex PreviousPrefixRegex =
-            new Regex(DateTimeDefinitions.PreviousPrefixRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.PreviousPrefixRegex, RegexFlags);
 
         public HindiDateTimeParserConfiguration(ICommonDateTimeParserConfiguration config)
          : base(config)

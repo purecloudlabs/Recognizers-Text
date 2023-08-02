@@ -23,23 +23,23 @@ namespace Microsoft.Recognizers.Text.Number.Hindi
             var regexes = new Dictionary<Regex, TypeTag>
             {
                 {
-                    new Regex(NumbersDefinitions.FractionNotationWithSpacesRegex, RegexFlags, RegexTimeOut),
+                    new Regex(NumbersDefinitions.FractionNotationWithSpacesRegex, RegexFlags),
                     RegexTagGenerator.GenerateRegexTag(Constants.FRACTION_PREFIX, Constants.NUMBER_SUFFIX)
                 },
                 {
-                    new Regex(NumbersDefinitions.FractionNotationRegex, RegexFlags, RegexTimeOut),
+                    new Regex(NumbersDefinitions.FractionNotationRegex, RegexFlags),
                     RegexTagGenerator.GenerateRegexTag(Constants.FRACTION_PREFIX, Constants.NUMBER_SUFFIX)
                 },
                 {
-                    new Regex(NumbersDefinitions.FractionNounRegex, RegexFlags, RegexTimeOut),
+                    new Regex(NumbersDefinitions.FractionNounRegex, RegexFlags),
                     RegexTagGenerator.GenerateRegexTag(Constants.FRACTION_PREFIX, Constants.HINDI)
                 },
                 {
-                    new Regex(NumbersDefinitions.FractionNounWithArticleRegex, RegexFlags, RegexTimeOut),
+                    new Regex(NumbersDefinitions.FractionNounWithArticleRegex, RegexFlags),
                     RegexTagGenerator.GenerateRegexTag(Constants.FRACTION_PREFIX, Constants.HINDI)
                 },
                 {
-                    new Regex(NumbersDefinitions.NegativeCompoundNumberOrdinals, RegexFlags, RegexTimeOut),
+                    new Regex(NumbersDefinitions.NegativeCompoundNumberOrdinals, RegexFlags),
                     RegexTagGenerator.GenerateRegexTag(Constants.FRACTION_PREFIX, Constants.HINDI)
                 },
             };
@@ -47,16 +47,16 @@ namespace Microsoft.Recognizers.Text.Number.Hindi
             if ((Options & NumberOptions.PercentageMode) != 0)
             {
                 regexes.Add(
-                    new Regex(NumbersDefinitions.FractionPrepositionWithinPercentModeRegex, RegexFlags, RegexTimeOut),
+                    new Regex(NumbersDefinitions.FractionPrepositionWithinPercentModeRegex, RegexFlags),
                     RegexTagGenerator.GenerateRegexTag(Constants.FRACTION_PREFIX, Constants.HINDI));
             }
             else
             {
                 regexes.Add(
-                    new Regex(NumbersDefinitions.FractionRegex, RegexFlags, RegexTimeOut),
+                    new Regex(NumbersDefinitions.FractionRegex, RegexFlags),
                     RegexTagGenerator.GenerateRegexTag(Constants.FRACTION_PREFIX, Constants.HINDI));
                 regexes.Add(
-                   new Regex(NumbersDefinitions.FractionPrepositionInverseRegex, RegexFlags, RegexTimeOut),
+                   new Regex(NumbersDefinitions.FractionPrepositionInverseRegex, RegexFlags),
                    RegexTagGenerator.GenerateRegexTag(Constants.FRACTION_PREFIX, Constants.HINDI));
             }
 

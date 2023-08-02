@@ -15,55 +15,55 @@ namespace Microsoft.Recognizers.Text.DateTime.English
     public class EnglishMergedExtractorConfiguration : BaseDateTimeOptionsConfiguration, IMergedExtractorConfiguration
     {
         public static readonly Regex BeforeRegex =
-            new Regex(DateTimeDefinitions.BeforeRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.BeforeRegex, RegexFlags);
 
         public static readonly Regex AfterRegex =
-            new Regex(DateTimeDefinitions.AfterRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.AfterRegex, RegexFlags);
 
         public static readonly Regex AroundRegex =
-            new Regex(DateTimeDefinitions.AroundRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.AroundRegex, RegexFlags);
 
         public static readonly Regex EqualRegex =
-            new Regex(BaseDateTime.EqualRegex, RegexFlags, RegexTimeOut);
+            new Regex(BaseDateTime.EqualRegex, RegexFlags);
 
         public static readonly Regex FromToRegex =
-            new Regex(DateTimeDefinitions.FromToRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.FromToRegex, RegexFlags);
 
         public static readonly Regex SingleAmbiguousMonthRegex =
-            new Regex(DateTimeDefinitions.SingleAmbiguousMonthRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.SingleAmbiguousMonthRegex, RegexFlags);
 
         public static readonly Regex PrepositionSuffixRegex =
-            new Regex(DateTimeDefinitions.PrepositionSuffixRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.PrepositionSuffixRegex, RegexFlags);
 
         public static readonly Regex AmbiguousRangeModifierPrefix =
-            new Regex(DateTimeDefinitions.AmbiguousRangeModifierPrefix, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.AmbiguousRangeModifierPrefix, RegexFlags);
 
         public static readonly Regex NumberEndingPattern =
-            new Regex(DateTimeDefinitions.NumberEndingPattern, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.NumberEndingPattern, RegexFlags);
 
         public static readonly Regex SuffixAfterRegex =
-            new Regex(DateTimeDefinitions.SuffixAfterRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.SuffixAfterRegex, RegexFlags);
 
         public static readonly Regex UnspecificDatePeriodRegex =
-            new Regex(DateTimeDefinitions.UnspecificDatePeriodRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.UnspecificDatePeriodRegex, RegexFlags);
 
         public static readonly Regex UnspecificTimePeriodRegex =
-            new Regex(DateTimeDefinitions.UnspecificTimePeriodRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.UnspecificTimePeriodRegex, RegexFlags);
 
         public static readonly Regex FailFastRegex =
             new Regex(DateTimeDefinitions.FailFastRegex, RegexFlags | RegexOptions.Compiled);
 
         // Used to skip only year references in a text in TasksMode
         public static readonly Regex YearRegex =
-            new Regex(DateTimeDefinitions.YearRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.YearRegex, RegexFlags);
 
         public static readonly Regex[] TermFilterRegexes =
         {
             // one on one
-            new Regex(DateTimeDefinitions.OneOnOneRegex, RegexFlags, RegexTimeOut),
+            new Regex(DateTimeDefinitions.OneOnOneRegex, RegexFlags),
 
             // (the)? (day|week|month|year)
-            new Regex(DateTimeDefinitions.SingleAmbiguousTermsRegex, RegexFlags, RegexTimeOut),
+            new Regex(DateTimeDefinitions.SingleAmbiguousTermsRegex, RegexFlags),
 
         };
 
@@ -109,7 +109,7 @@ namespace Microsoft.Recognizers.Text.DateTime.English
              */
             if ((config.Options & DateTimeOptions.TasksMode) != 0)
             {
-                TasksModeMentionFilters = new Regex(DateTimeDefinitions.TasksModeSupressionRegexes, RegexFlags, RegexTimeOut);
+                TasksModeMentionFilters = new Regex(DateTimeDefinitions.TasksModeSupressionRegexes, RegexFlags);
             }
 
             var numConfig = new BaseNumberOptionsConfiguration(config.Culture, numOptions);
@@ -125,10 +125,10 @@ namespace Microsoft.Recognizers.Text.DateTime.English
         }
 
         // Used in Standard mode
-        public static Regex SinceRegex { get; set; } = new Regex(DateTimeDefinitions.SinceRegex, RegexFlags, RegexTimeOut);
+        public static Regex SinceRegex { get; set; } = new Regex(DateTimeDefinitions.SinceRegex, RegexFlags);
 
         // used in Experimental mode
-        public static Regex SinceRegexExp { get; } = new Regex(DateTimeDefinitions.SinceRegexExp, RegexFlags, RegexTimeOut);
+        public static Regex SinceRegexExp { get; } = new Regex(DateTimeDefinitions.SinceRegexExp, RegexFlags);
 
         public IDateExtractor DateExtractor { get; }
 

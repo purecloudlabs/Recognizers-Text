@@ -14,22 +14,22 @@ namespace Microsoft.Recognizers.Text.DateTime.English
     public class EnglishDatePeriodParserConfiguration : BaseDateTimeOptionsConfiguration, IDatePeriodParserConfiguration
     {
         public static readonly Regex PreviousPrefixRegex =
-            new Regex(DateTimeDefinitions.PreviousPrefixRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.PreviousPrefixRegex, RegexFlags);
 
         public static readonly Regex ThisPrefixRegex =
-            new Regex(DateTimeDefinitions.ThisPrefixRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.ThisPrefixRegex, RegexFlags);
 
         public static readonly Regex AfterNextSuffixRegex =
-            new Regex(DateTimeDefinitions.AfterNextSuffixRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.AfterNextSuffixRegex, RegexFlags);
 
         public static readonly Regex RelativeRegex =
-            new Regex(DateTimeDefinitions.RelativeRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.RelativeRegex, RegexFlags);
 
         public static readonly Regex UnspecificEndOfRangeRegex =
-            new Regex(DateTimeDefinitions.UnspecificEndOfRangeRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.UnspecificEndOfRangeRegex, RegexFlags);
 
         public static readonly Regex NowParseRegex =
-            new Regex(DateTimeDefinitions.NowParseRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.NowParseRegex, RegexFlags);
 
         private const RegexOptions RegexFlags = RegexOptions.Singleline | RegexOptions.ExplicitCapture;
 
@@ -49,7 +49,7 @@ namespace Microsoft.Recognizers.Text.DateTime.English
             DateTimeDefinitions.YearTerms.Select(str => $" {str} ").ToList();
 
         private static readonly Regex NextPrefixRegex =
-            new Regex(DateTimeDefinitions.NextPrefixRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.NextPrefixRegex, RegexFlags);
 
         public EnglishDatePeriodParserConfiguration(ICommonDateTimeParserConfiguration config)
             : base(config)
@@ -105,7 +105,7 @@ namespace Microsoft.Recognizers.Text.DateTime.English
             OfYearRegex = EnglishDatePeriodExtractorConfiguration.OfYearRegex;
             NowRegex = NowParseRegex;
             SpecialDayRegex = EnglishDateExtractorConfiguration.SpecialDayRegex;
-            TodayNowRegex = new Regex(DateTimeDefinitions.TodayNowRegex, RegexOptions.Singleline, RegexTimeOut);
+            TodayNowRegex = new Regex(DateTimeDefinitions.TodayNowRegex, RegexOptions.Singleline);
 
             UnitMap = config.UnitMap;
             CardinalMap = config.CardinalMap;

@@ -5,7 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Reflection;
 using System.Text.RegularExpressions;
 using Microsoft.Recognizers.Text.Utilities;
 using DateObject = System.DateTime;
@@ -20,8 +19,6 @@ namespace Microsoft.Recognizers.Text.DateTime
         {
             Config = configuration;
         }
-
-        protected static TimeSpan RegexTimeOut => DateTimeRecognizer.GetTimeout(MethodBase.GetCurrentMethod().DeclaringType);
 
         protected IDateTimePeriodParserConfiguration Config { get; private set; }
 

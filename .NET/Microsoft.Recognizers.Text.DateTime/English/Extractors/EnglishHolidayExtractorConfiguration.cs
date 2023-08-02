@@ -11,10 +11,10 @@ namespace Microsoft.Recognizers.Text.DateTime.English
     public class EnglishHolidayExtractorConfiguration : BaseDateTimeOptionsConfiguration, IHolidayExtractorConfiguration
     {
         public static readonly Regex YearRegex =
-            new Regex(DateTimeDefinitions.YearRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.YearRegex, RegexFlags);
 
         public static readonly Regex H =
-            new Regex(DateTimeDefinitions.HolidayRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.HolidayRegex, RegexFlags);
 
         public static readonly Regex[] HolidayRegexList =
         {

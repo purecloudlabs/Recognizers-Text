@@ -17,31 +17,31 @@ namespace Microsoft.Recognizers.Text.DateTime.Arabic
         private const RegexOptions RegexFlags = RegexOptions.Singleline | RegexOptions.ExplicitCapture | RegexOptions.RightToLeft;
 
         private static readonly Regex TimeSuffixFull =
-            new Regex(DateTimeDefinitions.TimeSuffixFull, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.TimeSuffixFull, RegexFlags);
 
         private static readonly Regex LunchRegex =
-            new Regex(DateTimeDefinitions.LunchRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.LunchRegex, RegexFlags);
 
         private static readonly Regex NightRegex =
-            new Regex(DateTimeDefinitions.NightRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.NightRegex, RegexFlags);
 
         private static readonly Regex HalfTokenRegex =
-            new Regex(DateTimeDefinitions.HalfTokenRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.HalfTokenRegex, RegexFlags);
 
         private static readonly Regex QuarterTokenRegex =
-            new Regex(DateTimeDefinitions.QuarterTokenRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.QuarterTokenRegex, RegexFlags);
 
         private static readonly Regex ThreeQuarterTokenRegex =
-            new Regex(DateTimeDefinitions.ThreeQuarterTokenRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.ThreeQuarterTokenRegex, RegexFlags);
 
         private static readonly Regex ToTokenRegex =
-            new Regex(DateTimeDefinitions.ToTokenRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.ToTokenRegex, RegexFlags);
 
         private static readonly Regex ToHalfTokenRegex =
-            new Regex(DateTimeDefinitions.ToHalfTokenRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.ToHalfTokenRegex, RegexFlags);
 
         private static readonly Regex ForHalfTokenRegex =
-            new Regex(DateTimeDefinitions.ForHalfTokenRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.ForHalfTokenRegex, RegexFlags);
 
         public ArabicTimeParserConfiguration(ICommonDateTimeParserConfiguration config)
          : base(config)

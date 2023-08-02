@@ -64,15 +64,15 @@ namespace Microsoft.Recognizers.Text.DateTime.Chinese
             var regexes = new Dictionary<Regex, TimeType>
             {
                 {
-                    new Regex(DateTimeDefinitions.TimeRegexes1, RegexFlags, RegexTimeOut),
+                    new Regex(DateTimeDefinitions.TimeRegexes1, RegexFlags),
                     TimeType.CjkTime
                 },
                 {
-                    new Regex(DateTimeDefinitions.TimeRegexes2, RegexFlags, RegexTimeOut),
+                    new Regex(DateTimeDefinitions.TimeRegexes2, RegexFlags),
                     TimeType.DigitTime
                 },
                 {
-                    new Regex(DateTimeDefinitions.TimeRegexes3, RegexFlags, RegexTimeOut),
+                    new Regex(DateTimeDefinitions.TimeRegexes3, RegexFlags),
                     TimeType.LessTime
                 },
             };

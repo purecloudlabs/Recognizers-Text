@@ -24,11 +24,11 @@ namespace Microsoft.Recognizers.Text.Number.Italian
             this.Regexes = new Dictionary<Regex, TypeTag>
             {
                 {
-                    new Regex(NumbersDefinitions.OrdinalSuffixRegex, RegexFlags, RegexTimeOut),
+                    new Regex(NumbersDefinitions.OrdinalSuffixRegex, RegexFlags),
                     RegexTagGenerator.GenerateRegexTag(Constants.ORDINAL_PREFIX, Constants.NUMBER_SUFFIX)
                 },
                 {
-                    new Regex(NumbersDefinitions.OrdinalItalianRegex, RegexFlags, RegexTimeOut),
+                    new Regex(NumbersDefinitions.OrdinalItalianRegex, RegexFlags),
                     RegexTagGenerator.GenerateRegexTag(Constants.ORDINAL_PREFIX, Constants.ITALIAN)
                 },
             }.ToImmutableDictionary();

@@ -22,7 +22,7 @@ namespace Microsoft.Recognizers.Text.NumberWithUnit.Swedish
             NumbersWithUnitDefinitions.AmbiguousTemperatureUnitList.ToImmutableList();
 
         private static readonly Regex AmbiguousUnitMultiplierRegex =
-            new Regex(BaseUnits.AmbiguousUnitNumberMultiplierRegex, RegexFlags, RegexTimeOut);
+            new Regex(BaseUnits.AmbiguousUnitNumberMultiplierRegex, RegexFlags);
 
         public TemperatureExtractorConfiguration()
             : this(new CultureInfo(Culture.Swedish))

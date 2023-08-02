@@ -14,37 +14,37 @@ namespace Microsoft.Recognizers.Text.DateTime.Spanish
     {
         // TODO: config this according to English
         public static readonly Regex NextPrefixRegex =
-            new Regex(DateTimeDefinitions.NextPrefixRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.NextPrefixRegex, RegexFlags);
 
         public static readonly Regex NextSuffixRegex =
-            new Regex(DateTimeDefinitions.NextSuffixRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.NextSuffixRegex, RegexFlags);
 
         public static readonly Regex PreviousPrefixRegex =
-            new Regex(DateTimeDefinitions.PreviousPrefixRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.PreviousPrefixRegex, RegexFlags);
 
         public static readonly Regex PreviousSuffixRegex =
-            new Regex(DateTimeDefinitions.PreviousSuffixRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.PreviousSuffixRegex, RegexFlags);
 
         public static readonly Regex ThisPrefixRegex =
-            new Regex(DateTimeDefinitions.ThisPrefixRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.ThisPrefixRegex, RegexFlags);
 
         public static readonly Regex AfterNextSuffixRegex =
-            new Regex(DateTimeDefinitions.AfterNextSuffixRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.AfterNextSuffixRegex, RegexFlags);
 
         public static readonly Regex RelativeSuffixRegex =
-            new Regex(DateTimeDefinitions.RelativeSuffixRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.RelativeSuffixRegex, RegexFlags);
 
         public static readonly Regex RelativeRegex =
-            new Regex(DateTimeDefinitions.RelativeRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.RelativeRegex, RegexFlags);
 
         public static readonly Regex UnspecificEndOfRangeRegex =
-            new Regex(DateTimeDefinitions.UnspecificEndOfRangeRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.UnspecificEndOfRangeRegex, RegexFlags);
 
         public static readonly Regex AmbiguousPointRangeRegex =
-            new Regex(DateTimeDefinitions.AmbiguousPointRangeRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.AmbiguousPointRangeRegex, RegexFlags);
 
         public static readonly Regex SpecialYearPrefixes =
-            new Regex(DateTimeDefinitions.SpecialYearPrefixes, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.SpecialYearPrefixes, RegexFlags);
 
         private const RegexOptions RegexFlags = RegexOptions.Singleline | RegexOptions.ExplicitCapture;
 

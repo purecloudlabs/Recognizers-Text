@@ -24,20 +24,20 @@ namespace Microsoft.Recognizers.Text.Number.Dutch
             var regexes = new Dictionary<Regex, TypeTag>
             {
                 {
-                    new Regex(NumbersDefinitions.FractionNotationWithSpacesRegex, RegexFlags, RegexTimeOut),
+                    new Regex(NumbersDefinitions.FractionNotationWithSpacesRegex, RegexFlags),
                     RegexTagGenerator.GenerateRegexTag(Constants.FRACTION_PREFIX, Constants.NUMBER_SUFFIX)
                 },
                 {
-                    new Regex(NumbersDefinitions.FractionNotationRegex, RegexFlags, RegexTimeOut),
+                    new Regex(NumbersDefinitions.FractionNotationRegex, RegexFlags),
                     RegexTagGenerator.GenerateRegexTag(Constants.FRACTION_PREFIX, Constants.NUMBER_SUFFIX)
                 },
                 {
                     new Regex(
-                        NumbersDefinitions.FractionNounRegex, RegexFlags, RegexTimeOut),
+                        NumbersDefinitions.FractionNounRegex, RegexFlags),
                     RegexTagGenerator.GenerateRegexTag(Constants.FRACTION_PREFIX, Constants.DUTCH)
                 },
                 {
-                    new Regex(NumbersDefinitions.FractionNounWithArticleRegex, RegexFlags, RegexTimeOut),
+                    new Regex(NumbersDefinitions.FractionNounWithArticleRegex, RegexFlags),
                     RegexTagGenerator.GenerateRegexTag(Constants.FRACTION_PREFIX, Constants.DUTCH)
                 },
             };
@@ -48,13 +48,13 @@ namespace Microsoft.Recognizers.Text.Number.Dutch
                 if ((Options & NumberOptions.PercentageMode) != 0)
                 {
                     regexes.Add(
-                        new Regex(NumbersDefinitions.FractionPrepositionWithinPercentModeRegex, RegexFlags, RegexTimeOut),
+                        new Regex(NumbersDefinitions.FractionPrepositionWithinPercentModeRegex, RegexFlags),
                         RegexTagGenerator.GenerateRegexTag(Constants.FRACTION_PREFIX, Constants.DUTCH));
                 }
                 else
                 {
                     regexes.Add(
-                        new Regex(NumbersDefinitions.FractionPrepositionRegex, RegexFlags, RegexTimeOut),
+                        new Regex(NumbersDefinitions.FractionPrepositionRegex, RegexFlags),
                         RegexTagGenerator.GenerateRegexTag(Constants.FRACTION_PREFIX, Constants.DUTCH));
                 }
             }

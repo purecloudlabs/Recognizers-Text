@@ -21,32 +21,32 @@ namespace Microsoft.Recognizers.Text.Number.Korean
             {
                 {
                     // 백퍼센트 십오퍼센트
-                    new Regex(NumbersDefinitions.SimplePercentageRegex, RegexFlags, RegexTimeOut),
+                    new Regex(NumbersDefinitions.SimplePercentageRegex, RegexFlags),
                     RegexTagGenerator.GenerateRegexTag(Constants.PERCENT_PREFIX, Constants.KOREAN)
                 },
                 {
                     // 19퍼센트　１퍼센트
-                    new Regex(NumbersDefinitions.NumbersPercentagePointRegex, RegexFlags, RegexTimeOut),
+                    new Regex(NumbersDefinitions.NumbersPercentagePointRegex, RegexFlags),
                     RegexTagGenerator.GenerateRegexTag(Constants.PERCENT_PREFIX, Constants.NUMBER_SUFFIX)
                 },
                 {
                     // 3,000퍼센트  １，１２３퍼센트
-                    new Regex(NumbersDefinitions.NumbersPercentageWithSeparatorRegex, RegexFlags, RegexTimeOut),
+                    new Regex(NumbersDefinitions.NumbersPercentageWithSeparatorRegex, RegexFlags),
                     RegexTagGenerator.GenerateRegexTag(Constants.PERCENT_PREFIX, Constants.KOREAN)
                 },
                 {
                     // 3.2 k 퍼센트
-                    new Regex(NumbersDefinitions.NumbersPercentageWithMultiplierRegex, RegexFlags, RegexTimeOut),
+                    new Regex(NumbersDefinitions.NumbersPercentageWithMultiplierRegex, RegexFlags),
                     RegexTagGenerator.GenerateRegexTag(Constants.PERCENT_PREFIX, Constants.KOREAN)
                 },
                 {
                     // 15k퍼센트
-                    new Regex(NumbersDefinitions.SimpleNumbersPercentageWithMultiplierRegex, RegexFlags, RegexTimeOut),
+                    new Regex(NumbersDefinitions.SimpleNumbersPercentageWithMultiplierRegex, RegexFlags),
                     RegexTagGenerator.GenerateRegexTag(Constants.PERCENT_PREFIX, Constants.KOREAN)
                 },
                 {
                 // 마이너스십삼퍼센트
-                new Regex(NumbersDefinitions.SimpleIntegerPercentageRegex, RegexFlags, RegexTimeOut),
+                new Regex(NumbersDefinitions.SimpleIntegerPercentageRegex, RegexFlags),
                 RegexTagGenerator.GenerateRegexTag(Constants.PERCENT_PREFIX, Constants.KOREAN)
                 },
             };

@@ -1,10 +1,8 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using System.Text.RegularExpressions;
 using Microsoft.Recognizers.Definitions;
 
@@ -17,9 +15,7 @@ namespace Microsoft.Recognizers.Text.DateTime
         private const RegexOptions RegexFlags = RegexOptions.Singleline | RegexOptions.ExplicitCapture;
 
         private static readonly Regex BracketRegex =
-            new Regex(BaseDateTime.BracketRegex, RegexFlags, RegexTimeOut);
-
-        private static TimeSpan RegexTimeOut => DateTimeRecognizer.GetTimeout(MethodBase.GetCurrentMethod().DeclaringType);
+            new Regex(BaseDateTime.BracketRegex, RegexFlags);
 
         public static List<ExtractResult> MergeTimeZones(List<ExtractResult> originalErs, List<ExtractResult> timeZoneErs, string text)
         {

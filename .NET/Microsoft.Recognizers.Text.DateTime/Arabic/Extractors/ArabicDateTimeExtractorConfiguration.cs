@@ -12,58 +12,58 @@ namespace Microsoft.Recognizers.Text.DateTime.Arabic
     public class ArabicDateTimeExtractorConfiguration : BaseDateTimeOptionsConfiguration, IDateTimeExtractorConfiguration
     {
         public static readonly Regex PrepositionRegex =
-            new Regex(DateTimeDefinitions.PrepositionRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.PrepositionRegex, RegexFlags);
 
         public static readonly Regex NowRegex =
-            new Regex(DateTimeDefinitions.NowRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.NowRegex, RegexFlags);
 
         public static readonly Regex SuffixRegex =
-            new Regex(DateTimeDefinitions.SuffixRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.SuffixRegex, RegexFlags);
 
         public static readonly Regex TimeOfDayRegex =
-            new Regex(DateTimeDefinitions.TimeOfDayRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.TimeOfDayRegex, RegexFlags);
 
         public static readonly Regex SpecificTimeOfDayRegex =
-            new Regex(DateTimeDefinitions.SpecificTimeOfDayRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.SpecificTimeOfDayRegex, RegexFlags);
 
         public static readonly Regex TimeOfTodayAfterRegex =
-             new Regex(DateTimeDefinitions.TimeOfTodayAfterRegex, RegexFlags, RegexTimeOut);
+             new Regex(DateTimeDefinitions.TimeOfTodayAfterRegex, RegexFlags);
 
         public static readonly Regex TimeOfTodayBeforeRegex =
-            new Regex(DateTimeDefinitions.TimeOfTodayBeforeRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.TimeOfTodayBeforeRegex, RegexFlags);
 
         public static readonly Regex SimpleTimeOfTodayAfterRegex =
-            new Regex(DateTimeDefinitions.SimpleTimeOfTodayAfterRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.SimpleTimeOfTodayAfterRegex, RegexFlags);
 
         public static readonly Regex SimpleTimeOfTodayBeforeRegex =
-            new Regex(DateTimeDefinitions.SimpleTimeOfTodayBeforeRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.SimpleTimeOfTodayBeforeRegex, RegexFlags);
 
         public static readonly Regex SpecificEndOfRegex =
-            new Regex(DateTimeDefinitions.SpecificEndOfRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.SpecificEndOfRegex, RegexFlags);
 
         public static readonly Regex UnspecificEndOfRegex =
-            new Regex(DateTimeDefinitions.UnspecificEndOfRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.UnspecificEndOfRegex, RegexFlags);
 
         public static readonly Regex UnitRegex =
-            new Regex(DateTimeDefinitions.TimeUnitRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.TimeUnitRegex, RegexFlags);
 
         public static readonly Regex ConnectorRegex =
-            new Regex(DateTimeDefinitions.ConnectorRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.ConnectorRegex, RegexFlags);
 
         public static readonly Regex NumberAsTimeRegex =
-            new Regex(DateTimeDefinitions.NumberAsTimeRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.NumberAsTimeRegex, RegexFlags);
 
         public static readonly Regex DateNumberConnectorRegex =
-            new Regex(DateTimeDefinitions.DateNumberConnectorRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.DateNumberConnectorRegex, RegexFlags);
 
         public static readonly Regex YearRegex =
-            new Regex(DateTimeDefinitions.YearRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.YearRegex, RegexFlags);
 
         public static readonly Regex YearSuffix =
-            new Regex(DateTimeDefinitions.YearSuffix, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.YearSuffix, RegexFlags);
 
         public static readonly Regex SuffixAfterRegex =
-            new Regex(DateTimeDefinitions.SuffixAfterRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.SuffixAfterRegex, RegexFlags);
 
         private const RegexOptions RegexFlags = RegexOptions.Singleline | RegexOptions.ExplicitCapture | RegexOptions.RightToLeft;
 

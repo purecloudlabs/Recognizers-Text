@@ -19,28 +19,28 @@ namespace Microsoft.Recognizers.Text.DateTime.German
         private const RegexOptions RegexFlags = RegexOptions.Singleline | RegexOptions.ExplicitCapture;
 
         private static readonly Regex TimeSuffixFull =
-            new Regex(DateTimeDefinitions.TimeSuffixFull, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.TimeSuffixFull, RegexFlags);
 
         private static readonly Regex LunchRegex =
-            new Regex(DateTimeDefinitions.LunchRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.LunchRegex, RegexFlags);
 
         private static readonly Regex NightRegex =
-            new Regex(DateTimeDefinitions.NightRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.NightRegex, RegexFlags);
 
         private static readonly Regex HalfTokenRegex =
-            new Regex(DateTimeDefinitions.HalfTokenRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.HalfTokenRegex, RegexFlags);
 
         private static readonly Regex QuarterToTokenRegex =
-            new Regex(DateTimeDefinitions.QuarterToTokenRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.QuarterToTokenRegex, RegexFlags);
 
         private static readonly Regex QuarterPastTokenRegex =
-            new Regex(DateTimeDefinitions.QuarterPastTokenRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.QuarterPastTokenRegex, RegexFlags);
 
         private static readonly Regex ThreeQuarterToTokenRegex =
-            new Regex(DateTimeDefinitions.ThreeQuarterToTokenRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.ThreeQuarterToTokenRegex, RegexFlags);
 
         private static readonly Regex ThreeQuarterPastTokenRegex =
-            new Regex(DateTimeDefinitions.ThreeQuarterPastTokenRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.ThreeQuarterPastTokenRegex, RegexFlags);
 
         public GermanTimeParserConfiguration(ICommonDateTimeParserConfiguration config)
             : base(config)

@@ -20,12 +20,12 @@ namespace Microsoft.Recognizers.Text.Number.Chinese
             {
                 {
                     // 第一百五十四
-                    new Regex(NumbersDefinitions.OrdinalRegex, RegexFlags, RegexTimeOut),
+                    new Regex(NumbersDefinitions.OrdinalRegex, RegexFlags),
                     RegexTagGenerator.GenerateRegexTag(Constants.ORDINAL_PREFIX, Constants.CHINESE)
                 },
                 {
                     // 第２５６５,  第1234
-                    new Regex(NumbersDefinitions.OrdinalNumbersRegex, RegexFlags, RegexTimeOut),
+                    new Regex(NumbersDefinitions.OrdinalNumbersRegex, RegexFlags),
                     RegexTagGenerator.GenerateRegexTag(Constants.ORDINAL_PREFIX, Constants.CHINESE)
                 },
             };

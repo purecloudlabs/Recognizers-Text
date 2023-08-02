@@ -11,22 +11,22 @@ namespace Microsoft.Recognizers.Text.DateTime.Italian
     public class ItalianDateTimePeriodParserConfiguration : BaseDateTimeOptionsConfiguration, IDateTimePeriodParserConfiguration
     {
         public static readonly Regex MorningStartEndRegex =
-            new Regex(DateTimeDefinitions.MorningStartEndRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.MorningStartEndRegex, RegexFlags);
 
         public static readonly Regex AfternoonStartEndRegex =
-            new Regex(DateTimeDefinitions.AfternoonStartEndRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.AfternoonStartEndRegex, RegexFlags);
 
         public static readonly Regex EveningStartEndRegex =
-            new Regex(DateTimeDefinitions.EveningStartEndRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.EveningStartEndRegex, RegexFlags);
 
         public static readonly Regex NightStartEndRegex =
-            new Regex(DateTimeDefinitions.NightStartEndRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.NightStartEndRegex, RegexFlags);
 
         public static readonly Regex PastSuffixRegex =
-            new Regex(DateTimeDefinitions.PastSuffixRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.PastSuffixRegex, RegexFlags);
 
         public static readonly Regex NextSuffixRegex =
-            new Regex(DateTimeDefinitions.NextSuffixRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.NextSuffixRegex, RegexFlags);
 
         private const RegexOptions RegexFlags = RegexOptions.Singleline | RegexOptions.ExplicitCapture;
 

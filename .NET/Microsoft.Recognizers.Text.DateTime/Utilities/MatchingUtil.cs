@@ -4,7 +4,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using System.Text.RegularExpressions;
 
 using Microsoft.Recognizers.Text.Matcher;
@@ -16,9 +15,7 @@ namespace Microsoft.Recognizers.Text.DateTime
     {
         private const RegexOptions RegexFlags = RegexOptions.Singleline | RegexOptions.ExplicitCapture;
         private static readonly Regex InvalidDayNumberPrefix =
-            new Regex(Definitions.BaseDateTime.InvalidDayNumberPrefix, RegexFlags, RegexTimeOut);
-
-        private static TimeSpan RegexTimeOut => DateTimeRecognizer.GetTimeout(MethodBase.GetCurrentMethod().DeclaringType);
+            new Regex(Definitions.BaseDateTime.InvalidDayNumberPrefix, RegexFlags);
 
         public static bool IsInvalidDayNumberPrefix(string prefix)
         {

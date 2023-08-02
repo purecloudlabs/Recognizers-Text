@@ -3,7 +3,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Reflection;
 using System.Text.RegularExpressions;
 
 namespace Microsoft.Recognizers.Text.Number
@@ -15,8 +14,6 @@ namespace Microsoft.Recognizers.Text.Number
         public abstract Regex RoundNumberIntegerRegexWithLocks { get; set; }
 
         public abstract Regex ConnectorRegex { get; set; }
-
-        protected static TimeSpan RegexTimeOut => NumberRecognizer.GetTimeout(MethodBase.GetCurrentMethod().DeclaringType);
 
         // Currently, this extractor is only for English number extracting.
         public List<ExtractResult> Extract(string source)

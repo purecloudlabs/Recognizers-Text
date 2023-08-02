@@ -1,7 +1,6 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Text.RegularExpressions;
 using Microsoft.Recognizers.Definitions.Turkish;
@@ -15,10 +14,7 @@ namespace Microsoft.Recognizers.Text.DateTime.Turkish
         private const RegexOptions RegexFlags = RegexOptions.Singleline | RegexOptions.ExplicitCapture;
 
         private static readonly Regex DateUnitRegex =
-            new Regex(DateTimeDefinitions.DateUnitRegex, RegexFlags, RegexTimeOut);
-
-        // pass FutureTerms as List to ReplaceValueInTextWithFutTerm function
-        private static readonly List<string> ThisTerms = (List<string>)DateTimeDefinitions.FutureTerms;
+            new Regex(DateTimeDefinitions.DateUnitRegex, RegexFlags);
 
         public TurkishSetParserConfiguration(ICommonDateTimeParserConfiguration config)
             : base(config)
@@ -155,7 +151,5 @@ namespace Microsoft.Recognizers.Text.DateTime.Turkish
         }
 
         public string WeekDayGroupMatchString(Match match) => SetHandler.WeekDayGroupMatchString(match);
-
-        public string ReplaceValueInTextWithFutTerm(string text, string value) => TasksModeSetHandler.ReplaceValueInTextWithFutTerm(text, value, ThisTerms);
     }
 }

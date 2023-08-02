@@ -19,16 +19,16 @@ namespace Microsoft.Recognizers.Text.DateTime.French
         private const RegexOptions RegexFlags = RegexOptions.Singleline | RegexOptions.ExplicitCapture;
 
         private static readonly Regex HalfTokenRegex =
-            new Regex(DateTimeDefinitions.HalfTokenRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.HalfTokenRegex, RegexFlags);
 
         private static readonly Regex QuarterTokenRegex =
-            new Regex(DateTimeDefinitions.QuarterTokenRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.QuarterTokenRegex, RegexFlags);
 
         private static readonly Regex ThreeQuarterTokenRegex =
-            new Regex(DateTimeDefinitions.ThreeQuarterTokenRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.ThreeQuarterTokenRegex, RegexFlags);
 
         private static readonly Regex ToTokenRegex =
-            new Regex(DateTimeDefinitions.ToTokenRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.ToTokenRegex, RegexFlags);
 
         public FrenchTimeParserConfiguration(ICommonDateTimeParserConfiguration config)
             : base(config)

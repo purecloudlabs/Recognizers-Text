@@ -2766,19 +2766,33 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupported": "javascript, python, java",
     "Results": [
       {
-        "Text": "jeden tag um 19:13 uhr",
+        "Text": "jeden tag",
         "Start": 0,
-        "End": 21,
+        "End": 8,
         "TypeName": "datetimeV2.set",
         "Resolution": {
           "values": [
             {
-              "timex": "T19:13",
+              "timex": "P1D",
               "type": "set",
               "value": "not resolved"
+            }
+          ]
+        }
+      },
+      {
+        "Text": "19:13 uhr",
+        "Start": 13,
+        "End": 21,
+        "TypeName": "datetimeV2.time",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "T19:13",
+              "type": "time",
+              "value": "19:13:00"
             }
           ]
         }

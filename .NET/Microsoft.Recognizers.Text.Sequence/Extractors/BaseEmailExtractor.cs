@@ -5,7 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
-using System.Reflection;
 using System.Text.RegularExpressions;
 using Microsoft.Recognizers.Definitions;
 
@@ -13,7 +12,7 @@ namespace Microsoft.Recognizers.Text.Sequence
 {
     public class BaseEmailExtractor : BaseSequenceExtractor
     {
-        private static readonly Regex Rfc5322ValidationRegex = new Regex(BaseEmail.RFC5322Regex, RegexOptions.Compiled, RegexTimeOut);
+        private static readonly Regex Rfc5322ValidationRegex = new Regex(BaseEmail.RFC5322Regex, RegexOptions.Compiled);
 
         private static readonly char[] TrimmableChars = { '.' };
 
@@ -26,11 +25,11 @@ namespace Microsoft.Recognizers.Text.Sequence
             var regexes = new Dictionary<Regex, string>
             {
                 {
-                    new Regex(BaseEmail.EmailRegex, RegexOptions.Compiled, RegexTimeOut),
+                    new Regex(BaseEmail.EmailRegex, RegexOptions.Compiled),
                     Constants.EMAIL_REGEX
                 },
                 {
-                    new Regex(BaseEmail.EmailRegex2, RegexOptions.Compiled, RegexTimeOut),
+                    new Regex(BaseEmail.EmailRegex2, RegexOptions.Compiled),
                     Constants.EMAIL_REGEX
                 },
             };
@@ -39,8 +38,6 @@ namespace Microsoft.Recognizers.Text.Sequence
         }
 
         internal override ImmutableDictionary<Regex, string> Regexes { get; }
-
-        protected static TimeSpan RegexTimeOut => SequenceRecognizer.GetTimeout(MethodBase.GetCurrentMethod().DeclaringType);
 
         protected sealed override string ExtractType { get; } = Constants.SYS_EMAIL;
 

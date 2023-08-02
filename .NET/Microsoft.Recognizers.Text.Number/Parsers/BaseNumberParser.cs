@@ -5,7 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Reflection;
 using System.Text.RegularExpressions;
 
 namespace Microsoft.Recognizers.Text.Number
@@ -13,7 +12,7 @@ namespace Microsoft.Recognizers.Text.Number
     public class BaseNumberParser : IParser
     {
         private static readonly Regex LongFormRegex =
-            new Regex(@"\d+", RegexOptions.Singleline | RegexOptions.Compiled, RegexTimeOut);
+            new Regex(@"\d+", RegexOptions.Singleline | RegexOptions.Compiled);
 
         private readonly bool isMultiDecimalSeparatorCulture = false;
 
@@ -42,8 +41,6 @@ namespace Microsoft.Recognizers.Text.Number
         internal IEnumerable<string> SupportedTypes { get; set; }
 
         protected static Regex LongFormatRegex => LongFormRegex;
-
-        protected static TimeSpan RegexTimeOut => NumberRecognizer.GetTimeout(MethodBase.GetCurrentMethod().DeclaringType);
 
         protected INumberParserConfiguration Config { get; private set; }
 
@@ -1030,7 +1027,7 @@ namespace Microsoft.Recognizers.Text.Number
                 textNumberPattern = @"(?<=\b)(" + singleIntFrac + @")(?=\b)";
             }
 
-            return new Regex(textNumberPattern, RegexOptions.Singleline | RegexOptions.Compiled, RegexTimeOut);
+            return new Regex(textNumberPattern, RegexOptions.Singleline | RegexOptions.Compiled);
         }
     }
 }

@@ -2,19 +2,13 @@
 // Licensed under the MIT License.
 
 using System;
-using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Text.RegularExpressions;
-using Microsoft.Recognizers.Definitions.Italian;
-using Microsoft.Recognizers.Text.DateTime.Utilities;
 
 namespace Microsoft.Recognizers.Text.DateTime.Italian
 {
     public class ItalianSetParserConfiguration : BaseDateTimeOptionsConfiguration, ISetParserConfiguration
     {
-        // pass FutureTerms as List to ReplaceValueInTextWithFutTerm function
-        private static readonly List<string> ThisTerms = (List<string>)DateTimeDefinitions.FutureStartTerms;
-
         public ItalianSetParserConfiguration(ICommonDateTimeParserConfiguration config)
             : base(config)
         {
@@ -202,7 +196,5 @@ namespace Microsoft.Recognizers.Text.DateTime.Italian
 
             return weekday;
         }
-
-        public string ReplaceValueInTextWithFutTerm(string text, string value) => TasksModeSetHandler.ReplaceValueInTextWithFutTerm(text, value, ThisTerms);
     }
 }

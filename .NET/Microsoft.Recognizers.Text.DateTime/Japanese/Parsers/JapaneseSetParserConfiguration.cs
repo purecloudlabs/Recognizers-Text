@@ -16,19 +16,19 @@ namespace Microsoft.Recognizers.Text.DateTime.Japanese
         private const RegexOptions RegexFlags = RegexOptions.Singleline | RegexOptions.ExplicitCapture;
 
         private static readonly Regex DayTypeRegex =
-            new Regex(DateTimeDefinitions.DayTypeRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.DayTypeRegex, RegexFlags);
 
         private static readonly Regex WeekTypeRegex =
-            new Regex(DateTimeDefinitions.WeekTypeRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.WeekTypeRegex, RegexFlags);
 
         private static readonly Regex BiWeekTypeRegex =
-            new Regex(DateTimeDefinitions.BiWeekTypeRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.BiWeekTypeRegex, RegexFlags);
 
         private static readonly Regex MonthTypeRegex =
-            new Regex(DateTimeDefinitions.MonthTypeRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.MonthTypeRegex, RegexFlags);
 
         private static readonly Regex YearTypeRegex =
-            new Regex(DateTimeDefinitions.YearTypeRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.YearTypeRegex, RegexFlags);
 
         public JapaneseSetParserConfiguration(ICJKCommonDateTimeParserConfiguration config)
             : base(config)

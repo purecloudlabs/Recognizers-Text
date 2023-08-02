@@ -2,6 +2,7 @@
 // Licensed under the MIT License.
 
 using System.Text.RegularExpressions;
+using Microsoft.Recognizers.Definitions;
 using Microsoft.Recognizers.Definitions.Chinese;
 
 namespace Microsoft.Recognizers.Text.Sequence.Chinese
@@ -11,8 +12,8 @@ namespace Microsoft.Recognizers.Text.Sequence.Chinese
         public ChineseURLExtractorConfiguration(SequenceOptions options)
             : base(options)
         {
-            UrlRegex = new Regex(URLDefinitions.UrlRegex, RegexOptions.Compiled, RegexTimeOut);
-            IpUrlRegex = new Regex(URLDefinitions.IpUrlRegex, RegexOptions.Compiled, RegexTimeOut);
+            UrlRegex = new Regex(URLDefinitions.UrlRegex, RegexOptions.Compiled);
+            IpUrlRegex = new Regex(URLDefinitions.IpUrlRegex, RegexOptions.Compiled);
         }
     }
 }

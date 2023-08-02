@@ -18,16 +18,16 @@ namespace Microsoft.Recognizers.Text.DateTime.Spanish
         private const RegexOptions RegexFlags = RegexOptions.Singleline | RegexOptions.ExplicitCapture;
 
         private static readonly Regex HalfTokenRegex =
-            new Regex(DateTimeDefinitions.HalfTokenRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.HalfTokenRegex, RegexFlags);
 
         private static readonly Regex QuarterTokenRegex =
-            new Regex(DateTimeDefinitions.QuarterTokenRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.QuarterTokenRegex, RegexFlags);
 
         private static readonly Regex PastTokenRegex =
-            new Regex(DateTimeDefinitions.PastTokenRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.PastTokenRegex, RegexFlags);
 
         private static readonly Regex ToTokenRegex =
-            new Regex(DateTimeDefinitions.ToTokenRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.ToTokenRegex, RegexFlags);
 
         public SpanishTimeParserConfiguration(ICommonDateTimeParserConfiguration config)
             : base(config)

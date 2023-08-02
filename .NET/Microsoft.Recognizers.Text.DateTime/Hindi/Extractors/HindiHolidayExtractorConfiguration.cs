@@ -11,16 +11,16 @@ namespace Microsoft.Recognizers.Text.DateTime.Hindi
     public class HindiHolidayExtractorConfiguration : BaseDateTimeOptionsConfiguration, IHolidayExtractorConfiguration
     {
         public static readonly Regex YearRegex =
-            new Regex(DateTimeDefinitions.YearRegex, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.YearRegex, RegexFlags);
 
         public static readonly Regex H1 =
-            new Regex(DateTimeDefinitions.HolidayRegex1, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.HolidayRegex1, RegexFlags);
 
         public static readonly Regex H2 =
-            new Regex(DateTimeDefinitions.HolidayRegex2, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.HolidayRegex2, RegexFlags);
 
         public static readonly Regex H3 =
-            new Regex(DateTimeDefinitions.HolidayRegex3, RegexFlags, RegexTimeOut);
+            new Regex(DateTimeDefinitions.HolidayRegex3, RegexFlags);
 
         public static readonly Regex[] HolidayRegexList =
         {
