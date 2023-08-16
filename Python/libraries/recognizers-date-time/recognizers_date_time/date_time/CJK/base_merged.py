@@ -388,7 +388,7 @@ class BaseCJKMergedParser(DateTimeParser):
                     er.length -= before_match.length
                     if er.length > len(er.text):
                         er.text = er.text[0:er.length]
-                    mod_str = before_match.value
+                    mod_str = before_match.value if before_match.value != er.text else ''
                     if before_match.get_group(Constants.INCLUDE_GROUP_NAME):
                         has_inclusive_modifier = True
 
