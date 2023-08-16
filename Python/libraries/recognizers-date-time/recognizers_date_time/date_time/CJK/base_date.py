@@ -71,6 +71,11 @@ class CJKDateExtractorConfiguration(ABC):
     def number_parser(self) -> CJKNumberParser:
         raise NotImplementedError
 
+    @property
+    @abstractmethod
+    def time_clock_desc_regex(self) -> Pattern:
+        raise NotImplementedError
+
 
 class BaseCJKDateExtractor(DateTimeExtractor, AbstractYearExtractor):
     @property
@@ -130,7 +135,7 @@ class BaseCJKDateExtractor(DateTimeExtractor, AbstractYearExtractor):
             # Cases with dateTime durations will be handled in DateTime Extractor
             if self.config.datetime_period_unit_regex.match(extracted_result.text):
                 continue
-            if regex.search('時', extracted_result.text):
+            if self.config.time_clock_desc_regex.search(extracted_result.text):
                 continue
 
             pos = extracted_result.start + extracted_result.length
