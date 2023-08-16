@@ -6,6 +6,8 @@ from dateutil.relativedelta import relativedelta
 
 from typing import List, Pattern, Dict, Match
 
+from regex import regex
+
 from recognizers_number.number import CJKNumberParser, Constants as Num_Constants
 from recognizers_date_time.date_time import Constants as Date_Constants
 from recognizers_date_time.date_time.base_date import BaseDateParser
@@ -127,6 +129,8 @@ class BaseCJKDateExtractor(DateTimeExtractor, AbstractYearExtractor):
             # Only handles date durations here
             # Cases with dateTime durations will be handled in DateTime Extractor
             if self.config.datetime_period_unit_regex.match(extracted_result.text):
+                continue
+            if regex.search('時', extracted_result.text):
                 continue
 
             pos = extracted_result.start + extracted_result.length
