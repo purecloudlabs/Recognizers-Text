@@ -163,12 +163,6 @@ def test_datetime_model(
             assert_model_resolution(actual_resolution_value, expected['Resolution']['values'], spec_info)
 
 
-def test_xxxx():
-    res = recognize_datetime("7時前に到着すれば入れますか”？", "ja")
-
-    print(res)
-
-
 def get_props(results, prop):
     list_result = []
     for result in results:
