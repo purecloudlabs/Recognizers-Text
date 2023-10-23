@@ -90,7 +90,7 @@ AmPmDescRegex: !nestedRegex
   def: (في\s)?(صباح(ا)?|صباحًا|الصباح|(ال)?مساء|مساءً|{BaseDateTime.BaseAmPmDescRegex})
   references: [BaseDateTime.BaseAmPmDescRegex]
 DescRegex: !nestedRegex
-  def: (:?(:?({OclockRegex}\s+)?(?<desc>({AmPmDescRegex}|{AmDescRegex}|{PmDescRegex}|{SpecialDescRegex})))|{OclockRegex})
+  def: (?:(?:({OclockRegex}\s+)?(?<desc>({AmPmDescRegex}|{AmDescRegex}|{PmDescRegex}|{SpecialDescRegex})))|{OclockRegex})
   references: [ OclockRegex, AmDescRegex, PmDescRegex, AmPmDescRegex, SpecialDescRegex ]
 OfPrepositionRegex: !simpleRegex
   def: (\bof\b)
@@ -462,7 +462,7 @@ TimeRegex6: !nestedRegex
   def: '{BasicTime}(\s*{DescRegex})?\s+{TimeSuffix}\b'
   references: [ BasicTime, DescRegex, TimeSuffix ]
 TimeRegex7: !nestedRegex
-  def: \b({DescRegex}\s)?(وقت الغداء\s)?({TimeSuffixFull}\s+)?(في\s+)?{BasicTime}(\s{DescRegex})?(\sوقت الغداء)?(\s{TimePrefix})?((\s*{DescRegex})|\b)?
+  def: \b({DescRegex}\s)?(وقت الغداء\s)?{TimeSuffixFull}\s+(في\s+)?{BasicTime}(\s{DescRegex})?(\sوقت الغداء)?(\s{TimePrefix})?((\s*{DescRegex})|\b)?
   references: [ TimeSuffixFull, BasicTime, DescRegex, TimePrefix ]
 TimeRegex8: !nestedRegex
   def: .^
