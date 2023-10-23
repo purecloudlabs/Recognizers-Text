@@ -453,7 +453,7 @@ TimeRegex3: !nestedRegex
   def: (\b{TimePrefix}\s+)?{BaseDateTime.HourRegex}\.{BaseDateTime.MinuteRegex}(\s*{DescRegex})
   references: [ TimePrefix, BaseDateTime.HourRegex, BaseDateTime.MinuteRegex, DescRegex ]
 TimeRegex4: !nestedRegex
-  def: \b({TimePrefix}\s+)?{BasicTime}(\s*{DescRegex})?\s+{TimeSuffix}(\s*{DescRegex})?\b
+  def: \b({TimePrefix}\s+)?{BasicTime}(\s*{DescRegex})?(\s+{TimeSuffix})?(\s*{DescRegex})?\b
   references: [ TimePrefix, BasicTime, DescRegex, TimeSuffix ]
 TimeRegex5: !nestedRegex
   def: \b({DescRegex}\s)?{BasicTime}((\s*{DescRegex})((\s+{TimePrefix})?)|(\s+{TimePrefix}(\s+{TimePrefix})?))(\s{DescRegex})?
@@ -462,7 +462,7 @@ TimeRegex6: !nestedRegex
   def: '{BasicTime}(\s*{DescRegex})?\s+{TimeSuffix}\b'
   references: [ BasicTime, DescRegex, TimeSuffix ]
 TimeRegex7: !nestedRegex
-  def: \b({DescRegex}\s)?(وقت الغداء\s)?{TimeSuffixFull}\s+(في\s+)?{BasicTime}(\s{DescRegex})?(\sوقت الغداء)?(\s{TimePrefix})?((\s*{DescRegex})|\b)?
+  def: \b({DescRegex}\s)?(وقت الغداء\s)?({TimeSuffixFull}\s+)?(في\s+)?{BasicTime}(\s{DescRegex})?(\sوقت الغداء)?(\s{TimePrefix})?((\s*{DescRegex})|\b)?
   references: [ TimeSuffixFull, BasicTime, DescRegex, TimePrefix ]
 TimeRegex8: !nestedRegex
   def: .^
