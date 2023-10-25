@@ -1629,5 +1629,26 @@
         }
       }
     ]
+  },
+  {
+    "Input": "7:00 ص",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "7:00 ص",
+        "Start": 0,
+        "Length": 6,
+        "Type": "time",
+        "Value": {
+          "Timex": "T07:00",
+          "FutureResolution": {
+            "time": "07:00:00"
+          },
+          "PastResolution": {
+            "time": "07:00:00"
+          }
+        }
+      }
+    ]
   }
 ]

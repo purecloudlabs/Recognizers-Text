@@ -35,7 +35,7 @@ class ArabicDateTime:
     FullTextYearRegex = f'(?<firsttwoyearnum>{CenturyRegex})\\s*(?<lasttwoyearnum>{LastTwoYearNumRegex})|(?<firsttwoyearnum>{WrittenCenturyFullYearRegex})|{WrittenCenturyOrdinalYearRegex}'
     OclockRegex = f'(?<oclock>(ال)?ساعة|(ال)?ساعات)'
     SpecialDescRegex = f'((?<ipm>)p\\b)'
-    AmDescRegex = f'(في\\s)?(صباح(ا)?|صباحًا|الصباح|{BaseDateTime.BaseAmDescRegex})'
+    AmDescRegex = f'(في\\s)?(صباح(ا)?|صباحًا|ص|الصباح|{BaseDateTime.BaseAmDescRegex})'
     PmDescRegex = f'(في\\s)?((ال)?مساء|مساءً|ليلًا|ليلا|(ال)?ليل(ة)?|بعد الظهر|الظهر|ظهرا|{BaseDateTime.BasePmDescRegex})'
     AmPmDescRegex = f'({BaseDateTime.BaseAmPmDescRegex})'
     DescRegex = f'(?:(?:({OclockRegex}\\s+)?(?<desc>({AmPmDescRegex}|{AmDescRegex}|{PmDescRegex}|{SpecialDescRegex})|{OclockRegex})))'

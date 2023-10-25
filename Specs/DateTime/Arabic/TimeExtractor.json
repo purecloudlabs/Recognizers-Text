@@ -896,5 +896,17 @@
         "Type": "time"
       }
     ]
+  },
+  {
+    "Input": "7:00 ص",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "7:00 ص",
+        "Start": 0,
+        "Length": 6,
+        "Type": "time"
+      }
+    ]
   }
 ]
