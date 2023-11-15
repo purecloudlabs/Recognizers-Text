@@ -195,7 +195,7 @@ class ArabicDateTime:
     LaterEarlyRegex = f'((?<early>(\\s+|-)الباكر)|(?<late>وقت متأخر(\\s+|-))|أواخر(\\s+|-)|وقت مبكر(\\s+|-)|أول(\\s+|-)|آخر(\\s+|-))'
     MealTimeRegex = f'\\b((في|عند)\\s+)?(وقت\\s)?(?<mealTime>(ال)?إفطار|(ال)?فطور|(ال)?عشاء|(ال)?غذاء)\\b'
     UnspecificTimePeriodRegex = f'({MealTimeRegex})'
-    TimeOfDayRegex = f'\\b(?<timeOfDay>((((في|عند)\\s+)?{LaterEarlyRegex}?(من\\s+)?(الصباح|بعد الظهر|الليل|المساء|الظهر|الأمسيات){LaterEarlyRegex}?)|{MealTimeRegex}|(((في|عند|خلال)\\s+)?(النهار|((ساعة|ساعات)(\\s)?العمل)))))\\b'
+    TimeOfDayRegex = f'\\b(?<timeOfDay>((((في|عند)\\s+)?{LaterEarlyRegex}?(من\\s+)?(الصباح|بعد الظهر|الليل|المساء|الأمسيات){LaterEarlyRegex}?)|{MealTimeRegex}|(((في|عند|خلال)\\s+)?(النهار|((ساعة|ساعات)(\\s)?العمل)))))\\b'
     SpecificTimeOfDayRegex = f'\\b(({StrictRelativeRegex}\\s+{TimeOfDayRegex})\\b|\\btoni(ght|te))s?\\b'
     TimeFollowedUnit = f'^\\s*{TimeUnitRegex}'
     TimeNumberCombinedWithUnit = f'\\b(?<num>\\d+(\\.\\d*)?)(\\s)?(-)?{TimeUnitRegex}'
