@@ -31,7 +31,7 @@ class CatalanNumberWithUnitExtractorConfiguration(NumberWithUnitExtractorConfigu
 
     @property
     def connector_token(self) -> str:
-        return None
+        return CatalanNumericWithUnit.ConnectorToken
 
     @property
     def compound_unit_connector_regex(self) -> Pattern:
