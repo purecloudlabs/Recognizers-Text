@@ -3,10 +3,10 @@ from .base_numbers import BaseNumbers
 
 
 class CatalanNumericWithUnit:
-    CurrencySuffixList = dict([("Dòlar", "dòlar|dòlars|dolar|dolars"),
+    CurrencySuffixList = dict([("Dòlar", "dòlar|dòlars|dolar|dolars|$"),
                                 ("Pes", "pes|pesos"),
                                 ("Ruble", "ruble|rubles"),
-                                ("Lliura", "lliura|lliures"),
+                                ("Lliura", "lliura|lliures|£"),
                                 ("Florín", "florín|florines"),
                                 ("Dinar", "dinar|dinars"),
                                 ("Franc", "franc|francs"),
@@ -14,7 +14,7 @@ class CatalanNumericWithUnit:
                                 ("Escut", "escut|escuts"),
                                 ("Xelín", "xíling|xílins"),
                                 ("Lira", "lira|lires"),
-                                ("Centau", "centavo|centavos"),
+                                ("Centavo", "centavo|centavos|centaus|centau"),
                                 ("Cèntim", "cèntim|cèntims"),
                                 ("Centèsim", "centèsim|centèsims"),
                                 ("Penique", "penique|peniques"),
@@ -631,4 +631,5 @@ class CatalanNumericWithUnit:
     AmbiguousCurrencyUnitList = [r'le', r'db', r'std']
     BuildPrefix = f'(?<=(\\s|^|\\P{{L}}))'
     BuildSuffix = f'(?=(\\s|\\P{{L}}|$))'
+    ConnectorToken = 'de'
 # pylint: enable=line-too-long

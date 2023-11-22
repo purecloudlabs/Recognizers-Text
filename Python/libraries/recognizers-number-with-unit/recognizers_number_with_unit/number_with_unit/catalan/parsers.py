@@ -20,7 +20,7 @@ class CatalanNumberWithUnitParserConfiguration(NumberWithUnitParserConfiguration
 
     @property
     def connector_token(self) -> str:
-        return None
+        return CatalanNumericWithUnit.ConnectorToken
 
     def __init__(self, culture_info: CultureInfo):
         if culture_info is None:
