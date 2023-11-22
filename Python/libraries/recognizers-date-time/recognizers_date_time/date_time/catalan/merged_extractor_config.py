@@ -11,6 +11,7 @@ from ..base_time import BaseTimeExtractor
 from .date_extractor_config import CatalanDateExtractorConfiguration
 from .time_extractor_config import CatalanTimeExtractorConfiguration
 from ...resources.base_date_time import BaseDateTime
+from recognizers_date_time.date_time.catalan.base_datetime import MinimalDateTimeExtractor
 
 
 class CatalanMergedExtractorConfiguration(MinimalMergedExtractorConfiguration):
@@ -25,6 +26,10 @@ class CatalanMergedExtractorConfiguration(MinimalMergedExtractorConfiguration):
     @property
     def time_extractor(self) -> DateTimeExtractor:
         return self._time_extractor
+
+    @property
+    def date_time_extractor(self) -> DateTimeExtractor:
+        return self._date_time_extractor
 
     @property
     def integer_extractor(self) -> Extractor:
@@ -59,6 +64,7 @@ class CatalanMergedExtractorConfiguration(MinimalMergedExtractorConfiguration):
         self._date_extractor = BaseDateExtractor(
             CatalanDateExtractorConfiguration())
         self._time_extractor = BaseTimeExtractor(CatalanTimeExtractorConfiguration())
+        self._date_time_extractor = MinimalDateTimeExtractor()
         self._integer_extractor = CatalanIntegerExtractor()
         self._filter_word_regex_list = []
         self._equal_regex = BaseDateTime.EqualRegex
