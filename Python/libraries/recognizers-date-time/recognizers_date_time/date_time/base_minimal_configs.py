@@ -41,12 +41,22 @@ class MinimalBaseDateParserConfiguration(ABC):
 
     @property
     @abstractmethod
+    def date_time_extractor(self) -> DateTimeExtractor:
+        raise NotImplementedError
+
+    @property
+    @abstractmethod
     def date_parser(self) -> DateTimeParser:
         raise NotImplementedError
 
     @property
     @abstractmethod
     def time_parser(self) -> DateTimeParser:
+        raise NotImplementedError
+
+    @property
+    @abstractmethod
+    def date_time_parser(self) -> DateTimeParser:
         raise NotImplementedError
 
     @property

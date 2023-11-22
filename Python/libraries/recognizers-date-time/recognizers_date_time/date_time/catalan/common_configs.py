@@ -10,7 +10,6 @@ from ...resources.catalan_date_time import CatalanDateTime
 from ..extractors import DateTimeExtractor
 from ..parsers import DateTimeParser
 from ..base_configs import DateTimeUtilityConfiguration
-from ..base_duration import BaseDurationExtractor, BaseDurationParser
 from ..base_minimal_configs import MinimalBaseDateParserConfiguration
 from ..base_date import BaseDateExtractor, DateExtractorConfiguration, BaseDateParser
 from ..base_time import BaseTimeExtractor, BaseTimeParser
@@ -20,6 +19,7 @@ from .date_extractor_config import CatalanDateExtractorConfiguration
 from .date_parser_config import CatalanDateParserConfiguration
 from .time_extractor_config import CatalanTimeExtractorConfiguration
 from .time_parser_config import CatalanTimeParserConfiguration
+from recognizers_date_time.date_time.catalan.base_datetime import MinimalDateTimeParser, MinimalDateTimeExtractor
 
 
 class CatalanBaseDateExtractor(BaseDateExtractor):
@@ -75,12 +75,20 @@ class CatalanCommonDateTimeParserConfiguration(MinimalBaseDateParserConfiguratio
         return self._time_extractor
 
     @property
+    def date_time_extractor(self) -> DateTimeExtractor:
+        return self._date_time_extractor
+
+    @property
     def date_parser(self) -> DateTimeParser:
         return self._date_parser
 
     @property
     def time_parser(self) -> DateTimeParser:
         return self._time_parser
+
+    @property
+    def date_time_parser(self) -> DateTimeParser:
+        return self._date_time_parser
 
     @property
     def month_of_year(self) -> Dict[str, int]:
@@ -130,3 +138,5 @@ class CatalanCommonDateTimeParserConfiguration(MinimalBaseDateParserConfiguratio
         self._date_parser = BaseDateParser(
             CatalanDateParserConfiguration(self))
         self._time_parser = BaseTimeParser(CatalanTimeParserConfiguration(self))
+        self._date_time_extractor = MinimalDateTimeExtractor()
+        self._date_time_parser = MinimalDateTimeParser()
