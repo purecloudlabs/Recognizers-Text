@@ -190,6 +190,7 @@ class BaseCurrency:
                                      ("Santeem", 100),
                                      ("Cêntimo", 100),
                                      ("Centavo", 100),
+                                     ("Cèntim", 100),
                                      ("Luma", 100),
                                      ("Qəpik", 100),
                                      ("Fils", 1000),
