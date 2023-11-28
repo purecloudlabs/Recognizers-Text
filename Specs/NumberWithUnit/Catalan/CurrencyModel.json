@@ -137,5 +137,51 @@
         }
       }
     ]
+  },
+  {
+    "Input": "2 milions de dòlars nord-americans",
+    "Results": [
+      {
+        "Text": "2 milions de dòlars nord-americans",
+        "TypeName": "currency",
+        "Resolution": {
+          "value": "2000000",
+          "unit": "Dòlar nord-americà",
+          "isoCurrency": "USD"
+        },
+        "Start": 0,
+        "End": 33
+      }
+    ]
+  },
+  {
+    "Input": "80 centaus",
+    "Results": [
+      {
+        "Text": "80 centaus",
+        "TypeName": "currency",
+        "Resolution": {
+          "value": "80",
+          "unit": "Centavo"
+        },
+        "Start": 0,
+        "End": 9
+      }
+    ]
+  },
+  {
+    "Input": "345 $",
+    "Results": [
+      {
+        "Text": "345 $",
+        "TypeName": "currency",
+        "Resolution": {
+          "value": "345",
+          "unit": "Dòlar"
+        },
+        "Start": 0,
+        "End": 4
+      }
+    ]
   }
 ]

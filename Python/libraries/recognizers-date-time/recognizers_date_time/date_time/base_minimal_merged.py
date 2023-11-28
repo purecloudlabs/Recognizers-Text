@@ -39,6 +39,11 @@ class MinimalMergedExtractorConfiguration:
 
     @property
     @abstractmethod
+    def date_time_extractor(self) -> DateTimeExtractor:
+        raise NotImplementedError
+
+    @property
+    @abstractmethod
     def integer_extractor(self) -> Extractor:
         raise NotImplementedError
 
@@ -73,6 +78,8 @@ class MinimalMergedExtractor(DateTimeExtractor):
             result, self.config.date_extractor.extract(source, reference), source)
         result = self.add_to(
             result, self.config.time_extractor.extract(source, reference), source)
+        result = self.add_to(
+            result, self.config.date_time_extractor.extract(source, reference), source)
 
         # this should be at the end since if need the extractor to determine the previous text contains time or not
         result = self.add_to(
@@ -179,6 +186,11 @@ class MinimalMergedParserConfiguration(ABC):
     @property
     @abstractmethod
     def time_parser(self) -> BaseTimeParser:
+        raise NotImplementedError
+
+    @property
+    @abstractmethod
+    def date_time_parser(self) -> BaseTimeParser:
         raise NotImplementedError
 
 
@@ -298,6 +310,8 @@ class MinimalMergedParser(DateTimeParser):
             result = self.config.date_parser.parse(source, reference)
         elif source.type == Constants.SYS_DATETIME_TIME:
             result = self.config.time_parser.parse(source, reference)
+        elif source.type == Constants.SYS_DATETIME_DATETIME:
+            result = self.config.date_time_parser.parse(source, reference)
         else:
             return None
 
@@ -474,7 +488,10 @@ class MinimalMergedParser(DateTimeParser):
     def _generate_from_resolution(self, dtype: str, resolution: Dict[str, str], mod: str) -> Dict[str, str]:
         result = {}
 
-        if dtype == Constants.SYS_DATETIME_TIME:
+        if dtype == Constants.SYS_DATETIME_DATETIME:
+            self.__add_single_date_time_to_resolution(
+                resolution, TimeTypeConstants.DATETIME, mod, result)
+        elif dtype == Constants.SYS_DATETIME_TIME:
             self.__add_single_date_time_to_resolution(
                 resolution, TimeTypeConstants.TIME, mod, result)
         elif dtype == Constants.SYS_DATETIME_DATE:

@@ -47,6 +47,10 @@ class CatalanMergedParserConfiguration(CatalanCommonDateTimeParserConfiguration,
         return self._time_parser
 
     @property
+    def date_time_parser(self) -> BaseTimeParser:
+        return self._date_time_parser
+
+    @property
     def time_zone_parser(self) -> DateTimeParser:
         return self._time_zone_parser
 
