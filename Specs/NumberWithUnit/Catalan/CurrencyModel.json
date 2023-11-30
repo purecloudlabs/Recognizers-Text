@@ -183,5 +183,20 @@
         "End": 4
       }
     ]
+  },
+  {
+    "Input": "cent deu dòlars i catorze cèntims",
+    "Results": [
+      {
+        "Text": "cent deu dòlars i catorze cèntims",
+        "TypeName": "currency",
+        "Resolution": {
+          "value": "110,14",
+          "unit": "Dòlar"
+        },
+        "Start": 0,
+        "End": 32
+      }
+    ]
   }
 ]
