@@ -158,5 +158,25 @@
         "Length": 12
       }
     ]
+  },
+  {
+    "Input": "dues menys quart",
+    "Results": [
+      {
+        "Text": "dues menys quart",
+        "Type": "time",
+        "Value": {
+          "Timex": "T01:45",
+          "FutureResolution": {
+            "time": "01:45:00"
+          },
+          "PastResolution": {
+            "time": "01:45:00"
+          }
+        },
+        "Start": 0,
+        "Length": 16
+      }
+    ]
   }
 ]

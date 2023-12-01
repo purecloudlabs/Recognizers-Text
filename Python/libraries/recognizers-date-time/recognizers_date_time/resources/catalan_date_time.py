@@ -160,6 +160,7 @@ class CatalanDateTime:
                     ("un", 1),
                     ("una", 1),
                     ("dos", 2),
+                    ("dues", 2),
                     ("tres", 3),
                     ("trés", 3),
                     ("quatre", 4),

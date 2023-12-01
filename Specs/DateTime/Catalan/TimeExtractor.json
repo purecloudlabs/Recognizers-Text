@@ -97,5 +97,16 @@
         "Length": 12
       }
     ]
+  },
+  {
+    "Input": "dues menys quart",
+    "Results": [
+      {
+        "Text": "dues menys quart",
+        "Type": "time",
+        "Start": 0,
+        "Length": 16
+      }
+    ]
   }
 ]
