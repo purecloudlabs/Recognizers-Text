@@ -77,24 +77,24 @@
     ]
   },
   {
-    "Input": "un quart de 14:00",
+    "Input": "un quart de nou",
     "Results": [
       {
-        "Text": "quart de 14",
+        "Text": "un quart de nou",
         "Type": "time",
-        "Start": 3,
-        "Length":11
+        "Start": 0,
+        "Length":15
       }
     ]
   },
   {
-    "Input": "un quart de nou",
+    "Input": "Hi ha vol cap a un quart de 14:00?",
     "Results": [
       {
-        "Text": "quart de nou",
+        "Text": " un quart de 14",
         "Type": "time",
-        "Start": 3,
-        "Length": 12
+        "Start": 15,
+        "Length": 16
       }
     ]
   },

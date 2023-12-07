@@ -90,7 +90,7 @@ class CatalanDateTime:
     LastNightTimeRegex = f'(ahir a la nit)'
     NowTimeRegex = f'(ara|mateix|moment)'
     RecentlyTimeRegex = f'(ment)'
-    LessThanOneHour = f'(?<lth>((\\s+(i|un)\\s+)?quart(s)?|(\\s*)menys quart(s)?|(\\s+i\\s+)mitja(na)?|{BaseDateTime.DeltaMinuteRegex}(\\s+(minuts?|mins?))|{DeltaMinuteNumRegex}(\\s+(minuts?|mins?))))'
+    LessThanOneHour = f'(?<lth>(((\\s)?(i|un)\\s+)?quart(s)?|(\\s*)menys quart(s)?|(\\s+i\\s+)mitja(na)?|{BaseDateTime.DeltaMinuteRegex}(\\s+(minuts?|mins?))|{DeltaMinuteNumRegex}(\\s+(minuts?|mins?))))'
     TensTimeRegex = f'(?<tens>deu|vint|trenta|quaranta|cinquanta)'
     WrittenTimeRegex = f'(?<writtentime>{HourNumRegex}\\s*((i|(?<prefix>menys))\\s+)?(({TensTimeRegex}(\\s*i\\s+)?)?{MinuteNumRegex}))'
     TimePrefix = f'(?<prefix>{LessThanOneHour}(\\s+(passades|de)\\s+(de\\s+les|les)?|\\s+(per\\s+a|abans\\s+de)?\\s+(les?)|\\s+(d\')|\\s+(menys))?)'

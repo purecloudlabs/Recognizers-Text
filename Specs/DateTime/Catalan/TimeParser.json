@@ -120,30 +120,10 @@
     ]
   },
   {
-    "Input": "un quart de 14:00",
-    "Results": [
-      {
-        "Text": "quart de 14",
-        "Type": "time",
-        "Value": {
-          "Timex": "T13:45",
-          "FutureResolution": {
-            "time": "13:45:00"
-          },
-          "PastResolution": {
-            "time": "13:45:00"
-          }
-        },
-        "Start": 3,
-        "Length": 11
-      }
-    ]
-  },
-  {
     "Input": "un quart de nou",
     "Results": [
       {
-        "Text": "quart de nou",
+        "Text": "un quart de nou",
         "Type": "time",
         "Value": {
           "Timex": "T08:45",
@@ -154,8 +134,28 @@
             "time": "08:45:00"
           }
         },
-        "Start": 3,
-        "Length": 12
+        "Start": 0,
+        "Length": 15
+      }
+    ]
+  },
+  {
+    "Input": "Hi ha vol cap a un quart de 14:00?",
+    "Results": [
+      {
+        "Text": " un quart de 14",
+        "Type": "time",
+        "Value": {
+          "Timex": "T13:45",
+          "FutureResolution": {
+            "time": "13:45:00"
+          },
+          "PastResolution": {
+            "time": "13:45:00"
+          }
+        },
+        "Start": 15,
+        "Length": 16
       }
     ]
   },
