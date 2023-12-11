@@ -183,7 +183,7 @@
     "Input": "Son tres quarts de set",
     "Results": [
       {
-        "Text": "tres quarts de set",
+        "Text": " tres quarts de set",
         "Type": "time",
         "Value": {
           "Timex": "T06:45",
@@ -195,7 +195,7 @@
           }
         },
         "Start": 3,
-        "Length": 18
+        "Length": 19
       }
     ]
   }

@@ -53,7 +53,7 @@ class CatalanTimeParserConfiguration(TimeParserConfiguration):
         delta_min = 0
         prefix = prefix.strip().lower()
 
-        if prefix.startswith('menys quart') or prefix.startswith('quart menys') or prefix.startswith('quarts'):
+        if prefix.startswith('quart menys') or prefix.startswith('quarts'):
             delta_min = -15
         elif prefix.startswith('quart') or prefix.startswith('i quart') or prefix.startswith('un quart'):
             delta_min = 15
@@ -62,6 +62,8 @@ class CatalanTimeParserConfiguration(TimeParserConfiguration):
             delta_min = 30
         elif prefix.startswith('tres quarts'):
             delta_min = 45
+        elif prefix.startswith('menys quart'):
+            delta_min = -45
         else:
             match = regex.search(self.less_than_one_hour, prefix)
             if match:
