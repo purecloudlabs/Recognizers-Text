@@ -108,5 +108,16 @@
         "Length": 16
       }
     ]
+  },
+  {
+    "Input": "Son tres quarts de set",
+    "Results": [
+      {
+        "Text": " tres quarts de set",
+        "Type": "time",
+        "Start": 3,
+        "Length": 18
+      }
+    ]
   }
 ]

@@ -53,12 +53,12 @@ class CatalanTimeParserConfiguration(TimeParserConfiguration):
         delta_min = 0
         prefix = prefix.strip().lower()
 
-        if prefix.startswith('menys quart') or prefix.startswith('quart menys'):
+        if prefix.startswith('menys quart') or prefix.startswith('quart menys') or prefix.startswith('quarts'):
             delta_min = -15
         elif prefix.startswith('quart') or prefix.startswith('i quart') or prefix.startswith('un quart'):
             delta_min = 15
         elif prefix.startswith('mitjana') or prefix.startswith('i mitjana') or \
-                prefix.startswith('i mitja') or prefix.startswith(('mitja')):
+                prefix.startswith('i mitja') or prefix.startswith(('mitja')) or prefix.startswith("dos quarts"):
             delta_min = 30
         elif prefix.startswith('tres quarts'):
             delta_min = 45
@@ -91,8 +91,15 @@ class CatalanTimeParserConfiguration(TimeParserConfiguration):
         adjust.minute += delta_min
 
         if adjust.minute < 0:
-            adjust.minute += 60
-            adjust.hour -= 1
+            if adjust.minute == -15:
+                adjust.hour -= 1
+                adjust.minute += 30
+            elif adjust.minute == -45:
+                adjust.hour -= 1
+                adjust.minute += 90
+            else:
+                adjust.hour -= 1
+                adjust.minute += 60
 
         adjust.has_minute = True
 
