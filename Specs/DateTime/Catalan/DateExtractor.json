@@ -64,5 +64,27 @@
         "Length": 21
       }
     ]
+  },
+  {
+    "Input": "l'1 de l'1 de 2023",
+    "Results": [
+      {
+        "Text": "1 de l'1 de 2023",
+        "Type": "date",
+        "Start": 2,
+        "Length": 16
+      }
+    ]
+  },
+  {
+    "Input": "el 31 de l'1",
+    "Results": [
+      {
+        "Text": "31 de l'1",
+        "Type": "date",
+        "Start": 3,
+        "Length": 9
+      }
+    ]
   }
 ]
