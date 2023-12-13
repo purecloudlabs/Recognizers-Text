@@ -33,6 +33,28 @@
     ]
   },
   {
+    "Input": "Tornaré a 7 de la tarda",
+    "Results": [
+      {
+        "Text": "7 de la tarda",
+        "Type": "time",
+        "Start": 10,
+        "Length": 13
+      }
+    ]
+  },
+  {
+    "Input": "Tornaré a 2:15",
+    "Results": [
+      {
+        "Text": "2:15",
+        "Type": "time",
+        "Start": 10,
+        "Length": 4
+      }
+    ]
+  },
+  {
     "Input": "Tornaré al migdia",
     "Results": [
       {

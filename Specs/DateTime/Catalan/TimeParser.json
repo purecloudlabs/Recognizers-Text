@@ -80,6 +80,46 @@
     ]
   },
   {
+    "Input": "Tornaré a 7 de la tarda",
+    "Results": [
+      {
+        "Text": "7 de la tarda",
+        "Type": "time",
+        "Value": {
+          "Timex": "T19",
+          "FutureResolution": {
+            "time": "19:00:00"
+          },
+          "PastResolution": {
+            "time": "19:00:00"
+          }
+        },
+        "Start": 10,
+        "Length": 13
+      }
+    ]
+  },
+  {
+    "Input": "Tornaré a 2:15",
+    "Results": [
+      {
+        "Text": "2:15",
+        "Type": "time",
+        "Value": {
+          "Timex": "T02:15",
+          "FutureResolution": {
+            "time": "02:15:00"
+          },
+          "PastResolution": {
+            "time": "02:15:00"
+          }
+        },
+        "Start": 10,
+        "Length": 3
+      }
+    ]
+  },
+  {
     "Input": "Tornaré a les set i mitja de la tarda",
     "Results": [
       {

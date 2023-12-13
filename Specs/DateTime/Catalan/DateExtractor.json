@@ -55,6 +55,28 @@
     ]
   },
   {
+    "Input": "Tornaré el 21",
+    "Results": [
+      {
+        "Text": "21",
+        "Type": "date",
+        "Start": 11,
+        "Length": 2
+      }
+    ]
+  },
+  {
+    "Input": "Tornaré el dia 3",
+    "Results": [
+      {
+        "Text": "3",
+        "Type": "date",
+        "Start": 15,
+        "Length": 1
+      }
+    ]
+  },
+  {
     "Input": "Vaig marxar d'aquí el 5 de desembre de 1391",
     "Results": [
       {
