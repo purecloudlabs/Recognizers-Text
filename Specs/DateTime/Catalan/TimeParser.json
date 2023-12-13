@@ -198,5 +198,25 @@
         "Length": 19
       }
     ]
+  },
+  {
+    "Input": "3/4 d'onze",
+    "Results": [
+      {
+        "Text": "3/4 d'onze",
+        "Type": "time",
+        "Value": {
+          "Timex": "T10:45",
+          "FutureResolution": {
+            "time": "10:45:00"
+          },
+          "PastResolution": {
+            "time": "10:45:00"
+          }
+        },
+        "Start": 0,
+        "Length": 10
+      }
+    ]
   }
 ]

@@ -119,5 +119,16 @@
         "Length": 19
       }
     ]
+  },
+  {
+    "Input": "3/4 d'onze",
+    "Results": [
+      {
+        "Text": "3/4 d'onze",
+        "Type": "time",
+        "Start": 0,
+        "Length": 10
+      }
+    ]
   }
 ]
