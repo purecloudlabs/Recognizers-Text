@@ -53,15 +53,18 @@ class CatalanTimeParserConfiguration(TimeParserConfiguration):
         delta_min = 0
         prefix = prefix.strip().lower()
 
-        if prefix.startswith('menys quart') or prefix.startswith('quart menys'):
-            delta_min = -15
-        elif prefix.startswith('quart') or prefix.startswith('i quart'):
+        if prefix.startswith('menys quart') or prefix.startswith('quarts') or prefix.startswith('tres quarts') or \
+                prefix.startswith('quart menys') or prefix.startswith('3/4'):
+            delta_min = -45
+        elif prefix.startswith('i quart'):
             delta_min = 15
-        elif prefix.startswith('mitjana') or prefix.startswith('i mitjana') or \
-                prefix.startswith('i mitja') or prefix.startswith(('mitja')):
+        elif prefix.startswith('quart') or prefix.startswith('un quart') or prefix.startswith('1/4'):
+            delta_min = -15
+        elif (prefix.startswith('mitjana') or prefix.startswith('i mitjana') or prefix.startswith('i mitja') or
+              prefix.startswith('mitja') or prefix.startswith('1/2') or prefix.startswith('2/4')):
             delta_min = 30
-        elif prefix.startswith('tres quarts'):
-            delta_min = 45
+        elif prefix.startswith("dos quarts"):
+            delta_min = -30
         else:
             match = regex.search(self.less_than_one_hour, prefix)
             if match:
@@ -83,16 +86,22 @@ class CatalanTimeParserConfiguration(TimeParserConfiguration):
             pass
         elif (
                 prefix.endswith('per a la') or prefix.endswith('per a les') or
-                prefix.endswith('abans de la') or prefix.endswith('abans de les') or
-                prefix.endswith('de') or prefix.endswith('d\'')
+                prefix.endswith('abans de la') or prefix.endswith('abans de les')
         ):
             delta_min = delta_min * -1
 
         adjust.minute += delta_min
 
         if adjust.minute < 0:
-            adjust.minute += 60
-            adjust.hour -= 1
+            if adjust.minute == -15:
+                adjust.hour -= 1
+                adjust.minute += 30
+            elif adjust.minute == -45:
+                adjust.hour -= 1
+                adjust.minute += 90
+            else:
+                adjust.hour -= 1
+                adjust.minute += 60
 
         adjust.has_minute = True
 
