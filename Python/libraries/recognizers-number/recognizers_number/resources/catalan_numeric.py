@@ -7,7 +7,7 @@ class CatalanNumeric:
     CompoundNumberLanguage = False
     MultiDecimalSeparatorCulture = True
     NonStandardSeparatorVariants = []
-    RoundNumberIntegerRegex = f'((?:cents|milers|milions|mil milions|bilió)s?|mil)'
+    RoundNumberIntegerRegex = f'((?:cents|milers|milions|milió|mil milions|bilió)s?|mil)'
     ZeroToNineIntegerRegex = f'(?:tres|set|vuit|quatre|cinc|zero|nou|un|dos|sis)'
     TwoToNineIntegerRegex = f'(?:tres|set|vuit|quatre|cinc|nou|dos|sis)'
     NegativeNumberTermsRegex = f'(?<negTerm>(menys|negatiu)\\s+)'
@@ -39,6 +39,14 @@ class CatalanNumeric:
     AllOrdinalNumberRegex = f'(?:{SuffixRoundNumberOrdinalRegex})'
     AllOrdinalRegex = f'(?:{AllOrdinalNumberRegex})'
     OrdinalSuffixRegex = f'(?<=\\b)(?:(\\d*(1r|2n|3r|4t|[5-99][èe])))(?=\\b)'
+    FractionNotationWithSpacesRegex = f'(((?<=\\W|^)-\\s*)|(?<=\\b))\\d+\\s+\\d+[/]\\d+(?=(\\b[^/]|$))'
+    FractionNotationRegex = f'{BaseNumbers.FractionNotationRegex}'
+    FractionMultiplierRegex = f'(?<fracMultiplier>(\\s+(i|un)\\s+)(i|un(a)?|dues|{TwoToNineIntegerRegex}\\s+)?(mig|quarts?|terç|cinquè|sisè|setena|vuitè|vuitena|novè|desè)s?(\\s+(de|d\'))?)'
+    RoundMultiplierWithFraction = f'(?<=(?<!{RoundNumberIntegerRegex}){FractionMultiplierRegex}\\s+)?(?<multiplier>(?:mil|mili[óo]|milion|bili[óo])s?)(?={FractionMultiplierRegex}?$)'
+    RoundMultiplierRegex = f'\\b\\s*((de\\s+)?a\\s+)?({RoundMultiplierWithFraction}|(?<multiplier>(?:cent|mil|milers)s?)$)'
+    FractionNounRegex = f'(?<=\\b)({AllIntRegex}\\s+(i\\s+)?)?({AllIntRegex}(\\s+((i)\\s)?)(({AllOrdinalNumberRegex}s?|{RoundNumberOrdinalRegex}s?)|(mig|meitats?|terç(os)?|quarts?))|(un\s+)?(mig|meitats?|terç(os)?|quarts?)(\s+(de\s+)?|\s*-\s*){RoundNumberIntegerRegex})(?=\\b)'
+    FractionNounWithArticleRegex = f'(?<=\\b)(({AllIntRegex}|{RoundNumberIntegerRegexWithLocks})\\s+((i|con)\\s+)?)?((un|i)(\s+)(({AllOrdinalNumberRegex}))|(i\s+)?mig|meitats?|quarts?)(?=\\b)'
+    FractionPrepositionRegex = f'(?<!{BaseNumbers.CommonCurrencySymbol}\\s*)(?<=\\b)(?<numerator>({AllIntRegex})|((?<![\\.,])\d+))\\s+(sobre|(?<ambiguousSeparator>en|de))\\s+(?<denominator>({AllIntRegex})|(\d+)(?![\\.,]))(?=\\b)'
     AllPointRegex = f'((\\s+{ZeroToNineIntegerRegex})+|(\\s+{SeparaIntRegex}))'
     AllFloatRegex = f'{AllIntRegex}(\\s+coma){AllPointRegex}'
 
@@ -56,12 +64,15 @@ class CatalanNumeric:
     EqualRegex = f'(igual a)'
     AmbiguousFractionConnectorsRegex = f'(\\b(en|a)\\b)'
     DecimalSeparatorChar = ','
+    FractionMarkerToken = 'sobre'
     NonDecimalSeparatorChar = '.'
     HalfADozenText = 'sis'
     WordSeparatorToken = 'i'
     WrittenDecimalSeparatorTexts = [r'coma']
     WrittenGroupSeparatorTexts = [r'punt(o)?']
     WrittenIntegerSeparatorTexts = [r'i']
+    WrittenFractionSeparatorTexts = [r'i', r'de', r'd\'']
+    OneHalfTokens = [r'un', r'mig', r'quart', r'terç', r'terços', r'cinque']
     HalfADozenRegex = f'mitja\\s+dotzena'
     DigitalNumberRegex = f'((?<=\\b)(cent|milers|mil|milions|mil milions|bili[óo])(?=\\b))|((?<=(\\d|\\b)){BaseNumbers.MultiplierLookupRegex}(?=\\b))'
     CardinalNumberMap = dict([("zero", 0),
@@ -124,6 +135,7 @@ class CatalanNumeric:
                               ("noucents", 900),
                               ("mil", 1000),
                               ("milions", 1000000),
+                              ("milió", 1000000),
                               ("bilió", 1000000000000),
                               ("centenars", 100),
                               ("milers", 1000),
@@ -132,6 +144,7 @@ class CatalanNumeric:
     OrdinalNumberMap = dict([("primer", 1),
                              ("segon", 2),
                              ("secundari", 2),
+                             ("mig", 2),
                              ("la meitat", 2),
                              ("tercer", 3),
                              ("quart", 4),
@@ -165,6 +178,7 @@ class CatalanNumeric:
     RoundNumberMap = dict([("cent", 100),
                            ("mil", 1000),
                            ("milions", 1000000),
+                           ("milió", 1000000),
                            ("mln", 1000000),
                            ("mil milions", 1000000000),
                            ("bln", 1000000000),

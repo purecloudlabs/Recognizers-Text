@@ -97,7 +97,7 @@ class CatalanNumberParserConfiguration(BaseNumberParserConfiguration):
         self._culture_info = culture_info
         self._lang_marker = CatalanNumeric.LangMarker
         self._decimal_separator_char = CatalanNumeric.DecimalSeparatorChar
-        self._fraction_marker_token = None
+        self._fraction_marker_token = CatalanNumeric.FractionMarkerToken
         self._non_decimal_separator_char = CatalanNumeric.NonDecimalSeparatorChar
         self._half_a_dozen_text = CatalanNumeric.HalfADozenText
         self._word_separator_token = CatalanNumeric.WordSeparatorToken
@@ -105,7 +105,7 @@ class CatalanNumberParserConfiguration(BaseNumberParserConfiguration):
         self._written_decimal_separator_texts = CatalanNumeric.WrittenDecimalSeparatorTexts
         self._written_group_separator_texts = CatalanNumeric.WrittenGroupSeparatorTexts
         self._written_integer_separator_texts = CatalanNumeric.WrittenIntegerSeparatorTexts
-        self._written_fraction_separator_texts = None
+        self._written_fraction_separator_texts = CatalanNumeric.WrittenFractionSeparatorTexts
         self._non_standard_separator_variants = CatalanNumeric.NonStandardSeparatorVariants
         self._is_multi_decimal_separator_culture = CatalanNumeric.MultiDecimalSeparatorCulture
 
@@ -120,4 +120,50 @@ class CatalanNumberParserConfiguration(BaseNumberParserConfiguration):
             CatalanNumeric.HalfADozenRegex)
         self._digital_number_regex = RegExpUtility.get_safe_reg_exp(
             CatalanNumeric.DigitalNumberRegex)
-        self._round_multiplier_regex = None
+        self._round_multiplier_regex = RegExpUtility.get_safe_reg_exp(
+            CatalanNumeric.RoundMultiplierRegex)
+
+    def normalize_token_set(self, tokens: List[str], context: ParseResult) -> List[str]:
+        frac_words: List[str] = super().normalize_token_set(tokens, context)
+
+        # The following piece of code is needed to compute the fraction pattern number+'i mig'
+        # e.g. 'dos i mig' ('two and a half') where the numerator is omitted in Catalan.
+        # It works by inserting the numerator 'un' ('a') in the list frac_words
+        # so that the pattern is correctly processed.
+        if len(frac_words) > 2:
+            if frac_words[len(frac_words) - 1] in CatalanNumeric.OneHalfTokens[1:] and \
+                    frac_words[len(frac_words) - 2] == CatalanNumeric.WordSeparatorToken:
+                frac_words.insert(len(frac_words) - 1, CatalanNumeric.OneHalfTokens[0])
+            elif frac_words[len(frac_words) - 1] in CatalanNumeric.CardinalNumberMap:
+                frac_words[len(frac_words) - 1], frac_words[len(frac_words) - 2] = (frac_words[len(frac_words) - 2],
+                                                                                    frac_words[len(frac_words) - 1])
+                frac_words.insert(len(frac_words) - 1, CatalanNumeric.OneHalfTokens[0])
+        return frac_words
+
+    def resolve_composite_number(self, number_str: str) -> int:
+        if number_str in self.ordinal_number_map:
+            return self.ordinal_number_map[number_str]
+        if number_str in self.cardinal_number_map:
+            return self.cardinal_number_map[number_str]
+
+        value = 0
+        final_value = 0
+        str_builder = ''
+        last_good_char = 0
+        i = 0
+        while i < len(number_str):
+            str_builder += number_str[i]
+            if (str_builder in self.cardinal_number_map
+                    and self.cardinal_number_map[str_builder] > value):
+                last_good_char = i
+                value = self.cardinal_number_map[str_builder]
+
+            if (i + 1) == len(number_str):
+                final_value += value
+                str_builder = ''
+                i = last_good_char
+                last_good_char += 1
+                value = 0
+            i += 1
+
+        return final_value
