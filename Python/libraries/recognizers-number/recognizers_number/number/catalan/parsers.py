@@ -130,7 +130,7 @@ class CatalanNumberParserConfiguration(BaseNumberParserConfiguration):
         # e.g. 'dos i mig' ('two and a half') where the numerator is omitted in Catalan.
         # It works by inserting the numerator 'un' ('a') in the list frac_words
         # so that the pattern is correctly processed.
-        if len(frac_words) > 2:
+        if len(frac_words) >= 2:
             if frac_words[len(frac_words) - 1] in CatalanNumeric.OneHalfTokens[1:] and \
                     frac_words[len(frac_words) - 2] == CatalanNumeric.WordSeparatorToken:
                 frac_words.insert(len(frac_words) - 1, CatalanNumeric.OneHalfTokens[0])

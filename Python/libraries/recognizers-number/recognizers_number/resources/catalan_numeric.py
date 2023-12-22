@@ -7,7 +7,7 @@ class CatalanNumeric:
     CompoundNumberLanguage = False
     MultiDecimalSeparatorCulture = True
     NonStandardSeparatorVariants = []
-    RoundNumberIntegerRegex = f'((?:cents|milers|milions|milió|mil milions|bilió)s?|mil)'
+    RoundNumberIntegerRegex = f'((?:cent|miler|milion|milió|mil milions|bilió)s?|mil)'
     ZeroToNineIntegerRegex = f'(?:tres|set|vuit|quatre|cinc|zero|nou|un|dos|sis)'
     TwoToNineIntegerRegex = f'(?:tres|set|vuit|quatre|cinc|nou|dos|sis)'
     NegativeNumberTermsRegex = f'(?<negTerm>(menys|negatiu)\\s+)'
@@ -42,7 +42,7 @@ class CatalanNumeric:
     FractionNotationWithSpacesRegex = f'(((?<=\\W|^)-\\s*)|(?<=\\b))\\d+\\s+\\d+[/]\\d+(?=(\\b[^/]|$))'
     FractionNotationRegex = f'{BaseNumbers.FractionNotationRegex}'
     FractionMultiplierRegex = f'(?<fracMultiplier>(\\s+(i|un)\\s+)(i|un(a)?|dues|{TwoToNineIntegerRegex}\\s+)?(mig|quarts?|terç|cinquè|sisè|setena|vuitè|vuitena|novè|desè)s?(\\s+(de|d\'))?)'
-    RoundMultiplierWithFraction = f'(?<=(?<!{RoundNumberIntegerRegex}){FractionMultiplierRegex}\\s+)?(?<multiplier>(?:mil|mili[óo]|milion|bili[óo])s?)(?={FractionMultiplierRegex}?$)'
+    RoundMultiplierWithFraction = f'(?<=(?<!{RoundNumberIntegerRegex}){FractionMultiplierRegex}\\s+)?(?<multiplier>(?:cent|mil|mili[óo]|milion|bili[óo]|mil milions)s?)(?={FractionMultiplierRegex}?$)'
     RoundMultiplierRegex = f'\\b\\s*((de\\s+)?a\\s+)?({RoundMultiplierWithFraction}|(?<multiplier>(?:cent|mil|milers)s?)$)'
     FractionNounRegex = f'(?<=\\b)({AllIntRegex}\\s+(i\\s+)?)?({AllIntRegex}(\\s+((i)\\s)?)(({AllOrdinalNumberRegex}s?|{RoundNumberOrdinalRegex}s?)|(mig|meitats?|terç(os)?|quarts?))|(un\s+)?(mig|meitats?|terç(os)?|quarts?)(\s+(de\s+)?|\s*-\s*){RoundNumberIntegerRegex})(?=\\b)'
     FractionNounWithArticleRegex = f'(?<=\\b)(({AllIntRegex}|{RoundNumberIntegerRegexWithLocks})\\s+((i|con)\\s+)?)?((un|i)(\s+)(({AllOrdinalNumberRegex}))|(i\s+)?mig|meitats?|quarts?)(?=\\b)'
@@ -139,6 +139,8 @@ class CatalanNumeric:
                               ("bilió", 1000000000000),
                               ("centenars", 100),
                               ("milers", 1000),
+                              ("milion", 1000000),
+                              ("mil milions", 1000000000),
                               ("milers de milions", 1000000000),
                               ("bilions", 1000000000000)])
     OrdinalNumberMap = dict([("primer", 1),
@@ -178,6 +180,7 @@ class CatalanNumeric:
     RoundNumberMap = dict([("cent", 100),
                            ("mil", 1000),
                            ("milions", 1000000),
+                           ("milion", 1000000),
                            ("milió", 1000000),
                            ("mln", 1000000),
                            ("mil milions", 1000000000),
