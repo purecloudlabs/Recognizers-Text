@@ -134,10 +134,6 @@ class CatalanNumberParserConfiguration(BaseNumberParserConfiguration):
             if frac_words[len(frac_words) - 1] in CatalanNumeric.OneHalfTokens[1:] and \
                     frac_words[len(frac_words) - 2] == CatalanNumeric.WordSeparatorToken:
                 frac_words.insert(len(frac_words) - 1, CatalanNumeric.OneHalfTokens[0])
-            elif frac_words[len(frac_words) - 1] in CatalanNumeric.CardinalNumberMap:
-                frac_words[len(frac_words) - 1], frac_words[len(frac_words) - 2] = (frac_words[len(frac_words) - 2],
-                                                                                    frac_words[len(frac_words) - 1])
-                frac_words.insert(len(frac_words) - 1, CatalanNumeric.OneHalfTokens[0])
         return frac_words
 
     def resolve_composite_number(self, number_str: str) -> int:
