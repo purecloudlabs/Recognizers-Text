@@ -218,5 +218,20 @@
         }
       }
     ]
+  },
+  {
+    "Input": "Tinc un quart de milió d'euros",
+    "Results": [
+      {
+        "Text": "un quart de milió",
+        "Start": 5,
+        "End": 21,
+        "TypeName": "number",
+        "Resolution": {
+          "subtype": "integer",
+          "value": "250000"
+        }
+      }
+    ]
   }
 ]
