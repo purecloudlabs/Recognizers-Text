@@ -131,9 +131,12 @@ class CatalanNumberParserConfiguration(BaseNumberParserConfiguration):
         # It works by inserting the numerator 'un' ('a') in the list frac_words
         # so that the pattern is correctly processed.
         if len(frac_words) >= 2:
-            if frac_words[len(frac_words) - 1] in CatalanNumeric.OneHalfTokens[1:] and \
-                    frac_words[len(frac_words) - 2] == CatalanNumeric.WordSeparatorToken:
-                frac_words.insert(len(frac_words) - 1, CatalanNumeric.OneHalfTokens[0])
+            if frac_words[-1] in CatalanNumeric.FractionalTokens[1:] and \
+                    frac_words[-2] == CatalanNumeric.WordSeparatorToken:
+                frac_words.insert(-1, CatalanNumeric.FractionWithoutNumeratorToken)
+            elif frac_words[-1] in CatalanNumeric.WrittenFractionSeparatorTexts and \
+                frac_words[-2] in CatalanNumeric.FractionalTokens[1:]:
+                    frac_words.pop(-1)
         return frac_words
 
     def resolve_composite_number(self, number_str: str) -> int:

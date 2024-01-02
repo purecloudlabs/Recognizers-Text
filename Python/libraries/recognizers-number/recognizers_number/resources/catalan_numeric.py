@@ -72,7 +72,8 @@ class CatalanNumeric:
     WrittenGroupSeparatorTexts = [r'punt(o)?']
     WrittenIntegerSeparatorTexts = [r'i']
     WrittenFractionSeparatorTexts = [r'i', r'de', r'd\'']
-    OneHalfTokens = [r'un', r'mig', r'quart', r'terç', r'terços', r'cinque']
+    FractionWithoutNumeratorToken = r'un'
+    FractionalTokens = [r'mig', r'quart', r'terç', r'terços', r'cinque']
     HalfADozenRegex = f'mitja\\s+dotzena'
     DigitalNumberRegex = f'((?<=\\b)(cent|milers|mil|milions|mil milions|bili[óo])(?=\\b))|((?<=(\\d|\\b)){BaseNumbers.MultiplierLookupRegex}(?=\\b))'
     CardinalNumberMap = dict([("zero", 0),
@@ -149,6 +150,7 @@ class CatalanNumeric:
                              ("mig", 2),
                              ("la meitat", 2),
                              ("tercer", 3),
+                             ("terç", 3),
                              ("quart", 4),
                              ("cinquè", 5),
                              ("sisè", 6),
