@@ -158,8 +158,7 @@ class CatalanDoubleExtractor(BaseNumberExtractor):
 
 class CatalanFractionExtractor(BaseNumberExtractor):
     @property
-    def regexes(self) -> List[
-            NamedTuple('re_val', [('re', Pattern), ('val', str)])]:
+    def regexes(self) -> List[NamedTuple('re_val', [('re', Pattern), ('val', str)])]:
         return self.__regexes
 
     @property
@@ -167,7 +166,31 @@ class CatalanFractionExtractor(BaseNumberExtractor):
         return Constants.SYS_NUM_FRACTION
 
     def __init__(self, mode):
-        self.__regexes = []
+        self.__regexes = [
+            ReVal(
+                re=RegExpUtility.get_safe_reg_exp(
+                    CatalanNumeric.FractionNotationWithSpacesRegex),
+                val='FracNum'),
+            ReVal(
+                re=RegExpUtility.get_safe_reg_exp(
+                    CatalanNumeric.FractionNotationRegex),
+                val='FracNum'),
+            ReVal(
+                re=RegExpUtility.get_safe_reg_exp(
+                    CatalanNumeric.FractionNounRegex),
+                val=f'Frac{CatalanNumeric.LangMarker}'),
+            ReVal(
+                re=RegExpUtility.get_safe_reg_exp(
+                    CatalanNumeric.FractionNounWithArticleRegex),
+                val=f'Frac{CatalanNumeric.LangMarker}')
+        ]
+
+        if mode != NumberMode.Unit:
+            self.__regexes.append(
+                ReVal(
+                    re=RegExpUtility.get_safe_reg_exp(
+                        CatalanNumeric.FractionPrepositionRegex),
+                    val=f'Frac{CatalanNumeric.LangMarker}'))
 
 
 class CatalanOrdinalExtractor(BaseNumberExtractor):
