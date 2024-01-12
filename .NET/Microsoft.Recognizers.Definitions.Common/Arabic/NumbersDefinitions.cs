@@ -105,9 +105,9 @@ namespace Microsoft.Recognizers.Definitions.Arabic
       public static readonly string TwoNumberRangeRegex3 = $@"({OneNumberRangeLessRegex1}|{OneNumberRangeLessRegex2})\s*(،)?\s*((أ|ا)?و|لكن|,)\s*({OneNumberRangeMoreRegex1}|{OneNumberRangeMoreRegex2})";
       public static readonly string TwoNumberRangeRegex4 = $@"((من\s)(?<number1>({NumberSplitMark}(?!\bمن\b).)+)\s*{TillRegex}\s*(ال\s+)?(?<number2>({NumberSplitMark}.)+))|((من\s)?(?<number1>({NumberSplitMark}(?!\bمن\b).)+)\s*{TillRegex}\s*(ال\s+)?(?<number2>({NumberSplitMark}.)+))";
       public const string AmbiguousFractionConnectorsRegex = @"(\bمن|بين|من|بين\b)";
-      public const char DecimalSeparatorChar = ',';
+      public const char DecimalSeparatorChar = '.';
       public const string FractionMarkerToken = @"أكثر";
-      public const char NonDecimalSeparatorChar = '،';
+      public const char NonDecimalSeparatorChar = ',';
       public const string HalfADozenText = @"ستة";
       public const string WordSeparatorToken = @"و";
       public static readonly string[] WrittenDecimalSeparatorTexts = { @"نقطة | فاصلة" };

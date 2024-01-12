@@ -106,9 +106,9 @@ class ArabicNumeric:
     TwoNumberRangeRegex3 = f'({OneNumberRangeLessRegex1}|{OneNumberRangeLessRegex2})\\s*(،)?\\s*((أ|ا)?و|لكن|,)\\s*({OneNumberRangeMoreRegex1}|{OneNumberRangeMoreRegex2})'
     TwoNumberRangeRegex4 = f'((من\\s)(?<number1>({NumberSplitMark}(?!\\bمن\\b).)+)\\s*{TillRegex}\\s*(ال\\s+)?(?<number2>({NumberSplitMark}.)+))|((من\\s)?(?<number1>({NumberSplitMark}(?!\\bمن\\b).)+)\\s*{TillRegex}\\s*(ال\\s+)?(?<number2>({NumberSplitMark}.)+))'
     AmbiguousFractionConnectorsRegex = f'(\\bمن|بين|من|بين\\b)'
-    DecimalSeparatorChar = ','
+    DecimalSeparatorChar = '.'
     FractionMarkerToken = 'أكثر'
-    NonDecimalSeparatorChar = '،'
+    NonDecimalSeparatorChar = ','
     HalfADozenText = 'ستة'
     WordSeparatorToken = 'و'
     WrittenDecimalSeparatorTexts = [r'نقطة | فاصلة']

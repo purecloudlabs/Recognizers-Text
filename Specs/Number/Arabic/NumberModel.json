@@ -175,7 +175,7 @@
   {
     "Input": "مائة وستة عشر صفحة",
     "IgnoreResolution": true,
-    "NotSupportedByDesign": "javascript, java, xython",
+    "NotSupportedByDesign": "javascript, java",
     "Results": [
       {
         "Text": "مائة وستة عشر",
@@ -192,7 +192,7 @@
   {
     "Input": "مائة وستة صفحات.",
     "IgnoreResolution": true,
-    "NotSupportedByDesign": "javascript, java, xython",
+    "NotSupportedByDesign": "javascript, java",
     "Results": [
       {
         "Text": "مائة وستة",
@@ -580,7 +580,7 @@
   {
     "Input": "عدد سكان المنطقة واحد وعشرون تريليون",
     "IgnoreResolution": true,
-    "NotSupportedByDesign": "javascript, java, xython",
+    "NotSupportedByDesign": "javascript, java",
     "Results": [
       {
         "Text": "واحد وعشرون تريليون",
@@ -597,7 +597,7 @@
   {
     "Input": "عدد سكان المنطقة واحد وعشرون تريليون وثلاث مائة",
     "IgnoreResolution": true,
-    "NotSupportedByDesign": "javascript, java, xython",
+    "NotSupportedByDesign": "javascript, java",
     "Results": [
       {
         "Text": "واحد وعشرون تريليون وثلاث مائة",
@@ -648,7 +648,7 @@
   {
     "Input": "يوجد في الغابة  ثلاث مائة وواحد وثلاثون  أشجار",
     "IgnoreResolution": true,
-    "NotSupportedByDesign": "javascript, java, xython",
+    "NotSupportedByDesign": "javascript, java",
     "Results": [
       {
         "Text": "ثلاث مائة وواحد وثلاثون",
@@ -750,7 +750,7 @@
   {
     "Input": "٣/٤ الكأس",
     "IgnoreResolution": true,
-    "NotSupportedByDesign": "javascript, java, xython",
+    "NotSupportedByDesign": "javascript, java",
     "Results": [
       {
         "Text": "٣/٤",
@@ -1425,7 +1425,7 @@
   },
   {
     "Input": "حجزت رحلتي في درجة الأولى",
-    "NotSupportedByDesign": "javascript, java, xython",
+    "NotSupportedByDesign": "javascript, java",
     "Results": []
   },
   {
@@ -1645,22 +1645,22 @@
   },
   {
     "Input": "الذي ذكرتها كان باطلا.",
-    "NotSupportedByDesign": "javascript, java, xython",
+    "NotSupportedByDesign": "javascript, java",
     "Results": []
   },
   {
     "Input": "الدي ذكرتها كانت غير صحيحة.",
-    "NotSupportedByDesign": "javascript, java, xython",
+    "NotSupportedByDesign": "javascript, java",
     "Results": []
   },
   {
     "Input": "أي واحد تفضل؟",
-    "NotSupportedByDesign": "javascript, java, xython",
+    "NotSupportedByDesign": "javascript, java",
     "Results": []
   },
   {
     "Input": "هذاك جيد حقا.",
-    "NotSupportedByDesign": "javascript, java, xython",
+    "NotSupportedByDesign": "javascript, java",
     "Results": []
   },
   {
@@ -2340,7 +2340,7 @@
   {
     "Input": "192.",
     "Comment": "PendingValidation",
-    "NotSupportedByDesign": "javascript,xython,java",
+    "NotSupportedByDesign": "javascript,java",
     "NotSupported": "dotnet",
     "Results": [
       {
@@ -2401,7 +2401,7 @@
   {
     "Input": "السائل 180.25 مل",
     "Comment": "PendingValidation",
-    "NotSupportedByDesign": "javascript,python,java",
+    "NotSupportedByDesign": "javascript,java",
     "NotSupported": "dotnet",
     "Results": [
       {
@@ -2418,7 +2418,7 @@
   {
     "Input": "السائل 180 مل",
     "Comment": "PendingValidation",
-    "NotSupportedByDesign": "javascript,xython,java",
+    "NotSupportedByDesign": "javascript,java",
     "NotSupported": "dotnet",
     "Results": [
       {
@@ -2435,7 +2435,7 @@
   {
     "Input": " طريق 29 كم ",
     "Comment": "PendingValidation",
-    "NotSupportedByDesign": "javascript,xython,java",
+    "NotSupportedByDesign": "javascript,java",
     "NotSupported": "dotnet",
     "Results": [
       {
@@ -2452,7 +2452,7 @@
   {
     "Input": " 4 مايو ",
     "Comment": "PendingValidation",
-    "NotSupportedByDesign": "javascript,xython,java",
+    "NotSupportedByDesign": "javascript,java",
     "NotSupported": "dotnet",
     "Results": [
       {
@@ -2475,7 +2475,7 @@
   {
     "Input": ".08",
     "Comment": "PendingValidation",
-    "NotSupportedByDesign": "javascript,python,java",
+    "NotSupportedByDesign": "javascript,java",
     "NotSupported": "dotnet",
     "Results": [
       {
@@ -2492,7 +2492,7 @@
   {
     "Input": "واحد",
     "Comment": "PendingValidation",
-    "NotSupportedByDesign": "javascript,xython,java",
+    "NotSupportedByDesign": "javascript,java",
     "NotSupported": "dotnet",
     "Results": [
       {
@@ -2509,7 +2509,7 @@
   {
     "Input": "مفرد",
     "Comment": "PendingValidation",
-    "NotSupportedByDesign": "javascript,xython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": []
   },
   {
@@ -2530,13 +2530,13 @@
     ]
   },
   {
-    "Input": "4,800",
+    "Input": "4.800",
     "Comment": "PendingValidation",
     "NotSupportedByDesign": "javascript,java",
     "NotSupported": "dotnet",
     "Results": [
       {
-        "Text": "4,800",
+        "Text": "4.800",
         "TypeName": "number",
         "Resolution": {
           "value": "4.8"
@@ -2668,7 +2668,7 @@
   {
     "Input": "مائة و واحد و ستون",
     "Comment": "PendingValidation",
-    "NotSupportedByDesign": "javascript,xython,java",
+    "NotSupportedByDesign": "javascript,java",
     "NotSupported": "dotnet",
     "Results": [
       {
@@ -2785,13 +2785,13 @@
     ]
   },
   {
-    "Input": "1.234.567",
+    "Input": "1,234,567",
     "Comment": "PendingValidation",
     "NotSupportedByDesign": "javascript,java",
     "NotSupported": "dotnet",
     "Results": [
       {
-        "Text": "1.234.567",
+        "Text": "1,234,567",
         "TypeName": "number",
         "Resolution": {
           "value": "1234567"
@@ -2856,7 +2856,7 @@
   {
     "Input": " -9,2321312",
     "Comment": "PendingValidation",
-    "NotSupportedByDesign": "javascript,xython,java",
+    "NotSupportedByDesign": "javascript,java",
     "NotSupported": "dotnet",
     "Results": [
       {
@@ -3264,7 +3264,7 @@
   {
     "Input": "3/4",
     "Comment": "PendingValidation",
-    "NotSupportedByDesign": "javascript,xython,java",
+    "NotSupportedByDesign": "javascript,java",
     "NotSupported": "dotnet",
     "Results": [
       {
@@ -4543,7 +4543,7 @@
   {
     "Input": "1M ليس رقما.",
     "Comment": "PendingValidation",
-    "NotSupportedByDesign": "javascript,xython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": []
   },
   {
@@ -4704,31 +4704,31 @@
   {
     "Input": "الشخص الذي ذكرته غير صالح",
     "Comment": "PendingValidation",
-    "NotSupportedByDesign": "javascript,xython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": []
   },
   {
     "Input": "هذا غير صحيح",
     "Comment": "PendingValidation",
-    "NotSupportedByDesign": "javascript,xython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": []
   },
   {
     "Input": "أي شخص تفضل؟",
     "Comment": "PendingValidation",
-    "NotSupportedByDesign": "javascript,xython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": []
   },
   {
     "Input": "هذا جيد حقاً",
     "Comment": "PendingValidation",
-    "NotSupportedByDesign": "javascript,xython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": []
   },
   {
     "Input": "في بعض البلدان يمكنك كتابة 5.00 أو 5,00.",
     "Comment": "PendingValidation",
-    "NotSupportedByDesign": "javascript,python,java",
+    "NotSupportedByDesign": "javascript,java",
     "NotSupported": "dotnet",
     "Results": [
       {
@@ -4894,11 +4894,11 @@
     ]
   },
   {
-    "Input": "12،220,13",
+    "Input": "12,220.13",
     "NotSupportedByDesign": "javascript, java",
     "Results": [
       {
-        "Text": "12،220,13",
+        "Text": "12,220.13",
         "TypeName": "number",
         "Resolution": {
           "subtype": "decimal",
@@ -4906,6 +4906,38 @@
         },
         "Start": 0,
         "End": 8
+      }
+    ]
+  },
+  {
+    "Input": "60,000",
+    "NotSupportedByDesign": "javascript, java",
+    "Results": [
+      {
+        "Text": "60,000",
+        "TypeName": "number",
+        "Resolution": {
+          "subtype": "decimal",
+          "value": "60000"
+        },
+        "Start": 0,
+        "End": 5
+      }
+    ]
+  },
+  {
+    "Input": "11.50",
+    "NotSupportedByDesign": "javascript, java",
+    "Results": [
+      {
+        "Text": "11.50",
+        "TypeName": "number",
+        "Resolution": {
+          "subtype": "decimal",
+          "value": "11.5"
+        },
+        "Start": 0,
+        "End": 4
       }
     ]
   }
