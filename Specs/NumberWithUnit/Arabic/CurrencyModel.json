@@ -126,5 +126,36 @@
         }
       }
     ]
+  },
+  {
+    "Input": "أرغب في شراء هذا المنتج مقابل 11.50 يورو",
+    "Results": [
+      {
+        "Text": "11.50 يورو",
+        "TypeName": "currency",
+        "Resolution": {
+          "value": "11.5",
+          "unit": "Euro",
+          "isoCurrency": "EUR"
+        },
+        "Start": 30,
+        "End": 39
+      }
+    ]
+  },
+  {
+    "Input": "أرغب في شراء هذا المنتج بمبلغ 60,000 جنيه إسترليني",
+    "Results": [
+      {
+        "Text": "60,000 جنيه إسترليني",
+        "TypeName": "currency",
+        "Resolution": {
+          "value": "60000",
+          "unit": "Egyptian pound"
+        },
+        "Start": 30,
+        "End": 49
+      }
+    ]
   }
 ]

@@ -270,9 +270,9 @@ AmbiguousFractionConnectorsRegex: !simpleRegex
   def: (\bمن|بين|من|بين\b)
 # "in" is ambiguous for cases like "more than 30000 in 2009", other connector "out of", "over" is not ambiguous in English
 #Parser
-DecimalSeparatorChar: !char ","
+DecimalSeparatorChar: !char "."
 FractionMarkerToken: أكثر
-NonDecimalSeparatorChar: !char "،"
+NonDecimalSeparatorChar: !char ","
 HalfADozenText: ستة
 WordSeparatorToken: و
 WrittenDecimalSeparatorTexts: [نقطة | فاصلة]
