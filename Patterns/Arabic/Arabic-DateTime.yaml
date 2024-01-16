@@ -274,7 +274,7 @@ LastWeekDateRegex: !nestedRegex
 LastMonthYearDateRegex: !simpleRegex
   def: (قبل\s+)(\d+ )?((بضعة|بضع|عدة)\s+)?(سنتين|شهرين|الشهور|أشهر|اشهر|شهر|الشهر|أيام|عامين|عام|أعوام|سنة|سنين|سنوات)
 SpecificDayRegex: !nestedRegex
-  def: ((قبل|بعد)\s+)?((اليوم|يوم)\s+)?(((?<=ب)الأمس|أمس|الأمس|البارحة)|(آخر يوم|الماضي|السابق|الأخير|يومين)|({DayRegex}\s+{MonthRegex}))
+  def: ((قبل|بعد)\s+)?((اليوم|يوم)\s+)?(((?<=ب)الأمس|أمس|الأمس|البارحة)|(أول أمس|آخر يوم|الماضي|السابق|الأخير|يومين)|({DayRegex}\s+{MonthRegex}))
   references: [ DayRegex, MonthRegex ]
 LastDateRegex: !nestedRegex
   def: ({LastDayDateRegex}|{LastWeekDateRegex})
@@ -1336,28 +1336,30 @@ NightTermList: !list
 SameDayTerms: !list
   types: [ string ]
   entries: 
-    - today
-    - otd
+    - اليوم
+    - اليوم الحاضر
+    - اليوم العصر
 PlusOneDayTerms: !list
   types: [ string ]
-  entries: 
-    - tomorrow
-    - tmr
-    - day after
+  entries:
+    - غدا
+    - الغد
+    - غد
+    - غدا
 MinusOneDayTerms: !list
   types: [ string ]
-  entries: 
-    - yesterday
-    - day before
+  entries:
+    - أمس
+    - البارحة
+    - الأمس
 PlusTwoDayTerms: !list
   types: [ string ]
-  entries: 
-    - day after tomorrow
-    - day after tmr
+  entries:
+    - بعد الغد
 MinusTwoDayTerms: !list
   types: [ string ]
-  entries: 
-    - day before yesterday
+  entries:
+    - أول أمس
 # For DatePeriodParserConfiguration
 FutureTerms: !list
   types: [ string ]
