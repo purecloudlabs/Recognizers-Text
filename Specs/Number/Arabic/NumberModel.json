@@ -4940,5 +4940,255 @@
         "End": 4
       }
     ]
+  },
+  {
+    "Input": "مليونًا الأشياء",
+    "NotSupportedByDesign": "javascript, java",
+    "Results": [
+      {
+        "Text": "مليونًا",
+        "TypeName": "number",
+        "Resolution": {
+          "subtype": "integer",
+          "value": "1000000"
+        },
+        "Start": 0,
+        "End": 6
+      }
+    ]
+  },
+  {
+    "Input": "هل يمكنني من فضلك الحصول على ألف شريط؟",
+    "NotSupportedByDesign": "javascript, java",
+    "Results": [
+      {
+        "Text": "ألف",
+        "TypeName": "number",
+        "Resolution": {
+          "subtype": "integer",
+          "value": "1000"
+        },
+        "Start": 28,
+        "End": 31
+      }
+    ]
+  },
+  {
+    "Input": "13 مكاتب",
+    "NotSupportedByDesign": "javascript, java",
+    "Results": [
+      {
+        "Text": "13",
+        "TypeName": "number",
+        "Resolution": {
+          "subtype": "integer",
+          "value": "13"
+        },
+        "Start": 0,
+        "End": 1
+      }
+    ]
+  },
+  {
+    "Input": "أحد عشر مانجو",
+    "NotSupportedByDesign": "javascript, java",
+    "Results": [
+      {
+        "Text": "أحد عشر",
+        "TypeName": "number",
+        "Resolution": {
+          "subtype": "integer",
+          "value": "11"
+        },
+        "Start": 0,
+        "End": 6
+      }
+    ]
+  },
+  {
+    "Input": "ثلاثمائة",
+    "NotSupportedByDesign": "javascript, java",
+    "Results": [
+      {
+        "Text": "ثلاثمائة",
+        "TypeName": "number",
+        "Resolution": {
+          "subtype": "integer",
+          "value": "300"
+        },
+        "Start": 0,
+        "End": 7
+      }
+    ]
+  },
+  {
+    "Input": "هناك ثلاثمائة دولار وخمسمائة وواحد بنس",
+    "NotSupportedByDesign": "javascript, java",
+    "Results": [
+      {
+        "Text": "ثلاثمائة",
+        "TypeName": "number",
+        "Resolution": {
+          "subtype": "integer",
+          "value": "300"
+        },
+        "Start": 4,
+        "End": 12
+      },
+      {
+        "Text": "وخمسمائة وواحد",
+        "TypeName": "number",
+        "Resolution": {
+          "subtype": "integer",
+          "value": "501"
+        },
+        "Start": 19,
+        "End": 33
+      }
+    ]
+  },
+  {
+    "Input": "أحد عشر ضيفا",
+    "NotSupportedByDesign": "javascript, java",
+    "Results": [
+      {
+        "Text": "أحد عشر",
+        "TypeName": "number",
+        "Resolution": {
+          "subtype": "integer",
+          "value": "11"
+        },
+        "Start": 0,
+        "End": 6
+      }
+    ]
+  },
+  {
+    "Input": "ثلاثون جهاز كمبيوتر محمول",
+    "NotSupportedByDesign": "javascript, java",
+    "Results": [
+      {
+        "Text": "ثلاثون",
+        "TypeName": "number",
+        "Resolution": {
+          "subtype": "integer",
+          "value": "30"
+        },
+        "Start": 0,
+        "End": 5
+      }
+    ]
+  },
+  {
+    "Input": "ثمانمائة جنيه لا تكفي",
+    "NotSupportedByDesign": "javascript, java",
+    "Results": [
+      {
+        "Text": "ثمانمائة",
+        "TypeName": "number",
+        "Resolution": {
+          "subtype": "integer",
+          "value": "800"
+        },
+        "Start": 0,
+        "End": 7
+      }
+    ]
+  },
+  {
+    "Input": "ويبلغ عدد سكان الهند أكثر من مليار نسمة",
+    "NotSupportedByDesign": "javascript, java",
+    "Results": [
+      {
+        "Text": "مليار",
+        "TypeName": "number",
+        "Resolution": {
+          "subtype": "integer",
+          "value": "1000000000"
+        },
+        "Start": 28,
+        "End": 33
+      }
+    ]
+  },
+  {
+    "Input": "لديهم ثروة تزيد عن تريليون ريال",
+    "NotSupportedByDesign": "javascript, java",
+    "Results": [
+      {
+        "Text": "تريليون",
+        "TypeName": "number",
+        "Resolution": {
+          "subtype": "integer",
+          "value": "1000000000000"
+        },
+        "Start": 18,
+        "End": 25
+      }
+    ]
+  },
+  {
+    "Input": "لديك صفر الحس السليم",
+    "NotSupportedByDesign": "javascript, java",
+    "Results": [
+      {
+        "Text": "صفر",
+        "TypeName": "number",
+        "Resolution": {
+          "subtype": "integer",
+          "value": "0"
+        },
+        "Start": 5,
+        "End": 7
+      }
+    ]
+  },
+  {
+    "Input": "المساحة أكثر من مئة متر مربع",
+    "NotSupportedByDesign": "javascript, java",
+    "Results": [
+      {
+        "Text": "مئة",
+        "TypeName": "number",
+        "Resolution": {
+          "subtype": "integer",
+          "value": "100"
+        },
+        "Start": 15,
+        "End": 18
+      }
+    ]
+  },
+  {
+    "Input": "يرجى إخلاء المنطقة من أجل مئتان بيبل",
+    "NotSupportedByDesign": "javascript, java",
+    "Results": [
+      {
+        "Text": "مئتان",
+        "TypeName": "number",
+        "Resolution": {
+          "subtype": "integer",
+          "value": "200"
+        },
+        "Start": 25,
+        "End": 30
+      }
+    ]
+  },
+  {
+    "Input": "تجمع حوالي ألفان شخص",
+    "NotSupportedByDesign": "javascript, java",
+    "Results": [
+      {
+        "Text": "ألفان",
+        "TypeName": "number",
+        "Resolution": {
+          "subtype": "integer",
+          "value": "2000"
+        },
+        "Start": 10,
+        "End": 15
+      }
+    ]
   }
 ]
