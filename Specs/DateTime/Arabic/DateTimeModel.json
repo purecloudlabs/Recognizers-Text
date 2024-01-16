@@ -2914,5 +2914,161 @@
         "Resolution": "not resolved"
       }
     ]
+  },
+  {
+    "Input": "تَعْرفُ، نحن يُمْكِنُ أَنْ نَجْعلَ تلك النداءاتِ غداً وإلغاءِ.",
+    "Context": {
+      "ReferenceDateTime": "2024-01-15T00:00:00"
+    },
+    "IgnoreResolution": "true",
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "غداً",
+        "Start": 49,
+        "End": 52,
+        "TypeName": "datetimeV2.date",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "2024-01-16",
+              "type": "date",
+              "value": "2024-01-16"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "نتمنى أن يتمكن من الانضمام إلى المجموعة غدا في التدريبات .",
+    "Context": {
+      "ReferenceDateTime": "2024-01-15T00:00:00"
+    },
+    "IgnoreResolution": "true",
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "غد",
+        "Start": 40,
+        "End": 41,
+        "TypeName": "datetimeV2.date",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "2024-01-16",
+              "type": "date",
+              "value": "2024-01-16"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "حضارة اليوم الحاضر هي النتيجة الصافية لهذا التطور المضني",
+    "Context": {
+      "ReferenceDateTime": "2024-01-15T00:00:00"
+    },
+    "IgnoreResolution": "true",
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "اليوم الحاضر",
+        "Start": 6,
+        "End": 17,
+        "TypeName": "datetimeV2.date",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "2024-01-15",
+              "type": "date",
+              "value": "2024-01-15"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "ستكون دفعة المخدرات جاهزة بعد الغد.",
+    "Context": {
+      "ReferenceDateTime": "2024-01-15T00:00:00"
+    },
+    "IgnoreResolution": "true",
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "بعد الغد",
+        "Start": 26,
+        "End": 33,
+        "TypeName": "datetimeV2.date",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "2024-01-17",
+              "type": "date",
+              "value": "2024-01-17"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "في الحقيقة، قد أجبت على مثل هذا السؤال أول أمس.",
+    "Context": {
+      "ReferenceDateTime": "2024-01-15T00:00:00"
+    },
+    "IgnoreResolution": "true",
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "أول أمس",
+        "Start": 39,
+        "End": 45,
+        "TypeName": "datetimeV2.date",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "2024-01-13",
+              "type": "date",
+              "value": "2024-01-13"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "ولقد انتظرنا طويلا، ولا بد أن يحدث التغيير الآن.",
+    "Context": {
+      "ReferenceDateTime": "2024-01-15T00:00:00"
+    },
+    "IgnoreResolution": "true",
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الآن",
+        "Start": 43,
+        "End": 46,
+        "TypeName": "datetimeV2.datetime",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "PRESENT_REF",
+              "type": "datetime",
+              "value": "2024-01-15 00:00:00"
+            }
+          ]
+        }
+      }
+    ]
   }
 ]
