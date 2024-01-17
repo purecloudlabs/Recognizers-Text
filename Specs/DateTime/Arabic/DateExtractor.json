@@ -796,9 +796,9 @@
     "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
-        "Text": "إلى 27",
-        "Start": 4,
-        "Length": 6,
+        "Text": " 27",
+        "Start": 7,
+        "Length": 3,
         "Type": "date"
       }
     ]
@@ -808,9 +808,9 @@
     "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
-        "Text": "يوم 27",
-        "Start": 8,
-        "Length": 6,
+        "Text": " 27",
+        "Start":11,
+        "Length": 3,
         "Type": "date"
       }
     ]
@@ -820,9 +820,9 @@
     "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
-        "Text": "إلى 27",
-        "Start": 4,
-        "Length": 6,
+        "Text": " 27",
+        "Start": 7,
+        "Length": 3,
         "Type": "date"
       }
     ]
@@ -916,9 +916,9 @@
     "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
-        "Text": "يوم 27",
-        "Start": 4,
-        "Length": 6,
+        "Text": " 27",
+        "Start": 7,
+        "Length": 3,
         "Type": "date"
       }
     ]
@@ -928,9 +928,9 @@
     "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
-        "Text": "يوم 21",
-        "Start": 4,
-        "Length": 6,
+        "Text": " 21",
+        "Start": 7,
+        "Length": 3,
         "Type": "date"
       }
     ]
