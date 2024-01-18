@@ -207,7 +207,10 @@ class CatalanOrdinalExtractor(BaseNumberExtractor):
         self.__regexes = [
             ReVal(
                 re=CatalanNumeric.OrdinalSuffixRegex,
-                val='OrdinalNum')
+                val='OrdinalNum'),
+            ReVal(
+                re=CatalanNumeric.SuffixRoundNumberOrdinalRegex,
+                val='OrdCat')
         ]
 
 
