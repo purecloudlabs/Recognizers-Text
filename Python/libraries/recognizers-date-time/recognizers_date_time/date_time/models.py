@@ -37,7 +37,6 @@ class DateTimeModel(Model):
                     parser_dates += parse_result.value
                 else:
                     parser_dates.append(parse_result)
-            print("test")
         except Exception:
             pass
 
