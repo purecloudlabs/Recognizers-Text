@@ -97,7 +97,7 @@ class CatalanNumberParserConfiguration(BaseNumberParserConfiguration):
         self._culture_info = culture_info
         self._lang_marker = CatalanNumeric.LangMarker
         self._decimal_separator_char = CatalanNumeric.DecimalSeparatorChar
-        self._fraction_marker_token = None
+        self._fraction_marker_token = CatalanNumeric.FractionMarkerToken
         self._non_decimal_separator_char = CatalanNumeric.NonDecimalSeparatorChar
         self._half_a_dozen_text = CatalanNumeric.HalfADozenText
         self._word_separator_token = CatalanNumeric.WordSeparatorToken
@@ -105,7 +105,7 @@ class CatalanNumberParserConfiguration(BaseNumberParserConfiguration):
         self._written_decimal_separator_texts = CatalanNumeric.WrittenDecimalSeparatorTexts
         self._written_group_separator_texts = CatalanNumeric.WrittenGroupSeparatorTexts
         self._written_integer_separator_texts = CatalanNumeric.WrittenIntegerSeparatorTexts
-        self._written_fraction_separator_texts = None
+        self._written_fraction_separator_texts = CatalanNumeric.WrittenFractionSeparatorTexts
         self._non_standard_separator_variants = CatalanNumeric.NonStandardSeparatorVariants
         self._is_multi_decimal_separator_culture = CatalanNumeric.MultiDecimalSeparatorCulture
 
@@ -120,4 +120,21 @@ class CatalanNumberParserConfiguration(BaseNumberParserConfiguration):
             CatalanNumeric.HalfADozenRegex)
         self._digital_number_regex = RegExpUtility.get_safe_reg_exp(
             CatalanNumeric.DigitalNumberRegex)
-        self._round_multiplier_regex = None
+        self._round_multiplier_regex = RegExpUtility.get_safe_reg_exp(
+            CatalanNumeric.RoundMultiplierRegex)
+
+    def normalize_token_set(self, tokens: List[str], context: ParseResult) -> List[str]:
+        frac_words: List[str] = super().normalize_token_set(tokens, context)
+
+        # The following piece of code is needed to compute the fraction pattern number+'i mig' and 'un quart de'
+        # e.g. 'dos i mig' ('two and a half') where the numerator is omitted in Catalan and 'un quart de milió'
+        # It works by inserting the numerator 'un' ('a') in the catalan numbers regex
+        # so that the pattern is correctly processed.
+        if len(frac_words) >= 2:
+            if frac_words[-1] in CatalanNumeric.FractionalTokens and \
+                    frac_words[-2] == CatalanNumeric.WordSeparatorToken:
+                frac_words.insert(-1, CatalanNumeric.FractionWithoutNumeratorToken)
+            elif frac_words[-1] in CatalanNumeric.WrittenFractionSeparatorTexts and \
+                    frac_words[-2] in CatalanNumeric.FractionalTokens:
+                frac_words.pop(-1)
+        return frac_words

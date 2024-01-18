@@ -55,6 +55,28 @@
     ]
   },
   {
+    "Input": "Tornaré el 21",
+    "Results": [
+      {
+        "Text": "21",
+        "Type": "date",
+        "Start": 11,
+        "Length": 2
+      }
+    ]
+  },
+  {
+    "Input": "Tornaré el dia 3",
+    "Results": [
+      {
+        "Text": "3",
+        "Type": "date",
+        "Start": 15,
+        "Length": 1
+      }
+    ]
+  },
+  {
     "Input": "Vaig marxar d'aquí el 5 de desembre de 1391",
     "Results": [
       {
@@ -62,6 +84,28 @@
         "Type": "date",
         "Start": 22,
         "Length": 21
+      }
+    ]
+  },
+  {
+    "Input": "l'1 de l'1 de 2023",
+    "Results": [
+      {
+        "Text": "1 de l'1 de 2023",
+        "Type": "date",
+        "Start": 2,
+        "Length": 16
+      }
+    ]
+  },
+  {
+    "Input": "el 31 de l'1",
+    "Results": [
+      {
+        "Text": "31 de l'1",
+        "Type": "date",
+        "Start": 3,
+        "Length": 9
       }
     ]
   }

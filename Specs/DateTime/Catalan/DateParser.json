@@ -207,6 +207,52 @@
     ]
   },
   {
+    "Input": "Tornaré el 21",
+    "Context": {
+      "ReferenceDateTime": "2023-12-11T01:00:00"
+    },
+    "Results": [
+      {
+        "Text": "21",
+        "Type": "date",
+        "Value": {
+          "Timex": "XXXX-XX-21",
+          "FutureResolution": {
+            "date": "2023-12-21"
+          },
+          "PastResolution": {
+            "date": "2023-11-21"
+          }
+        },
+        "Start": 11,
+        "Length": 2
+      }
+    ]
+  },
+  {
+    "Input": "Tornaré el dia 3",
+    "Context": {
+      "ReferenceDateTime": "2023-12-11T01:00:00"
+    },
+    "Results": [
+      {
+        "Text": "3",
+        "Type": "date",
+        "Value": {
+          "Timex": "XXXX-XX-03",
+          "FutureResolution": {
+            "date": "2024-01-03"
+          },
+          "PastResolution": {
+            "date": "2023-12-03"
+          }
+        },
+        "Start": 11,
+        "Length": 1
+      }
+    ]
+  },
+  {
     "Input": "aquest article es va publicar el 06/10/2020",
     "Context": {
       "ReferenceDateTime": "2023-05-05T00:00:00"
@@ -226,6 +272,52 @@
         },
         "Start": 33,
         "Length": 10
+      }
+    ]
+  },
+  {
+    "Input": "l'1 de l'1 de 2023",
+    "Context": {
+      "ReferenceDateTime": "2016-11-07T00:00:00"
+    },
+    "Results": [
+      {
+        "Text": "1 de l'1 de 2023",
+        "Type": "date",
+        "Value": {
+          "Timex": "2023-01-01",
+          "FutureResolution": {
+            "date": "2023-01-01"
+          },
+          "PastResolution": {
+            "date": "2023-01-01"
+          }
+        },
+        "Start": 2,
+        "Length": 17
+      }
+    ]
+  },
+  {
+    "Input": "el 31 de l'1",
+    "Context": {
+      "ReferenceDateTime": "2016-11-07T00:00:00"
+    },
+    "Results": [
+      {
+        "Text": "31 de l'1",
+        "Type": "date",
+        "Value": {
+          "Timex": "XXXX-01-31",
+          "FutureResolution": {
+            "date": "2017-01-31"
+          },
+          "PastResolution": {
+            "date": "2016-01-31"
+          }
+        },
+        "Start": 3,
+        "Length": 11
       }
     ]
   }

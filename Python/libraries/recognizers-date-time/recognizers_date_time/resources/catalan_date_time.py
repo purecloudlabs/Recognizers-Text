@@ -43,8 +43,8 @@ class CatalanDateTime:
     FromRegex = f'((\\bdes?)(\\s*del)?)$'
     BetweenRegex = f'(\\bentre\\s*)'
     WeekDayRegex = f'\\b(?<weekday>(dilluns|dimarts|dimecres|dijous|divendres|dissabte|diumenge))\\b'
-    OnRegex = f'\\b(a\\s+)({DayRegex}s?)(?![.,]\\d)\\b'
-    RelaxedOnRegex = f'(?<=\\b(a)\\s+)((?<day>10|11|12|13|14|15|16|17|18|19|1st|20|21|22|23|24|25|26|27|28|29|2|30|31|3|4|5|6|7|8|9)s?)(?![.,]\\d)\\b'
+    OnRegex = f'(?<=\\bel(\\s+d[ií]a)?\\s+)({DayRegex}s?)(?![.,]\\d)\\b'
+    RelaxedOnRegex = f'(?<=\\bel(\\s+d[ií]a)?\\s+)((?<day>10|11|12|13|14|15|16|17|18|19|1st|20|21|22|23|24|25|26|27|28|29|2|30|31|3|4|5|6|7|8|9)s?)(?![.,]\\d)\\b'
     SpecialDayRegex = f'\\b(avui|dem[àa]|ahir)\\b'
     SpecialDayWithNumRegex = f'^[.]'
     FlexibleDayRegex = f'(?<DayOfMonth>([a-z]+\\s)?({WrittenDayRegex}|{DayRegex}))'
@@ -53,7 +53,7 @@ class CatalanDateTime:
     RelativeWeekDayRegex = f'^[.]'
     AmbiguousRangeModifierPrefix = f'^[.]'
     NumberEndingPattern = f'^[.]'
-    DateTokenPrefix = 'a '
+    DateTokenPrefix = 'el '
     TimeTokenPrefix = 'a les '
     TokenBeforeDate = 'el '
     TokenBeforeTime = 'a les '
@@ -75,7 +75,7 @@ class CatalanDateTime:
     DateExtractor6 = f'(?<=\\b(en|el)\\s+){MonthNumRegex}[\\-\\.]{DayRegex}{BaseDateTime.CheckDecimalRegex}\\b(?!\\s*[/\\\\\\.]\\s*\\d+)'
     DateExtractor7 = f'\\b(?<!\\d[.,]){MonthNumRegex}\\s*/\\s*{DayRegex}((\\s+|\\s*,\\s*|\\s+d[e\']\\s?){DateYearRegex})?\\b{BaseDateTime.CheckDecimalRegex}(?!\\s*[/\\\\\\.]\\s*\\d+)'
     DateExtractor8 = f'(?<=\\b(en|el)\\s+){DayRegex}[\\\\\\-]{MonthNumRegex}{BaseDateTime.CheckDecimalRegex}\\b(?!\\s*[/\\\\\\.]\\s*\\d+)'
-    DateExtractor9 = f'\\b({WeekDayRegex}\\s+)?(?<!\\d[.,]){DayRegex}\\s*(/|\\bde(l?)\\b)\\s*{MonthNumRegex}((\\s+|\\s*,\\s*|\\s+d[e\']\\s?){DateYearRegex})?\\b{BaseDateTime.CheckDecimalRegex}(?!\\s*[/\\\\\\.]\\s*\\d+)'
+    DateExtractor9 = f'\\b({WeekDayRegex}\\s+)?(?<!\\d[.,]){DayRegex}\\s*(/|\\bde(l?|\sl\')\\b)\\s*{MonthNumRegex}((\\s+|\\s*,\\s*|\\s+d[e\']\\s?){DateYearRegex})?\\b{BaseDateTime.CheckDecimalRegex}(?!\\s*[/\\\\\\.]\\s*\\d+)'
     DateExtractor10 = f'\\b(?<!\\d[.,])(({YearRegex}\\s*[/\\\\\\-\\.]\\s*({MonthNumRegex}|{MonthRegex})\\s*[/\\\\\\-\\.]\\s*{DayRegex}(?!\\s*[/\\\\\\-\\.]\\s*\\d+))|({MonthRegex}\\s*[/\\\\\\-\\.]\\s*{BaseDateTime.FourDigitYearRegex}\\s*[/\\\\\\-\\.]\\s*{DayRegex})|({DayRegex}\\s*[/\\\\\\-\\.]\\s*{BaseDateTime.FourDigitYearRegex}\\s*[/\\\\\\-\\.]\\s*{MonthRegex}))'
 
     HourRegex = f'\\b(?<!\\d[,.])(?<hour>2[0-4]|[0-1]?\\d)'
@@ -90,10 +90,10 @@ class CatalanDateTime:
     LastNightTimeRegex = f'(ahir a la nit)'
     NowTimeRegex = f'(ara|mateix|moment)'
     RecentlyTimeRegex = f'(ment)'
-    LessThanOneHour = f'(?<lth>((\\s+i\\s+)?quart|(\\s*)menys quart|(\\s+i\\s+)mitja(na)?|{BaseDateTime.DeltaMinuteRegex}(\\s+(minuts?|mins?))|{DeltaMinuteNumRegex}(\\s+(minuts?|mins?))))'
+    LessThanOneHour = f'(?<lth>((\\s)?(dos|tres)\\squart(s)|((\\s)?(i|un)\\s+)?quart(s)?|(\\s*)menys quart(s)?|(\\s+i\\s+)mitja(na)?|{BaseDateTime.DeltaMinuteRegex}(\\s+(minuts?|mins?))|{DeltaMinuteNumRegex}(\\s+(minuts?|mins?))|([1-3])/(2|4)))'
     TensTimeRegex = f'(?<tens>deu|vint|trenta|quaranta|cinquanta)'
     WrittenTimeRegex = f'(?<writtentime>{HourNumRegex}\\s*((i|(?<prefix>menys))\\s+)?(({TensTimeRegex}(\\s*i\\s+)?)?{MinuteNumRegex}))'
-    TimePrefix = f'(?<prefix>{LessThanOneHour}(\\s+(passades)\\s+(de\\s+les|les)?|\\s+(per\\s+a|abans\\s+de)?\\s+(les?))?)'
+    TimePrefix = f'(?<prefix>{LessThanOneHour}(\\s+(passades|de)\\s+(de\\s+les|les)?|\\s+(per\\s+a|abans\\s+de)?\\s+(les?)|\\s+(d\')|\\s+(menys))?)'
     TimeSuffix = f'(?<suffix>({LessThanOneHour}\\s+)?({AmRegex}|{PmRegex}|{OclockRegex}))'
     GeneralDescRegex = f'({DescRegex}|(?<suffix>{AmRegex}|{PmRegex}))'
     BasicTime = f'(?<basictime>{WrittenTimeRegex}|{HourNumRegex}|{BaseDateTime.HourRegex}:{BaseDateTime.MinuteRegex}(:{BaseDateTime.SecondRegex})?|{BaseDateTime.HourRegex})'
@@ -160,6 +160,7 @@ class CatalanDateTime:
                     ("un", 1),
                     ("una", 1),
                     ("dos", 2),
+                    ("dues", 2),
                     ("tres", 3),
                     ("trés", 3),
                     ("quatre", 4),
