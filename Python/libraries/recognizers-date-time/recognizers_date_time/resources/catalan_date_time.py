@@ -22,7 +22,7 @@ class CatalanDateTime:
     OfPrepositionRegex = f'(\\bde\\b)'
     TwoDigitYearRegex = f'\\b(?<![$])(?<year>([0-9]\\d))(?!(\\s*((\\:\\d)|{AmDescRegex}|{PmDescRegex}|\\.\\d))|\\.?[º°ª])\\b'
     WrittenOneToNineRegex = f'(?:u(n)?|dos|tres|quatre|cinc|sis|set|vuit|nou)'
-    WrittenOneToTwelveRegex = f'(?<month>u(n)?|dos|tres|quatre|cinc|sis|set|vuit|nou|onze|dotze)'
+    WrittenOneToTwelveRegex = f'(?<month>un?|dos|tres|quatre|cinc|sis|set|vuit|nou|onze|dotze)'
     TwoToNineIntegerRegex = f'(?:tres|set|vuit|quatre|cinc|nou|dos|sis)'
     WrittenElevenToNineteenRegex = f'(?:onze|dotze|tretze|catorze|quinze|setze|disset|divuit|dinou)'
     WrittenTensRegex = f'(?:setanta|vint|trenta|vuitanta|noranta|quaranta|cinquanta|seixanta)'
