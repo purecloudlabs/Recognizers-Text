@@ -5190,5 +5190,95 @@
         "End": 15
       }
     ]
+  },
+  {
+    "Input": "تسعة آلاف",
+    "NotSupportedByDesign": "javascript, java",
+    "Results": [
+      {
+        "Text": "تسعة آلاف",
+        "TypeName": "number",
+        "Resolution": {
+          "subtype": "integer",
+          "value": "9000"
+        },
+        "Start": 0,
+        "End": 8
+      }
+    ]
+  },
+  {
+    "Input": "هناك مائة ألف شخص في الغرفة",
+    "NotSupportedByDesign": "javascript, java",
+    "Results": [
+      {
+        "Text": "مائة ألف",
+        "TypeName": "number",
+        "Resolution": {
+          "subtype": "integer",
+          "value": "100000"
+        },
+        "Start": 4,
+        "End": 12
+      }
+    ]
+  },
+  {
+    "Input": "تسعة آلاف وتسعمائة نص عشوائي",
+    "NotSupportedByDesign": "javascript, java",
+    "Results": [
+      {
+        "Text": "تسعة آلاف وتسعمائة",
+        "TypeName": "number",
+        "Resolution": {
+          "subtype": "integer",
+          "value": "9900"
+        },
+        "Start": 0,
+        "End": 17
+      }
+    ]
+  },
+  {
+    "Input": "تسعة آلاف وتسعمائة نص عشوائي",
+    "NotSupportedByDesign": "javascript, java",
+    "Results": [
+      {
+        "Text": "تسعة آلاف وتسعمائة",
+        "TypeName": "number",
+        "Resolution": {
+          "subtype": "integer",
+          "value": "9900"
+        },
+        "Start": 0,
+        "End": 17
+      }
+    ]
+  },
+  {
+    "Input": "عندي مشاكل الفا مع حلول الف",
+    "NotSupportedByDesign": "javascript, java",
+    "Results": [
+      {
+        "Text": "الفا",
+        "TypeName": "number",
+        "Resolution": {
+          "subtype": "integer",
+          "value": "1000"
+        },
+        "Start": 10,
+        "End": 14
+      },
+      {
+        "Text": "الف",
+        "TypeName": "number",
+        "Resolution": {
+          "subtype": "integer",
+          "value": "1000"
+        },
+        "Start": 23,
+        "End": 26
+      }
+    ]
   }
 ]
