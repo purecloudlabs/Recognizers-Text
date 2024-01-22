@@ -13,7 +13,7 @@ class CatalanDateTime:
     RangePrefixRegex = f'(des de|entre)'
     DayRegex = f'\\b(?<day>01|02|03|04|05|06|07|08|09|10|11|12|13|14|15|16|17|18|19|1|20|21|22|23|24|25|26|27|28|29|2|30|31|3|4|5|6|7|8|9)(?:\\.[º°])?(?=\\b|t)'
     MonthNumRegex = f'(?<month>1[0-2]|(0)?[1-9])\\b'
-    WrittenDayRegex = f'(?<day>un?|dos|tres|quatre|cinc|cinc|sis|set|vuit|nou|nou|deu|onze|dotze|dotze|tretze|catorze|quinze|setze|mor disset|mor divuit|dinnou|vint|vint-i-un|vint-i-dos|vint-i-tres|vint-i-quatre|vint-i-cinc|vint-i-sis|vint-i-set|vint-i-vuit|vint-i-nou|trenta|trenta-un)'
+    WrittenDayRegex = f'(?<day>un?|dos|tres|quatre|cinc|sis|set|vuit|nou|deu|onze|dotze|tretze|catorze|quinze|setze|disset|divuit|dinou|vint|vint-i-un?|vint-i-dos|vint-i-tres|vint-i-quatre|vint-i-cinc|vint-i-sis|vint-i-set|vint-i-vuit|vint-i-nou|trenta|trenta-un?)'
     OclockRegex = f'(?<oclock>en\\s+punt(o)?)'
     AmDescRegex = f'({BaseDateTime.BaseAmDescRegex})'
     PmDescRegex = f'({BaseDateTime.BasePmDescRegex})'
