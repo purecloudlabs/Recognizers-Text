@@ -10,14 +10,14 @@ def read(fname):
 
 
 NAME = 'recognizers-text-suite-genesys'
-VERSION = '1.0.94a1'
+VERSION = '1.0.94a2'
 REQUIRES = [
-    'recognizers-text-genesys==1.0.94a1',
-    'recognizers-text-number-genesys==1.0.94a1',
-    'recognizers-text-number-with-unit-genesys==1.0.94a1',
-    'recognizers-text-date-time-genesys==1.0.94a1',
-    'recognizers-text-sequence-genesys==1.0.94a1',
-    'recognizers-text-choice-genesys==1.0.94a1',
+    'recognizers-text-genesys==1.0.94a2',
+    'recognizers-text-number-genesys==1.0.94a2',
+    'recognizers-text-number-with-unit-genesys==1.0.94a2',
+    'recognizers-text-date-time-genesys==1.0.94a2',
+    'recognizers-text-sequence-genesys==1.0.94a2',
+    'recognizers-text-choice-genesys==1.0.94a2',
     'datatypes_timex_expression_genesys==1.0.92'
 ]
 
