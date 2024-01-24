@@ -144,7 +144,7 @@
     },
     "Results": [
       {
-        "Text": "dotze de novembre",
+        "Text": "el dia dotze de novembre",
         "Type": "date",
         "Value": {
           "Timex": "XXXX-11-12",
@@ -155,8 +155,8 @@
             "date": "2022-11-12"
           }
         },
-        "Start": 11,
-        "Length": 21
+        "Start": 5,
+        "Length": 27
       }
     ]
   },
@@ -318,6 +318,98 @@
         },
         "Start": 3,
         "Length": 11
+      }
+    ]
+  },
+  {
+    "Input": "l'u de gener de 2000",
+    "Context": {
+      "ReferenceDateTime": "2023-05-05T00:00:00"
+    },
+    "Results": [
+      {
+        "Text": "u de gener de 2000",
+        "Type": "date",
+        "Value": {
+          "Timex": "2000-01-01",
+          "FutureResolution": {
+            "date": "2000-01-01"
+          },
+          "PastResolution": {
+            "date": "2000-01-01"
+          }
+        },
+        "Start": 2,
+        "Length": 18
+      }
+    ]
+  },
+  {
+    "Input": "l'u de gener de l'any 2000",
+    "Context": {
+      "ReferenceDateTime": "2023-05-05T00:00:00"
+    },
+    "Results": [
+      {
+        "Text": "u de gener de l'any 2000",
+        "Type": "date",
+        "Value": {
+          "Timex": "2000-01-01",
+          "FutureResolution": {
+            "date": "2000-01-01"
+          },
+          "PastResolution": {
+            "date": "2000-01-01"
+          }
+        },
+        "Start": 2,
+        "Length": 24
+      }
+    ]
+  },
+  {
+    "Input": "u de l'u del 2001",
+    "Context": {
+      "ReferenceDateTime": "2023-05-05T00:00:00"
+    },
+    "Results": [
+      {
+        "Text": "u de l'u del 2001",
+        "Type": "date",
+        "Value": {
+          "Timex": "2001-01-01",
+          "FutureResolution": {
+            "date": "2001-01-01"
+          },
+          "PastResolution": {
+            "date": "2001-01-01"
+          }
+        },
+        "Start": 0,
+        "Length": 17
+      }
+    ]
+  },
+  {
+    "Input": "el dia 1 de gener de l'any 2000",
+    "Context": {
+      "ReferenceDateTime": "2023-05-05T00:00:00"
+    },
+    "Results": [
+      {
+        "Text": "el dia 1 de gener de l'any 2000",
+        "Type": "date",
+        "Value": {
+          "Timex": "2000-01-01",
+          "FutureResolution": {
+            "date": "2000-01-01"
+          },
+          "PastResolution": {
+            "date": "2000-01-01"
+          }
+        },
+        "Start": 0,
+        "Length": 31
       }
     ]
   }

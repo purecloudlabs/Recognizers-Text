@@ -5,6 +5,7 @@ from recognizers_number import BaseNumberExtractor, BaseNumberParser
 from recognizers_number.number.catalan.parsers import CatalanNumberParserConfiguration
 from recognizers_number.number.catalan.extractors import CatalanCardinalExtractor, CatalanIntegerExtractor, \
     CatalanOrdinalExtractor
+from recognizers_date_time.resources.base_date_time import BaseDateTime
 
 from ...resources.catalan_date_time import CatalanDateTime
 from ..extractors import DateTimeExtractor
@@ -125,6 +126,8 @@ class CatalanCommonDateTimeParserConfiguration(MinimalBaseDateParserConfiguratio
         self._time_zone_parser = BaseTimeZoneParser()
         self._day_of_week = CatalanDateTime.DayOfWeek
         self._month_of_year = CatalanDateTime.MonthOfYear
+        self._day_of_month = {
+            **BaseDateTime.DayOfMonthDictionary, **CatalanDateTime.DayOfMonth}
         self._numbers = CatalanDateTime.Numbers
         self._check_both_before_after = CatalanDateTime.CheckBothBeforeAfter
         self._cardinal_extractor = CatalanCardinalExtractor()
