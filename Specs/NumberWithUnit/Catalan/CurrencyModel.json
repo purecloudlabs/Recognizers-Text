@@ -198,5 +198,80 @@
         "End": 32
       }
     ]
+  },
+  {
+    "Input": "Necessito tres mil cinc-cents euros",
+    "Results": [
+      {
+        "Text": "tres mil cinc-cents euros",
+        "TypeName": "currency",
+        "Resolution": {
+          "value": "3500",
+          "unit": "Euro"
+        },
+        "Start": 10,
+        "End": 34
+      }
+    ]
+  },
+  {
+    "Input": "Em pots donar mig milió d'euros, si us plau?\n",
+    "Results": [
+      {
+        "Text": "mig milió d'euros",
+        "TypeName": "currency",
+        "Resolution": {
+          "value": "500000",
+          "unit": "Euro"
+        },
+        "Start": 14,
+        "End": 30
+      }
+    ]
+  },
+  {
+    "Input": "pots donar-me quatre milions i mig d'euros?, si us plau?\n",
+    "Results": [
+      {
+        "Text": "quatre milions i mig d'euros",
+        "TypeName": "currency",
+        "Resolution": {
+          "value": "4500000",
+          "unit": "Euro"
+        },
+        "Start": 14,
+        "End": 41
+      }
+    ]
+  },
+  {
+    "Input": "pots donar-me quatre milions i mig d'euros?, si us plau?",
+    "Results": [
+      {
+        "Text": "quatre milions i mig d'euros",
+        "TypeName": "currency",
+        "Resolution": {
+          "value": "4500000",
+          "unit": "Euro"
+        },
+        "Start": 14,
+        "End": 41
+      }
+    ]
+  },
+  {
+    "Input": "Em pots donar mig milió de dòlars, si us plau?",
+    "Results": [
+      {
+        "Text": "mig milió de dòlars",
+        "TypeName": "currency",
+        "Resolution": {
+          "value": "500000",
+          "unit": "Dòlar"
+        },
+        "Start": 14,
+        "End": 32
+      }
+    ]
   }
 ]
