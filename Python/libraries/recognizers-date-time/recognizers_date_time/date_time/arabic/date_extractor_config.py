@@ -206,6 +206,7 @@ class ArabicDateExtractorConfiguration(DateExtractorConfiguration):
             RegExpUtility.get_safe_reg_exp(date_extractor_10),
             RegExpUtility.get_safe_reg_exp(date_extractor_11),
             RegExpUtility.get_safe_reg_exp(ArabicDateTime.DateExtractorA),
+            RegExpUtility.get_safe_reg_exp(ArabicDateTime.DateExtractorB),
         ]
 
         self._day_of_week = ArabicDateTime.DayOfWeek

@@ -6,6 +6,7 @@ import datetime
 import pytest
 from runner import get_specs, CULTURES
 from recognizers_date_time import recognize_datetime
+from unittest import skip
 
 MODELFUNCTION = {
     'DateTime': recognize_datetime
@@ -161,6 +162,17 @@ def test_datetime_model(
 
         for actual_resolution_value in actual.resolution['values']:
             assert_model_resolution(actual_resolution_value, expected['Resolution']['values'], spec_info)
+
+
+@skip("Used for troubleshooting individual phrases")
+def test_individual_utterance():
+    text = 'عدت إلى 27.'
+    # text = "عدت يوم 27/3"
+    res = recognize_datetime(text, "ar-ae")
+
+    print(f"\nResult: {res}")
+    assert len(res) > 0
+    assert res[0].resolution.get("values") is not None
 
 
 def get_props(results, prop):
