@@ -140,7 +140,7 @@ class ArabicDateTime:
     DateExtractor9L = f'\\b({WeekDayRegex}\\s+)?{DayRegex}\\s*/\\s*{MonthNumRegex}{DateExtractorYearTermRegex}(?![%])\\b'
     DateExtractor9S = f'\\b({WeekDayRegex}\\s+)?{DayRegex}\\s*[/-]\\s*{MonthNumRegex}(?![%])\\b'
     DateExtractorA = f'\\b({WeekDayRegex}\\s+)?{BaseDateTime.FourDigitYearRegex}\\s*[/\\\\\\-\\.]\\s*({MonthNumRegex}|{MonthRegex})\\s*[/\\\\\\-\\.]\\s*{DayRegex}'
-    DateExtractorB = f'(?:(?<=إلى|لل|يوم)\s*)({DayRegex})(?![\\./-]\d|\d)'
+    DateExtractorB = f'(?:(?<=إلى|لل|يوم)\\s*)({DayRegex})(?![\\./-]\\d|\\d)'
     OfMonth = f'^\\s*(يوم\\s+)?من\\s*{MonthRegex}'
     MonthEnd = f'{MonthRegex}\\s*(في)?\\s*$'
     WeekDayEnd = f'(هذا\\s+)?{WeekDayRegex}\\s*[,،]?\\s*$'
