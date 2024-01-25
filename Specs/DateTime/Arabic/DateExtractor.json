@@ -88,9 +88,9 @@
     "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
-        "Text": "الاثنين 12 يناير 2016",
-        "Start": 10,
-        "Length": 21,
+        "Text": "يوم الاثنين 12 يناير 2016",
+        "Start": 6,
+        "Length": 25,
         "Type": "date"
       }
     ]
