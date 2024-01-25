@@ -130,7 +130,7 @@ class ArabicDateTime:
     DateExtractorYearTermRegex = f'(\\s+|\\s*,\\s*|\\s+من\\s+){DateYearRegex}'
     CardinalDayRegex = f'(?=يوم\\s+)?((ال|لل|ل)?عاشر|(ال|لل|ل)?حادي(ة)? و(ال)?عشر[يو]ن|واحد و(ال)?عشر[يو]ن|(ال|لل|ل)?ثاني(ة)? و(ال)?عشر[يو]ن|(ال|لل|ل)?ثالث(ة)? و(ال)?عشر[يو]ن|(ال|لل|ل)?رابع(ة)? و(ال)?عشر[يو]ن|(ال|لل|ل)?خامس(ة)? و(ال)?عشر[يو]ن|(ال|لل|ل)?سادس(ة)? و(ال)?عشر[يو]ن|(ال|لل|ل)?سابع(ة)? و(ال)?عشر[يو]ن|(ال|لل|ل)?ثامن(ة)? و(ال)?عشر[يو]ن|(ال|لل|ل)?تاسع(ة)? و(ال)?عشر[يو]ن|(ال|لل|ل)?ثلاثين|(ال|لل|ل)?حادي(ة)? والثلاثين|(ال|لل|ل)?أول|(ال|لل|ل)?ثاني|(ال|لل|ل)?ثالث|(ال|لل|ل)?رابع|(ال|لل|ل)?خامس|(ال|لل|ل)?سادس|(ال|لل|ل)?سابع|(ال|لل|ل)?ثامن|(ال|لل|ل)?تاسع)'
     DateExtractor1 = f'({CardinalDayRegex})(\\s+يوم\\s+)({WeekDayRegex})(\\s+)(في|من)(\\s+)(هذا|هذه)?(\\s+)?(الشهر|{MonthRegex})({DateExtractorYearTermRegex}\\b)?'
-    DateExtractor3 = f'\\b({WeekDayRegex}(\\s+|\\s*,\\s*|\\s*،\\s*))?({DayRegex}|{CardinalDayRegex})[\\.]?(\\s+|\\s*,\\s*|\\s+من\\s+|\\s*-\\s*)?{MonthRegex}[\\.]?((\\s+(في|عند|عام|سنة|من عام|من سنة))?{DateExtractorYearTermRegex})?\\b'
+    DateExtractor3 = f'\\b(يوم\\s+)?({WeekDayRegex}(\\s+|\\s*,\\s*|\\s*،\\s*))?({DayRegex}|{CardinalDayRegex})[\\.]?(\\s+|\\s*,\\s*|\\s+من\\s+|\\s*-\\s*)?{MonthRegex}[\\.]?((\\s+(في|عند|عام|سنة|من عام|من سنة))?{DateExtractorYearTermRegex})?\\b'
     DateExtractor4 = f'\\b{MonthNumRegex}\\s*[/\\\\\\-]\\s*{DayRegex}[\\.]?\\s*[/\\\\\\-]\\s*{DateYearRegex}'
     DateExtractor5 = f'\\b{DayRegex}\\s*[/\\\\\\-\\.]\\s*({MonthNumRegex}|{MonthRegex})\\s*[/\\\\\\-\\.]\\s*{DateYearRegex}(?!\\s*[/\\\\\\-\\.]\\s*\\d+)'
     DateExtractor6 = f'(?<={DatePreposition}\\s+)({StrictRelativeRegex}\\s+)?({WeekDayRegex}\\s+)?{MonthNumRegex}[\\-\\.]{DayRegex}(?![%])\\b'
