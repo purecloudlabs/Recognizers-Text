@@ -357,4 +357,4 @@ class ArabicDatePeriodExtractorConfiguration(DatePeriodExtractorConfiguration):
         return MatchedIndex(False, -1)
 
     def has_connector_token(self, source: str) -> bool:
-        return RegExpUtility.is_exact_match(self.has_connector_token, source)
+        return RegExpUtility.is_exact_match(self.range_connector_regex, source, True)
