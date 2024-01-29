@@ -215,7 +215,7 @@
     ]
   },
   {
-    "Input": "Em pots donar mig milió d'euros, si us plau?\n",
+    "Input": "Em pots donar mig milió d'euros, si us plau?",
     "Results": [
       {
         "Text": "mig milió d'euros",
@@ -230,7 +230,7 @@
     ]
   },
   {
-    "Input": "pots donar-me quatre milions i mig d'euros?, si us plau?\n",
+    "Input": "pots donar-me quatre milions i mig d'euros?, si us plau?",
     "Results": [
       {
         "Text": "quatre milions i mig d'euros",
