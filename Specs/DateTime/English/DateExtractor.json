@@ -1839,5 +1839,60 @@
         "Length": 10
       }
     ]
+  },
+  {
+    "Input": "I was born on January eleventh nineteen seventy-four",
+    "Results": [
+      {
+        "Text": "january eleventh nineteen seventy-four",
+        "Type": "date",
+        "Start": 14,
+        "Length": 38
+      }
+    ]
+  },
+  {
+    "Input": "Aliens will land on earth on the fourth of july twenty twenty-seven",
+    "Results": [
+      {
+        "Text": "fourth of july twenty twenty-seven",
+        "Type": "date",
+        "Start": 33,
+        "Length": 34
+      }
+    ]
+  },
+  {
+    "Input": "My car insurance expires on June first twenty twenty",
+    "Results": [
+      {
+        "Text": "june first twenty twenty",
+        "Type": "date",
+        "Start": 28,
+        "Length": 24
+      }
+    ]
+  },
+  {
+    "Input": "Is there anything for March the second twenty fourteen",
+    "Results": [
+      {
+        "Text": "march the second twenty fourteen",
+        "Type": "date",
+        "Start": 22,
+        "Length": 32
+      }
+    ]
+  },
+  {
+    "Input": "Do you remember the twenty-second of july nineteen forty-eight",
+    "Results": [
+      {
+        "Text": "twenty-second of july nineteen forty-eight",
+        "Type": "date",
+        "Start": 20,
+        "Length": 42
+      }
+    ]
   }
 ]

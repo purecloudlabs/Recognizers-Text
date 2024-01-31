@@ -66,9 +66,11 @@ class AbstractYearExtractor(DateExtractor):
                 # Exclude pure number like "nineteen", "twenty four"
                 if (first_two_year_num < 100 and last_two_year_num == 0)\
                         or (first_two_year_num < 100 and first_two_year_num % 10 == 0
-                            and len(last_two_year_num_str.strip().split(' ')) == 1):
-                    year = Constants.INVALID_YEAR
-                    return year
+                            and (len(last_two_year_num_str.strip().split(' ')) == 1 and
+                                 len(last_two_year_num_str.strip().split('-')) == 1)):
+                    if (first_two_year_num + last_two_year_num) < 30:
+                        year = Constants.INVALID_YEAR
+                        return year
 
                 if first_two_year_num >= 100:
                     year = first_two_year_num + last_two_year_num
