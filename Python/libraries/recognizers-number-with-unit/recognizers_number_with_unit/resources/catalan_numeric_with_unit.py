@@ -18,7 +18,7 @@ class CatalanNumericWithUnit:
                                 ("Cèntim", "cèntim|cèntims"),
                                 ("Centèsim", "centèsim|centèsims"),
                                 ("Penique", "penique|peniques"),
-                                ("Euro", "euro|euros|€|eur"),
+                                ("Euro", "euro|euros|€|eur|d'euros"),
                                ("Cèntim d'Euro", "cèntim d'euro|cèntims d'euros"),
                                ("Dòlar del Carib Oriental",
                                 "dòlar del carib oriental|dòlars del carib oriental|ec$|xcd"),

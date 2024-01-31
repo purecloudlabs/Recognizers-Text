@@ -151,9 +151,9 @@
     "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
-        "Text": "الاثنين 12 يناير 2016",
-        "Start": 10,
-        "Length": 21,
+        "Text": "يوم الاثنين 12 يناير 2016",
+        "Start": 6,
+        "Length": 25,
         "Type": "date",
         "Value": {
           "Timex": "2016-01-12",
@@ -977,10 +977,9 @@
   {
     "Input": "سأعود هذا يوم الجمعة",
     "Context": {
-      "ReferenceDateTime": "2016-11-07T00:00:00"
+      "ReferenceDateTime": "2024-01-17T00:00:00"
     },
-    "IgnoreResolution": "true",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "هذا يوم الجمعة",
@@ -988,12 +987,12 @@
         "Length": 14,
         "Type": "date",
         "Value": {
-          "Timex": "2016-11-11",
+          "Timex": "2024-01-26",
           "FutureResolution": {
-            "date": "2016-11-11"
+            "date": "2024-01-26"
           },
           "PastResolution": {
-            "date": "2016-11-11"
+            "date": "2024-01-26"
           }
         }
       }
@@ -1495,11 +1494,10 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "IgnoreResolution": "true",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
-        "Text": "إلى 27",
+        "Text": " 27",
         "Start": 4,
         "Length": 6,
         "Type": "date",
@@ -1509,7 +1507,7 @@
             "date": "2016-11-27"
           },
           "PastResolution": {
-            "date": "2016-11-27"
+            "date": "2016-10-27"
           }
         }
       }
@@ -1520,11 +1518,10 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "IgnoreResolution": "true",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
-        "Text": "يوم 27",
+        "Text": " 27",
         "Start": 4,
         "Length": 6,
         "Type": "date",
@@ -1534,7 +1531,7 @@
             "date": "2016-11-27"
           },
           "PastResolution": {
-            "date": "2016-11-27"
+            "date": "2016-10-27"
           }
         }
       }
@@ -2539,6 +2536,30 @@
           },
           "PastResolution": {
             "date": "2009-03-11"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "Input": "عدت يوم 27/3",
+    "Context": {
+      "ReferenceDateTime": "2016-04-07T00:00:00"
+    },
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "27/3",
+        "Start": 8,
+        "Length": 4,
+        "Type": "date",
+        "Value": {
+          "Timex": "XXXX-03-27",
+          "FutureResolution": {
+            "date": "2017-03-27"
+          },
+          "PastResolution": {
+            "date": "2016-03-27"
           }
         }
       }

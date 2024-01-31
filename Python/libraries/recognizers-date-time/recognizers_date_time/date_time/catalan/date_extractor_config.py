@@ -190,7 +190,7 @@ class CatalanDateExtractorConfiguration(DateExtractorConfiguration):
             BaseDateTime.RangeConnectorSymbolRegex
         )
         self._strict_relative_regex = RegExpUtility.get_safe_reg_exp(f'^[.]')
-        self._year_suffix = RegExpUtility.get_safe_reg_exp(f'^[.]')
+        self._year_suffix = RegExpUtility.get_safe_reg_exp(CatalanDateTime.YearSuffixRegex)
         self._month_of_year = CatalanDateTime.MonthOfYear
         self._prefix_article_regex = RegExpUtility.get_safe_reg_exp(f'^[.]')
         self._week_day_end = RegExpUtility.get_safe_reg_exp(

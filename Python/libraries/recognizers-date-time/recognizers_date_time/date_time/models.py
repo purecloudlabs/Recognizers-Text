@@ -1,6 +1,7 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
+import logging
 from typing import List
 from datetime import datetime
 
@@ -8,6 +9,10 @@ from recognizers_text.model import Model, ModelResult
 from recognizers_text.utilities import QueryProcessor
 from .extractors import DateTimeExtractor
 from .parsers import DateTimeParser
+
+
+logger = logging.getLogger(__name__)
+logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
 
 class DateTimeModelResult(ModelResult):
@@ -38,7 +43,7 @@ class DateTimeModel(Model):
                 else:
                     parser_dates.append(parse_result)
         except Exception:
-            pass
+            logger.exception("Failed to extract or parse datetime")
 
         return [self.__to_model_result(x) for x in parser_dates]
 
