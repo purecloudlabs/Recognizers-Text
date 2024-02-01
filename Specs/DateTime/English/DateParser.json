@@ -3453,5 +3453,120 @@
         "Length": 10
       }
     ]
+  },
+  {
+    "Input": "I was born on January eleventh nineteen seventy-four",
+    "Context": {
+      "ReferenceDateTime": "2023-05-05T00:00:00"
+    },
+    "Results": [
+      {
+        "Text": "january eleventh nineteen seventy-four",
+        "Type": "date",
+        "Value": {
+          "Timex": "1974-01-11",
+          "FutureResolution": {
+            "date": "1974-01-11"
+          },
+          "PastResolution": {
+            "date": "1974-01-11"
+          }
+        },
+        "Start": 14,
+        "Length": 38
+      }
+    ]
+  },
+  {
+    "Input": "Aliens will land on earth on the fourth of july twenty twenty-seven",
+    "Context": {
+      "ReferenceDateTime": "2023-05-05T00:00:00"
+    },
+    "Results": [
+      {
+        "Text": "fourth of july twenty twenty-seven",
+        "Type": "date",
+        "Value": {
+          "Timex": "2027-07-04",
+          "FutureResolution": {
+            "date": "2027-07-04"
+          },
+          "PastResolution": {
+            "date": "2027-07-04"
+          }
+        },
+        "Start": 33,
+        "Length": 34
+      }
+    ]
+  },
+  {
+    "Input": "Is there anything for March the second twenty fourteen",
+    "Context": {
+      "ReferenceDateTime": "2023-05-05T00:00:00"
+    },
+    "Results": [
+      {
+        "Text": "march the second twenty fourteen",
+        "Type": "date",
+        "Value": {
+          "Timex": "2014-03-02",
+          "FutureResolution": {
+            "date": "2014-03-02"
+          },
+          "PastResolution": {
+            "date": "2014-03-02"
+          }
+        },
+        "Start": 22,
+        "Length": 32
+      }
+    ]
+  },
+  {
+    "Input": "Do you remember the twenty-second of july nineteen forty-eight",
+    "Context": {
+      "ReferenceDateTime": "2023-05-05T00:00:00"
+    },
+    "Results": [
+      {
+        "Text": "twenty-second of july nineteen forty-eight",
+        "Type": "date",
+        "Value": {
+          "Timex": "1948-07-22",
+          "FutureResolution": {
+            "date": "1948-07-22"
+          },
+          "PastResolution": {
+            "date": "1948-07-22"
+          }
+        },
+        "Start": 20,
+        "Length": 42
+      }
+    ]
+  },
+  {
+    "Input": "My car insurance expires on June first twenty twenty",
+    "Context": {
+      "ReferenceDateTime": "2023-05-05T00:00:00"
+    },
+    "Results": [
+      {
+        "Text": "june first twenty twenty",
+        "Type": "date",
+        "Value": {
+          "Timex": "2020-06-01",
+          "FutureResolution": {
+            "date": "2020-06-01"
+          },
+          "PastResolution": {
+            "date": "2020-06-01"
+          }
+        },
+        "Start": 28,
+        "Length": 24
+      }
+    ]
   }
 ]
