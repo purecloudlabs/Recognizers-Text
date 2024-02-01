@@ -272,5 +272,20 @@
         "End": 20
       }
     ]
+  },
+  {
+    "Input": "عشرون جنيها",
+    "Results": [
+      {
+        "Text": "عشرون جنيها",
+        "TypeName": "currency",
+        "Resolution": {
+          "value": "20",
+          "unit": "Pound"
+        },
+        "Start": 0,
+        "End": 10
+      }
+    ]
   }
 ]
