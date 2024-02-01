@@ -25928,5 +25928,120 @@
         "TypeName": "datetimeV2.date"
       }
     ]
+  },
+  {
+    "Input": "I was born on January eleventh nineteen seventy-four",
+    "Context": {
+      "ReferenceDateTime": "2023-05-05T00:00:00"
+    },
+    "Results": [
+      {
+        "Start": 14,
+        "End": 51,
+        "Resolution": {
+          "values": [
+            {
+              "timex": "1974-01-11",
+              "type": "date",
+              "value": "1974-01-11"
+            }
+          ]
+        },
+        "Text": "january eleventh nineteen seventy-four",
+        "Type": "datetimeV2.date"
+      }
+    ]
+  },
+  {
+    "Input": "Aliens will land on earth on the fourth of july twenty twenty-seven",
+    "Context": {
+      "ReferenceDateTime": "2023-05-05T00:00:00"
+    },
+    "Results": [
+      {
+        "Start": 33,
+        "End": 66,
+        "Resolution": {
+          "values": [
+            {
+              "timex": "2027-07-04",
+              "type": "date",
+              "value": "2027-07-04"
+            }
+          ]
+        },
+        "Text": "fourth of july twenty twenty-seven",
+        "Type": "datetimeV2.date"
+      }
+    ]
+  },
+  {
+    "Input": "My car insurance expires on June first twenty twenty",
+    "Context": {
+      "ReferenceDateTime": "2023-05-05T00:00:00"
+    },
+    "Results": [
+      {
+        "Start": 28,
+        "End": 51,
+        "Resolution": {
+          "values": [
+            {
+              "timex": "2020-06-01",
+              "type": "date",
+              "value": "2020-06-01"
+            }
+          ]
+        },
+        "Text": "june first twenty twenty",
+        "Type": "datetimeV2.date"
+      }
+    ]
+  },
+  {
+    "Input": "Is there anything for March the second twenty fourteen",
+    "Context": {
+      "ReferenceDateTime": "2023-05-05T00:00:00"
+    },
+    "Results": [
+      {
+        "Start": 22,
+        "End": 53,
+        "Resolution": {
+          "values": [
+            {
+              "timex": "2014-03-02",
+              "type": "date",
+              "value": "2014-03-02"
+            }
+          ]
+        },
+        "Text": "march the second twenty fourteen",
+        "Type": "datetimeV2.date"
+      }
+    ]
+  },
+  {
+    "Input": "Do you remember the twenty-second of july nineteen forty-eight",
+    "Context": {
+      "ReferenceDateTime": "2023-05-05T00:00:00"
+    },
+    "Results": [
+      {
+        "Start": 20,
+        "End": 61,
+        "Resolution": {
+          "values": [
+            {
+              "timex": "1948-07-22",
+              "type": "date",
+              "value": "1948-07-22"
+            }
+          ]
+        },
+        "Text": "twenty-second of july nineteen forty-eight",
+        "Type": "datetimeV2.date"
+      }
+    ]
   }
 ]

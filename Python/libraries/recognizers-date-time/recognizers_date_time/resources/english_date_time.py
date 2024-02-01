@@ -46,7 +46,7 @@ class EnglishDateTime:
     WrittenCenturyFullYearRegex = f'(?:(one|two)\\s+thousand((\\s+and)?\\s+{WrittenOneToNineRegex}\\s+hundred)?)'
     WrittenCenturyOrdinalYearRegex = f'(?:twenty(\\s+(one|two))?|ten|eleven|twelve|thirteen|fifteen|eighteen|(?:four|six|seven|nine)(teen)?|one|two|three|five|eight)'
     CenturyRegex = f'\\b(?<century>{WrittenCenturyFullYearRegex}|{WrittenCenturyOrdinalYearRegex}(\\s+hundred)?)\\b'
-    LastTwoYearNumRegex = f'(?:(zero\\s+)?{WrittenOneToNineRegex}|{WrittenElevenToNineteenRegex}|{WrittenTensRegex}(\\s+{WrittenOneToNineRegex})?)'
+    LastTwoYearNumRegex = f'(?:(zero\\s+)?{WrittenOneToNineRegex}|{WrittenElevenToNineteenRegex}|{WrittenTensRegex}((\\s+|-){WrittenOneToNineRegex})?)'
     FullTextYearRegex = f'\\b((?<firsttwoyearnum>{CenturyRegex})(\\s+and)?\\s+(?<lasttwoyearnum>{LastTwoYearNumRegex})\\b|\\b(?<firsttwoyearnum>{WrittenCenturyFullYearRegex}|{WrittenCenturyOrdinalYearRegex}\\s+hundred))\\b'
     OclockRegex = f'(?<oclock>o\\s*((’|‘|\')\\s*)?clock|sharp)'
     SpecialDescRegex = f'((?<ipm>)p\\b)'
