@@ -236,7 +236,7 @@
         "TypeName": "currency",
         "Resolution": {
           "value": "15",
-          "unit": "Cent"
+          "unit": "Pence"
         },
         "Start": 4,
         "End": 16
