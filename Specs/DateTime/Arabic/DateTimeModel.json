@@ -551,7 +551,6 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "IgnoreResolution": "true",
     "NotSupported": "dotnet",
     "NotSupportedByDesign": "java, javascript",
     "Results": [
@@ -1165,7 +1164,6 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "IgnoreResolution": "true",
     "NotSupported": "dotnet",
     "NotSupportedByDesign": "java, javascript",
     "Results": [
@@ -1529,13 +1527,12 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "IgnoreResolution": "true",
     "NotSupported": "dotnet",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
-        "Text": " 7:56:30 مساء",
-        "Start": 5,
+        "Text": "7:56:30 مساء",
+        "Start": 6,
         "End": 17,
         "TypeName": "datetimeV2.time",
         "Resolution": {
@@ -1555,9 +1552,8 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "IgnoreResolution": "true",
     "NotSupported": "dotnet",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "الساعة السابعة والنصف",
@@ -1586,9 +1582,8 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "IgnoreResolution": "true",
     "NotSupported": "dotnet",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "الساعة الثامنة وعشرين دقيقة مساءً",
@@ -1612,13 +1607,12 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "IgnoreResolution": "true",
     "NotSupported": "dotnet",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
-        "Text": " في الصباح في 7",
-        "Start": 5,
+        "Text": "في الصباح في 7",
+        "Start": 6,
         "End": 19,
         "TypeName": "datetimeV2.time",
         "Resolution": {
@@ -1638,13 +1632,12 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "IgnoreResolution": "true",
     "NotSupported": "dotnet",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
-        "Text": " بعد الظهر الساعة 7",
-        "Start": 5,
+        "Text": "بعد الظهر الساعة 7",
+        "Start": 6,
         "End": 23,
         "TypeName": "datetimeV2.time",
         "Resolution": {
@@ -1664,13 +1657,12 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "IgnoreResolution": "true",
     "NotSupported": "dotnet",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
-        "Text": " الظهيرة",
-        "Start": 5,
+        "Text": "الظهيرة",
+        "Start": 6,
         "End": 12,
         "TypeName": "datetimeV2.time",
         "Resolution": {
@@ -1690,9 +1682,8 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "IgnoreResolution": "true",
     "NotSupported": "dotnet",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "الحاديه عشر",
@@ -1705,6 +1696,11 @@
               "timex": "T11",
               "type": "time",
               "value": "11:00:00"
+            },
+            {
+              "timex": "T23",
+              "type": "time",
+              "value": "23:00:00"
             }
           ]
         }
@@ -1742,7 +1738,6 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "IgnoreResolution": "true",
     "NotSupported": "dotnet",
     "NotSupportedByDesign": "java, javascript",
     "Results": [
@@ -1822,7 +1817,6 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T16:12:00"
     },
-    "IgnoreResolution": "true",
     "NotSupported": "dotnet",
     "NotSupportedByDesign": "java, javascript",
     "Results": [
@@ -1990,7 +1984,6 @@
     "Context": {
       "ReferenceDateTime": "2017-09-28T14:11:10.9626841"
     },
-    "IgnoreResolution": "true",
     "NotSupported": "dotnet",
     "NotSupportedByDesign": "java, javascript",
     "Results": [
@@ -2920,7 +2913,6 @@
     "Context": {
       "ReferenceDateTime": "2024-01-15T00:00:00"
     },
-    "IgnoreResolution": "true",
     "NotSupported": "dotnet",
     "NotSupportedByDesign": "java, javascript",
     "Results": [
@@ -2946,7 +2938,6 @@
     "Context": {
       "ReferenceDateTime": "2024-01-15T00:00:00"
     },
-    "IgnoreResolution": "true",
     "NotSupported": "dotnet",
     "NotSupportedByDesign": "java, javascript",
     "Results": [
@@ -2972,7 +2963,6 @@
     "Context": {
       "ReferenceDateTime": "2024-01-15T00:00:00"
     },
-    "IgnoreResolution": "true",
     "NotSupported": "dotnet",
     "NotSupportedByDesign": "java, javascript",
     "Results": [
@@ -2998,7 +2988,6 @@
     "Context": {
       "ReferenceDateTime": "2024-01-15T00:00:00"
     },
-    "IgnoreResolution": "true",
     "NotSupported": "dotnet",
     "NotSupportedByDesign": "java, javascript",
     "Results": [
@@ -3024,7 +3013,6 @@
     "Context": {
       "ReferenceDateTime": "2024-01-15T00:00:00"
     },
-    "IgnoreResolution": "true",
     "NotSupported": "dotnet",
     "NotSupportedByDesign": "java, javascript",
     "Results": [
@@ -3050,7 +3038,6 @@
     "Context": {
       "ReferenceDateTime": "2024-01-15T00:00:00"
     },
-    "IgnoreResolution": "true",
     "NotSupported": "dotnet",
     "NotSupportedByDesign": "java, javascript",
     "Results": [
@@ -3076,7 +3063,6 @@
     "Context": {
       "ReferenceDateTime": "2024-01-24T00:00:00"
     },
-    "IgnoreResolution": "true",
     "NotSupported": "dotnet",
     "NotSupportedByDesign": "java, javascript",
     "Results": [
@@ -3107,7 +3093,6 @@
     "Context": {
       "ReferenceDateTime": "2024-01-24T00:00:00"
     },
-    "IgnoreResolution": "true",
     "NotSupported": "dotnet",
     "NotSupportedByDesign": "java, javascript",
     "Results": [
@@ -3127,6 +3112,2041 @@
               "timex": "XXXX-04-28",
               "type": "date",
               "value": "2024-04-28"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "الواحدة إلا خمس وعشرون دقيقة صباحاً",
+    "Context": {
+      "ReferenceDateTime": "2024-02-01T00:00:00"
+    },
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الواحدة إلا خمس وعشرون دقيقة صباحا",
+        "Start": 0,
+        "End": 33,
+        "TypeName": "datetimeV2.time",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "T00:35",
+              "type": "time",
+              "value": "00:35:00"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "الساعة الواحدة",
+    "Context": {
+      "ReferenceDateTime": "2024-02-01T00:00:00"
+    },
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الساعة الواحدة",
+        "Start": 0,
+        "End": 13,
+        "TypeName": "datetimeV2.time",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "T01",
+              "type": "time",
+              "value": "01:00:00"
+            },
+            {
+              "timex": "T13",
+              "type": "time",
+              "value": "13:00:00"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "الساعه الثانيه",
+    "Context": {
+      "ReferenceDateTime": "2024-02-01T00:00:00"
+    },
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الثانيه",
+        "Start": 7,
+        "End": 13,
+        "TypeName": "datetimeV2.time",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "T02",
+              "type": "time",
+              "value": "02:00:00"
+            },
+            {
+              "timex": "T14",
+              "type": "time",
+              "value": "14:00:00"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "الساعة الثانية",
+    "Context": {
+      "ReferenceDateTime": "2024-02-01T00:00:00"
+    },
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الساعة الثانية",
+        "Start": 0,
+        "End": 13,
+        "TypeName": "datetimeV2.time",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "T02",
+              "type": "time",
+              "value": "02:00:00"
+            },
+            {
+              "timex": "T14",
+              "type": "time",
+              "value": "14:00:00"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "السادسة إلا ربع",
+    "Context": {
+      "ReferenceDateTime": "2024-02-01T00:00:00"
+    },
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "السادسة إلا ربع",
+        "Start": 0,
+        "End": 14,
+        "TypeName": "datetimeV2.time",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "T05:45",
+              "type": "time",
+              "value": "05:45:00"
+            },
+            {
+              "timex": "T17:45",
+              "type": "time",
+              "value": "17:45:00"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "الساعة السادسة إلا ربع",
+    "Context": {
+      "ReferenceDateTime": "2024-02-01T00:00:00"
+    },
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الساعة السادسة إلا ربع",
+        "Start": 0,
+        "End": 21,
+        "TypeName": "datetimeV2.time",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "T05:45",
+              "type": "time",
+              "value": "05:45:00"
+            },
+            {
+              "timex": "T17:45",
+              "type": "time",
+              "value": "17:45:00"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "السادسة والنصف",
+    "Context": {
+      "ReferenceDateTime": "2024-02-01T00:00:00"
+    },
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "السادسة والنصف",
+        "Start": 0,
+        "End": 13,
+        "TypeName": "datetimeV2.time",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "T06:30",
+              "type": "time",
+              "value": "06:30:00"
+            },
+            {
+              "timex": "T18:30",
+              "type": "time",
+              "value": "18:30:00"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "الساعة السادسة والنصف",
+    "Context": {
+      "ReferenceDateTime": "2024-02-01T00:00:00"
+    },
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الساعة السادسة والنصف",
+        "Start": 0,
+        "End": 20,
+        "TypeName": "datetimeV2.time",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "T06:30",
+              "type": "time",
+              "value": "06:30:00"
+            },
+            {
+              "timex": "T18:30",
+              "type": "time",
+              "value": "18:30:00"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "الساعة السابعة إلا خمس دقائق",
+    "Context": {
+      "ReferenceDateTime": "2024-02-01T00:00:00"
+    },
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الساعة السابعة إلا خمس دقائق",
+        "Start": 0,
+        "End": 27,
+        "TypeName": "datetimeV2.time",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "T06:55",
+              "type": "time",
+              "value": "06:55:00"
+            },
+            {
+              "timex": "T18:55",
+              "type": "time",
+              "value": "18:55:00"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "الساعة السابعة",
+    "Context": {
+      "ReferenceDateTime": "2024-02-01T00:00:00"
+    },
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الساعة السابعة",
+        "Start": 0,
+        "End": 13,
+        "TypeName": "datetimeV2.time",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "T07",
+              "type": "time",
+              "value": "07:00:00"
+            },
+            {
+              "timex": "T19",
+              "type": "time",
+              "value": "19:00:00"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "السابعة صباحاً",
+    "Context": {
+      "ReferenceDateTime": "2024-02-01T00:00:00"
+    },
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "السابعة صباحا",
+        "Start": 0,
+        "End": 12,
+        "TypeName": "datetimeV2.time",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "T07",
+              "type": "time",
+              "value": "07:00:00"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "السابعة والربع",
+    "Context": {
+      "ReferenceDateTime": "2024-02-01T00:00:00"
+    },
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "السابعة والربع",
+        "Start": 0,
+        "End": 13,
+        "TypeName": "datetimeV2.time",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "T07:15",
+              "type": "time",
+              "value": "07:15:00"
+            },
+            {
+              "timex": "T19:15",
+              "type": "time",
+              "value": "19:15:00"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "الساعة السابعة والربع",
+    "Context": {
+      "ReferenceDateTime": "2024-02-01T00:00:00"
+    },
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الساعة السابعة والربع",
+        "Start": 0,
+        "End": 20,
+        "TypeName": "datetimeV2.time",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "T07:15",
+              "type": "time",
+              "value": "07:15:00"
+            },
+            {
+              "timex": "T19:15",
+              "type": "time",
+              "value": "19:15:00"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "الساعة الثامنة",
+    "Context": {
+      "ReferenceDateTime": "2024-02-01T00:00:00"
+    },
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الساعة الثامنة",
+        "Start": 0,
+        "End": 13,
+        "TypeName": "datetimeV2.time",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "T08",
+              "type": "time",
+              "value": "08:00:00"
+            },
+            {
+              "timex": "T20",
+              "type": "time",
+              "value": "20:00:00"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "الثامنة صباحاً",
+    "Context": {
+      "ReferenceDateTime": "2024-02-01T00:00:00"
+    },
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الثامنة صباحا",
+        "Start": 0,
+        "End": 12,
+        "TypeName": "datetimeV2.time",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "T08",
+              "type": "time",
+              "value": "08:00:00"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "الثامنة وعشر دقائق",
+    "Context": {
+      "ReferenceDateTime": "2024-02-01T00:00:00"
+    },
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الثامنة وعشر دقائق",
+        "Start": 0,
+        "End": 17,
+        "TypeName": "datetimeV2.time",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "T08:10",
+              "type": "time",
+              "value": "08:10:00"
+            },
+            {
+              "timex": "T20:10",
+              "type": "time",
+              "value": "20:10:00"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "الساعة الثامنة وعشر دقائق",
+    "Context": {
+      "ReferenceDateTime": "2024-02-01T00:00:00"
+    },
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الساعة الثامنة وعشر دقائق",
+        "Start": 0,
+        "End": 24,
+        "TypeName": "datetimeV2.time",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "T08:10",
+              "type": "time",
+              "value": "08:10:00"
+            },
+            {
+              "timex": "T20:10",
+              "type": "time",
+              "value": "20:10:00"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "الساعة التاسعة",
+    "Context": {
+      "ReferenceDateTime": "2024-02-01T00:00:00"
+    },
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الساعة التاسعة",
+        "Start": 0,
+        "End": 13,
+        "TypeName": "datetimeV2.time",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "T09",
+              "type": "time",
+              "value": "09:00:00"
+            },
+            {
+              "timex": "T21",
+              "type": "time",
+              "value": "21:00:00"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "التاسعة صباحاً",
+    "Context": {
+      "ReferenceDateTime": "2024-02-01T00:00:00"
+    },
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "التاسعة صباحا",
+        "Start": 0,
+        "End": 12,
+        "TypeName": "datetimeV2.time",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "T09",
+              "type": "time",
+              "value": "09:00:00"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "التاسعة والربع",
+    "Context": {
+      "ReferenceDateTime": "2024-02-01T00:00:00"
+    },
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "التاسعة والربع",
+        "Start": 0,
+        "End": 13,
+        "TypeName": "datetimeV2.time",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "T09:15",
+              "type": "time",
+              "value": "09:15:00"
+            },
+            {
+              "timex": "T21:15",
+              "type": "time",
+              "value": "21:15:00"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "التاسعة وخمس عشرة دقيقة",
+    "Context": {
+      "ReferenceDateTime": "2024-02-01T00:00:00"
+    },
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "التاسعة وخمس عشرة دقيقة",
+        "Start": 0,
+        "End": 22,
+        "TypeName": "datetimeV2.time",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "T09:15",
+              "type": "time",
+              "value": "09:15:00"
+            },
+            {
+              "timex": "T21:15",
+              "type": "time",
+              "value": "21:15:00"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "العاشرة إلا خمس دقائق",
+    "Context": {
+      "ReferenceDateTime": "2024-02-01T00:00:00"
+    },
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "العاشرة إلا خمس دقائق",
+        "Start": 0,
+        "End": 20,
+        "TypeName": "datetimeV2.time",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "T09:55",
+              "type": "time",
+              "value": "09:55:00"
+            },
+            {
+              "timex": "T21:55",
+              "type": "time",
+              "value": "21:55:00"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "الساعة العاشرة إلا خمس دقائق",
+    "Context": {
+      "ReferenceDateTime": "2024-02-01T00:00:00"
+    },
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الساعة العاشرة إلا خمس دقائق",
+        "Start": 0,
+        "End": 27,
+        "TypeName": "datetimeV2.time",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "T09:55",
+              "type": "time",
+              "value": "09:55:00"
+            },
+            {
+              "timex": "T21:55",
+              "type": "time",
+              "value": "21:55:00"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "الساعة العاشرة",
+    "Context": {
+      "ReferenceDateTime": "2024-02-01T00:00:00"
+    },
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الساعة العاشرة",
+        "Start": 0,
+        "End": 13,
+        "TypeName": "datetimeV2.time",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "T10",
+              "type": "time",
+              "value": "10:00:00"
+            },
+            {
+              "timex": "T22",
+              "type": "time",
+              "value": "22:00:00"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "العاشرة صباحاً",
+    "Context": {
+      "ReferenceDateTime": "2024-02-01T00:00:00"
+    },
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "العاشرة صباحا",
+        "Start": 0,
+        "End": 12,
+        "TypeName": "datetimeV2.time",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "T10",
+              "type": "time",
+              "value": "10:00:00"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "الساعة الحادية عشر إلا ربع",
+    "Context": {
+      "ReferenceDateTime": "2024-02-01T00:00:00"
+    },
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الساعة الحادية عشر إلا ربع",
+        "Start": 0,
+        "End": 25,
+        "TypeName": "datetimeV2.time",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "T10:45",
+              "type": "time",
+              "value": "10:45:00"
+            },
+            {
+              "timex": "T22:45",
+              "type": "time",
+              "value": "22:45:00"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "الساعة الحادية عشر",
+    "Context": {
+      "ReferenceDateTime": "2024-02-01T00:00:00"
+    },
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الساعة الحادية عشر",
+        "Start": 0,
+        "End": 17,
+        "TypeName": "datetimeV2.time",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "T11",
+              "type": "time",
+              "value": "11:00:00"
+            },
+            {
+              "timex": "T23",
+              "type": "time",
+              "value": "23:00:00"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "الحادية عشر صباحاً",
+    "Context": {
+      "ReferenceDateTime": "2024-02-01T00:00:00"
+    },
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الحادية عشر صباحا",
+        "Start": 0,
+        "End": 16,
+        "TypeName": "datetimeV2.time",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "T11",
+              "type": "time",
+              "value": "11:00:00"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "الحادية عشرة والنصف",
+    "Context": {
+      "ReferenceDateTime": "2024-02-01T00:00:00"
+    },
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الحادية عشرة والنصف",
+        "Start": 0,
+        "End": 18,
+        "TypeName": "datetimeV2.time",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "T11:30",
+              "type": "time",
+              "value": "11:30:00"
+            },
+            {
+              "timex": "T23:30",
+              "type": "time",
+              "value": "23:30:00"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "الساعه الحاديه عشر والنصف",
+    "Context": {
+      "ReferenceDateTime": "2024-02-01T00:00:00"
+    },
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الحاديه عشر والنصف",
+        "Start": 7,
+        "End": 24,
+        "TypeName": "datetimeV2.time",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "T11:30",
+              "type": "time",
+              "value": "11:30:00"
+            },
+            {
+              "timex": "T23:30",
+              "type": "time",
+              "value": "23:30:00"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "الساعة الحادية عشر وخمس وأربعون دقيقة",
+    "Context": {
+      "ReferenceDateTime": "2024-02-01T00:00:00"
+    },
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الساعة الحادية عشر وخمس وأربعون دقيقة",
+        "Start": 0,
+        "End": 36,
+        "TypeName": "datetimeV2.time",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "T11:45",
+              "type": "time",
+              "value": "11:45:00"
+            },
+            {
+              "timex": "T23:45",
+              "type": "time",
+              "value": "23:45:00"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "الساعة الثانية عشر",
+    "Context": {
+      "ReferenceDateTime": "2024-02-01T00:00:00"
+    },
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الساعة الثانية عشر",
+        "Start": 0,
+        "End": 17,
+        "TypeName": "datetimeV2.time",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "T12",
+              "type": "time",
+              "value": "12:00:00"
+            },
+            {
+              "timex": "T00",
+              "type": "time",
+              "value": "00:00:00"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "الثانية عشر وعشر دقائق",
+    "Context": {
+      "ReferenceDateTime": "2024-02-01T00:00:00"
+    },
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الثانية عشر وعشر دقائق",
+        "Start": 0,
+        "End": 21,
+        "TypeName": "datetimeV2.time",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "T12:10",
+              "type": "time",
+              "value": "12:10:00"
+            },
+            {
+              "timex": "T00:10",
+              "type": "time",
+              "value": "00:10:00"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "الساعة الثانية عشر وعشر دقائق",
+    "Context": {
+      "ReferenceDateTime": "2024-02-01T00:00:00"
+    },
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الساعة الثانية عشر وعشر دقائق",
+        "Start": 0,
+        "End": 28,
+        "TypeName": "datetimeV2.time",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "T12:10",
+              "type": "time",
+              "value": "12:10:00"
+            },
+            {
+              "timex": "T00:10",
+              "type": "time",
+              "value": "00:10:00"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "الساعة الثانية عشرة والنصف بعد الظهر",
+    "Context": {
+      "ReferenceDateTime": "2024-02-01T00:00:00"
+    },
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الساعة الثانية عشرة والنصف بعد الظهر",
+        "Start": 0,
+        "End": 35,
+        "TypeName": "datetimeV2.time",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "T12:30",
+              "type": "time",
+              "value": "12:30:00"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "الثانية عشرة والنصف ظهراً",
+    "Context": {
+      "ReferenceDateTime": "2024-02-01T00:00:00"
+    },
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الثانية عشرة والنصف ظهرا",
+        "Start": 0,
+        "End": 23,
+        "TypeName": "datetimeV2.time",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "T12:30",
+              "type": "time",
+              "value": "12:30:00"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "الثانية عشرة والنصف",
+    "Context": {
+      "ReferenceDateTime": "2024-02-01T00:00:00"
+    },
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الثانية عشرة والنصف",
+        "Start": 0,
+        "End": 18,
+        "TypeName": "datetimeV2.time",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "T12:30",
+              "type": "time",
+              "value": "12:30:00"
+            },
+            {
+              "timex": "T00:30",
+              "type": "time",
+              "value": "00:30:00"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "الثانية عشر والنصف",
+    "Context": {
+      "ReferenceDateTime": "2024-02-01T00:00:00"
+    },
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الثانية عشر والنصف",
+        "Start": 0,
+        "End": 17,
+        "TypeName": "datetimeV2.time",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "T12:30",
+              "type": "time",
+              "value": "12:30:00"
+            },
+            {
+              "timex": "T00:30",
+              "type": "time",
+              "value": "00:30:00"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "الثانية عشر وخمسون دقيقة",
+    "Context": {
+      "ReferenceDateTime": "2024-02-01T00:00:00"
+    },
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الثانية عشر وخمسون دقيقة",
+        "Start": 0,
+        "End": 23,
+        "TypeName": "datetimeV2.time",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "T12:50",
+              "type": "time",
+              "value": "12:50:00"
+            },
+            {
+              "timex": "T00:50",
+              "type": "time",
+              "value": "00:50:00"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "الساعة الواحدة وخمس دقائق",
+    "Context": {
+      "ReferenceDateTime": "2024-02-01T00:00:00"
+    },
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الساعة الواحدة وخمس دقائق",
+        "Start": 0,
+        "End": 24,
+        "TypeName": "datetimeV2.time",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "T01:05",
+              "type": "time",
+              "value": "01:05:00"
+            },
+            {
+              "timex": "T13:05",
+              "type": "time",
+              "value": "13:05:00"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "الساعة الواحدة والنصف بعد الظهر",
+    "Context": {
+      "ReferenceDateTime": "2024-02-01T00:00:00"
+    },
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الساعة الواحدة والنصف بعد الظهر",
+        "Start": 0,
+        "End": 30,
+        "TypeName": "datetimeV2.time",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "T13:30",
+              "type": "time",
+              "value": "13:30:00"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "الواحدة والنصف ظهراً",
+    "Context": {
+      "ReferenceDateTime": "2024-02-01T00:00:00"
+    },
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الواحدة والنصف ظهرا",
+        "Start": 0,
+        "End": 18,
+        "TypeName": "datetimeV2.time",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "T13:30",
+              "type": "time",
+              "value": "13:30:00"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "هل هناك رحلة حوالي الساعة اثنين إلا ربع؟",
+    "Context": {
+      "ReferenceDateTime": "2024-02-01T00:00:00"
+    },
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الساعة اثنين إلا ربع",
+        "Start": 19,
+        "End": 38,
+        "TypeName": "datetimeV2.time",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "T01:45",
+              "type": "time",
+              "value": "01:45:00"
+            },
+            {
+              "timex": "T13:45",
+              "type": "time",
+              "value": "13:45:00"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "هل هناك رحلة حوالي الساعة اثنين؟",
+    "Context": {
+      "ReferenceDateTime": "2024-02-01T00:00:00"
+    },
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الساعة اثنين",
+        "Start": 19,
+        "End": 30,
+        "TypeName": "datetimeV2.time",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "T02",
+              "type": "time",
+              "value": "02:00:00"
+            },
+            {
+              "timex": "T14",
+              "type": "time",
+              "value": "14:00:00"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "الثانية وربع",
+    "Context": {
+      "ReferenceDateTime": "2024-02-01T00:00:00"
+    },
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الثانية وربع",
+        "Start": 0,
+        "End": 11,
+        "TypeName": "datetimeV2.time",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "T02:15",
+              "type": "time",
+              "value": "02:15:00"
+            },
+            {
+              "timex": "T14:15",
+              "type": "time",
+              "value": "14:15:00"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "لقد قمت بهذا الشراء في الساعة الثالثة",
+    "Context": {
+      "ReferenceDateTime": "2024-02-01T00:00:00"
+    },
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الساعة الثالثة",
+        "Start": 23,
+        "End": 36,
+        "TypeName": "datetimeV2.time",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "T03",
+              "type": "time",
+              "value": "03:00:00"
+            },
+            {
+              "timex": "T15",
+              "type": "time",
+              "value": "15:00:00"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "الثالثة وخمس دقائق بعد الظهر",
+    "Context": {
+      "ReferenceDateTime": "2024-02-01T00:00:00"
+    },
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الثالثة وخمس دقائق بعد الظهر",
+        "Start": 0,
+        "End": 27,
+        "TypeName": "datetimeV2.time",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "T15:05",
+              "type": "time",
+              "value": "15:05:00"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "لقد قمت بهذا الشراء في الساعة الثالثة وعشر دقائق",
+    "Context": {
+      "ReferenceDateTime": "2024-02-01T00:00:00"
+    },
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الساعة الثالثة وعشر دقائق",
+        "Start": 23,
+        "End": 47,
+        "TypeName": "datetimeV2.time",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "T03:10",
+              "type": "time",
+              "value": "03:10:00"
+            },
+            {
+              "timex": "T15:10",
+              "type": "time",
+              "value": "15:10:00"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "الثالثة والنصف",
+    "Context": {
+      "ReferenceDateTime": "2024-02-01T00:00:00"
+    },
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الثالثة والنصف",
+        "Start": 0,
+        "End": 13,
+        "TypeName": "datetimeV2.time",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "T03:30",
+              "type": "time",
+              "value": "03:30:00"
+            },
+            {
+              "timex": "T15:30",
+              "type": "time",
+              "value": "15:30:00"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "أربعة إلا ربع",
+    "Context": {
+      "ReferenceDateTime": "2024-02-01T00:00:00"
+    },
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "أربعة إلا ربع",
+        "Start": 0,
+        "End": 12,
+        "TypeName": "datetimeV2.time",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "T03:45",
+              "type": "time",
+              "value": "03:45:00"
+            },
+            {
+              "timex": "T15:45",
+              "type": "time",
+              "value": "15:45:00"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "الرابعة إلا الربع",
+    "Context": {
+      "ReferenceDateTime": "2024-02-01T00:00:00"
+    },
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الرابعة إلا الربع",
+        "Start": 0,
+        "End": 16,
+        "TypeName": "datetimeV2.time",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "T03:45",
+              "type": "time",
+              "value": "03:45:00"
+            },
+            {
+              "timex": "T15:45",
+              "type": "time",
+              "value": "15:45:00"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "انها الرابعة الا عشر دقائق",
+    "Context": {
+      "ReferenceDateTime": "2024-02-01T00:00:00"
+    },
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الرابعة الا عشر دقائق",
+        "Start": 5,
+        "End": 25,
+        "TypeName": "datetimeV2.time",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "T03:50",
+              "type": "time",
+              "value": "03:50:00"
+            },
+            {
+              "timex": "T15:50",
+              "type": "time",
+              "value": "15:50:00"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "الوقت الساعة الرابعة إلا خمس دقائق",
+    "Context": {
+      "ReferenceDateTime": "2024-02-01T00:00:00"
+    },
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الساعة الرابعة إلا خمس دقائق",
+        "Start": 6,
+        "End": 33,
+        "TypeName": "datetimeV2.time",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "T03:55",
+              "type": "time",
+              "value": "03:55:00"
+            },
+            {
+              "timex": "T15:55",
+              "type": "time",
+              "value": "15:55:00"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "الوقت الساعة الرابعة",
+    "Context": {
+      "ReferenceDateTime": "2024-02-01T00:00:00"
+    },
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الساعة الرابعة",
+        "Start": 6,
+        "End": 19,
+        "TypeName": "datetimeV2.time",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "T04",
+              "type": "time",
+              "value": "04:00:00"
+            },
+            {
+              "timex": "T16",
+              "type": "time",
+              "value": "16:00:00"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "الساعة الرابعة وعشرون دقيقة",
+    "Context": {
+      "ReferenceDateTime": "2024-02-01T00:00:00"
+    },
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الساعة الرابعة وعشرون دقيقة",
+        "Start": 0,
+        "End": 26,
+        "TypeName": "datetimeV2.time",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "T04:20",
+              "type": "time",
+              "value": "04:20:00"
+            },
+            {
+              "timex": "T16:20",
+              "type": "time",
+              "value": "16:20:00"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "الخمسة إلا عشرين دقيقة",
+    "Context": {
+      "ReferenceDateTime": "2024-02-01T00:00:00"
+    },
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الخمسة إلا عشرين دقيقة",
+        "Start": 0,
+        "End": 21,
+        "TypeName": "datetimeV2.time",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "T04:40",
+              "type": "time",
+              "value": "04:40:00"
+            },
+            {
+              "timex": "T16:40",
+              "type": "time",
+              "value": "16:40:00"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "خمسة إلا عشرين دقيقة",
+    "Context": {
+      "ReferenceDateTime": "2024-02-01T00:00:00"
+    },
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "خمسة إلا عشرين دقيقة",
+        "Start": 0,
+        "End": 19,
+        "TypeName": "datetimeV2.time",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "T04:40",
+              "type": "time",
+              "value": "04:40:00"
+            },
+            {
+              "timex": "T16:40",
+              "type": "time",
+              "value": "16:40:00"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "سأعود الخامسة والنصف",
+    "Context": {
+      "ReferenceDateTime": "2024-02-01T00:00:00"
+    },
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الخامسة والنصف",
+        "Start": 6,
+        "End": 19,
+        "TypeName": "datetimeV2.time",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "T05:30",
+              "type": "time",
+              "value": "05:30:00"
+            },
+            {
+              "timex": "T17:30",
+              "type": "time",
+              "value": "17:30:00"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "الخامسة وخمس وثلاثون دقيقة",
+    "Context": {
+      "ReferenceDateTime": "2024-02-01T00:00:00"
+    },
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الخامسة وخمس وثلاثون دقيقة",
+        "Start": 0,
+        "End": 25,
+        "TypeName": "datetimeV2.time",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "T05:35",
+              "type": "time",
+              "value": "05:35:00"
+            },
+            {
+              "timex": "T17:35",
+              "type": "time",
+              "value": "17:35:00"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "ستة إلا عشرين دقيقة",
+    "Context": {
+      "ReferenceDateTime": "2024-02-01T00:00:00"
+    },
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "ستة إلا عشرين دقيقة",
+        "Start": 0,
+        "End": 18,
+        "TypeName": "datetimeV2.time",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "T05:40",
+              "type": "time",
+              "value": "05:40:00"
+            },
+            {
+              "timex": "T17:40",
+              "type": "time",
+              "value": "17:40:00"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "الساعة السادسة وعشر دقائق",
+    "Context": {
+      "ReferenceDateTime": "2024-02-01T00:00:00"
+    },
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الساعة السادسة وعشر دقائق",
+        "Start": 0,
+        "End": 24,
+        "TypeName": "datetimeV2.time",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "T06:10",
+              "type": "time",
+              "value": "06:10:00"
+            },
+            {
+              "timex": "T18:10",
+              "type": "time",
+              "value": "18:10:00"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "السبعة إلا عشرين دقيقة",
+    "Context": {
+      "ReferenceDateTime": "2024-02-01T00:00:00"
+    },
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "السبعة إلا عشرين دقيقة",
+        "Start": 0,
+        "End": 21,
+        "TypeName": "datetimeV2.time",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "T06:40",
+              "type": "time",
+              "value": "06:40:00"
+            },
+            {
+              "timex": "T18:40",
+              "type": "time",
+              "value": "18:40:00"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "سبعة إلا عشرين دقيقة",
+    "Context": {
+      "ReferenceDateTime": "2024-02-01T00:00:00"
+    },
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "سبعة إلا عشرين دقيقة",
+        "Start": 0,
+        "End": 19,
+        "TypeName": "datetimeV2.time",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "T06:40",
+              "type": "time",
+              "value": "06:40:00"
+            },
+            {
+              "timex": "T18:40",
+              "type": "time",
+              "value": "18:40:00"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "ثمانية إلا عشرين دقيقة",
+    "Context": {
+      "ReferenceDateTime": "2024-02-01T00:00:00"
+    },
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "ثمانية إلا عشرين دقيقة",
+        "Start": 0,
+        "End": 21,
+        "TypeName": "datetimeV2.time",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "T07:40",
+              "type": "time",
+              "value": "07:40:00"
+            },
+            {
+              "timex": "T19:40",
+              "type": "time",
+              "value": "19:40:00"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "الثامنة إلا عشرون دقيقة",
+    "Context": {
+      "ReferenceDateTime": "2024-02-01T00:00:00"
+    },
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الثامنة إلا عشرون دقيقة",
+        "Start": 0,
+        "End": 22,
+        "TypeName": "datetimeV2.time",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "T07:40",
+              "type": "time",
+              "value": "07:40:00"
+            },
+            {
+              "timex": "T19:40",
+              "type": "time",
+              "value": "19:40:00"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "الثامنة إلا خمس دقائق",
+    "Context": {
+      "ReferenceDateTime": "2024-02-01T00:00:00"
+    },
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الثامنة إلا خمس دقائق",
+        "Start": 0,
+        "End": 20,
+        "TypeName": "datetimeV2.time",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "T07:55",
+              "type": "time",
+              "value": "07:55:00"
+            },
+            {
+              "timex": "T19:55",
+              "type": "time",
+              "value": "19:55:00"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "الثامنة وعشر دقائق",
+    "Context": {
+      "ReferenceDateTime": "2024-02-01T00:00:00"
+    },
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الثامنة وعشر دقائق",
+        "Start": 0,
+        "End": 17,
+        "TypeName": "datetimeV2.time",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "T08:10",
+              "type": "time",
+              "value": "08:10:00"
+            },
+            {
+              "timex": "T20:10",
+              "type": "time",
+              "value": "20:10:00"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "الساعة التاسعة إلا ربع",
+    "Context": {
+      "ReferenceDateTime": "2024-02-01T00:00:00"
+    },
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الساعة التاسعة إلا ربع",
+        "Start": 0,
+        "End": 21,
+        "TypeName": "datetimeV2.time",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "T08:45",
+              "type": "time",
+              "value": "08:45:00"
+            },
+            {
+              "timex": "T20:45",
+              "type": "time",
+              "value": "20:45:00"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "الساعة التاسعة والنصف مساءً",
+    "Context": {
+      "ReferenceDateTime": "2024-02-01T00:00:00"
+    },
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الساعة التاسعة والنصف مساءً",
+        "Start": 0,
+        "End": 26,
+        "TypeName": "datetimeV2.time",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "T21:30",
+              "type": "time",
+              "value": "21:30:00"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "العاشرة والربع ليلاً",
+    "Context": {
+      "ReferenceDateTime": "2024-02-01T00:00:00"
+    },
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "العاشرة والربع ليلا",
+        "Start": 0,
+        "End": 18,
+        "TypeName": "datetimeV2.time",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "T22:15",
+              "type": "time",
+              "value": "22:15:00"
             }
           ]
         }

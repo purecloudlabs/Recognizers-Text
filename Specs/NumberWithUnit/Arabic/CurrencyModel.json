@@ -18,6 +18,16 @@
     "Input": "10 دولارات ليست كثيرة، 10 يورو",
     "Results": [
       {
+        "Text": "10 دولارات",
+        "Start": 0,
+        "End": 9,
+        "TypeName": "currency",
+        "Resolution": {
+          "unit": "Dollar",
+          "value": "10"
+        }
+      },
+      {
         "Text": "10 يورو",
         "Start": 23,
         "End": 29,
@@ -155,6 +165,126 @@
         },
         "Start": 30,
         "End": 49
+      }
+    ]
+  },
+  {
+    "Input": "لقد فزت للتو بألفي دولار!",
+    "Results": [
+      {
+        "Text": " بألفي دولار",
+        "TypeName": "currency",
+        "Resolution": {
+          "value": "2000",
+          "unit": "Dollar"
+        },
+        "Start": 12,
+        "End": 23
+      }
+    ]
+  },
+  {
+    "Input": "إيجار تلك الشقة هو 5 آلاف يورو",
+    "Results": [
+      {
+        "Text": "5 آلاف يورو",
+        "TypeName": "currency",
+        "Resolution": {
+          "value": "5000",
+          "unit": "Euro"
+        },
+        "Start": 19,
+        "End": 29
+      }
+    ]
+  },
+  {
+    "Input": "أنا مدين لك بستة دولارات مقابل عملية الشراء هذه",
+    "Results": [
+      {
+        "Text": "بستة دولارات",
+        "TypeName": "currency",
+        "Resolution": {
+          "value": "6",
+          "unit": "Dollar"
+        },
+        "Start": 12,
+        "End": 23
+      }
+    ]
+  },
+  {
+    "Input": "أخذنا العبارة التي كلفتنا مع60 دولارًا كنديًا فقط الضريبة",
+    "Results": [
+      {
+        "Text": "60 دولارًا كنديًا",
+        "TypeName": "currency",
+        "Resolution": {
+          "value": "60",
+          "unit": "Canadian dollar"
+        },
+        "Start": 28,
+        "End": 44
+      }
+    ]
+  },
+  {
+    "Input": "لدي خمسة عشر قرشا متبقية بعد التبادل",
+    "Results": [
+      {
+        "Text": "خمسة عشر قرشا",
+        "TypeName": "currency",
+        "Resolution": {
+          "value": "15",
+          "unit": "Pence"
+        },
+        "Start": 4,
+        "End": 16
+      }
+    ]
+  },
+  {
+    "Input": "3283 الدولارات",
+    "Results": [
+      {
+        "Text": "3283 الدولارات",
+        "TypeName": "currency",
+        "Resolution": {
+          "value": "3283",
+          "unit": "Dollar"
+        },
+        "Start": 0,
+        "End": 13
+      }
+    ]
+  },
+  {
+    "Input": "15 دولارًا و 15 سنتًا",
+    "Results": [
+      {
+        "Text": "15 دولارًا و 15 سنتًا",
+        "TypeName": "currency",
+        "Resolution": {
+          "value": "15.15",
+          "unit": "Dollar"
+        },
+        "Start": 0,
+        "End": 20
+      }
+    ]
+  },
+  {
+    "Input": "عشرون جنيها",
+    "Results": [
+      {
+        "Text": "عشرون جنيها",
+        "TypeName": "currency",
+        "Resolution": {
+          "value": "20",
+          "unit": "Pound"
+        },
+        "Start": 0,
+        "End": 10
       }
     ]
   }
