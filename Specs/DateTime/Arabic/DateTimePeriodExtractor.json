@@ -824,9 +824,9 @@
     "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
-        "Text": "9 ديسمبر بين الساعة 8 صباحًا و 2 مساء",
+        "Text": "9 ديسمبر بين الساعة 8 صباحًا و 2 مساءً",
         "Start": 20,
-        "Length": 37,
+        "Length": 38,
         "Type": "datetimerange"
       }
     ]

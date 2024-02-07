@@ -36,7 +36,7 @@ class ArabicDateTime:
     OclockRegex = f'(?<oclock>(ال)?ساعة|(ال)?ساعات)'
     SpecialDescRegex = f'((?<ipm>)p\\b)'
     AmDescRegex = f'(في\\s)?(صباح(ا)?|صباحًا|ص|الصباح|{BaseDateTime.BaseAmDescRegex})'
-    PmDescRegex = f'(في\\s)?((ال)?مساء|مساءً|ليلًا|ليلا|(ال)?ليل(ة)?|بعد الظهر|الظهر|ظهرا|{BaseDateTime.BasePmDescRegex})'
+    PmDescRegex = f'(في\\s)?((ال)?مساءً?|ليلًا|ليلا|(ال)?ليل(ة)?|بعد الظهر|الظهر|ظهرا|{BaseDateTime.BasePmDescRegex})'
     AmPmDescRegex = f'({BaseDateTime.BaseAmPmDescRegex})'
     DescRegex = f'(?:(?:({OclockRegex}\\s+)?(?<desc>({AmPmDescRegex}|{AmDescRegex}|{PmDescRegex}|{SpecialDescRegex})|{OclockRegex})))'
     OfPrepositionRegex = f'(\\bof\\b)'
@@ -56,7 +56,7 @@ class ArabicDateTime:
     HalfTokenRegex = f'^(النصف|نصف|والنصف|ونصف)'
     QuarterTokenRegex = f'^(ربع|الربع|وربع|والربع|إلا ربع|إلا الربع)'
     ThreeQuarterTokenRegex = f'^(وثلاثة أرباع|ثلاثة أرباع|إلا الربع)'
-    ToTokenRegex = f'\\b(إلا)'
+    ToTokenRegex = f'\\b(إلا|الا)'
     ToHalfTokenRegex = f'\\b(إلا\\s+(النصف|نصف))$'
     ForHalfTokenRegex = f'\\b(ل(s+)?(نصف))$'
     FromRegex = f'\\b(from(\\s+the)?)$'
@@ -146,21 +146,21 @@ class ArabicDateTime:
     WeekDayEnd = f'(هذا\\s+)?{WeekDayRegex}\\s*[,،]?\\s*$'
     WeekDayStart = f'^[\\.]'
     RangeUnitRegex = f'\\b(?<unit>years?|months?|weeks?)\\b'
-    HourNumRegex = f'\\b(?<hournum>الأولى|(ال)?واحدة|(ال)?ثانية|(ال)?ثالثة|(ال)?رابعة|(ال)?خامسة|(ال)?سادسة|(ال)?سابعة|(ال)?ثامنة|(ال)?تاسعة|(ال)?عاشرة|(ال)?حادية عشر(ة)?|(ال)?ثانية عشر(ة)?|خمسة عشر|أحد عشر)\\b'
+    HourNumRegex = f'\\b(?<hournum>الأولى|ثمانية|الثانيه|خمسة|الخمسة|ستة|الستة|السبعة|سبعة|أربعة|ربع|الحاديه عشر|(ال)?واحدة|(ال)?ثالثة|(ال)?رابعة|(ال)?خامسة|(ال)?سادسة|(ال)?سابعة|(ال)?ثامنة|(ال)?تاسعة|(ال)?عاشرة|(ال)?حادية عشر(ة)?|الثانية(?!\s*عشر)|(ال)?ثانية عشر(ة)?|خمسة عشر|اثنين|أحد عشر)\\b'
     MinuteNumRegex = f'\\b(?<minnum>أربع|خمس|ست|سبع|ثمان|تسع|عشر|عشرة|أحد عشر|إثني عشر|إثنا عشر|ثلاثة عشر|خمسة عشر|ثمانية عشر|أربعة عشر|ستة عشر|سبعة عشر|(ال)?حادية عشر(ة)?|تسعة عشر|عشرون|ثلاثون|أربعون|خمسون|عشرين|ثلاث(ين)?|أربعين|خمسين|واحد|إثنان|ثلاثة|خمسة|ثمانية)\\b'
-    DeltaMinuteNumRegex = f'(?<deltaminnum>عشرة|أحد عشر|اثنا عشر|ثلاثة عشر|خمسة عشر|ثمانية عشر|أربعة|ستة|سبعة|تسعة|عشرين|أربعة عشر|ستة عشر|سبعة عشر|تسعة عشر| ثلاثون|أربعون|خمسين|أربعين|خمسون|واحد|اثنان|ثلاثة|خمسة|ثمانية|ثلاث(ين)?|أربع|خمس|ست|سبع|ثمان|تسع|(ال)?واحدة|(ال)?ثانية|(ال)?ثالثة|(ال)?رابعة|(ال)?خامسة|(ال)?سادسة|(ال)?سابعة|(ال)?ثامنة|(ال)?تاسعة|(ال)?عاشرة|(ال)?حادية عشر(ة)?|(ال)?ثانية عشر(ة)?)'
-    PmRegex = f'(?<pm>(?:(في|حول)\\s|ل)?(وقت\\s)?(بعد الظهر|بعد الظهيرة|(ال)?مساء|مساءً|منتصف(\\s|-)الليل|الغداء|الليل|ليلا))'
-    PmRegexFull = f'(?<pm>(?:(في|حول)\\s|ل)?(وقت\\s)?(بعد الظهر|بعد الظهيرة|(ال)?مساء|مساءً|منتصف(\\s|-)الليل|الغداء|الليل|ليلا))'
+    DeltaMinuteNumRegex = f'(?<deltaminnum>عشرة|خمس عشرة|عشرون|خمس وعشرون|أحد عشر|اثنا عشر|ثلاثة عشر|خمسة عشر|ثمانية عشر|أربعة|ستة|سبعة|تسعة|عشرين|عشر|أربعة عشر|ستة عشر|سبعة عشر|تسعة عشر|ثلاثون|خمس وثلاثون|أربعون|خمس وأربعون|خمسين|أربعين|خمسون|واحد|اثنان|ثلاثة|خمسة|ثمانية|ثلاث(ين)?|أربع|خمس|ست|سبع|ثمان|تسع|(ال)?واحدة|(ال)?ثانية|(ال)?ثالثة|(ال)?رابعة|(ال)?خامسة|(ال)?سادسة|(ال)?سابعة|(ال)?ثامنة|(ال)?تاسعة|(ال)?عاشرة|(ال)?حادية عشر(ة)?|(?<!الثانية\s*)عشر|(ال)?ثانية عشر(ة)?)'
+    PmRegex = f'(?<pm>(?:(في|حول)\\s|ل)?(وقت\\s)?(بعد الظهر|بعد الظهيرة|(ال)?مساءً?|منتصف(\\s|-)الليل|الغداء|الليل|ليلا))'
+    PmRegexFull = f'(?<pm>(?:(في|حول)\\s|ل)?(وقت\\s)?(بعد الظهر|بعد الظهيرة|(ال)?مساءً?|منتصف(\\s|-)الليل|الغداء|الليل|ليلا))'
     AmRegex = f'(?<am>(?:(في|حول)\\s|ل)?(وقت\\s)?((ال)?صباح|صباحا|صباحًا))'
     LunchRegex = f'\\b(موعد الغذاء|وقت الغذاء)\\b'
     NightRegex = f'\\bمنتصف(\\s|-)الليل\\b'
     CommonDatePrefixRegex = f'^[\\.]'
     LessThanOneHour = f'(?<lth>((ال)?ربع|ثلاثة أرباع|(ال)?نصف)|({BaseDateTime.DeltaMinuteRegex}(\\s(دقيقة|دقائق))?)|({DeltaMinuteNumRegex}(\\s(دقيقة|دقائق))?))'
-    WrittenTimeRegex = f'(?<writtentime>((ال)?ساعة\\s)?{HourNumRegex}\\s+(و(\\s)?)?({MinuteNumRegex}|{{LessThanOneHour}}|({MinuteNumRegex}\\s+(و(\\s)?)?(?<tens>عشرون|ثلاثون|أربعون|خمسون|عشرين|ثلاثين|أربعين|خمسين))))'
-    TimePrefix = f'(?<prefix>(إلا|حتى|و|قبل)?(\\s)?{LessThanOneHour})'
+    WrittenTimeRegex = f'(?<writtentime>((ال)?ساعة\\s)?{HourNumRegex}\\s+(و(\\s)?)?({MinuteNumRegex}|({MinuteNumRegex}\\s+(و(\\s)?)?(?<tens>عشرون|ثلاثون|أربعون|خمسون|عشرين|ثلاثين|أربعين|خمسين))))'
+    TimePrefix = f'(?<prefix>(إلا|الا|حتى|و|قبل)?(\\s)?{LessThanOneHour})'
     TimeSuffix = f'(?<suffix>{AmRegex}|{PmRegex}|{OclockRegex})'
     TimeSuffixFull = f'(?<suffix>{AmRegex}|{PmRegexFull}|{OclockRegex})'
-    BasicTime = f'\\b(?<basictime>{WrittenTimeRegex}|{HourNumRegex}|({MinuteNumRegex}(\\s(دقيقة|دقائق))?)|{BaseDateTime.HourRegex}:{BaseDateTime.MinuteRegex}(:{BaseDateTime.SecondRegex})?|{BaseDateTime.HourRegex}(?![%\\d]))'
+    BasicTime = f'\\b(?<basictime>{HourNumRegex}|({MinuteNumRegex}(\\s(دقيقة|دقائق))?)|{BaseDateTime.HourRegex}:{BaseDateTime.MinuteRegex}(:{BaseDateTime.SecondRegex})?|{BaseDateTime.HourRegex}(?![%\\d])|{WrittenTimeRegex})'
     MidnightRegex = f'(?<midnight>منتصف(\\s|(\\s?-\\s?))الليل)'
     MidmorningRegex = f'(?<midmorning>منتصف(\\s|(\\s?-\\s?))الصباح)'
     MidafternoonRegex = f'(?<midafternoon>منتصف(\\s|(\\s?-\\s?))بعد الظهر)'
@@ -175,7 +175,7 @@ class ArabicDateTime:
     PeriodHourNumRegex = f'(?<hour>((واحد|اثنان|اثنين|إثنين|ثلاثة|أربعة|إثنان)?(و(\\s+)?(عشرون|عشرين)))|أحد عشر|إثني عشر|((ثلاثة|خمسة|ثمانية|أربعة|ستة|سبعة|تسعة)(عشر)?)|صفر|واحد|اثنان|إثنان|ثنان|اثنين|عشرة|الأولى|(ال)?واحدة|(ال)?ثانية|(ال)?ثالثة|(ال)?رابعة|(ال)?خامسة|(ال)?سادسة|(ال)?سابعة|(ال)?ثامنة|(ال)?تاسعة|(ال)?عاشرة|(ال)?حادية عشر(ة)?|(ال)?ثانية عشر(ة)?|خمسة عشر)'
     ConnectNumRegex = f'\\b{BaseDateTime.HourRegex}(?<min>[0-5][0-9])\\s*{DescRegex}'
     TimeRegexWithDotConnector = f'({BaseDateTime.HourRegex}(\\s*\\.\\s*){BaseDateTime.MinuteRegex})'
-    TimeRegex1 = f'\\b({TimePrefix}\\s+)?({WrittenTimeRegex}(\\s{TimePrefix})?|{HourNumRegex}|{BaseDateTime.HourRegex})(\\s*|[.]){DescRegex}'
+    TimeRegex1 = f'\\b({TimePrefix}\\s+)?({HourNumRegex}|{BaseDateTime.HourRegex})(\\s*|[.]){DescRegex}|{WrittenTimeRegex}(\\s{TimePrefix})?'
     TimeRegex2 = f'(\\b{TimePrefix}\\s+)?(t)?{BaseDateTime.HourRegex}(\\s*)?:(\\s*)?{BaseDateTime.MinuteRegex}((\\s*)?:(\\s*)?{BaseDateTime.SecondRegex})?(?<iam>a)?((\\s*{DescRegex})|\\b)'
     TimeRegex3 = f'(\\b{TimePrefix}\\s+)?{BaseDateTime.HourRegex}\\.{BaseDateTime.MinuteRegex}(\\s*{DescRegex})'
     TimeRegex4 = f'\\b({TimePrefix}\\s+)?{BasicTime}(\\s*{DescRegex})?(\\s+{TimeSuffix})?(\\s*{DescRegex})?\\b'
@@ -515,29 +515,42 @@ class ArabicDateTime:
                     ("الواحدة", 1),
                     ("اثنان", 2),
                     ("الثانية", 2),
+                    ("الثانيه", 2),
+                    ("اثنين", 2),
                     ("ثلاثة", 3),
                     ("ثلاث", 3),
                     ("الثالثة", 3),
                     ("أربعة", 4),
                     ("الرابعة", 4),
+                    ("ربع", 4),
                     ("خمسة", 5),
                     ("الخامسة", 5),
+                    ("خمس", 5),
+                    ("الخمسة", 5),
                     ("ستة", 6),
                     ("السادسة", 6),
                     ("سبعة", 7),
                     ("السابعة", 7),
+                    ("السبعة", 7),
                     ("ثمانية", 8),
                     ("الثامنة", 8),
                     ("تسعة", 9),
                     ("التاسعة", 9),
                     ("عشرة", 10),
                     ("العاشرة", 10),
+                    ("عشر", 10),
                     ("أحد عشر", 11),
                     ("الحادية عشر", 11),
+                    ("الحاديه عشر", 11),
+                    ("الحادية عشرة", 11),
                     ("اثنا عشر", 12),
+                    ("اثنتي عشرة", 12),
+                    ("الثانية عشرة", 12),
+                    ("الثانية عشر", 12),
                     ("ثلاثة عشر", 13),
                     ("أربعة عشر", 14),
                     ("خمسة عشر", 15),
+                    ("خمس عشرة", 15),
                     ("ستة عشر", 16),
                     ("سبعة عشر", 17),
                     ("ثمانية عشر", 18),
@@ -549,6 +562,7 @@ class ArabicDateTime:
                     ("ثلاثة وعشرون", 23),
                     ("أربعة وعشرون", 24),
                     ("خمسة وعشرون", 25),
+                    ("خمس وعشرون", 25),
                     ("ستة وعشرون", 26),
                     ("سبعة وعشرون", 27),
                     ("ثمانية وعشرون", 28),
@@ -560,6 +574,7 @@ class ArabicDateTime:
                     ("ثلاثة وثلاثون", 33),
                     ("أربعة وثلاثون", 34),
                     ("خمسة وثلاثون", 35),
+                    ("خمس وثلاثون", 35),
                     ("ستة وثلاثون", 36),
                     ("سبعة وثلاثون", 37),
                     ("ثمانية وثلاثون", 38),
@@ -570,6 +585,7 @@ class ArabicDateTime:
                     ("ثلاثة وأربعون", 43),
                     ("أربعة وأربعون", 44),
                     ("خمسة وأربعون", 45),
+                    ("خمس وأربعون", 45),
                     ("ستة وأربعون", 46),
                     ("سبعة وأربعون", 47),
                     ("ثمانية وأربعون", 48),
