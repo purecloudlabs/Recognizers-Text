@@ -164,7 +164,7 @@ class ArabicDateTime:
     MidnightRegex = f'(?<midnight>منتصف(\\s|(\\s?-\\s?))الليل)'
     MidmorningRegex = f'(?<midmorning>منتصف(\\s|(\\s?-\\s?))الصباح)'
     MidafternoonRegex = f'(?<midafternoon>منتصف(\\s|(\\s?-\\s?))بعد الظهر)'
-    MiddayRegex = f'(?<midday>(وقت الغداء\\s)?(منتصف(\\s|(\\s?-\\s?)))?(النهار|(الساعة\\s)?((((12\\s)?الظهر)|(12\\s)?الظهيرة)|(12\\s)?ظهرا))(\\sوقت الغداء)?)'
+    MiddayRegex = f'(?<midday>(وقت الغداء\\s)?(منتصف(\\s|(\\s?-\\s?)))?(النهار|(الساعة\\s)?((?:12\\s)?(الظهر|ظهرًا|الظهيرة|ظهرا)))(\\sوقت الغداء)?)'
     MidTimeRegex = f'(?<mid>({MidnightRegex}|{MidmorningRegex}|{MidafternoonRegex}|{MiddayRegex}))'
     AtRegex = f'\\b(?:(?:(?<=\\bفي\\s+)?(?:{WrittenTimeRegex}|{HourNumRegex}|{BaseDateTime.HourRegex}(?!\\.\\d)|{MidTimeRegex}))|{MidTimeRegex})\\b'
     IshRegex = f'\\b((({BaseDateTime.HourRegex}|{WrittenTimeRegex})(\\s|-))?(وقت\\s)?((الظهيرة|الظهر|ظهر(ا|اً))))\\b'

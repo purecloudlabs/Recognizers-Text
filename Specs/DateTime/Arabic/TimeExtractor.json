@@ -932,5 +932,29 @@
         "Type": "time"
       }
     ]
+  },
+  {
+    "Input": "أود أن أرى مصرفي ظهرًا",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "ظهرًا",
+        "Start": 17,
+        "Length": 5,
+        "Type": "time"
+      }
+    ]
+  },
+  {
+    "Input": "إلغاء طلبي بحلول الساعة 12 ظهرًا",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الساعة 12 ظهرًا",
+        "Start": 17,
+        "Length": 15,
+        "Type": "time"
+      }
+    ]
   }
 ]

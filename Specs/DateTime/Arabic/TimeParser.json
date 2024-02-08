@@ -1692,5 +1692,47 @@
         }
       }
     ]
+  },
+  {
+    "Input": "أود أن أرى مصرفي ظهرًا",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "ظهرًا",
+        "Start": 17,
+        "Length": 5,
+        "Type": "time",
+        "Value": {
+          "Timex": "T12",
+          "FutureResolution": {
+            "time": "12:00:00"
+          },
+          "PastResolution": {
+            "time": "12:00:00"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "Input": "إلغاء طلبي بحلول الساعة 12 ظهرًا",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الساعة 12 ظهرًا",
+        "Start": 17,
+        "Length": 15,
+        "Type": "time",
+        "Value": {
+          "Timex": "T12",
+          "FutureResolution": {
+            "time": "12:00:00"
+          },
+          "PastResolution": {
+            "time": "12:00:00"
+          }
+        }
+      }
+    ]
   }
 ]
