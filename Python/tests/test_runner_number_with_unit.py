@@ -1,5 +1,6 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
+from unittest import skip
 
 import pytest
 from runner import get_specs
@@ -51,3 +52,18 @@ def assert_verbose(actual, expected, spec_info):
     assert actual == expected, \
         "Actual: {} | Expected: {} | Context: {}".format(actual, expected, spec_info)
 
+
+# @skip("Used for troubleshooting individual phrases")
+def test_individual_utterance():
+    res = recognize_currency("I can donate RMB 5600", "en-us")
+
+    print(f"\nResult: {res}")
+    print(res[0].resolution, res[0].start, res[0].end)
+    # print(res[1].resolution, res[1].start, res[1].end)
+    # print(res[1].resolution, res[2].start, res[2].end)
+    # print(res[1].resolution, res[3].start, res[3].end)
+    # print(res[1].resolution, res[4].start, res[4].end)
+    # print(res[1].resolution, res[5].start, res[5].end)
+    # print(res[1].resolution, res[6].start, res[6].end)
+    assert len(res) > 0
+    assert res[0].resolution.get("value") is not None

@@ -46,10 +46,11 @@ def assert_verbose(actual, expected, spec_info):
         "Actual: {} | Expected: {} | Context: {}".format(actual, expected, spec_info)
 
 
-@skip("Used for troubleshooting individual phrases")
+# @skip("Used for troubleshooting individual phrases")
 def test_individual_utterance():
-    res = recognize_number("نصف مليون", "ar-ae")
+    res = recognize_number("1.111,11, 1,111.11", "en-us")
 
     print(f"\nResult: {res}")
+    print(res[0].resolution, res[0].start, res[0].end)
     assert len(res) > 0
     assert res[0].resolution.get("value") is not None
