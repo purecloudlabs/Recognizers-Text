@@ -1953,7 +1953,7 @@
   },
   {
     "Input": "10 $ is not much, nor is 10 €",
-    "NotSupported": "javascript, python, java",
+    "NotSupported": "javascript, java",
     "Results": [
       {
         "Text": "10 $",
@@ -1980,7 +1980,7 @@
   },
   {
     "Input": "Banknotes: 5 €, 10 €, 20 €, 50 €, 100 €, 200 €, 500 €.",
-    "NotSupported": "javascript, python, java",
+    "NotSupported": "javascript, java",
     "Results": [
       {
         "Text": "5 €",
@@ -2132,7 +2132,7 @@
   },
   {
     "Input": "10 $ 30 cent",
-    "NotSupported": "javascript, python, java",
+    "NotSupported": "javascript, java",
     "Results": [
       {
         "Text": "10 $ 30 cent",
@@ -2270,7 +2270,7 @@
   },
   {
     "Input": "I would like to buy this item for USD 200.",
-    "NotSupported": "python, java, javascript",
+    "NotSupported": "java, javascript",
     "Results": [
       {
         "Text": "usd 200",
@@ -2287,7 +2287,7 @@
   },
   {
     "Input": "I would like to buy this item for EUR 125.",
-    "NotSupported": "python, java, javascript",
+    "NotSupported": "java, javascript",
     "Results": [
       {
         "Text": "eur 125",
@@ -2304,7 +2304,7 @@
   },
   {
     "Input": "I would like to buy this item for GBP 350.",
-    "NotSupported": "python, java, javascript",
+    "NotSupported": "java, javascript",
     "Results": [
       {
         "Text": "gbp 350",
@@ -2321,7 +2321,7 @@
   },
   {
     "Input": "It costs half million usd.",
-    "NotSupported": "javascript, java, python",
+    "NotSupported": "javascript, java",
     "Results": [
       {
         "Text": "half million usd",
@@ -2338,7 +2338,7 @@
   },
   {
     "Input": "It costs quarter million us dollars.",
-    "NotSupported": "javascript, java, python",
+    "NotSupported": "javascript, java",
     "Results": [
       {
         "Text": "quarter million us dollars",
@@ -2355,7 +2355,7 @@
   },
   {
     "Input": "It costs a quarter million us dollars.",
-    "NotSupported": "javascript, java, python",
+    "NotSupported": "javascript, java",
     "Results": [
       {
         "Text": "a quarter million us dollars",
@@ -2372,7 +2372,7 @@
   },
   {
     "Input": "It costs three quarters billion us dollars.",
-    "NotSupported": "javascript, java, python",
+    "NotSupported": "javascript, java",
     "Results": [
       {
         "Text": "three quarters billion us dollars",
@@ -2389,7 +2389,7 @@
   },
   {
     "Input": "Supply limit: ₿21,000,000",
-    "NotSupported": "javascript, java, python",
+    "NotSupported": "javascript, java",
     "Results": [
       {
         "Text": "₿21,000,000",
@@ -2405,7 +2405,7 @@
   },
   {
     "Input": "He has lost a laptop containing 10000 bitcoins",
-    "NotSupported": "javascript, java, python",
+    "NotSupported": "javascript, java",
     "Results": [
       {
         "Text": "10000 bitcoins",
@@ -2421,7 +2421,7 @@
   },
   {
     "Input": "each block mined is now 6.25 BTC",
-    "NotSupported": "javascript, java, python",
+    "NotSupported": "javascript, java",
     "Results": [
       {
         "Text": "6.25 btc",
@@ -2437,7 +2437,7 @@
   },
   {
     "Input": "2 satoshis one day will be worth something",
-    "NotSupported": "javascript, java, python",
+    "NotSupported": "javascript, java",
     "Results": [
       {
         "Text": "2 satoshis",
@@ -2453,7 +2453,7 @@
   },
   {
     "Input": "it costs only 15 dollars and 15.",
-    "NotSupported": "javascript, python, java",
+    "NotSupported": "javascript, java",
     "Results": [
       {
         "Text": "15 dollars and 15",
@@ -2469,7 +2469,7 @@
   },
   {
     "Input": "it costs only 15 dollars 50.",
-    "NotSupported": "javascript, python, java",
+    "NotSupported": "javascript, java",
     "Results": [
       {
         "Text": "15 dollars 50",
@@ -2485,7 +2485,7 @@
   },
   {
     "Input": "usd$ 15",
-    "NotSupported": "javascript, python, java",
+    "NotSupported": "javascript, java",
     "Results": [
       {
         "Text": "usd$ 15",
@@ -2502,7 +2502,7 @@
   },
   {
     "Input": "mxn$ 15",
-    "NotSupported": "javascript, python, java",
+    "NotSupported": "javascript, java",
     "Results": [
       {
         "Text": "mxn$ 15",
@@ -2519,7 +2519,7 @@
   },
   {
     "Input": "aud$ 15",
-    "NotSupported": "javascript, python, java",
+    "NotSupported": "javascript, java",
     "Results": [
       {
         "Text": "aud$ 15",
@@ -2536,7 +2536,7 @@
   },
   {
     "Input": "cad$ 15",
-    "NotSupported": "javascript, python, java",
+    "NotSupported": "javascript, java",
     "Results": [
       {
         "Text": "cad$ 15",
@@ -2553,7 +2553,7 @@
   },
   {
     "Input": "nzd$15",
-    "NotSupported": "javascript, python, java",
+    "NotSupported": "javascript, java",
     "Results": [
       {
         "Text": "nzd$15",
@@ -2586,6 +2586,84 @@
     ]
   },
   {
+    "Input": "A total of BBD 40 million was charged",
+    "NotSupported": "dotnet, javascript, java",
+    "Results": [
+      {
+        "Text": "bbd 40 million",
+        "TypeName": "currency",
+        "Resolution": {
+          "value": "40000000",
+          "unit": "Barbadian dollar",
+          "isoCurrency": "BBD"
+        },
+        "Start": 11,
+        "End": 24
+      }
+    ]
+  },
+  {
+    "Input": "Could you give me a loan of 4 xbt?",
+    "NotSupported": "dotnet, javascript, java",
+    "Results": [
+      {
+        "Text": "4 xbt",
+        "TypeName": "currency",
+        "Resolution": {
+          "value": "4",
+          "unit": "Bitcoin"
+        },
+        "Start": 28,
+        "End": 32
+      }
+    ]
+  },
+  {
+    "Input": "I can donate RMB 5600",
+    "NotSupported": "dotnet, javascript, java",
+    "Results": [
+      {
+        "Text": "rmb 5600",
+        "TypeName": "currency",
+        "Resolution": {
+          "value": "5600",
+          "unit": "Chinese yuan",
+          "isoCurrency": "CNY"
+        },
+        "Start": 13,
+        "End": 20
+      }
+    ]
+  },
+  {
+    "Input": "A sum of GBP 300 was received and EUR 250 was spent",
+    "NotSupported": "dotnet, javascript, java",
+    "Results": [
+      {
+        "Text": "gbp 300",
+        "TypeName": "currency",
+        "Resolution": {
+          "value": "300",
+          "unit": "British pound",
+          "isoCurrency": "GBP"
+        },
+        "Start": 9,
+        "End": 15
+      },
+      {
+        "Text": "eur 250",
+        "TypeName": "currency",
+        "Resolution": {
+          "value": "250",
+          "unit": "Euro",
+          "isoCurrency": "EUR"
+        },
+        "Start": 34,
+        "End": 40
+      }
+    ]
+  },
+  {
     "Input": "USD115.5",
     "NotSupported": "javascript, python, java",
     "Results": [
@@ -2604,7 +2682,7 @@
   },
   {
     "Input": "115USD",
-    "NotSupported": "javascript, python, java",
+    "NotSupported": "javascript, java",
     "Results": [
       {
         "Text": "115usd",
@@ -2621,7 +2699,7 @@
   },
   {
     "Input": "115.5USD",
-    "NotSupported": "javascript, python, java",
+    "NotSupported": "javascript, java",
     "Results": [
       {
         "Text": "115.5usd",
@@ -2699,7 +2777,7 @@
   },
   {
     "Input": "The price starts at USD 22.5 million.",
-    "NotSupported": "java, javascript, python",
+    "NotSupported": "java, javascript",
     "Results": [
       {
         "Text": "usd 22.5 million",
@@ -2716,7 +2794,7 @@
   },
   {
     "Input": "It costs 15 dollars 50.",
-    "NotSupported": "java, javascript, python",
+    "NotSupported": "java, javascript",
     "Results": [
       {
         "Text": "15 dollars 50",
@@ -2732,7 +2810,7 @@
   },
   {
     "Input": "It costs 15 dollars and 50.",
-    "NotSupported": "java, javascript, python",
+    "NotSupported": "java, javascript",
     "Results": [
       {
         "Text": "15 dollars and 50",
@@ -2748,7 +2826,7 @@
   },
   {
     "Input": "The subscription will increase to 17 USD 25.",
-    "NotSupported": "java, javascript, python",
+    "NotSupported": "java, javascript",
     "Results": [
       {
         "Text": "17 usd 25",
@@ -2832,7 +2910,7 @@
   },
   {
     "Input": "The cost is 500 USD,100 times more than expected.",
-    "NotSupported": "java, javascript, python",
+    "NotSupported": "java, javascript",
     "Results": [
       {
         "Text": "500 usd",
@@ -2865,7 +2943,7 @@
   },
   {
     "Input": "I counted the dollars thousand of times.",
-    "NotSupported": "java, javascript, python",
+    "NotSupported": "java, javascript",
     "Results": [
       {
         "Text": "dollars",
