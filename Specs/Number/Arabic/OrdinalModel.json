@@ -810,7 +810,7 @@
   {
     "Input": "أريد 3 كتب القادمة.",
     "Comment": "PendingValidation",
-    "NotSupported": "javascript, java, dotnet",
+    "NotSupported": "javascript, java, dotnet,python",
     "Results": [
       {
         "Text": "القادمة",
@@ -882,7 +882,7 @@
   {
     "Input": "ثلاثة تريليون",
     "Comment": "PendingValidation",
-    "NotSupported": "javascript, java, dotnet",
+    "NotSupported": "javascript, java, dotnet,python",
     "Results": [
       {
         "Text": "ثلاثة تريليون",
@@ -900,7 +900,7 @@
   {
     "Input": "مائة تريليون",
     "Comment": "PendingValidation",
-    "NotSupported": "javascript, java, dotnet",
+    "NotSupported": "javascript, java, dotnet,python",
     "Results": [
       {
         "Text": "مائة تريليون",
