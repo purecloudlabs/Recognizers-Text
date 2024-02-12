@@ -151,7 +151,7 @@
   },
   {
     "Input": "mil e cem",
-    "NotSupported": "dotnet,javascript,java,python",
+    "NotSupported": "dotnet,javascript,java",
     "Comment": "Temporarily disabled as subtype is incorrect",
     "Results": [
       {
@@ -183,7 +183,7 @@
   },
   {
     "Input": "mil e duzentos",
-    "NotSupported": "dotnet,javascript,java,python",
+    "NotSupported": "dotnet,javascript,java",
     "Comment": "Temporarily disabled as subtype is incorrect",
     "Results": [
       {
@@ -410,7 +410,7 @@
   },
   {
     "Input": "tres milhoes e sete",
-    "NotSupported": "dotnet,javascript,java,python",
+    "NotSupported": "dotnet,javascript,java",
     "Comment": "Temporarily disabled as subtype is incorrect",
     "Results": [
       {
@@ -427,7 +427,7 @@
   },
   {
     "Input": "tres milhoes e quarenta e sete",
-    "NotSupported": "dotnet,javascript,java,python",
+    "NotSupported": "dotnet,javascript,java",
     "Comment": "Temporarily disabled as subtype is incorrect",
     "Results": [
       {
@@ -594,7 +594,7 @@
   },
   {
     "Input": "quinhentos e treze milhoes e quatrocentos mil",
-    "NotSupported": "dotnet,javascript,java,python",
+    "NotSupported": "dotnet,javascript,java",
     "Comment": "Temporarily disabled as subtype is incorrect",
     "Results": [
       {
@@ -641,7 +641,7 @@
   },
   {
     "Input": "tres trilhoes quatrocentos e cinquenta e cinco bilhoes duzentos e vinte e oito milhoes e quinhentos e cinquenta e seis mil",
-    "NotSupported": "dotnet,javascript,java,python",
+    "NotSupported": "dotnet,javascript,java",
     "Comment": "Temporarily disabled as subtype is incorrect",
     "Results": [
       {
@@ -763,7 +763,7 @@
   },
   {
     "Input": "só tenho mil e cem reais",
-    "NotSupported": "dotnet,javascript,java,python",
+    "NotSupported": "dotnet,javascript,java",
     "Comment": "Temporarily disabled as subtype is incorrect",
     "Results": [
       {
@@ -1320,7 +1320,7 @@
   },
   {
     "Input": "hum mil e três",
-    "NotSupported": "dotnet,javascript,java,python",
+    "NotSupported": "dotnet,javascript,java",
     "Comment": "Temporarily disabled as subtype is incorrect",
     "Results": [
       {
@@ -1801,7 +1801,7 @@
   },
   {
     "Input": "dois mil e duzentos",
-    "NotSupported": "dotnet,javascript,java,python",
+    "NotSupported": "dotnet,javascript,java",
     "Comment": "Temporarily disabled as subtype is incorrect",
     "Results": [
       {

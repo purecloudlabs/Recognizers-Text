@@ -1,7 +1,7 @@
 [
   {
     "Input": "radera sista meningen i anteckningen",
-    "NotSupportedByDesign": "javascript, python, java",
+    "NotSupportedByDesign": "javascript, java",
     "Results": [
       {
         "Text": "sista",
@@ -18,7 +18,7 @@
   },
   {
     "Input": "Menar du \"nästa\" eller \"sista\"?",
-    "NotSupportedByDesign": "javascript, python, java",
+    "NotSupportedByDesign": "javascript, java",
     "Results": [
       {
         "Text": "nästa",
@@ -46,7 +46,7 @@
   },
   {
     "Input": "Menar du \"näste\" eller \"siste\"?",
-    "NotSupportedByDesign": "javascript, python, java",
+    "NotSupportedByDesign": "javascript, java",
     "Results": [
       {
         "Text": "näste",
@@ -74,7 +74,7 @@
   },
   {
     "Input": "Visa mig näst sista.",
-    "NotSupportedByDesign": "javascript, python, java",
+    "NotSupportedByDesign": "javascript, java",
     "Results": [
       {
         "Text": "näst sista",
@@ -91,7 +91,7 @@
   },
   {
     "Input": "Gå till föregående sida.",
-    "NotSupportedByDesign": "javascript, python, java",
+    "NotSupportedByDesign": "javascript, java",
     "Results": [
       {
         "Text": "föregående",
@@ -108,7 +108,7 @@
   },
   {
     "Input": "Visa mig den som kommer efter sista.",
-    "NotSupportedByDesign": "javascript, python, java",
+    "NotSupportedByDesign": "javascript, java",
     "Results": [
       {
         "Text": "efter sista",
@@ -125,7 +125,7 @@
   },
   {
     "Input": "Visa mig den som kommer före den siste.",
-    "NotSupportedByDesign": "javascript, python, java",
+    "NotSupportedByDesign": "javascript, java",
     "Results": [
       {
         "Text": "före den siste",
@@ -142,7 +142,7 @@
   },
   {
     "Input": "Visa mig nästa.",
-    "NotSupportedByDesign": "javascript, python, java",
+    "NotSupportedByDesign": "javascript, java",
     "Results": [
       {
         "Text": "nästa",
@@ -159,7 +159,7 @@
   },
   {
     "Input": "Visa mig nästa möte.",
-    "NotSupportedByDesign": "javascript, python, java",
+    "NotSupportedByDesign": "javascript, java",
     "Results": [
       {
         "Text": "nästa",
@@ -176,7 +176,7 @@
   },
   {
     "Input": "Visa de 2 sista posterna.",
-    "NotSupportedByDesign": "javascript, python, java",
+    "NotSupportedByDesign": "javascript, java",
     "Results": [
       {
         "Text": "sista",
@@ -193,7 +193,7 @@
   },
   {
     "Input": "Jag vill ha de nästa 3 böckerna.",
-    "NotSupportedByDesign": "javascript, python, java",
+    "NotSupportedByDesign": "javascript, java",
     "Results": [
       {
         "Text": "nästa",
@@ -210,7 +210,7 @@
   },
   {
     "Input": "Jag vill ha sista kakan.",
-    "NotSupportedByDesign": "javascript, python, java",
+    "NotSupportedByDesign": "javascript, java",
     "Results": [
       {
         "Text": "sista",
@@ -227,7 +227,7 @@
   },
   {
     "Input": "etthundratjugofemte",
-    "NotSupportedByDesign": "javascript, python, java",
+    "NotSupportedByDesign": "javascript, java",
     "Results": [
       {
         "Text": "etthundratjugofemte",
@@ -244,7 +244,7 @@
   },
   {
     "Input": "Ge mig nästa.",
-    "NotSupportedByDesign": "javascript, python, java",
+    "NotSupportedByDesign": "javascript, java",
     "Results": [
       {
         "Text": "nästa",
@@ -261,7 +261,7 @@
   },
   {
     "Input": "11:e",
-    "NotSupportedByDesign": "javascript, python, java",
+    "NotSupportedByDesign": "javascript, java",
     "Results": [
       {
         "Text": "11:e",
@@ -279,7 +279,7 @@
   },
   {
     "Input": "Gå till den 11:e raden",
-    "NotSupportedByDesign": "javascript, python, java",
+    "NotSupportedByDesign": "javascript, java",
     "Results": [
       {
         "Text": "11:e",
@@ -296,7 +296,7 @@
   },
   {
     "Input": "elfte",
-    "NotSupportedByDesign": "javascript, python, java",
+    "NotSupportedByDesign": "javascript, java",
     "Results": [
       {
         "Text": "elfte",
@@ -314,7 +314,7 @@
   },
   {
     "Input": "Gå till den elfte raden",
-    "NotSupportedByDesign": "javascript, python, java",
+    "NotSupportedByDesign": "javascript, java",
     "Results": [
       {
         "Text": "elfte",
@@ -331,7 +331,7 @@
   },
   {
     "Input": "tredje",
-    "NotSupportedByDesign": "javascript, python, java",
+    "NotSupportedByDesign": "javascript, java",
     "Results": [
       {
         "Text": "tredje",
@@ -349,7 +349,7 @@
   },
   {
     "Input": "Gå till den tredje raden",
-    "NotSupportedByDesign": "javascript, python, java",
+    "NotSupportedByDesign": "javascript, java",
     "Results": [
       {
         "Text": "tredje",
@@ -366,7 +366,7 @@
   },
   {
     "Input": "tjugoförsta",
-    "NotSupportedByDesign": "javascript, python, java",
+    "NotSupportedByDesign": "javascript, java",
     "Results": [
       {
         "Text": "tjugoförsta",
@@ -383,7 +383,7 @@
   },
   {
     "Input": "tjugoförste",
-    "NotSupportedByDesign": "javascript, python, java",
+    "NotSupportedByDesign": "javascript, java",
     "Results": [
       {
         "Text": "tjugoförste",
@@ -400,7 +400,7 @@
   },
   {
     "Input": "tvåhundrade",
-    "NotSupportedByDesign": "javascript, python, java",
+    "NotSupportedByDesign": "javascript, java",
     "Results": [
       {
         "Text": "tvåhundrade",
@@ -438,7 +438,7 @@
   },
   {
     "Input": "Jag tycker om den förste.",
-    "NotSupportedByDesign": "javascript, python, java",
+    "NotSupportedByDesign": "javascript , java",
     "Results": [
       {
         "Text": "förste",
@@ -455,7 +455,7 @@
   },
   {
     "Input": "Säg första ordet.",
-    "NotSupportedByDesign": "javascript, python, java",
+    "NotSupportedByDesign": "javascript , java",
     "Results": [
       {
         "Text": "första",
@@ -472,7 +472,7 @@
   },
   {
     "Input": "Hon slutade på andra plats!",
-    "NotSupportedByDesign": "javascript, python, java",
+    "NotSupportedByDesign": "javascript , java",
     "Results": [
       {
         "Text": "andra",
@@ -489,7 +489,7 @@
   },
   {
     "Input": "Den före den sista är den rätta",
-    "NotSupportedByDesign": "javascript, python, java",
+    "NotSupportedByDesign": "javascript , java",
     "Results": [
       {
         "Text": "före den sista",
@@ -506,7 +506,7 @@
   },
   {
     "Input": "Jag vill köpa den tredje från slutet",
-    "NotSupportedByDesign": "javascript, python, java",
+    "NotSupportedByDesign": "javascript , java",
     "Results": [
       {
         "Text": "tredje från slutet",
@@ -523,7 +523,7 @@
   },
   {
     "Input": "Jag menade den före den sista.",
-    "NotSupportedByDesign": "javascript, python, java",
+    "NotSupportedByDesign": "javascript , java",
     "Results": [
       {
         "Text": "före den sista",
@@ -540,7 +540,7 @@
   },
   {
     "Input": "Jag menar den nuvarande",
-    "NotSupportedByDesign": "javascript, python, java",
+    "NotSupportedByDesign": "javascript , java",
     "Results": [
       {
         "Text": "nuvarande",
@@ -557,7 +557,7 @@
   },
   {
     "Input": "Se nuvarande sida",
-    "NotSupportedByDesign": "javascript, python, java",
+    "NotSupportedByDesign": "javascript , java",
     "Results": [
       {
         "Text": "nuvarande",
@@ -574,7 +574,7 @@
   },
   {
     "Input": "Visa poster som finns före nuvarande period",
-    "NotSupportedByDesign": "javascript, python, java",
+    "NotSupportedByDesign": "javascript , java",
     "Results": [
       {
         "Text": "före nuvarande",
@@ -591,7 +591,7 @@
   },
   {
     "Input": "hundrade",
-    "NotSupportedByDesign": "javascript, python, java",
+    "NotSupportedByDesign": "javascript , java",
     "Results": [
       {
         "Text": "hundrade",
@@ -608,7 +608,7 @@
   },
   {
     "Input": "126:e",
-    "NotSupportedByDesign": "javascript, python, java",
+    "NotSupportedByDesign": "javascript , java",
     "Results": [
       {
         "Text": "126:e",
@@ -625,7 +625,7 @@
   },
   {
     "Input": "Det är den hundratjugosjätte gången hittills i år.",
-    "NotSupportedByDesign": "javascript, python, java",
+    "NotSupportedByDesign": "javascript , java",
     "Results": [
       {
         "Text": " hundratjugosjätte",
@@ -642,7 +642,7 @@
   },
   {
     "Input": "Visa mig den tredje från slutet.",
-    "NotSupported": "javascript, python, java",
+    "NotSupported": "javascript , java",
     "Results": [
       {
         "Text": "tredje från slutet",
@@ -659,7 +659,7 @@
   },
   {
     "Input": "Glöm förra gången.",
-    "NotSupported": "javascript, python, java",
+    "NotSupported": "javascript , java",
     "Results": [
       {
         "Text": "förra",
@@ -676,7 +676,7 @@
   },
   {
     "Input": "Förskolebarn efter nuvarande vård",
-    "NotSupported": "javascript, python, java",
+    "NotSupported": "javascript , java",
     "Results": [
       {
         "Text": "efter nuvarande",
@@ -693,7 +693,7 @@
   },
   {
     "Input": "Förslaget är i linje med tidigare ställningstaganden",
-    "NotSupported": "javascript, python, java",
+    "NotSupported": "javascript , java",
     "Results": [
       {
         "Text": "tidigare",
@@ -710,7 +710,7 @@
   },
   {
     "Input": "Jag säger till innan sista psalmen.",
-    "NotSupported": "javascript, python, java",
+    "NotSupported": "javascript , java",
     "Results": [
       {
         "Text": "innan sista",
@@ -727,7 +727,7 @@
   },
   {
     "Input": "Åtminstone inte den senaste veckan.",
-    "NotSupported": "javascript, python, java",
+    "NotSupported": "javascript , java",
     "Results": [
       {
         "Text": "senaste",

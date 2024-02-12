@@ -1850,12 +1850,12 @@
   },
   {
     "Input": "le liquide de 180,25ml",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript, java",
     "Results": []
   },
   {
     "Input": "29km de route",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript, java",
     "Results": []
   },
   {
@@ -1865,7 +1865,7 @@
   },
   {
     "Input": "le liquide de 0,25ml",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript, java",
     "Results": []
   },
   {
@@ -2067,7 +2067,7 @@
   },
   {
     "Input": "1234567.0",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript, java",
     "Results": [
       {
         "Text": "1234567.0",
@@ -2691,7 +2691,7 @@
   },
   {
     "Input": "1,2b",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript , java",
     "Results": [
       {
         "Text": "1,2b",
@@ -3761,22 +3761,22 @@
   },
   {
     "Input": "Celle que vous avez mentionnée n'est pas valable",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": []
   },
   {
     "Input": "Celui-ci n'est pas correct",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": []
   },
   {
     "Input": "lequel préfères-tu ?",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": []
   },
   {
     "Input": "Celui-là est vraiment bon",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": []
   },
   {

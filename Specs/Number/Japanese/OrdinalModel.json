@@ -140,7 +140,7 @@
   },
   {
     "Input": "第一位第二位第三位第四位",
-    "NotSupported": "javascript, python",
+    "NotSupported": "javascript",
     "Results": [
       {
         "Text": "第一",
@@ -1112,7 +1112,7 @@
   {
     "Input": "シアトルへの１等級の席を予約しなさい。",
     "IgnoreResolution": true,
-    "NotSupportedByDesign": "javascript, java, python",
+    "NotSupportedByDesign": "javascript, java ",
     "Results": [
       {
         "Text": "1等",
@@ -1523,7 +1523,7 @@
   {
     "Input": "私は1番目のが好きです。",
     "IgnoreResolution": true,
-    "NotSupportedByDesign": "javascript, java, python",
+    "NotSupportedByDesign": "javascript, java ",
     "Results": [
       {
         "Text": "1番目",
@@ -1720,7 +1720,7 @@
   },
   {
     "Input": "三万回目",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript , java",
     "Results": [
       {
         "Text": "三万回目",

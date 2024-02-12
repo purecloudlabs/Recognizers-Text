@@ -335,12 +335,12 @@
   },
   {
     "Input": "a trillionth",
-    "NotSupported": "javascript, python, java",
+    "NotSupported": "javascript, java",
     "Results": []
   },
   {
     "Input": "a hundred trillionth",
-    "NotSupported": "javascript, python, java",
+    "NotSupported": "javascript, java",
     "Results": [
       {
         "Text": "a hundred trillionth",
@@ -357,7 +357,7 @@
   },
   {
     "Input": "11th",
-    "NotSupported": "javascript, python, java",
+    "NotSupported": "javascript, java",
     "Results": [
       {
         "Text": "11th",
@@ -375,7 +375,7 @@
   },
   {
     "Input": "21st",
-    "NotSupported": "javascript, python, java",
+    "NotSupported": "javascript, java",
     "Results": [
       {
         "Text": "21st",
@@ -392,7 +392,7 @@
   },
   {
     "Input": "30th",
-    "NotSupported": "javascript, python, java",
+    "NotSupported": "javascript, java",
     "Results": [
       {
         "Text": "30th",
@@ -409,7 +409,7 @@
   },
   {
     "Input": "2nd",
-    "NotSupported": "javascript, python, java",
+    "NotSupported": "javascript, java",
     "Results": [
       {
         "Text": "2nd",
@@ -426,7 +426,7 @@
   },
   {
     "Input": "eleventh",
-    "NotSupported": "javascript, python, java",
+    "NotSupported": "javascript, java",
     "Results": [
       {
         "Text": "eleventh",
@@ -443,7 +443,7 @@
   },
   {
     "Input": "twentieth",
-    "NotSupported": "javascript, python, java",
+    "NotSupported": "javascript, java",
     "Results": [
       {
         "Text": "twentieth",
@@ -461,7 +461,7 @@
   },
   {
     "Input": "twenty-fifth",
-    "NotSupported": "javascript, python, java",
+    "NotSupported": "javascript, java",
     "Results": [
       {
         "Text": "twenty-fifth",
@@ -478,7 +478,7 @@
   },
   {
     "Input": "twenty-first",
-    "NotSupported": "javascript, python, java",
+    "NotSupported": "javascript, java",
     "Results": [
       {
         "Text": "twenty-first",
@@ -495,7 +495,7 @@
   },
   {
     "Input": "one hundred twenty fifth",
-    "NotSupported": "javascript, python, java",
+    "NotSupported": "javascript, java",
     "Results": [
       {
         "Text": "one hundred twenty fifth",
@@ -512,7 +512,7 @@
   },
   {
     "Input": "one hundred twenty-fifth",
-    "NotSupported": "javascript, python, java",
+    "NotSupported": "javascript, java",
     "Results": [
       {
         "Text": "one hundred twenty-fifth",
@@ -529,7 +529,7 @@
   },
   {
     "Input": "trillionth",
-    "NotSupported": "javascript, python, java",
+    "NotSupported": "javascript, java",
     "Results": [
       {
         "Text": "trillionth",
@@ -546,7 +546,7 @@
   },
   {
     "Input": "twenty-one trillion and three hundred twenty second",
-    "NotSupported": "javascript, python, java",
+    "NotSupported": "javascript, java",
     "Results": [
       {
         "Text": "twenty-one trillion and three hundred twenty second",
@@ -563,7 +563,7 @@
   },
   {
     "Input": "two hundredth",
-    "NotSupported": "javascript, python, java",
+    "NotSupported": "javascript, java",
     "Results": [
       {
         "Text": "two hundredth",
@@ -580,7 +580,7 @@
   },
   {
     "Input": "Book a first class seat to seattle",
-    "NotSupported": "javascript, python, java",
+    "NotSupported": "javascript , java",
     "Results": [
       {
         "Text": "first",
@@ -613,7 +613,7 @@
   },
   {
     "Input": "I like the first one.",
-    "NotSupported": "javascript, python, java",
+    "NotSupported": "javascript , java",
     "Results": [
       {
         "Text": "first",
@@ -630,7 +630,7 @@
   },
   {
     "Input": "Speak the first word.",
-    "NotSupported": "javascript, python, java",
+    "NotSupported": "javascript , java",
     "Results": [
       {
         "Text": "first",
@@ -664,7 +664,7 @@
   },
   {
     "Input": "She finished second!",
-    "NotSupported": "javascript, python, java",
+    "NotSupported": "javascript , java",
     "Results": [
       {
         "Text": "second",
@@ -749,7 +749,7 @@
   },
   {
     "Input": "Nineth Meeting of the Research Partnership Platform on Competition and Consumer Protection.",
-    "NotSupported": "java, javascript, python",
+    "NotSupported": "java, javascript ",
     "Results": [
       {
         "Text": "nineth",
@@ -879,7 +879,7 @@
   },
   {
     "Input": "The measurement has a value of forty two and a third",
-    "NotSupported": "javascript, java, python",
+    "NotSupported": "javascript, java ",
     "Results": [
       {
         "Text": "third",
@@ -896,7 +896,7 @@
   },
   {
     "Input": "The measurement has a value of two hundred thirty two and a thirtieth",
-    "NotSupported": "javascript, java, python",
+    "NotSupported": "javascript, java ",
     "Results": [
       {
         "Text": "thirtieth",

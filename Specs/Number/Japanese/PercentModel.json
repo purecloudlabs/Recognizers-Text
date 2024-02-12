@@ -160,7 +160,7 @@
   },
   {
     "Input": "今日は１２０パ ーセ ントの確率で雪が降る",
-    "NotSupported": "python",
+    "NotSupported": "xython",
     "Results": [
       {
         "Text": "120パ ーセ ント",
@@ -549,7 +549,7 @@
   },
   {
     "Input": "１0 割",
-    "NotSupported": "python",
+    "NotSupported": "xython",
     "Results": [
       {
         "Text": "10 割",
@@ -741,7 +741,7 @@
   },
   {
     "Input": "女子学生は七割半を占めている",
-    "NotSupported": "python",
+    "NotSupported": "xython",
     "Results": [
       {
         "Text": "七割半",
@@ -756,7 +756,7 @@
   },
   {
     "Input": "女子学生は3.8割を占めている",
-    "NotSupported": "python",
+    "NotSupported": "xython",
     "Results": [
       {
         "Text": "3.8割",
@@ -771,7 +771,7 @@
   },
   {
     "Input": "女子学生は三割を占めている",
-    "NotSupported": "python",
+    "NotSupported": "xython",
     "Results": [
       {
         "Text": "三割",
@@ -786,7 +786,7 @@
   },
   {
     "Input": "今シーズンの打率は3割8分7厘でした",
-    "NotSupported": "python",
+    "NotSupported": "xython",
     "Results": [
       {
         "Text": "3割8分7厘",
@@ -906,7 +906,7 @@
   },
   {
     "Input": "今年の売り上げは前年比の-5%です。",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript  ",
     "Results": [
       {
         "Text": "-5%",
@@ -1011,7 +1011,7 @@
   },
   {
     "Input": "今年の売り上げは前年比の-5パーセントでした。",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript  ",
     "Results": [
       {
         "Text": "-5パーセント",
@@ -1026,7 +1026,7 @@
   },
   {
     "Input": "２割の人がパソコンを持っていません。",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript  ",
     "Results": [
       {
         "Text": "2割",
@@ -1041,7 +1041,7 @@
   },
   {
     "Input": "３割の人が犬を飼っています。",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript  ",
     "Results": [
       {
         "Text": "3割",
@@ -1056,7 +1056,7 @@
   },
   {
     "Input": "１割の人がパスポートを持っていません。",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript  ",
     "Results": [
       {
         "Text": "1割",
@@ -1186,7 +1186,7 @@
   },
   {
     "Input": "売り上げは前年度比−５％です。",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript  ",
     "Results": [
       {
         "Text": "-5%",
@@ -1201,7 +1201,7 @@
   },
   {
     "Input": "回答率は百％です。",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript  ",
     "Results": [
       {
         "Text": "百%",
@@ -1216,7 +1216,7 @@
   },
   {
     "Input": "ムンバイの電車の乗車率は二百四十％です。",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript  ",
     "Results": [
       {
         "Text": "二百四十%",
@@ -1231,7 +1231,7 @@
   },
   {
     "Input": "二十％の人がパソコンを持っています。",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript  ",
     "Results": [
       {
         "Text": "二十%",
@@ -1246,7 +1246,7 @@
   },
   {
     "Input": "十％の人がパソコンを持っています。",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript  ",
     "Results": [
       {
         "Text": "十%",
@@ -1261,7 +1261,7 @@
   },
   {
     "Input": "売り上げは前年度比マイナス五％です。",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript  ",
     "Results": [
       {
         "Text": "マイナス五%",
@@ -1276,7 +1276,7 @@
   },
   {
     "Input": "回答率は百パーセントです。",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript  ",
     "Results": [
       {
         "Text": "百パーセント",
@@ -1291,7 +1291,7 @@
   },
   {
     "Input": "ムンバイの電車の乗車率は二百四十パーセントです。",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript  ",
     "Results": [
       {
         "Text": "二百四十パーセント",
@@ -1306,7 +1306,7 @@
   },
   {
     "Input": "二十パーセントの人がパソコンを持っています。",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript  ",
     "Results": [
       {
         "Text": "二十パーセント",
@@ -1321,7 +1321,7 @@
   },
   {
     "Input": "十パーセントの人がパソコンを持っています。",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript  ",
     "Results": [
       {
         "Text": "十パーセント",
@@ -1336,7 +1336,7 @@
   },
   {
     "Input": "売り上げは前年度比マイナス五パーセントです。",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript  ",
     "Results": [
       {
         "Text": "マイナス五パーセント",
@@ -1351,7 +1351,7 @@
   },
   {
     "Input": "二割の人がパソコンを持っています。",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript  ",
     "Results": [
       {
         "Text": "二割",
@@ -1366,7 +1366,7 @@
   },
   {
     "Input": "一割の人がパソコンを持っています。",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript  ",
     "Results": [
       {
         "Text": "一割",
@@ -1381,7 +1381,7 @@
   },
   {
     "Input": "2,123ポイント",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": [
       {
         "Text": "2,123ポイント",
@@ -1396,7 +1396,7 @@
   },
   {
     "Input": "2.4ポイント",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": [
       {
         "Text": "2.4ポイント",
@@ -1411,7 +1411,7 @@
   },
   {
     "Input": "15,000ポイント",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": [
       {
         "Text": "15,000ポイント",
@@ -1426,7 +1426,7 @@
   },
   {
     "Input": "-22.20%",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": [
       {
         "Text": "-22.20%",
@@ -1441,7 +1441,7 @@
   },
   {
     "Input": "111,111ポイント",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": [
       {
         "Text": "111,111ポイント",
@@ -1456,7 +1456,7 @@
   },
   {
     "Input": "8割引",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": [
       {
         "Text": "8割引",
@@ -1471,7 +1471,7 @@
   },
   {
     "Input": "二割",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": [
       {
         "Text": "二割",
@@ -1501,7 +1501,7 @@
   },
   {
     "Input": "6.5割",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": [
       {
         "Text": "6.5割",
@@ -1521,7 +1521,7 @@
   },
   {
     "Input": "1,075ポイント",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": [
       {
         "Text": "1,075ポイント",
@@ -1536,7 +1536,7 @@
   },
   {
     "Input": "12.54ポイント",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": [
       {
         "Text": "12.54ポイント",
@@ -1551,7 +1551,7 @@
   },
   {
     "Input": "七十五万ポイント",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": [
       {
         "Text": "七十五万ポイント",
@@ -1566,7 +1566,7 @@
   },
   {
     "Input": "4.5ポイント",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": [
       {
         "Text": "4.5ポイント",
@@ -1581,7 +1581,7 @@
   },
   {
     "Input": "一万二千ポイント",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": [
       {
         "Text": "一万二千ポイント",
@@ -1596,7 +1596,7 @@
   },
   {
     "Input": " http://proquest.umi.com/pqdweb?RQT=305&SQ=issn%280024%2D9114%29%20and%20%28ti%28Using%203D%20CAD%20to%20design%20a%20dog%29%20or%20startpage%28158%29%29%20and%20volume%2872%29%20and%20issue%289%29%20and%20pdn%28%3E01%2F01%2F2000%20AND%20%3C12%2F31%2F2000%29&clientId=17859を訪ねてください",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": []
   },
   {
@@ -1616,7 +1616,7 @@
   },
   {
     "Input": "１５，１２３ポイント",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": [
       {
         "Text": "１５，１２３ポイント",
@@ -1631,7 +1631,7 @@
   },
   {
     "Input": "120.5/100",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": [
       {
         "Text": "120.5/100",
@@ -1646,7 +1646,7 @@
   },
   {
     "Input": "2割|2.5割|2.1割|2割",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": [
       {
         "Text": "2割",
@@ -1688,7 +1688,7 @@
   },
   {
     "Input": "０．４ポイント",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": [
       {
         "Text": "０．４ポイント",
@@ -1703,7 +1703,7 @@
   },
   {
     "Input": "75.2ポイント",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": [
       {
         "Text": "75.2ポイント",
@@ -1718,7 +1718,7 @@
   },
   {
     "Input": "百分の百二十点五",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": [
       {
         "Text": "百分の百二十点五",
@@ -1733,7 +1733,7 @@
   },
   {
     "Input": "10日間株の引け値が七〇％が1を超える",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": [
       {
         "Text": "七〇％",
@@ -1748,12 +1748,12 @@
   },
   {
     "Input": "20~30ポイント",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": []
   },
   {
     "Input": "百分の2.4",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": [
       {
         "Text": "百分の2.4",
@@ -1768,7 +1768,7 @@
   },
   {
     "Input": "15,123ポイント",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": [
       {
         "Text": "15,123ポイント",
@@ -1783,7 +1783,7 @@
   },
   {
     "Input": "九割|五割|八点五割",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": [
       {
         "Text": "九割",
@@ -1816,7 +1816,7 @@
   },
   {
     "Input": "百分の1,111",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": [
       {
         "Text": "百分の1,111",
@@ -1831,7 +1831,7 @@
   },
   {
     "Input": "百分の2",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": [
       {
         "Text": "百分の2",
@@ -1846,7 +1846,7 @@
   },
   {
     "Input": "2/100",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": [
       {
         "Text": "2/100",
@@ -1861,7 +1861,7 @@
   },
   {
     "Input": "2割",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": [
       {
         "Text": "2割",
@@ -1876,7 +1876,7 @@
   },
   {
     "Input": "2.5割",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": [
       {
         "Text": "2.5割",
@@ -1891,7 +1891,7 @@
   },
   {
     "Input": "１２ポイント",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": [
       {
         "Text": "１２ポイント",
@@ -1906,7 +1906,7 @@
   },
   {
     "Input": "一割引|四点五割引|一点五割引",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": [
       {
         "Text": "一割引",
@@ -1939,7 +1939,7 @@
   },
   {
     "Input": "百分の120",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": [
       {
         "Text": "百分の120",
@@ -1954,7 +1954,7 @@
   },
   {
     "Input": "百分の三万二千",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": [
       {
         "Text": "百分の三万二千",
@@ -1969,7 +1969,7 @@
   },
   {
     "Input": "9.5割",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": [
       {
         "Text": "9.5割",
@@ -1999,7 +1999,7 @@
   },
   {
     "Input": "9割",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": [
       {
         "Text": "9割",
@@ -2014,7 +2014,7 @@
   },
   {
     "Input": "0.1割引",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": [
       {
         "Text": "0.1割引",
@@ -2029,7 +2029,7 @@
   },
   {
     "Input": "五割引き",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": [
       {
         "Text": "五割引き",
@@ -2059,7 +2059,7 @@
   },
   {
     "Input": "六点五割",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": [
       {
         "Text": "六点五割",
@@ -2074,7 +2074,7 @@
   },
   {
     "Input": "百五十ポイント",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": [
       {
         "Text": "百五十ポイント",
@@ -2089,7 +2089,7 @@
   },
   {
     "Input": "12,056.33ポイント",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": [
       {
         "Text": "12,056.33ポイント",
@@ -2104,7 +2104,7 @@
   },
   {
     "Input": "7.6割",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": [
       {
         "Text": "7.6割",
@@ -2119,7 +2119,7 @@
   },
   {
     "Input": "12/100",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": [
       {
         "Text": "12/100",
@@ -2134,7 +2134,7 @@
   },
   {
     "Input": "百分の9,999",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": [
       {
         "Text": "百分の9,999",
@@ -2149,7 +2149,7 @@
   },
   {
     "Input": "一万五千ポイント",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": [
       {
         "Text": "一万五千ポイント",
@@ -2164,7 +2164,7 @@
   },
   {
     "Input": "半額",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": [
       {
         "Text": "半額",
@@ -2179,7 +2179,7 @@
   },
   {
     "Input": "2.8割引",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": [
       {
         "Text": "2.8割引",
@@ -2194,7 +2194,7 @@
   },
   {
     "Input": "6．5割",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": [
       {
         "Text": "6．5割",
@@ -2224,7 +2224,7 @@
   },
   {
     "Input": "アップル引き割り九割引き",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": [
       {
         "Text": "九割引き",
@@ -2239,7 +2239,7 @@
   },
   {
     "Input": "56.2/100",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": [
       {
         "Text": "56.2/100",
@@ -2254,7 +2254,7 @@
   },
   {
     "Input": "二十ポイント",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": [
       {
         "Text": "二十ポイント",
@@ -2269,7 +2269,7 @@
   },
   {
     "Input": "600ポイント",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": [
       {
         "Text": "600ポイント",
@@ -2284,7 +2284,7 @@
   },
   {
     "Input": "52.5/100",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": [
       {
         "Text": "52.5/100",
@@ -2299,7 +2299,7 @@
   },
   {
     "Input": "七十五ポイント",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": [
       {
         "Text": "七十五ポイント",
@@ -2314,7 +2314,7 @@
   },
   {
     "Input": "百分の2.2上昇した",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": [
       {
         "Text": "百分の2.2",
@@ -2329,12 +2329,12 @@
   },
   {
     "Input": "二十?三十ポイント",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": []
   },
   {
     "Input": "七十五点二ポイント",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": [
       {
         "Text": "七十五点二ポイント",
@@ -2349,7 +2349,7 @@
   },
   {
     "Input": "150ポイント",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": [
       {
         "Text": "150ポイント",
@@ -2364,7 +2364,7 @@
   },
   {
     "Input": "6.2割引",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": [
       {
         "Text": "6.2割引",
@@ -2379,7 +2379,7 @@
   },
   {
     "Input": "20ポイント",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": [
       {
         "Text": "20ポイント",
@@ -2394,7 +2394,7 @@
   },
   {
     "Input": "百分の一点五",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": [
       {
         "Text": "百分の一点五",
@@ -2409,7 +2409,7 @@
   },
   {
     "Input": "三割",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": [
       {
         "Text": "三割",
@@ -2424,7 +2424,7 @@
   },
   {
     "Input": "零点一割引",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": [
       {
         "Text": "零点一割引",
@@ -2439,7 +2439,7 @@
   },
   {
     "Input": "百分の525,000",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": [
       {
         "Text": "百分の525,000",
@@ -2454,7 +2454,7 @@
   },
   {
     "Input": "百分の千百二十三",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": [
       {
         "Text": "百分の千百二十三",
@@ -2484,7 +2484,7 @@
   },
   {
     "Input": "3,000/100",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": [
       {
         "Text": "3,000/100",
@@ -2523,7 +2523,7 @@
   },
   {
     "Input": "百分の1，500",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": [
       {
         "Text": "百分の1，500",
@@ -2538,7 +2538,7 @@
   },
   {
     "Input": "1,669/100",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": [
       {
         "Text": "1,669/100",
@@ -2553,7 +2553,7 @@
   },
   {
     "Input": "百パーセント",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": [
       {
         "Text": "百パーセント",
@@ -2568,7 +2568,7 @@
   },
   {
     "Input": "１０割",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": [
       {
         "Text": "１０割",
@@ -2616,7 +2616,7 @@
   },
   {
     "Input": "八割引",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": [
       {
         "Text": "八割引",
@@ -2631,7 +2631,7 @@
   },
   {
     "Input": "12.56ポイント",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript  , java",
     "Results": [
       {
         "Text": "12.56ポイント",
@@ -2646,7 +2646,7 @@
   },
   {
     "Input": "千七十五ポイント",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript , java",
     "Results": [
       {
         "Text": "千七十五ポイント",
@@ -2661,7 +2661,7 @@
   },
   {
     "Input": "百二十パーセント",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript , java",
     "Results": [
       {
         "Text": "百二十パーセント",
@@ -2676,7 +2676,7 @@
   },
   {
     "Input": "るくポイント",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript , java",
     "Results": [
       {
         "Text": "るくポイント",
@@ -2691,7 +2691,7 @@
   },
   {
     "Input": "5/100",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript , java",
     "Results": [
       {
         "Text": "5/100",
@@ -2706,7 +2706,7 @@
   },
   {
     "Input": "0.4ポイント",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript , java",
     "Results": [
       {
         "Text": "0.4ポイント",
@@ -2721,7 +2721,7 @@
   },
   {
     "Input": "百分の22",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript , java",
     "Results": [
       {
         "Text": "百分の22",
@@ -2736,7 +2736,7 @@
   },
   {
     "Input": "百分の三点二",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript , java",
     "Results": [
       {
         "Text": "百分の三点二",
@@ -2751,7 +2751,7 @@
   },
   {
     "Input": "百分の一百二十点五",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript , java",
     "Results": [
       {
         "Text": "百分の一百二十点五",
@@ -2766,7 +2766,7 @@
   },
   {
     "Input": "12ポイント",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript , java",
     "Results": [
       {
         "Text": "12ポイント",
@@ -2781,7 +2781,7 @@
   },
   {
     "Input": "3.5割引",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript , java",
     "Results": [
       {
         "Text": "3.5割引",
@@ -2796,7 +2796,7 @@
   },
   {
     "Input": "二点四ポイント",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript , java",
     "Results": [
       {
         "Text": "二点四ポイント",
@@ -2811,7 +2811,7 @@
   },
   {
     "Input": "百分の669",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript , java",
     "Results": [
       {
         "Text": "百分の669",
@@ -2826,7 +2826,7 @@
   },
   {
     "Input": "２，１２３ポイント",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript , java",
     "Results": [
       {
         "Text": "２，１２３ポイント",
@@ -2841,7 +2841,7 @@
   },
   {
     "Input": "3.5割",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript , java",
     "Results": [
       {
         "Text": "3.5割",
@@ -2856,12 +2856,12 @@
   },
   {
     "Input": "2.2/500",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript , java",
     "Results": []
   },
   {
     "Input": "２．４ポイント",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript , java",
     "Results": [
       {
         "Text": "２．４ポイント",
@@ -2876,7 +2876,7 @@
   },
   {
     "Input": "6.9割引",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript , java",
     "Results": [
       {
         "Text": "6.9割引",
@@ -2921,7 +2921,7 @@
   },
   {
     "Input": "7.2割",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript , java",
     "Results": [
       {
         "Text": "7.2割",
@@ -2951,7 +2951,7 @@
   },
   {
     "Input": "2.4/100",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript , java",
     "Results": [
       {
         "Text": "2.4/100",
@@ -2966,7 +2966,7 @@
   },
   {
     "Input": "12,000ポイント",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript , java",
     "Results": [
       {
         "Text": "12,000ポイント",
@@ -2981,7 +2981,7 @@
   },
   {
     "Input": "四分の一の割引",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript , java",
     "Results": [
       {
         "Text": "四分の一の割引",
@@ -2996,7 +2996,7 @@
   },
   {
     "Input": "2割引|2.5割引|2.1割引|2割引",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript , java",
     "Results": [
       {
         "Text": "2割引",
@@ -3038,7 +3038,7 @@
   },
   {
     "Input": "六ポイント",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript , java",
     "Results": [
       {
         "Text": "六ポイント",
@@ -3053,7 +3053,7 @@
   },
   {
     "Input": "75ポイント",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript , java",
     "Results": [
       {
         "Text": "75ポイント",
@@ -3068,7 +3068,7 @@
   },
   {
     "Input": "https://www.test.com/search?q=30%25%2020%を訪ねてください",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript , java",
     "Results": []
   },
   {
@@ -3088,7 +3088,7 @@
   },
   {
     "Input": "金融市場で運用する資金運用事業を合わせた財投総額も過去最大の同二％減の四十九兆九千五百九十二億円となっている。",
-    "NotSupported": "python,javascript",
+    "NotSupported": "xython,javascript",
     "Results": [
       {
         "Text": "二%",

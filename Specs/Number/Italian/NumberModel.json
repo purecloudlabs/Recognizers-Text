@@ -1378,7 +1378,7 @@
   },
   {
     "Input": "uno e mezzo",
-    "NotSupportedByDesign": "javascript,python,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "uno e mezzo",
@@ -1918,7 +1918,7 @@
   },
   {
     "Input": "cinquanta su duemilacinque",
-    "NotSupportedByDesign": "javascript,python,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "cinquanta su duemilacinque",

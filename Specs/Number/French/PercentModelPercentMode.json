@@ -1,7 +1,7 @@
 [
   {
     "Input": "100%",
-    "NotSupported": "javascript, python",
+    "NotSupported": "javascript",
     "Results": [
       {
         "Text": "100%",
@@ -46,7 +46,7 @@
   },
   {
     "Input": "vingt pourcents",
-    "NotSupported": "javascript, python",
+    "NotSupported": "javascript",
     "Results": [
       {
         "Text": "vingt pourcents",
