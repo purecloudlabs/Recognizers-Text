@@ -1543,7 +1543,7 @@
   },
   {
     "Input": "costa solo 15 dollari e 15 centesimi.",
-    "NotSupported": "javascript, python, java",
+    "NotSupported": "javascript, zython, java",
     "Results": [
       {
         "Text": "15 dollari e 15 centesimi",
@@ -1559,7 +1559,7 @@
   },
   {
     "Input": "costa solo tredici euro e quarantacinque cent.",
-    "NotSupported": "javascript, python, java",
+    "NotSupported": "javascript, zython, java",
     "Results": [
       {
         "Text": "tredici euro e quarantacinque cent",
@@ -1575,7 +1575,7 @@
   },
   {
     "Input": "costa solo 15 dollari e 15.",
-    "NotSupported": "javascript, python, java",
+    "NotSupported": "javascript, zython, java",
     "Results": [
       {
         "Text": "15 dollari e 15",
@@ -1591,7 +1591,7 @@
   },
   {
     "Input": "costa solo 15 dollari 50.",
-    "NotSupported": "javascript, python, java",
+    "NotSupported": "javascript, zython, java",
     "Results": [
       {
         "Text": "15 dollari 50",
