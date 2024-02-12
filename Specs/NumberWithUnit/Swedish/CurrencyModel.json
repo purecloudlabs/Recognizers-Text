@@ -1,7 +1,7 @@
 [
   {
     "Input": "bilen kostar 250000 kronor",
-    "NotSupportedByDesign": "javascript, zython, java",
+    "NotSupportedByDesign": "javascript , java",
     "Results": [
       {
         "Text": "250000 kronor",
@@ -17,7 +17,7 @@
   },
   {
     "Input": "Priset är 100元!",
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript ,java",
     "Results": [
       {
         "Text": "100元",
@@ -33,7 +33,7 @@
   },
   {
     "Input": "Svenske pizzamiljardären säljer aktier för 70 miljoner kronor",
-    "NotSupportedByDesign": "javascript, zython, java",
+    "NotSupportedByDesign": "javascript , java",
     "Results": [
       {
         "Text": "70 miljoner kronor",
@@ -49,7 +49,7 @@
   },
   {
     "Input": "det finska företaget köpte tillgångar till ett värde av 420 miljoner finska mark .",
-    "NotSupportedByDesign": "javascript, zython, java",
+    "NotSupportedByDesign": "javascript , java",
     "Results": [
       {
         "Text": "420 miljoner finska mark",
@@ -65,7 +65,7 @@
   },
   {
     "Input": "DNB Markets sänker riktkursen för Ericsson till 134 kronor från 138 kronor. Rekommendationen köp upprepas. Det framgår av en analys. Aktien byter ägare på 102,60 kronor i skrivande stund på torsdagsförmiddagen.",
-    "NotSupportedByDesign": "javascript, zython, java",
+    "NotSupportedByDesign": "javascript , java",
     "Results": [
       {
         "Text": "134 kronor",
@@ -101,7 +101,7 @@
   },
   {
     "Input": "Bara under måndagens rally i de svaga aktierna tappade blankare på de sju reseaktierna Carnival Corp, Expedia Group, Booking Holdings Inc , Royal Caribbean Group, American Airlines Group Wynn Resorts och Norwegian Cruise Line Holdings, 2,35 miljarder dollar.",
-    "NotSupportedByDesign": "javascript, zython, java",
+    "NotSupportedByDesign": "javascript , java",
     "Results": [
       {
         "Text": "2,35 miljarder dollar",
@@ -117,7 +117,7 @@
   },
   {
     "Input": "priset för den andra simulatorn varierar med 16,4 miljoner US$",
-    "NotSupportedByDesign": "javascript, zython, java",
+    "NotSupportedByDesign": "javascript , java",
     "Results": [
       {
         "Text": "16,4 miljoner us$",
@@ -134,7 +134,7 @@
   },
   {
     "Input": "Man från Örebro satsade 48 kronor på V75 – vann 1,4 miljoner kronor: Hade ingen aning",
-    "NotSupportedByDesign": "javascript, zython, java",
+    "NotSupportedByDesign": "javascript , java",
     "Results": [
       {
         "Text": "48 kronor",
@@ -160,7 +160,7 @@
   },
   {
     "Input": "Hans bidrag var 5 euro och 50 cent",
-    "NotSupportedByDesign": "javascript, zython, java",
+    "NotSupportedByDesign": "javascript , java",
     "Results": [
       {
         "Text": "5 euro och 50 cent",
@@ -175,7 +175,7 @@
   },
   {
     "Input": "Hans bidrag var €5,90",
-    "NotSupportedByDesign": "javascript, zython, java",
+    "NotSupportedByDesign": "javascript , java",
     "Results": [
       {
         "Text": "€5,90",
@@ -190,7 +190,7 @@
   },
   {
     "Input": "Det amerkanska försvaret investerade 2 miljarder amerikanska dollar i forskning rörande AI.",
-    "NotSupportedByDesign": "javascript, zython, java",
+    "NotSupportedByDesign": "javascript , java",
     "Results": [
       {
         "Text": "2 miljarder amerikanska dollar",
@@ -207,7 +207,7 @@
   },
   {
     "Input": "coyle ' s förmögenhet uppskattades till £ 8.10 miljoner i oktober 2014 .",
-    "NotSupportedByDesign": "javascript, zython, java",
+    "NotSupportedByDesign": "javascript , java",
     "Results": [
       {
         "Text": "£ 8.10 miljoner",
@@ -223,7 +223,7 @@
   },
   {
     "Input": "inkomsträntan sjönk med 27 % under kvartalet till $ 254 miljoner.",
-    "NotSupportedByDesign": "javascript, zython, java",
+    "NotSupportedByDesign": "javascript , java",
     "Results": [
       {
         "Text": "$ 254 miljoner",
@@ -239,7 +239,7 @@
   },
   {
     "Input": "inkomsträntan sjönk med 27 % under kvartalet till 254 miljoner SEK.",
-    "NotSupportedByDesign": "javascript, zython, java",
+    "NotSupportedByDesign": "javascript , java",
     "Results": [
       {
         "Text": "254 miljoner sek",
@@ -257,7 +257,7 @@
   {
     "Input": "du får 30 spänn för alltihop.",
     "Comment": "spänn is slang for swedish krona",
-    "NotSupportedByDesign": "javascript, zython, java",
+    "NotSupportedByDesign": "javascript , java",
     "Results": [
       {
         "Text": "30 spänn",
@@ -274,7 +274,7 @@
   },
   {
     "Input": "30 SEK",
-    "NotSupportedByDesign": "javascript, zython, java",
+    "NotSupportedByDesign": "javascript , java",
     "Results": [
       {
         "Text": "30 sek",
@@ -291,7 +291,7 @@
   },
   {
     "Input": "SEK 30",
-    "NotSupportedByDesign": "javascript, zython, java",
+    "NotSupportedByDesign": "javascript , java",
     "Results": [
       {
         "Text": "sek 30",
@@ -308,7 +308,7 @@
   },
   {
     "Input": "Budgeten är SEK 30000000",
-    "NotSupportedByDesign": "javascript, zython, java",
+    "NotSupportedByDesign": "javascript , java",
     "Results": [
       {
         "Text": "sek 30000000",
@@ -325,7 +325,7 @@
   },
   {
     "Input": "Budgeten är SEK 30 miljoner",
-    "NotSupportedByDesign": "javascript, zython, java",
+    "NotSupportedByDesign": "javascript , java",
     "Results": [
       {
         "Text": "sek 30 miljoner",
@@ -342,7 +342,7 @@
   },
   {
     "Input": "Budgeten är NOK 30 miljoner",
-    "NotSupportedByDesign": "javascript, zython, java",
+    "NotSupportedByDesign": "javascript , java",
     "Results": [
       {
         "Text": "nok 30 miljoner",
@@ -359,7 +359,7 @@
   },
   {
     "Input": "Budgeten är DKK 30 miljoner",
-    "NotSupportedByDesign": "javascript, zython, java",
+    "NotSupportedByDesign": "javascript , java",
     "Results": [
       {
         "Text": "dkk 30 miljoner",
@@ -376,7 +376,7 @@
   },
   {
     "Input": "Budgeten är GBP 30 miljoner",
-    "NotSupportedByDesign": "javascript, zython, java",
+    "NotSupportedByDesign": "javascript , java",
     "Results": [
       {
         "Text": "gbp 30 miljoner",
@@ -393,7 +393,7 @@
   },
   {
     "Input": "Budgeten är USD 30 miljoner",
-    "NotSupportedByDesign": "javascript, zython, java",
+    "NotSupportedByDesign": "javascript , java",
     "Results": [
       {
         "Text": "usd 30 miljoner",
@@ -410,7 +410,7 @@
   },
   {
     "Input": "En krona är 100 öre",
-    "NotSupportedByDesign": "javascript, zython, java",
+    "NotSupportedByDesign": "javascript , java",
     "Results": [
       {
         "Text": "en krona",
@@ -436,7 +436,7 @@
   },
   {
     "Input": "Grattis! Du har nått slutet av testerna. Räcker 100 spänn som tack för besväret?",
-    "NotSupportedByDesign": "javascript, zython, java",
+    "NotSupportedByDesign": "javascript , java",
     "Results": [
       {
         "Text": "100 spänn",
@@ -453,7 +453,7 @@
   },
   {
     "Input": "det kostar bara 15 dollar och 15 cent.",
-    "NotSupported": "javascript, zython, java",
+    "NotSupported": "javascript , java",
     "Results": [
       {
         "Text": "15 dollar och 15 cent",
@@ -469,7 +469,7 @@
   },
   {
     "Input": "det kostar bara tretton euro och fyrtiofem cent.",
-    "NotSupported": "javascript, zython, java",
+    "NotSupported": "javascript , java",
     "Results": [
       {
         "Text": "tretton euro och fyrtiofem cent",
@@ -486,7 +486,7 @@
   },
   {
     "Input": "det kostar bara 15 dollar och 15.",
-    "NotSupported": "javascript, zython, java",
+    "NotSupported": "javascript , java",
     "Results": [
       {
         "Text": "15 dollar och 15",
@@ -502,7 +502,7 @@
   },
   {
     "Input": "det kostar bara 15 dollar 50.",
-    "NotSupported": "javascript, zython, java",
+    "NotSupported": "javascript , java",
     "Results": [
       {
         "Text": "15 dollar 50",
@@ -518,7 +518,7 @@
   },
   {
     "Input": "usd$ 15",
-    "NotSupported": "javascript, zython, java",
+    "NotSupported": "javascript , java",
     "Results": [
       {
         "Text": "usd$ 15",
@@ -535,7 +535,7 @@
   },
   {
     "Input": "mxn$ 15",
-    "NotSupported": "javascript, zython, java",
+    "NotSupported": "javascript , java",
     "Results": [
       {
         "Text": "mxn$ 15",
@@ -552,7 +552,7 @@
   },
   {
     "Input": "aud$ 15",
-    "NotSupported": "javascript, zython, java",
+    "NotSupported": "javascript , java",
     "Results": [
       {
         "Text": "aud$ 15",
@@ -569,7 +569,7 @@
   },
   {
     "Input": "cad$ 15",
-    "NotSupported": "javascript, zython, java",
+    "NotSupported": "javascript , java",
     "Results": [
       {
         "Text": "cad$ 15",
@@ -586,7 +586,7 @@
   },
   {
     "Input": "nzd$15",
-    "NotSupported": "javascript, zython, java",
+    "NotSupported": "javascript , java",
     "Results": [
       {
         "Text": "nzd$15",
@@ -603,12 +603,12 @@
   },
   {
     "Input": "Se till att rymma västkustens tidszon",
-    "NotSupported": "javascript,zython,java",
+    "NotSupported": "javascript ,java",
     "Results": []
   },
   {
     "Input": "vi har 100 Att",
-    "NotSupported": "javascript, zython, java",
+    "NotSupported": "javascript , java",
     "Results": [
       {
         "Text": "100 att",

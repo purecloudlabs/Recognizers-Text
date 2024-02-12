@@ -1558,7 +1558,7 @@
   },
   {
     "Input": "100 roupies indiennes",
-    "NotSupportedByDesign": "zython",
+    "NotSupportedByDesign": "python",
     "NotSupported": "javascript",
     "Results": [
       {
@@ -1573,7 +1573,7 @@
   },
   {
     "Input": "1000 roupies",
-    "NotSupportedByDesign": "zython",
+    "NotSupportedByDesign": "python",
     "NotSupported": "javascript",
     "Results": [
       {
