@@ -140,7 +140,7 @@
   },
   {
     "Input": "第一位第二位第三位第四位",
-    "NotSupported": "javascript",
+    "NotSupported": "javascript, python",
     "Results": [
       {
         "Text": "第一",
@@ -1720,7 +1720,7 @@
   },
   {
     "Input": "三万回目",
-    "NotSupported": "dotnet, javascript , java",
+    "NotSupported": "dotnet, javascript, python, java",
     "Results": [
       {
         "Text": "三万回目",

@@ -2178,7 +2178,7 @@
   {
     "Input": "答えは１の１０乗です。",
     "IgnoreResolution": true,
-    "NotSupportedByDesign": "javascript, java  ",
+    "NotSupportedByDesign": "javascript, java, python",
     "NotSupported": "dotnet",
     "Comment": "Extraction done. PowerNumberParse method does not support 'power' representation for Kanji",
     "Results": [
@@ -2197,7 +2197,7 @@
   {
     "Input": "１．１の２３乗の計算は難しいです。",
     "IgnoreResolution": true,
-    "NotSupportedByDesign": "javascript, java  ",
+    "NotSupportedByDesign": "javascript, java, python",
     "NotSupported": "dotnet",
     "Comment": "Extraction done. PowerNumberParse method does not support 'power' representation for Kanji",
     "Results": [
@@ -2543,7 +2543,7 @@
   {
     "Input": "答えは−１．１の２３乗です。",
     "IgnoreResolution": true,
-    "NotSupportedByDesign": "javascript, java  ",
+    "NotSupportedByDesign": "javascript, java, python",
     "NotSupported": "dotnet",
     "Comment": "Extraction done. PowerNumberParse method does not support 'power' representation for Kanji",
     "Results": [
@@ -2600,7 +2600,7 @@
   {
     "Input": "答えは−１２７．３２×１０の１３乗です。",
     "IgnoreResolution": true,
-    "NotSupportedByDesign": "javascript, java  ",
+    "NotSupportedByDesign": "javascript, java, python",
     "NotSupported": "dotnet",
     "Comment": "Extraction done. PowerNumberParse method does not support 'power' representation for Kanji",
     "Results": [
@@ -2619,7 +2619,7 @@
   {
     "Input": "答えは１２．３２×１０の１４乗です。",
     "IgnoreResolution": true,
-    "NotSupportedByDesign": "javascript, java  ",
+    "NotSupportedByDesign": "javascript, java, python",
     "NotSupported": "dotnet",
     "Comment": "Extraction done. PowerNumberParse method does not support 'power' representation for Kanji",
     "Results": [
@@ -3768,7 +3768,7 @@
   },
   {
     "Input": "１メートルは数字ではありません。",
-    "NotSupportedByDesign": "javascript, java  ",
+    "NotSupportedByDesign": "javascript, java, python",
     "Results": []
   },
   {
@@ -4542,7 +4542,7 @@
   {
     "Input": "答えは1の10乗です。",
     "IgnoreResolution": true,
-    "NotSupportedByDesign": "javascript, java ",
+    "NotSupportedByDesign": "javascript, java, python",
     "NotSupported": "dotnet",
     "Comment": "Extraction done. PowerNumberParse method does not support 'power' representation for Kanji",
     "Results": [
@@ -4561,7 +4561,7 @@
   {
     "Input": "1.1の23乗の計算は難しいです。",
     "IgnoreResolution": true,
-    "NotSupportedByDesign": "javascript, java ",
+    "NotSupportedByDesign": "javascript, java, python",
     "NotSupported": "dotnet",
     "Comment": "Extraction done. PowerNumberParse method does not support 'power' representation for Kanji",
     "Results": [
@@ -4869,7 +4869,7 @@
   {
     "Input": "2.5の-1乗の計算の仕方を説明します。",
     "IgnoreResolution": true,
-    "NotSupportedByDesign": "javascript, java ",
+    "NotSupportedByDesign": "javascript, java, python",
     "NotSupported": "dotnet",
     "Comment": "Extraction done. PowerNumberParse method does not support 'power' representation for Kanji",
     "Results": [
@@ -4888,7 +4888,7 @@
   {
     "Input": "答えは-2500の-1乗です。",
     "IgnoreResolution": true,
-    "NotSupportedByDesign": "javascript, java ",
+    "NotSupportedByDesign": "javascript, java, python",
     "NotSupported": "dotnet",
     "Comment": "Extraction done. PowerNumberParse method does not support 'power' representation for Kanji",
     "Results": [
@@ -4907,7 +4907,7 @@
   {
     "Input": "-1.1の23乗の計算は難しいです。",
     "IgnoreResolution": true,
-    "NotSupportedByDesign": "javascript, java ",
+    "NotSupportedByDesign": "javascript, java, python",
     "NotSupported": "dotnet",
     "Comment": "Extraction done. PowerNumberParse method does not support 'power' representation for Kanji",
     "Results": [
@@ -4926,7 +4926,7 @@
   {
     "Input": "-2.5の-1乗の計算の仕方を説明します。",
     "IgnoreResolution": true,
-    "NotSupportedByDesign": "javascript, java ",
+    "NotSupportedByDesign": "javascript, java, python",
     "NotSupported": "dotnet",
     "Comment": "Extraction done. PowerNumberParse method does not support 'power' representation for Kanji",
     "Results": [
@@ -4945,7 +4945,7 @@
   {
     "Input": "-1.1の--23乗の計算は難しいです。",
     "IgnoreResolution": true,
-    "NotSupportedByDesign": "javascript, java ",
+    "NotSupportedByDesign": "javascript, java, python",
     "NotSupported": "dotnet",
     "Comment": "Extraction done. PowerNumberParse method does not support 'power' representation for Kanji",
     "Results": [
@@ -4964,7 +4964,7 @@
   {
     "Input": "答えは-127.32×10の13乗です。",
     "IgnoreResolution": true,
-    "NotSupportedByDesign": "javascript, java ",
+    "NotSupportedByDesign": "javascript, java, python",
     "NotSupported": "dotnet",
     "Comment": "Extraction done. PowerNumberParse method does not support 'power' representation for Kanji",
     "Results": [
@@ -4983,7 +4983,7 @@
   {
     "Input": "答えは-12.32×10の14乗です。",
     "IgnoreResolution": true,
-    "NotSupportedByDesign": "javascript, java ",
+    "NotSupportedByDesign": "javascript, java, python",
     "NotSupported": "dotnet",
     "Comment": "Extraction done. PowerNumberParse method does not support 'power' representation for Kanji",
     "Results": [
@@ -5002,7 +5002,7 @@
   {
     "Input": "答えは-12×10の-1乗です。",
     "IgnoreResolution": true,
-    "NotSupportedByDesign": "javascript, java ",
+    "NotSupportedByDesign": "javascript, java, python",
     "NotSupported": "dotnet",
     "Comment": "Extraction done. PowerNumberParse method does not support 'power' representation for Kanji",
     "Results": [
@@ -6171,7 +6171,7 @@
   {
     "Input": "この袋の厚さは〇・〇八ミリメートルです。",
     "IgnoreResolution": true,
-    "NotSupportedByDesign": "javascript, java ",
+    "NotSupportedByDesign": "javascript, java, python",
     "Results": [
       {
         "Text": "〇・〇八",
@@ -6994,7 +6994,7 @@
   {
     "Input": "りんごを半分食べました。",
     "IgnoreResolution": true,
-    "NotSupportedByDesign": "javascript, java ",
+    "NotSupportedByDesign": "javascript, java, python",
     "NotSupported": "dotnet",
     "Comment": "Extraction done. Parser does not support half (半).",
     "Results": [
@@ -8349,7 +8349,7 @@
   {
     "Input": "半数以上の人々がここに来ました。",
     "IgnoreResolution": true,
-    "NotSupportedByDesign": "javascript, java ",
+    "NotSupportedByDesign": "javascript, java, python",
     "NotSupported": "dotnet",
     "Comment": "Extraction done. Parser does not support half (半).",
     "Results": [
@@ -8520,7 +8520,7 @@
   },
   {
     "Input": "110万",
-    "NotSupported": "dotnet, javascript , java",
+    "NotSupported": "dotnet, javascript, python, java",
     "Results": [
       {
         "Text": "110万",
@@ -8624,7 +8624,7 @@
   },
   {
     "Input": "百分の二",
-    "NotSupported": "dotnet, javascript , java",
+    "NotSupported": "dotnet, javascript, python, java",
     "Results": [
       {
         "Text": "百分の二",
@@ -8762,7 +8762,7 @@
   },
   {
     "Input": "2千222.2千2百2十2.22222.2百2十2",
-    "NotSupported": "dotnet, javascript , java",
+    "NotSupported": "dotnet, javascript, python, java",
     "Results": [
       {
         "Text": "2千222",
@@ -9366,7 +9366,7 @@
   },
   {
     "Input": "1991年1月16日夜パリ時間20時：フランスのミッテラン大統領はテレビ演説し、湾岸危機の平和的解決はすでに戦争に移り、フランスは全ての戦闘準備をもう整えたと発表しました。",
-    "NotSupported": "dotnet, javascript , java",
+    "NotSupported": "dotnet, javascript, python, java",
     "Results": [
       {
         "Text": "1991",
@@ -10042,7 +10042,7 @@
   },
   {
     "Input": "百余り万",
-    "NotSupported": "dotnet, javascript , java",
+    "NotSupported": "dotnet, javascript, python, java",
     "Results": [
       {
         "Text": "百余り万",
@@ -10272,7 +10272,7 @@
   },
   {
     "Input": "8385万2326.33",
-    "NotSupported": "dotnet, javascript , java",
+    "NotSupported": "dotnet, javascript, python, java",
     "Results": [
       {
         "Text": "8385万2326.33",
@@ -10401,7 +10401,7 @@
   },
   {
     "Input": "マイナス8.954302433",
-    "NotSupported": "dotnet, javascript , java",
+    "NotSupported": "dotnet, javascript, python, java",
     "Results": [
       {
         "Text": "マイナス8.954302433",
@@ -10416,7 +10416,7 @@
   },
   {
     "Input": "55兆12億4万5千2百",
-    "NotSupported": "dotnet, javascript , java",
+    "NotSupported": "dotnet, javascript, python, java",
     "Results": [
       {
         "Text": "55兆12億4万5千2百",
@@ -10481,7 +10481,7 @@
   },
   {
     "Input": "百",
-    "NotSupported": "dotnet, javascript , java",
+    "NotSupported": "dotnet, javascript, python, java",
     "Results": [
       {
         "Text": "百",
@@ -10828,7 +10828,7 @@
   },
   {
     "Input": "「一」と「五」",
-    "NotSupported": "dotnet, javascript , java",
+    "NotSupported": "dotnet, javascript, python, java",
     "Results": [
       {
         "Text": "一",
@@ -10926,7 +10926,7 @@
   },
   {
     "Input": "十余万",
-    "NotSupported": "dotnet, javascript , java",
+    "NotSupported": "dotnet, javascript, python, java",
     "Results": [
       {
         "Text": "十余万",
@@ -11034,7 +11034,7 @@
   },
   {
     "Input": "8385万2336.33",
-    "NotSupported": "dotnet, javascript , java",
+    "NotSupported": "dotnet, javascript, python, java",
     "Results": [
       {
         "Text": "8385万2336.33",
@@ -11407,7 +11407,7 @@
   },
   {
     "Input": "マイナス0.5",
-    "NotSupported": "dotnet, javascript , java",
+    "NotSupported": "dotnet, javascript, python, java",
     "Results": [
       {
         "Text": "マイナス0.5",
@@ -11536,7 +11536,7 @@
   },
   {
     "Input": "二重",
-    "NotSupported": "dotnet, javascript , java",
+    "NotSupported": "dotnet, javascript, python, java",
     "Results": [
       {
         "Text": "二",
@@ -11626,7 +11626,7 @@
   },
   {
     "Input": "1991年1月16日夜パリ時間20時：フランスのミッテラン大統領はテレビで演説し、湾岸危機の平和解決はすでに戦争に譲られ、フランスはすべての戦闘準備を既に整えたと発表しました。",
-    "NotSupported": "dotnet, javascript , java",
+    "NotSupported": "dotnet, javascript, python, java",
     "Results": [
       {
         "Text": "1991",
@@ -12104,7 +12104,7 @@
   },
   {
     "Input": "三の別の1種の書き方は叁です。",
-    "NotSupported": "dotnet, javascript , java",
+    "NotSupported": "dotnet, javascript, python, java",
     "Results": [
       {
         "Text": "三",
@@ -12176,7 +12176,7 @@
   },
   {
     "Input": "千余り万",
-    "NotSupported": "dotnet, javascript , java",
+    "NotSupported": "dotnet, javascript, python, java",
     "Results": [
       {
         "Text": "千余り万",
@@ -12496,7 +12496,7 @@
   },
   {
     "Input": "マイナス6.6",
-    "NotSupported": "dotnet, javascript , java",
+    "NotSupported": "dotnet, javascript, python, java",
     "Results": [
       {
         "Text": "マイナス6.6",
