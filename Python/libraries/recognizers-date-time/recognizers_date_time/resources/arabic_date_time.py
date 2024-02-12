@@ -64,7 +64,7 @@ class ArabicDateTime:
     OrdinalNumberRegex = f'((ال)?حادي عشر|ل(ال)?ثاني عشر|(ال)?ثالث عشر|(ال)?رابع عشر|(ال)?خامس عشر|(ال)?خمسة عشر|(ال)?سادس عشر|(ال)?سابع عشر|(ال)?ثامن عشر|(ال)?تاسع عشر|(ال)?عشرون|(ال)?عشرين|(ال)?حادي والعشرون|(ال)?حادية والعشرين|(ال)?حادي والعشرين|(ال)?ثاني والعشرون|(ال)?ثانية والعشرين|(ال)?ثالث والعشرون|(ال)?رابع والعشرون|(ال)?خامس والعشرون|(ال)?سادس والعشرون|(ال)?تاسع والعشرون|(ال)?سابع والعشرون|(ال)?رابع والعشرون|الثامن|الأول|الثالث|الرابع|الخامس|السادس|الثاني|العاشر|السابع)'
     SolarMonthRegex = f'(?<month>يناير|فبراير|مارس|أبريل|مايو|يونيو|يوليو|أغسطس|سبتمبر|أكتوبر|نوفمبر|ديسمبر)'
     LunarMonthRegex = f'(?<month>محرم|صفر|ربيع الأول|ربيع الثاني|جمادى الأول|جمادى الثاني|رجب|شعبان|رمضان|شوال|ذو القعدة|ذو الحجة)'
-    ArabicMonthRegex = f'(?<month>كانون الثاني|شباط|آذار|نيسان|حزيران|تموز|آب|أيلول|تشرين الأول|تشرين الثاني|شهر فبراير|كانون الأول|أيار)'
+    ArabicMonthRegex = f'(?<month>كانون الثاني|شباط|آذار|نيسان|حزيران|تموز|آب|أيلول|تشرين الأول|تشرين الثاني|شهر فبراير|كانون الأول|أيار|إبريل|اكتوبر)'
     SimpleCasePreMonthRegex = f'((بين|من)\\s+)(({DayRegex}-{DayRegex})\\s+)((من|في)\\s+)?((الشهر|{SolarMonthRegex}|{LunarMonthRegex}|{ArabicMonthRegex})\\s+)({RelativeRegex})?({YearRegex})?'
     SimpleCasesRegex = f'(((من)\\s+)?(({DayRegex}|{OrdinalNumberRegex})\\s+)((الشهر|{SolarMonthRegex}|{LunarMonthRegex}|{ArabicMonthRegex})\\s+)?((حتى|إلى)\\s*)(({DayRegex}|{OrdinalNumberRegex})\\s+)((من هذا|من|هذا|في)\\s+)?(الشهر|{SolarMonthRegex}|{LunarMonthRegex}|{ArabicMonthRegex})?(\\s+({RelativeRegex}))?(\\s+{YearRegex})?)|({SimpleCasePreMonthRegex})'
     MonthFrontSimpleCasesRegex = f'(((شهر\\s+)?{SolarMonthRegex}|{LunarMonthRegex}|{ArabicMonthRegex})\\s+(بين|من)\\s+({DayRegex}|{OrdinalNumberRegex})\\s+[و]\\s*({DayRegex}|{OrdinalNumberRegex}))|({DayRegex}\\s*[-\\./]\\s*{DayRegex}\\s+{SolarMonthRegex}|{LunarMonthRegex}|{ArabicMonthRegex})'
@@ -457,6 +457,7 @@ class ArabicDateTime:
                         ("فبراير", 2),
                         ("مارس", 3),
                         ("أبريل", 4),
+                        ("إبريل", 4),
                         ("مايو", 5),
                         ("يونيو", 6),
                         ("يوليو", 7),
@@ -475,6 +476,7 @@ class ArabicDateTime:
                         ("شعبان", 8),
                         ("رمضان", 9),
                         ("شوال", 10),
+                        ("اكتوبر", 10),
                         ("ذو القعدة", 11),
                         ("ذو الحجة", 12),
                         ("كانون الثاني", 1),
