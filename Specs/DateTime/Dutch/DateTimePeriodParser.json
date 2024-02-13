@@ -953,7 +953,7 @@
       "ReferenceDateTime": "2016-11-07T16:12:00"
     },
     "NotSupportedByDesign": "javascript,java",
-    "NotSupported": "python",
+    "NotSupported": "zython",
     "Results": [
       {
         "Text": "dinsdagmiddag",
@@ -1731,7 +1731,7 @@
       "ReferenceDateTime": "2017-11-09T16:12:00"
     },
     "NotSupportedByDesign": "javascript,java",
-    "NotSupported": "python",
+    "NotSupported": "zython",
     "Results": [
       {
         "Text": "vrijdag tussen 1 en 4 uur ‘s middags",
@@ -1758,7 +1758,7 @@
       "ReferenceDateTime": "2017-11-09T16:12:00"
     },
     "NotSupportedByDesign": "javascript,java",
-    "NotSupported": "python",
+    "NotSupported": "zython",
     "Results": [
       {
         "Text": "vrijdag tussen 13 en 16 uur ‘s middags",
@@ -1785,7 +1785,7 @@
       "ReferenceDateTime": "2017-11-09T16:12:00"
     },
     "NotSupportedByDesign": "javascript,java",
-    "NotSupported": "python",
+    "NotSupported": "zython",
     "Results": [
       {
         "Text": "vrijdag tussen 13 en 16 uur",

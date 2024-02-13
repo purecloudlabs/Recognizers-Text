@@ -1946,7 +1946,7 @@
   {
     "Input": "Plan kamperen in voor vrijdag tot en met zondag",
     "NotSupportedByDesign": "javascript,java",
-    "NotSupported": "python",
+    "NotSupported": "zython",
     "Results": [
       {
         "Text": "vrijdag tot en met zondag",
@@ -3248,7 +3248,7 @@
   {
     "Input": "Ik ben tussen de 1e januari 2015 en de 5e feb 2018 weg",
     "NotSupportedByDesign": "javascript,java",
-    "NotSupported": "python",
+    "NotSupported": "zython",
     "Results": [
       {
         "Text": "tussen de 1e januari 2015 en de 5e feb 2018",
@@ -3273,7 +3273,7 @@
   {
     "Input": "Ik ben tussen 2015 en feb 2018 weg",
     "NotSupportedByDesign": "javascript,java",
-    "NotSupported": "python",
+    "NotSupported": "zython",
     "Results": [
       {
         "Text": "tussen 2015 en feb 2018",
@@ -3298,7 +3298,7 @@
   {
     "Input": "Ik ben tussen 1 feb en maart 2019 weg",
     "NotSupportedByDesign": "javascript,java",
-    "NotSupported": "python",
+    "NotSupported": "zython",
     "Results": [
       {
         "Text": "tussen 1 feb en maart 2019",
@@ -3311,7 +3311,7 @@
   {
     "Input": "Ik ben tussen juni 2015 en mei 2018 weg",
     "NotSupportedByDesign": "javascript,java",
-    "NotSupported": "python",
+    "NotSupported": "zython",
     "Results": [
       {
         "Text": "tussen juni 2015 en mei 2018",
@@ -3324,7 +3324,7 @@
   {
     "Input": "Ik ben tussen mei 2015 en 2018 weg",
     "NotSupportedByDesign": "javascript,java",
-    "NotSupported": "python",
+    "NotSupported": "zython",
     "Results": [
       {
         "Text": "tussen mei 2015 en 2018",
@@ -3337,7 +3337,7 @@
   {
     "Input": "Ik ben tussen mei 2015 en juni 2018 weg",
     "NotSupportedByDesign": "javascript,java",
-    "NotSupported": "python",
+    "NotSupported": "zython",
     "Results": [
       {
         "Text": "tussen mei 2015 en juni 2018",
@@ -3350,7 +3350,7 @@
   {
     "Input": "Ik ben tussen 2015 en de 5e van januari 2018 weg",
     "NotSupportedByDesign": "javascript,java",
-    "NotSupported": "python",
+    "NotSupported": "zython",
     "Results": [
       {
         "Text": "tussen 2015 en de 5e van januari 2018",
@@ -3399,7 +3399,7 @@
   {
     "Input": "Ik ben tussen week 31 en week 35 weg",
     "NotSupportedByDesign": "javascript,java",
-    "NotSupported": "python",
+    "NotSupported": "zython",
     "Results": [
       {
         "Text": "tussen week 31 en week 35",

@@ -773,7 +773,7 @@
   {
     "Input": "maak afspraak tussen 10 en 11:30",
     "NotSupportedByDesign": "javascript,java",
-    "NotSupported": "python",
+    "NotSupported": "zython",
     "Results": [
       {
         "Text": "tussen 10 en 11:30",
@@ -786,7 +786,7 @@
   {
     "Input": "maak afspraak tussen 10:10am en 12:50",
     "NotSupportedByDesign": "javascript,java",
-    "NotSupported": "python",
+    "NotSupported": "zython",
     "Results": [
       {
         "Text": "tussen 10:10am en 12:50",
@@ -799,7 +799,7 @@
   {
     "Input": "maak afspraak tussen 10:10pm en 3",
     "NotSupportedByDesign": "javascript,java",
-    "NotSupported": "python",
+    "NotSupported": "zython",
     "Results": [
       {
         "Text": "tussen 10:10pm en 3",
@@ -1333,7 +1333,7 @@
   {
     "Input": "regel meeting tussen 10 en 11:30",
     "NotSupportedByDesign": "javascript,java",
-    "NotSupported": "python",
+    "NotSupported": "zython",
     "Results": [
       {
         "Text": "tussen 10 en 11:30",
@@ -1346,7 +1346,7 @@
   {
     "Input": "regel meeting tussen 10:10 en 12:50",
     "NotSupportedByDesign": "javascript,java",
-    "NotSupported": "python",
+    "NotSupported": "zython",
     "Results": [
       {
         "Text": "tussen 10:10 en 12:50",
@@ -1359,7 +1359,7 @@
   {
     "Input": "regel meeting tussen 22:10 en 3",
     "NotSupportedByDesign": "javascript,java",
-    "NotSupported": "python",
+    "NotSupported": "zython",
     "Results": [
       {
         "Text": "tussen 22:10 en 3",
