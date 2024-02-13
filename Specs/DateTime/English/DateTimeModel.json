@@ -10587,7 +10587,7 @@
     "Context": {
       "ReferenceDateTime": "2019-01-31T00:00:00"
     },
-    "NotSupported": "javascript, java, python",
+    "NotSupported": "javascript, java, zython",
     "Results": []
   },
   {
@@ -11470,7 +11470,7 @@
     "Context": {
       "ReferenceDateTime": "2019-04-25T00:00:00"
     },
-    "NotSupported": "javascript, python",
+    "NotSupported": "javascript, zython",
     "Results": [
       {
         "Text": "january first two thousand and thirty two",
@@ -12483,7 +12483,7 @@
     "Context": {
       "ReferenceDateTime": "2019-06-03T12:00:00"
     },
-    "NotSupported": "javascript, python",
+    "NotSupported": "javascript, zython",
     "Results": [
       {
         "Text": "january first 2000",
@@ -12507,7 +12507,7 @@
     "Context": {
       "ReferenceDateTime": "2019-06-03T12:00:00"
     },
-    "NotSupported": "javascript, python",
+    "NotSupported": "javascript, zython",
     "Results": [
       {
         "Text": "january first 12",
@@ -16041,7 +16041,7 @@
     "Context": {
       "ReferenceDateTime": "2020-05-14T12:00:00"
     },
-    "NotSupported": "javascript, python, java",
+    "NotSupported": "javascript, zython, java",
     "Results": []
   },
   {
@@ -16099,7 +16099,7 @@
     "Context": {
       "ReferenceDateTime": "2020-05-14T12:00:00"
     },
-    "NotSupported": "javascript, python, java",
+    "NotSupported": "javascript, zython, java",
     "Results": []
   },
   {
@@ -16131,7 +16131,7 @@
     "Context": {
       "ReferenceDateTime": "2020-05-14T12:00:00"
     },
-    "NotSupported": "javascript, python, java",
+    "NotSupported": "javascript, zython, java",
     "Results": []
   },
   {
@@ -16139,7 +16139,7 @@
     "Context": {
       "ReferenceDateTime": "2020-05-14T12:00:00"
     },
-    "NotSupported": "javascript, python, java",
+    "NotSupported": "javascript, zython, java",
     "Results": []
   },
   {
@@ -16274,7 +16274,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupported": "javascript,python",
+    "NotSupported": "javascript,zython",
     "Results": [
       {
         "Text": "fourth of july of 1995",
@@ -16368,7 +16368,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupported": "javascript,python",
+    "NotSupported": "javascript,zython",
     "Results": [
       {
         "Text": "fourth of july 1995",
@@ -16392,7 +16392,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupported": "javascript,python",
+    "NotSupported": "javascript,zython",
     "Results": [
       {
         "Text": "fourth of july, 1995",
@@ -17840,7 +17840,7 @@
     "Context": {
       "ReferenceDateTime": "2020-07-01T12:00:00"
     },
-    "NotSupportedByDesign": "python, java, javascript",
+    "NotSupportedByDesign": "zython, java, javascript",
     "Results": [
       {
         "Text": "twenty third day of september",
@@ -21640,7 +21640,7 @@
     "Context": {
       "ReferenceDateTime": "2021-06-18T18:00:00"
     },
-    "NotSupported": "java, javascript, python",
+    "NotSupported": "java, javascript, zython",
     "Results": []
   },
   {
@@ -21648,7 +21648,7 @@
     "Context": {
       "ReferenceDateTime": "2021-06-18T18:00:00"
     },
-    "NotSupported": "java, javascript, python",
+    "NotSupported": "java, javascript, zython",
     "Results": []
   },
   {
@@ -21656,7 +21656,7 @@
     "Context": {
       "ReferenceDateTime": "2021-06-18T18:00:00"
     },
-    "NotSupported": "java, javascript, python",
+    "NotSupported": "java, javascript, zython",
     "Results": []
   },
   {
@@ -22256,7 +22256,7 @@
     "Context": {
       "ReferenceDateTime": "2019-05-30T12:00:00"
     },
-    "NotSupported": "java, javascript, python",
+    "NotSupported": "java, javascript, zython",
     "Results": [
       {
         "Text": "january twenty five nineteen eighty six",
@@ -22280,7 +22280,7 @@
     "Context": {
       "ReferenceDateTime": "2019-05-30T12:00:00"
     },
-    "NotSupported": "java, javascript, python",
+    "NotSupported": "java, javascript, zython",
     "Results": [
       {
         "Text": "twenty five january nineteen eighty six",
@@ -22304,7 +22304,7 @@
     "Context": {
       "ReferenceDateTime": "2019-05-30T12:00:00"
     },
-    "NotSupported": "java, javascript, python",
+    "NotSupported": "java, javascript, zython",
     "Results": [
       {
         "Text": "fifteen august nineteen hundred ninety three",
@@ -22328,7 +22328,7 @@
     "Context": {
       "ReferenceDateTime": "2019-05-30T12:00:00"
     },
-    "NotSupported": "java, javascript, python",
+    "NotSupported": "java, javascript, zython",
     "Results": [
       {
         "Text": "13 sept nineteen seventy two",
@@ -22352,7 +22352,7 @@
     "Context": {
       "ReferenceDateTime": "2019-05-30T12:00:00"
     },
-    "NotSupported": "java, javascript, python",
+    "NotSupported": "java, javascript, zython",
     "Results": [
       {
         "Text": "6 april seventeen hundred thirty three",
@@ -22376,7 +22376,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupported": "java, javascript, python",
+    "NotSupported": "java, javascript, zython",
     "Results": [
       {
         "Text": "august two thousand and fifteen",
@@ -22401,7 +22401,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupported": "java, javascript, python",
+    "NotSupported": "java, javascript, zython",
     "Results": [
       {
         "Text": "october two thousand and five",
@@ -22426,7 +22426,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupported": "java, javascript, python",
+    "NotSupported": "java, javascript, zython",
     "Results": [
       {
         "Text": "october two thousand",
@@ -23102,7 +23102,7 @@
     "Context": {
       "ReferenceDateTime": "2022-05-01T00:00:00"
     },
-    "NotSupported": "java, javascript, python",
+    "NotSupported": "java, javascript, zython",
     "Results": [
       {
         "Text": "sun 14th",
@@ -23695,7 +23695,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T10:20:00"
     },
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript, zython",
     "Results": [
       {
         "Text": "today from 7 to 7:30",
@@ -24168,7 +24168,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupported": "java, javascript, python",
+    "NotSupported": "java, javascript, zython",
     "Results": [
       {
         "Text": "23.04.2022 14:55",
@@ -24757,7 +24757,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-02T10:00:00"
     },
-    "NotSupported": "javascript, python, java",
+    "NotSupported": "javascript, zython, java",
     "Results": [
       {
         "Text": "nov/2",
@@ -24786,7 +24786,7 @@
     "Context": {
       "ReferenceDateTime": "2022-07-10T10:00:00"
     },
-    "NotSupported": "javascript, python, java",
+    "NotSupported": "javascript, zython, java",
     "Results": [
       {
         "Text": "from 2 july to 10 july",
@@ -24817,7 +24817,7 @@
     "Context": {
       "ReferenceDateTime": "2019-07-04T00:00:00"
     },
-    "NotSupported": "java, python",
+    "NotSupported": "java, zython",
     "Results": [
       {
         "Text": "last quarter",
@@ -24942,7 +24942,7 @@
     "Context": {
       "ReferenceDateTime": "2019-07-04T00:00:00"
     },
-    "NotSupported": "java, python",
+    "NotSupported": "java, zython",
     "Results": [
       {
         "Text": "next quarter",
@@ -25179,7 +25179,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupported": "javascript, python, java",
+    "NotSupported": "javascript, zython, java",
     "Results": []
   },
   {
@@ -25187,7 +25187,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupported": "javascript, python, java",
+    "NotSupported": "javascript, zython, java",
     "Results": [
       {
         "Text": "14 nov",
@@ -25216,7 +25216,7 @@
     "Context": {
       "ReferenceDateTime": "2022-04-27T00:00:00"
     },
-    "NotSupported": "javascript, python, java",
+    "NotSupported": "javascript, zython, java",
     "Results": [
       {
         "Text": "saturday",
@@ -25245,7 +25245,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupported": "javascript, python, java",
+    "NotSupported": "javascript, zython, java",
     "Results": [
       {
         "Text": "14 nov 2023",
@@ -25269,7 +25269,7 @@
     "Context": {
       "ReferenceDateTime": "2022-07-27T10:00:00"
     },
-    "NotSupported": "java, javascript, python",
+    "NotSupported": "java, javascript, zython",
     "Results": [
       {
         "Text": "after dinner",
@@ -25309,7 +25309,7 @@
     "Context": {
       "ReferenceDateTime": "2022-07-27T10:00:00"
     },
-    "NotSupported": "java, javascript, python",
+    "NotSupported": "java, javascript, zython",
     "Results": [
       {
         "Text": "after dinnertime",
@@ -25349,7 +25349,7 @@
     "Context": {
       "ReferenceDateTime": "2022-07-27T10:00:00"
     },
-    "NotSupported": "java, javascript, python",
+    "NotSupported": "java, javascript, zython",
     "Results": [
       {
         "Text": "at lunch",
@@ -25389,7 +25389,7 @@
     "Context": {
       "ReferenceDateTime": "2022-04-29T00:00:00"
     },
-    "NotSupported": "javascript, python, java",
+    "NotSupported": "javascript, zython, java",
     "Results": [
       {
         "Text": "next month",
@@ -25414,7 +25414,7 @@
     "Context": {
       "ReferenceDateTime": "2022-04-29T00:00:00"
     },
-    "NotSupported": "javascript, python, java",
+    "NotSupported": "javascript, zython, java",
     "Results": [
       {
         "Text": "next month",
@@ -25455,7 +25455,7 @@
     "Context": {
       "ReferenceDateTime": "2022-04-29T00:00:00"
     },
-    "NotSupported": "javascript, python",
+    "NotSupported": "javascript, zython",
     "Results": [
       {
         "Text": "next month",
@@ -25495,7 +25495,7 @@
     "Context": {
       "ReferenceDateTime": "2022-04-29T13:00:00"
     },
-    "NotSupported": "javascript, python, java",
+    "NotSupported": "javascript, zython, java",
     "Results": [
       {
         "Text": "next month",
@@ -25536,7 +25536,7 @@
     "Context": {
       "ReferenceDateTime": "2022-04-29T00:00:00"
     },
-    "NotSupported": "javascript, python",
+    "NotSupported": "javascript, zython",
     "Results": [
       {
         "Text": "next month",
@@ -25578,7 +25578,7 @@
     "Context": {
       "ReferenceDateTime": "2022-04-29T00:00:00"
     },
-    "NotSupported": "javascript, python",
+    "NotSupported": "javascript, zython",
     "Results": [
       {
         "Text": "next year",
@@ -25618,7 +25618,7 @@
     "Context": {
       "ReferenceDateTime": "2022-04-29T00:00:00"
     },
-    "NotSupported": "javascript, python",
+    "NotSupported": "javascript, zython",
     "Results": [
       {
         "Text": "next year",
@@ -25663,7 +25663,7 @@
     "Context": {
       "ReferenceDateTime": "2022-04-29T13:00:00"
     },
-    "NotSupported": "javascript, python, java",
+    "NotSupported": "javascript, zython, java",
     "Results": [
       {
         "Text": "next year",
@@ -25704,7 +25704,7 @@
     "Context": {
       "ReferenceDateTime": "2022-04-29T00:00:00"
     },
-    "NotSupported": "javascript, python",
+    "NotSupported": "javascript, zython",
     "Results": [
       {
         "Text": "next year",
@@ -25746,7 +25746,7 @@
     "Context": {
       "ReferenceDateTime": "2022-04-29T00:00:00"
     },
-    "NotSupported": "javascript, python",
+    "NotSupported": "javascript, zython",
     "Results": [
       {
         "Text": "next month",
@@ -25791,7 +25791,7 @@
     "Context": {
       "ReferenceDateTime": "2022-04-29T00:00:00"
     },
-    "NotSupported": "javascript, python",
+    "NotSupported": "javascript, zython",
     "Results": [
       {
         "Text": "next year",

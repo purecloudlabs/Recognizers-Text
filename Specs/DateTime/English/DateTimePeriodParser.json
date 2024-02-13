@@ -1779,7 +1779,7 @@
     "Context": {
       "ReferenceDateTime": "2017-11-14T19:12:00"
     },
-    "NotSupported": "python",
+    "NotSupported": "zython",
     "Results": [
       {
         "Text": "in the afternoon on Friday between 1PM and 4 PM",
@@ -1831,7 +1831,7 @@
     "Context": {
       "ReferenceDateTime": "2017-11-17T19:12:00"
     },
-    "NotSupported": "javascript, python",
+    "NotSupported": "javascript, zython",
     "Results": [
       {
         "Text": "2018-09-23 1:30p.m. to 4",
@@ -2273,7 +2273,7 @@
     "Context": {
       "ReferenceDateTime": "2018-05-16T08:12:00"
     },
-    "NotSupported": "javascript, python",
+    "NotSupported": "javascript, zython",
     "Results": [
       {
         "Text": "1/1/2015 between 10 and 11:30",
@@ -2325,7 +2325,7 @@
     "Context": {
       "ReferenceDateTime": "2018-05-16T08:12:00"
     },
-    "NotSupported": "javascript, python",
+    "NotSupported": "javascript, zython",
     "Results": [
       {
         "Text": "between 3 and 5 on 1/1/2015",
@@ -2351,7 +2351,7 @@
     "Context": {
       "ReferenceDateTime": "2018-05-16T08:12:00"
     },
-    "NotSupported": "javascript, python",
+    "NotSupported": "javascript, zython",
     "Results": [
       {
         "Text": "from 3:30 to 5:55 on 1/1/2015",
@@ -2429,7 +2429,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T16:12:00"
     },
-    "NotSupported": "javascript, python, java",
+    "NotSupported": "javascript, zython, java",
     "Results": [
       {
         "Text": "between half past seven and 4pm of tomorrow",

@@ -676,7 +676,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupported": "javascript, java, python",
+    "NotSupported": "javascript, java, zython",
     "Results": []
   },
   {
@@ -3835,7 +3835,7 @@
       "ReferenceDateTime": "2018-06-26T00:00:00"
     },
     "NotSupported": "javascript",
-    "NotSupportedByDesign": "python",
+    "NotSupportedByDesign": "zython",
     "Results": [
       {
         "Text": "2007",
@@ -3929,7 +3929,7 @@
       "ReferenceDateTime": "2018-06-26T00:00:00"
     },
     "NotSupported": "javascript",
-    "NotSupportedByDesign": "python",
+    "NotSupportedByDesign": "zython",
     "Results": [
       {
         "Text": "the year",
@@ -3955,7 +3955,7 @@
       "ReferenceDateTime": "2018-07-02T00:00:00"
     },
     "NotSupported": "javascript",
-    "NotSupportedByDesign": "python",
+    "NotSupportedByDesign": "zython",
     "Results": [
       {
         "Text": "the week",
@@ -4007,7 +4007,7 @@
       "ReferenceDateTime": "2018-07-02T00:00:00"
     },
     "NotSupported": "javascript",
-    "NotSupportedByDesign": "python",
+    "NotSupportedByDesign": "zython",
     "Results": [
       {
         "Text": "week 31",
@@ -4033,7 +4033,7 @@
       "ReferenceDateTime": "2018-07-05T00:00:00"
     },
     "NotSupported": "javascript",
-    "NotSupportedByDesign": "python",
+    "NotSupportedByDesign": "zython",
     "Results": [
       {
         "Text": "in 3 hours",
@@ -4058,7 +4058,7 @@
       "ReferenceDateTime": "2018-07-05T00:00:00"
     },
     "NotSupported": "javascript",
-    "NotSupportedByDesign": "python",
+    "NotSupportedByDesign": "zython",
     "Results": [
       {
         "Text": "in 2 weeks",
@@ -4083,7 +4083,7 @@
       "ReferenceDateTime": "2018-07-05T00:00:00"
     },
     "NotSupported": "javascript",
-    "NotSupportedByDesign": "python",
+    "NotSupportedByDesign": "zython",
     "Results": [
       {
         "Text": "in 2 days",
@@ -4108,7 +4108,7 @@
       "ReferenceDateTime": "2018-07-05T00:00:00"
     },
     "NotSupported": "javascript",
-    "NotSupportedByDesign": "python",
+    "NotSupportedByDesign": "zython",
     "Results": [
       {
         "Text": "in 2 months",
@@ -4133,7 +4133,7 @@
       "ReferenceDateTime": "2018-07-05T00:00:00"
     },
     "NotSupported": "javascript",
-    "NotSupportedByDesign": "python",
+    "NotSupportedByDesign": "zython",
     "Results": [
       {
         "Text": "in 2 years",
@@ -4158,7 +4158,7 @@
       "ReferenceDateTime": "2018-07-05T00:00:00"
     },
     "NotSupported": "javascript",
-    "NotSupportedByDesign": "python",
+    "NotSupportedByDesign": "zython",
     "Results": [
       {
         "Text": "2 days from today",
