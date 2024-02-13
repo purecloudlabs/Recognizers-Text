@@ -1633,7 +1633,7 @@
   },
   {
     "Input": "usd$ 15",
-    "NotSupported": "javascript, python, java",
+    "NotSupported": "javascript , java",
     "Results": [
       {
         "Text": "usd$ 15",
@@ -1751,7 +1751,7 @@
   },
   {
     "Input": "Os preços do negócio começam em dólares 22,5 milhões.",
-    "NotSupported": "java, javascript, python",
+    "NotSupported": "java, javascript ",
     "Results": [
       {
         "Text": "dólares 22,5 milhões",
@@ -1767,7 +1767,7 @@
   },
   {
     "Input": "Os preços do negócio começam em dólar 22500000.",
-    "NotSupported": "java, javascript, python",
+    "NotSupported": "java, javascript ",
     "Results": [
       {
         "Text": "dólar 22500000",
@@ -1783,7 +1783,7 @@
   },
   {
     "Input": "Por 15 dólares 50 você pode almoçar e jantar",
-    "NotSupported": "java, javascript, python",
+    "NotSupported": "java, javascript ",
     "Results": [
       {
         "Text": "15 dólares 50",
@@ -1799,7 +1799,7 @@
   },
   {
     "Input": "Por 15 USD 50 você pode almoçar e jantar.",
-    "NotSupported": "java, javascript, python",
+    "NotSupported": "java, javascript ",
     "Results": [
       {
         "Text": "15 usd 50",
@@ -1866,7 +1866,7 @@
   },
   {
     "Input": "O custo é de 500 USD,100 vezes mais do que o esperado.",
-    "NotSupported": "java, javascript, python",
+    "NotSupported": "java, javascript ",
     "Results": [
       {
         "Text": "500 usd",
@@ -1899,7 +1899,7 @@
   },
   {
     "Input": "Eu contei os dólares milhares de vezes.",
-    "NotSupported": "java, javascript, python",
+    "NotSupported": "java, javascript ",
     "Results": [
       {
         "Text": "dólares",
@@ -1915,7 +1915,7 @@
   },
   {
     "Input": "O preço era na verdade 50 milhões de dólares.",
-    "NotSupported": "java, javascript, python",
+    "NotSupported": "java, javascript ",
     "Results": [
       {
         "Text": "50 milhões de dólares",
