@@ -133,7 +133,7 @@
   },
   {
     "Input": "tierce",
-    "NotSupported": "javascript, python, java",
+    "NotSupported": "javascript, java",
     "Results": [
       {
         "Text": "tierce",

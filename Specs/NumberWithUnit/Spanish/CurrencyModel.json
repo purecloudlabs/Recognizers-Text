@@ -1666,7 +1666,7 @@
   },
   {
     "Input": "mxn$ 15",
-    "NotSupported": "javascript, python, java",
+    "NotSupported": "javascript , java",
     "Results": [
       {
         "Text": "mxn$ 15",
@@ -1751,7 +1751,7 @@
   },
   {
     "Input": "Los precios del acuerdo comienzan en dólar 22,5 millones.",
-    "NotSupported": "java, javascript, python",
+    "NotSupported": "java, javascript ",
     "Results": [
       {
         "Text": "dólar 22,5 millones",
@@ -1767,7 +1767,7 @@
   },
   {
     "Input": "Los precios del acuerdo comienzan en dólar 22500000.",
-    "NotSupported": "java, javascript, python",
+    "NotSupported": "java, javascript ",
     "Results": [
       {
         "Text": "dólar 22500000",
@@ -1783,7 +1783,7 @@
   },
   {
     "Input": "Por 15 dolares 50 puedes almorzar y cenar",
-    "NotSupported": "java, javascript, python",
+    "NotSupported": "java, javascript ",
     "Results": [
       {
         "Text": "15 dolares 50",
@@ -1799,7 +1799,7 @@
   },
   {
     "Input": "Por 15 USD 50 puedes almorzar y cenar",
-    "NotSupported": "java, javascript, python",
+    "NotSupported": "java, javascript ",
     "Results": [
       {
         "Text": "15 usd 50",
@@ -1883,7 +1883,7 @@
   },
   {
     "Input": "Obtén 2 meses por MXN$ 20",
-    "NotSupported": "java, javascript, python",
+    "NotSupported": "java, javascript ",
     "Results": [
       {
         "Text": "mxn$ 20",
@@ -1900,7 +1900,7 @@
   },
   {
     "Input": "Obtén 2 meses por 20 MXN$",
-    "NotSupported": "java, javascript, python",
+    "NotSupported": "java, javascript ",
     "Results": [
       {
         "Text": "20 mxn$",

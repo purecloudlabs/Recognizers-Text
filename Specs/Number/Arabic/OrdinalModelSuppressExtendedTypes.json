@@ -81,7 +81,7 @@
   },
   {
     "Input": "البيت الحادي عشر",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "الحادي عشر",

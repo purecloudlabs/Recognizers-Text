@@ -1960,7 +1960,7 @@
   },
   {
     "Input": "1 in twenty-one",
-    "NotSupported": "javascript, python",
+    "NotSupported": "javascript",
     "Results": [
       {
         "Text": "1 in twenty-one",
@@ -2988,7 +2988,7 @@
   },
   {
     "Input": "1.111,11, 1,111.11",
-    "NotSupported": "javascript, java, python",
+    "NotSupported": "javascript, java  ",
     "Results": [
       {
         "Text": "1.111,11",
@@ -3305,7 +3305,7 @@
   },
   {
     "Input": "There are five and a half million fishes in this lake",
-    "NotSupported": "java, javascript, python",
+    "NotSupported": "java, javascript  ",
     "Results": [
       {
         "Text": "five and a half million",
@@ -3353,7 +3353,7 @@
   },
   {
     "Input": "The result is three and one fourth",
-    "NotSupported": "java, javascript, python",
+    "NotSupported": "java, javascript  ",
     "Results": [
       {
         "Text": "three and one fourth",
@@ -3369,7 +3369,7 @@
   },
   {
     "Input": "They have 3 million and a quarter",
-    "NotSupported": "java, javascript, python",
+    "NotSupported": "java, javascript  ",
     "Results": [
       {
         "Text": "3 million and a quarter",
@@ -3512,7 +3512,7 @@
   },
   {
     "Input": "placeholder name is a next generation service for translation",
-    "NotSupported": "javascript, java, python",
+    "NotSupported": "javascript, java  ",
     "Results": []
   },
   {

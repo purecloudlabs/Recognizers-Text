@@ -1,7 +1,7 @@
 [
   {
     "Input": "100%",
-    "NotSupportedByDesign": "javascript, java, python",
+    "NotSupportedByDesign": "javascript, java",
     "Results": [
       {
         "Text": "100%",
@@ -16,7 +16,7 @@
   },
   {
     "Input": " 100% ",
-    "NotSupportedByDesign": "javascript, java, python",
+    "NotSupportedByDesign": "javascript, java",
     "Results": [
       {
         "Text": "100%",
@@ -31,7 +31,7 @@
   },
   {
     "Input": " 100 procent",
-    "NotSupportedByDesign": "javascript, java, python",
+    "NotSupportedByDesign": "javascript, java",
     "Results": [
       {
         "Text": "100 procent",
@@ -46,7 +46,7 @@
   },
   {
     "Input": "240 procent",
-    "NotSupportedByDesign": "javascript, java, python",
+    "NotSupportedByDesign": "javascript, java",
     "Results": [
       {
         "Text": "240 procent",
@@ -61,7 +61,7 @@
   },
   {
     "Input": "tjugo procent",
-    "NotSupportedByDesign": "javascript, java, python",
+    "NotSupportedByDesign": "javascript, java",
     "Results": [
       {
         "Text": "tjugo procent",
@@ -76,7 +76,7 @@
   },
   {
     "Input": "trettio procent",
-    "NotSupportedByDesign": "javascript, java, python",
+    "NotSupportedByDesign": "javascript, java",
     "Results": [
       {
         "Text": "trettio procent",
@@ -91,7 +91,7 @@
   },
   {
     "Input": "etthundra procent",
-    "NotSupportedByDesign": "javascript, java, python",
+    "NotSupportedByDesign": "javascript, java",
     "Results": [
       {
         "Text": "etthundra procent",
@@ -106,7 +106,7 @@
   },
   {
     "Input": "10 procent",
-    "NotSupportedByDesign": "javascript, java, python",
+    "NotSupportedByDesign": "javascript, java",
     "Results": [
       {
         "Text": "10 procent",
@@ -121,7 +121,7 @@
   },
   {
     "Input": "behöver bara minus fem procent",
-    "NotSupportedByDesign": "javascript, java, python",
+    "NotSupportedByDesign": "javascript, java",
     "Results": [
       {
         "Text": "minus fem procent",
@@ -136,12 +136,12 @@
   },
   {
     "Input": "You can go to http://proquest.umi.com/pqdweb?RQT=305&SQ=issn%280024%2D9114%29%20and%20%28ti%28Using%203D%20CAD%20to%20design%20a%20dog%29%20or%20startpage%28158%29%29%20and%20volume%2872%29%20and%20issue%289%29%20and%20pdn%28%3E01%2F01%2F2000%20AND%20%3C12%2F31%2F2000%29&clientId=17859 for more details.",
-    "NotSupportedByDesign": "javascript, java, python",
+    "NotSupportedByDesign": "javascript, java",
     "Results": []
   },
   {
     "Input": "You can go to https://www.test.com/search?q=30%25%2020%",
-    "NotSupportedByDesign": "javascript, java, python",
+    "NotSupportedByDesign": "javascript, java",
     "Results": []
   }
 ]

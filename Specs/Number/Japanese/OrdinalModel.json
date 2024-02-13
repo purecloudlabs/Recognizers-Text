@@ -1112,7 +1112,7 @@
   {
     "Input": "シアトルへの１等級の席を予約しなさい。",
     "IgnoreResolution": true,
-    "NotSupportedByDesign": "javascript, java, python",
+    "NotSupportedByDesign": "javascript, java ",
     "Results": [
       {
         "Text": "1等",
@@ -1523,7 +1523,7 @@
   {
     "Input": "私は1番目のが好きです。",
     "IgnoreResolution": true,
-    "NotSupportedByDesign": "javascript, java, python",
+    "NotSupportedByDesign": "javascript, java ",
     "Results": [
       {
         "Text": "1番目",

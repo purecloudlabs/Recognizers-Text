@@ -284,7 +284,7 @@
   },
   {
     "Input": "البيت الحادي عشر",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "الحادي عشر",
@@ -319,7 +319,7 @@
   },
   {
     "Input": "الكتاب الثلاثون غير جيد.",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "الثلاثون",
@@ -336,7 +336,7 @@
   },
   {
     "Input": "السؤال الثاني صعب.",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "الثاني",
@@ -353,7 +353,7 @@
   },
   {
     "Input": "هي في الصف الحادي عشر.",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "الحادي عشر",
@@ -370,7 +370,7 @@
   },
   {
     "Input": "دخلت البيت العشرون.",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "العشرون",
@@ -459,7 +459,7 @@
   },
   {
     "Input": "لم أجد الكتاب التريليون.",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "التريليون",
@@ -512,7 +512,7 @@
   },
   {
     "Input": "احجز مقعد ففي الدرجة الأولى الى سياتل.",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "الأولى",
@@ -529,7 +529,7 @@
   },
   {
     "Input": "اعجبني الأول كتابين.",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "الأول",
@@ -546,7 +546,7 @@
   },
   {
     "Input": "اعجبني الأول.",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "الأول",
@@ -563,7 +563,7 @@
   },
   {
     "Input": "اتحدث الكلمة الأولى",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "الأولى",
@@ -597,7 +597,7 @@
   },
   {
     "Input": "هي انتهت قراءة الكتاب الثاني",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "الثاني",
@@ -810,7 +810,7 @@
   {
     "Input": "أريد 3 كتب القادمة.",
     "Comment": "PendingValidation",
-    "NotSupported": "javascript, python, java, dotnet",
+    "NotSupported": "javascript, java, dotnet,python",
     "Results": [
       {
         "Text": "القادمة",
@@ -882,7 +882,7 @@
   {
     "Input": "ثلاثة تريليون",
     "Comment": "PendingValidation",
-    "NotSupported": "javascript, python, java, dotnet",
+    "NotSupported": "javascript, java, dotnet,python",
     "Results": [
       {
         "Text": "ثلاثة تريليون",
@@ -900,7 +900,7 @@
   {
     "Input": "مائة تريليون",
     "Comment": "PendingValidation",
-    "NotSupported": "javascript, python, java, dotnet",
+    "NotSupported": "javascript, java, dotnet,python",
     "Results": [
       {
         "Text": "مائة تريليون",
@@ -918,7 +918,7 @@
   {
     "Input": "الحادية عشرة",
     "Comment": "PendingValidation",
-    "NotSupported": "javascript, python, java",
+    "NotSupported": "javascript, java",
     "Results": [
       {
         "Text": "الحادية عشرة",
@@ -936,7 +936,7 @@
   {
     "Input": "العشرون",
     "Comment": "PendingValidation",
-    "NotSupported": "javascript, python, java",
+    "NotSupported": "javascript, java",
     "Results": [
       {
         "Text": "العشرون",
@@ -1062,7 +1062,7 @@
   {
     "Input": "احجز مقعد ًا من الدرجة الأولى إلى سياتل",
     "Comment": "PendingValidation",
-    "NotSupported": "javascript, python, java",
+    "NotSupported": "javascript , java",
     "Results": [
       {
         "Text": "الأولى",
@@ -1097,7 +1097,7 @@
   {
     "Input": "أنا أحب الأولى",
     "Comment": "PendingValidation",
-    "NotSupported": "javascript, python, java",
+    "NotSupported": "javascript , java",
     "Results": [
       {
         "Text": "الأولى",
@@ -1115,7 +1115,7 @@
   {
     "Input": "تكلّم بالكلمة الأولى.",
     "Comment": "PendingValidation",
-    "NotSupported": "javascript, python, java",
+    "NotSupported": "javascript , java",
     "Results": [
       {
         "Text": "الأولى",
@@ -1151,7 +1151,7 @@
   {
     "Input": "لقد أنهت المركز الثاني",
     "Comment": "PendingValidation",
-    "NotSupported": "javascript, python, java",
+    "NotSupported": "javascript , java",
     "Results": [
       {
         "Text": "الثاني",
