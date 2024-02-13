@@ -160,7 +160,7 @@
   },
   {
     "Input": "今日は１２０パ ーセ ントの確率で雪が降る",
-    "NotSupported": "python",
+    "NotSupported": "xython",
     "Results": [
       {
         "Text": "120パ ーセ ント",
@@ -2661,7 +2661,7 @@
   },
   {
     "Input": "百二十パーセント",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript, python java",
     "Results": [
       {
         "Text": "百二十パーセント",
@@ -2781,7 +2781,7 @@
   },
   {
     "Input": "3.5割引",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript, python , java",
     "Results": [
       {
         "Text": "3.5割引",

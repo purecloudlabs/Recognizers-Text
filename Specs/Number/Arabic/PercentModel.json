@@ -2,7 +2,7 @@
   {
     "Input": "هي الوحيدة الذي حصلت على ١٠٠٪.",
     "IgnoreResolution": true,
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "١٠٠٪",
@@ -18,7 +18,7 @@
   {
     "Input": "اصبح شاحن الجوال ١٠٠٪؜.",
     "IgnoreResolution": true,
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "١٠٠٪",
@@ -34,7 +34,7 @@
   {
     "Input": "الاحتمال هو ١٠٠ في المئة.",
     "IgnoreResolution": true,
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "١٠٠ في المئة",
@@ -50,7 +50,7 @@
   {
     "Input": "تم تنزيل الملف ١٠٠ بالمئة.",
     "IgnoreResolution": true,
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "١٠٠ بالمئة",
@@ -66,7 +66,7 @@
   {
     "Input": "الإجابة هو ٢٤٠ في المئة",
     "IgnoreResolution": true,
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "٢٤٠ في المئة",
@@ -82,7 +82,7 @@
   {
     "Input": "احتمال وقوع حادث عشرين في المئة.",
     "IgnoreResolution": true,
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "عشرين في المئة",
@@ -98,7 +98,7 @@
   {
     "Input": "ثلاثين بالمئة ليس الإجابة الصحيحة.",
     "IgnoreResolution": true,
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "ثلاثين بالمئة",
@@ -130,7 +130,7 @@
   {
     "Input": "ما هو نسبة ١٠ من العدد ؟",
     "IgnoreResolution": true,
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "نسبة ١٠",
@@ -146,7 +146,7 @@
   {
     "Input": "نسبة اثنين وعشرين كفاية لكل شخص.",
     "IgnoreResolution": true,
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "نسبة اثنين وعشرين",
@@ -162,7 +162,7 @@
   {
     "Input": "كان يطلب نسبة ٢١٠.",
     "IgnoreResolution": true,
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "نسبة ٢١٠",
@@ -178,7 +178,7 @@
   {
     "Input": "احتمال نزول المطر ١٠ بالمائة.",
     "IgnoreResolution": true,
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "١٠ بالمائة",
@@ -193,7 +193,7 @@
   },
   {
     "Input": "ارية فقط سالب خمسة بالمئة.",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "سالب خمسة بالمئة",

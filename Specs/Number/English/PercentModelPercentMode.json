@@ -1,7 +1,7 @@
 [
   {
     "Input": "100%",
-    "NotSupported": "javascript, python",
+    "NotSupported": "javascript",
     "Results": [
       {
         "Text": "100%",
@@ -16,7 +16,7 @@
   },
   {
     "Input": "twenty percent",
-    "NotSupported": "javascript, python",
+    "NotSupported": "javascript",
     "Results": [
       {
         "Text": "twenty percent",
@@ -31,7 +31,7 @@
   },
   {
     "Input": "one hundred percents",
-    "NotSupported": "javascript, python",
+    "NotSupported": "javascript",
     "Results": [
       {
         "Text": "one hundred percents",
@@ -46,7 +46,7 @@
   },
   {
     "Input": "percents of twenty",
-    "NotSupported": "javascript, python",
+    "NotSupported": "javascript",
     "Results": [
       {
         "Text": "percents of twenty",
@@ -151,7 +151,7 @@
   },
   {
     "Input": "one third",
-    "NotSupported": "javascript, python",
+    "NotSupported": "javascript",
     "Results": []
   }
 ]

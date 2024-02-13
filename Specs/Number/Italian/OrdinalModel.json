@@ -239,7 +239,7 @@
   },
   {
     "Input": "trentaseiesimo",
-    "NotSupportedByDesign": "javascript,python",
+    "NotSupportedByDesign": "javascript",
     "Results": [
       {
         "Text": "trentaseiesimo",

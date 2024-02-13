@@ -909,7 +909,7 @@
   },
   {
     "Input": "vingtième",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript, java",
     "Results": [
       {
         "Text": "vingtième",
@@ -1011,7 +1011,7 @@
   },
   {
     "Input": "deux centième",
-    "NotSupported": "dotnet, javascript, python, java",
+    "NotSupported": "dotnet, javascript, java",
     "Results": [
       {
         "Text": "deux centième",
