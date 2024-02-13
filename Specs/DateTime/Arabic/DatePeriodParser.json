@@ -275,7 +275,7 @@
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
     "IgnoreResolution": "true",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "بين 4 سبتمبر و 8 سبتمبر",
@@ -437,7 +437,7 @@
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
     "IgnoreResolution": "false",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "سبتمبر الماضي",
@@ -950,7 +950,7 @@
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
     "IgnoreResolution": "true",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "من 2 أكتوبر إلى 22 أكتوبر",
@@ -1058,7 +1058,7 @@
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
     "IgnoreResolution": "true",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "2 أكتوبر إلى 22 أكتوبر",
@@ -1085,7 +1085,7 @@
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
     "IgnoreResolution": "true",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "بين 2 أكتوبر و 22 أكتوبر",
