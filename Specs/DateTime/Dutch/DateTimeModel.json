@@ -4,7 +4,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "4e jan 2019",
@@ -28,7 +28,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "3e jan 2019",
@@ -52,7 +52,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "2e jan 2019",
@@ -76,7 +76,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "1e jan 2019",
@@ -131,7 +131,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "2/okt",
@@ -160,7 +160,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "22/04",
@@ -189,7 +189,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "negenentwintig mei",
@@ -218,7 +218,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "tweede van augustus",
@@ -247,7 +247,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "vandaag",
@@ -271,7 +271,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "morgen",
@@ -295,7 +295,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "gisteren",
@@ -319,7 +319,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "vrijdag",
@@ -348,7 +348,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "volgende maand van 4-23",
@@ -373,7 +373,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "tussen 3 en 12 sept",
@@ -404,7 +404,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "aanstaande september",
@@ -429,7 +429,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "12 januari, 2016 - 22/01/2016",
@@ -454,7 +454,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "komende drie dagen",
@@ -479,7 +479,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "de laatste week van juli",
@@ -510,7 +510,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "2015-3",
@@ -535,7 +535,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "deze zomer",
@@ -559,7 +559,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "sinds morgen",
@@ -585,7 +585,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "sinds augustus",
@@ -618,7 +618,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "sinds aanstaande augustus",
@@ -644,7 +644,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "nu",
@@ -668,7 +668,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "14 oktober om 8:00:31",
@@ -707,7 +707,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "morgen 8:00",
@@ -736,7 +736,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "10, vanavond",
@@ -784,7 +784,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "eind van morgen",
@@ -808,7 +808,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "eind van de zondag",
@@ -837,7 +837,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "eind van deze zondag",
@@ -892,7 +892,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T16:12:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "22 april van 5 tot 6 's middags",
@@ -923,7 +923,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T16:12:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "morgen 3:00 tot 4:00",
@@ -954,7 +954,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T16:12:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "deze avond",
@@ -979,7 +979,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T16:12:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "morgenavond",
@@ -1004,7 +1004,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T16:12:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "komende maandagmiddag",
@@ -1054,7 +1054,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T16:12:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "dinsdag in de ochtend",
@@ -1085,7 +1085,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "voor 3u",
@@ -1382,7 +1382,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "wekelijks",
@@ -1430,7 +1430,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "jaarlijks",
@@ -1454,7 +1454,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "elke twee dagen",
@@ -1478,7 +1478,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "elke drie weken",
@@ -1526,7 +1526,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "elke maandag",
@@ -1550,7 +1550,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "elke maandag om 16.00",
@@ -1622,7 +1622,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "half acht",
@@ -1651,7 +1651,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "10 voor half negen 's avonds",
@@ -1675,7 +1675,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "'s morgens om 7 uur",
@@ -1699,7 +1699,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "'s middags om 7 uur",
@@ -1723,7 +1723,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "rond de middag",
@@ -1747,7 +1747,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "rond 11 uur",
@@ -1776,7 +1776,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "11:40",
@@ -1805,7 +1805,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "het middaguur",
@@ -1829,7 +1829,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T16:12:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "5 tot 6 's middags",
@@ -1885,7 +1885,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T16:12:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "tussen 5 en 6 's middags",
@@ -1910,7 +1910,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T16:12:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "4:00",
@@ -1939,7 +1939,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T16:12:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "van 3 uur 's ochtends tot 5 uur 's middags",
@@ -1964,7 +1964,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T16:12:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "tussen 4 en 5 's middags",
@@ -1989,7 +1989,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T16:12:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "'s morgens",
@@ -2014,7 +2014,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T16:12:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "'s avonds",
@@ -2039,7 +2039,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "over 5 minuten",
@@ -2063,7 +2063,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "over 5 minuten",
@@ -2131,7 +2131,7 @@
     "Context": {
       "ReferenceDateTime": "2017-12-04T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "op volgende week maandag",
@@ -2175,7 +2175,7 @@
     "Context": {
       "ReferenceDateTime": "2017-12-04T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "'s ochtends om 9 uur",
@@ -2260,7 +2260,7 @@
     "Context": {
       "ReferenceDateTime": "2017-12-04T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "maandag 8-9 's ochtends",
@@ -2307,7 +2307,7 @@
     "Context": {
       "ReferenceDateTime": "2017-12-04T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "volgende week op dinsdag",
@@ -2351,7 +2351,7 @@
     "Context": {
       "ReferenceDateTime": "2017-12-04T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "volgende week op dinsdag 9 uur 's ochtends",
@@ -2395,7 +2395,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": []
   },
   {
@@ -2403,7 +2403,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": []
   },
   {
@@ -2411,7 +2411,7 @@
     "Context": {
       "ReferenceDateTime": "2018-01-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "dinsdag 9 mei",
@@ -2440,7 +2440,7 @@
     "Context": {
       "ReferenceDateTime": "2018-01-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "mei",
@@ -2515,7 +2515,7 @@
     "Context": {
       "ReferenceDateTime": "2018-03-14T01:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "de week van 10 april",
@@ -2546,7 +2546,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": []
   },
   {
@@ -2554,7 +2554,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": []
   },
   {
@@ -2562,7 +2562,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": []
   },
   {
@@ -2570,7 +2570,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": []
   },
   {
@@ -2578,7 +2578,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": []
   },
   {
@@ -2586,7 +2586,7 @@
     "Context": {
       "ReferenceDateTime": "2018-03-14T01:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "vandaag",
@@ -2610,7 +2610,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": []
   },
   {
@@ -2618,7 +2618,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": []
   },
   {
@@ -2626,7 +2626,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": []
   },
   {
@@ -2675,7 +2675,7 @@
     "Context": {
       "ReferenceDateTime": "2018-03-23T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "over twee weken",
@@ -2755,7 +2755,7 @@
     "Context": {
       "ReferenceDateTime": "2018-04-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "1 juli",
@@ -2784,7 +2784,7 @@
     "Context": {
       "ReferenceDateTime": "2018-03-25T01:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "2 uren",
@@ -2853,7 +2853,7 @@
     "Context": {
       "ReferenceDateTime": "2018-05-16T16:12:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "maandag 11-4",
@@ -2882,7 +2882,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "andere dag",
@@ -2906,7 +2906,7 @@
     "Context": {
       "ReferenceDateTime": "2018-05-20T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "elke week",
@@ -3050,7 +3050,7 @@
     "Context": {
       "ReferenceDateTime": "2018-05-22T16:12:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "voor de dag",
@@ -3076,7 +3076,7 @@
     "Context": {
       "ReferenceDateTime": "2018-05-22T16:12:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "de maand",
@@ -3220,7 +3220,7 @@
     "Context": {
       "ReferenceDateTime": "2018-05-24T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": []
   },
   {
@@ -3228,7 +3228,7 @@
     "Context": {
       "ReferenceDateTime": "2018-05-24T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "april 2017",
@@ -3253,7 +3253,7 @@
     "Context": {
       "ReferenceDateTime": "2018-05-24T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "2017 april",
@@ -3278,7 +3278,7 @@
     "Context": {
       "ReferenceDateTime": "2018-05-31T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "eerder in de week",
@@ -3303,7 +3303,7 @@
     "Context": {
       "ReferenceDateTime": "2018-05-28T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "eerder deze maand",
@@ -3353,7 +3353,7 @@
     "Context": {
       "ReferenceDateTime": "2018-05-28T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "later deze week",
@@ -3403,7 +3403,7 @@
     "Context": {
       "ReferenceDateTime": "2018-05-28T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "later dit jaar",
@@ -3428,7 +3428,7 @@
     "Context": {
       "ReferenceDateTime": "2018-05-28T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "later in het jaar",
@@ -3453,7 +3453,7 @@
     "Context": {
       "ReferenceDateTime": "2018-05-31T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "twee dagen na vandaag",
@@ -3525,7 +3525,7 @@
     "Context": {
       "ReferenceDateTime": "2018-05-01T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "31 dec. 1994",
@@ -3549,7 +3549,7 @@
     "Context": {
       "ReferenceDateTime": "2018-05-01T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "5-3-'18 om 17:49:19",
@@ -3635,7 +3635,7 @@
     "Context": {
       "ReferenceDateTime": "2018-05-31T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "van 10:30 tot 15.00 op 1-1-2015",
@@ -3660,7 +3660,7 @@
     "Context": {
       "ReferenceDateTime": "2018-05-31T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "tussen 3 en 5 op 1-1-2015",
@@ -3691,7 +3691,7 @@
     "Context": {
       "ReferenceDateTime": "2018-05-31T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "van 3:30 tot 5.55 op 1-1-2015",
@@ -3722,7 +3722,7 @@
     "Context": {
       "ReferenceDateTime": "2018-05-31T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "voor 2010",
@@ -3765,7 +3765,7 @@
     "Context": {
       "ReferenceDateTime": "2018-05-31T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "na 2010",
@@ -3841,7 +3841,7 @@
     "Context": {
       "ReferenceDateTime": "2018-05-31T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "meer dan 4 dagen",
@@ -4007,7 +4007,7 @@
     "Context": {
       "ReferenceDateTime": "2018-05-29T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "3 minuten vanaf nu",
@@ -4164,7 +4164,7 @@
     "Context": {
       "ReferenceDateTime": "2018-05-29T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "na 2018",
@@ -4190,7 +4190,7 @@
     "Context": {
       "ReferenceDateTime": "2018-05-29T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "na feb 2018",
@@ -4216,7 +4216,7 @@
     "Context": {
       "ReferenceDateTime": "2018-05-29T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "na feb",
@@ -4330,7 +4330,7 @@
     "Context": {
       "ReferenceDateTime": "2018-06-26T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "vorige week dinsdag om 2 uur 's middags",
@@ -4397,7 +4397,7 @@
     "Context": {
       "ReferenceDateTime": "2018-06-26T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "volgende week",
@@ -4512,7 +4512,7 @@
     "Context": {
       "ReferenceDateTime": "2018-06-28T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "vandaag om 9:00",
@@ -4541,7 +4541,7 @@
     "Context": {
       "ReferenceDateTime": "2018-06-28T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "vandaag om 21:00",
@@ -4590,7 +4590,7 @@
     "Context": {
       "ReferenceDateTime": "2018-06-28T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "het jaar",
@@ -4615,7 +4615,7 @@
     "Context": {
       "ReferenceDateTime": "2018-07-02T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "de week",
@@ -4640,7 +4640,7 @@
     "Context": {
       "ReferenceDateTime": "2018-07-02T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "de week na volgende",
@@ -4665,7 +4665,7 @@
     "Context": {
       "ReferenceDateTime": "2018-07-02T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "week 31",
@@ -4690,7 +4690,7 @@
     "Context": {
       "ReferenceDateTime": "2019-03-02T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "week 1",
@@ -4715,7 +4715,7 @@
     "Context": {
       "ReferenceDateTime": "2019-03-02T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": []
   },
   {
@@ -4723,7 +4723,7 @@
     "Context": {
       "ReferenceDateTime": "2018-06-26T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "over 2 minuten",
@@ -4747,7 +4747,7 @@
     "Context": {
       "ReferenceDateTime": "2018-07-05T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "over twee maanden",
@@ -4771,7 +4771,7 @@
     "Context": {
       "ReferenceDateTime": "2018-07-05T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "over twee weken",
@@ -4795,7 +4795,7 @@
     "Context": {
       "ReferenceDateTime": "2018-07-05T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "over twee jaar",
@@ -4819,7 +4819,7 @@
     "Context": {
       "ReferenceDateTime": "2018-07-05T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "twee dagen na vandaag",
@@ -5193,7 +5193,7 @@
     "Context": {
       "ReferenceDateTime": "2018-07-11T20:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "vierentwintig januari half twee 's middags",
@@ -5255,7 +5255,7 @@
     "Context": {
       "ReferenceDateTime": "2018-07-13T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "zat. om 5 uur",
@@ -5294,7 +5294,7 @@
     "Context": {
       "ReferenceDateTime": "2018-07-17T13:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "gisterenavond",
@@ -5319,7 +5319,7 @@
     "Context": {
       "ReferenceDateTime": "2018-07-17T13:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "het jaar",
@@ -5344,7 +5344,7 @@
     "Context": {
       "ReferenceDateTime": "2018-07-17T13:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "onafhankelijksdag van dit jaar",
@@ -5368,7 +5368,7 @@
     "Context": {
       "ReferenceDateTime": "2018-07-24T13:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "voor onafhankelijkheidsdag",
@@ -5401,7 +5401,7 @@
     "Context": {
       "ReferenceDateTime": "2018-07-31T13:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "komende week",
@@ -5426,7 +5426,7 @@
     "Context": {
       "ReferenceDateTime": "2018-07-31T13:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "komende weken",
@@ -5451,7 +5451,7 @@
     "Context": {
       "ReferenceDateTime": "2018-07-31T13:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "op volgende week maandag",
@@ -5475,7 +5475,7 @@
     "Context": {
       "ReferenceDateTime": "2018-07-30T20:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "22 mei (dins) - 11:30",
@@ -5514,7 +5514,7 @@
     "Context": {
       "ReferenceDateTime": "2018-07-31T12:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "vanaf het middaguur vandaag tot het middaguur morgen",
@@ -5539,7 +5539,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": []
   },
   {
@@ -5547,7 +5547,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": []
   },
   {
@@ -5555,7 +5555,7 @@
     "Context": {
       "ReferenceDateTime": "2018-08-17T15:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "deze week",
@@ -5597,7 +5597,7 @@
     "Context": {
       "ReferenceDateTime": "2018-08-17T15:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "al zo laat als 7 uur 's ochtends",
@@ -5786,7 +5786,7 @@
     "Context": {
       "ReferenceDateTime": "2018-08-30T10:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "afgelopen 5 minuten",
@@ -5886,7 +5886,7 @@
     "Context": {
       "ReferenceDateTime": "2018-09-06T12:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "zo vroeg als het eerste kwartaal van volgend jaar",
@@ -5912,7 +5912,7 @@
     "Context": {
       "ReferenceDateTime": "2018-08-31T12:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "het jaar hoger dan 2012",
@@ -6043,7 +6043,7 @@
       "ReferenceDateTime": "2018-08-31T12:00:00"
     },
     "Comment": "Known false positive needs to be supported in the future",
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "1-1-2016",
@@ -6067,7 +6067,7 @@
     "Context": {
       "ReferenceDateTime": "2018-08-31T12:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "1-1-2016",
@@ -6108,7 +6108,7 @@
     "Context": {
       "ReferenceDateTime": "2018-09-07T12:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "jaar tot op heden",
@@ -6201,7 +6201,7 @@
     "Context": {
       "ReferenceDateTime": "2018-08-17T15:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "deze week",
@@ -6243,7 +6243,7 @@
     "Context": {
       "ReferenceDateTime": "2018-09-25T12:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "later dan 2018",
@@ -6269,7 +6269,7 @@
     "Context": {
       "ReferenceDateTime": "2018-09-21T12:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "voor maandag om half 3 's middags",
@@ -6302,7 +6302,7 @@
     "Context": {
       "ReferenceDateTime": "2018-09-07T12:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "voor half 3 's middags",
@@ -6328,7 +6328,7 @@
     "Context": {
       "ReferenceDateTime": "2018-09-07T12:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "donderdag 29/3 11 uur 's ochtends",
@@ -6556,7 +6556,7 @@
     "Context": {
       "ReferenceDateTime": "2018-08-30T10:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": []
   },
   {
@@ -6564,7 +6564,7 @@
     "Context": {
       "ReferenceDateTime": "2018-08-30T10:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "om 6.45",
@@ -6593,7 +6593,7 @@
     "Context": {
       "ReferenceDateTime": "2018-10-17T12:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "over twee dagen",
@@ -6632,7 +6632,7 @@
     "Context": {
       "ReferenceDateTime": "2018-10-16T12:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": []
   },
   {
@@ -6640,7 +6640,7 @@
     "Context": {
       "ReferenceDateTime": "2018-10-24T12:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "van 1-10 tot 7-11",
@@ -6696,7 +6696,7 @@
     "Context": {
       "ReferenceDateTime": "2018-10-24T12:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "van 1-10-2018-7-10-2018",
@@ -6721,7 +6721,7 @@
     "Context": {
       "ReferenceDateTime": "2018-10-24T12:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "van 1-10-2018 - 7-10-2018",
@@ -6746,7 +6746,7 @@
     "Context": {
       "ReferenceDateTime": "2018-10-24T12:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "tussen 1-10 en 7-11",
@@ -6771,7 +6771,7 @@
     "Context": {
       "ReferenceDateTime": "2018-10-24T12:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "jan-feb 2017",
@@ -6796,7 +6796,7 @@
     "Context": {
       "ReferenceDateTime": "2018-10-24T12:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "nov-feb 2017",
@@ -6846,7 +6846,7 @@
     "Context": {
       "ReferenceDateTime": "2018-10-24T12:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "18 nov-19 dec, 2015",
@@ -6871,7 +6871,7 @@
     "Context": {
       "ReferenceDateTime": "2018-10-24T12:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "18 nov 2014-19 dec 2015",
@@ -6896,7 +6896,7 @@
     "Context": {
       "ReferenceDateTime": "2018-10-24T12:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "op 18-19 november",
@@ -6952,7 +6952,7 @@
     "Context": {
       "ReferenceDateTime": "2018-10-24T12:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "van mei tot okt 2020",
@@ -6977,7 +6977,7 @@
     "Context": {
       "ReferenceDateTime": "2018-10-24T12:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "van 1-5 - 7-5, 2020",
@@ -7002,7 +7002,7 @@
     "Context": {
       "ReferenceDateTime": "2018-10-24T12:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "van 1-5 - 7-5-2020",
@@ -7027,7 +7027,7 @@
     "Context": {
       "ReferenceDateTime": "2018-10-24T12:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "van 1-5-2019 - 7-5-2020",
@@ -7052,7 +7052,7 @@
     "Context": {
       "ReferenceDateTime": "2018-10-24T12:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "05-aug-2016",
@@ -7175,7 +7175,7 @@
     "Context": {
       "ReferenceDateTime": "2018-11-01T12:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "van 15:00-20:00 gisterenmiddag",
@@ -7200,7 +7200,7 @@
     "Context": {
       "ReferenceDateTime": "2018-11-01T12:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "van 8 uur 's morgens-15:00 gisterenmiddag",
@@ -7299,7 +7299,7 @@
     "Context": {
       "ReferenceDateTime": "2018-11-01T12:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "volgende maandag tussen 3 en 8 uur 's morgens",
@@ -7324,7 +7324,7 @@
     "Context": {
       "ReferenceDateTime": "2018-11-01T12:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "volgende maandag tussen 3 uur 's ochtends - 12 uur 's middags",
@@ -7493,7 +7493,7 @@
     "Context": {
       "ReferenceDateTime": "2018-11-01T12:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "voor dec, 2018",
@@ -7544,7 +7544,7 @@
     "Context": {
       "ReferenceDateTime": "2018-11-08T12:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "de dag ervoor",
@@ -7600,7 +7600,7 @@
     "Context": {
       "ReferenceDateTime": "2018-11-15T12:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "volgende maandag",
@@ -7678,7 +7678,7 @@
     "Context": {
       "ReferenceDateTime": "2018-11-28T12:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "voor volgende week woensdag",
@@ -7704,7 +7704,7 @@
     "Context": {
       "ReferenceDateTime": "2018-11-28T12:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "vorige week - maandag",
@@ -7728,7 +7728,7 @@
     "Context": {
       "ReferenceDateTime": "2018-11-28T12:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "deze week maandag",
@@ -7752,7 +7752,7 @@
     "Context": {
       "ReferenceDateTime": "2018-11-21T12:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "eind van de dag",
@@ -7776,7 +7776,7 @@
     "Context": {
       "ReferenceDateTime": "2018-11-21T12:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "aan het eind van de dag",
@@ -7800,7 +7800,7 @@
     "Context": {
       "ReferenceDateTime": "2018-11-23T12:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "aan het eind van het jaar",
@@ -7826,7 +7826,7 @@
     "Context": {
       "ReferenceDateTime": "2018-11-28T12:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "20-11",
@@ -7875,7 +7875,7 @@
     "Context": {
       "ReferenceDateTime": "2018-11-27T12:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "eind van de maand",
@@ -7901,7 +7901,7 @@
     "Context": {
       "ReferenceDateTime": "2018-11-29T12:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "eind van de week",
@@ -8066,7 +8066,7 @@
       "ReferenceDateTime": "2018-11-28T12:00:00"
     },
     "Comment": "Cst can't be recognized as TimeZone is not enabled for now",
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "tussen 9 tot 10:30",
@@ -8097,7 +8097,7 @@
     "Context": {
       "ReferenceDateTime": "2018-11-29T12:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "de eerste week van 2015",
@@ -8147,7 +8147,7 @@
     "Context": {
       "ReferenceDateTime": "2018-11-29T12:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "de laatste week van 2016",
@@ -8197,7 +8197,7 @@
     "Context": {
       "ReferenceDateTime": "2019-03-02T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "eerste week van 2019",
@@ -8222,7 +8222,7 @@
     "Context": {
       "ReferenceDateTime": "2019-03-02T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "de laatste week van 2019",
@@ -8303,7 +8303,7 @@
     "Context": {
       "ReferenceDateTime": "2018-11-30T12:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "eerder vorige week",
@@ -8329,7 +8329,7 @@
     "Context": {
       "ReferenceDateTime": "2018-11-30T12:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "later deze week",
@@ -8354,7 +8354,7 @@
     "Context": {
       "ReferenceDateTime": "2018-11-30T12:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "15:00",
@@ -8402,7 +8402,7 @@
     "Context": {
       "ReferenceDateTime": "2018-12-05T12:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "een jaar en een kwart",
@@ -8426,7 +8426,7 @@
     "Context": {
       "ReferenceDateTime": "2018-12-07T12:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": []
   },
   {
@@ -8434,7 +8434,7 @@
     "Context": {
       "ReferenceDateTime": "2018-12-07T12:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": []
   },
   {
@@ -8443,7 +8443,7 @@
       "ReferenceDateTime": "2018-12-07T12:00:00"
     },
     "Comment": "Not extracted may as a datetime range is not supported for now",
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": []
   },
   {
@@ -8451,7 +8451,7 @@
     "Context": {
       "ReferenceDateTime": "2018-12-13T12:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": []
   },
   {
@@ -8459,7 +8459,7 @@
     "Context": {
       "ReferenceDateTime": "2019-01-24T12:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "dinsdag",
@@ -8637,7 +8637,7 @@
     "Context": {
       "ReferenceDateTime": "2019-02-25T12:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "voor begin september",
@@ -8751,7 +8751,7 @@
     "Context": {
       "ReferenceDateTime": "2019-01-31T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "volgende vrijdag",
@@ -8775,7 +8775,7 @@
     "Context": {
       "ReferenceDateTime": "2019-01-31T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "komende donderdag",
@@ -8847,7 +8847,7 @@
     "Context": {
       "ReferenceDateTime": "2019-01-31T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "vorige woensdag",
@@ -8871,7 +8871,7 @@
     "Context": {
       "ReferenceDateTime": "2019-01-31T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "tussen 07:30-09:00",
@@ -8902,7 +8902,7 @@
     "Context": {
       "ReferenceDateTime": "2019-01-31T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "tussen 07:30-09:30",
@@ -8964,7 +8964,7 @@
     "Context": {
       "ReferenceDateTime": "2019-01-31T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": []
   },
   {
@@ -9003,7 +9003,7 @@
     "Context": {
       "ReferenceDateTime": "2019-02-27T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "dinsdag, 15 jan, 13:00 - 13.15",
@@ -9034,7 +9034,7 @@
     "Context": {
       "ReferenceDateTime": "2019-02-28T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "18 januari, 2019",
@@ -9119,7 +9119,7 @@
     "Context": {
       "ReferenceDateTime": "2019-02-27T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "12-2015",
@@ -9176,7 +9176,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T16:12:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "tussen 16:00 en 17:00 vandaag",
@@ -9201,7 +9201,7 @@
     "Context": {
       "ReferenceDateTime": "2018-10-24T12:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "10/1-11/2/2017",
@@ -9226,7 +9226,7 @@
     "Context": {
       "ReferenceDateTime": "2018-10-24T12:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "morgen",
@@ -9270,7 +9270,7 @@
     "Context": {
       "ReferenceDateTime": "2018-10-24T12:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "vanavond",
@@ -9315,7 +9315,7 @@
     "Context": {
       "ReferenceDateTime": "2018-10-24T12:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "de 5e",
@@ -9359,7 +9359,7 @@
     "Context": {
       "ReferenceDateTime": "2018-10-24T12:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "16-12-2016",
@@ -9403,7 +9403,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "de 15e, 20:00",
@@ -9432,7 +9432,7 @@
     "Context": {
       "ReferenceDateTime": "2018-10-24T12:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "20.00",
@@ -9476,7 +9476,7 @@
     "Context": {
       "ReferenceDateTime": "2018-10-24T12:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "zeven uur",
@@ -9549,7 +9549,7 @@
     "Context": {
       "ReferenceDateTime": "2018-10-24T12:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "om 20.15u",
@@ -9647,7 +9647,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T16:12:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "morgen",
@@ -9687,7 +9687,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T16:12:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "morgen",
@@ -9727,7 +9727,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T16:12:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "vandaag",
@@ -9767,7 +9767,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T16:12:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "deze middag",
@@ -9792,7 +9792,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T16:12:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "een minuut",
@@ -9841,7 +9841,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T16:12:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "over een uur",
@@ -9939,7 +9939,7 @@
     "Context": {
       "ReferenceDateTime": "2020-08-17T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "09:00 's ochtends",
@@ -9963,7 +9963,7 @@
     "Context": {
       "ReferenceDateTime": "2020-08-17T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "'s ochtends om 9",
@@ -9987,7 +9987,7 @@
     "Context": {
       "ReferenceDateTime": "2020-08-17T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "elke maandag",
@@ -10032,7 +10032,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "deze september",
@@ -10057,7 +10057,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "sinds deze augustus",
@@ -10108,7 +10108,7 @@
     "Context": {
       "ReferenceDateTime": "2018-07-17T13:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "gisterennacht",
@@ -10194,7 +10194,7 @@
     "Context": {
       "ReferenceDateTime": "2018-11-15T12:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "volgende maandag",
@@ -10258,7 +10258,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T16:12:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "morgennacht",
@@ -10499,7 +10499,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T16:12:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "4:00 tot 7",
@@ -10530,7 +10530,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "zat",
@@ -10559,7 +10559,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "zat.",
@@ -10588,7 +10588,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": []
   },
   {
@@ -10596,7 +10596,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": []
   },
   {
@@ -10604,7 +10604,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": []
   },
   {
@@ -10612,7 +10612,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,zython,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": []
   },
   {
@@ -10748,7 +10748,7 @@
       "ReferenceDateTime": "2019-04-15T00:00:00"
     },
     "NotSupported": "dotnet",
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "woensdag 4 uur",
@@ -10871,7 +10871,7 @@
     "Context": {
       "ReferenceDateTime": "2019-04-25T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "achttiende van maart half tien",
@@ -10910,7 +10910,7 @@
     "Context": {
       "ReferenceDateTime": "2019-04-25T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "tweeëntwintig februari",
@@ -10939,7 +10939,7 @@
     "Context": {
       "ReferenceDateTime": "2019-04-25T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "tweeëntwintig februari 3.30",
@@ -11046,7 +11046,7 @@
     "Context": {
       "ReferenceDateTime": "2019-04-25T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "tweeëntwintig februari om 3.30",
@@ -11085,7 +11085,7 @@
     "Context": {
       "ReferenceDateTime": "2019-04-25T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "de 22e februari 3.30",
@@ -11222,7 +11222,7 @@
     "Context": {
       "ReferenceDateTime": "2019-04-25T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "januari de eerste tweeduizend en tweeëndertig",
@@ -11302,7 +11302,7 @@
     "Context": {
       "ReferenceDateTime": "2019-04-23T12:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "tussen nu en november de 15e",
@@ -11327,7 +11327,7 @@
     "Context": {
       "ReferenceDateTime": "2019-04-25T12:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "tussen 22 jan en nu",
@@ -11353,7 +11353,7 @@
       "ReferenceDateTime": "2019-05-09T12:00:00"
     },
     "NotSupported": "dotnet",
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "tussen nu en de 21e van mei",
@@ -11393,7 +11393,7 @@
     "Context": {
       "ReferenceDateTime": "2019-05-16T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "van april tot juni in 2017",
@@ -11443,7 +11443,7 @@
     "Context": {
       "ReferenceDateTime": "2019-05-22T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "van januari tot april 2015",
@@ -11523,7 +11523,7 @@
     "Context": {
       "ReferenceDateTime": "2019-05-20T12:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "vrijdag 12/5",
@@ -11726,7 +11726,7 @@
     "Context": {
       "ReferenceDateTime": "2019-05-22T12:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "3/jan",
@@ -11871,7 +11871,7 @@
     "Context": {
       "ReferenceDateTime": "2019-05-27T12:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "30 minuten later",
@@ -11895,7 +11895,7 @@
     "Context": {
       "ReferenceDateTime": "2019-05-30T12:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "26 juni tot 28 juni in 2020",
@@ -11920,7 +11920,7 @@
     "Context": {
       "ReferenceDateTime": "2019-05-30T12:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "26 juni in 2019 tot 28 juni in 2020",
@@ -11945,7 +11945,7 @@
     "Context": {
       "ReferenceDateTime": "2019-05-30T12:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "28 juni in 2020",
@@ -12041,7 +12041,7 @@
     "Context": {
       "ReferenceDateTime": "2019-05-07T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "maandag de zevenentwintigste om zes uur 's avonds",
@@ -12065,7 +12065,7 @@
     "Context": {
       "ReferenceDateTime": "2019-06-13T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "maandag de vierentwintigste zes uur 's avonds",
@@ -12346,7 +12346,7 @@
     "Context": {
       "ReferenceDateTime": "2013-06-03T12:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "om 13.00 28 februari 2013",
@@ -12674,7 +12674,7 @@
     "Context": {
       "ReferenceDateTime": "2019-06-28T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "half zes morgenavond",
@@ -12698,7 +12698,7 @@
     "Context": {
       "ReferenceDateTime": "2019-06-28T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "van half vier tot half vijf",
@@ -12729,7 +12729,7 @@
     "Context": {
       "ReferenceDateTime": "2019-06-28T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "van half drie tot kwart voor drie",
@@ -12760,7 +12760,7 @@
     "Context": {
       "ReferenceDateTime": "2019-06-28T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "=2019",
@@ -13073,7 +13073,7 @@
     "Context": {
       "ReferenceDateTime": "2019-07-04T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "van 11.30 tot 12.30 27e van december",
@@ -13104,7 +13104,7 @@
     "Context": {
       "ReferenceDateTime": "2019-07-04T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "12.30 de 27e van december",
@@ -13143,7 +13143,7 @@
     "Context": {
       "ReferenceDateTime": "2019-07-04T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "27 december",
@@ -13172,7 +13172,7 @@
     "Context": {
       "ReferenceDateTime": "2019-07-04T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "30 december",
@@ -13201,7 +13201,7 @@
     "Context": {
       "ReferenceDateTime": "2019-07-11T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "15.00",
@@ -13464,7 +13464,7 @@
     "Context": {
       "ReferenceDateTime": "2019-07-17T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "in de vroege ochtend",
@@ -13758,7 +13758,7 @@
     "Context": {
       "ReferenceDateTime": "2019-06-10T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "dinsdag de elfde",
@@ -13782,7 +13782,7 @@
     "Context": {
       "ReferenceDateTime": "2019-07-19T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "woensdag de eenendertigste",
@@ -13806,7 +13806,7 @@
     "Context": {
       "ReferenceDateTime": "2019-07-30T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "deze middag",
@@ -13831,7 +13831,7 @@
     "Context": {
       "ReferenceDateTime": "2019-07-30T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "deze middag",
@@ -13856,7 +13856,7 @@
     "Context": {
       "ReferenceDateTime": "2019-07-30T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "deze middag",
@@ -13881,7 +13881,7 @@
     "Context": {
       "ReferenceDateTime": "2019-07-30T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "op volgende week dinsdag",
@@ -13905,7 +13905,7 @@
     "Context": {
       "ReferenceDateTime": "2019-07-30T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "dinsdag van vorige week",
@@ -14061,7 +14061,7 @@
     "Context": {
       "ReferenceDateTime": "2018-01-07T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": []
   },
   {
@@ -14069,7 +14069,7 @@
     "Context": {
       "ReferenceDateTime": "2018-01-07T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": []
   },
   {
@@ -14077,7 +14077,7 @@
     "Context": {
       "ReferenceDateTime": "2019-08-08T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": []
   },
   {
@@ -14156,7 +14156,7 @@
     "Context": {
       "ReferenceDateTime": "2019-08-12T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "in 3 jaar",
@@ -14279,7 +14279,7 @@
     "Context": {
       "ReferenceDateTime": "2020-07-30T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "30 feb 2019",
@@ -14303,7 +14303,7 @@
     "Context": {
       "ReferenceDateTime": "2019-01-30T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "30 feb",
@@ -14327,7 +14327,7 @@
     "Context": {
       "ReferenceDateTime": "2019-07-30T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "30 feb",
@@ -14351,7 +14351,7 @@
     "Context": {
       "ReferenceDateTime": "2019-07-30T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "30 feb 2019 17.20",
@@ -14375,7 +14375,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "eenmaal per week",
@@ -14399,7 +14399,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "eenmaal per jaar",
@@ -14480,7 +14480,7 @@
     "Context": {
       "ReferenceDateTime": "2019-09-09T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "vorige week",
@@ -14505,7 +14505,7 @@
     "Context": {
       "ReferenceDateTime": "2019-09-09T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": []
   },
   {
@@ -14563,7 +14563,7 @@
     "Context": {
       "ReferenceDateTime": "2019-09-09T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": []
   },
   {
@@ -14571,7 +14571,7 @@
     "Context": {
       "ReferenceDateTime": "2019-09-09T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "een seconde",
@@ -14595,7 +14595,7 @@
     "Context": {
       "ReferenceDateTime": "2019-08-24T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "3 dagen vanaf vandaag",
@@ -14619,7 +14619,7 @@
     "Context": {
       "ReferenceDateTime": "2019-08-24T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "oktober",
@@ -14650,7 +14650,7 @@
     "Context": {
       "ReferenceDateTime": "2019-09-12T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "na het ontbijt",
@@ -14675,7 +14675,7 @@
     "Context": {
       "ReferenceDateTime": "2019-09-12T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "voor de lunch",
@@ -14700,7 +14700,7 @@
     "Context": {
       "ReferenceDateTime": "2019-09-12T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "rond het avondeten",
@@ -14727,7 +14727,7 @@
     "Context": {
       "ReferenceDateTime": "2019-09-12T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": []
   },
   {
@@ -14735,7 +14735,7 @@
     "Context": {
       "ReferenceDateTime": "2019-09-12T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "19.00",
@@ -14759,7 +14759,7 @@
     "Context": {
       "ReferenceDateTime": "2019-09-19T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "komende twee dagen",
@@ -14785,7 +14785,7 @@
       "ReferenceDateTime": "2019-09-19T00:00:00"
     },
     "NotSupported": "dotnet",
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "01/aug/2019",
@@ -14809,7 +14809,7 @@
     "Context": {
       "ReferenceDateTime": "2019-09-19T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "01-aug-2019",
@@ -14833,7 +14833,7 @@
     "Context": {
       "ReferenceDateTime": "2019-10-14T01:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "van 01-aug-2019 tot vandaag",
@@ -14858,7 +14858,7 @@
     "Context": {
       "ReferenceDateTime": "2019-10-14T10:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "01/aug/2019 tot vandaag",
@@ -14883,7 +14883,7 @@
     "Context": {
       "ReferenceDateTime": "2019-11-01T15:16:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "30 min later",
@@ -14907,7 +14907,7 @@
     "Context": {
       "ReferenceDateTime": "2019-11-25T17:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "om de week vrijdag",
@@ -14931,7 +14931,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "driemaandelijkse",
@@ -15360,7 +15360,7 @@
     "Context": {
       "ReferenceDateTime": "2019-12-26T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "20.30 vandaag",
@@ -15384,7 +15384,7 @@
     "Context": {
       "ReferenceDateTime": "2019-12-26T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "vandaag om 20.30",
@@ -15408,7 +15408,7 @@
     "Context": {
       "ReferenceDateTime": "2019-12-26T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "20.30 vandaag",
@@ -15432,7 +15432,7 @@
     "Context": {
       "ReferenceDateTime": "2019-12-26T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "20.30 vandaag",
@@ -15481,7 +15481,7 @@
     "Context": {
       "ReferenceDateTime": "2019-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "van 26e juni van 2020 tot 28e juni van 2020",
@@ -15506,7 +15506,7 @@
     "Context": {
       "ReferenceDateTime": "2019-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "van de 26e juni van 2020 tot de 28e juni van 2020",
@@ -15531,7 +15531,7 @@
     "Context": {
       "ReferenceDateTime": "2019-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "van 26e juni van 2020 tot 28e van juni 2020",
@@ -15788,7 +15788,7 @@
     "Context": {
       "ReferenceDateTime": "2020-05-06T18:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "tussen vandaag en morgen",
@@ -15864,7 +15864,7 @@
     "Context": {
       "ReferenceDateTime": "2020-05-14T12:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": []
   },
   {
@@ -15872,7 +15872,7 @@
     "Context": {
       "ReferenceDateTime": "2020-05-14T12:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "02-02-2020 - 03-03-2020",
@@ -15897,7 +15897,7 @@
     "Context": {
       "ReferenceDateTime": "2018-10-24T12:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "1/10-2/11/2017",
@@ -15922,7 +15922,7 @@
     "Context": {
       "ReferenceDateTime": "2020-05-14T12:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": []
   },
   {
@@ -15930,7 +15930,7 @@
     "Context": {
       "ReferenceDateTime": "2020-05-14T12:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "2002-10-09",
@@ -15954,7 +15954,7 @@
     "Context": {
       "ReferenceDateTime": "2020-05-14T12:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": []
   },
   {
@@ -15962,7 +15962,7 @@
     "Context": {
       "ReferenceDateTime": "2020-05-14T12:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": []
   },
   {
@@ -16104,7 +16104,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "vierde juli van 1995",
@@ -16128,7 +16128,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "juni van 1992",
@@ -16153,7 +16153,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "4e juli van 1995",
@@ -16177,7 +16177,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "vierde van juli 1995",
@@ -16201,7 +16201,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "vierde van juli, 1995",
@@ -16225,7 +16225,7 @@
     "Context": {
       "ReferenceDateTime": "2020-05-31T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "9 tot 12 juni",
@@ -16256,7 +16256,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "drie maanden",
@@ -16456,7 +16456,7 @@
     "Context": {
       "ReferenceDateTime": "2020-06-12T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "morgen",
@@ -16496,7 +16496,7 @@
     "Context": {
       "ReferenceDateTime": "2020-06-12T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "woensdag om 15.30",
@@ -16525,7 +16525,7 @@
     "Context": {
       "ReferenceDateTime": "2020-06-12T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "halfjaarlijkse",
@@ -16549,7 +16549,7 @@
     "Context": {
       "ReferenceDateTime": "2020-06-12T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "halfjaarlijks",
@@ -16573,7 +16573,7 @@
     "Context": {
       "ReferenceDateTime": "2020-06-12T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "volgende week",
@@ -16598,7 +16598,7 @@
     "Context": {
       "ReferenceDateTime": "2020-06-12T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "elke weekdag",
@@ -16622,7 +16622,7 @@
     "Context": {
       "ReferenceDateTime": "2020-06-12T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "rest van de week",
@@ -16647,7 +16647,7 @@
     "Context": {
       "ReferenceDateTime": "2020-06-12T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "jaarlijks",
@@ -16696,7 +16696,7 @@
     "Context": {
       "ReferenceDateTime": "2020-06-12T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "4e van juli",
@@ -16765,7 +16765,7 @@
     "Context": {
       "ReferenceDateTime": "2020-06-12T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "elk weekend",
@@ -16837,7 +16837,7 @@
     "Context": {
       "ReferenceDateTime": "2020-06-12T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "het eerste kwartaal van het jaar",
@@ -16868,7 +16868,7 @@
     "Context": {
       "ReferenceDateTime": "2020-06-12T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "winter",
@@ -16933,7 +16933,7 @@
     "Context": {
       "ReferenceDateTime": "2020-06-15T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "twee uren",
@@ -16957,7 +16957,7 @@
     "Context": {
       "ReferenceDateTime": "2020-06-16T12:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "15.00",
@@ -17285,7 +17285,7 @@
     "Context": {
       "ReferenceDateTime": "2019-12-26T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "vanavond rond 19.00",
@@ -17430,7 +17430,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "tegen het eind van deze maand",
@@ -17456,7 +17456,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "voor het eind van dit jaar",
@@ -17482,7 +17482,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "eind dit jaar",
@@ -17509,7 +17509,7 @@
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
     "NotSupported": "dotnet",
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "na het begin van maart",
@@ -17542,7 +17542,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "voor het einde van december",
@@ -17654,7 +17654,7 @@
     "Context": {
       "ReferenceDateTime": "2020-07-01T12:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "na de 15e dag van juni",
@@ -17857,7 +17857,7 @@
     "Context": {
       "ReferenceDateTime": "2018-06-01T16:12:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "tussen 19.00 en 21.30 gisterenavond",
@@ -17932,7 +17932,7 @@
     "Context": {
       "ReferenceDateTime": "2018-06-01T16:12:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "tussen 19.00 en 21.00 gisterenavond",
@@ -18402,7 +18402,7 @@
     "Context": {
       "ReferenceDateTime": "2018-08-17T15:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "voor rond 14.00 vandaag",
@@ -18428,7 +18428,7 @@
     "Context": {
       "ReferenceDateTime": "2018-08-17T15:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "na rond 15.30",
@@ -18479,7 +18479,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "2014",
@@ -18545,7 +18545,7 @@
     "Context": {
       "ReferenceDateTime": "2019-12-15T01:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "na 1 januari, 2007",
@@ -18844,7 +18844,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "elke avond om 19.13",
@@ -18913,7 +18913,7 @@
     "Context": {
       "ReferenceDateTime": "2019-08-05T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "kerstavond",
@@ -18982,7 +18982,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T16:12:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "dinsdag van 14.00 tot 14.30",
@@ -19013,7 +19013,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T16:12:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "dinsdag om 14.00 - 14.30",
@@ -19044,7 +19044,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T16:12:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "12 december om 16.00 - 18.30",
@@ -19075,7 +19075,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T16:12:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "om 14.00 - 14.30 op dinsdag",
@@ -19132,7 +19132,7 @@
     "Context": {
       "ReferenceDateTime": "2018-11-08T12:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "het jaar",
@@ -19249,7 +19249,7 @@
     "Context": {
       "ReferenceDateTime": "2018-06-26T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "tweeduizend twintig",
@@ -19274,7 +19274,7 @@
     "Context": {
       "ReferenceDateTime": "2018-06-26T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "negentienhonderd zesennegentig",
@@ -19315,7 +19315,7 @@
     "Context": {
       "ReferenceDateTime": "2018-06-26T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "het einde van vandaag",
@@ -19339,7 +19339,7 @@
     "Context": {
       "ReferenceDateTime": "2018-06-26T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": []
   },
   {
@@ -19347,7 +19347,7 @@
     "Context": {
       "ReferenceDateTime": "2018-06-26T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": []
   },
   {
@@ -19355,7 +19355,7 @@
     "Context": {
       "ReferenceDateTime": "2018-06-26T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": []
   },
   {
@@ -19363,7 +19363,7 @@
     "Context": {
       "ReferenceDateTime": "2018-06-26T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": []
   },
   {
@@ -19371,7 +19371,7 @@
     "Context": {
       "ReferenceDateTime": "2018-07-02T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "hele week",
@@ -19395,7 +19395,7 @@
     "Context": {
       "ReferenceDateTime": "2011-07-02T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": []
   },
   {
@@ -19403,7 +19403,7 @@
     "Context": {
       "ReferenceDateTime": "2011-07-02T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": []
   },
   {
@@ -19411,7 +19411,7 @@
     "Context": {
       "ReferenceDateTime": "2017-03-22T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "29 feb",
@@ -19440,7 +19440,7 @@
     "Context": {
       "ReferenceDateTime": "2019-03-22T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "29/2",
@@ -19469,7 +19469,7 @@
     "Context": {
       "ReferenceDateTime": "2020-03-22T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "29e feb",
@@ -19498,7 +19498,7 @@
     "Context": {
       "ReferenceDateTime": "2020-03-22T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "30 feb",
@@ -19522,7 +19522,7 @@
     "Context": {
       "ReferenceDateTime": "2020-03-22T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "29/2/2019",
@@ -19546,7 +19546,7 @@
     "Context": {
       "ReferenceDateTime": "2020-03-22T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "29/2/2020",
@@ -19571,7 +19571,7 @@
       "ReferenceDateTime": "2019-09-18T18:00:00"
     },
     "NotSupported": "dotnet",
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "28e feb tot 1e maart",
@@ -19602,7 +19602,7 @@
     "Context": {
       "ReferenceDateTime": "2019-09-18T18:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "29/2-1/3",
@@ -19633,7 +19633,7 @@
     "Context": {
       "ReferenceDateTime": "2019-09-18T18:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "29/2-1/3/2019",
@@ -19657,7 +19657,7 @@
     "Context": {
       "ReferenceDateTime": "2021-01-15T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "deze dag",
@@ -19760,7 +19760,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "in de ochtend",
@@ -19785,7 +19785,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": []
   },
   {
@@ -19793,7 +19793,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "23-sep-2020",
@@ -19817,7 +19817,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "23-september-2020",
@@ -19841,7 +19841,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "23/sep/2020",
@@ -19865,7 +19865,7 @@
     "Context": {
       "ReferenceDateTime": "2019-08-07T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "vrijdag 23 om 4",
@@ -19904,7 +19904,7 @@
     "Context": {
       "ReferenceDateTime": "2021-03-15T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "vrijdag de 26e om 4",
@@ -19963,7 +19963,7 @@
     "Context": {
       "ReferenceDateTime": "2021-03-15T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "vrijdag om 16.00",
@@ -20060,7 +20060,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript, zython, java",
+    "NotSupportedByDesign": "javascript, java",
     "Results": [
       {
         "Text": "november 19-20",
@@ -20091,7 +20091,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript, zython, java",
+    "NotSupportedByDesign": "javascript, java",
     "Results": [
       {
         "Text": "20 ste van de volgende maand",
@@ -20115,7 +20115,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript, zython, java",
+    "NotSupportedByDesign": "javascript, java",
     "Results": [
       {
         "Text": "vier dagen gerekend vanaf gisteren",
@@ -20163,7 +20163,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript, zython, java",
+    "NotSupportedByDesign": "javascript, java",
     "Results": [
       {
         "Text": "jan-feb 2017",
@@ -20213,7 +20213,7 @@
     "Context": {
       "ReferenceDateTime": "2019-07-30T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "op dinsdag van volgende week",
@@ -20237,7 +20237,7 @@
     "Context": {
       "ReferenceDateTime": "2020-06-12T00:00:00"
     },
-    "NotSupportedByDesign": "java, javascript, zython",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "halfjaarlijkse",

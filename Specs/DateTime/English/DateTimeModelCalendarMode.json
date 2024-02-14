@@ -164,7 +164,7 @@
     "Context": {
       "ReferenceDateTime": "2017-12-18T00:00:00"
     },
-    "NotSupported": "javascript, zython",
+    "NotSupported": "javascript",
     "Results": [
       {
         "Text": "yesterday at 12",
@@ -292,7 +292,7 @@
     "Context": {
       "ReferenceDateTime": "2018-03-25T01:00:00"
     },
-    "NotSupported": "zython",
+    "NotSupported": "",
     "Results": [
       {
         "Text": "2 hours",
@@ -332,7 +332,7 @@
     "Context": {
       "ReferenceDateTime": "2018-03-25T01:00:00"
     },
-    "NotSupported": "zython",
+    "NotSupported": "",
     "Results": [
       {
         "Text": "2 hours",
@@ -372,7 +372,7 @@
     "Context": {
       "ReferenceDateTime": "2018-05-20T00:00:00"
     },
-    "NotSupported": "zython",
+    "NotSupported": "",
     "Results": [
       {
         "Text": "each week",
@@ -412,7 +412,7 @@
     "Context": {
       "ReferenceDateTime": "2018-05-20T00:00:00"
     },
-    "NotSupported": "javascript, zython",
+    "NotSupported": "javascript",
     "Results": [
       {
         "Text": "each week",
@@ -537,7 +537,7 @@
     "Context": {
       "ReferenceDateTime": "2018-05-24T00:00:00"
     },
-    "NotSupported": "javascript, zython",
+    "NotSupported": "javascript",
     "Results": []
   },
   {
@@ -545,7 +545,7 @@
     "Context": {
       "ReferenceDateTime": "2018-05-24T00:00:00"
     },
-    "NotSupported": "javascript, zython",
+    "NotSupported": "javascript",
     "Results": []
   },
   {
@@ -553,7 +553,7 @@
     "Context": {
       "ReferenceDateTime": "2018-05-24T00:00:00"
     },
-    "NotSupported": "javascript, zython",
+    "NotSupported": "javascript",
     "Results": []
   },
   {
@@ -561,7 +561,7 @@
     "Context": {
       "ReferenceDateTime": "2018-05-24T00:00:00"
     },
-    "NotSupported": "javascript, zython",
+    "NotSupported": "javascript",
     "Results": []
   },
   {
@@ -569,7 +569,7 @@
     "Context": {
       "ReferenceDateTime": "2018-05-24T00:00:00"
     },
-    "NotSupported": "javascript, zython",
+    "NotSupported": "javascript",
     "Results": []
   },
   {
@@ -577,7 +577,7 @@
     "Context": {
       "ReferenceDateTime": "2018-05-24T00:00:00"
     },
-    "NotSupported": "javascript, zython",
+    "NotSupported": "javascript",
     "Results": []
   },
   {
@@ -585,7 +585,7 @@
     "Context": {
       "ReferenceDateTime": "2018-05-24T00:00:00"
     },
-    "NotSupported": "javascript, zython",
+    "NotSupported": "javascript",
     "Results": []
   },
   {

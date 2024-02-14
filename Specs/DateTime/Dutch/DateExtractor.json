@@ -1230,7 +1230,7 @@
   {
     "Input": "maandag, tweeëntwintig jan. 2018",
     "NotSupportedByDesign": "javascript,java",
-    "NotSupported": "zython",
+    "NotSupported": "",
     "Results": [
       {
         "Text": "maandag, tweeëntwintig jan. 2018",
@@ -2438,7 +2438,7 @@
   {
     "Input": "maandag, tweeëntwintig jan, 2018",
     "NotSupportedByDesign": "javascript,java",
-    "NotSupported": "zython",
+    "NotSupported": "",
     "Results": [
       {
         "Text": "maandag, tweeëntwintig jan, 2018",

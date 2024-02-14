@@ -2105,7 +2105,7 @@
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
     "NotSupportedByDesign": "javascript,java",
-    "NotSupported": "zython",
+    "NotSupported": "",
     "Results": [
       {
         "Text": "eenentwintig September negentien zevenentachtig",
@@ -2130,7 +2130,7 @@
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
     "NotSupportedByDesign": "javascript,java",
-    "NotSupported": "zython",
+    "NotSupported": "",
     "Results": [
       {
         "Text": "10 september, negentien en een",
@@ -2155,7 +2155,7 @@
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
     "NotSupportedByDesign": "javascript,java",
-    "NotSupported": "zython",
+    "NotSupported": "",
     "Results": [
       {
         "Text": "tiende van september, tweeduizend",
@@ -4616,7 +4616,7 @@
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
     "NotSupportedByDesign": "javascript,java",
-    "NotSupported": "zython",
+    "NotSupported": "",
     "Results": [
       {
         "Text": "eenentwintig september negentien achtenzeventig",
@@ -4641,7 +4641,7 @@
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
     "NotSupportedByDesign": "javascript,java",
-    "NotSupported": "zython",
+    "NotSupported": "",
     "Results": [
       {
         "Text": "tiende van september, tweeduizend",

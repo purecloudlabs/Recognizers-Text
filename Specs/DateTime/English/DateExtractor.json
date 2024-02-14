@@ -23,7 +23,7 @@
   },
   {
     "Input": "i'll go back april22",
-     "NotSupported": "javascript, zython, java",
+     "NotSupported": "javascript, java",
     "Results": [
       {
         "Text": "april22",
@@ -35,7 +35,7 @@
   },
   {
     "Input": "i'll go back 22april",
-    "NotSupported": "javascript, zython, java",
+    "NotSupported": "javascript, java",
     "Results": [
       {
         "Text": "22april",
@@ -91,7 +91,7 @@
   },
   {
     "Input": "i'll go back january12,2016",
-    "NotSupported": "javascript, zython, java",
+    "NotSupported": "javascript, java",
     "Results": [
       {
         "Text": "january12,2016",
@@ -470,7 +470,7 @@
   },
   {
     "Input": "i'll go back tmrw",
-    "NotSupported": "javascript, zython, java",
+    "NotSupported": "javascript, java",
     "Results": [
       {
         "Text": "tmrw",
@@ -515,7 +515,7 @@
   },
   {
     "Input": "i'll go back the day after tmrw",
-    "NotSupported": "javascript, zython, java",
+    "NotSupported": "javascript, java",
     "Results": [
       {
         "Text": "the day after tmrw",

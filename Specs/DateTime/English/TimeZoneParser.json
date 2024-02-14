@@ -1007,7 +1007,7 @@
   },
   {
     "Input": "Can you find a slot in a US-friendly time?",
-    "NotSupported": "javascript,zython,java",
+    "NotSupported": "javascript,java",
     "Results": [
       {
         "Text": "US-friendly time",

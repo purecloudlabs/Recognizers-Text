@@ -601,7 +601,7 @@
   },
   {
     "Input": "set up meeting between 10 and 11:30",
-    "NotSupported": "javascript, zython",
+    "NotSupported": "javascript",
     "Results": [
       {
         "Text": "between 10 and 11:30",
@@ -613,7 +613,7 @@
   },
   {
     "Input": "set up meeting between 10:10am and 12:50",
-    "NotSupported": "javascript, zython",
+    "NotSupported": "javascript",
     "Results": [
       {
         "Text": "between 10:10am and 12:50",
@@ -625,7 +625,7 @@
   },
   {
     "Input": "set up meeting between 10:10pm and 3",
-    "NotSupported": "javascript, zython",
+    "NotSupported": "javascript",
     "Results": [
       {
         "Text": "between 10:10pm and 3",
@@ -637,7 +637,7 @@
   },
   {
     "Input": "set up meeting from 10:10pm to 10",
-    "NotSupported": "javascript, zython",
+    "NotSupported": "javascript",
     "Results": [
       {
         "Text": "from 10:10pm to 10",
@@ -649,7 +649,7 @@
   },
   {
     "Input": "set up meeting from 10:30am to 23",
-    "NotSupported": "javascript, zython",
+    "NotSupported": "javascript",
     "Results": [
       {
         "Text": "from 10:30am to 23",
@@ -661,7 +661,7 @@
   },
   {
     "Input": "Don't call me in the business hours",
-    "NotSupported": "javascript, zython",
+    "NotSupported": "javascript",
     "Results": [
       {
         "Text": "in the business hours",
@@ -673,7 +673,7 @@
   },
   {
     "Input": "I'll be out lunch time",
-    "NotSupported": "javascript, zython, java",
+    "NotSupported": "javascript, java",
     "Results": [
       {
         "Text": "lunch time",
@@ -685,7 +685,7 @@
   },
   {
     "Input": "He is at lunch",
-    "NotSupported": "javascript, zython, java",
+    "NotSupported": "javascript, java",
     "Results": [
       {
         "Text": "at lunch",
@@ -697,7 +697,7 @@
   },
   {
     "Input": "This popular family friendly concert returns to the Hall for another lunchtime filled with traditional carols and festive favourites",
-    "NotSupported": "javascript, zython, java",
+    "NotSupported": "javascript, java",
     "Results": [
       {
         "Text": "lunchtime",
