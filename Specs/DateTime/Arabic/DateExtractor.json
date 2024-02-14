@@ -1434,5 +1434,41 @@
         "Type": "date"
       }
     ]
+  },
+  {
+    "Input": "سأستقل الحافلة في الرابع من فبراير 2013",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الرابع من فبراير 2013",
+        "Start": 18,
+        "Length": 21,
+        "Type": "date"
+      }
+    ]
+  },
+  {
+    "Input": "كنت أرغب في الحصول على المعجنات في التاسع من أكتوبر 2021",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "التاسع من أكتوبر 2021",
+        "Start": 35,
+        "Length": 21,
+        "Type": "date"
+      }
+    ]
+  },
+  {
+    "Input": "في الثالث عشر من مارس 2012 حدث شيء ما",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الثالث عشر من مارس 2012",
+        "Start": 3,
+        "Length": 23,
+        "Type": "date"
+      }
+    ]
   }
 ]

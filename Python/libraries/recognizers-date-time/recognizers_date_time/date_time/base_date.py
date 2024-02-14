@@ -1002,7 +1002,10 @@ class BaseDateParser(DateTimeParser):
 
         result.future_value = future_date
         result.past_value = past_date
-        result.success = True
+
+        if "00" not in result.timex.split("-"):
+            result.success = True
+
         return result
 
     def parse_implicit_date(self, source: str, reference: datetime) -> DateTimeParseResult:

@@ -2564,5 +2564,77 @@
         }
       }
     ]
+  },
+  {
+    "Input": "سأستقل الحافلة في الرابع من فبراير 2013",
+    "Context": {
+      "ReferenceDateTime": "2024-01-01T00:00:00"
+    },
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الرابع من فبراير 2013",
+        "Start": 18,
+        "Length": 21,
+        "Type": "date",
+        "Value": {
+          "Timex": "2013-02-04",
+          "FutureResolution": {
+            "date": "2013-02-04"
+          },
+          "PastResolution": {
+            "date": "2013-02-04"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "Input": "كنت أرغب في الحصول على المعجنات في التاسع من أكتوبر 2021",
+    "Context": {
+      "ReferenceDateTime": "2023-01-01T00:00:00"
+    },
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "التاسع من أكتوبر 2021",
+        "Start": 35,
+        "Length": 21,
+        "Type": "date",
+        "Value": {
+          "Timex": "2021-10-09",
+          "FutureResolution": {
+            "date": "2021-10-09"
+          },
+          "PastResolution": {
+            "date": "2021-10-09"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "Input": "في الثالث عشر من مارس 2012 حدث شيء ما",
+    "Context": {
+      "ReferenceDateTime": "2023-01-01T00:00:00"
+    },
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الثالث عشر من مارس 2012",
+        "Start": 3,
+        "Length": 23,
+        "Type": "date",
+        "Value": {
+          "Timex": "2012-03-13",
+          "FutureResolution": {
+            "date": "2012-03-13"
+          },
+          "PastResolution": {
+            "date": "2012-03-13"
+          }
+        }
+      }
+    ]
   }
 ]
