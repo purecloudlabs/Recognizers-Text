@@ -4,7 +4,7 @@
     "Context": {
       "ReferenceDateTime": "2017-09-27T12:25:54.2744475+03:00"
     },
-    "NotSupportedByDesign": "javascript,python,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "wekelijks",
@@ -28,7 +28,7 @@
     "Context": {
       "ReferenceDateTime": "2017-09-27T12:25:54.2754476+03:00"
     },
-    "NotSupportedByDesign": "javascript,python,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "tweewekelijks",
@@ -52,7 +52,7 @@
     "Context": {
       "ReferenceDateTime": "2017-09-27T12:25:54.2779449+03:00"
     },
-    "NotSupportedByDesign": "javascript,python,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "dagelijks",
@@ -100,7 +100,7 @@
     "Context": {
       "ReferenceDateTime": "2017-09-27T12:25:54.2829445+03:00"
     },
-    "NotSupportedByDesign": "javascript,python,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "elke maand",
@@ -124,7 +124,7 @@
     "Context": {
       "ReferenceDateTime": "2017-09-27T12:25:54.2844439+03:00"
     },
-    "NotSupportedByDesign": "javascript,python,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "jaarlijks",
@@ -148,7 +148,7 @@
     "Context": {
       "ReferenceDateTime": "2017-09-27T12:25:54.2909444+03:00"
     },
-    "NotSupportedByDesign": "javascript,python,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "elke twee dagen",
@@ -172,7 +172,7 @@
     "Context": {
       "ReferenceDateTime": "2017-09-27T12:25:54.2959472+03:00"
     },
-    "NotSupportedByDesign": "javascript,python,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "elke 3 weken",
@@ -196,7 +196,7 @@
     "Context": {
       "ReferenceDateTime": "2017-09-27T12:25:54.2989494+03:00"
     },
-    "NotSupportedByDesign": "javascript,python,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "15.00 elke dag",
@@ -220,7 +220,7 @@
     "Context": {
       "ReferenceDateTime": "2017-09-27T12:25:54.3039501+03:00"
     },
-    "NotSupportedByDesign": "javascript,python,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "15.00 iedere dag",
@@ -244,7 +244,7 @@
     "Context": {
       "ReferenceDateTime": "2017-09-27T12:25:54.3109498+03:00"
     },
-    "NotSupportedByDesign": "javascript,python,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "elke 15/4",
@@ -268,7 +268,7 @@
     "Context": {
       "ReferenceDateTime": "2017-09-27T12:25:54.3259514+03:00"
     },
-    "NotSupportedByDesign": "javascript,python,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "iedere maandag",
@@ -292,7 +292,7 @@
     "Context": {
       "ReferenceDateTime": "2017-09-27T12:25:54.3379507+03:00"
     },
-    "NotSupportedByDesign": "javascript,python,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "elke maandag 16.00",
@@ -316,7 +316,7 @@
     "Context": {
       "ReferenceDateTime": "2017-09-27T12:25:54.3429518+03:00"
     },
-    "NotSupportedByDesign": "javascript,python,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "iedere ochtend",
@@ -340,7 +340,7 @@
     "Context": {
       "ReferenceDateTime": "2017-09-27T12:25:54.3609535+03:00"
     },
-    "NotSupportedByDesign": "javascript,python,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "iedere ochtend om 9.00",
@@ -364,7 +364,7 @@
     "Context": {
       "ReferenceDateTime": "2017-09-27T12:25:54.3730732+03:00"
     },
-    "NotSupportedByDesign": "javascript,python,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "iedere middag  om 16.00",
@@ -388,7 +388,7 @@
     "Context": {
       "ReferenceDateTime": "2017-09-27T12:25:54.3840706+03:00"
     },
-    "NotSupportedByDesign": "javascript,python,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "iedere avond om 21.00",
@@ -412,7 +412,7 @@
     "Context": {
       "ReferenceDateTime": "2017-09-27T12:25:54.3930718+03:00"
     },
-    "NotSupportedByDesign": "javascript,python,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "iedere avond om 21.00",
@@ -484,7 +484,7 @@
     "Context": {
       "ReferenceDateTime": "2017-09-27T12:25:54.4295727+03:00"
     },
-    "NotSupportedByDesign": "javascript,python,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "9.00 iedere zondag",
@@ -628,7 +628,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,python,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "eenmaal per jaar",
@@ -652,7 +652,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
     },
-    "NotSupportedByDesign": "javascript,python,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "eenmaal per week",
@@ -702,7 +702,7 @@
     "Context": {
       "ReferenceDateTime": "2019-11-25T17:00:00"
     },
-    "NotSupportedByDesign": "javascript,python,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "driemaandelijkse",
@@ -750,7 +750,7 @@
     "Context": {
       "ReferenceDateTime": "2017-09-27T12:25:54.2829445+03:00"
     },
-    "NotSupportedByDesign": "javascript,python,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "iedere maand",
@@ -774,7 +774,7 @@
     "Context": {
       "ReferenceDateTime": "2017-09-27T12:25:54.2909444+03:00"
     },
-    "NotSupportedByDesign": "javascript,python,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "iedere twee dagen",
@@ -798,7 +798,7 @@
     "Context": {
       "ReferenceDateTime": "2017-09-27T12:25:54.2989494+03:00"
     },
-    "NotSupportedByDesign": "javascript,python,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "15.00 iedere dag",
@@ -822,7 +822,7 @@
     "Context": {
       "ReferenceDateTime": "2017-09-27T12:25:54.3039501+03:00"
     },
-    "NotSupportedByDesign": "javascript,python,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "15.00 elke dag",
@@ -846,7 +846,7 @@
     "Context": {
       "ReferenceDateTime": "2017-09-27T12:25:54.3109498+03:00"
     },
-    "NotSupportedByDesign": "javascript,python,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "iedere 15/4",
@@ -870,7 +870,7 @@
     "Context": {
       "ReferenceDateTime": "2017-09-27T12:25:54.3259514+03:00"
     },
-    "NotSupportedByDesign": "javascript,python,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "elke maandag",
@@ -894,7 +894,7 @@
     "Context": {
       "ReferenceDateTime": "2017-09-27T12:25:54.3379507+03:00"
     },
-    "NotSupportedByDesign": "javascript,python,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "iedere maandag 16.00",
@@ -918,7 +918,7 @@
     "Context": {
       "ReferenceDateTime": "2017-09-27T12:25:54.3429518+03:00"
     },
-    "NotSupportedByDesign": "javascript,python,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "elke ochtend",
@@ -942,7 +942,7 @@
     "Context": {
       "ReferenceDateTime": "2017-09-27T12:25:54.3609535+03:00"
     },
-    "NotSupportedByDesign": "javascript,python,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "elke ochtend om 9.00",
@@ -966,7 +966,7 @@
     "Context": {
       "ReferenceDateTime": "2017-09-27T12:25:54.3730732+03:00"
     },
-    "NotSupportedByDesign": "javascript,python,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "elke middag  om 16.00",
@@ -990,7 +990,7 @@
     "Context": {
       "ReferenceDateTime": "2017-09-27T12:25:54.3840706+03:00"
     },
-    "NotSupportedByDesign": "javascript,python,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "elke avond om 21.00",
@@ -1014,7 +1014,7 @@
     "Context": {
       "ReferenceDateTime": "2017-09-27T12:25:54.3930718+03:00"
     },
-    "NotSupportedByDesign": "javascript,python,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "elke avond om 21.00",
@@ -1038,7 +1038,7 @@
     "Context": {
       "ReferenceDateTime": "2017-09-27T12:25:54.4295727+03:00"
     },
-    "NotSupportedByDesign": "javascript,python,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "9.00 elke zondag",
@@ -1088,7 +1088,7 @@
     "Context": {
       "ReferenceDateTime": "2019-11-25T17:00:00"
     },
-    "NotSupportedByDesign": "javascript,python,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "kwartaal",
@@ -1112,7 +1112,7 @@
     "Context": {
       "ReferenceDateTime": "2019-11-25T17:00:00"
     },
-    "NotSupportedByDesign": "javascript,python,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "wekelijkse",
@@ -1136,7 +1136,7 @@
     "Context": {
       "ReferenceDateTime": "2019-11-25T17:00:00"
     },
-    "NotSupportedByDesign": "javascript,python,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "driemaandelijkse",

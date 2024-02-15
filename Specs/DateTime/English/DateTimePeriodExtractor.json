@@ -873,7 +873,7 @@
   },
   {
     "Input": "Can you schedule us 2015-09-23 1:30p.m. to 4.",
-    "NotSupported": "javascript, python",
+    "NotSupported": "javascript",
     "Results": [
       {
         "Text": "2015-09-23 1:30p.m. to 4",
@@ -933,7 +933,7 @@
   },
   {
     "Input": "It will happen 1/1/2015 between 10 and 11:30",
-    "NotSupported": "javascript, python",
+    "NotSupported": "javascript",
     "Results": [
       {
         "Text": "1/1/2015 between 10 and 11:30",
@@ -957,7 +957,7 @@
   },
   {
     "Input": "It will happen between 3 and 5 on 1/1/2015",
-    "NotSupported": "javascript, python",
+    "NotSupported": "javascript",
     "Results": [
       {
         "Text": "between 3 and 5 on 1/1/2015",
@@ -969,7 +969,7 @@
   },
   {
     "Input": "It will happen from 3:30 to 5:55 on 1/1/2015",
-    "NotSupported": "javascript, python",
+    "NotSupported": "javascript",
     "Results": [
       {
         "Text": "from 3:30 to 5:55 on 1/1/2015",
@@ -981,7 +981,7 @@
   },
   {
     "Input": "It will happen 1/1/2015 after 2:00",
-    "NotSupported": "javascript, python",
+    "NotSupported": "javascript",
     "Results": [
       {
         "Text": "1/1/2015 after 2:00",
@@ -993,7 +993,7 @@
   },
   {
     "Input": "It will happen today before 4pm",
-    "NotSupported": "javascript, python",
+    "NotSupported": "javascript",
     "Results": [
       {
         "Text": "today before 4pm",
@@ -1005,7 +1005,7 @@
   },
   {
     "Input": "It will happen next Wednesday later than 10 in the morning",
-    "NotSupported": "javascript, python",
+    "NotSupported": "javascript",
     "Results": [
       {
         "Text": "next Wednesday later than 10 in the morning",
@@ -1017,7 +1017,7 @@
   },
   {
     "Input": "It happened on previous Tuesday by 2 in the afternoon",
-    "NotSupported": "javascript, python",
+    "NotSupported": "javascript",
     "Results": [
       {
         "Text": "previous Tuesday by 2 in the afternoon",
@@ -1029,7 +1029,7 @@
   },
   {
     "Input": "Let's go on Feb 1st no later than 6:00",
-    "NotSupported": "javascript, python",
+    "NotSupported": "javascript",
     "Results": [
       {
         "Text": "Feb 1st no later than 6:00",
@@ -1041,7 +1041,7 @@
   },
   {
     "Input": "Make me unavailable from 12-04-2019 6:00am until 12-05-2019 8:00pm",
-    "NotSupported": "javascript, python",
+    "NotSupported": "javascript",
     "Results": [
       {
         "Text": "from 12-04-2019 6:00am until 12-05-2019 8:00pm",
@@ -1053,7 +1053,7 @@
   },
   {
     "Input": "It happened on next week after 2:00",
-    "NotSupported": "javascript, python",
+    "NotSupported": "javascript",
     "Results": []
   }
 ]

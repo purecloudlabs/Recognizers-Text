@@ -770,7 +770,7 @@
     },
     "IgnoreResolution": "true",
     "NotSupported": "dotnet",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "اليوم من الخامسة إلى السابعة",
@@ -1765,7 +1765,7 @@
     },
     "IgnoreResolution": "true",
     "NotSupported": "dotnet",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "من 5 إلى 6 مساءً",
