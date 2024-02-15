@@ -1753,7 +1753,7 @@
   },
   {
     "Input": "سأخرج بين 4 سبتمبر و 8 سبتمبر",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "بين 4 سبتمبر و 8 سبتمبر",
@@ -1861,7 +1861,7 @@
   },
   {
     "Input": "سأخرج في سبتمبر الماضي",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "سبتمبر الماضي",
@@ -2029,7 +2029,7 @@
   },
   {
     "Input": "سأخرج في 3 أسابيع",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "في 3 أسابيع",
@@ -2113,7 +2113,7 @@
   },
   {
     "Input": "سأخرج 2 أكتوبر إلى 22 أكتوبر",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "2 أكتوبر إلى 22 أكتوبر",
@@ -2209,7 +2209,7 @@
   },
   {
     "Input": "سأخرج من 2 أكتوبر إلى 22 أكتوبر",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "من 2 أكتوبر إلى 22 أكتوبر",
@@ -2269,7 +2269,7 @@
   },
   {
     "Input": "سأخرج بين 2 أكتوبر و 22 أكتوبر",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "بين 2 أكتوبر و 22 أكتوبر",
@@ -2533,7 +2533,7 @@
   },
   {
     "Input": "الأسبوع  في 15 سبتمبر",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "الأسبوع  في 15 سبتمبر",
@@ -2785,7 +2785,7 @@
   },
   {
     "Input": "كورتانا ، يرجى تنسيق اجتماع مدته 25 دقيقة مع أنطونيو الأسبوع المقبل بين الأربعاء والجمعة.",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "الأسبوع المقبل بين الأربعاء والجمعة",
@@ -2797,7 +2797,7 @@
   },
   {
     "Input": "كورتانا ، يرجى تنسيق اجتماع مدته 25 دقيقة مع أنطونيو الأسبوع المقبل من الأربعاء إلى الجمعة.",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "الأسبوع المقبل من الأربعاء إلى الجمعة",
@@ -2809,7 +2809,7 @@
   },
   {
     "Input": "كورتانا ، يرجى تنسيق اجتماع مدته 25 دقيقة مع أنطونيو الأسبوع الماضي من الأربعاء إلى الجمعة.",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "الأسبوع الماضي من الأربعاء إلى الجمعة",
@@ -2821,7 +2821,7 @@
   },
   {
     "Input": "كورتانا ، يرجى تنسيق اجتماع مدته 25 دقيقة مع أنطونيو هذا الأسبوع بين الأربعاء والجمعة.",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "هذا الأسبوع بين الأربعاء والجمعة",
