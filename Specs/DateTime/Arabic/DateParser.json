@@ -2564,5 +2564,26 @@
         }
       }
     ]
+  },
+  {
+    "Input": "هذا الأربعاء",
+    "Context": {
+      "ReferenceDateTime": "2016-11-07T00:00:00"
+    },
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "هذا الأربعاء",
+        "Start": 0,
+        "Length": 2,
+        "Type": "date",
+        "Value": {
+          "Timex": "2016-11-09",
+          "FutureResolution": {
+            "date": "2016-11-09"
+          }
+        }
+      }
+    ]
   }
 ]
