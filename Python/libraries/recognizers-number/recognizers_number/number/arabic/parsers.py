@@ -125,6 +125,8 @@ class ArabicNumberParserConfiguration(BaseNumberParserConfiguration):
         self.non_decimal_separator_text = ''
         self._round_multiplier_regex = RegExpUtility.get_safe_reg_exp(ArabicNumeric.RoundMultiplierRegex)
 
+        self._round_multiplier_regex = RegExpUtility.get_safe_reg_exp(ArabicNumeric.RoundMultiplierRegex)
+
     @staticmethod
     def get_lang_specific_int_value(match_strs: List[str]) -> (bool, int):
         result = (False, 0)
