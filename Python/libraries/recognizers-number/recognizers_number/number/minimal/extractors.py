@@ -190,17 +190,3 @@ class MinimalDoubleExtractor(BaseNumberExtractor):
                     placeholder),
                 val='DoubleNum')
         ]
-
-
-class MinimalOrdinalExtractor(BaseNumberExtractor):
-    @property
-    def regexes(self) -> List[
-            NamedTuple('re_val', [('re', Pattern), ('val', str)])]:
-        return self.__regexes
-
-    @property
-    def _extract_type(self) -> str:
-        return Constants.SYS_NUM_ORDINAL
-
-    def __init__(self):
-        self.__regexes = []
