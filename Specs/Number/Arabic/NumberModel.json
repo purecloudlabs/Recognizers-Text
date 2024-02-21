@@ -5472,5 +5472,21 @@
         "End": 17
       }
     ]
+  },
+  {
+    "Input": "ثلاثة مليارات وخمسمائة وتسعة ملايين",
+    "NotSupportedByDesign": "javascript, java",
+    "Results": [
+      {
+        "Text": "ثلاثة مليارات وخمسمائة وتسعة ملايين",
+        "TypeName": "number",
+        "Resolution": {
+          "subtype": "integer",
+          "value": "3509000000"
+        },
+        "Start": 0,
+        "End": 34
+      }
+    ]
   }
 ]
