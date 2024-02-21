@@ -1,37 +1,16 @@
 from typing import List, Pattern
 from recognizers_text.utilities import RegExpUtility
-from ...resources.minimal_date_time import  MinimalDateTime
-from ..base_time import TimeExtractorConfiguration
+from ...resources.minimal_date_time import MinimalDateTime
 
 
-class MinimalTimeExtractorConfiguration(TimeExtractorConfiguration):
-    @property
-    def time_zone_extractor(self):
-        return None
-
+class MinimalTimeExtractorConfiguration:
     @property
     def options(self):
-        return self._options
-
-    @property
-    def dmy_date_format(self) -> bool:
-        return self._dmy_date_format
+        return 0
 
     @property
     def time_regex_list(self) -> List[Pattern]:
         return self._time_regex_list
-
-    @property
-    def at_regex(self) -> Pattern:
-        return None
-
-    @property
-    def ish_regex(self) -> Pattern:
-        return None
-
-    @property
-    def time_before_after_regex(self) -> Pattern:
-        return None
 
     def __init__(self):
         super().__init__()

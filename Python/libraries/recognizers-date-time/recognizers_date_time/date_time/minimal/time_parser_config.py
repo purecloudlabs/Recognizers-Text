@@ -1,13 +1,12 @@
 from typing import List, Pattern, Dict
 
 from recognizers_text import RegExpUtility
-from ..base_time import TimeParserConfiguration
-from ..base_configs import BaseDateParserConfiguration, DateTimeUtilityConfiguration
+from ..base_configs import DateTimeUtilityConfiguration
 from .time_extractor_config import MinimalTimeExtractorConfiguration
 from ..parsers import DateTimeParser
 
 
-class MinimalTimeParserConfiguration(TimeParserConfiguration):
+class MinimalTimeParserConfiguration:
     @property
     def time_token_prefix(self) -> str:
         return ""
@@ -22,7 +21,7 @@ class MinimalTimeParserConfiguration(TimeParserConfiguration):
 
     @property
     def numbers(self) -> Dict[str, int]:
-        return self._numbers
+        return {}
 
     @property
     def utility_configuration(self) -> DateTimeUtilityConfiguration:
@@ -32,9 +31,8 @@ class MinimalTimeParserConfiguration(TimeParserConfiguration):
     def time_zone_parser(self) -> DateTimeParser:
         return self._time_zone_parser
 
-    def __init__(self, config: BaseDateParserConfiguration):
+    def __init__(self, config):
         self._time_regexes: List[Pattern] = MinimalTimeExtractorConfiguration.get_time_regex_list()
 
         self._utility_configuration = config.utility_configuration
-        self._numbers: Dict[str, int] = config.numbers
         self._time_zone_parser = config.time_zone_parser

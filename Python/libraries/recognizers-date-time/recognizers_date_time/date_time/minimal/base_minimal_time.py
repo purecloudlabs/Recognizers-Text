@@ -2,8 +2,7 @@ from typing import List
 from datetime import datetime
 
 from recognizers_text.extractor import ExtractResult
-from recognizers_date_time.date_time.base_time import BaseTimeExtractor, BaseTimeParser, TimeExtractorConfiguration, \
-    TimeParserConfiguration
+from recognizers_date_time.date_time.base_time import BaseTimeExtractor, BaseTimeParser
 from recognizers_date_time.date_time.constants import Constants
 from recognizers_date_time.date_time.utilities import DateTimeOptions, merge_all_tokens, TimeZoneUtility
 
@@ -13,7 +12,7 @@ class BaseMinimalTimeExtractor(BaseTimeExtractor):
     def extractor_type_name(self) -> str:
         return Constants.SYS_DATETIME_TIME
 
-    def __init__(self, config: TimeExtractorConfiguration):
+    def __init__(self, config):
         super().__init__(config)
 
     def extract(self, source: str, reference: datetime = None) -> List[ExtractResult]:
@@ -37,6 +36,6 @@ class BaseMinimalTimeExtractor(BaseTimeExtractor):
 
 class BaseMinimalTimeParser(BaseTimeParser):
 
-    def __init__(self, config: TimeParserConfiguration):
+    def __init__(self, config):
         super().__init__(config)
         self.config = config

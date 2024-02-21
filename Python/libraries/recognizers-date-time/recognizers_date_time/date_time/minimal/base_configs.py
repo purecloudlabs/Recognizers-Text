@@ -1,39 +1,9 @@
 from typing import Pattern
 from recognizers_text.utilities import RegExpUtility
-from recognizers_date_time.date_time.base_date import DateTimeUtilityConfiguration
 from recognizers_date_time.resources.minimal_date_time import MinimalDateTime
 
 
-class MinimalDateTimeUtilityConfiguration(DateTimeUtilityConfiguration):
-
-    @property
-    def date_unit_regex(self) -> Pattern:
-        return None
-
-    @property
-    def ago_regex(self) -> Pattern:
-        return None
-
-    @property
-    def later_regex(self) -> Pattern:
-        return None
-
-    @property
-    def in_connector_regex(self) -> Pattern:
-        return None
-
-    @property
-    def range_unit_regex(self) -> Pattern:
-        return None
-
-    @property
-    def check_both_before_after(self) -> Pattern:
-        return None
-
-    @property
-    def range_prefix_regex(self) -> Pattern:
-        return None
-
+class MinimalDateTimeUtilityConfiguration:
     @property
     def am_desc_regex(self) -> Pattern:
         return self._am_desc_regex

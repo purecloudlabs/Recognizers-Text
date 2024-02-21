@@ -1,0 +1,122 @@
+[
+  {
+    "Input": "192.",
+    "Results": [
+      {
+        "Text": "192",
+        "TypeName": "number",
+        "Resolution": {
+          "subtype": "integer",
+          "value": "192"
+        },
+        "Start": 0,
+        "End": 2
+      }
+    ]
+  },
+  {
+    "Input": "59",
+    "Results": [
+      {
+        "Text": "59",
+        "TypeName": "number",
+        "Resolution": {
+          "subtype": "integer",
+          "value": "59"
+        },
+        "Start": 0,
+        "End": 1
+      }
+    ]
+  },
+  {
+    "Input": "1.54",
+    "Results": [
+      {
+        "Text": "1.54",
+        "TypeName": "number",
+        "Resolution": {
+          "subtype": "integer",
+          "value": "1.54"
+        },
+        "Start": 0,
+        "End": 3
+      }
+    ]
+  },
+  {
+    "Input": "53,859",
+    "Results": [
+      {
+        "Text": "53,859",
+        "TypeName": "number",
+        "Resolution": {
+          "subtype": "integer",
+          "value": "53859"
+        },
+        "Start": 0,
+        "End": 5
+      }
+    ]
+  },
+  {
+    "Input": "1,000,000",
+    "Results": [
+      {
+        "Text": "1,000,000",
+        "TypeName": "number",
+        "Resolution": {
+          "subtype": "integer",
+          "value": "1000000"
+        },
+        "Start": 0,
+        "End": 8
+      }
+    ]
+  },
+  {
+    "Input": "أريد 43",
+    "Results": [
+      {
+        "Text": "43",
+        "TypeName": "number",
+        "Resolution": {
+          "subtype": "integer",
+          "value": "43"
+        },
+        "Start": 5,
+        "End": 6
+      }
+    ]
+  },
+  {
+    "Input": "Puc seure a la fila 489?",
+    "Results": [
+      {
+        "Text": "489",
+        "TypeName": "number",
+        "Resolution": {
+          "subtype": "integer",
+          "value": "489"
+        },
+        "Start": 20,
+        "End": 22
+      }
+    ]
+  },
+  {
+    "Input": "Ik wil 5123 spijkerbroeken",
+    "Results": [
+      {
+        "Text": "5123",
+        "TypeName": "number",
+        "Resolution": {
+          "subtype": "integer",
+          "value": "5123"
+        },
+        "Start": 7,
+        "End": 10
+      }
+    ]
+  }
+]

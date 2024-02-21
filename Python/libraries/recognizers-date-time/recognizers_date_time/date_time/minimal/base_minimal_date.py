@@ -4,12 +4,11 @@ from datetime import datetime
 from recognizers_text.extractor import ExtractResult
 from ..constants import TimeTypeConstants
 from ..parsers import DateTimeParseResult
-from recognizers_date_time.date_time.base_date import DateExtractorConfiguration, BaseDateExtractor, \
-    DateParserConfiguration, BaseDateParser
+from recognizers_date_time.date_time.base_date import BaseDateExtractor, BaseDateParser
 
 
 class BaseMinimalDateExtractor(BaseDateExtractor):
-    def __init__(self, config: DateExtractorConfiguration):
+    def __init__(self, config):
         super().__init__(config)
 
     def extract(self, source: str, reference: datetime = None) -> List[ExtractResult]:
@@ -24,7 +23,7 @@ class BaseMinimalDateExtractor(BaseDateExtractor):
 
 class BaseMinimalDateParser(BaseDateParser):
 
-    def __init__(self, config: DateParserConfiguration):
+    def __init__(self, config):
         super().__init__(config)
 
     def parse(self, source: ExtractResult, reference: datetime = None) -> Optional[DateTimeParseResult]:

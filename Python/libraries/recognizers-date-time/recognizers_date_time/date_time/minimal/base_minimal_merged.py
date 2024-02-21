@@ -1,12 +1,11 @@
-from typing import List
+from typing import List, Optional
 from datetime import datetime
 
 from recognizers_text.extractor import ExtractResult
 from recognizers_date_time.date_time.constants import Constants
 from recognizers_date_time.date_time.utilities import DateTimeOptions
-from recognizers_date_time.date_time.base_minimal_merged import MinimalMergedExtractorConfiguration, \
-    MinimalMergedParserConfiguration
 from recognizers_date_time.date_time.base_merged import BaseMergedExtractor, BaseMergedParser
+from recognizers_date_time.date_time.parsers import DateTimeParseResult
 
 
 class BaseMinimalMergedExtractor(BaseMergedExtractor):
@@ -14,7 +13,7 @@ class BaseMinimalMergedExtractor(BaseMergedExtractor):
     def extractor_type_name(self) -> str:
         return Constants.SYS_DATETIME_MERGED
 
-    def __init__(self, config: MinimalMergedExtractorConfiguration, options: DateTimeOptions):
+    def __init__(self, config, options: DateTimeOptions):
         super().__init__(config, options)
 
     def extract(self, source: str, reference: datetime = None) -> List[ExtractResult]:
@@ -29,10 +28,6 @@ class BaseMinimalMergedExtractor(BaseMergedExtractor):
         result = self.add_to(
             result, self.config.time_extractor.extract(source, reference), source)
 
-        # this should be at the end since if need the extractor to determine the previous text contains time or not
-        result = self.add_to(
-            result, self.number_ending_regex_match(source, result), source)
-
         result = sorted(result, key=lambda x: x.start)
 
         return result
@@ -43,7 +38,7 @@ class BaseMinimalMergedParser(BaseMergedParser):
     def parser_type_name(self) -> str:
         return Constants.SYS_DATETIME_MERGED
 
-    def __init__(self, config: MinimalMergedParserConfiguration, options: DateTimeOptions):
+    def __init__(self, config, options: DateTimeOptions):
         super().__init__(config, options)
 
     def parse_result(self, source: ExtractResult, reference: datetime):
@@ -53,5 +48,21 @@ class BaseMinimalMergedParser(BaseMergedParser):
             result = self.config.time_parser.parse(source, reference)
         else:
             return None
+
+        return result
+
+    def parse(self, source: ExtractResult, reference: datetime = None) -> Optional[DateTimeParseResult]:
+        if not reference:
+            reference = datetime.now()
+
+        result = self.parse_result(source, reference)
+        if not result:
+            return None
+
+        if self.options & DateTimeOptions.SPLIT_DATE_AND_TIME and result.value and result.value.sub_date_time_entities:
+            result.value = self._date_time_resolution_for_split(result)
+        else:
+            result = self.set_parse_result(
+                result, has_before=False, has_after=False, has_since=False)
 
         return result

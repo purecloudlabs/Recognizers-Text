@@ -18,7 +18,7 @@ from recognizers_date_time.date_time.minimal.base_minimal_date import BaseMinima
 from recognizers_date_time.date_time.minimal.base_minimal_time import BaseMinimalTimeExtractor, BaseMinimalTimeParser
 
 
-class MinimalCommonDateTimeParserConfiguration(BaseMinimalDateParserConfiguration):
+class MinimalCommonDateTimeParserConfiguration:
     @property
     def month_of_year(self) -> Dict[str, int]:
         return self._month_of_year
@@ -40,10 +40,6 @@ class MinimalCommonDateTimeParserConfiguration(BaseMinimalDateParserConfiguratio
         return self._integer_extractor
 
     @property
-    def ordinal_extractor(self) -> MinimalNumberExtractor:
-        return None
-
-    @property
     def number_parser(self) -> MinimalNumberParser:
         return self._number_parser
 
@@ -56,10 +52,6 @@ class MinimalCommonDateTimeParserConfiguration(BaseMinimalDateParserConfiguratio
         return self._time_extractor
 
     @property
-    def date_time_extractor(self) -> DateTimeExtractor:
-        return None
-
-    @property
     def date_parser(self) -> DateTimeParser:
         return self._date_parser
 
@@ -68,28 +60,8 @@ class MinimalCommonDateTimeParserConfiguration(BaseMinimalDateParserConfiguratio
         return self._time_parser
 
     @property
-    def date_time_parser(self) -> DateTimeParser:
-        return None
-
-    @property
-    def numbers(self) -> Dict[str, int]:
-        return {}
-
-    @property
     def day_of_month(self) -> Dict[str, int]:
         return self._day_of_month
-
-    @property
-    def day_of_week(self) -> Dict[str, int]:
-        return None
-
-    @property
-    def unit_map(self):
-        return {}
-
-    @property
-    def cardinal_map(self):
-        return {}
 
     @property
     def utility_configuration(self) -> DateTimeUtilityConfiguration:

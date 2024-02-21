@@ -1,0 +1,77 @@
+[
+  {
+    "Input": "$9,843.50",
+    "Results": [
+      {
+        "Text": "$9,843.50",
+        "TypeName": "currency",
+        "Resolution": {
+          "value": "9843.5",
+          "unit": "Dollar"
+        },
+        "Start": 0,
+        "End": 8
+      }
+    ]
+  },
+  {
+    "Input": "buy £23 worth of stock NOW",
+    "Results": [
+      {
+        "Text": "£23",
+        "TypeName": "currency",
+        "Resolution": {
+          "value": "23",
+          "unit": "Pound"
+        },
+        "Start": 4,
+        "End": 6
+      }
+    ]
+  },
+  {
+    "Input": "I only have 50 cent",
+    "Results": [
+      {
+        "Text": "50 cent",
+        "TypeName": "currency",
+        "Resolution": {
+          "value": "50",
+          "unit": "Cent"
+        },
+        "Start": 12,
+        "End": 18
+      }
+    ]
+  },
+  {
+    "Input": "285 dollars",
+    "Results": [
+      {
+        "Text": "285 dollars",
+        "TypeName": "currency",
+        "Resolution": {
+          "value": "285",
+          "unit": "Dollar"
+        },
+        "Start": 0,
+        "End": 10
+      }
+    ]
+  },
+  {
+    "Input": "1,000,000 euro",
+    "Results": [
+      {
+        "Text": "1,000,000 euro",
+        "TypeName": "currency",
+        "Resolution": {
+          "value": "1000000",
+          "unit": "Euro"
+        },
+        "Start": 0,
+        "End": 13
+      }
+    ]
+  }
+]

@@ -40,7 +40,6 @@ from .arabic.common_configs import ArabicCommonDateTimeParserConfiguration
 from .catalan.common_configs import CatalanCommonDateTimeParserConfiguration
 from .catalan.merged_extractor_config import CatalanMergedExtractorConfiguration
 from .catalan.merged_parser_config import CatalanMergedParserConfiguration
-from .minimal.common_configs import MinimalCommonDateTimeParserConfiguration
 from .minimal.merged_extractor_config import BaseMinimalMergedExtractorConfiguration
 from .minimal.merged_parser_config import BaseMinimalMergedParserConfiguration
 
@@ -134,9 +133,7 @@ class DateTimeRecognizer(Recognizer[DateTimeOptions]):
         ))
 
         self.register_model('DateTimeModel', Culture.Minimal, lambda options: DateTimeModel(
-            BaseMinimalMergedParser(BaseMinimalMergedParserConfiguration(
-                MinimalCommonDateTimeParserConfiguration(dmyDateFormat=self.dmyDateFormat),
-                dmyDateFormat=self.dmyDateFormat), options),
+            BaseMinimalMergedParser(BaseMinimalMergedParserConfiguration(dmyDateFormat=self.dmyDateFormat), options),
             BaseMinimalMergedExtractor(BaseMinimalMergedExtractorConfiguration(), options)
         ))
 
