@@ -1,6 +1,3 @@
-#  Copyright (c) Microsoft Corporation. All rights reserved.
-#  Licensed under the MIT License.
-
 from recognizers_text.culture import BaseCultureInfo, Culture
 from .number import LongFormatMode, LongFormatType
 
@@ -16,6 +13,7 @@ SUPPORTED_CULTURES = {
     Culture.Dutch: LongFormatMode.DOUBLE_DOT_COMMA,
     Culture.Japanese: LongFormatMode.DOUBLE_COMMA_DOT,
     Culture.Italian: LongFormatMode.DOUBLE_DOT_COMMA,
+    Culture.Minimal: LongFormatMode.DOUBLE_COMMA_DOT,
 }
 
 

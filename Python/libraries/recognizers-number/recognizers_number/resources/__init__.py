@@ -12,3 +12,4 @@ from .portuguese_numeric import PortugueseNumeric
 from .spanish_numeric import SpanishNumeric
 from .japanese_numeric import JapaneseNumeric
 from .catalan_numeric import CatalanNumeric
+from .minimal_numeric import MinimalNumeric

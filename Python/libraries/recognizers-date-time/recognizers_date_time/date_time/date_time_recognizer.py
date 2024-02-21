@@ -1,6 +1,3 @@
-#  Copyright (c) Microsoft Corporation. All rights reserved.
-#  Licensed under the MIT License.
-
 from datetime import datetime
 from typing import List
 from recognizers_text import Culture, Recognizer
@@ -9,6 +6,7 @@ from .utilities import DateTimeOptions
 from .models import DateTimeModel
 from .base_merged import BaseMergedExtractor, BaseMergedParser
 from .base_minimal_merged import MinimalMergedExtractor, MinimalMergedParser
+from .minimal.base_minimal_merged import BaseMinimalMergedExtractor, BaseMinimalMergedParser
 from .english.common_configs import EnglishCommonDateTimeParserConfiguration
 from .english.merged_extractor_config import EnglishMergedExtractorConfiguration
 from .english.merged_parser_config import EnglishMergedParserConfiguration
@@ -42,12 +40,16 @@ from .arabic.common_configs import ArabicCommonDateTimeParserConfiguration
 from .catalan.common_configs import CatalanCommonDateTimeParserConfiguration
 from .catalan.merged_extractor_config import CatalanMergedExtractorConfiguration
 from .catalan.merged_parser_config import CatalanMergedParserConfiguration
+from .minimal.common_configs import MinimalCommonDateTimeParserConfiguration
+from .minimal.merged_extractor_config import BaseMinimalMergedExtractorConfiguration
+from .minimal.merged_parser_config import BaseMinimalMergedParserConfiguration
 
 
 class DateTimeRecognizer(Recognizer[DateTimeOptions]):
     def __init__(self, target_culture: str = None,
                  options: DateTimeOptions = DateTimeOptions.NONE,
-                 lazy_initialization: bool = True):
+                 lazy_initialization: bool = True, dmyDateFormat: bool = True):
+        self.dmyDateFormat = dmyDateFormat
         if options < DateTimeOptions.NONE or options > DateTimeOptions.CALENDAR:
             raise ValueError()
         super().__init__(target_culture, options, lazy_initialization)
@@ -131,12 +133,20 @@ class DateTimeRecognizer(Recognizer[DateTimeOptions]):
             MinimalMergedExtractor(CatalanMergedExtractorConfiguration(), options)
         ))
 
+        self.register_model('DateTimeModel', Culture.Minimal, lambda options: DateTimeModel(
+            BaseMinimalMergedParser(BaseMinimalMergedParserConfiguration(
+                MinimalCommonDateTimeParserConfiguration(dmyDateFormat=self.dmyDateFormat),
+                dmyDateFormat=self.dmyDateFormat), options),
+            BaseMinimalMergedExtractor(BaseMinimalMergedExtractorConfiguration(), options)
+        ))
+
     def get_datetime_model(self, culture: str = None, fallback_to_default_culture: bool = True) -> Model:
         return self.get_model('DateTimeModel', culture, fallback_to_default_culture)
 
 
 def recognize_datetime(query: str, culture: str, options: DateTimeOptions = DateTimeOptions.NONE,
-                       reference: datetime = None, fallback_to_default_culture: bool = True) -> List[ModelResult]:
-    recognizer = DateTimeRecognizer(culture, options)
+                       reference: datetime = None, fallback_to_default_culture: bool = True,
+                       dmyDateFormat: bool = True) -> List[ModelResult]:
+    recognizer = DateTimeRecognizer(culture, options, dmyDateFormat=dmyDateFormat)
     model = recognizer.get_datetime_model(culture, fallback_to_default_culture)
     return model.parse(query, reference)

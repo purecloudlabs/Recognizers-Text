@@ -1,6 +1,3 @@
-#  Copyright (c) Microsoft Corporation. All rights reserved.
-#  Licensed under the MIT License.
-
 from enum import Enum
 
 from recognizers_number.number.parsers import NumberParserConfiguration, BaseNumberParser, BasePercentageParser
@@ -8,6 +5,7 @@ from recognizers_number.number.constants import Constants
 from recognizers_number.number.cjk_parsers import CJKNumberParser
 from recognizers_number.number.chinese.parsers import ChineseNumberParserConfiguration
 from recognizers_number.number.japanese.parsers import JapaneseNumberParserConfiguration
+from recognizers_number.number.minimal.parsers import MinimalNumberParserConfiguration, MinimalNumberParser
 
 
 class ParserType(Enum):
@@ -23,16 +21,20 @@ class ParserType(Enum):
 class AgnosticNumberParserFactory:
     @staticmethod
     def get_parser(parser_type: ParserType, language_config: NumberParserConfiguration) -> BaseNumberParser:
-        parser = BaseNumberParser(language_config)
 
         chinese = isinstance(language_config, ChineseNumberParserConfiguration)
         japanese = isinstance(
             language_config, JapaneseNumberParserConfiguration)
+        minimal = isinstance(language_config, MinimalNumberParserConfiguration)
 
         if chinese:
             parser = CJKNumberParser(language_config)
         elif japanese:
             parser = CJKNumberParser(language_config)
+        elif minimal:
+            parser = MinimalNumberParser(language_config)
+        else:
+            parser = BaseNumberParser(language_config)
 
         if parser_type is ParserType.CARDINAL:
             parser.supported_types = [

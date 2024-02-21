@@ -64,6 +64,8 @@ from .catalan.extractors import CatalanCurrencyExtractorConfiguration
 from .catalan.parsers import CatalanCurrencyParserConfiguration
 from recognizers_number_with_unit.number_with_unit.arabic.extractors import ArabicCurrencyExtractorConfiguration
 from recognizers_number_with_unit.number_with_unit.arabic.parsers import ArabicCurrencyParserConfiguration
+from recognizers_number_with_unit.number_with_unit.minimal.extractors import MinimalCurrencyExtractorConfiguration
+from recognizers_number_with_unit.number_with_unit.minimal.parsers import MinimalCurrencyParserConfiguration
 
 
 class NumberWithUnitOptions(IntFlag):
@@ -295,6 +297,15 @@ class NumberWithUnitRecognizer(Recognizer[NumberWithUnitOptions]):
                 BaseMergedUnitExtractor(
                     ArabicCurrencyExtractorConfiguration()),
                 BaseMergedUnitParser(ArabicCurrencyParserConfiguration()))
+        ]))
+        # endregion
+
+        # region Catalan
+        self.register_model('CurrencyModel', Culture.Minimal, lambda options: CurrencyModel([
+            ExtractorParserModel(
+                BaseMergedUnitExtractor(
+                    MinimalCurrencyExtractorConfiguration()),
+                BaseMergedUnitParser(MinimalCurrencyParserConfiguration()))
         ]))
         # endregion
 

@@ -1,6 +1,3 @@
-#  Copyright (c) Microsoft Corporation. All rights reserved.
-#  Licensed under the MIT License.
-
 class Culture:
     Arabic: str = 'ar-ae'
     Chinese: str = 'zh-cn'
@@ -17,6 +14,7 @@ class Culture:
     Turkish: str = 'tr-tr'
     German: str = 'de-de'
     Catalan: str = 'ca-es'
+    Minimal: str = 'min'
 
     @staticmethod
     def _get_supported_culture_codes():
@@ -35,7 +33,8 @@ class Culture:
             Culture.Turkish,
             Culture.German,
             Culture.Catalan,
-            Culture.Arabic
+            Culture.Arabic,
+            Culture.Minimal
         ]
 
     @staticmethod
