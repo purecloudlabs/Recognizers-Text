@@ -5456,5 +5456,21 @@
         "End": 36
       }
     ]
+  },
+  {
+    "Input": "ستة وعشرون مليونًا",
+    "NotSupportedByDesign": "javascript, java",
+    "Results": [
+      {
+        "Text": "ستة وعشرون مليونًا",
+        "TypeName": "number",
+        "Resolution": {
+          "subtype": "integer",
+          "value": "26000000"
+        },
+        "Start": 0,
+        "End": 17
+      }
+    ]
   }
 ]
