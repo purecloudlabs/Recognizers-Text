@@ -1,4 +1,4 @@
-from typing import Dict, Pattern, Optional, List
+from typing import Pattern, Optional, List
 import regex
 
 from recognizers_text.culture import Culture
@@ -12,71 +12,15 @@ from recognizers_number.resources.minimal_numeric import MinimalNumeric
 from recognizers_number.number.parsers import BaseNumberParser, NumberParserConfiguration
 
 
-class MinimalNumberParserConfiguration(BaseNumberParserConfiguration):
-
-    @property
-    def cardinal_number_map(self) -> Dict[str, int]:
-        return None
-
-    @property
-    def ordinal_number_map(self) -> Dict[str, int]:
-        return None
-
-    @property
-    def round_number_map(self) -> Dict[str, int]:
-        return None
-
-    @property
-    def digital_number_regex(self) -> Pattern:
-        return None
-
-    @property
-    def fraction_marker_token(self) -> str:
-        return None
+class MinimalNumberParserConfiguration:
 
     @property
     def negative_number_sign_regex(self) -> Pattern:
         return self._negative_number_sign_regex
 
     @property
-    def half_a_dozen_regex(self) -> Pattern:
-        return None
-
-    @property
-    def half_a_dozen_text(self) -> str:
-        return None
-
-    @property
-    def word_separator_token(self) -> str:
-        return None
-
-    @property
-    def written_decimal_separator_texts(self) -> List[str]:
-        return None
-
-    @property
-    def written_group_separator_texts(self) -> List[str]:
-        return None
-
-    @property
-    def written_integer_separator_texts(self) -> List[str]:
-        return None
-
-    @property
-    def written_fraction_separator_texts(self) -> List[str]:
-        return None
-
-    @property
-    def non_standard_separator_variants(self) -> List[str]:
-        return None
-
-    @property
     def is_multi_decimal_separator_culture(self) -> bool:
-        return None
-
-    @property
-    def round_multiplier_regex(self) -> Pattern:
-        return None
+        return False
 
     @property
     def culture_info(self):

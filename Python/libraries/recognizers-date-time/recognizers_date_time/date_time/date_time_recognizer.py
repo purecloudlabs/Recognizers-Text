@@ -47,8 +47,7 @@ from .minimal.merged_parser_config import BaseMinimalMergedParserConfiguration
 class DateTimeRecognizer(Recognizer[DateTimeOptions]):
     def __init__(self, target_culture: str = None,
                  options: DateTimeOptions = DateTimeOptions.NONE,
-                 lazy_initialization: bool = True, dmyDateFormat: bool = True):
-        self.dmyDateFormat = dmyDateFormat
+                 lazy_initialization: bool = True):
         if options < DateTimeOptions.NONE or options > DateTimeOptions.CALENDAR:
             raise ValueError()
         super().__init__(target_culture, options, lazy_initialization)
@@ -133,7 +132,11 @@ class DateTimeRecognizer(Recognizer[DateTimeOptions]):
         ))
 
         self.register_model('DateTimeModel', Culture.Minimal, lambda options: DateTimeModel(
-            BaseMinimalMergedParser(BaseMinimalMergedParserConfiguration(dmyDateFormat=self.dmyDateFormat), options),
+            BaseMinimalMergedParser(BaseMinimalMergedParserConfiguration(), options),
+            BaseMinimalMergedExtractor(BaseMinimalMergedExtractorConfiguration(), options)
+        ))
+        self.register_model('DateTimeModel', Culture.Minimal2, lambda options: DateTimeModel(
+            BaseMinimalMergedParser(BaseMinimalMergedParserConfiguration(dmyDateFormat=False), options),
             BaseMinimalMergedExtractor(BaseMinimalMergedExtractorConfiguration(), options)
         ))
 
@@ -142,8 +145,7 @@ class DateTimeRecognizer(Recognizer[DateTimeOptions]):
 
 
 def recognize_datetime(query: str, culture: str, options: DateTimeOptions = DateTimeOptions.NONE,
-                       reference: datetime = None, fallback_to_default_culture: bool = True,
-                       dmyDateFormat: bool = True) -> List[ModelResult]:
-    recognizer = DateTimeRecognizer(culture, options, dmyDateFormat=dmyDateFormat)
+                       reference: datetime = None, fallback_to_default_culture: bool = True) -> List[ModelResult]:
+    recognizer = DateTimeRecognizer(culture, options)
     model = recognizer.get_datetime_model(culture, fallback_to_default_culture)
     return model.parse(query, reference)

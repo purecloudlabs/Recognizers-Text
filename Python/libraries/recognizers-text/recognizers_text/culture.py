@@ -15,6 +15,7 @@ class Culture:
     German: str = 'de-de'
     Catalan: str = 'ca-es'
     Minimal: str = 'min'
+    MinimalOther: str = 'min-oth'
 
     @staticmethod
     def _get_supported_culture_codes():

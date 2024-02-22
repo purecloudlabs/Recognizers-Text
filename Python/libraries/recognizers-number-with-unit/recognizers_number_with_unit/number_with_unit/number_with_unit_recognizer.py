@@ -300,12 +300,18 @@ class NumberWithUnitRecognizer(Recognizer[NumberWithUnitOptions]):
         ]))
         # endregion
 
-        # region Catalan
+        # region Minimal
         self.register_model('CurrencyModel', Culture.Minimal, lambda options: CurrencyModel([
             ExtractorParserModel(
                 BaseMergedUnitExtractor(
                     MinimalCurrencyExtractorConfiguration()),
                 BaseMergedUnitParser(MinimalCurrencyParserConfiguration()))
+        ]))
+        self.register_model('CurrencyModel', Culture.Minimal2, lambda options: CurrencyModel([
+            ExtractorParserModel(
+                BaseMergedUnitExtractor(
+                    MinimalCurrencyExtractorConfiguration()),
+                BaseMergedUnitParser(MinimalCurrencyParserConfiguration(decimal_point_separator=False)))
         ]))
         # endregion
 

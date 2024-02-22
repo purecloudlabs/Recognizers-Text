@@ -39,8 +39,7 @@ class NumberOptions(IntFlag):
 
 class NumberRecognizer(Recognizer[NumberOptions]):
     def __init__(self, target_culture: str = None, options: NumberOptions = NumberOptions.NONE,
-                 lazy_initialization: bool = True, decimal_point_separator: bool = True):
-        self.decimal_point_separator = decimal_point_separator
+                 lazy_initialization: bool = True):
         if options < NumberOptions.NONE or options > NumberOptions.NONE:
             raise ValueError()
         super().__init__(target_culture, options, lazy_initialization)
@@ -260,8 +259,12 @@ class NumberRecognizer(Recognizer[NumberOptions]):
         # region Minimal
         self.register_model('NumberModel', Culture.Minimal, lambda options: NumberModel(
             AgnosticNumberParserFactory.get_parser(
-                ParserType.NUMBER, MinimalNumberParserConfiguration(decimal_point_separator=
-                                                                    self.decimal_point_separator)),
+                ParserType.NUMBER, MinimalNumberParserConfiguration()),
+            MinimalNumberExtractor(NumberMode.PURE_NUMBER)
+        ))
+        self.register_model('NumberModel', Culture.Minimal2, lambda options: NumberModel(
+            AgnosticNumberParserFactory.get_parser(
+                ParserType.NUMBER, MinimalNumberParserConfiguration(decimal_point_separator=False)),
             MinimalNumberExtractor(NumberMode.PURE_NUMBER)
         ))
         # endregion
@@ -277,9 +280,8 @@ class NumberRecognizer(Recognizer[NumberOptions]):
 
 
 def recognize_number(query: str, culture: str, options: NumberOptions = NumberOptions.NONE,
-                     fallback_to_default_culture: bool = True,
-                     decimal_point_separator: bool = True) -> List[ModelResult]:
-    recognizer = NumberRecognizer(culture, options, decimal_point_separator=decimal_point_separator)
+                     fallback_to_default_culture: bool = True) -> List[ModelResult]:
+    recognizer = NumberRecognizer(culture, options)
     model = recognizer.get_number_model(culture, fallback_to_default_culture)
     return model.parse(query)
 
