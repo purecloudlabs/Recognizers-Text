@@ -307,7 +307,7 @@ class NumberWithUnitRecognizer(Recognizer[NumberWithUnitOptions]):
                     MinimalCurrencyExtractorConfiguration()),
                 BaseMergedUnitParser(MinimalCurrencyParserConfiguration()))
         ]))
-        self.register_model('CurrencyModel', Culture.Minimal2, lambda options: CurrencyModel([
+        self.register_model('CurrencyModel', Culture.MinimalOther, lambda options: CurrencyModel([
             ExtractorParserModel(
                 BaseMergedUnitExtractor(
                     MinimalCurrencyExtractorConfiguration()),

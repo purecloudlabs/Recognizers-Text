@@ -135,7 +135,7 @@ class DateTimeRecognizer(Recognizer[DateTimeOptions]):
             BaseMinimalMergedParser(BaseMinimalMergedParserConfiguration(), options),
             BaseMinimalMergedExtractor(BaseMinimalMergedExtractorConfiguration(), options)
         ))
-        self.register_model('DateTimeModel', Culture.Minimal2, lambda options: DateTimeModel(
+        self.register_model('DateTimeModel', Culture.MinimalOther, lambda options: DateTimeModel(
             BaseMinimalMergedParser(BaseMinimalMergedParserConfiguration(dmyDateFormat=False), options),
             BaseMinimalMergedExtractor(BaseMinimalMergedExtractorConfiguration(), options)
         ))

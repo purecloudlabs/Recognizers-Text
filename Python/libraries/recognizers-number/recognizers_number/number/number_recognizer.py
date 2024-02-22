@@ -262,7 +262,7 @@ class NumberRecognizer(Recognizer[NumberOptions]):
                 ParserType.NUMBER, MinimalNumberParserConfiguration()),
             MinimalNumberExtractor(NumberMode.PURE_NUMBER)
         ))
-        self.register_model('NumberModel', Culture.Minimal2, lambda options: NumberModel(
+        self.register_model('NumberModel', Culture.MinimalOther, lambda options: NumberModel(
             AgnosticNumberParserFactory.get_parser(
                 ParserType.NUMBER, MinimalNumberParserConfiguration(decimal_point_separator=False)),
             MinimalNumberExtractor(NumberMode.PURE_NUMBER)
