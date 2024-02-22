@@ -10,3 +10,4 @@ from .spanish_numeric_with_unit import SpanishNumericWithUnit
 from .japanese_numeric_with_unit import JapaneseNumericWithUnit
 from .catalan_numeric_with_unit import CatalanNumericWithUnit
 from .arabic_numeric_with_unit import ArabicNumericWithUnit
+from .minimal_numeric_with_unit import MinimalNumericWithUnit

@@ -8,7 +8,7 @@ from .parsers import DateTimeParser
 from .utilities import DateTimeUtilityConfiguration
 
 
-class MinimalBaseDateParserConfiguration(ABC):
+class BaseMinimalDateParserConfiguration(ABC):
     @property
     @abstractmethod
     def cardinal_extractor(self) -> BaseNumberExtractor:

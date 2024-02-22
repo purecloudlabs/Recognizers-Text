@@ -1,6 +1,3 @@
-#  Copyright (c) Microsoft Corporation. All rights reserved.
-#  Licensed under the MIT License.
-
 from .models import *
 from .extractors import *
 from .parsers import *
@@ -18,3 +15,4 @@ from .arabic import *
 from .number_recognizer import *
 from .parser_factory import *
 from .utilities import *
+from .minimal import *

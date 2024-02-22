@@ -11,7 +11,7 @@ from ...resources.catalan_date_time import CatalanDateTime
 from ..extractors import DateTimeExtractor
 from ..parsers import DateTimeParser
 from ..base_configs import DateTimeUtilityConfiguration
-from ..base_minimal_configs import MinimalBaseDateParserConfiguration
+from ..base_minimal_configs import BaseMinimalDateParserConfiguration
 from ..base_date import BaseDateExtractor, DateExtractorConfiguration, BaseDateParser
 from ..base_time import BaseTimeExtractor, BaseTimeParser
 from ..base_timezone import BaseTimeZoneParser
@@ -42,7 +42,7 @@ class CatalanBaseDateExtractor(BaseDateExtractor):
         return result
 
 
-class CatalanCommonDateTimeParserConfiguration(MinimalBaseDateParserConfiguration):
+class CatalanCommonDateTimeParserConfiguration(BaseMinimalDateParserConfiguration):
     @property
     def time_zone_parser(self) -> DateTimeParser:
         return self._time_zone_parser
@@ -120,7 +120,7 @@ class CatalanCommonDateTimeParserConfiguration(MinimalBaseDateParserConfiguratio
         return self._utility_configuration
 
     def __init__(self):
-        MinimalBaseDateParserConfiguration.__init__(self)
+        BaseMinimalDateParserConfiguration.__init__(self)
 
         self._utility_configuration = CatalanDateTimeUtilityConfiguration()
         self._time_zone_parser = BaseTimeZoneParser()

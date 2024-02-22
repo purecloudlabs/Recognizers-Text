@@ -1,6 +1,3 @@
-#  Copyright (c) Microsoft Corporation. All rights reserved.
-#  Licensed under the MIT License.
-
 from enum import IntFlag
 from typing import List
 
@@ -32,6 +29,8 @@ from recognizers_number.number.italian.extractors import ItalianMergedNumberExtr
 from recognizers_number.number.italian.parsers import ItalianNumberParserConfiguration
 from recognizers_number.number.catalan.extractors import CatalanNumberExtractor, CatalanOrdinalExtractor
 from recognizers_number.number.catalan.parsers import CatalanNumberParserConfiguration
+from recognizers_number.number.minimal.extractors import MinimalNumberExtractor
+from recognizers_number.number.minimal.parsers import MinimalNumberParserConfiguration
 
 
 class NumberOptions(IntFlag):
@@ -39,7 +38,8 @@ class NumberOptions(IntFlag):
 
 
 class NumberRecognizer(Recognizer[NumberOptions]):
-    def __init__(self, target_culture: str = None, options: NumberOptions = NumberOptions.NONE, lazy_initialization: bool = True):
+    def __init__(self, target_culture: str = None, options: NumberOptions = NumberOptions.NONE,
+                 lazy_initialization: bool = True):
         if options < NumberOptions.NONE or options > NumberOptions.NONE:
             raise ValueError()
         super().__init__(target_culture, options, lazy_initialization)
@@ -256,6 +256,18 @@ class NumberRecognizer(Recognizer[NumberOptions]):
         ))
         # endregion
 
+        # region Minimal
+        self.register_model('NumberModel', Culture.Minimal, lambda options: NumberModel(
+            AgnosticNumberParserFactory.get_parser(
+                ParserType.NUMBER, MinimalNumberParserConfiguration()),
+            MinimalNumberExtractor(NumberMode.PURE_NUMBER)
+        ))
+        self.register_model('NumberModel', Culture.MinimalOther, lambda options: NumberModel(
+            AgnosticNumberParserFactory.get_parser(
+                ParserType.NUMBER, MinimalNumberParserConfiguration(decimal_point_separator=False)),
+            MinimalNumberExtractor(NumberMode.PURE_NUMBER)
+        ))
+        # endregion
 
     def get_number_model(self, culture: str = None, fallback_to_default_culture: bool = True) -> Model:
         return self.get_model('NumberModel', culture, fallback_to_default_culture)
@@ -267,7 +279,8 @@ class NumberRecognizer(Recognizer[NumberOptions]):
         return self.get_model('PercentModel', culture, fallback_to_default_culture)
 
 
-def recognize_number(query: str, culture: str, options: NumberOptions = NumberOptions.NONE, fallback_to_default_culture: bool = True) -> List[ModelResult]:
+def recognize_number(query: str, culture: str, options: NumberOptions = NumberOptions.NONE,
+                     fallback_to_default_culture: bool = True) -> List[ModelResult]:
     recognizer = NumberRecognizer(culture, options)
     model = recognizer.get_number_model(culture, fallback_to_default_culture)
     return model.parse(query)

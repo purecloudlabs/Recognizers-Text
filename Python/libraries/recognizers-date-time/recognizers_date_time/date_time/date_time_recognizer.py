@@ -1,6 +1,3 @@
-#  Copyright (c) Microsoft Corporation. All rights reserved.
-#  Licensed under the MIT License.
-
 from datetime import datetime
 from typing import List
 from recognizers_text import Culture, Recognizer
@@ -9,6 +6,7 @@ from .utilities import DateTimeOptions
 from .models import DateTimeModel
 from .base_merged import BaseMergedExtractor, BaseMergedParser
 from .base_minimal_merged import MinimalMergedExtractor, MinimalMergedParser
+from .minimal.base_minimal_merged import BaseMinimalMergedExtractor, BaseMinimalMergedParser
 from .english.common_configs import EnglishCommonDateTimeParserConfiguration
 from .english.merged_extractor_config import EnglishMergedExtractorConfiguration
 from .english.merged_parser_config import EnglishMergedParserConfiguration
@@ -42,6 +40,8 @@ from .arabic.common_configs import ArabicCommonDateTimeParserConfiguration
 from .catalan.common_configs import CatalanCommonDateTimeParserConfiguration
 from .catalan.merged_extractor_config import CatalanMergedExtractorConfiguration
 from .catalan.merged_parser_config import CatalanMergedParserConfiguration
+from .minimal.merged_extractor_config import BaseMinimalMergedExtractorConfiguration
+from .minimal.merged_parser_config import BaseMinimalMergedParserConfiguration
 
 
 class DateTimeRecognizer(Recognizer[DateTimeOptions]):
@@ -129,6 +129,15 @@ class DateTimeRecognizer(Recognizer[DateTimeOptions]):
             MinimalMergedParser(CatalanMergedParserConfiguration(
                 CatalanCommonDateTimeParserConfiguration()), options),
             MinimalMergedExtractor(CatalanMergedExtractorConfiguration(), options)
+        ))
+
+        self.register_model('DateTimeModel', Culture.Minimal, lambda options: DateTimeModel(
+            BaseMinimalMergedParser(BaseMinimalMergedParserConfiguration(), options),
+            BaseMinimalMergedExtractor(BaseMinimalMergedExtractorConfiguration(), options)
+        ))
+        self.register_model('DateTimeModel', Culture.MinimalOther, lambda options: DateTimeModel(
+            BaseMinimalMergedParser(BaseMinimalMergedParserConfiguration(dmyDateFormat=False), options),
+            BaseMinimalMergedExtractor(BaseMinimalMergedExtractorConfiguration(), options)
         ))
 
     def get_datetime_model(self, culture: str = None, fallback_to_default_culture: bool = True) -> Model:
