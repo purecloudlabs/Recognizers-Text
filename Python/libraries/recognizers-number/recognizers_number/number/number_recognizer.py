@@ -5,7 +5,7 @@ from enum import IntFlag
 from typing import List
 
 from recognizers_number.number.arabic.extractors import ArabicOrdinalExtractor, ArabicPercentageExtractor, \
-    ArabicNumberExtractor
+    ArabicNumberExtractor, ArabicMergedNumberExtractor
 from recognizers_number.number.arabic.parsers import ArabicNumberParserConfiguration
 from recognizers_text import Culture, Recognizer, Model
 from recognizers_number.culture import CultureInfo
@@ -242,7 +242,7 @@ class NumberRecognizer(Recognizer[NumberOptions]):
         self.register_model('NumberModel', Culture.Arabic, lambda options: NumberModel(
             AgnosticNumberParserFactory.get_parser(
                 ParserType.NUMBER, ArabicNumberParserConfiguration()),
-            ArabicNumberExtractor(NumberMode.PURE_NUMBER)
+            ArabicMergedNumberExtractor(NumberMode.PURE_NUMBER)
         ))
         self.register_model('OrdinalModel', Culture.Arabic, lambda options: OrdinalModel(
             AgnosticNumberParserFactory.get_parser(
