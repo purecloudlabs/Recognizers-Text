@@ -2657,5 +2657,29 @@
         }
       }
     ]
+  },
+  {
+    "Input": "بدأت حياتي في الحادي والثلاثين من يناير عام 1934",
+    "Context": {
+      "ReferenceDateTime": "2023-01-01T00:00:00"
+    },
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الحادي والثلاثين من يناير عام 1934",
+        "Start": 14,
+        "Length": 34,
+        "Type": "date",
+        "Value": {
+          "Timex": "1934-01-31",
+          "FutureResolution": {
+            "date": "1934-01-31"
+          },
+          "PastResolution": {
+            "date": "1934-01-31"
+          }
+        }
+      }
+    ]
   }
 ]
