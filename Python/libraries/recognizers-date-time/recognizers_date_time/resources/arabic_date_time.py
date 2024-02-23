@@ -32,7 +32,7 @@ class ArabicDateTime:
     WrittenCenturyOrdinalYearRegex = f'(?<fullyear>({WrittenElevenToNineteenRegex}|مائة|مائتين)\\s+((و)\\s*)?({WrittenOneToNineRegex})\\s+(و)\\s*{WrittenTensRegex})'
     CenturyRegex = f'\\b(?<century>{WrittenCenturyFullYearRegex}|{WrittenCenturyOrdinalYearRegex}(\\s*مائة)?(\\s*و)?)\\b'
     LastTwoYearNumRegex = f'(?:zero\\s+{WrittenOneToNineRegex}|{WrittenElevenToNineteenRegex}|{WrittenTensRegex}(\\s+{WrittenOneToNineRegex})?)'
-    FullTextYearRegex = f'(?<firsttwoyearnum>{CenturyRegex})\\s*(?<lasttwoyearnum>{LastTwoYearNumRegex})|(?<firsttwoyearnum>{WrittenCenturyFullYearRegex})|{WrittenCenturyOrdinalYearRegex}'
+    FullTextYearRegex = f'(?<firsttwoyearnum>{CenturyRegex})\\s*(?<lasttwoyearnum>{LastTwoYearNumRegex})|{WrittenCenturyFullYearRegex}|{WrittenCenturyOrdinalYearRegex}'
     OclockRegex = f'(?<oclock>(ال)?ساعة|(ال)?ساعات)'
     SpecialDescRegex = f'((?<ipm>)p\\b)'
     AmDescRegex = f'(في\\s)?(صباح(ا)?|صباحًا|ص|الصباح|{BaseDateTime.BaseAmDescRegex})'
