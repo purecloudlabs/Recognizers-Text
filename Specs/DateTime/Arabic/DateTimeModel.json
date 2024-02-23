@@ -5152,5 +5152,57 @@
         }
       }
     ]
+  },
+  {
+    "Input": "ألفين وخمسة عشر",
+    "Context": {
+      "ReferenceDateTime": "2024-02-21T00:00:00"
+    },
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "ألفين وخمسة عشر",
+        "Start": 0,
+        "End": 14,
+        "TypeName": "datetimeV2.daterange",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "2015",
+              "type": "daterange",
+              "start": "2015-01-01",
+              "end": "2016-01-01"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "Input": "ألفان وثلاثة وعشرون",
+    "Context": {
+      "ReferenceDateTime": "2024-02-21T00:00:00"
+    },
+    "NotSupported": "dotnet",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "ألفان وثلاثة وعشرون",
+        "Start": 0,
+        "End": 18,
+        "TypeName": "datetimeV2.daterange",
+        "Resolution": {
+          "values": [
+            {
+              "timex": "2023",
+              "type": "daterange",
+              "start": "2023-01-01",
+              "end": "2024-01-01"
+            }
+          ]
+        }
+      }
+    ]
   }
 ]
