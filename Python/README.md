@@ -26,9 +26,17 @@ You can then install each of the local packages:
     pip install -e .\libraries\recognizers-number-with-unit\
     pip install -e .\libraries\recognizers-date-time\
 
-To run tests:
+To run all tests:
 
-    pytest --tb=line
+    pytest --tb=line -n auto
+
+To run a specific test suite, use one of the following commands:
+
+    pytest -n auto tests/test_runner_choice.py
+    pytest -n auto tests/test_runner_datetime.py
+    pytest -n auto tests/test_runner_number.py
+    pytest -n auto tests/test_runner_number_with_unit.py
+    pytest -n auto tests/test_runner_sequence.py
 
 ### Automatized Build
 
