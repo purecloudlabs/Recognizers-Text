@@ -5488,5 +5488,21 @@
         "End": 34
       }
     ]
+  },
+  {
+    "Input": "أربعة آلاف وثمانمائة وثلاثة وسبعون",
+    "NotSupportedByDesign": "javascript, java",
+    "Results": [
+      {
+        "Text": "أربعة آلاف وثمانمائة وثلاثة وسبعون",
+        "TypeName": "number",
+        "Resolution": {
+          "subtype": "integer",
+          "value": "4873"
+        },
+        "Start": 0,
+        "End": 33
+      }
+    ]
   }
 ]
