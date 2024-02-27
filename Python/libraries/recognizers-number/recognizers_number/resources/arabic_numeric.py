@@ -52,7 +52,7 @@ class ArabicNumeric:
     FractionNotationWithSpacesRegex2 = f'(((?<={{?[\\u0600-\\u06ff]}}|^)-\\s*)|(?<![/-])(?<=\\b))\\d+[/]\\d+(?=(\\b[^/]|$))(\\s*\\d+)'
     FractionNotationRegex = f'(((?<={{?[\\u0600-\\u06ff]}}|^)-\\s*)|(?<![/-])(?<=\\b))\\d+[/]\\d+(?=(\\b[^/]|$))'
     FractionOrdinalPrefix = f'(الوزن|المحتوى:?)'
-    ArabicPartOfItem = '(?:أرباع|وربع|ارباع|واحد وربع|نصف|ربع|أنصاف|ربعين|ارباع)'
+    ArabicPartOfItem = '(?:أرباع|وربع|واحد وربع|نصف|ربع|أنصاف|ربعين|ارباع)'
     FractionNounRegex= f'(?<=\\b)({AllIntRegex}\\s+{ArabicAndRegex})?(({AllIntRegex})(\\s+|\\s*-\\s*)?((({AllOrdinalRegex})|({RoundNumberOrdinalRegex}))|أنصاف|أرباع)((\\s+من\\sأ)?\\s+{RoundNumberIntegerRegex})?|{ArabicPartOfItem}\\s+{RoundNumberIntegerRegex})(?=\\b)'
     FractionNounWithArticleRegex = f'(?<=\\b)((({AllIntRegex}(\\s|(\\s*-\\s*)|و\\s+)?)(({AllOrdinalRegex})|{NumberOrdinalRegex}|نصف|وربع|ربع|ونصف))|(الربع|النصف|نصف|))(?=\\b)'
     FractionPrepositionRegex = f'(?<!{BaseNumbers.CommonCurrencySymbol}\\s*)(?<=\\b)(?<numerator>({AllIntRegex})|((?<![\\.,])\\d+))\\s+(فوق|على|في|جزء|من|أجزاء من|اجزاء من|جزء من)\\s+(?<denominator>({AllIntRegex})|(\\d+)(?![\\.,]))(?=\\b)'
@@ -67,12 +67,6 @@ class ArabicNumeric:
     DoubleWithMultiplierRegex = f'(((?<!\\d+\\s*)([-]\\s*)?)|((?<=\\b)(?<!\\d+[\\.,])))\\d+\\u202A?[\\.,]\\u202A?\\d+\\s*{BaseNumbers.NumberMultiplierRegex}(?=\\b)'
     DoubleExponentialNotationRegex = f'(((?<!\\d+\\s*)([-]\\s*)?)|((?<=\\b)(?<!\\d+[\\.,])))(\\d+(\\u202A?[\\.,]\\u202A?\\d+)?)e([+-]*[\\u0660-\\u0669]\\d*)(?=\\b)'
     DoubleCaretExponentialNotationRegex = f'(((?<!\\d+\\s*)([-]\\s*)?)|((?<=\\b)(?<!\\d+[\\.,])))(\\d+(\\u202A?[\\.,]\\u202A?\\d+)?)[+-]*\\^([+-]*[\\u0660-\\u0669]([\\.,])?\\d*)(?=\\b)'
-    ArabicAndRegex = f'(و\\s|و)?'
-    ArabicPartOfItem = '(?:أرباع|وربع|واحد وربع|نصف|ربع|أنصاف|ربعين|ارباع)'
-    FractionNounRegex= f'(?<=\\b)({AllIntRegex}\\s+{ArabicAndRegex})?(({AllIntRegex})(\\s+|\\s*-\\s*)?((({AllOrdinalRegex})|({RoundNumberOrdinalRegex}))s|أنصاف|أرباع)((\\s+من\\sأ)?\\s+{RoundNumberIntegerRegex})?|{ArabicPartOfItem}\\s+{RoundNumberIntegerRegex})(?=\\b)'
-    FractionMultiplierRegex = f'(?<fracMultiplier>\\s+{ArabicAndRegex}\\s(أ|واحد|{TwoToNineIntegerRegex})\\s+({ArabicPartOfItem}))'
-    RoundMultiplierWithFraction = f'(?<=(?<!{RoundNumberIntegerRegex}){FractionMultiplierRegex}\\s+)?(?<multiplier>(?:مليون|مليار|تريليون|ملايين|المليارات|تريليونات))(?={FractionMultiplierRegex}?$)'
-    RoundMultiplierRegex = f'\\b\\s*({RoundMultiplierWithFraction}|(?<multiplier>(?:مائة|ألف|مئات|الآلاف))$)'
 
     def DoubleDecimalPointRegex(placeholder):
         return f'(((?<!\\d+\\s*)([-]\\s*)?)|((?<=\\b)(?<!\\d+[\\.,])))((?<!\\d.)(\\d+\\u202A?[\\.,]\\u202A?\\d+))(?!([\\.,]\\d+))(?={placeholder})'
