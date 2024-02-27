@@ -1482,5 +1482,17 @@
         "Type": "date"
       }
     ]
+  },
+  {
+    "Input": "بدأت حياتي في الحادي والثلاثين من يناير عام 1934",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الحادي والثلاثين من يناير عام 1934",
+        "Start": 14,
+        "Length": 34,
+        "Type": "date"
+      }
+    ]
   }
 ]

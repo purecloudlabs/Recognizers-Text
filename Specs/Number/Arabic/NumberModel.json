@@ -1629,7 +1629,7 @@
   {
     "Input": "رقم لوحة السيارة ثلاث مئة وواحد.",
     "IgnoreResolution": true,
-    "NotSupportedByDesign": "javascript, java, python",
+    "NotSupportedByDesign": "javascript, java",
     "Results": [
       {
         "Text": "ثلاث مئة وواحد",
@@ -1666,7 +1666,7 @@
   {
     "Input": "في بعض البلدان تستطيع ان تكتب ٥.٠٠ او ٥,٠٠",
     "IgnoreResolution": true,
-    "NotSupportedByDesign": "javascript, java, python",
+    "NotSupportedByDesign": "javascript, java",
     "Results": [
       {
         "Text": "٥.٠٠",
@@ -5278,6 +5278,214 @@
         },
         "Start": 23,
         "End": 26
+      }
+    ]
+  },
+  {
+    "Input": "ستة فاصل تسعة هي الدقة الدقيقة",
+    "NotSupportedByDesign": "javascript, java",
+    "Results": [
+      {
+        "Text": "ستة فاصل تسعة",
+        "TypeName": "number",
+        "Resolution": {
+          "subtype": "integer",
+          "value": "6.9"
+        },
+        "Start": 0,
+        "End": 12
+      }
+    ]
+  },
+  {
+    "Input": "حصلت على ثلاثة فاصل ثمانية المعدل التراكمي",
+    "NotSupportedByDesign": "javascript, java",
+    "Results": [
+      {
+        "Text": "ثلاثة فاصل ثمانية",
+        "TypeName": "number",
+        "Resolution": {
+          "subtype": "integer",
+          "value": "3.8"
+        },
+        "Start": 9,
+        "End": 25
+      }
+    ]
+  },
+  {
+    "Input": "أحتاج إلى أربعة مليارات وستمائة مليون في حسابي بحلول الغد",
+    "NotSupportedByDesign": "javascript, java",
+    "Results": [
+      {
+        "Text": "أربعة مليارات وستمائة مليون",
+        "TypeName": "number",
+        "Resolution": {
+          "subtype": "integer",
+          "value": "4600000000"
+        },
+        "Start": 10,
+        "End": 36
+      }
+    ]
+  },
+  {
+    "Input": "تبلغ إيرادات الشركة ثلاثة ملايين وستمائة ألف دولار",
+    "NotSupportedByDesign": "javascript, java",
+    "Results": [
+      {
+        "Text": "ثلاثة ملايين وستمائة ألف",
+        "TypeName": "number",
+        "Resolution": {
+          "subtype": "integer",
+          "value": "3600000"
+        },
+        "Start": 20,
+        "End": 43
+      }
+    ]
+  },
+  {
+    "Input": "من فضلك أعطني ثلاثة آلاف وعشرة شوكولاتة",
+    "NotSupportedByDesign": "javascript, java",
+    "Results": [
+      {
+        "Text": "ثلاثة آلاف وعشرة",
+        "TypeName": "number",
+        "Resolution": {
+          "subtype": "integer",
+          "value": "3010"
+        },
+        "Start": 14,
+        "End": 29
+      }
+    ]
+  },
+  {
+    "Input": "هل يمكنك أن ترسل لي تسعة ملايين وأربعة آلاف زهرة؟",
+    "NotSupportedByDesign": "javascript, java",
+    "Results": [
+      {
+        "Text": "تسعة ملايين وأربعة آلاف",
+        "TypeName": "number",
+        "Resolution": {
+          "subtype": "integer",
+          "value": "9004000"
+        },
+        "Start": 20,
+        "End": 42
+      }
+    ]
+  },
+  {
+    "Input": "لقد تلقيت أربعة ملايين وتسعمائة ألف مشاركة بحلول هذا الوقت من العام",
+    "NotSupportedByDesign": "javascript, java",
+    "Results": [
+      {
+        "Text": "أربعة ملايين وتسعمائة ألف",
+        "TypeName": "number",
+        "Resolution": {
+          "subtype": "integer",
+          "value": "4900000"
+        },
+        "Start": 10,
+        "End": 34
+      }
+    ]
+  },
+  {
+    "Input": "تبلغ تكلفة هذا المنزل تسعة ملايين وثلاثمائة ألف يورو",
+    "NotSupportedByDesign": "javascript, java",
+    "Results": [
+      {
+        "Text": "تسعة ملايين وثلاثمائة ألف",
+        "TypeName": "number",
+        "Resolution": {
+          "subtype": "integer",
+          "value": "9300000"
+        },
+        "Start": 22,
+        "End": 46
+      }
+    ]
+  },
+  {
+    "Input": "المبلغ الواجب سداده هو خمسة ملايين وثلاثة آلاف درهم",
+    "NotSupportedByDesign": "javascript, java",
+    "Results": [
+      {
+        "Text": "خمسة ملايين وثلاثة آلاف",
+        "TypeName": "number",
+        "Resolution": {
+          "subtype": "integer",
+          "value": "5003000"
+        },
+        "Start": 23,
+        "End": 45
+      }
+    ]
+  },
+  {
+    "Input": "ستمائة مليار دولار من فضلك",
+    "NotSupportedByDesign": "javascript, java",
+    "Results": [
+      {
+        "Text": "ستمائة مليار",
+        "TypeName": "number",
+        "Resolution": {
+          "subtype": "integer",
+          "value": "600000000000"
+        },
+        "Start": 0,
+        "End": 11
+      }
+    ]
+  },
+  {
+    "Input": "أريد التبرع بثلاثة وستة ملايين وأربعة دولارات",
+    "NotSupportedByDesign": "javascript, java",
+    "Results": [
+      {
+        "Text": "وستة ملايين وأربعة",
+        "TypeName": "number",
+        "Resolution": {
+          "subtype": "integer",
+          "value": "6000004"
+        },
+        "Start": 19,
+        "End": 36
+      }
+    ]
+  },
+  {
+    "Input": "ستة وعشرون مليونًا",
+    "NotSupportedByDesign": "javascript, java",
+    "Results": [
+      {
+        "Text": "ستة وعشرون مليونًا",
+        "TypeName": "number",
+        "Resolution": {
+          "subtype": "integer",
+          "value": "26000000"
+        },
+        "Start": 0,
+        "End": 17
+      }
+    ]
+  },
+  {
+    "Input": "ثلاثة مليارات وخمسمائة وتسعة ملايين",
+    "NotSupportedByDesign": "javascript, java",
+    "Results": [
+      {
+        "Text": "ثلاثة مليارات وخمسمائة وتسعة ملايين",
+        "TypeName": "number",
+        "Resolution": {
+          "subtype": "integer",
+          "value": "3509000000"
+        },
+        "Start": 0,
+        "End": 34
       }
     ]
   }
