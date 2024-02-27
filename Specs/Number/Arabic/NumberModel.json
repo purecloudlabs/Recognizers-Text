@@ -5504,5 +5504,37 @@
         "End": 33
       }
     ]
+  },
+  {
+    "Input": "أريد نصف مليون قطعة",
+    "NotSupportedByDesign": "javascript, java",
+    "Results": [
+      {
+        "Text": "نصف مليون",
+        "TypeName": "number",
+        "Resolution": {
+          "subtype": "integer",
+          "value": "500000"
+        },
+        "Start": 5,
+        "End": 13
+      }
+    ]
+  },
+  {
+    "Input": "نصف مليون",
+    "NotSupportedByDesign": "javascript, java",
+    "Results": [
+      {
+        "Text": "نصف مليون",
+        "TypeName": "number",
+        "Resolution": {
+          "subtype": "integer",
+          "value": "500000"
+        },
+        "Start": 0,
+        "End": 8
+      }
+    ]
   }
 ]
