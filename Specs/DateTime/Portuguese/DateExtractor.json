@@ -714,5 +714,29 @@
         "Length": 9
       }
     ]
+  },
+ {
+    "Input": "marque a reunião para 7 do 7",
+    "NotSupported": "javascript",
+    "Results": [
+      {
+        "Text": "7 do 7",
+        "Type": "date",
+        "Start": 22,
+        "Length": 6
+      }
+    ]
+  },
+  {
+    "Input": "me envie um comprovante da minha compra é feita no dia 17 do 11",
+    "NotSupported": "javascript",
+    "Results": [
+      {
+        "Text": "dia 17 do 11",
+        "Type": "date",
+        "Start": 51,
+        "Length": 12
+      }
+    ]
   }
 ]
