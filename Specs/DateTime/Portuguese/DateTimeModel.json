@@ -1481,8 +1481,8 @@
     "NotSupported": "javascript",
     "Results": [
       {
-        "Text": "17/11",
-        "Start": 53,
+        "Text": "dia 17/11",
+        "Start": 49,
         "End": 57,
         "TypeName": "datetimeV2.date",
         "Resolution": {
