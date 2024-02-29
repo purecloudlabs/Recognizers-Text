@@ -5536,5 +5536,87 @@
         "End": 8
       }
     ]
+  },
+  {
+    "Input": "ثلاثة إثنان واحد",
+    "NotSupportedByDesign": "javascript, java",
+    "Results": [
+      {
+        "Text": "ثلاثة",
+        "TypeName": "number",
+        "Resolution": {
+          "subtype": "integer",
+          "value": "3"
+        },
+        "Start": 0,
+        "End": 4
+      },
+      {
+        "Text": "إثنان",
+        "TypeName": "number",
+        "Resolution": {
+          "subtype": "integer",
+          "value": "2"
+        },
+        "Start": 6,
+        "End": 10
+      },
+      {
+        "Text": "واحد",
+        "TypeName": "number",
+        "Resolution": {
+          "subtype": "integer",
+          "value": "1"
+        },
+        "Start": 12,
+        "End": 15
+      }
+    ]
+  },
+  {
+    "Input": "اثنان صفر اثنان أربعة",
+    "NotSupportedByDesign": "javascript, java",
+    "Results": [
+      {
+        "Text": "اثنان",
+        "TypeName": "number",
+        "Resolution": {
+          "subtype": "integer",
+          "value": "2"
+        },
+        "Start": 0,
+        "End": 4
+      },
+      {
+        "Text": "صفر",
+        "TypeName": "number",
+        "Resolution": {
+          "subtype": "integer",
+          "value": "0"
+        },
+        "Start": 6,
+        "End": 8
+      },
+      {
+        "Text": "اثنان",
+        "TypeName": "number",
+        "Resolution": {
+          "subtype": "integer",
+          "value": "2"
+        },
+        "Start": 10,
+        "End": 14
+      },
+      {
+        "Text": "أربعة",
+        "TypeName": "number",
+        "Resolution": {
+          "subtype": "integer",
+          "value": "4"
+        },
+        "Start": 16,
+        "End": 20
+      }
+    ]
   }
 ]

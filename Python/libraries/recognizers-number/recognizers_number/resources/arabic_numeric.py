@@ -27,7 +27,7 @@ class ArabicNumeric:
     TenToNineteenIntegerRegex = f'(?:((ثلاث|ثلاثة|سبعة|ثمان|ثمانية|أربع|أربعة|خمسة|تسعة|اثنان|اثنان|اثنين|اثتنين|اثنتان|إثنان|إثنتان|إثنين|إثتنين|إثنتان|ستة|أحد|أربعة|إثني|اثني)\\s(عشر|عشرة)))'
     TensNumberIntegerRegex = f'(عشرة|عشرون|ثلاثون|أربعون|خمسون|ستون|سبعون|ثمانون|تسعين|وعشرين|و عشرين|وثلاثين|و ثلاثين|وأربعين|و أربعين|وخمسين|و خمسين|وستين|وستين|وسبعين|و سبعين|وثمانين|و ثمانين|وتسعين|وتسعين|وعشرون|ثلاثون|وأربعون|و أربعون|وخمسون|و خمسون|وستون|و ستون|وسبعون|و سبعون|وثمانون|و ثمانون|وتسعون|و تسعون|عشرين|ثلاثين|أربعين|خمسين|ستين|سبعين|ثمانين|تسعون|العشرون:?)'
     SeparaIntRegex = f'(?:((({RoundNumberIntegerRegex}\\s{RoundNumberIntegerRegex})|{TenToNineteenIntegerRegex}|({ZeroToNineIntegerRegex}(((و)?)\\s+(و)?|\\s*-\\s*){TensNumberIntegerRegex})|{TensNumberIntegerRegex}|{ZeroToNineIntegerRegex}|{RoundNumberIntegerRegex})(\\s+{RoundNumberIntegerRegex})*))|(((\\s+{RoundNumberIntegerRegex})+))'
-    AllIntRegex = f'(?:({SeparaIntRegex})((\\s+(و)?)({SeparaIntRegex})(\\s+{RoundNumberIntegerRegex})?)*|((({TenToNineteenIntegerRegex}|({TensNumberIntegerRegex}(\\s+(و)?|\\s*-\\s*){ZeroToNineIntegerRegex})|{TensNumberIntegerRegex}|{ZeroToNineIntegerRegex})?(\\s+{RoundNumberIntegerRegex})+)\\s+(و)?)*{SeparaIntRegex})'
+    AllIntRegex = f'(?:({SeparaIntRegex})((\\s*(و)\\s*)({SeparaIntRegex})(\\s+{RoundNumberIntegerRegex})?)*|((({TenToNineteenIntegerRegex}|({TensNumberIntegerRegex}(\\s+(و)?|\\s*-\\s*){ZeroToNineIntegerRegex})|{TensNumberIntegerRegex}|{ZeroToNineIntegerRegex})?(\\s+{RoundNumberIntegerRegex})+)\\s+(و)?)*{SeparaIntRegex})'
     PlaceHolderPureNumber = f'\\b'
     PlaceHolderDefault = f'\\D|\\b'
 
@@ -129,6 +129,7 @@ class ArabicNumeric:
                               ("اثنان", 2),
                               ("اثنين", 2),
                               ("الاثنين", 2),
+                              ("إثنان", 2),
                               ("الثلاثة", 3),
                               ("ثلاث", 3),
                               ("ثلاثة", 3),
