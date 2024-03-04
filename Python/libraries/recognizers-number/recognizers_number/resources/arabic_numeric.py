@@ -69,14 +69,14 @@ class ArabicNumeric:
     DoubleCaretExponentialNotationRegex = f'(((?<!\\d+\\s*)([-]\\s*)?)|((?<=\\b)(?<!\\d+[\\.,])))(\\d+(\\u202A?[\\.,]\\u202A?\\d+)?)[+-]*\\^([+-]*[\\u0660-\\u0669]([\\.,])?\\d*)(?=\\b)'
 
     def DoubleDecimalPointRegex(placeholder):
-        return f'(((?<!\\d+\\s*)([-]\\s*)?)|((?<=\\b)(?<!\\d+[\\.,])))((?<!\\d.)(\\d+\\u202A?[\\.,]\\u202A?\\d+))(?!([\\.,]\\d+))(?={placeholder})'
+        return f'(((?<!\\d+\\s*)([-]\\s*)?)|((?<=\\b)(?<!\\d+[\\.,])))((?<!\\d.)(\\d+\\u202A?[\\.,٬،٫]\\u202A?\\d+))(?!([\\.,]\\d+))(?={placeholder})'
 
     def DoubleWithoutIntegralRegex(placeholder):
         return f'(?<=\\s|^)(?<!(\\d+))\\u202A?[\\.,]\\u202A?\\d+(?!([\\.,]\\d+))(?={placeholder})'
     DoubleWithRoundNumber = f'(((?<!\\d+\\s*)([-]\\s*)?)|((?<=\\b)(?<!\\d+[\\.,])))\\d+\\u202A?[\\.,]\\u202A?\\d+\\s+{RoundNumberIntegerRegex}(?=\\b)'
 
     def DoubleWithThousandMarkRegex(placeholder):
-        return f'(((?<!\\d+\\s*)-\\s*)|((?<=\\b)(?<!\\d+\\.|\\d+,)))\\d{{1,3}}(\\u202A?[،]\\u202A?\\d{{3}})+\\u202A?[\\.,]\\u202A?\\d+(?={placeholder})'
+        return f'(((?<!\\d+\\s*)-\\s*)|((?<=\\b)(?<!\\d+\\.|\\d+,|\\d+)))\\d{{1,3}}(\\u202A?[٬،]\\u202A?\\d{{3}})+\\u202A?[\\.,،٬٫]\\u202A?\\d+(?={placeholder})'
     DoubleAllFloatRegex = f'((?<=\\b){AllFloatRegex}(?=\\b))'
     ConnectorRegex = f'(?<spacer>و)'
     NumberWithSuffixPercentage = f'((?<!(٪|%))({BaseNumbers.NumberReplaceToken})(\\s*)((٪|%)(?!{BaseNumbers.NumberReplaceToken})|(بالمائة|في المئة|بالمئة)))'
@@ -113,9 +113,10 @@ class ArabicNumeric:
     DecimalSeparatorChar = '.'
     FractionMarkerToken = 'أكثر'
     NonDecimalSeparatorChar = ','
+    AlternateDecimalSeparatorChar = '٫'
     HalfADozenText = 'ستة'
     WordSeparatorToken = 'و'
-    WrittenDecimalSeparatorTexts = [r'فاصلة', r'فاصل', r'نقاط', r'نقطة']
+    WrittenDecimalSeparatorTexts = [r'فاصلة', r'فاصل', r'نقاط', r'نقطة', r'٫']
     WrittenGroupSeparatorTexts = [r'punto']
     WrittenIntegerSeparatorTexts = [r'و']
     WrittenFractionSeparatorTexts = [r'و']

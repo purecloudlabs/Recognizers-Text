@@ -755,7 +755,8 @@ class BaseNumberParser(Parser):
                     scale = getcontext().multiply(scale, Decimal(0.1))
                 else:
                     tmp = getcontext().add(getcontext().multiply(tmp, scale), Decimal(c))
-            elif c == decimal_separator or (not skippable_non_decimal and c == non_decimal_separator):
+            elif (c == decimal_separator or (not skippable_non_decimal and c == non_decimal_separator) or c in
+                  self.config.written_decimal_separator_texts):
                 has_decimal_separator = True
                 scale = Decimal(0.1)
             elif c == '-':

@@ -361,7 +361,7 @@
   {
     "Input": "عدد السكان في الهند ١،٢٣٤،٥٦٧",
     "IgnoreResolution": true,
-    "NotSupportedByDesign": "javascript, java, python",
+    "NotSupportedByDesign": "javascript, java",
     "Results": [
       {
         "Text": "١،٢٣٤،٥٦٧",
@@ -1447,7 +1447,7 @@
   {
     "Input": "سالب واحد على ٢٠",
     "IgnoreResolution": true,
-    "NotSupportedByDesign": "javascript, java, python",
+    "NotSupportedByDesign": "javascript, java",
     "Results": [
       {
         "Text": "سالب واحد على ٢٠",
@@ -1780,7 +1780,7 @@
   {
     "Input": "الكسر الصحيح ٢٠٠٠ على ٣",
     "IgnoreResolution": true,
-    "NotSupportedByDesign": "javascript, java, python",
+    "NotSupportedByDesign": "javascript, java",
     "Results": [
       {
         "Text": "٢٠٠٠ على ٣",
@@ -5616,6 +5616,70 @@
         },
         "Start": 16,
         "End": 20
+      }
+    ]
+  },
+  {
+    "Input": "هل أستطيع الحصول على ۲٬٣۵٩ درهم",
+    "NotSupportedByDesign": "javascript, java",
+    "Results": [
+      {
+        "Text": "۲٬٣۵٩",
+        "TypeName": "number",
+        "Resolution": {
+          "subtype": "integer",
+          "value": "2359"
+        },
+        "Start": 21,
+        "End": 25
+      }
+    ]
+  },
+  {
+    "Input": "۸٩٫۷۰ هو عدد الأشخاص في إسبانيا",
+    "NotSupportedByDesign": "javascript, java",
+    "Results": [
+      {
+        "Text": "۸٩٫۷۰",
+        "TypeName": "number",
+        "Resolution": {
+          "subtype": "decimal",
+          "value": "89.7"
+        },
+        "Start": 0,
+        "End": 4
+      }
+    ]
+  },
+  {
+    "Input": "يبلغ رصيد حسابي البنكي حوالي ۴۵۳٬۲۸۰٬۷۱۶",
+    "NotSupportedByDesign": "javascript, java",
+    "Results": [
+      {
+        "Text": "۴۵۳٬۲۸۰٬۷۱۶",
+        "TypeName": "number",
+        "Resolution": {
+          "subtype": "integer",
+          "value": "453280716"
+        },
+        "Start": 29,
+        "End": 39
+      }
+    ]
+  },
+  {
+    "Input": "في اليوم ١٬٠٠٠٫٠٥ سيحدث شيء ما.",
+    "NotSupportedByDesign": "javascript, java",
+    "Results": [
+      {
+        "Text": "١٬٠٠٠٫٠٥",
+        "TypeName": "number",
+        "Resolution": {
+          "subtype": "decimal",
+          "value": "1000.05"
+        },
+        "Start": 9,
+        "End": 16
       }
     ]
   }
