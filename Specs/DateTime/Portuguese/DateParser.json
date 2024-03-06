@@ -1599,5 +1599,29 @@
         "Length": 11
       }
     ]
+  },
+  {
+    "Input": "minha compra feita no dia 7/7/2020",
+    "Context": {
+      "ReferenceDateTime": "2024-11-17T00:00:00"
+    },
+    "NotSupported": "javascript",
+    "Results": [
+      {
+        "Text": "dia 7/7/2020",
+        "Type": "date",
+        "Value": {
+          "Timex": "2020-07-07",
+          "FutureResolution": {
+            "date": "2020-07-07"
+          },
+          "PastResolution": {
+            "date": "2020-07-07"
+          }
+        },
+        "Start": 22,
+        "Length": 12
+      }
+    ]
   }
 ]

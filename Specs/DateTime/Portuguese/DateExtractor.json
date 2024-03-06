@@ -738,5 +738,17 @@
         "Length": 12
       }
     ]
+  },
+  {
+    "Input": "minha compra feita no dia 7/7/2020",
+    "NotSupported": "javascript",
+    "Results": [
+      {
+        "Text": "dia 7/7/2020",
+        "Type": "date",
+        "Start": 22,
+        "Length": 12
+      }
+    ]
   }
 ]
