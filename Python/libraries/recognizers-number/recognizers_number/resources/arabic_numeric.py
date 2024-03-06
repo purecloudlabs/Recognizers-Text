@@ -32,7 +32,7 @@ class ArabicNumeric:
     PlaceHolderDefault = f'\\D|\\b'
 
     def NumbersWithPlaceHolder(placeholder):
-        return f'(((?<!\\d+\\s*)([-]\\s*)?)|(?<=\\b))\\d+(?!([\\.،,]\\d+[\\u0621-\\u064A]))(?={placeholder})'
+        return f'(((?<!\\d+\\s*)([-]\\s*)?)|(?<=\\b))\\d+(?!([.،,]\\d+[\\u0621-\\u064A]))(?={placeholder})'
     NumbersWithSuffix = f'(((?<!\\d+\\s*)([-]\\s*)?)|(?<=\\b))\\d+\\s*{BaseNumbers.NumberMultiplierRegex}(?=\\b)'
     RoundNumberIntegerRegexWithLocks = f'(?<=\\b)(\\d+\\s*({RoundNumberIntegerRegex})(\\s|و\\s|\\sو))?\\d+(\\s|و\\s|\\sو)+{RoundNumberIntegerRegex}((\\s*و\\s*)+\\d+)?(?=\\b)'
     NumbersWithDozenSuffix = f'(((?<!\\d+\\s*)([-]\\s*)?)|(?<=\\b))(\\d+\\s+)?(دستة|دستات|دست|دزينة|دزينات|دزينتين)(?=\\b)'
@@ -55,8 +55,8 @@ class ArabicNumeric:
     ArabicPartOfItem = '(?:أرباع|وربع|واحد وربع|نصف|ربع|أنصاف|ربعين|ارباع)'
     FractionNounRegex= f'(?<=\\b)({AllIntRegex}\\s+{ArabicAndRegex})?(({AllIntRegex})(\\s+|\\s*-\\s*)?((({AllOrdinalRegex})|({RoundNumberOrdinalRegex}))|أنصاف|أرباع)((\\s+من\\sأ)?\\s+{RoundNumberIntegerRegex})?|{ArabicPartOfItem}\\s+{RoundNumberIntegerRegex})(?=\\b)'
     FractionNounWithArticleRegex = f'(?<=\\b)((({AllIntRegex}(\\s|(\\s*-\\s*)|و\\s+)?)(({AllOrdinalRegex})|{NumberOrdinalRegex}|نصف|وربع|ربع|ونصف))|(الربع|النصف|نصف|))(?=\\b)'
-    FractionPrepositionRegex = f'(?<!{BaseNumbers.CommonCurrencySymbol}\\s*)(?<=\\b)(?<numerator>({AllIntRegex})|((?<![\\.,])\\d+))\\s+(فوق|على|في|جزء|من|أجزاء من|اجزاء من|جزء من)\\s+(?<denominator>({AllIntRegex})|(\\d+)(?![\\.,]))(?=\\b)'
-    FractionPrepositionWithinPercentModeRegex = f'(?<!{BaseNumbers.CommonCurrencySymbol}\\s*)(?<=\\b)(?<numerator>({AllIntRegex})|((?<![\\.,])\\d+))\\s+على\\s+(?<denominator>({AllIntRegex})|(\\d+)(?![\\.,]))(?=\\b)'
+    FractionPrepositionRegex = f'(?<!{BaseNumbers.CommonCurrencySymbol}\\s*)(?<=\\b)(?<numerator>({AllIntRegex})|((?<![.,])\\d+))\\s+(فوق|على|في|جزء|من|أجزاء من|اجزاء من|جزء من)\\s+(?<denominator>({AllIntRegex})|(\\d+)(?![.,]))(?=\\b)'
+    FractionPrepositionWithinPercentModeRegex = f'(?<!{BaseNumbers.CommonCurrencySymbol}\\s*)(?<=\\b)(?<numerator>({AllIntRegex})|((?<![.,])\\d+))\\s+على\\s+(?<denominator>({AllIntRegex})|(\\d+)(?![.,]))(?=\\b)'
     FractionWithOrdinalPrefix = f'({AllOrdinalRegex})(?=\\s*({FractionOrdinalPrefix}))'
     FractionWithPartOfPrefix = f'((جزء من)\\s+)({AllIntRegexWithLocks})'
     FractionMultiplierRegex = f'(?<fracMultiplier>\\s+{ArabicAndRegex}\\s(أ|واحد|{TwoToNineIntegerRegex})\\s+({ArabicPartOfItem}))'
@@ -64,19 +64,19 @@ class ArabicNumeric:
     RoundMultiplierRegex = f'\\s*\\b({RoundMultiplierWithFraction}|(?<multiplier>(?:مائة|ألف|مئات|الآلاف))$)'
     AllPointRegex = f'((\\s+{ZeroToNineIntegerRegex})+|(\\s+{SeparaIntRegex}))'
     AllFloatRegex = f'{AllIntRegex}(\\s+(نقطة|جزء|جزء من|فاصلة|نقاط|فاصل)){AllPointRegex}'
-    DoubleWithMultiplierRegex = f'(((?<!\\d+\\s*)([-]\\s*)?)|((?<=\\b)(?<!\\d+[\\.,])))\\d+\\u202A?[\\.,]\\u202A?\\d+\\s*{BaseNumbers.NumberMultiplierRegex}(?=\\b)'
-    DoubleExponentialNotationRegex = f'(((?<!\\d+\\s*)([-]\\s*)?)|((?<=\\b)(?<!\\d+[\\.,])))(\\d+(\\u202A?[\\.,]\\u202A?\\d+)?)e([+-]*[\\u0660-\\u0669]\\d*)(?=\\b)'
-    DoubleCaretExponentialNotationRegex = f'(((?<!\\d+\\s*)([-]\\s*)?)|((?<=\\b)(?<!\\d+[\\.,])))(\\d+(\\u202A?[\\.,]\\u202A?\\d+)?)[+-]*\\^([+-]*[\\u0660-\\u0669]([\\.,])?\\d*)(?=\\b)'
+    DoubleWithMultiplierRegex = f'(((?<!\\d+\\s*)([-]\\s*)?)|((?<=\\b)(?<!\\d+[.,])))\\d+\\u202A?[.,]\\u202A?\\d+\\s*{BaseNumbers.NumberMultiplierRegex}(?=\\b)'
+    DoubleExponentialNotationRegex = f'(((?<!\\d+\\s*)([-]\\s*)?)|((?<=\\b)(?<!\\d+[.,])))(\\d+(\\u202A?[.,]\\u202A?\\d+)?)e([+-]*[\\u0660-\\u0669]\\d*)(?=\\b)'
+    DoubleCaretExponentialNotationRegex = f'(((?<!\\d+\\s*)([-]\\s*)?)|((?<=\\b)(?<!\\d+[.,])))(\\d+(\\u202A?[.,]\\u202A?\\d+)?)[+-]*\\^([+-]*[\\u0660-\\u0669]([.,])?\\d*)(?=\\b)'
 
     def DoubleDecimalPointRegex(placeholder):
-        return f'(((?<!\\d+\\s*)([-]\\s*)?)|((?<=\\b)(?<!\\d+[\\.,])))((?<!\\d.)(\\d+\\u202A?[\\.,]\\u202A?\\d+))(?!([\\.,]\\d+))(?={placeholder})'
+        return f'(((?<!\\d+\\s*)([-]\\s*)?)|((?<=\\b)(?<!\\d+[.,])))((?<!\\d.)(\\d+\\u202A?[.,٬،٫]\\u202A?\\d+))(?!([.,]\\d+))(?={placeholder})'
 
     def DoubleWithoutIntegralRegex(placeholder):
-        return f'(?<=\\s|^)(?<!(\\d+))\\u202A?[\\.,]\\u202A?\\d+(?!([\\.,]\\d+))(?={placeholder})'
-    DoubleWithRoundNumber = f'(((?<!\\d+\\s*)([-]\\s*)?)|((?<=\\b)(?<!\\d+[\\.,])))\\d+\\u202A?[\\.,]\\u202A?\\d+\\s+{RoundNumberIntegerRegex}(?=\\b)'
+        return f'(?<=\\s|^)(?<!(\\d+))\\u202A?[.,]\\u202A?\\d+(?!([.,]\\d+))(?={placeholder})'
+    DoubleWithRoundNumber = f'(((?<!\\d+\\s*)([-]\\s*)?)|((?<=\\b)(?<!\\d+[.,])))\\d+\\u202A?[.,]\\u202A?\\d+\\s+{RoundNumberIntegerRegex}(?=\\b)'
 
     def DoubleWithThousandMarkRegex(placeholder):
-        return f'(((?<!\\d+\\s*)-\\s*)|((?<=\\b)(?<!\\d+\\.|\\d+,)))\\d{{1,3}}(\\u202A?[،]\\u202A?\\d{{3}})+\\u202A?[\\.,]\\u202A?\\d+(?={placeholder})'
+        return f'(((?<!\\d+\\s*)-\\s*)|((?<=\\b)(?<!\\d+[.,]?)))\\d{{1,3}}(\\u202A?[٬،]\\u202A?\\d{{3}})+\\u202A?[.,،٬٫]\\u202A?\\d+(?={placeholder})'
     DoubleAllFloatRegex = f'((?<=\\b){AllFloatRegex}(?=\\b))'
     ConnectorRegex = f'(?<spacer>و)'
     NumberWithSuffixPercentage = f'((?<!(٪|%))({BaseNumbers.NumberReplaceToken})(\\s*)((٪|%)(?!{BaseNumbers.NumberReplaceToken})|(بالمائة|في المئة|بالمئة)))'
@@ -115,7 +115,7 @@ class ArabicNumeric:
     NonDecimalSeparatorChar = ','
     HalfADozenText = 'ستة'
     WordSeparatorToken = 'و'
-    WrittenDecimalSeparatorTexts = [r'فاصلة', r'فاصل', r'نقاط', r'نقطة']
+    WrittenDecimalSeparatorTexts = [r'فاصلة', r'فاصل', r'نقاط', r'نقطة', r'٫']
     WrittenGroupSeparatorTexts = [r'punto']
     WrittenIntegerSeparatorTexts = [r'و']
     WrittenFractionSeparatorTexts = [r'و']
