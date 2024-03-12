@@ -11,6 +11,28 @@
     ]
   },
   {
+    "Input": "envoyez-moi un reçu de l'achat effectué le 17 du 11",
+    "Results": [
+      {
+        "Text": "17 du 11",
+        "Type": "date",
+        "Start": 43,
+        "Length": 8
+      }
+    ]
+  },
+  {
+    "Input": "à quelle heure vais-je voir le médecin le mardi 13 du 6e mois",
+    "Results": [
+      {
+        "Text": "mardi 13 du 6e",
+        "Type": "date",
+        "Start": 42,
+        "Length": 14
+      }
+    ]
+  },
+  {
     "Input": "Je suis retourne pour le 27e",
     "Results": [
       {
