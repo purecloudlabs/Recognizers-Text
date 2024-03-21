@@ -956,5 +956,65 @@
         "Type": "time"
       }
     ]
+  },
+  {
+    "Input": "الساعة الواحدة وسبع وعشرون دقيقة",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الساعة الواحدة وسبع وعشرون دقيقة",
+        "Start": 0,
+        "Length": 32,
+        "Type": "time"
+      }
+    ]
+  },
+  {
+    "Input": "ًًالساعة السابعة والربع صباحا",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "السابعة والربع صباحا",
+        "Start": 9,
+        "Length": 20,
+        "Type": "time"
+      }
+    ]
+  },
+  {
+    "Input": "الساعة التاسعة إلا ربع صباحا",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الساعة التاسعة إلا ربع صباحا",
+        "Start": 0,
+        "Length": 28,
+        "Type": "time"
+      }
+    ]
+  },
+  {
+    "Input": "الساعة الرابعة والنصف مساءً",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الساعة الرابعة والنصف مساءً",
+        "Start": 0,
+        "Length": 27,
+        "Type": "time"
+      }
+    ]
+  },
+  {
+    "Input": "هو ثمانية ناقص ثلاثة وعشرون",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "ثمانية ناقص ثلاثة وعشرون",
+        "Start": 3,
+        "Length": 24,
+        "Type": "time"
+      }
+    ]
   }
 ]

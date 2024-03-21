@@ -158,11 +158,13 @@ class ArabicTimeParserConfiguration(TimeParserConfiguration):
                 delta_min = delta_min[0] * -1
             else:
                 delta_min = delta_min[0]
-        else:
+        elif len(delta_min) > 1:
             if regex.search(self.to_token_regex, trimmed_prefix):
-                delta_min = max(delta_min) + (min(delta_min) * -1)
+                delta_min = (max(delta_min) + min(delta_min)) * -1
             else:
                 delta_min = max(delta_min) + min(delta_min)
+        else:
+            delta_min = 0
 
         adjust.minute += delta_min
 
