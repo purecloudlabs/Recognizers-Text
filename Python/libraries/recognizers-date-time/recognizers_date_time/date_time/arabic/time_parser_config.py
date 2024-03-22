@@ -106,65 +106,32 @@ class ArabicTimeParserConfiguration(TimeParserConfiguration):
         self._time_zone_parser = config.time_zone_parser
 
     def adjust_by_prefix(self, prefix: str, adjust: AdjustParams):
-        delta_min = []
+        delta_min = 0
         trimmed_prefix = prefix.strip().lower()
 
-        if re := regex.search(self.half_token_regex, trimmed_prefix):
-            delta_min.append(30)
-            trimmed_prefix = trimmed_prefix.replace(trimmed_prefix[re.start():re.end()], "")
-        elif re := regex.search(self.quarter_token_regex, trimmed_prefix):
-            delta_min.append(15)
-            trimmed_prefix = trimmed_prefix.replace(trimmed_prefix[re.start():re.end()], "")
-        elif re := regex.search(self.three_quarter_token_regex, trimmed_prefix):
-            delta_min.append(45)
-            trimmed_prefix = trimmed_prefix.replace(trimmed_prefix[re.start():re.end()], "")
+        if regex.search(self.half_token_regex, trimmed_prefix):
+            delta_min = 30
+        elif regex.search(self.quarter_token_regex, trimmed_prefix):
+            delta_min = 15
+        elif regex.search(self.three_quarter_token_regex, trimmed_prefix):
+            delta_min = 45
         else:
             match = regex.search(self.less_than_one_hour, trimmed_prefix)
             if match:
                 min_str = RegExpUtility.get_group(match, 'deltamin')
                 if min_str:
-                    delta_min.append(int(min_str))
-                    trimmed_prefix = trimmed_prefix.replace(trimmed_prefix[match.start():match.end()], "")
+                    delta_min = int(min_str)
                 else:
-                    if min_str := RegExpUtility.get_group(match, 'deltaminnum').lower():
-                        delta_min.append(self.numbers.get(min_str))
-                        trimmed_prefix = trimmed_prefix.replace(min_str, "")
+                    min_str = RegExpUtility.get_group(
+                        match, 'deltaminnum').lower()
+                    delta_min = self.numbers.get(min_str)
 
-        split_prefix = trimmed_prefix.strip().split(' ')
-        for term in split_prefix:
-            if regex.search(self.half_token_regex, term):
-                delta_min.append(30)
-            elif regex.search(self.quarter_token_regex, term):
-                delta_min.append(15)
-            elif regex.search(self.three_quarter_token_regex, term):
-                delta_min.append(45)
-            elif regex.search(self.to_half_token_regex, term):
-                delta_min.append(-30)
-            else:
-                match = regex.search(self.less_than_one_hour, term)
-                if match:
-                    min_str = RegExpUtility.get_group(match, 'deltamin')
-                    if min_str:
-                        delta_min.append(int(min_str))
-                    else:
-                        if min_str := RegExpUtility.get_group(match, 'deltaminnum').lower():
-                            delta_min.append(self.numbers.get(min_str))
-                            trimmed_prefix = trimmed_prefix.replace(min_str, "")
-
-        if len(delta_min) == 1:
-            if regex.search(self.for_half_token_regex, trimmed_prefix):
-                delta_min = -delta_min[0] - 30
-            elif regex.search(self.to_token_regex, trimmed_prefix):
-                delta_min = delta_min[0] * -1
-            else:
-                delta_min = delta_min[0]
-        elif len(delta_min) > 1:
-            if regex.search(self.to_token_regex, trimmed_prefix):
-                delta_min = (max(delta_min) + min(delta_min)) * -1
-            else:
-                delta_min = max(delta_min) + min(delta_min)
-        else:
-            delta_min = 0
+        if regex.search(self.to_half_token_regex, trimmed_prefix):
+            delta_min = delta_min - 30
+        elif regex.search(self.for_half_token_regex, trimmed_prefix):
+            delta_min = -delta_min - 30
+        elif regex.search(self.to_token_regex, trimmed_prefix):
+            delta_min = delta_min * -1
 
         adjust.minute += delta_min
 
