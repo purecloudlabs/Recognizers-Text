@@ -10,7 +10,7 @@ def read(fname):
 
 
 NAME = "recognizers-text-number-genesys"
-VERSION = "1.1.27a1"
+VERSION = "1.1.27a2"
 REQUIRES = ['recognizers-text-genesys', 'regex']
 
 setup(
