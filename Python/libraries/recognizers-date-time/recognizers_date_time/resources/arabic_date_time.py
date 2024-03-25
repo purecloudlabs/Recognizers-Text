@@ -155,7 +155,7 @@ class ArabicDateTime:
     LunchRegex = f'\\b(موعد الغذاء|وقت الغذاء)\\b'
     NightRegex = f'\\bمنتصف(\\s|-)الليل\\b'
     CommonDatePrefixRegex = f'^[\\.]'
-    LessThanOneHour = f'(?<lth>((ال)?ربع|ثلاثة أرباع|(ال)?نصف|الرُبع|دقيقة واحدة)|({BaseDateTime.DeltaMinuteRegex}(\\s(دقيقة|دقائق))?)|((و)?{DeltaMinuteNumRegex}(\\s(دقيقة|دقائق))?))'
+    LessThanOneHour = f'(?<lth>((ال)?ربع|ثلاثة أرباع|(ال)?نصف|الرُبع)|({BaseDateTime.DeltaMinuteRegex}(\\s(دقيقة|دقائق))?)|((و)?{DeltaMinuteNumRegex}(\\s(دقيقة|دقائق))?))'
     WrittenTimeRegex = f'(?<writtentime>((ال)?ساعة\\s)?{HourNumRegex}\\s+(و(\\s)?)?({MinuteNumRegex}|({MinuteNumRegex}\\s+(و(\\s)?)?(?<tens>عشرون|ثلاثون|أربعون|خمسون|عشرين|ثلاثين|أربعين|خمسين))))'
     TimePrefix = f'(?<prefix>(إلا|الا|حتى|و|قبل)?(\\s)?{LessThanOneHour})'
     TimeSuffix = f'(?<suffix>{AmRegex}|{PmRegex}|{OclockRegex})'
