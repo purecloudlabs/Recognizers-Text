@@ -1734,5 +1734,110 @@
         }
       }
     ]
+  },
+  {
+    "Input": "الساعة الواحدة وسبع وعشرون دقيقة",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الساعة الواحدة وسبع وعشرون دقيقة",
+        "Start": 0,
+        "Length": 32,
+        "Type": "time",
+        "Value": {
+          "Timex": "T01:27",
+          "FutureResolution": {
+            "time": "01:27:00"
+          },
+          "PastResolution": {
+            "time": "01:27:00"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "Input": "الساعة السابعة والربع صباحاً",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الساعة السابعة والربع صباحا",
+        "Start": 9,
+        "Length": 20,
+        "Type": "time",
+        "Value": {
+          "Timex": "T07:15",
+          "FutureResolution": {
+            "time": "07:15:00"
+          },
+          "PastResolution": {
+            "time": "07:15:00"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "Input": "الساعة التاسعة إلا ربع صباحا",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الساعة التاسعة إلا ربع صباحا",
+        "Start": 0,
+        "Length": 28,
+        "Type": "time",
+        "Value": {
+          "Timex": "T08:45",
+          "FutureResolution": {
+            "time": "08:45:00"
+          },
+          "PastResolution": {
+            "time": "08:45:00"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "Input": "الساعة الرابعة والنصف مساء",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الساعة الرابعة والنصف مساء",
+        "Start": 0,
+        "Length": 27,
+        "Type": "time",
+        "Value": {
+          "Timex": "T16:30",
+          "FutureResolution": {
+            "time": "16:30:00"
+          },
+          "PastResolution": {
+            "time": "16:30:00"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "Input": "الساعة الثامنة إلا ثلاث وعشرون دقيقة",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الساعة الثامنة إلا ثلاث وعشرون دقيقة",
+        "Start": 0,
+        "Length": 36,
+        "Type": "time",
+        "Value": {
+          "Timex": "T07:37",
+          "FutureResolution": {
+            "time": "07:37:00"
+          },
+          "PastResolution": {
+            "time": "07:37:00"
+          }
+        }
+      }
+    ]
   }
 ]
