@@ -289,32 +289,32 @@
     ]
   },
   {
-    "Input": "هل يمكنني الحصول على 5000 جنيه مصري",
+    "Input": "خمسمائة ريال سعودي",
     "Results": [
       {
-        "Text": "5000 جنيه مصري",
+        "Text": "خمسمائة ريال سعودي",
         "TypeName": "currency",
         "Resolution": {
-          "value": "5000",
-          "unit": "Egyptian pound"
+          "value": "500",
+          "unit": "Saudi riyal"
         },
-        "Start": 21,
-        "End": 34
+        "Start": 0,
+        "End": 17
       }
     ]
   },
   {
-    "Input": "أرغب في الحصول على 400 ريال سعودي",
+    "Input": "خمسمائة جنيه مصري",
     "Results": [
       {
-        "Text": "400 ريال سعودي",
+        "Text": "خمسمائة جنيه مصري",
         "TypeName": "currency",
         "Resolution": {
-          "value": "400",
-          "unit": "Saudi riyal"
+          "value": "500",
+          "unit": "Egyptian pound"
         },
-        "Start": 19,
-        "End": 32
+        "Start": 0,
+        "End": 16
       }
     ]
   }
