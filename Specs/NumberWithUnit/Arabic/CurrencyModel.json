@@ -287,5 +287,35 @@
         "End": 10
       }
     ]
+  },
+  {
+    "Input": "خمسمائة ريال سعودي",
+    "Results": [
+      {
+        "Text": "خمسمائة ريال سعودي",
+        "TypeName": "currency",
+        "Resolution": {
+          "value": "500",
+          "unit": "Saudi riyal"
+        },
+        "Start": 0,
+        "End": 17
+      }
+    ]
+  },
+  {
+    "Input": "خمسمائة جنيه مصري",
+    "Results": [
+      {
+        "Text": "خمسمائة جنيه مصري",
+        "TypeName": "currency",
+        "Resolution": {
+          "value": "500",
+          "unit": "Egyptian pound"
+        },
+        "Start": 0,
+        "End": 16
+      }
+    ]
   }
 ]
