@@ -180,7 +180,7 @@ class BasePercentageExtractor(Extractor):
                 if (i + 1) == len(source) or not matched[i + 1]:
                     start = last + 1
                     length = i - last
-                    substr = source[start:start + length].strip()
+                    substr = source[start:start + length]
                     value = ExtractResult()
                     value.start = start
                     value.length = length
