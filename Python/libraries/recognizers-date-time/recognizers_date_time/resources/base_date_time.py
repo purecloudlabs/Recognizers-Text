@@ -32,7 +32,7 @@ class BaseDateTime:
     BracketRegex = f'^\\s*[\\)\\]]|[\\[\\(]\\s*$'
     MinYearNum = '1500'
     MaxYearNum = '2100'
-    MaxTwoDigitYearFutureNum = '30'
+    MaxTwoDigitYearFutureNum = '40'
     MinTwoDigitYearPastNum = '40'
     DayOfMonthDictionary = dict([("01", 1),
                                  ("02", 2),
