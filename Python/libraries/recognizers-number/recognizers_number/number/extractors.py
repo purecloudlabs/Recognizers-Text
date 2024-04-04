@@ -63,7 +63,7 @@ class BaseNumberExtractor(Extractor):
                 if i + 1 == len(source) or not matched[i + 1]:
                     start = last + 1
                     length = i - last
-                    substr = source[start:start + length].strip()
+                    substr = source[start:start + length]
                     src_match = next((x for x in iter(match_source) if (
                         x.start() == start and (
                             x.end() - x.start()) == length)), None)

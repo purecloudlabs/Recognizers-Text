@@ -172,13 +172,13 @@
     "Input": "لقد فزت للتو بألفي دولار!",
     "Results": [
       {
-        "Text": " بألفي دولار",
+        "Text": "بألفي دولار",
         "TypeName": "currency",
         "Resolution": {
           "value": "2000",
           "unit": "Dollar"
         },
-        "Start": 12,
+        "Start": 13,
         "End": 23
       }
     ]
