@@ -75,7 +75,7 @@ class BaseNumberExtractor(Extractor):
                         if match is not None:
                             start = match.start()
                             length = length + match.end() - match.start()
-                            substr = source[start:start + length].strip()
+                            substr = source[start:start + length]
 
                     if src_match is not None:
                         value = ExtractResult()
