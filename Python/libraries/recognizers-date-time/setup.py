@@ -10,7 +10,7 @@ def read(fname):
 
 
 NAME = 'recognizers-text-date-time-genesys'
-VERSION = '1.1.29'
+VERSION = '1.1.30'
 REQUIRES = ['recognizers-text-genesys', 'recognizers-text-number-genesys',
             'recognizers-text-number-with-unit-genesys', 'regex', 'datedelta', 'python-dateutil']
 
