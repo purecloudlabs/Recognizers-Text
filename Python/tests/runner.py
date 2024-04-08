@@ -2,11 +2,16 @@
 #  Licensed under the MIT License.
 
 import glob
-import os
 import json
+import os
 import re
+
 import pytest
 from recognizers_text.culture import Culture
+from regex import regex
+
+regex._MAXCACHE = 100000
+regex._MAXREPCACHE = 100000
 
 
 def split_all(path):
