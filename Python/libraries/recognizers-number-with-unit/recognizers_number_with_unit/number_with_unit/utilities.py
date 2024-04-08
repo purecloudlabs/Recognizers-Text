@@ -2,6 +2,7 @@
 #  Licensed under the MIT License.
 
 from typing import Dict, List, Pattern
+
 from recognizers_text import ExtractResult, RegExpUtility
 
 
@@ -94,5 +95,3 @@ class CommonUtils:
                     res.append(er)
                 result = res
         return result
-
-

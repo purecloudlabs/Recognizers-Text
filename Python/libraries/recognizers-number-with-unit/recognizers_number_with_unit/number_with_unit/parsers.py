@@ -2,15 +2,17 @@
 #  Licensed under the MIT License.
 
 from abc import ABC, abstractmethod
-from typing import Dict, List, Optional
 from collections import namedtuple
+from typing import Dict, List, Optional
+
+from recognizers_number.culture import CultureInfo
+from recognizers_number_with_unit.resources.base_currency import BaseCurrency
+from recognizers_text.extractor import Extractor, ExtractResult
+from recognizers_text.parser import Parser, ParseResult
 
 from .constants import *
 from .utilities import DictionaryUtility
-from recognizers_text.extractor import Extractor, ExtractResult
-from recognizers_text.parser import Parser, ParseResult
-from recognizers_number.culture import CultureInfo
-from recognizers_number_with_unit.resources.base_currency import BaseCurrency
+
 
 UnitValue = namedtuple('UnitValue', ['number', 'unit'])
 CurrencyUnitValue = namedtuple('UnitValue', ['number', 'unit', 'iso_currency'])

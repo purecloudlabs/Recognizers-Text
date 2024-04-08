@@ -2,18 +2,20 @@
 #  Licensed under the MIT License.
 
 from typing import Dict, List, Pattern
-import regex
 
-from recognizers_text.culture import Culture
-from recognizers_text.extractor import Extractor, ExtractResult
-from recognizers_text.utilities import RegExpUtility
+import regex
 from recognizers_number.culture import CultureInfo
 from recognizers_number.number.chinese.extractors import ChineseNumberExtractor, ChineseNumberExtractorMode
 from recognizers_number_with_unit.number_with_unit.constants import Constants
-from recognizers_number_with_unit.number_with_unit.extractors import NumberWithUnitExtractorConfiguration, NumberWithUnitExtractor
-from recognizers_number_with_unit.resources.chinese_numeric_with_unit import ChineseNumericWithUnit
+from recognizers_number_with_unit.number_with_unit.extractors import (
+    NumberWithUnitExtractor, NumberWithUnitExtractorConfiguration,
+)
 from recognizers_number_with_unit.resources.base_units import BaseUnits
+from recognizers_number_with_unit.resources.chinese_numeric_with_unit import ChineseNumericWithUnit
+from recognizers_text.culture import Culture
+from recognizers_text.extractor import Extractor, ExtractResult
 from recognizers_text.matcher.match_result import MatchResult
+from recognizers_text.utilities import RegExpUtility
 
 
 # pylint: disable=abstract-method

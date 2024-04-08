@@ -1,15 +1,15 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
+from recognizers_number.culture import CultureInfo
+from recognizers_number.number.japanese.extractors import JapaneseNumberExtractor, JapaneseNumberExtractorMode
+from recognizers_number.number.japanese.parsers import JapaneseNumberParserConfiguration
+from recognizers_number.number.parser_factory import AgnosticNumberParserFactory, ParserType
+from recognizers_number_with_unit.number_with_unit.parsers import NumberWithUnitParserConfiguration
+from recognizers_number_with_unit.resources.japanese_numeric_with_unit import JapaneseNumericWithUnit
 from recognizers_text.culture import Culture
 from recognizers_text.extractor import Extractor
 from recognizers_text.parser import Parser
-from recognizers_number.culture import CultureInfo
-from recognizers_number.number.japanese.extractors import JapaneseNumberExtractor, JapaneseNumberExtractorMode
-from recognizers_number.number.parser_factory import AgnosticNumberParserFactory, ParserType
-from recognizers_number.number.japanese.parsers import JapaneseNumberParserConfiguration
-from recognizers_number_with_unit.number_with_unit.parsers import NumberWithUnitParserConfiguration
-from recognizers_number_with_unit.resources.japanese_numeric_with_unit import JapaneseNumericWithUnit
 
 
 class JapaneseNumberWithUnitParserConfiguration(NumberWithUnitParserConfiguration):
@@ -43,4 +43,3 @@ class JapaneseCurrencyParserConfiguration(JapaneseNumberWithUnitParserConfigurat
         self.add_dict_to_unit_map(JapaneseNumericWithUnit.CurrencyPrefixList)
         self.currency_name_to_iso_code_map = JapaneseNumericWithUnit.CurrencyNameToIsoCodeMap
         self.currency_fraction_code_list = JapaneseNumericWithUnit.FractionalUnitNameToCodeMap
-

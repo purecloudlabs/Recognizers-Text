@@ -1,15 +1,15 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from recognizers_text.culture import Culture
-from recognizers_text.extractor import Extractor
-from recognizers_text.parser import Parser
 from recognizers_number.culture import CultureInfo
-from recognizers_number.number.spanish.extractors import SpanishNumberExtractor, NumberMode
 from recognizers_number.number.parser_factory import AgnosticNumberParserFactory, ParserType
+from recognizers_number.number.spanish.extractors import NumberMode, SpanishNumberExtractor
 from recognizers_number.number.spanish.parsers import SpanishNumberParserConfiguration
 from recognizers_number_with_unit.number_with_unit.parsers import NumberWithUnitParserConfiguration
 from recognizers_number_with_unit.resources.spanish_numeric_with_unit import SpanishNumericWithUnit
+from recognizers_text.culture import Culture
+from recognizers_text.extractor import Extractor
+from recognizers_text.parser import Parser
 
 
 class SpanishNumberWithUnitParserConfiguration(NumberWithUnitParserConfiguration):
@@ -33,6 +33,7 @@ class SpanishNumberWithUnitParserConfiguration(NumberWithUnitParserConfiguration
             NumberMode.DEFAULT)
         self._internal_number_parser = AgnosticNumberParserFactory.get_parser(
             ParserType.NUMBER, SpanishNumberParserConfiguration(culture_info))
+
 
 class SpanishCurrencyParserConfiguration(SpanishNumberWithUnitParserConfiguration):
     def __init__(self, culture_info: CultureInfo = None):

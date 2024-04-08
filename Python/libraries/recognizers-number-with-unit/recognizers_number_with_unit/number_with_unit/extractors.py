@@ -2,20 +2,22 @@
 #  Licensed under the MIT License.
 
 from abc import ABC, abstractmethod
-from sys import prefix
-from typing import List, Dict, Set, Pattern, Match
-from copy import deepcopy
 from collections import namedtuple
+from copy import deepcopy
 from itertools import chain
+from sys import prefix
+from typing import Dict, List, Match, Pattern, Set
+
 import regex
-from .constants import *
-from recognizers_text.utilities import RegExpUtility
-from recognizers_text.extractor import Extractor, ExtractResult
 from recognizers_number.culture import CultureInfo
-from recognizers_text.matcher.string_matcher import StringMatcher
+from recognizers_text.extractor import Extractor, ExtractResult
+from recognizers_text.matcher.match_result import MatchResult
 from recognizers_text.matcher.match_strategy import MatchStrategy
 from recognizers_text.matcher.number_with_unit_tokenizer import NumberWithUnitTokenizer
-from recognizers_text.matcher.match_result import MatchResult
+from recognizers_text.matcher.string_matcher import StringMatcher
+from recognizers_text.utilities import RegExpUtility
+
+from .constants import *
 from .utilities import Token
 
 

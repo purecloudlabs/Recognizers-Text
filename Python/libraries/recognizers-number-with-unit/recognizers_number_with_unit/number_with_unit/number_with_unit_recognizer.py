@@ -1,33 +1,24 @@
 from enum import IntFlag
 from typing import List
+
+from recognizers_number.culture import CultureInfo
 from recognizers_text import Culture, Recognizer
 from recognizers_text.model import Model, ModelResult
-from recognizers_number.culture import CultureInfo
+
+from .arabic import ArabicCurrencyExtractorConfiguration, ArabicCurrencyParserConfiguration
+from .catalan import CatalanCurrencyExtractorConfiguration, CatalanCurrencyParserConfiguration
+from .chinese import ChineseCurrencyExtractorConfiguration, ChineseCurrencyParserConfiguration
+from .dutch import DutchCurrencyExtractorConfiguration, DutchCurrencyParserConfiguration
+from .english import EnglishCurrencyExtractorConfiguration, EnglishCurrencyParserConfiguration
+from .extractors import BaseMergedUnitExtractor, NumberWithUnitExtractor
+from .french import FrenchCurrencyExtractorConfiguration, FrenchCurrencyParserConfiguration
+from .german import GermanCurrencyExtractorConfiguration, GermanCurrencyParserConfiguration
+from .italian import ItalianCurrencyExtractorConfiguration, ItalianCurrencyParserConfiguration
+from .japanese import JapaneseCurrencyExtractorConfiguration, JapaneseCurrencyParserConfiguration
 from .models import CurrencyModel, ExtractorParserModel
-from .extractors import NumberWithUnitExtractor, BaseMergedUnitExtractor
-from .parsers import NumberWithUnitParser, BaseMergedUnitParser
-from .english.extractors import EnglishCurrencyExtractorConfiguration
-from .english.parsers import EnglishCurrencyParserConfiguration
-from .chinese.extractors import ChineseCurrencyExtractorConfiguration
-from .chinese.parsers import ChineseCurrencyParserConfiguration
-from .dutch.extractors import DutchCurrencyExtractorConfiguration
-from .dutch.parsers import DutchCurrencyParserConfiguration
-from .spanish.extractors import SpanishCurrencyExtractorConfiguration
-from .spanish.parsers import SpanishCurrencyParserConfiguration
-from .french.extractors import FrenchCurrencyExtractorConfiguration
-from .french.parsers import FrenchCurrencyParserConfiguration
-from .portuguese.extractors import PortugueseCurrencyExtractorConfiguration
-from .portuguese.parsers import PortugueseCurrencyParserConfiguration
-from .german.extractors import GermanCurrencyExtractorConfiguration
-from .german.parsers import GermanCurrencyParserConfiguration
-from .italian.extractors import ItalianCurrencyExtractorConfiguration
-from .italian.parsers import ItalianCurrencyParserConfiguration
-from .japanese.extractors import JapaneseCurrencyExtractorConfiguration
-from .japanese.parsers import JapaneseCurrencyParserConfiguration
-from .catalan.extractors import CatalanCurrencyExtractorConfiguration
-from .catalan.parsers import CatalanCurrencyParserConfiguration
-from .arabic.extractors import ArabicCurrencyExtractorConfiguration
-from .arabic.parsers import ArabicCurrencyParserConfiguration
+from .parsers import BaseMergedUnitParser, NumberWithUnitParser
+from .portuguese import PortugueseCurrencyExtractorConfiguration, PortugueseCurrencyParserConfiguration
+from .spanish import SpanishCurrencyExtractorConfiguration, SpanishCurrencyParserConfiguration
 
 
 class NumberWithUnitOptions(IntFlag):

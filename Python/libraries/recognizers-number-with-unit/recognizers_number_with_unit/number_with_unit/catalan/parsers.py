@@ -1,12 +1,12 @@
+from recognizers_number.culture import CultureInfo
+from recognizers_number.number.catalan.extractors import CatalanNumberExtractor, NumberMode
+from recognizers_number.number.catalan.parsers import CatalanNumberParserConfiguration
+from recognizers_number.number.parser_factory import AgnosticNumberParserFactory, ParserType
+from recognizers_number_with_unit.number_with_unit.parsers import NumberWithUnitParserConfiguration
+from recognizers_number_with_unit.resources.catalan_numeric_with_unit import CatalanNumericWithUnit
 from recognizers_text.culture import Culture
 from recognizers_text.extractor import Extractor
 from recognizers_text.parser import Parser
-from recognizers_number.culture import CultureInfo
-from recognizers_number.number.catalan.extractors import CatalanNumberExtractor, NumberMode
-from recognizers_number.number.parser_factory import AgnosticNumberParserFactory, ParserType
-from recognizers_number.number.catalan.parsers import CatalanNumberParserConfiguration
-from recognizers_number_with_unit.number_with_unit.parsers import NumberWithUnitParserConfiguration
-from recognizers_number_with_unit.resources.catalan_numeric_with_unit import CatalanNumericWithUnit
 
 
 class CatalanNumberWithUnitParserConfiguration(NumberWithUnitParserConfiguration):

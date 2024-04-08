@@ -4,11 +4,11 @@
 from abc import abstractmethod
 from typing import List
 
-from recognizers_text.model import Model, ModelResult
+from recognizers_number_with_unit.number_with_unit.parsers import CurrencyUnitValue, UnitValue
 from recognizers_text.extractor import Extractor
+from recognizers_text.model import Model, ModelResult
 from recognizers_text.parser import Parser
 from recognizers_text.utilities import QueryProcessor
-from recognizers_number_with_unit.number_with_unit.parsers import UnitValue, CurrencyUnitValue
 
 
 class ExtractorParserModel:

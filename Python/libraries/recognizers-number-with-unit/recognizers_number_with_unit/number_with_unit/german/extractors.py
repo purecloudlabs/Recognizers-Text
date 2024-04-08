@@ -1,15 +1,15 @@
 from typing import Dict, List, Pattern
 
+from recognizers_number.culture import CultureInfo
+from recognizers_number.number.german.extractors import GermanNumberExtractor
+from recognizers_number.number.models import NumberMode
+from recognizers_number_with_unit.number_with_unit.constants import Constants
+from recognizers_number_with_unit.number_with_unit.extractors import NumberWithUnitExtractorConfiguration
+from recognizers_number_with_unit.resources.base_units import BaseUnits
+from recognizers_number_with_unit.resources.german_numeric_with_unit import GermanNumericWithUnit
 from recognizers_text.culture import Culture
 from recognizers_text.extractor import Extractor
 from recognizers_text.utilities import RegExpUtility
-from recognizers_number.culture import CultureInfo
-from recognizers_number.number.models import NumberMode
-from recognizers_number.number.german.extractors import GermanNumberExtractor
-from recognizers_number_with_unit.number_with_unit.constants import Constants
-from recognizers_number_with_unit.number_with_unit.extractors import NumberWithUnitExtractorConfiguration
-from recognizers_number_with_unit.resources.german_numeric_with_unit import GermanNumericWithUnit
-from recognizers_number_with_unit.resources.base_units import BaseUnits
 
 
 # pylint: disable=abstract-method
