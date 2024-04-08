@@ -32,10 +32,6 @@ class PortugueseTimeParserConfiguration(TimeParserConfiguration):
     def utility_configuration(self) -> DateTimeUtilityConfiguration:
         return self._utility_configuration
 
-    @property
-    def time_zone_parser(self) -> DateTimeParser:
-        return self._time_zone_parser
-
     def __init__(self, config: BaseDateParserConfiguration):
         self._time_token_prefix: str = PortugueseDateTime.TimeTokenPrefix
         self._at_regex: Pattern = RegExpUtility.get_safe_reg_exp(
@@ -55,7 +51,6 @@ class PortugueseTimeParserConfiguration(TimeParserConfiguration):
             RegExpUtility.get_safe_reg_exp(PortugueseDateTime.ConnectNumRegex)
         ]
         self._numbers: Dict[str, int] = PortugueseDateTime.Numbers
-        self._time_zone_parser = config.time_zone_parser
         self._utility_configuration = config.utility_configuration
         self.less_than_one_hour = RegExpUtility.get_safe_reg_exp(
             PortugueseDateTime.LessThanOneHour)

@@ -536,9 +536,6 @@ class BaseCJKMergedParser(DateTimeParser):
             result = self.config.set_parser.parse(source, reference)
         elif source.type == Constants.SYS_DATETIME_DATETIMEALT:
             result = self.config.date_time_alt_parser.parse(source, reference)
-        elif source.type == Constants.SYS_DATETIME_TIMEZONE:
-            if self.config.options != 0 and DateTimeOptions.ENABLE_PREVIEW != 0:
-                result = self.config.time_zone_parser.parse(source, reference)
         else:
             return None
 

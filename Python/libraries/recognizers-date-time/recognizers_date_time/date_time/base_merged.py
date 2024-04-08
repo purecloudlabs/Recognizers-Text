@@ -23,7 +23,6 @@ from .base_duration import BaseDurationParser
 from .base_set import BaseSetParser
 from .utilities import Token, merge_all_tokens, RegExpUtility, DateTimeOptions, DateTimeFormatUtil, DateUtils,\
     MatchingUtil, RegExpUtility, TimexUtil
-from .datetime_zone_extractor import DateTimeZoneExtractor
 from .datetime_list_extractor import DateTimeListExtractor
 
 MatchedIndex = namedtuple('MatchedIndex', ['matched', 'index'])
@@ -79,11 +78,6 @@ class MergedExtractorConfiguration:
     @property
     @abstractmethod
     def holiday_extractor(self) -> DateTimeExtractor:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def time_zone_extractor(self) -> DateTimeZoneExtractor:
         raise NotImplementedError
 
     @property
@@ -233,10 +227,6 @@ class BaseMergedExtractor(DateTimeExtractor):
             result, self.config.set_extractor.extract(source, reference), source)
         result = self.add_to(
             result, self.config.holiday_extractor.extract(source, reference), source)
-
-        if (self.options & DateTimeOptions.ENABLE_PREVIEW) != 0:
-            self.add_to(result, self.config.time_zone_extractor.extract(source, reference), source)
-            result = self.config.time_zone_extractor.remove_ambiguous_time_zone(result)
 
         # this should be at the end since if need the extractor to determine the previous text contains time or not
         result = self.add_to(

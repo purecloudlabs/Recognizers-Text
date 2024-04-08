@@ -24,4 +24,3 @@ from .set_parser_config import *
 from .holiday_parser_config import *
 from .merged_parser_config import *
 from .parsers import *
-from .timezone_extractor_config import *

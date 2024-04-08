@@ -6,9 +6,7 @@ from typing import List, Pattern
 from recognizers_text.utilities import RegExpUtility
 from ...resources.english_date_time import EnglishDateTime
 from ..base_time import TimeExtractorConfiguration
-from ..base_timezone import BaseTimeZoneExtractor
 from ..extractors import DateTimeExtractor
-from .timezone_extractor_config import EnglishTimeZoneExtractorConfiguration
 
 
 class EnglishTimeExtractorConfiguration(TimeExtractorConfiguration):
@@ -27,10 +25,6 @@ class EnglishTimeExtractorConfiguration(TimeExtractorConfiguration):
     @property
     def time_before_after_regex(self) -> Pattern:
         return self._time_before_after_regex
-
-    @property
-    def time_zone_extractor(self) -> DateTimeExtractor:
-        return self._time_zone_extractor
 
     @property
     def desc_regex(self) -> Pattern:
@@ -173,5 +167,3 @@ class EnglishTimeExtractorConfiguration(TimeExtractorConfiguration):
             EnglishDateTime.IshRegex)
         self._time_before_after_regex: Pattern = RegExpUtility.get_safe_reg_exp(
             EnglishDateTime.TimeBeforeAfterRegex)
-        self._time_zone_extractor = BaseTimeZoneExtractor(
-            EnglishTimeZoneExtractorConfiguration())

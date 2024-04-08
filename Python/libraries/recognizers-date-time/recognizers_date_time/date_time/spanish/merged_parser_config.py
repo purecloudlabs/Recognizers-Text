@@ -67,10 +67,6 @@ class SpanishMergedParserConfiguration(SpanishCommonDateTimeParserConfiguration,
         return self._time_parser
 
     @property
-    def time_zone_parser(self) -> DateTimeParser:
-        return self._time_zone_parser
-
-    @property
     def date_time_parser(self) -> BaseDateTimeParser:
         return self._date_time_parser
 
@@ -96,7 +92,6 @@ class SpanishMergedParserConfiguration(SpanishCommonDateTimeParserConfiguration,
 
     def __init__(self, config):
         SpanishCommonDateTimeParserConfiguration.__init__(self)
-        self._time_zone_parser = config.time_zone_parser
         self._equal_regex = RegExpUtility.get_safe_reg_exp(BaseDateTime.EqualRegex)
         self._suffix_after = RegExpUtility.get_safe_reg_exp(
             SpanishDateTime.SuffixAfterRegex)

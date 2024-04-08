@@ -18,7 +18,6 @@ from ..base_dateperiod import BaseDatePeriodExtractor, BaseDatePeriodParser
 from ..base_timeperiod import BaseTimePeriodExtractor, BaseTimePeriodParser
 from ..base_datetime import BaseDateTimeExtractor, BaseDateTimeParser
 from ..base_datetimeperiod import BaseDateTimePeriodExtractor, BaseDateTimePeriodParser
-from ..base_timezone import BaseTimeZoneParser
 from .base_configs import SpanishDateTimeUtilityConfiguration
 from .date_extractor_config import SpanishDateExtractorConfiguration
 from .date_parser_config import SpanishDateParserConfiguration
@@ -37,10 +36,6 @@ from .datetimeperiod_parser_config import SpanishDateTimePeriodParserConfigurati
 
 
 class SpanishCommonDateTimeParserConfiguration(BaseDateParserConfiguration):
-    @property
-    def time_zone_parser(self) -> DateTimeParser:
-        return self._time_zone_parser
-
     @property
     def check_both_before_after(self) -> Pattern:
         return self._check_both_before_after
@@ -161,7 +156,6 @@ class SpanishCommonDateTimeParserConfiguration(BaseDateParserConfiguration):
         BaseDateParserConfiguration.__init__(self)
 
         self._utility_configuration = SpanishDateTimeUtilityConfiguration()
-        self._time_zone_parser = BaseTimeZoneParser()
         self._unit_map = SpanishDateTime.UnitMap
         self._unit_value_map = SpanishDateTime.UnitValueMap
         self._season_map = SpanishDateTime.SeasonMap

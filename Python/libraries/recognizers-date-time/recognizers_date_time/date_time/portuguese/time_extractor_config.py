@@ -6,16 +6,10 @@ from typing import List, Pattern
 from recognizers_text.utilities import RegExpUtility
 from ...resources.portuguese_date_time import PortugueseDateTime
 from ..base_time import TimeExtractorConfiguration
-from ..base_timezone import BaseTimeZoneExtractor
 from ..extractors import DateTimeExtractor
-from .timezone_extractor_config import PortugueseTimeZoneExtractorConfiguration
 
 
 class PortugueseTimeExtractorConfiguration(TimeExtractorConfiguration):
-    @property
-    def time_zone_extractor(self):
-        return self._time_zone_extractor
-
     @property
     def options(self):
         return self._options
@@ -120,5 +114,3 @@ class PortugueseTimeExtractorConfiguration(TimeExtractorConfiguration):
         self._ish_regex: Pattern = None
         self._time_before_after_regex: Pattern = RegExpUtility.get_safe_reg_exp(
             PortugueseDateTime.TimeBeforeAfterRegex)
-        self._time_zone_extractor = BaseTimeZoneExtractor(
-            PortugueseTimeZoneExtractorConfiguration())

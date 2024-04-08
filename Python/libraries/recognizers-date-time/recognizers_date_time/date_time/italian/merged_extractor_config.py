@@ -36,10 +36,6 @@ class ItalianMergedExtractorConfiguration(MergedExtractorConfiguration):
         return self._check_both_before_after
 
     @property
-    def time_zone_extractor(self):
-        return self._time_zone_extractor
-
-    @property
     def datetime_alt_extractor(self):
         return self._datetime_alt_extractor
 
@@ -207,5 +203,4 @@ class ItalianMergedExtractorConfiguration(MergedExtractorConfiguration):
         self._fail_fast_regex = None
         self._term_filter_regexes = None
         self._datetime_alt_extractor = None
-        self._time_zone_extractor = None
         self._ambiguity_filters_dict = DefinitionLoader.load_ambiguity_filters(ItalianDateTime.AmbiguityFiltersDict)

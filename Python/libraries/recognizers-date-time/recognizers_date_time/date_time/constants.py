@@ -14,7 +14,6 @@ class Constants:
     SYS_DATETIME_DATETIMEPERIOD: str = 'datetimerange'
     SYS_DATETIME_DURATION: str = 'duration'
     SYS_DATETIME_SET: str = 'set'
-    SYS_DATETIME_TIMEZONE: str = 'timezone'
     SYS_DATETIME_DATETIMEALT: str = 'datetimealt'
 
     SYS_DATETIME_MERGED: str = 'datetimeV2'
@@ -317,14 +316,6 @@ class Constants:
 
     AGO_LABEL = "ago"
     LATER_LABEL = "later"
-
-    # These are some particular values for timezone recognition
-    INVALID_OFFSET_VALUE = -10000
-    UTC_OFFSET_MINS_KEY = "utcOffsetMins"
-    POSITIVE_SIGN = 1
-    NEGATIVE_SIGN = -1
-    RESOLVE_TIMEZONE = "resolveTimeZone"
-    TIMEZONE_TEXT = "timezoneText"
 
 
 class TimeTypeConstants:

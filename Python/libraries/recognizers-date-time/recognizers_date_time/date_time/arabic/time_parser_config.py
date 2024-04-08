@@ -72,10 +72,6 @@ class ArabicTimeParserConfiguration(TimeParserConfiguration):
     def utility_configuration(self) -> DateTimeUtilityConfiguration:
         return self._utility_configuration
 
-    @property
-    def time_zone_parser(self) -> DateTimeParser:
-        return self._time_zone_parser
-
     def __init__(self, config: BaseDateParserConfiguration):
 
         self._time_token_prefix = ArabicDateTime.TimeTokenPrefix
@@ -103,7 +99,6 @@ class ArabicTimeParserConfiguration(TimeParserConfiguration):
 
         self._utility_configuration = config.utility_configuration
         self._numbers: Dict[str, int] = config.numbers
-        self._time_zone_parser = config.time_zone_parser
 
     def adjust_by_prefix(self, prefix: str, adjust: AdjustParams):
         delta_min = 0

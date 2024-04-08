@@ -36,10 +36,6 @@ class SpanishMergedExtractorConfiguration(MergedExtractorConfiguration):
         return self._check_both_before_after
 
     @property
-    def time_zone_extractor(self):
-        return self._time_zone_extractor
-
-    @property
     def datetime_alt_extractor(self):
         return self._datetime_alt_extractor
 
@@ -161,7 +157,6 @@ class SpanishMergedExtractorConfiguration(MergedExtractorConfiguration):
         self._fail_fast_regex = None
         self._term_filter_regexes = None
         self._datetime_alt_extractor = None
-        self._time_zone_extractor = None
         self._before_regex = RegExpUtility.get_safe_reg_exp(
             SpanishDateTime.BeforeRegex)
         self._after_regex = RegExpUtility.get_safe_reg_exp(

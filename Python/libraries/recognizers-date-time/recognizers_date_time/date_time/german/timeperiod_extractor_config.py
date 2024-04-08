@@ -10,10 +10,8 @@ from ...resources.german_date_time import GermanDateTime
 from ..extractors import DateTimeExtractor
 from ..base_timeperiod import TimePeriodExtractorConfiguration, MatchedIndex
 from ..base_time import BaseTimeExtractor
-from ..base_timezone import BaseTimeZoneExtractor
 from .time_extractor_config import GermanTimeExtractorConfiguration
 from .base_configs import GermanDateTimeUtilityConfiguration
-from .timezone_extractor_config import GermanTimeZoneExtractorConfiguration
 
 
 class GermanTimePeriodExtractorConfiguration(TimePeriodExtractorConfiguration):
@@ -53,10 +51,6 @@ class GermanTimePeriodExtractorConfiguration(TimePeriodExtractorConfiguration):
     def pure_number_regex(self) -> List[Pattern]:
         return self._pure_number_regex
 
-    @property
-    def time_zone_extractor(self) -> DateTimeExtractor:
-        return self._time_zone_extractor
-
     def __init__(self):
         super().__init__()
         self._check_both_before_after = GermanDateTime.CheckBothBeforeAfter
@@ -87,8 +81,6 @@ class GermanTimePeriodExtractorConfiguration(TimePeriodExtractorConfiguration):
             GermanDateTime.BeforeRegex)
         self._token_before_date = GermanDateTime.TokenBeforeDate
         self._pure_number_regex = [GermanDateTime.PureNumFromTo, GermanDateTime.PureNumFromTo]
-        self._time_zone_extractor = BaseTimeZoneExtractor(
-            GermanTimeZoneExtractorConfiguration())
 
     def get_from_token_index(self, source: str) -> MatchedIndex:
         match = self.from_regex.search(source)

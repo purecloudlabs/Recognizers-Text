@@ -23,10 +23,6 @@ from .holiday_extractor_config import ChineseHolidayExtractorConfiguration
 class ChineseMergedExtractorConfiguration(MergedExtractorConfiguration):
 
     @property
-    def time_zone_extractor(self) -> any:
-        return self._time_zone_extractor
-
-    @property
     def datetime_alt_extractor(self) -> any:
         return self._datetime_alt_extractor
 
@@ -194,4 +190,3 @@ class ChineseMergedExtractorConfiguration(MergedExtractorConfiguration):
         self._around_regex = None
         self._term_filter_regexes = None
         self._datetime_alt_extractor = None
-        self._time_zone_extractor = None

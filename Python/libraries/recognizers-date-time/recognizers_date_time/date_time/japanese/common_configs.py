@@ -1,6 +1,5 @@
 from typing import Dict
 
-from recognizers_date_time.date_time.base_timezone import BaseTimeZoneParser
 from recognizers_date_time.date_time.utilities.datetime_utility_config import DateTimeUtilityConfiguration
 from recognizers_number import BaseNumberExtractor
 
@@ -138,10 +137,6 @@ class JapaneseCommonDateTimeParserConfiguration(CJKCommonDateTimeParserConfigura
         return None
 
     @property
-    def time_zone_parser(self) -> DateTimeParser:
-        return self._time_zone_parser
-
-    @property
     def month_of_year(self) -> Dict[str, int]:
         return self._month_of_year
 
@@ -233,4 +228,3 @@ class JapaneseCommonDateTimeParserConfiguration(CJKCommonDateTimeParserConfigura
         self._set_parser = BaseCJKSetParser(JapaneseSetParserConfiguration(self))
 
         self._season_map = JapaneseDateTime.ParserConfigurationSeasonMap
-        self._time_zone_parser = BaseTimeZoneParser()

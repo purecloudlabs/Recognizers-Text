@@ -303,11 +303,6 @@ class CJKDateParserConfiguration(CJKCommonDateTimeParserConfiguration):
 
     @property
     @abstractmethod
-    def time_zone_parser(self) -> DateTimeParser:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
     def month_of_year(self) -> Dict[str, int]:
         raise NotImplementedError
 

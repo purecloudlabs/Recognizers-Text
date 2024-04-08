@@ -11,7 +11,6 @@ from recognizers_date_time.date_time.base_date import BaseDateExtractor, BaseDat
 from recognizers_date_time.date_time.base_time import BaseTimeExtractor
 from recognizers_date_time.date_time.base_dateperiod import BaseDatePeriodExtractor, BaseDatePeriodParser
 from recognizers_date_time.date_time.base_timeperiod import BaseTimePeriodExtractor, BaseTimePeriodParser
-from recognizers_date_time.date_time.base_timezone import BaseTimeZoneParser
 from recognizers_date_time.date_time.arabic.base_configs import ArabicDateTimeUtilityConfiguration
 from recognizers_date_time.date_time.arabic.date_extractor_config import ArabicDateExtractorConfiguration
 from recognizers_date_time.date_time.arabic.time_extractor_config import ArabicTimeExtractorConfiguration
@@ -35,9 +34,6 @@ from recognizers_date_time.date_time.arabic.duration_parser_config import Arabic
 
 
 class ArabicCommonDateTimeParserConfiguration(BaseDateParserConfiguration):
-    @property
-    def time_zone_parser(self) -> DateTimeParser:
-        return self._time_zone_parser
 
     @property
     def check_both_before_after(self) -> Pattern:
@@ -181,7 +177,6 @@ class ArabicCommonDateTimeParserConfiguration(BaseDateParserConfiguration):
         self._check_both_before_after = ArabicDateTime.CheckBothBeforeAfter
 
         self._unit_map = ArabicDateTime.UnitMap
-        self._time_zone_parser = BaseTimeZoneParser()
         self._utility_configuration = ArabicDateTimeUtilityConfiguration()
 
         self._cardinal_extractor = ArabicCardinalExtractor()

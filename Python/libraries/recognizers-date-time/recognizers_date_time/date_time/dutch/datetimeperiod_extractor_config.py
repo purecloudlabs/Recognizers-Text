@@ -13,12 +13,10 @@ from ..base_time import BaseTimeExtractor
 from ..base_duration import BaseDurationExtractor
 from ..base_timeperiod import BaseTimePeriodExtractor
 from ..base_datetime import BaseDateTimeExtractor
-from ..base_timezone import BaseTimeZoneExtractor
 from .date_extractor_config import DutchDateExtractorConfiguration
 from .time_extractor_config import DutchTimeExtractorConfiguration
 from .duration_extractor_config import DutchDurationExtractorConfiguration
 from .timeperiod_extractor_config import DutchTimePeriodExtractorConfiguration
-from .timezone_extractor_config import DutchTimeZoneExtractorConfiguration
 from .datetime_extractor_config import DutchDateTimeExtractorConfiguration
 
 
@@ -54,10 +52,6 @@ class DutchDateTimePeriodExtractorConfiguration(DateTimePeriodExtractorConfigura
     @property
     def time_period_extractor(self) -> DateTimeExtractor:
         return self._time_period_extractor
-
-    @property
-    def time_zone_extractor(self) -> DateTimeExtractor:
-        return self._time_zone_extractor
 
     @property
     def simple_cases_regexes(self) -> List[Pattern]:
@@ -218,8 +212,6 @@ class DutchDateTimePeriodExtractorConfiguration(DateTimePeriodExtractorConfigura
             DutchDurationExtractorConfiguration())
         self._time_period_extractor = BaseTimePeriodExtractor(
             DutchTimePeriodExtractorConfiguration())
-        self._time_zone_extractor = BaseTimeZoneExtractor(
-            DutchTimeZoneExtractorConfiguration())
         self._within_next_prefix_regex = RegExpUtility.get_safe_reg_exp(
             DutchDateTime.WithinNextPrefixRegex
         )
