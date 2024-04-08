@@ -1390,21 +1390,6 @@
     "NotSupported": "dotnet, javascript, python, java",
     "Results": [
       {
-        "Text": "Chaque semaine",
-        "Start": 0,
-        "End": 14,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1W",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      },
-      {
         "Text": "cette semaine",
         "Start": 34,
         "End": 47,
@@ -1426,21 +1411,6 @@
     "Input": "Les notes sont partagées dans les notes de séance du LT jointes chaque semaine et les points forts sont partagés dans la section \"aperçu des données\". Pour le thème spécial de cette semaine, l’équipe de données a écrit un aperçu de certaines des nouvelles fonctionnalités que prend en charge le tableau de bord et comment il est construit. Si vous n’avez pas vu le tableau de bord, ce sera peut-être une grande opportunité d’apprendre quelque chose de nouveau. Je voudrais demander à Cortana de programmer 45 minutes en novembre.Je voudrais aussi partager l’information que Skype intégration avec notre Rea OWA",
     "NotSupported": "dotnet, javascript, python, java",
     "Results": [
-      {
-        "Text": "chaque semaine",
-        "Start": 64,
-        "End": 78,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1W",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      },
       {
         "Text": "cette semaine",
         "Start": 176,
@@ -8103,21 +8073,6 @@
     "NotSupported": "dotnet, javascript, python, java",
     "Results": [
       {
-        "Text": "tous les mardis",
-        "Start": 36,
-        "End": 51,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "XXXX-WXX-2",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      },
-      {
         "Text": "jeudis de 19 heures à 21 heures",
         "Start": 55,
         "End": 86,
@@ -10897,48 +10852,6 @@
     ]
   },
   {
-    "Input": "On se voit une fois par semaine",
-    "NotSupported": "dotnet, javascript, python, java",
-    "Results": [
-      {
-        "Text": "une fois par semaine",
-        "Start": 11,
-        "End": 31,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1W",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "Je pars en vacances une fois par an",
-    "NotSupported": "dotnet, javascript, python, java",
-    "Results": [
-      {
-        "Text": "une fois par an",
-        "Start": 20,
-        "End": 35,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1Y",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
     "Input": "La requête est ABC-12345-A1B2C3. Organisons un appel de 30 minutes cette semaine. J’ai hâte de reprendre la parole cette semaine.",
     "NotSupported": "dotnet, javascript, python, java",
     "Results": [
@@ -11287,27 +11200,6 @@
               "type": "daterange",
               "start": "2019-09-20",
               "end": "2019-09-22"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "Faisons une réunion trimestrielle.",
-    "NotSupported": "dotnet, javascript, python, java",
-    "Results": [
-      {
-        "Text": "trimestrielle",
-        "Start": 20,
-        "End": 33,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P3M",
-              "type": "set",
-              "value": "not resolved"
             }
           ]
         }
@@ -11747,27 +11639,6 @@
     ]
   },
   {
-    "Input": "Jeudi à 17h30, l'heure de Beijing",
-    "NotSupported": "dotnet, javascript, python, java",
-    "Results": [
-      {
-        "Text": "17h30, l'heure de Beijing",
-        "Start": 8,
-        "End": 33,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "XXXX-WXX-4T17:30",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
     "Input": "Course - 15 heures - cette semaine",
     "NotSupported": "dotnet, javascript, python, java",
     "Results": [
@@ -11930,27 +11801,6 @@
               "timex": "PT1H",
               "type": "duration",
               "value": "3600"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "Ajoutez un rendez-vous avec le patron à mon agenda - les mardis à 9 heures",
-    "NotSupported": "dotnet, javascript, python, java",
-    "Results": [
-      {
-        "Text": "mardis à 9 heures",
-        "Start": 57,
-        "End": 74,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "XXXX-WXX-2T09",
-              "type": "set",
-              "value": "not resolved"
             }
           ]
         }

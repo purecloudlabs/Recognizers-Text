@@ -13,7 +13,6 @@ class Constants:
     SYS_DATETIME_TIMEPERIOD: str = 'timerange'
     SYS_DATETIME_DATETIMEPERIOD: str = 'datetimerange'
     SYS_DATETIME_DURATION: str = 'duration'
-    SYS_DATETIME_SET: str = 'set'
     SYS_DATETIME_DATETIMEALT: str = 'datetimealt'
 
     SYS_DATETIME_MERGED: str = 'datetimeV2'

@@ -619,190 +619,6 @@
     ]
   },
   {
-    "Input": "Je vais partir hebdomadaire",
-    "Context": {
-      "ReferenceDateTime": "2016-11-07T00:00:00"
-    },
-    "Results": [
-      {
-        "Text": "hebdomadaire",
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1W",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        },
-        "Start": 15,
-        "End": 26
-      }
-    ]
-  },
-  {
-    "Input": "Je vais partir tous les jours",
-    "Context": {
-      "ReferenceDateTime": "2016-11-07T00:00:00"
-    },
-    "Results": [
-      {
-        "Text": "tous les jours",
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1D",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        },
-        "Start": 15,
-        "End": 28
-      }
-    ]
-  },
-  {
-    "Input": "Je vais partir annuellement",
-    "Context": {
-      "ReferenceDateTime": "2016-11-07T00:00:00"
-    },
-    "Results": [
-      {
-        "Text": "annuellement",
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1Y",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        },
-        "Start": 15,
-        "End": 26
-      }
-    ]
-  },
-  {
-    "Input": "Je vais partir chaque deux jours",
-    "Context": {
-      "ReferenceDateTime": "2016-11-07T00:00:00"
-    },
-    "Results": [
-      {
-        "Text": "chaque deux jours",
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P2D",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        },
-        "Start": 15,
-        "End": 31
-      }
-    ]
-  },
-  {
-    "Input": "Je vais partir toutes les trois semaines",
-    "Context": {
-      "ReferenceDateTime": "2016-11-07T00:00:00"
-    },
-    "Results": [
-      {
-        "Text": "toutes les trois semaines",
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P3W",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        },
-        "Start": 15,
-        "End": 39
-      }
-    ]
-  },
-  {
-    "Input": "Je vais partir chaque lundi",
-    "Context": {
-      "ReferenceDateTime": "2016-11-07T00:00:00"
-    },
-    "Results": [
-      {
-        "Text": "chaque lundi",
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "XXXX-WXX-1",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        },
-        "Start": 15,
-        "End": 26
-      }
-    ]
-  },
-  {
-    "Input": "Je vais partir 4pm chaque lundi",
-    "Context": {
-      "ReferenceDateTime": "2016-11-07T00:00:00"
-    },
-    "Results": [
-      {
-        "Text": "4pm chaque lundi",
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "XXXX-WXX-1T16",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        },
-        "Start": 15,
-        "End": 30
-      }
-    ]
-  },
-  {
-    "Input": "Je vais partir 16 heures chaque lundi",
-    "Context": {
-      "ReferenceDateTime": "2016-11-07T00:00:00"
-    },
-    "Results": [
-      {
-        "Text": "16 heures chaque lundi",
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "XXXX-WXX-1T16",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        },
-        "Start": 15,
-        "End": 36
-      }
-    ]
-  },
-  {
     "Input": "Je reviendrai Oct/2",
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
@@ -1998,54 +1814,6 @@
     ]
   },
   {
-    "Input": "Je vais partir a 15 heures tous les jours",
-    "Context": {
-      "ReferenceDateTime": "2019-08-12T00:00:00"
-    },
-    "NotSupported": "javascript, java, python",
-    "Results": [
-      {
-        "Text": "15 heures tous les jours",
-        "Start": 17,
-        "End": 40,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "T15",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "Je vais partir à 15 tous les jours",
-    "Context": {
-      "ReferenceDateTime": "2019-08-12T00:00:00"
-    },
-    "NotSupported": "javascript, java, python",
-    "Results": [
-      {
-        "Text": "15 tous les jours",
-        "Start": 17,
-        "End": 33,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1D",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
     "Input": "Dix heures mercredi matin",
     "Context": {
       "ReferenceDateTime": "2020-01-01T00:00:00"
@@ -2101,54 +1869,6 @@
               "type": "datetimerange",
               "start": "2020-01-22 08:00:00",
               "end": "2020-01-22 12:00:00"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "Je vais partir à 15 heures tous les jours",
-    "Context": {
-      "ReferenceDateTime": "2019-08-12T00:00:00"
-    },
-    "NotSupported": "javascript, java",
-    "Results": [
-      {
-        "Text": "15 heures tous les jours",
-        "Start": 17,
-        "End": 40,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "T15",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "Je vais partir a 15 tous les jours",
-    "Context": {
-      "ReferenceDateTime": "2019-08-12T00:00:00"
-    },
-    "NotSupported": "javascript, java, python",
-    "Results": [
-      {
-        "Text": "15 tous les jours",
-        "Start": 17,
-        "End": 33,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1D",
-              "type": "set",
-              "value": "not resolved"
             }
           ]
         }
@@ -4841,174 +4561,6 @@
     ]
   },
   {
-    "Input": "Je partirai chaque semaine",
-    "NotSupported": "dotnet, javascript, python, java",
-    "Results": [
-      {
-        "Text": "chaque semaine",
-        "Start": 12,
-        "End": 26,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1W",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "Je partirai tous les jours",
-    "NotSupported": "dotnet, javascript, python, java",
-    "Results": [
-      {
-        "Text": "tous les jours",
-        "Start": 12,
-        "End": 26,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1D",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "Je partirai annuellement",
-    "NotSupported": "dotnet, javascript, python, java",
-    "Results": [
-      {
-        "Text": "annuellement",
-        "Start": 12,
-        "End": 24,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1Y",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "Je partirai tous les deux jours",
-    "NotSupported": "dotnet, javascript, python, java",
-    "Results": [
-      {
-        "Text": "tous les deux jours",
-        "Start": 12,
-        "End": 31,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P2D",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "Je partirai toutes les trois semaines",
-    "NotSupported": "dotnet, javascript, python, java",
-    "Results": [
-      {
-        "Text": "toutes les trois semaines",
-        "Start": 12,
-        "End": 37,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P3W",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "Je partirai tous les jours à 15h",
-    "NotSupported": "dotnet, javascript, python, java",
-    "Results": [
-      {
-        "Text": "tous les jours à 15h",
-        "Start": 12,
-        "End": 32,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "T15",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "Je partirai tous les lundis",
-    "NotSupported": "dotnet, javascript, python, java",
-    "Results": [
-      {
-        "Text": "tous les lundis",
-        "Start": 12,
-        "End": 27,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "XXXX-WXX-1",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "Je partirai chaque lundi à 16h",
-    "NotSupported": "dotnet, javascript, python, java",
-    "Results": [
-      {
-        "Text": "chaque lundi à 16h",
-        "Start": 12,
-        "End": 30,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "XXXX-WXX-1T16",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
     "Input": "Je retournerai à 7:56:30 pm",
     "NotSupported": "dotnet, javascript, python, java",
     "Results": [
@@ -6241,21 +5793,6 @@
     "NotSupported": "dotnet, javascript, python, java",
     "Results": [
       {
-        "Text": "Chaque semaine",
-        "Start": 0,
-        "End": 14,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1W",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      },
-      {
         "Text": "cette semaine",
         "Start": 30,
         "End": 43,
@@ -6277,21 +5814,6 @@
     "Input": "Les notes sont distribuées dans les notes de la session de travail LT jointes chaque semaine et les points importants sont partagés dans la section des données. Pour le sujet spécial de cette semaine, l'équipe chargée des données a rédigé une synthèse de certaines des nouveaux caractéristiques du tableau de bord et de la façon dont il est construit. Si vous n'avez pas vu le tableau de bord, c'est peut-être une bonne occasion d'apprendre quelque chose de nouveau. Je voudrais demander à Cortana de planifier 45 minutes en novembre. J'aimerais également vous annoncer que l'intégration de Skype avec notre logiciel OWA Rea",
     "NotSupported": "dotnet, javascript, python, java",
     "Results": [
-      {
-        "Text": "chaque semaine",
-        "Start": 78,
-        "End": 92,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1W",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      },
       {
         "Text": "cette semaine",
         "Start": 186,
@@ -13039,21 +12561,6 @@
     "NotSupported": "dotnet, javascript, python, java",
     "Results": [
       {
-        "Text": "tous les mardis",
-        "Start": 36,
-        "End": 51,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "XXXX-WXX-2",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      },
-      {
         "Text": "jeudis de 19h00 à 21h00",
         "Start": 55,
         "End": 78,
@@ -16480,48 +15987,6 @@
     ]
   },
   {
-    "Input": "Rencontrons-nous une fois par semaine",
-    "NotSupported": "dotnet, javascript, python, java",
-    "Results": [
-      {
-        "Text": "une fois par semaine",
-        "Start": 17,
-        "End": 37,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1W",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "Je pars en vacances une fois par an",
-    "NotSupported": "dotnet, javascript, python, java",
-    "Results": [
-      {
-        "Text": "une fois par an",
-        "Start": 20,
-        "End": 35,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1Y",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
     "Input": "La demande est ABC-12345-A1B2C3 ce tour. Organisons un appel de 30 minutes cette semaine. Au plaisir de reprendre la parole cette semaine.",
     "NotSupported": "dotnet, javascript, python, java",
     "Results": [
@@ -16942,48 +16407,6 @@
     ]
   },
   {
-    "Input": "Tous les deux vendredis",
-    "NotSupported": "dotnet, javascript, python, java",
-    "Results": [
-      {
-        "Text": "Tous les deux vendredis",
-        "Start": 0,
-        "End": 23,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "XXXX-WXX-5",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "Ayons une réunion tous les quatre mois.",
-    "NotSupported": "dotnet, javascript, python, java",
-    "Results": [
-      {
-        "Text": "tous les quatre mois",
-        "Start": 18,
-        "End": 38,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P3M",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
     "Input": "trimestre1 et trimestre2 pourraient être n'importe quelle année",
     "NotSupported": "dotnet, javascript, python, java",
     "Results": [
@@ -17027,21 +16450,6 @@
               "type": "daterange",
               "start": "2020-04-01",
               "end": "2020-07-01"
-            }
-          ]
-        }
-      },
-      {
-        "Text": "n'importe quelle année",
-        "Start": 41,
-        "End": 63,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1Y",
-              "type": "set",
-              "value": "not resolved"
             }
           ]
         }
@@ -18178,27 +17586,6 @@
     ]
   },
   {
-    "Input": "Les jeudis à 17h30 heure de Pékin",
-    "NotSupported": "dotnet, javascript, python, java",
-    "Results": [
-      {
-        "Text": "jeudis à 17h30",
-        "Start": 4,
-        "End": 18,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "XXXX-WXX-4T17:30",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
     "Input": "Juneteenth, également connu sous le nom de Freedom Day et Jubilee Day, remonte à 1865 et est célébré le 19 juin de chaque année.",
     "NotSupported": "dotnet, javascript, python, java",
     "Results": [
@@ -18297,21 +17684,6 @@
             }
           ]
         }
-      },
-      {
-        "Text": "chaque année",
-        "Start": 115,
-        "End": 127,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1Y",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
       }
     ]
   },
@@ -18379,48 +17751,6 @@
     ]
   },
   {
-    "Input": "Veuillez planifier semestriellement une réunion",
-    "NotSupported": "dotnet, javascript, python, java",
-    "Results": [
-      {
-        "Text": "semestriellement",
-        "Start": 19,
-        "End": 35,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P0.5Y",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "Veuillez planifier une réunion semestrielle",
-    "NotSupported": "dotnet, javascript, python, java",
-    "Results": [
-      {
-        "Text": "semestrielle",
-        "Start": 31,
-        "End": 43,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P0.5Y",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
     "Input": "Veuillez planifier une réunion avec tout le monde la semaine prochaine",
     "NotSupported": "dotnet, javascript, python, java",
     "Results": [
@@ -18443,27 +17773,6 @@
     ]
   },
   {
-    "Input": "Assurons-nous que cela arrive tous les journées de travail",
-    "NotSupported": "dotnet, javascript, python, java",
-    "Results": [
-      {
-        "Text": "tous les journées de travail",
-        "Start": 30,
-        "End": 58,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1D",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
     "Input": "pourquoi ne pas prendre des vacances pour le reste de la semaine ?",
     "NotSupported": "dotnet, javascript, python, java",
     "Results": [
@@ -18479,48 +17788,6 @@
               "type": "daterange",
               "start": "2020-06-12",
               "end": "2020-06-14"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "il est presque temps pour la revue annuelle",
-    "NotSupported": "dotnet, javascript, python, java",
-    "Results": [
-      {
-        "Text": "annuelle",
-        "Start": 35,
-        "End": 43,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1Y",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "les lois et règlements exigent la présentation des états financiers chaque trimestre",
-    "NotSupported": "dotnet, javascript, python, java",
-    "Results": [
-      {
-        "Text": "chaque trimestre",
-        "Start": 68,
-        "End": 84,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P3M",
-              "type": "set",
-              "value": "not resolved"
             }
           ]
         }
@@ -18558,21 +17825,6 @@
     "NotSupported": "dotnet, javascript, python, java",
     "Results": [
       {
-        "Text": "bimensuel",
-        "Start": 14,
-        "End": 23,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P2M",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      },
-      {
         "Text": "été",
         "Start": 42,
         "End": 45,
@@ -18582,48 +17834,6 @@
             {
               "timex": "SU",
               "type": "daterange",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "est-ce que tu fais cela tous les week-ends ?",
-    "NotSupported": "dotnet, javascript, python, java",
-    "Results": [
-      {
-        "Text": "tous les week-ends",
-        "Start": 24,
-        "End": 42,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "XXXX-WXX-WE",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "tous les deux week-ends",
-    "NotSupported": "dotnet, javascript, python, java",
-    "Results": [
-      {
-        "Text": "tous les deux week-ends",
-        "Start": 0,
-        "End": 23,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P2WE",
-              "type": "set",
               "value": "not resolved"
             }
           ]
@@ -18922,27 +18132,6 @@
               "timex": "PT1H",
               "type": "duration",
               "value": "3600"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "Ajouter la réunion avec le patron à mon calendrier-les mardis à 9 h",
-    "NotSupported": "dotnet, javascript, python, java",
-    "Results": [
-      {
-        "Text": "mardis à 9 h",
-        "Start": 55,
-        "End": 67,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "XXXX-WXX-2T09",
-              "type": "set",
-              "value": "not resolved"
             }
           ]
         }
@@ -19667,48 +18856,6 @@
     ]
   },
   {
-    "Input": "dîner avec maman n'importe quel week-end.",
-    "NotSupported": "dotnet, javascript, python, java",
-    "Results": [
-      {
-        "Text": "n'importe quel week-en",
-        "Start": 17,
-        "End": 39,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1WE",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "dîner avec maman tous les week-ends.",
-    "NotSupported": "dotnet, javascript, python, java",
-    "Results": [
-      {
-        "Text": "tous les week-ends",
-        "Start": 17,
-        "End": 35,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1WE",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
     "Input": "Je serai absent le prochaini soir de 7h à 9h",
     "NotSupported": "dotnet, javascript, python, java",
     "Results": [
@@ -20372,21 +19519,6 @@
     "NotSupported": "dotnet, javascript, python, java",
     "Results": [
       {
-        "Text": "tous les jours",
-        "Start": 12,
-        "End": 26,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1D",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      },
-      {
         "Text": "19h13",
         "Start": 29,
         "End": 34,
@@ -20397,27 +19529,6 @@
               "timex": "T19:13",
               "type": "time",
               "value": "19:13:00"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "Je partirai tous les soirs à 19h13",
-    "NotSupported": "dotnet, javascript, python, java",
-    "Results": [
-      {
-        "Text": "tous les soirs à 19h13",
-        "Start": 12,
-        "End": 34,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "T19:13",
-              "type": "set",
-              "value": "not resolved"
             }
           ]
         }
@@ -20500,27 +19611,6 @@
               "timex": "T18",
               "type": "time",
               "value": "18:00:00"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "dîner avec maman les week-ends.",
-    "NotSupported": "dotnet, javascript, python, java",
-    "Results": [
-      {
-        "Text": "week-ends",
-        "Start": 21,
-        "End": 30,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1WE",
-              "type": "set",
-              "value": "not resolved"
             }
           ]
         }

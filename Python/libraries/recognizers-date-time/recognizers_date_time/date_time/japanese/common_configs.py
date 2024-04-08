@@ -10,23 +10,21 @@ from recognizers_number.number.cjk_parsers import CJKNumberParser
 
 from recognizers_date_time.resources.japanese_date_time import JapaneseDateTime
 from recognizers_date_time.date_time.CJK import CJKCommonDateTimeParserConfiguration, BaseCJKDateTimeExtractor, \
-    BaseCJKDateTimePeriodExtractor, BaseCJKDurationExtractor, BaseCJKHolidayExtractor, BaseCJKSetExtractor, \
+    BaseCJKDateTimePeriodExtractor, BaseCJKDurationExtractor, BaseCJKHolidayExtractor, \
     BaseCJKDateTimeParser, BaseCJKDateTimePeriodParser, BaseCJKDurationParser, BaseCJKHolidayParser, \
-    BaseCJKSetParser, BaseCJKTimeExtractor, BaseCJKTimePeriodExtractor, BaseCJKTimeParser, \
+    BaseCJKTimeExtractor, BaseCJKTimePeriodExtractor, BaseCJKTimeParser, \
     BaseCJKTimePeriodParser, BaseCJKDateParser, BaseCJKDateExtractor, BaseCJKDatePeriodExtractor, \
     BaseCJKDatePeriodParser
 from recognizers_date_time.date_time.japanese.datetime_extractor_config import JapaneseDateTimeExtractorConfiguration
 from recognizers_date_time.date_time.japanese.datetimeperiod_extractor_config import \
     JapaneseDateTimePeriodExtractorConfiguration
 from recognizers_date_time.date_time.japanese.duration_extractor_config import JapaneseDurationExtractorConfiguration
-from recognizers_date_time.date_time.japanese.set_extractor_config import JapaneseSetExtractorConfiguration
 from recognizers_date_time.date_time.japanese.holiday_extractor_config import JapaneseHolidayExtractorConfiguration
 
 from recognizers_date_time.date_time.japanese.datetime_parser_config import JapaneseDateTimeParserConfiguration
 from recognizers_date_time.date_time.japanese.datetimeperiod_parser_config import \
     JapaneseDateTimePeriodParserConfiguration
 from recognizers_date_time.date_time.japanese.duration_parser_config import JapaneseDurationParserConfiguration
-from recognizers_date_time.date_time.japanese.set_parser_config import JapaneseSetParserConfiguration
 from recognizers_date_time.date_time.japanese.holiday_parser_config import JapaneseHolidayParserConfiguration
 from recognizers_date_time.date_time.japanese.time_extractor_config import JapaneseTimeExtractorConfiguration
 from recognizers_date_time.date_time.japanese.timeperiod_extractor_config import \
@@ -89,10 +87,6 @@ class JapaneseCommonDateTimeParserConfiguration(CJKCommonDateTimeParserConfigura
         return self._date_time_period_extractor
 
     @property
-    def set_extractor(self) -> DateTimeExtractor:
-        return self._set_extractor
-
-    @property
     def holiday_extractor(self) -> DateTimeExtractor:
         return self._holiday_extractor
 
@@ -123,10 +117,6 @@ class JapaneseCommonDateTimeParserConfiguration(CJKCommonDateTimeParserConfigura
     @property
     def date_time_period_parser(self) -> DateTimeParser:
         return self._date_time_period_parser
-
-    @property
-    def set_parser(self) -> DateTimeParser:
-        return self._set_parser
 
     @property
     def holiday_parser(self) -> DateTimeParser:
@@ -215,7 +205,6 @@ class JapaneseCommonDateTimeParserConfiguration(CJKCommonDateTimeParserConfigura
         self._date_time_period_extractor = BaseCJKDateTimePeriodExtractor(
             JapaneseDateTimePeriodExtractorConfiguration())
         self._holiday_extractor = BaseCJKHolidayExtractor(JapaneseHolidayExtractorConfiguration())
-        self._set_extractor = BaseCJKSetExtractor(JapaneseSetExtractorConfiguration())
 
         self._duration_parser = BaseCJKDurationParser(JapaneseDurationParserConfiguration(self))
         self._date_parser = BaseCJKDateParser(JapaneseDateParserConfiguration(self))
@@ -225,6 +214,5 @@ class JapaneseCommonDateTimeParserConfiguration(CJKCommonDateTimeParserConfigura
         self._time_period_parser = BaseCJKTimePeriodParser(JapaneseTimePeriodParserConfiguration(self))
         self._date_time_period_parser = BaseCJKDateTimePeriodParser(JapaneseDateTimePeriodParserConfiguration(self))
         self._holiday_parser = BaseCJKHolidayParser(JapaneseHolidayParserConfiguration(self))
-        self._set_parser = BaseCJKSetParser(JapaneseSetParserConfiguration(self))
 
         self._season_map = JapaneseDateTime.ParserConfigurationSeasonMap

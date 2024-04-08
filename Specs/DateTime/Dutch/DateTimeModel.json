@@ -1378,198 +1378,6 @@
     ]
   },
   {
-    "Input": "Ik vertrek wekelijks",
-    "Context": {
-      "ReferenceDateTime": "2016-11-07T00:00:00"
-    },
-    "NotSupportedByDesign": "javascript,java",
-    "Results": [
-      {
-        "Text": "wekelijks",
-        "Start": 11,
-        "End": 19,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1W",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "Ik vertrek elke dag",
-    "Context": {
-      "ReferenceDateTime": "2016-11-07T00:00:00"
-    },
-    "NotSupportedByDesign": "javascript,python,java",
-    "Results": [
-      {
-        "Text": "elke dag",
-        "Start": 11,
-        "End": 18,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1D",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "Ik vertrek jaarlijks",
-    "Context": {
-      "ReferenceDateTime": "2016-11-07T00:00:00"
-    },
-    "NotSupportedByDesign": "javascript,java",
-    "Results": [
-      {
-        "Text": "jaarlijks",
-        "Start": 11,
-        "End": 19,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1Y",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "Ik vertrek elke twee dagen",
-    "Context": {
-      "ReferenceDateTime": "2016-11-07T00:00:00"
-    },
-    "NotSupportedByDesign": "javascript,java",
-    "Results": [
-      {
-        "Text": "elke twee dagen",
-        "Start": 11,
-        "End": 25,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P2D",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "Ik vertrek elke drie weken",
-    "Context": {
-      "ReferenceDateTime": "2016-11-07T00:00:00"
-    },
-    "NotSupportedByDesign": "javascript,java",
-    "Results": [
-      {
-        "Text": "elke drie weken",
-        "Start": 11,
-        "End": 25,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P3W",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "Ik vertrek elke dag 15.00",
-    "Context": {
-      "ReferenceDateTime": "2016-11-07T00:00:00"
-    },
-    "NotSupportedByDesign": "javascript,python,java",
-    "Results": [
-      {
-        "Text": "elke dag 15.00",
-        "Start": 11,
-        "End": 24,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "T15:00",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "Ik vertrek elke maandag",
-    "Context": {
-      "ReferenceDateTime": "2016-11-07T00:00:00"
-    },
-    "NotSupportedByDesign": "javascript,java",
-    "Results": [
-      {
-        "Text": "elke maandag",
-        "Start": 11,
-        "End": 22,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "XXXX-WXX-1",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "Ik vertrek elke maandag om 16.00",
-    "Context": {
-      "ReferenceDateTime": "2016-11-07T00:00:00"
-    },
-    "NotSupportedByDesign": "javascript,java",
-    "Results": [
-      {
-        "Text": "elke maandag om 16.00",
-        "Start": 11,
-        "End": 31,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "XXXX-WXX-1T16:00",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
     "Input": "Ik ben 19:56:30 terug",
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
@@ -2895,46 +2703,6 @@
               "timex": "P1D",
               "type": "duration",
               "value": "86400"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "Elke week en een ander ding deze week",
-    "Context": {
-      "ReferenceDateTime": "2018-05-20T00:00:00"
-    },
-    "NotSupportedByDesign": "javascript,java",
-    "Results": [
-      {
-        "Text": "elke week",
-        "Start": 0,
-        "End": 8,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1W",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      },
-      {
-        "Text": "deze week",
-        "Start": 28,
-        "End": 36,
-        "TypeName": "datetimeV2.daterange",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "2018-W20",
-              "type": "daterange",
-              "start": "2018-05-14",
-              "end": "2018-05-21"
             }
           ]
         }
@@ -9069,52 +8837,6 @@
     ]
   },
   {
-    "Input": "boek mijn tijd in voor zwemmen elke dinsdag en donderdag 19:00 - 21:00",
-    "Context": {
-      "ReferenceDateTime": "2019-03-01T00:00:00"
-    },
-    "NotSupportedByDesign": "javascript,python,java",
-    "Results": [
-      {
-        "Text": "elke dinsdag",
-        "Start": 31,
-        "End": 42,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "XXXX-WXX-2",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      },
-      {
-        "Text": "donderdag 19:00 - 21:00",
-        "Start": 47,
-        "End": 69,
-        "TypeName": "datetimeV2.datetimerange",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "(XXXX-WXX-4T19:00,XXXX-WXX-4T21:00,PT2H)",
-              "type": "datetimerange",
-              "start": "2019-02-28 19:00:00",
-              "end": "2019-02-28 21:00:00"
-            },
-            {
-              "timex": "(XXXX-WXX-4T19:00,XXXX-WXX-4T21:00,PT2H)",
-              "type": "datetimerange",
-              "start": "2019-03-07 19:00:00",
-              "end": "2019-03-07 21:00:00"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
     "Input": "Is dit een geldige datum? 12-2015",
     "Context": {
       "ReferenceDateTime": "2019-02-27T00:00:00"
@@ -9990,17 +9712,21 @@
     "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
-        "Text": "elke maandag",
-        "Type": "set",
-        "Start": 7,
+        "Text": "maandag",
+        "Start": 12,
         "End": 18,
-        "TypeName": "datetimeV2.set",
+        "TypeName": "datetimeV2.date",
         "Resolution": {
           "values": [
             {
               "timex": "XXXX-WXX-1",
-              "type": "set",
-              "value": "not resolved"
+              "type": "date",
+              "value": "2020-08-10"
+            },
+            {
+              "timex": "XXXX-WXX-1",
+              "type": "date",
+              "value": "2020-08-17"
             }
           ]
         }
@@ -14371,54 +14097,6 @@
     ]
   },
   {
-    "Input": "Laten we eenmaal per week afspreken",
-    "Context": {
-      "ReferenceDateTime": "2016-11-07T00:00:00"
-    },
-    "NotSupportedByDesign": "java, javascript",
-    "Results": [
-      {
-        "Text": "eenmaal per week",
-        "Start": 9,
-        "End": 24,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1W",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "Ik ga eenmaal per jaar op vakantie",
-    "Context": {
-      "ReferenceDateTime": "2016-11-07T00:00:00"
-    },
-    "NotSupportedByDesign": "java, javascript",
-    "Results": [
-      {
-        "Text": "eenmaal per jaar",
-        "Start": 6,
-        "End": 21,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1Y",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
     "Input": "Het verzoek is ABC-12345-A1B2C3 deze ronde. Laten we een belafspraak van 30 minuten regelen deze week. Kijk ernaar uit om elkaar deze week weer te spreken.",
     "Context": {
       "ReferenceDateTime": "2019-09-09T00:00:00"
@@ -14903,54 +14581,6 @@
     ]
   },
   {
-    "Input": "Om de week vrijdag",
-    "Context": {
-      "ReferenceDateTime": "2019-11-25T17:00:00"
-    },
-    "NotSupportedByDesign": "java, javascript",
-    "Results": [
-      {
-        "Text": "om de week vrijdag",
-        "Start": 0,
-        "End": 17,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "XXXX-WXX-5",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "Laten we een driemaandelijkse meeting hebben",
-    "Context": {
-      "ReferenceDateTime": "2016-11-07T00:00:00"
-    },
-    "NotSupportedByDesign": "java, javascript",
-    "Results": [
-      {
-        "Text": "driemaandelijkse",
-        "Start": 13,
-        "End": 28,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P3M",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
     "Input": "Q1 en Q2 zouden enig jaar kunnen zijn",
     "Context": {
       "ReferenceDateTime": "2019-11-07T00:00:00"
@@ -14998,21 +14628,6 @@
               "type": "daterange",
               "start": "2020-04-01",
               "end": "2020-07-01"
-            }
-          ]
-        }
-      },
-      {
-        "Text": "enig jaar",
-        "Start": 16,
-        "End": 24,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1Y",
-              "type": "set",
-              "value": "not resolved"
             }
           ]
         }
@@ -16307,31 +15922,6 @@
     ]
   },
   {
-    "Input": "Donderdagen om 17.30 Beijing-tijd",
-    "Context": {
-      "ReferenceDateTime": "2020-06-12T00:00:00"
-    },
-    "NotSupported": "dotnet",
-    "NotSupportedByDesign": "java, javascript, python",
-    "Results": [
-      {
-        "Text": "donderdagen om 17.30",
-        "Start": 0,
-        "End": 19,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "XXXX-WXX-4T17:30",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
     "Input": "Juneteenth, wat ook bekendstaat als Vrijheidsdag en Jubilee Day, dateert terug tot 1865 en valt elk jaar op 19 juni",
     "Context": {
       "ReferenceDateTime": "2020-06-12T00:00:00"
@@ -16410,21 +16000,6 @@
               "type": "daterange",
               "start": "1865-01-01",
               "end": "1866-01-01"
-            }
-          ]
-        }
-      },
-      {
-        "Text": "elk jaar",
-        "Start": 96,
-        "End": 103,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1Y",
-              "type": "set",
-              "value": "not resolved"
             }
           ]
         }
@@ -16521,103 +16096,6 @@
     ]
   },
   {
-    "Input": "Plan alsjeblieft een halfjaarlijkse meeting in",
-    "Context": {
-      "ReferenceDateTime": "2020-06-12T00:00:00"
-    },
-    "NotSupportedByDesign": "java, javascript",
-    "Results": [
-      {
-        "Text": "halfjaarlijkse",
-        "Start": 21,
-        "End": 34,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P0.5Y",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "Plan alsjeblieft een meeting halfjaarlijks in",
-    "Context": {
-      "ReferenceDateTime": "2020-06-12T00:00:00"
-    },
-    "NotSupportedByDesign": "java, javascript",
-    "Results": [
-      {
-        "Text": "halfjaarlijks",
-        "Start": 29,
-        "End": 41,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P0.5Y",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "Plan alsjeblieft een meeting met iedereen volgende week",
-    "Context": {
-      "ReferenceDateTime": "2020-06-12T00:00:00"
-    },
-    "NotSupportedByDesign": "java, javascript",
-    "Results": [
-      {
-        "Text": "volgende week",
-        "Start": 42,
-        "End": 54,
-        "TypeName": "datetimeV2.daterange",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "2020-W25",
-              "type": "daterange",
-              "start": "2020-06-15",
-              "end": "2020-06-22"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "Laten we ervoor zorgen dat dat elke weekdag gebeurt.",
-    "Context": {
-      "ReferenceDateTime": "2020-06-12T00:00:00"
-    },
-    "NotSupportedByDesign": "java, javascript",
-    "Results": [
-      {
-        "Text": "elke weekdag",
-        "Start": 31,
-        "End": 42,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1D",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
     "Input": "waarom neem je niet de rest van de week vrij?",
     "Context": {
       "ReferenceDateTime": "2020-06-12T00:00:00"
@@ -16636,55 +16114,6 @@
               "type": "daterange",
               "start": "2020-06-12",
               "end": "2020-06-14"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "het is bijna tijd voor het jaarlijks overzicht",
-    "Context": {
-      "ReferenceDateTime": "2020-06-12T00:00:00"
-    },
-    "NotSupportedByDesign": "java, javascript",
-    "Results": [
-      {
-        "Text": "jaarlijks",
-        "Start": 27,
-        "End": 35,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1Y",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "wetten en voorschriften vereisen elk kwartaal rapportage over financiën ",
-    "Context": {
-      "ReferenceDateTime": "2020-06-12T00:00:00"
-    },
-    "NotSupported": "dotnet",
-    "NotSupportedByDesign": "java, javascript, python",
-    "Results": [
-      {
-        "Text": "elk kartaal",
-        "Start": -1,
-        "End": 9,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P3M",
-              "type": "set",
-              "value": "not resolved"
             }
           ]
         }
@@ -16729,21 +16158,6 @@
     "NotSupportedByDesign": "java, javascript, python",
     "Results": [
       {
-        "Text": "tweemaandelijkse",
-        "Start": 3,
-        "End": 18,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P2M",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      },
-      {
         "Text": "",
         "Start": 18,
         "End": 17,
@@ -16753,54 +16167,6 @@
             {
               "timex": "SU",
               "type": "daterange",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "Doe je dat elk weekend?",
-    "Context": {
-      "ReferenceDateTime": "2020-06-12T00:00:00"
-    },
-    "NotSupportedByDesign": "java, javascript",
-    "Results": [
-      {
-        "Text": "elk weekend",
-        "Start": 11,
-        "End": 21,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "XXXX-WXX-WE",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "elke twee weekenden",
-    "Context": {
-      "ReferenceDateTime": "2020-06-12T00:00:00"
-    },
-    "NotSupportedByDesign": "java, javascript, python",
-    "Results": [
-      {
-        "Text": "elke twee weekenden",
-        "Start": 0,
-        "End": 18,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P2WE",
-              "type": "set",
               "value": "not resolved"
             }
           ]
@@ -17125,31 +16491,6 @@
               "timex": "PT1H",
               "type": "duration",
               "value": "3600"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "Voeg meeting met baas toe aan mijn agenda - v",
-    "Context": {
-      "ReferenceDateTime": "2020-06-16T12:00:00"
-    },
-    "NotSupported": "dotnet",
-    "NotSupportedByDesign": "java, javascript, python",
-    "Results": [
-      {
-        "Text": "vandaag",
-        "Start": -1,
-        "End": 5,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "XXXX-WXX-2T09",
-              "type": "set",
-              "value": "not resolved"
             }
           ]
         }
@@ -18004,56 +17345,6 @@
     ]
   },
   {
-    "Input": "avondeten met mam welk weekend dan ook",
-    "Context": {
-      "ReferenceDateTime": "2016-11-11T00:00:00"
-    },
-    "NotSupported": "dotnet",
-    "NotSupportedByDesign": "java, javascript, python",
-    "Results": [
-      {
-        "Text": "welk weekend dan ook",
-        "Start": 18,
-        "End": 37,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1WE",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "avondeten met mam alle weekenden",
-    "Context": {
-      "ReferenceDateTime": "2016-11-11T00:00:00"
-    },
-    "NotSupported": "dotnet",
-    "NotSupportedByDesign": "java, javascript, python",
-    "Results": [
-      {
-        "Text": "alle weekenden",
-        "Start": 18,
-        "End": 31,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1WE",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
     "Input": "Ik zal de komende avond van 7 tot 9 wegzijn",
     "Context": {
       "ReferenceDateTime": "2018-06-01T16:12:00"
@@ -18808,21 +18099,6 @@
     "NotSupportedByDesign": "java, javascript, python",
     "Results": [
       {
-        "Text": "elke dag",
-        "Start": 7,
-        "End": 14,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1D",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      },
-      {
         "Text": "19.13",
         "Start": 19,
         "End": 23,
@@ -18833,30 +18109,6 @@
               "timex": "T19:13",
               "type": "time",
               "value": "19:13:00"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "Ik zal elke avond om 19.13 vertrekken",
-    "Context": {
-      "ReferenceDateTime": "2016-11-07T00:00:00"
-    },
-    "NotSupportedByDesign": "java, javascript",
-    "Results": [
-      {
-        "Text": "elke avond om 19.13",
-        "Start": 7,
-        "End": 25,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "T19:13",
-              "type": "set",
-              "value": "not resolved"
             }
           ]
         }
@@ -18946,31 +18198,6 @@
               "timex": "T18:00",
               "type": "time",
               "value": "18:00:00"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "avondeten met mam weekenden",
-    "Context": {
-      "ReferenceDateTime": "2016-11-11T00:00:00"
-    },
-    "NotSupported": "dotnet",
-    "NotSupportedByDesign": "java, javascript, python",
-    "Results": [
-      {
-        "Text": "weekenden",
-        "Start": 18,
-        "End": 26,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1WE",
-              "type": "set",
-              "value": "not resolved"
             }
           ]
         }
@@ -20226,30 +19453,6 @@
               "timex": "2019-08-06",
               "type": "date",
               "value": "2019-08-06"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "Plan een halfjaarlijkse vergadering in",
-    "Context": {
-      "ReferenceDateTime": "2020-06-12T00:00:00"
-    },
-    "NotSupportedByDesign": "java, javascript",
-    "Results": [
-      {
-        "Text": "halfjaarlijkse",
-        "Start": 9,
-        "End": 22,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P0.5Y",
-              "type": "set",
-              "value": "not resolved"
             }
           ]
         }

@@ -20,7 +20,6 @@ from .base_dateperiod import BaseDatePeriodParser
 from .base_timeperiod import BaseTimePeriodParser
 from .base_datetimeperiod import BaseDateTimePeriodParser
 from .base_duration import BaseDurationParser
-from .base_set import BaseSetParser
 from .utilities import Token, merge_all_tokens, RegExpUtility, DateTimeOptions, DateTimeFormatUtil, DateUtils,\
     MatchingUtil, RegExpUtility, TimexUtil
 from .datetime_list_extractor import DateTimeListExtractor
@@ -68,11 +67,6 @@ class MergedExtractorConfiguration:
     @property
     @abstractmethod
     def duration_extractor(self) -> DateTimeExtractor:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def set_extractor(self) -> DateTimeExtractor:
         raise NotImplementedError
 
     @property
@@ -223,8 +217,6 @@ class BaseMergedExtractor(DateTimeExtractor):
             result, self.config.date_time_period_extractor.extract(source, reference), source)
         result = self.add_to(
             result, self.config.date_time_extractor.extract(source, reference), source)
-        result = self.add_to(
-            result, self.config.set_extractor.extract(source, reference), source)
         result = self.add_to(
             result, self.config.holiday_extractor.extract(source, reference), source)
 
@@ -557,11 +549,6 @@ class MergedParserConfiguration(ABC):
     def duration_parser(self) -> BaseDurationParser:
         raise NotImplementedError
 
-    @property
-    @abstractmethod
-    def set_parser(self) -> BaseSetParser:
-        raise NotImplementedError
-
 
 class BaseMergedParser(DateTimeParser):
     @property
@@ -780,8 +767,6 @@ class BaseMergedParser(DateTimeParser):
                 source, reference)
         elif source.type == Constants.SYS_DATETIME_DURATION:
             result = self.config.duration_parser.parse(source, reference)
-        elif source.type == Constants.SYS_DATETIME_SET:
-            result = self.config.set_parser.parse(source, reference)
         else:
             return None
 
@@ -824,8 +809,6 @@ class BaseMergedParser(DateTimeParser):
             return self.config.date_time_period_parser.parse(extractor_result, reference)
         elif extractor_type == Constants.SYS_DATETIME_DURATION:
             return self.config.duration_parser.parse(extractor_result, reference)
-        elif extractor_type == Constants.SYS_DATETIME_SET:
-            return self.config.set_parser.parse(extractor_result, reference)
         else:
             return None
 

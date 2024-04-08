@@ -708,21 +708,6 @@
     "NotSupportedByDesign": "javascript,python,java",
     "Results": [
       {
-        "Text": "her hafta",
-        "Type": "datetimeV2.set",
-        "Value": {
-          "values": [
-            {
-              "timex": "P1W",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        },
-        "Start": 0,
-        "Length": 9
-      },
-      {
         "Text": "sabah 8",
         "Type": "datetimeV2.time",
         "Value": {
@@ -746,21 +731,6 @@
     },
     "NotSupportedByDesign": "javascript,python,java",
     "Results": [
-      {
-        "Text": "Her ayın",
-        "Type": "datetimeV2.set",
-        "Value": {
-          "values": [
-            {
-              "timex": "P1M",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        },
-        "Start": 0,
-        "Length": 8
-      },
       {
         "Text": "ikinci Cumartesi",
         "Type": "datetimeV2.date",

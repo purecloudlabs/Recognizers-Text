@@ -5,7 +5,6 @@ from typing import Pattern
 
 from recognizers_text.utilities import RegExpUtility
 from .holiday_parser_config import SpanishHolidayParserConfiguration
-from .set_parser_config import SpanishSetParserConfiguration
 from .dateperiod_parser_config import SpanishDatePeriodParserConfiguration
 from .timeperiod_parser_config import SpanishTimePeriodParserConfiguration
 from .datetimeperiod_parser_config import SpanishDateTimePeriodParserConfiguration
@@ -19,7 +18,6 @@ from ..base_dateperiod import BaseDatePeriodParser
 from ..base_timeperiod import BaseTimePeriodParser
 from ..base_datetimeperiod import BaseDateTimePeriodParser
 from ..base_duration import BaseDurationParser
-from ..base_set import BaseSetParser
 from ..base_merged import MergedParserConfiguration
 from ...resources.spanish_date_time import SpanishDateTime, BaseDateTime
 from ..parsers import DateTimeParser
@@ -86,10 +84,6 @@ class SpanishMergedParserConfiguration(SpanishCommonDateTimeParserConfiguration,
     def duration_parser(self) -> BaseDurationParser:
         return self._duration_parser
 
-    @property
-    def set_parser(self) -> BaseSetParser:
-        return self._set_parser
-
     def __init__(self, config):
         SpanishCommonDateTimeParserConfiguration.__init__(self)
         self._equal_regex = RegExpUtility.get_safe_reg_exp(BaseDateTime.EqualRegex)
@@ -112,6 +106,5 @@ class SpanishMergedParserConfiguration(SpanishCommonDateTimeParserConfiguration,
             SpanishTimePeriodParserConfiguration(self))
         self._date_time_period_parser = SpanishDateTimePeriodParser(
             SpanishDateTimePeriodParserConfiguration(self))
-        self._set_parser = BaseSetParser(SpanishSetParserConfiguration(config))
         self._holiday_parser = BaseHolidayParser(
             SpanishHolidayParserConfiguration(config))

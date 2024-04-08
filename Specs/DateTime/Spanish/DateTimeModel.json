@@ -2891,199 +2891,6 @@
     ]
   },
   {
-    "Input": "Me iré semanalmente",
-    "Context": {
-      "ReferenceDateTime": "2016-11-07T00:00:00"
-    },
-    "NotSupported": "javascript, python, java",
-    "Results": [
-      {
-        "Text": "semanalmente",
-        "Start": 7,
-        "End": 18,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1W",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "Me iré cada día",
-    "Context": {
-      "ReferenceDateTime": "2016-11-07T00:00:00"
-    },
-    "NotSupported": "javascript, python, java",
-    "Results": [
-      {
-        "Text": "cada día",
-        "Start": 7,
-        "End": 14,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1D",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "Me iré anualmente",
-    "Context": {
-      "ReferenceDateTime": "2016-11-07T00:00:00"
-    },
-    "NotSupported": "javascript, python, java",
-    "Results": [
-      {
-        "Text": "anualmente",
-        "Start": 7,
-        "End": 16,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1Y",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "Me iré cada dos días",
-    "Context": {
-      "ReferenceDateTime": "2016-11-07T00:00:00"
-    },
-    "NotSupported": "javascript, python, java",
-    "Results": [
-      {
-        "Text": "cada dos días",
-        "Start": 7,
-        "End": 19,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P2D",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "Me iré cada tres semanas",
-    "Context": {
-      "ReferenceDateTime": "2016-11-07T00:00:00"
-    },
-    "NotSupported": "javascript, python, java",
-    "Results": [
-      {
-        "Text": "cada tres semanas",
-        "Start": 7,
-        "End": 23,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P3W",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "Me iré a las tres de la tarde cada día",
-    "Context": {
-      "ReferenceDateTime": "2016-11-07T00:00:00"
-    },
-    "Comment": "MERGE Merge sub-entities for consistency with English.",
-    "NotSupported": "dotnet, javascript, python, java",
-    "Results": [
-      {
-        "Text": "tres de la tarde cada día",
-        "Start": 13,
-        "End": 37,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "T15",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "Me iré todos los lunes",
-    "Context": {
-      "ReferenceDateTime": "2016-11-07T00:00:00"
-    },
-    "NotSupported": "javascript, python, java",
-    "Results": [
-      {
-        "Text": "todos los lunes",
-        "Start": 7,
-        "End": 21,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "XXXX-WXX-1",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "Me iré cada lunes a las 4 p.m.",
-    "Context": {
-      "ReferenceDateTime": "2016-11-07T00:00:00"
-    },
-    "NotSupported": "javascript, python, java",
-    "Results": [
-      {
-        "Text": "cada lunes a las 4 p.m.",
-        "Start": 7,
-        "End": 29,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "XXXX-WXX-1T16",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
     "Input": "Regresaré a las 00:00",
     "Context": {
       "ReferenceDateTime": "2023-11-07T00:00:00"
@@ -4528,21 +4335,6 @@
     "NotSupported": "javascript, python, java",
     "Results": [
       {
-        "Text": "cada semana",
-        "Start": 0,
-        "End": 10,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1W",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      },
-      {
         "Text": "esta semana",
         "Start": 24,
         "End": 34,
@@ -4567,21 +4359,6 @@
     },
     "NotSupported": "javascript, python, java",
     "Results": [
-      {
-        "Text": "cada semana",
-        "Start": 75,
-        "End": 85,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1W",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      },
       {
         "Text": "esta semana",
         "Start": 203,
@@ -12287,21 +12064,6 @@
     "NotSupported": "javascript, python, java",
     "Results": [
       {
-        "Text": "todos los martes",
-        "Start": 29,
-        "End": 44,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "XXXX-WXX-2",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      },
-      {
         "Text": "jueves de 19:00 a 21:00",
         "Start": 48,
         "End": 70,
@@ -16174,56 +15936,6 @@
     ]
   },
   {
-    "Input": "Nos vemos una vez a la semana",
-    "Context": {
-      "ReferenceDateTime": "2016-11-07T00:00:00"
-    },
-    "Comment": "SETREF. Set implementation to be refined.",
-    "NotSupported": "dotnet, javascript, python, java",
-    "Results": [
-      {
-        "Text": "una vez a la semana",
-        "Start": 10,
-        "End": 28,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1W",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "Voy de vacaciones una vez al año",
-    "Context": {
-      "ReferenceDateTime": "2016-11-07T00:00:00"
-    },
-    "Comment": "SETREF. Set implementation to be refined.",
-    "NotSupported": "dotnet, javascript, python, java",
-    "Results": [
-      {
-        "Text": "una vez al año",
-        "Start": 18,
-        "End": 31,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1Y",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
     "Input": "La solicitud es ABC-12345-A1B2C3 este turno. Organicemos una llamada de 30 minutos esta semana. Esperamos volver a hablar esta semana.",
     "Context": {
       "ReferenceDateTime": "2019-09-09T00:00:00"
@@ -16704,55 +16416,6 @@
               "timex": "2019-11-01T15:46:00",
               "type": "datetime",
               "value": "2019-11-01 15:46:00"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "Cada dos viernes",
-    "Context": {
-      "ReferenceDateTime": "2019-11-25T17:00:00"
-    },
-    "Comment": "SETREF. Set implementation to be refined.",
-    "NotSupported": "dotnet, javascript, python, java",
-    "Results": [
-      {
-        "Text": "cada dos viernes",
-        "Start": 0,
-        "End": 15,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "XXXX-WXX-5",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "Tengamos una reunión trimestral.",
-    "Context": {
-      "ReferenceDateTime": "2016-11-07T00:00:00"
-    },
-    "NotSupported": "javascript, python, java",
-    "Results": [
-      {
-        "Text": "trimestral",
-        "Start": 21,
-        "End": 30,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P3M",
-              "type": "set",
-              "value": "not resolved"
             }
           ]
         }
@@ -18091,31 +17754,6 @@
     ]
   },
   {
-    "Input": "Jueves a las 17.30 hora de Beijing",
-    "Context": {
-      "ReferenceDateTime": "2020-06-12T00:00:00"
-    },
-    "Comment": "SPLIT/MERGE",
-    "NotSupported": "dotnet, javascript, python, java",
-    "Results": [
-      {
-        "Text": "jueves a las 17.30",
-        "Start": 0,
-        "End": 17,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "XXXX-WXX-4T17:30",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
     "Input": "13 de junio, que también se conoce como Día de la Libertad y Día del Jubileo, se remonta a 1865, y se observa el 19 de junio de cada año.",
     "Context": {
       "ReferenceDateTime": "2020-06-12T00:00:00"
@@ -18218,21 +17856,6 @@
             }
           ]
         }
-      },
-      {
-        "Text": "cada año",
-        "Start": 128,
-        "End": 135,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1Y",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
       }
     ]
   },
@@ -18306,54 +17929,6 @@
     ]
   },
   {
-    "Input": "Por favor programe una reunión semestralmente",
-    "Context": {
-      "ReferenceDateTime": "2020-06-12T00:00:00"
-    },
-    "NotSupported": "javascript, python, java",
-    "Results": [
-      {
-        "Text": "semestralmente",
-        "Start": 31,
-        "End": 44,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P0.5Y",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "Por favor programe una reunión semestral",
-    "Context": {
-      "ReferenceDateTime": "2020-06-12T00:00:00"
-    },
-    "NotSupported": "javascript, python, java",
-    "Results": [
-      {
-        "Text": "semestral",
-        "Start": 31,
-        "End": 39,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P0.5Y",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
     "Input": "Por favor programe una reunión con todos la próxima semana",
     "Context": {
       "ReferenceDateTime": "2020-06-12T00:00:00"
@@ -18379,31 +17954,6 @@
     ]
   },
   {
-    "Input": "Asegurémonos de que eso suceda todos los días laborables",
-    "Context": {
-      "ReferenceDateTime": "2020-06-12T00:00:00"
-    },
-    "Comment": "WORKDAYS",
-    "NotSupported": "dotnet, javascript, python, java",
-    "Results": [
-      {
-        "Text": "todos los días laborables",
-        "Start": 31,
-        "End": 55,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1D",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
     "Input": "¿Por qué no pides un permiso el resto de la semana?",
     "Context": {
       "ReferenceDateTime": "2020-06-12T00:00:00"
@@ -18422,55 +17972,6 @@
               "type": "daterange",
               "start": "2020-06-12",
               "end": "2020-06-14"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "Casi se trata de la hora de la revisión anual",
-    "Context": {
-      "ReferenceDateTime": "2020-06-12T00:00:00"
-    },
-    "NotSupported": "javascript, python, java",
-    "Results": [
-      {
-        "Text": "anual",
-        "Start": 40,
-        "End": 44,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1Y",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "las leyes y regulaciones requieren informes financieros cada trimestre",
-    "Context": {
-      "ReferenceDateTime": "2020-06-12T00:00:00"
-    },
-    "Comment": "SETREF. Set implementation to be refined.",
-    "NotSupported": "dotnet, javascript, python, java",
-    "Results": [
-      {
-        "Text": "cada trimestre",
-        "Start": 56,
-        "End": 69,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P3M",
-              "type": "set",
-              "value": "not resolved"
             }
           ]
         }
@@ -18514,21 +18015,6 @@
     "NotSupported": "javascript, python, java",
     "Results": [
       {
-        "Text": "bimensuales",
-        "Start": 15,
-        "End": 25,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P2M",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      },
-      {
         "Text": "el verano",
         "Start": 50,
         "End": 58,
@@ -18538,54 +18024,6 @@
             {
               "timex": "SU",
               "type": "daterange",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "¿Haces eso cada finde?",
-    "Context": {
-      "ReferenceDateTime": "2020-06-12T00:00:00"
-    },
-    "NotSupported": "javascript, python, java",
-    "Results": [
-      {
-        "Text": "cada finde",
-        "Start": 11,
-        "End": 20,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1WE",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "cada dos fines de semana",
-    "Context": {
-      "ReferenceDateTime": "2020-06-12T00:00:00"
-    },
-    "NotSupported": "javascript, python, java",
-    "Results": [
-      {
-        "Text": "cada dos fines de semana",
-        "Start": 0,
-        "End": 23,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P2WE",
-              "type": "set",
               "value": "not resolved"
             }
           ]
@@ -18908,31 +18346,6 @@
               "timex": "PT1H",
               "type": "duration",
               "value": "3600"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "Agrega reunión con el jefe a mi calendario los martes a las 9 a.m.",
-    "Context": {
-      "ReferenceDateTime": "2020-06-16T12:00:00"
-    },
-    "Comment": "SETREF. Set implementation to be refined.",
-    "NotSupported": "dotnet, javascript, python, java",
-    "Results": [
-      {
-        "Text": "martes a las 9 a.m.",
-        "Start": 47,
-        "End": 65,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "XXXX-WXX-2T09",
-              "type": "set",
-              "value": "not resolved"
             }
           ]
         }
@@ -22495,30 +21908,6 @@
               "type": "daterange",
               "start": "2000-01-01",
               "end": "2010-01-01"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "Se informará a la Junta semestralmente de los avances en la aplicación",
-    "Context": {
-      "ReferenceDateTime": "2016-11-07T00:00:00"
-    },
-    "NotSupported": "java, javascript, python",
-    "Results": [
-      {
-        "Text": "semestralmente",
-        "Start": 24,
-        "End": 37,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P0.5Y",
-              "type": "set",
-              "value": "not resolved"
             }
           ]
         }

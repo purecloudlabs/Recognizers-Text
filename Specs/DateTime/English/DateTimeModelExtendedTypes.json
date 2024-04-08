@@ -993,21 +993,6 @@
     },
     "Results": [
       {
-        "Text": "each week",
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1W",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        },
-        "Start": 0,
-        "End": 8
-      },
-      {
         "Text": "this week",
         "TypeName": "datetimeV2.daterange",
         "Resolution": {
@@ -1032,21 +1017,6 @@
     },
     "NotSupported": "javascript",
     "Results": [
-      {
-        "Text": "each week",
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1W",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        },
-        "Start": 66,
-        "End": 74
-      },
       {
         "Text": "this week",
         "TypeName": "datetimeV2.daterange",
@@ -1793,52 +1763,6 @@
               "type": "daterange",
               "start": "2019-08-12",
               "end": "2019-08-19"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "Let's meet once a week",
-    "Context": {
-      "ReferenceDateTime": "2016-11-07T00:00:00"
-    },
-    "Results": [
-      {
-        "Text": "once a week",
-        "Start": 11,
-        "End": 21,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1W",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "I go on vacation once a year",
-    "Context": {
-      "ReferenceDateTime": "2016-11-07T00:00:00"
-    },
-    "Results": [
-      {
-        "Text": "once a year",
-        "Start": 17,
-        "End": 27,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1Y",
-              "type": "set",
-              "value": "not resolved"
             }
           ]
         }

@@ -1521,21 +1521,6 @@
     "NotSupported": "",
     "Results": [
       {
-        "Text": "each week",
-        "Start": 0,
-        "End": 8,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1W",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      },
-      {
         "Text": "this week",
         "Start": 28,
         "End": 36,
@@ -1560,21 +1545,6 @@
     },
     "NotSupported": "javascript",
     "Results": [
-      {
-        "Text": "each week",
-        "Start": 66,
-        "End": 74,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1W",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      },
       {
         "Text": "this week",
         "Start": 136,
@@ -9046,16 +9016,21 @@
     },
     "Results": [
       {
-        "Text": "every tuesday",
-        "Start": 26,
+        "Text": "tuesday",
+        "Start": 32,
         "End": 38,
-        "TypeName": "datetimeV2.set",
+        "TypeName": "datetimeV2.date",
         "Resolution": {
           "values": [
             {
               "timex": "XXXX-WXX-2",
-              "type": "set",
-              "value": "not resolved"
+              "type": "date",
+              "value": "2019-02-26"
+            },
+            {
+              "timex": "XXXX-WXX-2",
+              "type": "date",
+              "value": "2019-03-05"
             }
           ]
         }
@@ -12176,52 +12151,6 @@
     ]
   },
   {
-    "Input": "Let's meet once a week",
-    "Context": {
-      "ReferenceDateTime": "2016-11-07T00:00:00"
-    },
-    "Results": [
-      {
-        "Text": "once a week",
-        "Start": 11,
-        "End": 21,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1W",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "I go on vacation once a year",
-    "Context": {
-      "ReferenceDateTime": "2016-11-07T00:00:00"
-    },
-    "Results": [
-      {
-        "Text": "once a year",
-        "Start": 17,
-        "End": 27,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1Y",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
     "Input": "The request is ABC-12345-A1B2C3 this round. Let's arrange a 30 minutes call this week. Look forward to speaking again this week.",
     "Context": {
       "ReferenceDateTime": "2019-09-09T00:00:00"
@@ -12605,29 +12534,6 @@
               "type": "daterange",
               "start": "2019-09-20",
               "end": "2019-09-22"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "Let's have a quarterly meeting.",
-    "Context": {
-      "ReferenceDateTime": "2016-11-07T00:00:00"
-    },
-    "Results": [
-      {
-        "Text": "quarterly",
-        "Start": 13,
-        "End": 21,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P3M",
-              "type": "set",
-              "value": "not resolved"
             }
           ]
         }
@@ -13146,30 +13052,6 @@
     ]
   },
   {
-    "Input": "Thursdays at 17.30 Beijing time",
-    "Context": {
-      "ReferenceDateTime": "2020-06-12T00:00:00"
-    },
-    "NotSupported": "javascript, python, java",
-    "Results": [
-      {
-        "Text": "thursdays at 17.30 beijing time",
-        "Start": 0,
-        "End": 30,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "XXXX-WXX-4T17:30",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
     "Input": "Race - 3pm - this week",
     "Context": {
       "ReferenceDateTime": "2020-06-16T12:00:00"
@@ -13348,30 +13230,6 @@
     ]
   },
   {
-    "Input": "Add meeting with boss to my calendar - Tuesdays at 9am",
-    "Context": {
-      "ReferenceDateTime": "2020-06-16T12:00:00"
-    },
-    "NotSupported": "javascript, java",
-    "Results": [
-      {
-        "Text": "tuesdays at 9am",
-        "Start": 39,
-        "End": 53,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "XXXX-WXX-2T09",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
     "Input": "Tune in tomorrow, 13/04/21, at 7 PM CET for episode 3 of Decentralized",
     "Context": {
       "ReferenceDateTime": "2018-06-06T00:00:00"
@@ -13510,29 +13368,6 @@
               "timezoneText": "cet",
               "utcOffsetMins": "60",
               "value": "10:30:00"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "It's an everyday routine.",
-    "Context": {
-      "ReferenceDateTime": "2018-11-30T12:00:00"
-    },
-    "Results": [
-      {
-        "Text": "everyday",
-        "Start": 8,
-        "End": 15,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1D",
-              "type": "set",
-              "value": "not resolved"
             }
           ]
         }

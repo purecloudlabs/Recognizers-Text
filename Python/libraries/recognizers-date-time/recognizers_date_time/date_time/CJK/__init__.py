@@ -6,6 +6,5 @@ from .base_dateperiod import *
 from .base_timeperiod import *
 from .base_datetime import *
 from .base_datetimeperiod import *
-from .base_set import *
 from .base_holiday import *
 from .base_merged import *

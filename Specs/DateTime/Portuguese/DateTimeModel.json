@@ -3902,54 +3902,6 @@
     ]
   },
   {
-    "Input": "Vamos ter uma reunião trimestral.",
-    "Context": {
-      "ReferenceDateTime": "2016-11-07T00:00:00"
-    },
-    "NotSupported": "java, javascript, python",
-    "Results": [
-      {
-        "Text": "trimestral",
-        "Start": 22,
-        "End": 31,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P3M",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "O Conselho será informado semestralmente sobre o andamento do pedido",
-    "Context": {
-      "ReferenceDateTime": "2016-11-07T00:00:00"
-    },
-    "NotSupported": "java, javascript, python",
-    "Results": [
-      {
-        "Text": "semestralmente",
-        "Start": 26,
-        "End": 39,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P0.5Y",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
     "Input": "Eu tenho muitos ganhos neste ano letivo.",
     "Context": {
       "ReferenceDateTime": "2019-06-18T00:00:00"

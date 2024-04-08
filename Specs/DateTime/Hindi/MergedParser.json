@@ -631,21 +631,6 @@
     "NotSupportedByDesign": "javascript,python,java",
     "Results": [
       {
-        "Text": "हर हफ्ते",
-        "Type": "datetimeV2.set",
-        "Value": {
-          "values": [
-            {
-              "timex": "P1W",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        },
-        "Start": 0,
-        "Length": 8
-      },
-      {
         "Text": "सुबह 8 बजे",
         "Type": "datetimeV2.time",
         "Value": {
@@ -669,21 +654,6 @@
     },
     "NotSupportedByDesign": "javascript,python,java",
     "Results": [
-      {
-        "Text": "हर महीने",
-        "Type": "datetimeV2.set",
-        "Value": {
-          "values": [
-            {
-              "timex": "P1M",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        },
-        "Start": 0,
-        "Length": 8
-      },
       {
         "Text": "दूसरे शनिवार",
         "Type": "datetimeV2.date",
@@ -1451,21 +1421,6 @@
     },
     "NotSupportedByDesign": "javascript,python,java",
     "Results": [
-      {
-        "Text": "हर हफ्ते",
-        "Type": "datetimeV2.set",
-        "Value": {
-          "values": [
-            {
-              "timex": "P1W",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        },
-        "Start": 8,
-        "Length": 8
-      },
       {
         "Text": "सुबह 8 बजे",
         "Type": "datetimeV2.time",

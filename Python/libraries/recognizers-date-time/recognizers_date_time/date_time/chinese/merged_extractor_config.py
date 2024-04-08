@@ -16,7 +16,6 @@ from .datetime_extractor import ChineseDateTimeExtractor
 from .timeperiod_extractor import ChineseTimePeriodExtractor
 from .dateperiod_extractor import ChineseDatePeriodExtractor
 from .datetimeperiod_extractor import ChineseDateTimePeriodExtractor
-from .set_extractor import ChineseSetExtractor
 from .holiday_extractor_config import ChineseHolidayExtractorConfiguration
 
 
@@ -93,10 +92,6 @@ class ChineseMergedExtractorConfiguration(MergedExtractorConfiguration):
     @property
     def duration_extractor(self) -> DateTimeExtractor:
         return self._duration_extractor
-
-    @property
-    def set_extractor(self) -> DateTimeExtractor:
-        return self._set_extractor
 
     @property
     def integer_extractor(self) -> any:
@@ -179,7 +174,6 @@ class ChineseMergedExtractorConfiguration(MergedExtractorConfiguration):
         self._holiday_extractor = BaseHolidayExtractor(
             ChineseHolidayExtractorConfiguration())
         self._duration_extractor = ChineseDurationExtractor()
-        self._set_extractor = ChineseSetExtractor()
         # TODO When the implementation for these properties is added, change the None values to their respective Regexps
         self._superfluous_word_matcher = None
         self._fail_fast_regex = None

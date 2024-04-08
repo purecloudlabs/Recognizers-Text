@@ -638,21 +638,6 @@
             }
           ]
         }
-      },
-      {
-        "Text": "每年",
-        "Start": 31,
-        "End": 32,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1Y",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
       }
     ]
   },
@@ -693,21 +678,6 @@
               "type": "daterange",
               "sourceEntity": "datetimepoint",
               "end": "2019-04-04"
-            }
-          ]
-        }
-      },
-      {
-        "Text": "每年",
-        "Start": 30,
-        "End": 31,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1Y",
-              "type": "set",
-              "value": "not resolved"
             }
           ]
         }
@@ -1462,21 +1432,6 @@
               "type": "daterange",
               "sourceEntity": "datetimepoint",
               "end": "2019-11-11"
-            }
-          ]
-        }
-      },
-      {
-        "Text": "每年",
-        "Start": 25,
-        "End": 26,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1Y",
-              "type": "set",
-              "value": "not resolved"
             }
           ]
         }

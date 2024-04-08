@@ -122,7 +122,6 @@ class ArabicDateTime:
     SpecialDayRegex = f'({NextWeekDayRegex}|{CardinalDayOfMonthRegex}|{SpecificDayRegex}|{LastMonthYearDateRegex})'
     SpecialDayWithNumRegex = f'\\b((?<number>{WrittenNumRegex})\\s+days?\\s+from\\s+(?<day>yesterday|tomorrow|tmr|today))\\b'
     RelativeDayRegex = f'\\b(((the\\s+)?{RelativeRegex}\\s+day))\\b'
-    SetWeekDayRegex = f'\\b(?<prefix>on\\s+)?(?<weekday>morning|afternoon|evening|night|(sun|mon|tues|wednes|thurs|fri|satur)day)s\\b'
     WeekDayOfMonthRegex = f'(?<wom>(the\\s+)?(?<cardinal>first|1st|second|2nd|third|3rd|fourth|4th|fifth|5th|last)\\s+(week\\s+{MonthSuffixRegex}[\\.]?\\s+(on\\s+)?{WeekDayRegex}|{WeekDayRegex}\\s+{MonthSuffixRegex}))'
     RelativeWeekDayRegex = f'\\b({WrittenNumRegex}\\s+{WeekDayRegex}\\s+(from\\s+now|later))\\b'
     SpecialDate = f'(?=\\b(on|at)\\s+the\\s+){DayRegex}\\b'
@@ -221,12 +220,6 @@ class ArabicDateTime:
     MoreThanRegex = f'\\b(أكثر\\s+من)\\b'
     DurationUnitRegex = f'(?<unit>{DateUnitRegex}|(ال)?ساعة|(ال)?ساعات|(ال)?دقيقة|(ال)?دقائق|(ال)?ثانية|(ال)?ثوان|(ال)?ليلة|(ال)?ليال)|ساعت(ين)?(ان)?|دقيقت(ين)?(ان)?|ثانيت(ين)?(ان)?|ليلت(ين)?(ان)?\\b'
     SuffixAndRegex = f'(?<suffix>\\s*(و)\\s+(?<suffix_num>نصف|ربع))'
-    PeriodicRegex = f'\\b(?<periodic>((?<multiplier>semi|bi|tri)(\\s*|-))?(daily|monthly|weekly|quarterly|yearly|annual(ly)?))\\b'
-    EachUnitRegex = f'\\b(?<each>(each|every|any|once an?)(?<other>\\s+other)?\\s+({DurationUnitRegex}|(?<specialUnit>quarters?|weekends?)|{WeekDayRegex})|(?<specialUnit>weekends))'
-    EachPrefixRegex = f'\\b(?<each>(each|every|once an?)\\s*$)'
-    SetEachRegex = f'\\b(?<each>(each|every)(?<other>\\s+other)?\\s*)(?!the|that)\\b'
-    SetLastRegex = f'(?<last>following|next|upcoming|this|{LastNegPrefix}last|past|previous|current)'
-    EachDayRegex = f'^\\s*(each|every)\\s*day\\b'
     DurationFollowedUnit = f'(^\\s*{DurationUnitRegex}\\s+{SuffixAndRegex})|(^\\s*{SuffixAndRegex}?\\s+?{DurationUnitRegex})'
     NumberCombinedWithDurationUnit = f'((?<num>\\d+(\\.\\d*)?(\\s)?)?({DurationUnitRegex})(\\s{WrittenOneToNineRegex})?(\\sو)?(\\s)?(?<num>\\d+(\\.\\d*)?(\\s)?)?(({DurationUnitRegex})?(\\s{WrittenOneToNineRegex})?)(\\sو)?(\\s)?(?<num>\\d+(\\.\\d*)?(\\s)?)?({DurationUnitRegex})(\\s{WrittenOneToNineRegex})?)'
     AnUnitRegex = f'\\b((?<half>(1/2|½|نصف)))\\s+{DurationUnitRegex}(\\s(أخرى))?'
@@ -305,7 +298,7 @@ class ArabicDateTime:
     StrictRangeConnectorRegex = f'(?<and>\\b(and|through|to)\\b|{BaseDateTime.RangeConnectorSymbolRegex}(?!\\s*(h[1-2]|q[1-4])(?!(\\s+of|\\s*,\\s*))))'
     StartMiddleEndRegex = f'\\b((?<StartOf>((the\\s+)?(start|beginning)\\s+of\\s+)?)(?<MiddleOf>((the\\s+)?middle\\s+of\\s+)?)(?<EndOf>((the\\s+)?end\\s+of\\s+)?))'
     ComplexDatePeriodRegex = f'(?:((from|during|in)\\s+)?{StartMiddleEndRegex}(?<start>.+)\\s*({StrictTillRegex})\\s*{StartMiddleEndRegex}(?<end>.+)|((between)\\s+){StartMiddleEndRegex}(?<start>.+)\\s*({StrictRangeConnectorRegex})\\s*{StartMiddleEndRegex}(?<end>.+))'
-    FailFastRegex = f'{BaseDateTime.DeltaMinuteRegex}|\\b(?:{BaseDateTime.BaseAmDescRegex}|{BaseDateTime.BasePmDescRegex})|{BaseDateTime.BaseAmPmDescRegex}|\\b(?:zero|{WrittenOneToNineRegex}|{WrittenElevenToNineteenRegex}|{WrittenTensRegex}|{WrittenMonthRegex}|{SeasonDescRegex}|{DecadeRegex}|centur(y|ies)|weekends?|quarters?|hal(f|ves)|yesterday|to(morrow|day|night)|tmr|noonish|\\d(-|——)?ish|((the\\s+\\w*)|\\d)(th|rd|nd|st)|(mid\\s*(-\\s*)?)?(night|morning|afternoon|day)s?|evenings?||noon|lunch(time)?|dinner(time)?|(day|night)time|overnight|dawn|dusk|sunset|hours?|hrs?|h|minutes?|mins?|seconds?|secs?|eo[dmy]|mardi[ -]?gras|birthday|eve|christmas|xmas|thanksgiving|halloween|yuandan|easter|yuan dan|april fools|cinco de mayo|all (hallow|souls)|guy fawkes|(st )?patrick|hundreds?|noughties|aughts|thousands?)\\b|{WeekDayRegex}|{SetWeekDayRegex}|{NowRegex}|{PeriodicRegex}|\\b({DateUnitRegex}|{ImplicitDayRegex})'
+    FailFastRegex = f'{BaseDateTime.DeltaMinuteRegex}|\\b(?:{BaseDateTime.BaseAmDescRegex}|{BaseDateTime.BasePmDescRegex})|{BaseDateTime.BaseAmPmDescRegex}|\\b(?:zero|{WrittenOneToNineRegex}|{WrittenElevenToNineteenRegex}|{WrittenTensRegex}|{WrittenMonthRegex}|{SeasonDescRegex}|{DecadeRegex}|centur(y|ies)|weekends?|quarters?|hal(f|ves)|yesterday|to(morrow|day|night)|tmr|noonish|\\d(-|——)?ish|((the\\s+\\w*)|\\d)(th|rd|nd|st)|(mid\\s*(-\\s*)?)?(night|morning|afternoon|day)s?|evenings?||noon|lunch(time)?|dinner(time)?|(day|night)time|overnight|dawn|dusk|sunset|hours?|hrs?|h|minutes?|mins?|seconds?|secs?|eo[dmy]|mardi[ -]?gras|birthday|eve|christmas|xmas|thanksgiving|halloween|yuandan|easter|yuan dan|april fools|cinco de mayo|all (hallow|souls)|guy fawkes|(st )?patrick|hundreds?|noughties|aughts|thousands?)\\b|{WeekDayRegex}|{NowRegex}|\\b({DateUnitRegex}|{ImplicitDayRegex})'
     UnitMap = dict([("قرن", "10Y"),
                     ("حقبة", "10Y"),
                     ("قرون", "10Y"),

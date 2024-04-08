@@ -327,21 +327,6 @@
     "NotSupported": "dotnet, javascript, python, java",
     "Results": [
       {
-        "Text": "Chaque semaine",
-        "Start": 0,
-        "End": 14,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1W",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      },
-      {
         "Text": "cette semaine",
         "Start": 30,
         "End": 43,
@@ -363,21 +348,6 @@
     "Input": "Les notes sont distribuées dans les notes de la session de travail LT jointes chaque semaine et les points importants sont partagés dans la section des données. Pour le sujet spécial de cette semaine, l'équipe chargée des données a rédigé une synthèse de certaines des nouveaux caractéristiques du tableau de bord et de la façon dont il est construit. Si vous n'avez pas vu le tableau de bord, c'est peut-être une bonne occasion d'apprendre quelque chose de nouveau. Je voudrais demander à Cortana de planifier 45 minutes en novembre. J'aimerais également vous annoncer que l'intégration de Skype avec notre logiciel OWA Rea",
     "NotSupported": "dotnet, javascript, python, java",
     "Results": [
-      {
-        "Text": "chaque semaine",
-        "Start": 78,
-        "End": 92,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1W",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      },
       {
         "Text": "cette semaine",
         "Start": 186,
@@ -900,48 +870,6 @@
               "type": "timerange",
               "start": "18:00:00",
               "end": "19:00:00"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "Rencontrons-nous une fois par semaine",
-    "NotSupported": "dotnet, javascript, python, java",
-    "Results": [
-      {
-        "Text": "une fois par semaine",
-        "Start": 17,
-        "End": 37,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1W",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "Je pars en vacances une fois par an",
-    "NotSupported": "dotnet, javascript, python, java",
-    "Results": [
-      {
-        "Text": "une fois par an",
-        "Start": 20,
-        "End": 35,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1Y",
-              "type": "set",
-              "value": "not resolved"
             }
           ]
         }
