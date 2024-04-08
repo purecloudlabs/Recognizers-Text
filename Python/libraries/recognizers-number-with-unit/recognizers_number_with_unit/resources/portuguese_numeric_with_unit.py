@@ -14,23 +14,6 @@ from .base_numbers import BaseNumbers
 
 
 class PortugueseNumericWithUnit:
-    AgeSuffixList = dict([("Ano", "anos|ano"),
-                          ("Mês", "meses|mes|mês"),
-                          ("Semana", "semanas|semana"),
-                          ("Dia", "dias|dia")])
-    AmbiguousAgeUnitList = [r'anos', r'ano', r'meses', r'mes', r'mês', r'semanas', r'semana', r'dias', r'dia']
-    AreaSuffixList = dict([("Quilômetro quadrado", "quilômetro quadrado|quilómetro quadrado|quilometro quadrado|quilômetros quadrados|quilómetros quadrados|quilomeros quadrados|km2|km^2|km²"),
-                           ("Hectare", "hectômetro quadrado|hectómetro quadrado|hectômetros quadrados|hectómetros cuadrados|hm2|hm^2|hm²|hectare|hectares"),
-                           ("Decâmetro quadrado", "decâmetro quadrado|decametro quadrado|decâmetros quadrados|decametro quadrado|dam2|dam^2|dam²|are|ares"),
-                           ("Metro quadrado", "metro quadrado|metros quadrados|m2|m^2|m²"),
-                           ("Decímetro quadrado", "decímetro quadrado|decimentro quadrado|decímetros quadrados|decimentros quadrados|dm2|dm^2|dm²"),
-                           ("Centímetro quadrado", "centímetro quadrado|centimetro quadrado|centímetros quadrados|centrimetros quadrados|cm2|cm^2|cm²"),
-                           ("Milímetro quadrado", "milímetro quadrado|milimetro quadrado|milímetros quadrados|militmetros quadrados|mm2|mm^2|mm²"),
-                           ("Polegada quadrada", "polegada quadrada|polegadas quadradas|in2|in^2|in²"),
-                           ("Pé quadrado", "pé quadrado|pe quadrado|pés quadrados|pes quadrados|pé2|pé^2|pé²|sqft|sq ft|ft2|ft^2|ft²"),
-                           ("Jarda quadrada", "jarda quadrada|jardas quadradas|yd2|yd^2|yd²"),
-                           ("Milha quadrada", "milha quadrada|milhas quadradas|mi2|mi^2|mi²"),
-                           ("Acre", "acre|acres")])
     CurrencySuffixList = dict([("Dólar", "dólar|dolar|dólares|dolares"),
                                ("Peso", "peso|pesos"),
                                ("Coroa", "coroa|coroas"),
@@ -634,104 +617,9 @@ class PortugueseNumericWithUnit:
                                ("Lira turca", "₺"),
                                ("Bitcoin", "₿|btc|xbt")])
     AmbiguousCurrencyUnitList = [r'le', r'agora']
-    InformationSuffixList = dict([("bit", "bit|bits"),
-                                  ("kilobit", "kilobit|kilobits|kb|kbit"),
-                                  ("megabit", "megabit|megabits|Mb|Mbit"),
-                                  ("gigabit", "gigabit|gigabits|Gb|Gbit"),
-                                  ("terabit", "terabit|terabits|Tb|Tbit"),
-                                  ("petabit", "petabit|petabits|Pb|Pbit"),
-                                  ("kibibit", "kibibit|kibibits|kib|kibit"),
-                                  ("mebibit", "mebibit|mebibits|Mib|Mibit"),
-                                  ("gibibit", "gibibit|gibibits|Gib|Gibit"),
-                                  ("tebibit", "tebibit|tebibits|Tib|Tibit"),
-                                  ("pebibit", "pebibit|pebibits|Pib|Pibit"),
-                                  ("byte", "byte|bytes"),
-                                  ("kilobyte", "kilobyte|kilobytes|kB|kByte"),
-                                  ("megabyte", "megabyte|megabytes|MB|MByte"),
-                                  ("gigabyte", "gigabyte|gigabytes|GB|GByte"),
-                                  ("terabyte", "terabyte|terabytes|TB|TByte"),
-                                  ("petabyte", "petabyte|petabytes|PB|PByte"),
-                                  ("kibibyte", "kibibyte|kibibytes|kiB|kiByte"),
-                                  ("mebibyte", "mebibyte|mebibytes|MiB|MiByte"),
-                                  ("gibibyte", "gibibyte|gibibytes|GiB|GiByte"),
-                                  ("tebibyte", "tebibyte|tebibytes|TiB|TiByte"),
-                                  ("pebibyte", "pebibyte|pebibytes|PiB|PiByte")])
-    AmbiguousDimensionUnitList = [r'ton', r'tonelada', r'área', r'area', r'áreas', r'areas', r'milha', r'milhas', r'"']
     BuildPrefix = f'(?<=(\\s|^|\\P{{L}}))'
     BuildSuffix = f'(?=(\\s|\\P{{L}}|$))'
     ConnectorToken = 'de'
-    LengthSuffixList = dict([("Quilômetro", "km|quilometro|quilômetro|quilómetro|quilometros|quilômetros|quilómetros"),
-                             ("Hectômetro", "hm|hectometro|hectômetro|hectómetro|hectometros|hectômetros|hectómetros"),
-                             ("Decâmetro", "decametro|decâmetro|decámetro|decametros|decâmetro|decámetros|dam"),
-                             ("Metro", "m|m.|metro|metros"),
-                             ("Decímetro", "dm|decimetro|decímetro|decimetros|decímetros"),
-                             ("Centímetro", "cm|centimetro|centímetro|centimetros|centimetros"),
-                             ("Milímetro", "mm|milimetro|milímetro|milimetros|milímetros"),
-                             ("Micrômetro", "µm|um|micrometro|micrômetro|micrómetro|micrometros|micrômetros|micrómetros|micron|mícron|microns|mícrons|micra"),
-                             ("Nanômetro", "nm|nanometro|nanômetro|nanómetro|nanometros|nanômetros|nanómetros|milimicron|milimícron|milimicrons|milimícrons"),
-                             ("Picômetro", "pm|picometro|picômetro|picómetro|picometros|picômetros|picómetros"),
-                             ("Milha", "mi|milha|milhas"),
-                             ("Jarda", "yd|jarda|jardas"),
-                             ("Polegada", "polegada|polegadas|\"|in"),
-                             ("Pé", "pé|pe|pés|pes|ft"),
-                             ("Ano luz", "ano luz|anos luz|al")])
-    AmbiguousLengthUnitList = [r'mi', r'milha', r'milhas', r'"', r'in', r'um']
-    SpeedSuffixList = dict([("Metro por segundo", "metro/segundo|m/s|metro por segundo|metros por segundo|metros por segundos"),
-                            ("Quilômetro por hora", "km/h|quilômetro por hora|quilómetro por hora|quilometro por hora|quilômetros por hora|quilómetros por hora|quilometros por hora|quilômetro/hora|quilómetro/hora|quilometro/hora|quilômetros/hora|quilómetros/hora|quilometros/hora"),
-                            ("Quilômetro por minuto", "km/min|quilômetro por minuto|quilómetro por minuto|quilometro por minuto|quilômetros por minuto|quilómetros por minuto|quilometros por minuto|quilômetro/minuto|quilómetro/minuto|quilometro/minuto|quilômetros/minuto|quilómetros/minuto|quilometros/minuto"),
-                            ("Quilômetro por segundo", "km/seg|quilômetro por segundo|quilómetro por segundo|quilometro por segundo|quilômetros por segundo|quilómetros por segundo|quilometros por segundo|quilômetro/segundo|quilómetro/segundo|quilometro/segundo|quilômetros/segundo|quilómetros/segundo|quilometros/segundo"),
-                            ("Milha por hora", "mph|milha por hora|mi/h|milha/hora|milhas/hora|milhas por hora|mi por hora|mi/hora"),
-                            ("Nó", "kt|nó|nós|kn"),
-                            ("Pé por segundo", "ft/s|pé/s|pe/s|ft/seg|pé/seg|pe/seg|pé por segundo|pe por segundo|pés por segundo|pes por segundo"),
-                            ("Pé por minuto", "ft/min|pé/mind|pe/min|pé por minuto|pe por minuto|pés por minuto|pes por minuto"),
-                            ("Jarda por minuto", "jardas por minuto|jardas/minuto|jardas/min"),
-                            ("Jarda por segundo", "jardas por segundo|jardas/segundo|jardas/seg")])
-    AmbiguousSpeedUnitList = [r'nó', r'no', r'nós', r'nos']
-    TemperatureSuffixList = dict([("Kelvin", "k|K|kelvin"),
-                                  ("Grau Rankine", "r|°r|°ra|grau rankine|graus rankine| rankine"),
-                                  ("Grau Celsius", "°c|° c|ºc|º c|grau c|grau celsius|graus c|graus celsius|celsius|grau centígrado|grau centrigrado|graus centígrados|graus centigrados|centígrado|centígrados|centigrado|centigrados"),
-                                  ("Grau Fahrenheit", "°f|° f|ºf|º f|grau f|graus f|grau fahrenheit|graus fahrenheit|fahrenheit"),
-                                  ("Grau", "°|graus|grau")])
-    VolumeSuffixList = dict([("Quilômetro cúbico", "quilômetro cúbico|quilómetro cúbico|quilometro cubico|quilômetros cúbicos|quilómetros cúbicos|quilometros cubicos|km3|km^3|km³"),
-                             ("Hectômetro cúbico", "hectômetro cúbico|hectómetro cúbico|hectometro cubico|hectômetros cúbicos|hectómetros cúbicos|hectometros cubicos|hm3|hm^3|hm³"),
-                             ("Decâmetro cúbico", "decâmetro cúbico|decámetro cúbico|decametro cubico|decâmetros cúbicos|decámetros cúbicos|decametros cubicosdam3|dam^3|dam³"),
-                             ("Metro cúbico", "metro cúbico|metro cubico|metros cúbicos|metros cubicos|m3|m^3|m³"),
-                             ("Decímetro cúbico", "decímetro cúbico|decimetro cubico|decímetros cúbicos|decimetros cubicos|dm3|dm^3|dm³"),
-                             ("Centímetro cúbico", "centímetro cúbico|centimetro cubico|centímetros cúbicos|centrimetros cubicos|cc|cm3|cm^3|cm³"),
-                             ("Milímetro cúbico", "milímetro cúbico|milimetro cubico|milímetros cúbicos|milimetros cubicos|mm3|mm^3|mm³"),
-                             ("Polegada cúbica", "polegada cúbica|polegada cubica|polegadas cúbicas|polegadas cubicas"),
-                             ("Pé cúbico", "pé cúbico|pe cubico|pés cúbicos|pes cubicos|pé3|pe3|pé^3|pe^3|pé³|pe³|ft3|ft^3|ft³"),
-                             ("Jarda cúbica", "jarda cúbica|jarda cubica|jardas cúbicas|jardas cubicas|yd3|yd^3|yd³"),
-                             ("Hectolitro", "hectolitro|hectolitros|hl"),
-                             ("Litro", "litro|litros|lts|l"),
-                             ("Mililitro", "mililitro|mililitros|ml"),
-                             ("Galão", "galão|galões|galao|galoes"),
-                             ("Pint", "pinta|pintas|pinto|pintos|quartilho|quartilhos|pint|pints"),
-                             ("Barril", "barril|barris|bbl"),
-                             ("Onça líquida", "onça líquida|onca liquida|onças líquidas|oncas liquidas")])
-    WeightSuffixList = dict([("Tonelada métrica", "tonelada métrica|tonelada metrica|toneladas métricas|toneladas metricas|t métrica|t metrica|t métricas|t metricas|t.métrica|t.metrica|t.métricas|t.metricas|t. metrica|t. métrica"),
-                             ("Tonelada", "ton|tonelada|toneladas|t"),
-                             ("Quilograma", "kg|quilograma|quilogramas|quilo|quilos|kilo|kilos"),
-                             ("Hectograma", "hg|hectograma|hectogramas"),
-                             ("Decagrama", "dag|decagrama|decagramas"),
-                             ("Grama", "g|grama|gramas"),
-                             ("Decigrama", "dg|decigrama|decigramas"),
-                             ("Centigrama", "cg|centigrama|centigramas"),
-                             ("Miligrama", "mg|miligrama|miligramas"),
-                             ("Micrograma", "µg|ug|micrograma|microgramas"),
-                             ("Nanograma", "ng|nanograma|nanogramas"),
-                             ("Picograma", "pg|picograma|picogramas"),
-                             ("Libra", "lb|libra|libras"),
-                             ("Onça", "oz|onça|onca|onças|oncas"),
-                             ("Grão", "grão|grao|grãos|graos|gr"),
-                             ("Quilate", "ct|quilate|quilates")])
-    AmbiguousWeightUnitList = [r'g', r't']
-    AngleSuffixList = dict([("Degree", "grau|graus|°"),
-                            ("Radian", "radiano|radianos|rad"),
-                            ("Turn", "volta|voltas")])
-    AmbiguousAngleUnitList = [r'volta', r'voltas']
     AmbiguityFiltersDict = dict([("\\b\\d+\\s*\\p{L}+$", "((\\d+(\\s*\\p{L}+[-—–-]|\\p{L}+)\\d+)|(((\\p{L}|\\d)[-—–-]\\d+\\s*|\\p{L}\\d+)\\p{L}+))"),
                                  ("\\bum$", "\\p{L}\\s+um\\b")])
-    TemperatureAmbiguityFiltersDict = dict([("\\b(graus?|°)$", "\\b((graus?|°)\\s*(ângulo|rotação)|(gira(r|do|ndo)?|ângulo|rotação)(\\s+(\\p{L}+|\\d+)){0,4}\\s*(graus?\\b|°))")])
-    DimensionAmbiguityFiltersDict = dict([("\\b(graus?|°)$", "\\b((graus?|°)\\s*(c(elsius|entígrado)?|f(ah?renheit)?)|(temperatura)(\\s+(\\p{L}+|\\d+)){0,4}\\s*(graus?\\b|°))")])
 # pylint: enable=line-too-long

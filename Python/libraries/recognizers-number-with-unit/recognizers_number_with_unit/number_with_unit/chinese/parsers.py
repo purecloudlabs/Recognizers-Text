@@ -37,27 +37,8 @@ class ChineseNumberWithUnitParserConfiguration(NumberWithUnitParserConfiguration
         self.currency_fraction_code_list = ChineseNumericWithUnit.FractionalUnitNameToCodeMap
 
 
-class ChineseAgeParserConfiguration(ChineseNumberWithUnitParserConfiguration):
-    def __init__(self, culture_info: CultureInfo = None):
-        super().__init__(culture_info)
-        self.add_dict_to_unit_map(ChineseNumericWithUnit.AgeSuffixList)
-
-
 class ChineseCurrencyParserConfiguration(ChineseNumberWithUnitParserConfiguration):
     def __init__(self, culture_info: CultureInfo = None):
         super().__init__(culture_info)
         self.add_dict_to_unit_map(ChineseNumericWithUnit.CurrencySuffixList)
         self.add_dict_to_unit_map(ChineseNumericWithUnit.CurrencyPrefixList)
-
-
-class ChineseDimensionParserConfiguration(ChineseNumberWithUnitParserConfiguration):
-    def __init__(self, culture_info: CultureInfo = None):
-        super().__init__(culture_info)
-        self.add_dict_to_unit_map(ChineseNumericWithUnit.DimensionSuffixList)
-
-
-class ChineseTemperatureParserConfiguration(ChineseNumberWithUnitParserConfiguration):
-    def __init__(self, culture_info: CultureInfo = None):
-        super().__init__(culture_info)
-        self.add_dict_to_unit_map(ChineseNumericWithUnit.TemperatureSuffixList)
-        self.add_dict_to_unit_map(ChineseNumericWithUnit.TemperaturePrefixList)

@@ -28,10 +28,6 @@ class NumberWithUnitExtractorConfiguration(ABC):
         pass
 
     @property
-    def dimension_ambiguity_filters_dict(self) -> Dict[Pattern, Pattern]:
-        pass
-
-    @property
     @abstractmethod
     def extract_type(self) -> str:
         raise NotImplementedError

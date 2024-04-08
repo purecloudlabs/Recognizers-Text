@@ -97,25 +97,7 @@ class AbstractNumberWithUnitModel(Model):
         return None
 
 
-class AgeModel(AbstractNumberWithUnitModel):
-    @property
-    def model_type_name(self) -> str:
-        return 'age'
-
-
 class CurrencyModel(AbstractNumberWithUnitModel):
     @property
     def model_type_name(self) -> str:
         return 'currency'
-
-
-class DimensionModel(AbstractNumberWithUnitModel):
-    @property
-    def model_type_name(self) -> str:
-        return 'dimension'
-
-
-class TemperatureModel(AbstractNumberWithUnitModel):
-    @property
-    def model_type_name(self) -> str:
-        return 'temperature'

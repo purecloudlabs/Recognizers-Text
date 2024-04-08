@@ -35,12 +35,6 @@ class PortugueseNumberWithUnitParserConfiguration(NumberWithUnitParserConfigurat
             ParserType.NUMBER, PortugueseNumberParserConfiguration(culture_info))
 
 
-class PortugueseAgeParserConfiguration(PortugueseNumberWithUnitParserConfiguration):
-    def __init__(self, culture_info: CultureInfo = None):
-        super().__init__(culture_info)
-        self.add_dict_to_unit_map(PortugueseNumericWithUnit.AgeSuffixList)
-
-
 class PortugueseCurrencyParserConfiguration(PortugueseNumberWithUnitParserConfiguration):
     def __init__(self, culture_info: CultureInfo = None):
         super().__init__(culture_info)
@@ -48,20 +42,3 @@ class PortugueseCurrencyParserConfiguration(PortugueseNumberWithUnitParserConfig
         self.add_dict_to_unit_map(PortugueseNumericWithUnit.CurrencyPrefixList)
         self.currency_name_to_iso_code_map = PortugueseNumericWithUnit.CurrencyNameToIsoCodeMap
         self.currency_fraction_code_list = PortugueseNumericWithUnit.FractionalUnitNameToCodeMap
-
-
-class PortugueseDimensionParserConfiguration(PortugueseNumberWithUnitParserConfiguration):
-    def __init__(self, culture_info: CultureInfo = None):
-        super().__init__(culture_info)
-        self.add_dict_to_unit_map(PortugueseNumericWithUnit.InformationSuffixList)
-        self.add_dict_to_unit_map(PortugueseNumericWithUnit.AreaSuffixList)
-        self.add_dict_to_unit_map(PortugueseNumericWithUnit.LengthSuffixList)
-        self.add_dict_to_unit_map(PortugueseNumericWithUnit.SpeedSuffixList)
-        self.add_dict_to_unit_map(PortugueseNumericWithUnit.VolumeSuffixList)
-        self.add_dict_to_unit_map(PortugueseNumericWithUnit.WeightSuffixList)
-
-
-class PortugueseTemperatureParserConfiguration(PortugueseNumberWithUnitParserConfiguration):
-    def __init__(self, culture_info: CultureInfo = None):
-        super().__init__(culture_info)
-        self.add_dict_to_unit_map(PortugueseNumericWithUnit.TemperatureSuffixList)

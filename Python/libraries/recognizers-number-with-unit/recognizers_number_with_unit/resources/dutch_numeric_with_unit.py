@@ -14,96 +14,8 @@ from .base_numbers import BaseNumbers
 
 
 class DutchNumericWithUnit:
-    AgeSuffixList = dict([("Year", "jaren oud|jaar oud|jaar|jaren|levensjaren|jarige leeftijd|-jarige leeftijd|-jarige|jarige"),
-                          ("Month", "maanden oud|maand oud|maand|maanden"),
-                          ("Week", "week oud|weken oud|week|weken"),
-                          ("Day", "dag oud|dagen oud|dag|dagen")])
-    AreaSuffixList = dict([("Square kilometer", "vierkante km|vierkante kilometer|kilometer km2|kilometer km^2|km^2|km²|km2"),
-                           ("Square hectometer", "vierkante hm|vierkante hectometer|hm^2|hm²|hektar|hm2"),
-                           ("Square decameter", "vierkante dam|vierkante decameter|dam^2|dam²|dam2"),
-                           ("Square meter", "vierkante m|vierkante meter|m^2|m²|m2"),
-                           ("Square decimeter", "vierkante dm|vierkante decimeter|dm^2|dm²|dm2"),
-                           ("Square centimeter", "vierkante cm|vierkante centimeter|cm^2|cm²|cm2"),
-                           ("Square millimeter", "vierkante mm|vierkante millimeter|mm^2|mm²|mm2"),
-                           ("Square inch", "in2|in^2|in²"),
-                           ("Square foot", "ft2|ft^2|ft²"),
-                           ("Square mile", "vierkante mijl|mi^2|mi²|mi2"),
-                           ("Square yard", "vierkante yard|yd^2|yd²|yd2"),
-                           ("Hectare", "hectare|ha"),
-                           ("Acre", "are")])
-    InformationSuffixList = dict([("Bit", "-bit|bit|bits"),
-                                  ("Kilobit", "kilobit|kilobits|kb|Kb|kbit"),
-                                  ("Megabit", "megabit|megabits|Mb|mb|Mbit"),
-                                  ("Gigabit", "gigabit|gigabits|Gb|gb|Gbit"),
-                                  ("Terabit", "terabit|terabits|Tb|tb|Tbit"),
-                                  ("Petabit", "petabit|petabits|Pb|pb|Pbit"),
-                                  ("Byte", "-byte|byte|bytes"),
-                                  ("Kilobyte", "-kilobyte|-kilobytes|kilobyte|kB|KB|kilobytes|kilo byte|kilo bytes|kByte"),
-                                  ("Megabyte", "-megabyte|-megabytes|megabyte|mB|MB|megabytes|mega byte|mega bytes|MByte"),
-                                  ("Gigabyte", "-gigabyte|-gigabytes|gigabyte|gB|GB|gigabytes|giga byte|giga bytes|GByte"),
-                                  ("Terabyte", "-terabyte|-terabytes|terabyte|tB|TB|terabytes|tera byte|tera bytes|TByte"),
-                                  ("Petabyte", "-petabyte|-petabytes|petabyte|pB|PB|petabytes|peta byte|peta bytes|PByte")])
-    AmbiguousDimensionUnitList = [r'vat', r'voet', r'voeten', r'ons', r'dm', r'"']
     BuildPrefix = f'(?<=(\\s|^))'
     BuildSuffix = f'(?=(\\s|\\W|$))'
-    LengthSuffixList = dict([("Kilometer", "km|kilometer|kilometers|kilometers"),
-                             ("Hectometer", "hm|hectometer|hectometers"),
-                             ("Decameter", "dam|decameter|decameters"),
-                             ("Meter", "m|meter|meters"),
-                             ("Decimeter", "dm|decimeter|decimeters"),
-                             ("Centimeter", "cm|centimeter|centimeters"),
-                             ("Millimeter", "mm|millimeter|millimeters"),
-                             ("Micrometer", "μm|micrometer|micrometers"),
-                             ("Nanometer", "nm|nanometer|nanometers|millimicron"),
-                             ("Picometer", "pm|picometer|picometers"),
-                             ("Mile", "-mijl|mijl|mijlen"),
-                             ("Inch", "-inch|inch|inches"),
-                             ("Foot", "-voet|voet"),
-                             ("Light year", "lichtjaar|lichtjaren|lj"),
-                             ("Pt", "pt|pts")])
-    AmbiguousLengthUnitList = [r'm', r'pm', r'pt', r'pts']
-    SpeedSuffixList = dict([("Meter per second", "meters / seconde|m/s|m per seconde|meters per seconde|meters per secondes|meter per seconde|meter per secondes"),
-                            ("Kilometer per hour", "km/h|km/u|km per uur|kilometer per uur|kilometers per uur"),
-                            ("Kilometer per minute", "km/min|kilometers per minuut|kilometer per minuut"),
-                            ("Kilometer per second", "km/s|kilometers per seconde|kilometers per seconde"),
-                            ("Mile per hour", "mph|mijl per uur|mijlen per hour"),
-                            ("Knot", "kt|knopen"),
-                            ("Foot per second", "ft/s|voet/s|voet per seconde"),
-                            ("Foot per minute", "ft/min|voet/min|voet per minuut")])
-    TemperatureSuffixList = dict([("F", "graden fahrenheit|graden f|gr. f|°f|fahrenheit|f"),
-                                  ("K", "k|K|kelvin"),
-                                  ("R", "rankine|°r"),
-                                  ("D", "delisle|°de"),
-                                  ("C", "graden celsius|graden c|gr. c|°c|c|celsius"),
-                                  ("Degree", "graden|gradendeg.|deg|°")])
-    AmbiguousTemperatureUnitList = [r'c', r'f', r'k']
-    VolumeSuffixList = dict([("Cubic meter", "m3|m^3|m³|kubieke meter|kubieke meters|kuub"),
-                             ("Cubic centimeter", "cm3|cm^3|cm³|kubieke centimeter|kubieke centimetre|kubieke centimeters"),
-                             ("Cubic millimiter", "mm3|mm^3|mm³|kubieke millimiter"),
-                             ("Hectoliter", "hl|hectoliter|hectoliters"),
-                             ("Decaliter", "dal|decaliter|decaliters"),
-                             ("Liter", "l|liter|-liter|liters"),
-                             ("Deciliter", "dl|-deciliter|deciliter|deciliters"),
-                             ("Centiliter", "cl|-centiliter|centiliter|centiliters"),
-                             ("Milliliter", "ml|-mililiter|milliliter|milliliters"),
-                             ("Cubic inch", "in3|in^3|in³|kubieke inch"),
-                             ("Cubic foot", "kubieke voet"),
-                             ("Cubic mile", "kubieke mijl"),
-                             ("Teaspoon", "theelepel|theelepels|tl"),
-                             ("Tablespoon", "eetlepel|eetlepels|el"),
-                             ("Pint", "pint|pints")])
-    AmbiguousVolumeUnitList = [r'l', r'ons', r'oz', r'cup', r'peck', r'cord', r'gill']
-    WeightSuffixList = dict([("Kilogram", "kg|kilogram|kilo"),
-                             ("Gram", "g|gram"),
-                             ("Milligram", "mg|milligram"),
-                             ("Microgram", "μg|microgram"),
-                             ("Barrel", "vat|vaten"),
-                             ("Gallon", "-gallon|gallon"),
-                             ("Metric ton", "metrische ton"),
-                             ("Ton", "-ton|ton|t"),
-                             ("Pound", "-pond|pond"),
-                             ("Ounce", "-ons|ons")])
-    AmbiguousWeightUnitList = [r'g', r't', r'oz']
     CurrencySuffixList = dict([("Abkhazian apsar", "abkhazian apsar|apsars"),
                                ("Afghan afghani", "afghaanse afghani|؋|afn|afghanis|afghani"),
                                ("Pul", "pul"),
@@ -668,11 +580,5 @@ class DutchNumericWithUnit:
                                ("Turkish lira", "₺"),
                                ("Bitcoin", "₿|btc|xbt")])
     AmbiguousCurrencyUnitList = [r'din.', r'kiwi', r'kina', r'kobo', r'lari', r'lipa', r'napa', r'para', r'sfr.', r'taka', r'tala', r'toea', r'vatu', r'yuan', r'ang', r'ban', r'bob', r'btn', r'byr', r'cad', r'cop', r'cup', r'dop', r'gip', r'jod', r'kgs', r'lak', r'lei', r'mga', r'mop', r'nad', r'omr', r'pul', r'sar', r'sbd', r'scr', r'sdg', r'sek', r'sen', r'sol', r'sos', r'std', r'try', r'yer', r'yen']
-    AngleSuffixList = dict([("Degree", "graad|graden|°"),
-                            ("Radian", "radiaal|radialen|rad"),
-                            ("Turn", "draai|draaien|slag|slagen")])
-    AmbiguousAngleUnitList = [r'draai', r'draaien', r'slag', r'slagen']
     AmbiguityFiltersDict = dict([("null", "null")])
-    TemperatureAmbiguityFiltersDict = dict([("\\b(gra(ad|den)|°)$", "\\b((gra(ad|den)|°)\\s*(draai(en|t)?|geroteerd|roterend|rotatie|hoek)|(draai(en|t)?|geroteerd|roterend|rotatie|hoek)(\\s+(\\p{L}+|\\d+)){0,4}\\s*(gra(ad|den)\\b|°))")])
-    DimensionAmbiguityFiltersDict = dict([("\\b(gra(ad|den)|°)$", "\\b((gra(ad|den)|°)\\s*(c(elsius)?|f(ah?renheit)?)|(temperatuur)(\\s+(\\p{L}+|\\d+)){0,4}\\s*(gra(ad|den)\\b|°))")])
 # pylint: enable=line-too-long

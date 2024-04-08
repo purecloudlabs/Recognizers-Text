@@ -67,30 +67,6 @@ class SpanishNumberWithUnitExtractorConfiguration(NumberWithUnitExtractorConfigu
 
 # pylint: enable=abstract-method
 
-class SpanishAgeExtractorConfiguration(SpanishNumberWithUnitExtractorConfiguration):
-    @property
-    def extract_type(self) -> str:
-        return Constants.SYS_UNIT_AGE
-
-    @property
-    def suffix_list(self) -> Dict[str, str]:
-        return self._suffix_list
-
-    @property
-    def prefix_list(self) -> Dict[str, str]:
-        return self._prefix_list
-
-    @property
-    def ambiguous_unit_list(self) -> List[str]:
-        return self._ambiguous_unit_list
-
-    def __init__(self, culture_info: CultureInfo = None):
-        super().__init__(culture_info)
-        self._suffix_list = SpanishNumericWithUnit.AgeSuffixList
-        self._prefix_list = dict()
-        self._ambiguous_unit_list = SpanishNumericWithUnit.AmbiguousAgeUnitList
-
-
 class SpanishCurrencyExtractorConfiguration(SpanishNumberWithUnitExtractorConfiguration):
     @property
     def extract_type(self) -> str:
@@ -113,70 +89,3 @@ class SpanishCurrencyExtractorConfiguration(SpanishNumberWithUnitExtractorConfig
         self._suffix_list = SpanishNumericWithUnit.CurrencySuffixList
         self._prefix_list = SpanishNumericWithUnit.CurrencyPrefixList
         self._ambiguous_unit_list = SpanishNumericWithUnit.AmbiguousCurrencyUnitList
-
-
-class SpanishDimensionExtractorConfiguration(SpanishNumberWithUnitExtractorConfiguration):
-    @property
-    def extract_type(self) -> str:
-        return Constants.SYS_UNIT_DIMENSION
-
-    @property
-    def suffix_list(self) -> Dict[str, str]:
-        return self._suffix_list
-
-    @property
-    def prefix_list(self) -> Dict[str, str]:
-        return self._prefix_list
-
-    @property
-    def ambiguous_unit_list(self) -> List[str]:
-        return self._ambiguous_unit_list
-
-    def __init__(self, culture_info: CultureInfo = None):
-        super().__init__(culture_info)
-
-        self._suffix_list = {
-            **SpanishNumericWithUnit.InformationSuffixList,
-            **SpanishNumericWithUnit.AreaSuffixList,
-            **SpanishNumericWithUnit.LengthSuffixList,
-            **SpanishNumericWithUnit.SpeedSuffixList,
-            **SpanishNumericWithUnit.VolumeSuffixList,
-            **SpanishNumericWithUnit.WeightSuffixList
-        }
-
-        self._prefix_list = dict()
-        self._ambiguous_unit_list = SpanishNumericWithUnit.AmbiguousDimensionUnitList +\
-            SpanishNumericWithUnit.AmbiguousAngleUnitList +\
-            SpanishNumericWithUnit.AmbiguousLengthUnitList +\
-            SpanishNumericWithUnit.AmbiguousSpeedUnitList +\
-            SpanishNumericWithUnit.AmbiguousWeightUnitList
-
-
-class SpanishTemperatureExtractorConfiguration(SpanishNumberWithUnitExtractorConfiguration):
-    @property
-    def extract_type(self) -> str:
-        return Constants.SYS_UNIT_TEMPERATURE
-
-    @property
-    def suffix_list(self) -> Dict[str, str]:
-        return self._suffix_list
-
-    @property
-    def prefix_list(self) -> Dict[str, str]:
-        return self._prefix_list
-
-    @property
-    def ambiguous_unit_list(self) -> List[str]:
-        return self._ambiguous_unit_list
-
-    @property
-    def ambiguous_unit_number_multiplier_regex(self) -> Pattern:
-        return self._ambiguous_unit_number_multiplier_regex
-
-    def __init__(self, culture_info: CultureInfo = None):
-        super().__init__(culture_info)
-        self._suffix_list = SpanishNumericWithUnit.TemperatureSuffixList
-        self._prefix_list = dict()
-        self._ambiguous_unit_list = []
-        self._ambiguous_unit_number_multiplier_regex = RegExpUtility.get_safe_reg_exp(
-            BaseUnits.AmbiguousUnitNumberMultiplierRegex)

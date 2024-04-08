@@ -105,30 +105,6 @@ class ChineseNumberWithUnitExtractorConfiguration(NumberWithUnitExtractorConfigu
 # pylint: enable=abstract-method
 
 
-class ChineseAgeExtractorConfiguration(ChineseNumberWithUnitExtractorConfiguration):
-    @property
-    def extract_type(self) -> str:
-        return Constants.SYS_UNIT_AGE
-
-    @property
-    def suffix_list(self) -> Dict[str, str]:
-        return self._suffix_list
-
-    @property
-    def prefix_list(self) -> Dict[str, str]:
-        return self._prefix_list
-
-    @property
-    def ambiguous_unit_list(self) -> List[str]:
-        return self._ambiguous_unit_list
-
-    def __init__(self, culture_info: CultureInfo = None):
-        super().__init__(culture_info)
-        self._suffix_list = ChineseNumericWithUnit.AgeSuffixList
-        self._prefix_list = dict()
-        self._ambiguous_unit_list = ChineseNumericWithUnit.AgeAmbiguousValues
-
-
 class ChineseCurrencyExtractorConfiguration(ChineseNumberWithUnitExtractorConfiguration):
     @property
     def extract_type(self) -> str:
@@ -151,57 +127,3 @@ class ChineseCurrencyExtractorConfiguration(ChineseNumberWithUnitExtractorConfig
         self._suffix_list = ChineseNumericWithUnit.CurrencySuffixList
         self._prefix_list = ChineseNumericWithUnit.CurrencyPrefixList
         self._ambiguous_unit_list = ChineseNumericWithUnit.CurrencyAmbiguousValues
-
-
-class ChineseDimensionExtractorConfiguration(ChineseNumberWithUnitExtractorConfiguration):
-    @property
-    def extract_type(self) -> str:
-        return Constants.SYS_UNIT_DIMENSION
-
-    @property
-    def suffix_list(self) -> Dict[str, str]:
-        return self._suffix_list
-
-    @property
-    def prefix_list(self) -> Dict[str, str]:
-        return self._prefix_list
-
-    @property
-    def ambiguous_unit_list(self) -> List[str]:
-        return self._ambiguous_unit_list
-
-    def __init__(self, culture_info: CultureInfo = None):
-        super().__init__(culture_info)
-        self._suffix_list = ChineseNumericWithUnit.DimensionSuffixList
-        self._prefix_list = dict()
-        self._ambiguous_unit_list = ChineseNumericWithUnit.DimensionAmbiguousValues
-
-
-class ChineseTemperatureExtractorConfiguration(ChineseNumberWithUnitExtractorConfiguration):
-    @property
-    def extract_type(self) -> str:
-        return Constants.SYS_UNIT_TEMPERATURE
-
-    @property
-    def suffix_list(self) -> Dict[str, str]:
-        return self._suffix_list
-
-    @property
-    def prefix_list(self) -> Dict[str, str]:
-        return self._prefix_list
-
-    @property
-    def ambiguous_unit_list(self) -> List[str]:
-        return self._ambiguous_unit_list
-
-    @property
-    def ambiguous_unit_number_multiplier_regex(self) -> Pattern:
-        return self._ambiguous_unit_number_multiplier_regex
-
-    def __init__(self, culture_info: CultureInfo = None):
-        super().__init__(culture_info)
-        self._suffix_list = ChineseNumericWithUnit.TemperatureSuffixList
-        self._prefix_list = ChineseNumericWithUnit.TemperaturePrefixList
-        self._ambiguous_unit_list = ChineseNumericWithUnit.TemperatureAmbiguousValues
-        self._ambiguous_unit_number_multiplier_regex = RegExpUtility.get_safe_reg_exp(
-            BaseUnits.AmbiguousUnitNumberMultiplierRegex)

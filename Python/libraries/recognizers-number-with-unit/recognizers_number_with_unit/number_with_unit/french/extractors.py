@@ -67,32 +67,6 @@ class FrenchNumberWithUnitExtractorConfiguration(NumberWithUnitExtractorConfigur
             BaseUnits.PmNonUnitRegex)
 
 
-# pylint: enable=abstract-method
-
-class FrenchAgeExtractorConfiguration(FrenchNumberWithUnitExtractorConfiguration):
-    @property
-    def extract_type(self) -> str:
-        return Constants.SYS_UNIT_AGE
-
-    @property
-    def suffix_list(self) -> Dict[str, str]:
-        return self._suffix_list
-
-    @property
-    def prefix_list(self) -> Dict[str, str]:
-        return self._prefix_list
-
-    @property
-    def ambiguous_unit_list(self) -> List[str]:
-        return self._ambiguous_unit_list
-
-    def __init__(self, culture_info: CultureInfo = None):
-        super().__init__(culture_info)
-        self._suffix_list = FrenchNumericWithUnit.AgeSuffixList
-        self._prefix_list = dict()
-        self._ambiguous_unit_list = list()
-
-
 class FrenchCurrencyExtractorConfiguration(FrenchNumberWithUnitExtractorConfiguration):
     @property
     def extract_type(self) -> str:
@@ -115,69 +89,3 @@ class FrenchCurrencyExtractorConfiguration(FrenchNumberWithUnitExtractorConfigur
         self._suffix_list = FrenchNumericWithUnit.CurrencySuffixList
         self._prefix_list = FrenchNumericWithUnit.CurrencyPrefixList
         self._ambiguous_unit_list = FrenchNumericWithUnit.AmbiguousCurrencyUnitList
-
-
-class FrenchDimensionExtractorConfiguration(FrenchNumberWithUnitExtractorConfiguration):
-    @property
-    def extract_type(self) -> str:
-        return Constants.SYS_UNIT_DIMENSION
-
-    @property
-    def suffix_list(self) -> Dict[str, str]:
-        return self._suffix_list
-
-    @property
-    def prefix_list(self) -> Dict[str, str]:
-        return self._prefix_list
-
-    @property
-    def ambiguous_unit_list(self) -> List[str]:
-        return self._ambiguous_unit_list
-
-    def __init__(self, culture_info: CultureInfo = None):
-        super().__init__(culture_info)
-        self._suffix_list = {
-            **FrenchNumericWithUnit.InformationSuffixList,
-            **FrenchNumericWithUnit.AreaSuffixList,
-            **FrenchNumericWithUnit.LengthSuffixList,
-            **FrenchNumericWithUnit.SpeedSuffixList,
-            **FrenchNumericWithUnit.VolumeSuffixList,
-            **FrenchNumericWithUnit.WeightSuffixList
-        }
-        self._prefix_list = dict()
-        self._ambiguous_unit_list = FrenchNumericWithUnit.AmbiguousDimensionUnitList +\
-            FrenchNumericWithUnit.AmbiguousAngleUnitList +\
-            FrenchNumericWithUnit.AmbiguousLengthUnitList +\
-            FrenchNumericWithUnit.AmbiguousSpeedUnitList +\
-            FrenchNumericWithUnit.AmbiguousVolumeUnitList +\
-            FrenchNumericWithUnit.AmbiguousWeightUnitList
-
-
-class FrenchTemperatureExtractorConfiguration(FrenchNumberWithUnitExtractorConfiguration):
-    @property
-    def extract_type(self) -> str:
-        return Constants.SYS_UNIT_TEMPERATURE
-
-    @property
-    def suffix_list(self) -> Dict[str, str]:
-        return self._suffix_list
-
-    @property
-    def prefix_list(self) -> Dict[str, str]:
-        return self._prefix_list
-
-    @property
-    def ambiguous_unit_list(self) -> List[str]:
-        return self._ambiguous_unit_list
-
-    @property
-    def ambiguous_unit_number_multiplier_regex(self) -> Pattern:
-        return self._ambiguous_unit_number_multiplier_regex
-
-    def __init__(self, culture_info: CultureInfo = None):
-        super().__init__(culture_info)
-        self._suffix_list = FrenchNumericWithUnit.TemperatureSuffixList
-        self._prefix_list = dict()
-        self._ambiguous_unit_list = list()
-        self._ambiguous_unit_number_multiplier_regex = RegExpUtility.get_safe_reg_exp(
-            BaseUnits.AmbiguousUnitNumberMultiplierRegex)

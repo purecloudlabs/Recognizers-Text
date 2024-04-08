@@ -35,12 +35,6 @@ class DutchNumberWithUnitParserConfiguration(NumberWithUnitParserConfiguration):
             ParserType.NUMBER, DutchNumberParserConfiguration(culture_info))
 
 
-class DutchAgeParserConfiguration(DutchNumberWithUnitParserConfiguration):
-    def __init__(self, culture_info: CultureInfo = None):
-        super().__init__(culture_info)
-        self.add_dict_to_unit_map(DutchNumericWithUnit.AgeSuffixList)
-
-
 class DutchCurrencyParserConfiguration(DutchNumberWithUnitParserConfiguration):
     def __init__(self, culture_info: CultureInfo = None):
         super().__init__(culture_info)
@@ -48,21 +42,3 @@ class DutchCurrencyParserConfiguration(DutchNumberWithUnitParserConfiguration):
         self.add_dict_to_unit_map(DutchNumericWithUnit.CurrencyPrefixList)
         self.currency_name_to_iso_code_map = DutchNumericWithUnit.CurrencyNameToIsoCodeMap
         self.currency_fraction_code_list = DutchNumericWithUnit.FractionalUnitNameToCodeMap
-
-
-class DutchDimensionParserConfiguration(DutchNumberWithUnitParserConfiguration):
-    def __init__(self, culture_info: CultureInfo = None):
-        super().__init__(culture_info)
-        self.add_dict_to_unit_map(DutchNumericWithUnit.InformationSuffixList)
-        self.add_dict_to_unit_map(DutchNumericWithUnit.AreaSuffixList)
-        self.add_dict_to_unit_map(DutchNumericWithUnit.LengthSuffixList)
-        self.add_dict_to_unit_map(DutchNumericWithUnit.SpeedSuffixList)
-        self.add_dict_to_unit_map(DutchNumericWithUnit.AngleSuffixList)
-        self.add_dict_to_unit_map(DutchNumericWithUnit.VolumeSuffixList)
-        self.add_dict_to_unit_map(DutchNumericWithUnit.WeightSuffixList)
-
-
-class DutchTemperatureParserConfiguration(DutchNumberWithUnitParserConfiguration):
-    def __init__(self, culture_info: CultureInfo = None):
-        super().__init__(culture_info)
-        self.add_dict_to_unit_map(DutchNumericWithUnit.TemperatureSuffixList)

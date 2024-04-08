@@ -65,32 +65,6 @@ class PortugueseNumberWithUnitExtractorConfiguration(NumberWithUnitExtractorConf
             BaseUnits.PmNonUnitRegex)
 
 
-# pylint: enable=abstract-method
-
-class PortugueseAgeExtractorConfiguration(PortugueseNumberWithUnitExtractorConfiguration):
-    @property
-    def extract_type(self) -> str:
-        return Constants.SYS_UNIT_AGE
-
-    @property
-    def suffix_list(self) -> Dict[str, str]:
-        return self._suffix_list
-
-    @property
-    def prefix_list(self) -> Dict[str, str]:
-        return self._prefix_list
-
-    @property
-    def ambiguous_unit_list(self) -> List[str]:
-        return self._ambiguous_unit_list
-
-    def __init__(self, culture_info: CultureInfo = None):
-        super().__init__(culture_info)
-        self._suffix_list = PortugueseNumericWithUnit.AgeSuffixList
-        self._prefix_list = dict()
-        self._ambiguous_unit_list = PortugueseNumericWithUnit.AmbiguousAgeUnitList
-
-
 class PortugueseCurrencyExtractorConfiguration(PortugueseNumberWithUnitExtractorConfiguration):
     @property
     def extract_type(self) -> str:
@@ -113,71 +87,3 @@ class PortugueseCurrencyExtractorConfiguration(PortugueseNumberWithUnitExtractor
         self._suffix_list = PortugueseNumericWithUnit.CurrencySuffixList
         self._prefix_list = PortugueseNumericWithUnit.CurrencyPrefixList
         self._ambiguous_unit_list = PortugueseNumericWithUnit.AmbiguousCurrencyUnitList
-
-
-class PortugueseDimensionExtractorConfiguration(PortugueseNumberWithUnitExtractorConfiguration):
-    @property
-    def extract_type(self) -> str:
-        return Constants.SYS_UNIT_DIMENSION
-
-    @property
-    def suffix_list(self) -> Dict[str, str]:
-        return self._suffix_list
-
-    @property
-    def prefix_list(self) -> Dict[str, str]:
-        return self._prefix_list
-
-    @property
-    def ambiguous_unit_list(self) -> List[str]:
-        return self._ambiguous_unit_list
-
-    def __init__(self, culture_info: CultureInfo = None):
-
-        super().__init__(culture_info)
-
-        self._suffix_list = {
-            **PortugueseNumericWithUnit.InformationSuffixList,
-            **PortugueseNumericWithUnit.AreaSuffixList,
-            **PortugueseNumericWithUnit.LengthSuffixList,
-            **PortugueseNumericWithUnit.SpeedSuffixList,
-            **PortugueseNumericWithUnit.VolumeSuffixList,
-            **PortugueseNumericWithUnit.WeightSuffixList
-        }
-
-        self._prefix_list = dict()
-        self._ambiguous_unit_list = PortugueseNumericWithUnit.AmbiguousDimensionUnitList +\
-            PortugueseNumericWithUnit.AmbiguousAngleUnitList +\
-            PortugueseNumericWithUnit.AmbiguousLengthUnitList +\
-            PortugueseNumericWithUnit.AmbiguousSpeedUnitList +\
-            PortugueseNumericWithUnit.AmbiguousWeightUnitList
-
-
-class PortugueseTemperatureExtractorConfiguration(PortugueseNumberWithUnitExtractorConfiguration):
-    @property
-    def extract_type(self) -> str:
-        return Constants.SYS_UNIT_TEMPERATURE
-
-    @property
-    def suffix_list(self) -> Dict[str, str]:
-        return self._suffix_list
-
-    @property
-    def prefix_list(self) -> Dict[str, str]:
-        return self._prefix_list
-
-    @property
-    def ambiguous_unit_list(self) -> List[str]:
-        return self._ambiguous_unit_list
-
-    @property
-    def ambiguous_unit_number_multiplier_regex(self) -> Pattern:
-        return self._ambiguous_unit_number_multiplier_regex
-
-    def __init__(self, culture_info: CultureInfo = None):
-        super().__init__(culture_info)
-        self._suffix_list = PortugueseNumericWithUnit.TemperatureSuffixList
-        self._prefix_list = dict()
-        self._ambiguous_unit_list = []
-        self._ambiguous_unit_number_multiplier_regex = RegExpUtility.get_safe_reg_exp(
-            BaseUnits.AmbiguousUnitNumberMultiplierRegex)

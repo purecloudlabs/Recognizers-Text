@@ -36,12 +36,6 @@ class FrenchNumberWithUnitParserConfiguration(NumberWithUnitParserConfiguration)
         self._connector_token = FrenchNumericWithUnit.ConnectorToken
 
 
-class FrenchAgeParserConfiguration(FrenchNumberWithUnitParserConfiguration):
-    def __init__(self, culture_info: CultureInfo = None):
-        super().__init__(culture_info)
-        self.add_dict_to_unit_map(FrenchNumericWithUnit.AgeSuffixList)
-
-
 class FrenchCurrencyParserConfiguration(FrenchNumberWithUnitParserConfiguration):
     def __init__(self, culture_info: CultureInfo = None):
         super().__init__(culture_info)
@@ -49,21 +43,3 @@ class FrenchCurrencyParserConfiguration(FrenchNumberWithUnitParserConfiguration)
         self.add_dict_to_unit_map(FrenchNumericWithUnit.CurrencyPrefixList)
         self.currency_name_to_iso_code_map = FrenchNumericWithUnit.CurrencyNameToIsoCodeMap
         self.currency_fraction_code_list = FrenchNumericWithUnit.FractionalUnitNameToCodeMap
-
-
-class FrenchDimensionParserConfiguration(FrenchNumberWithUnitParserConfiguration):
-    def __init__(self, culture_info: CultureInfo = None):
-        super().__init__(culture_info)
-        self.add_dict_to_unit_map(FrenchNumericWithUnit.InformationSuffixList)
-        self.add_dict_to_unit_map(FrenchNumericWithUnit.AreaSuffixList)
-        self.add_dict_to_unit_map(FrenchNumericWithUnit.LengthSuffixList)
-        self.add_dict_to_unit_map(FrenchNumericWithUnit.SpeedSuffixList)
-        self.add_dict_to_unit_map(FrenchNumericWithUnit.VolumeSuffixList)
-        self.add_dict_to_unit_map(FrenchNumericWithUnit.WeightSuffixList)
-
-
-class FrenchTemperatureParserConfiguration(FrenchNumberWithUnitParserConfiguration):
-    def __init__(self, culture_info: CultureInfo = None):
-        super().__init__(culture_info)
-        self._connector_token = None
-        self.add_dict_to_unit_map(FrenchNumericWithUnit.TemperatureSuffixList)
