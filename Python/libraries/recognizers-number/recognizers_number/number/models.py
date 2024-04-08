@@ -88,9 +88,3 @@ class OrdinalModel(AbstractNumberModel):
     @property
     def model_type_name(self) -> str:
         return 'ordinal'
-
-
-class PercentModel(AbstractNumberModel):
-    @property
-    def model_type_name(self) -> str:
-        return 'percentage'

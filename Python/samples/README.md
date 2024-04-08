@@ -43,10 +43,6 @@ Recognizers.recognize_number(user_input, culture),
 # E.g "eleventh" will return "11".
 Recognizers.recognize_ordinal(user_input, culture),
 
-# Percentage recognizer - This function will find any number presented as percentage
-# E.g "one hundred percents" will return "100%"
-Recognizers.recognize_percentage(user_input, culture),
-
 # Currency recognizer - This function will find any currency presented
 # E.g "Interest expense in the 1988 third quarter was $ 75.3 million" will return "75300000 Dollar"
 Recognizers.recognize_currency(user_input, culture),

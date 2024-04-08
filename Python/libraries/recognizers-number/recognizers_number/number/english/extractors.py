@@ -8,7 +8,7 @@ from recognizers_text.utilities import RegExpUtility
 from recognizers_number.number.models import NumberMode, LongFormatMode
 from recognizers_number.resources import BaseNumbers
 from recognizers_number.resources.english_numeric import EnglishNumeric
-from recognizers_number.number.extractors import ReVal, ReRe, BaseNumberExtractor, BasePercentageExtractor, BaseMergedNumberExtractor
+from recognizers_number.number.extractors import ReVal, ReRe, BaseNumberExtractor, BaseMergedNumberExtractor
 from recognizers_number.number.constants import Constants
 
 
@@ -240,17 +240,6 @@ class EnglishOrdinalExtractor(BaseNumberExtractor):
             ReVal(
                 re=EnglishNumeric.OrdinalRoundNumberRegex,
                 val='OrdEng')
-        ]
-
-
-class EnglishPercentageExtractor(BasePercentageExtractor):
-    def __init__(self):
-        super().__init__(EnglishNumberExtractor(NumberMode.DEFAULT))
-
-    def get_definitions(self) -> List[str]:
-        return [
-            EnglishNumeric.NumberWithSuffixPercentage,
-            EnglishNumeric.NumberWithPrefixPercentage
         ]
 
 

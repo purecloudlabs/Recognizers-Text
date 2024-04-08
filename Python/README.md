@@ -119,16 +119,6 @@ Internally, both methods will cache the instance models to avoid extra costs.
 
     `NumberRecognizer(Culture.English).get_ordinal_model()`
 
-* **Percentages**
-
-    This recognizer will find any number presented as percentage. E.g. _"one hundred percents"_ will return _"100%"_.
-
-    `recognize_percentage('one hundred percents', Culture.English))`
-
-    Or you can obtain a model instance using:
-
-    `NumberRecognizer(Culture.English).get_percentage_model()`
-
 ### Microsoft.Recognizers.Text.NumberWithUnit
 * **Currencies**
 

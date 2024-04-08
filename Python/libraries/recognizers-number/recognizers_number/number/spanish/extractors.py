@@ -7,7 +7,7 @@ from recognizers_text.utilities import RegExpUtility
 from recognizers_number.number.models import NumberMode, LongFormatMode
 from recognizers_number.resources import BaseNumbers
 from recognizers_number.resources.spanish_numeric import SpanishNumeric
-from recognizers_number.number.extractors import ReVal, ReRe, BaseNumberExtractor, BasePercentageExtractor
+from recognizers_number.number.extractors import ReVal, ReRe, BaseNumberExtractor
 from recognizers_number.number.constants import Constants
 
 
@@ -214,14 +214,4 @@ class SpanishOrdinalExtractor(BaseNumberExtractor):
             ReVal(
                 re=SpanishNumeric.OrdinalNounRegex,
                 val='OrdSpa')
-        ]
-
-
-class SpanishPercentageExtractor(BasePercentageExtractor):
-    def __init__(self):
-        super().__init__(SpanishNumberExtractor())
-
-    def get_definitions(self) -> List[str]:
-        return [
-            SpanishNumeric.NumberWithPrefixPercentage
         ]

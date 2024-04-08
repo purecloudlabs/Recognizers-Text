@@ -74,8 +74,6 @@ class ItalianNumeric:
     ConnectorRegex = f'(?<spacer>e)'
     DoubleExponentialNotationRegex = f'(((?<!\\d+\\s*)-\\s*)|((?<=\\b)(?<!\\d+,)))(\\d+(,\\d+)?)e([+-]*[1-9]\\d*)(?=\\b)'
     DoubleCaretExponentialNotationRegex = f'(((?<!\\d+\\s*)-\\s*)|((?<=\\b)(?<!\\d+,)))(\\d+(,\\d+)?)\\^([+-]*[1-9]\\d*)(?=\\b)'
-    NumberWithSuffixPercentage = f'(?<!%)({BaseNumbers.NumberReplaceToken})(\\s*)(%(?!{BaseNumbers.NumberReplaceToken})|(per cento|percentuale|percento)\\b)'
-    NumberWithPrefixPercentage = f'(per cento di|percento di)(\\s*)({BaseNumbers.NumberReplaceToken})'
     TillRegex = f'(a|fino\\s+a|--|-|—|——|~|–)'
     MoreRegex = f'((più\\s+grand[ei]|più\\s+(in\\s+)?alt[oi]|maggior[ei]|al\\s+di\\s+sopra|più)(\\s+di)?|sopra(\\s+i)?|superior[ei](\\s+a)?|(?<!<|=)>)'
     LessRegex = f'((meno|più\\s+(in\\s+)?bass[oi]|più\\s+piccol[oi]|minor[ei]|al\\s+di\\s+sotto)(\\s+di)?|sotto(\\s+i)?|inferior[ei](\\s+a)?|(?<!>|=)<)'

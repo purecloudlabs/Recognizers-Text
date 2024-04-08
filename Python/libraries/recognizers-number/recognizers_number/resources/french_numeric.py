@@ -78,8 +78,6 @@ class FrenchNumeric:
     DoubleAllFloatRegex = f'((?<=\\b){AllFloatRegex}(?=\\b))'
     DoubleExponentialNotationRegex = f'(((?<!\\d+\\s*)-\\s*)|((?<=\\b)(?<!\\d+[,\\.])))(\\d+([,\\.]\\d+)?)e([+-]*[1-9]\\d*)(?=\\b)'
     DoubleCaretExponentialNotationRegex = f'(((?<!\\d+\\s*)-\\s*)|((?<=\\b)(?<!\\d+[,\\.])))(\\d+([,\\.]\\d+)?)\\^([+-]*[1-9]\\d*)(?=\\b)'
-    NumberWithSuffixPercentage = f'(?<!%)({BaseNumbers.NumberReplaceToken})(\\s*)(%(?!{BaseNumbers.NumberReplaceToken})|(pourcent(s|ages?)?)\\b)'
-    NumberWithPrefixPercentage = f'((?<!{BaseNumbers.NumberReplaceToken})%|pourcent|pourcent des|pourcentage de)(\\s*)({BaseNumbers.NumberReplaceToken})(?=\\s|$)'
     TillRegex = f'((?<!\\b[èe]ga(l(es)?|ux)\\s+)[àa]|--|-|—|——|~|–)'
     MoreRegex = f'(?:(bigger|greater|more|plus(\\s+(haut|grand|âgée?))?|sup[ée]rieure?s?)(\\s+([àa]|que))?|dépassant|(au-dessus|(a\\s+)?plus|dépassant|au-delà)\\s+d[e\'’]|exceed(ed|ing)?|(?<!<|=)>)'
     LessRegex = f'(?:(less|plus\\s+(bas|petit|jeune)|moins|inf[ée]rieure?s?)(\\s+([àa]|d[e\'’]|que))?|((en )?dessous)\\s+de|under|(?<!>|=)<)'

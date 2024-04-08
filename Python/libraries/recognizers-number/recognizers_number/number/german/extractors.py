@@ -8,7 +8,7 @@ from recognizers_text.utilities import RegExpUtility
 from recognizers_number.number.models import NumberMode, LongFormatMode
 from recognizers_number.resources import BaseNumbers
 from recognizers_number.resources.german_numeric import GermanNumeric
-from recognizers_number.number.extractors import ReVal, ReRe, BaseNumberExtractor, BasePercentageExtractor, BaseMergedNumberExtractor
+from recognizers_number.number.extractors import ReVal, ReRe, BaseNumberExtractor, BaseMergedNumberExtractor
 from recognizers_number.number.constants import Constants
 
 
@@ -240,17 +240,6 @@ class GermanOrdinalExtractor(BaseNumberExtractor):
             ReVal(
                 re=GermanNumeric.OrdinalRoundNumberRegex,
                 val='OrdGer')
-        ]
-
-
-class GermanPercentageExtractor(BasePercentageExtractor):
-    def __init__(self):
-        super().__init__(GermanNumberExtractor(NumberMode.DEFAULT))
-
-    def get_definitions(self) -> List[str]:
-        return [
-            GermanNumeric.NumberWithSuffixPercentage,
-            GermanNumeric.NumberWithPrefixPercentage
         ]
 
 
