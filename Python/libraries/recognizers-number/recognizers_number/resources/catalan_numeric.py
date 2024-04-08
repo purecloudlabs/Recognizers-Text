@@ -44,9 +44,9 @@ class CatalanNumeric:
     FractionMultiplierRegex = f'(?<fracMultiplier>(\\s+(i|un)\\s+)(i|un(a)?|dues|{TwoToNineIntegerRegex}\\s+)?(mig|quarts?|terç|cinquè|sisè|setena|vuitè|vuitena|novè|desè)s?(\\s+(de|d\'))?)'
     RoundMultiplierWithFraction = f'(?<=(?<!{RoundNumberIntegerRegex}){FractionMultiplierRegex}\\s+)?(?<multiplier>(?:cent|mil|mili[óo]|milion|bili[óo]|mil milions)s?)(?={FractionMultiplierRegex}?$)'
     RoundMultiplierRegex = f'\\b\\s*((de\\s+)?a\\s+)?({RoundMultiplierWithFraction}|(?<multiplier>(?:cent|mil|milers)s?)$)'
-    FractionNounRegex = f'(?<=\\b)({AllIntRegex}\\s+(i\\s+)?)?({AllIntRegex}(\\s+((i)\\s)?)(({AllOrdinalNumberRegex}s?|{RoundNumberOrdinalRegex}s?)|(mig|meitats?|terç(os)?|quarts?))|(un\s+)?(mig|meitats?|terç(os)?|quarts?)(\s+(de\s+)?|\s*-\s*){RoundNumberIntegerRegex})(?=\\b)'
-    FractionNounWithArticleRegex = f'(?<=\\b)(({AllIntRegex}|{RoundNumberIntegerRegexWithLocks})\\s+((i|con)\\s+)?)?((un|i)(\s+)(({AllOrdinalNumberRegex}))|(i\s+)?mig|meitats?|quarts?)(?=\\b)'
-    FractionPrepositionRegex = f'(?<!{BaseNumbers.CommonCurrencySymbol}\\s*)(?<=\\b)(?<numerator>({AllIntRegex})|((?<![\\.,])\d+))\\s+(sobre|(?<ambiguousSeparator>en|de))\\s+(?<denominator>({AllIntRegex})|(\d+)(?![\\.,]))(?=\\b)'
+    FractionNounRegex = f'(?<=\\b)({AllIntRegex}\\s+(i\\s+)?)?({AllIntRegex}(\\s+((i)\\s)?)(({AllOrdinalNumberRegex}s?|{RoundNumberOrdinalRegex}s?)|(mig|meitats?|terç(os)?|quarts?))|(un\\s+)?(mig|meitats?|terç(os)?|quarts?)(\\s+(de\\s+)?|\\s*-\\s*){RoundNumberIntegerRegex})(?=\\b)'
+    FractionNounWithArticleRegex = f'(?<=\\b)(({AllIntRegex}|{RoundNumberIntegerRegexWithLocks})\\s+((i|con)\\s+)?)?((un|i)(\\s+)(({AllOrdinalNumberRegex}))|(i\\s+)?mig|meitats?|quarts?)(?=\\b)'
+    FractionPrepositionRegex = f'(?<!{BaseNumbers.CommonCurrencySymbol}\\s*)(?<=\\b)(?<numerator>({AllIntRegex})|((?<![\\.,])\\d+))\\s+(sobre|(?<ambiguousSeparator>en|de))\\s+(?<denominator>({AllIntRegex})|(\\d+)(?![\\.,]))(?=\\b)'
     AllPointRegex = f'((\\s+{ZeroToNineIntegerRegex})+|(\\s+{SeparaIntRegex}))'
     AllFloatRegex = f'{AllIntRegex}(\\s+coma){AllPointRegex}'
 
