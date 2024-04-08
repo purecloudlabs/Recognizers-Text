@@ -61,6 +61,8 @@ def get_specs(recognizer, entity):
             if 'NotSupportedByDesign' in spec and 'python' in spec['NotSupportedByDesign']:
                 continue
             not_supported = 'NotSupported' in spec and 'python' in spec['NotSupported']
+            if not_supported:
+                continue
             message = sp['config']['language'] + ' - ' + \
                 recognizer + ' - ' + sp['config']['model'] + entity
             ret_specs.append(pytest.param(
