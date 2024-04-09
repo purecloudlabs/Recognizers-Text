@@ -789,24 +789,3 @@ class BaseNumberParser(Parser):
 
         pattern = RegExpUtility.get_safe_reg_exp(source, flags=regex.I | regex.S)
         return pattern
-
-
-class BasePercentageParser(BaseNumberParser):
-    def parse(self, source: ExtractResult) -> Optional[ParseResult]:
-        original = source.text
-
-        # do replace text & data from extended info
-        if isinstance(source.data, list):
-            source.text = source.data[0]
-            source.data = source.data[1].data
-
-        result: ParseResult = super().parse(source)
-
-        if result.resolution_str is not None and result.resolution_str:
-            if not result.resolution_str.strip().endswith('%'):
-                result.resolution_str = result.resolution_str.strip() + '%'
-
-        result.data = source.text
-        result.text = original
-
-        return result

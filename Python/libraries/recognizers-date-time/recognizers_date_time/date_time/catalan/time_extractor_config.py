@@ -2,14 +2,9 @@ from typing import List, Pattern
 from recognizers_text.utilities import RegExpUtility
 from ...resources.catalan_date_time import CatalanDateTime
 from ..base_time import TimeExtractorConfiguration
-from ..base_timezone import BaseTimeZoneExtractor
 
 
 class CatalanTimeExtractorConfiguration(TimeExtractorConfiguration):
-    @property
-    def time_zone_extractor(self):
-        return None
-
     @property
     def options(self):
         return self._options

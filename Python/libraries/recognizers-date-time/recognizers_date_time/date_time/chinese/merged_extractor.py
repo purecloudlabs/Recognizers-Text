@@ -38,8 +38,6 @@ class ChineseMergedExtractor(BaseMergedExtractor):
         result = self.add_to(result, self.config.date_time_period_extractor.extract(
             source, reference), source)
         result = self.add_to(
-            result, self.config.set_extractor.extract(source, reference), source)
-        result = self.add_to(
             result, self.config.holiday_extractor.extract(source, reference), source)
 
         result = self._filter_ambiguity(result, source)

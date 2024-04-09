@@ -6,7 +6,6 @@ from typing import Pattern
 from recognizers_text.utilities import RegExpUtility
 
 from .holiday_parser_config import GermanHolidayParserConfiguration
-from .set_parser_config import GermanSetParserConfiguration
 from .dateperiod_parser_config import GermanDatePeriodParserConfiguration
 from .timeperiod_parser_config import GermanTimePeriodParserConfiguration
 from .common_configs import GermanCommonDateTimeParserConfiguration
@@ -18,7 +17,6 @@ from ..base_dateperiod import BaseDatePeriodParser
 from ..base_timeperiod import BaseTimePeriodParser
 from ..base_datetimeperiod import BaseDateTimePeriodParser
 from ..base_duration import BaseDurationParser
-from ..base_set import BaseSetParser
 from ..base_merged import MergedParserConfiguration
 from ...resources.german_date_time import GermanDateTime, BaseDateTime
 
@@ -84,10 +82,6 @@ class GermanMergedParserConfiguration(GermanCommonDateTimeParserConfiguration, M
     def duration_parser(self) -> BaseDurationParser:
         return self._duration_parser
 
-    @property
-    def set_parser(self) -> BaseSetParser:
-        return self._set_parser
-
     def __init__(self, config):
         GermanCommonDateTimeParserConfiguration.__init__(self)
         self._suffix_after = RegExpUtility.get_safe_reg_exp(
@@ -106,6 +100,5 @@ class GermanMergedParserConfiguration(GermanCommonDateTimeParserConfiguration, M
             GermanDatePeriodParserConfiguration(self))
         self._time_period_parser = BaseTimePeriodParser(
             GermanTimePeriodParserConfiguration(self))
-        self._set_parser = BaseSetParser(GermanSetParserConfiguration(config))
         self._holiday_parser = BaseHolidayParser(
             GermanHolidayParserConfiguration(config))

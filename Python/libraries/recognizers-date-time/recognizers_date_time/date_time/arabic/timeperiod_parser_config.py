@@ -25,10 +25,6 @@ class ArabicTimePeriodParserConfiguration(TimePeriodParserConfiguration):
         return self._integer_extractor
 
     @property
-    def time_zone_parser(self) -> DateTimeParser:
-        return self._time_zone_parser
-
-    @property
     def specific_time_from_to_regex(self) -> Pattern:
         return self._specific_time_from_to_regex
 
@@ -84,7 +80,6 @@ class ArabicTimePeriodParserConfiguration(TimePeriodParserConfiguration):
             ArabicDateTime.TimeOfDayRegex)
         self._till_regex = RegExpUtility.get_safe_reg_exp(
             ArabicDateTime.TillRegex)
-        self._time_zone_parser = config.time_zone_parser
 
     def get_matched_timex_range(self, source: str) -> MatchedTimeRegex:
         trimmed_text = source.strip().lower()

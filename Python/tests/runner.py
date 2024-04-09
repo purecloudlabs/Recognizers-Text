@@ -2,11 +2,16 @@
 #  Licensed under the MIT License.
 
 import glob
-import os
 import json
+import os
 import re
+
 import pytest
 from recognizers_text.culture import Culture
+from regex import regex
+
+regex._MAXCACHE = 100000
+regex._MAXREPCACHE = 100000
 
 
 def split_all(path):
@@ -56,6 +61,8 @@ def get_specs(recognizer, entity):
             if 'NotSupportedByDesign' in spec and 'python' in spec['NotSupportedByDesign']:
                 continue
             not_supported = 'NotSupported' in spec and 'python' in spec['NotSupported']
+            if not_supported:
+                continue
             message = sp['config']['language'] + ' - ' + \
                 recognizer + ' - ' + sp['config']['model'] + entity
             ret_specs.append(pytest.param(

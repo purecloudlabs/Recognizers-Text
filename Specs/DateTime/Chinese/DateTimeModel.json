@@ -1077,190 +1077,6 @@
     ]
   },
   {
-    "Input": "事件 每天都发生",
-    "Context": {
-      "ReferenceDateTime": "2017-03-22T00:00:00"
-    },
-    "Results": [
-      {
-        "Text": "每天",
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1D",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        },
-        "Start": 3,
-        "End": 4
-      }
-    ]
-  },
-  {
-    "Input": "事件每日都发生",
-    "Context": {
-      "ReferenceDateTime": "2017-03-22T00:00:00"
-    },
-    "Results": [
-      {
-        "Text": "每日",
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1D",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        },
-        "Start": 2,
-        "End": 3
-      }
-    ]
-  },
-  {
-    "Input": "事件每周都发生",
-    "Context": {
-      "ReferenceDateTime": "2017-03-22T00:00:00"
-    },
-    "Results": [
-      {
-        "Text": "每周",
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1W",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        },
-        "Start": 2,
-        "End": 3
-      }
-    ]
-  },
-  {
-    "Input": "事件每个星期都发生",
-    "Context": {
-      "ReferenceDateTime": "2017-03-22T00:00:00"
-    },
-    "Results": [
-      {
-        "Text": "每个星期",
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1W",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        },
-        "Start": 2,
-        "End": 5
-      }
-    ]
-  },
-  {
-    "Input": "事件每个月都发生",
-    "Context": {
-      "ReferenceDateTime": "2017-03-22T00:00:00"
-    },
-    "Results": [
-      {
-        "Text": "每个月",
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1M",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        },
-        "Start": 2,
-        "End": 4
-      }
-    ]
-  },
-  {
-    "Input": "事件每年都发生",
-    "Context": {
-      "ReferenceDateTime": "2017-03-22T00:00:00"
-    },
-    "Results": [
-      {
-        "Text": "每年",
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1Y",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        },
-        "Start": 2,
-        "End": 3
-      }
-    ]
-  },
-  {
-    "Input": "事件每周一都发生",
-    "Context": {
-      "ReferenceDateTime": "2017-03-22T00:00:00"
-    },
-    "Results": [
-      {
-        "Text": "每周一",
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "XXXX-WXX-1",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        },
-        "Start": 2,
-        "End": 4
-      }
-    ]
-  },
-  {
-    "Input": "事件每周一下午八点都发生",
-    "Context": {
-      "ReferenceDateTime": "2017-03-22T00:00:00"
-    },
-    "Results": [
-      {
-        "Text": "每周一下午八点",
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "XXXX-WXX-1T20",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        },
-        "Start": 2,
-        "End": 8
-      }
-    ]
-  },
-  {
     "Input": "下午5:00",
     "Context": {
       "ReferenceDateTime": "2017-03-22T00:00:00"
@@ -4484,21 +4300,6 @@
             }
           ]
         }
-      },
-      {
-        "Text": "每年",
-        "Start": 31,
-        "End": 32,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1Y",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
       }
     ]
   },
@@ -4539,21 +4340,6 @@
               "type": "daterange",
               "sourceEntity": "datetimepoint",
               "end": "2019-04-04"
-            }
-          ]
-        }
-      },
-      {
-        "Text": "每年",
-        "Start": 30,
-        "End": 31,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1Y",
-              "type": "set",
-              "value": "not resolved"
             }
           ]
         }
@@ -5126,21 +4912,6 @@
               "type": "daterange",
               "sourceEntity": "datetimepoint",
               "end": "2019-11-11"
-            }
-          ]
-        }
-      },
-      {
-        "Text": "每年",
-        "Start": 25,
-        "End": 26,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1Y",
-              "type": "set",
-              "value": "not resolved"
             }
           ]
         }

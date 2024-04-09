@@ -10,10 +10,8 @@ from ...resources.dutch_date_time import DutchDateTime
 from ..extractors import DateTimeExtractor
 from ..base_timeperiod import TimePeriodExtractorConfiguration, MatchedIndex
 from ..base_time import BaseTimeExtractor
-from ..base_timezone import BaseTimeZoneExtractor
 from .time_extractor_config import DutchTimeExtractorConfiguration
 from .base_configs import DutchDateTimeUtilityConfiguration
-from .timezone_extractor_config import DutchTimeZoneExtractorConfiguration
 
 
 class DutchTimePeriodExtractorConfiguration(TimePeriodExtractorConfiguration):
@@ -52,10 +50,6 @@ class DutchTimePeriodExtractorConfiguration(TimePeriodExtractorConfiguration):
     @property
     def pure_number_regex(self) -> List[Pattern]:
         return self._pure_number_regex
-
-    @property
-    def time_zone_extractor(self) -> DateTimeExtractor:
-        return self._time_zone_extractor
 
     @property
     def hour_regex(self) -> Pattern:
@@ -146,8 +140,6 @@ class DutchTimePeriodExtractorConfiguration(TimePeriodExtractorConfiguration):
             DutchDateTime.PrepositionRegex)
         self._token_before_date = DutchDateTime.TokenBeforeDate
         self._pure_number_regex = [DutchDateTime.PureNumFromTo, DutchDateTime.PureNumFromTo]
-        self._time_zone_extractor = BaseTimeZoneExtractor(
-            DutchTimeZoneExtractorConfiguration())
         self.between_token_regex = RegExpUtility.get_safe_reg_exp(
             DutchDateTime.BetweenTokenRegex)
 

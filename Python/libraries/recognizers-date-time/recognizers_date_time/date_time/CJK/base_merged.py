@@ -54,11 +54,6 @@ class CJKMergedExtractorConfiguration(DateTimeOptionsConfiguration):
 
     @property
     @abstractmethod
-    def set_extractor(self) -> DateTimeExtractor:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
     def holiday_extractor(self) -> DateTimeExtractor:
         raise NotImplementedError
 
@@ -150,8 +145,6 @@ class BaseCJKMergedExtractor(DateTimeExtractor):
             result, self.config.time_period_extractor.extract(source, reference))
         result = self.add_to(
             result, self.config.date_time_period_extractor.extract(source, reference))
-        result = self.add_to(
-            result, self.config.set_extractor.extract(source, reference))
         result = self.add_to(
             result, self.config.holiday_extractor.extract(source, reference))
 
@@ -532,13 +525,8 @@ class BaseCJKMergedParser(DateTimeParser):
             result = self.config.date_time_period_parser.parse(source, reference)
         elif source.type == Constants.SYS_DATETIME_DURATION:
             result = self.config.duration_parser.parse(source, reference)
-        elif source.type == Constants.SYS_DATETIME_SET:
-            result = self.config.set_parser.parse(source, reference)
         elif source.type == Constants.SYS_DATETIME_DATETIMEALT:
             result = self.config.date_time_alt_parser.parse(source, reference)
-        elif source.type == Constants.SYS_DATETIME_TIMEZONE:
-            if self.config.options != 0 and DateTimeOptions.ENABLE_PREVIEW != 0:
-                result = self.config.time_zone_parser.parse(source, reference)
         else:
             return None
 

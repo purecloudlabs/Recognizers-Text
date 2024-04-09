@@ -1,15 +1,15 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from recognizers_text.culture import Culture
-from recognizers_text.extractor import Extractor
-from recognizers_text.parser import Parser
 from recognizers_number.culture import CultureInfo
-from recognizers_number.number.spanish.extractors import SpanishNumberExtractor, NumberMode
 from recognizers_number.number.parser_factory import AgnosticNumberParserFactory, ParserType
+from recognizers_number.number.spanish.extractors import NumberMode, SpanishNumberExtractor
 from recognizers_number.number.spanish.parsers import SpanishNumberParserConfiguration
 from recognizers_number_with_unit.number_with_unit.parsers import NumberWithUnitParserConfiguration
 from recognizers_number_with_unit.resources.spanish_numeric_with_unit import SpanishNumericWithUnit
+from recognizers_text.culture import Culture
+from recognizers_text.extractor import Extractor
+from recognizers_text.parser import Parser
 
 
 class SpanishNumberWithUnitParserConfiguration(NumberWithUnitParserConfiguration):
@@ -35,12 +35,6 @@ class SpanishNumberWithUnitParserConfiguration(NumberWithUnitParserConfiguration
             ParserType.NUMBER, SpanishNumberParserConfiguration(culture_info))
 
 
-class SpanishAgeParserConfiguration(SpanishNumberWithUnitParserConfiguration):
-    def __init__(self, culture_info: CultureInfo = None):
-        super().__init__(culture_info)
-        self.add_dict_to_unit_map(SpanishNumericWithUnit.AgeSuffixList)
-
-
 class SpanishCurrencyParserConfiguration(SpanishNumberWithUnitParserConfiguration):
     def __init__(self, culture_info: CultureInfo = None):
         super().__init__(culture_info)
@@ -48,20 +42,3 @@ class SpanishCurrencyParserConfiguration(SpanishNumberWithUnitParserConfiguratio
         self.add_dict_to_unit_map(SpanishNumericWithUnit.CurrencyPrefixList)
         self.currency_name_to_iso_code_map = SpanishNumericWithUnit.CurrencyNameToIsoCodeMap
         self.currency_fraction_code_list = SpanishNumericWithUnit.FractionalUnitNameToCodeMap
-
-
-class SpanishDimensionParserConfiguration(SpanishNumberWithUnitParserConfiguration):
-    def __init__(self, culture_info: CultureInfo = None):
-        super().__init__(culture_info)
-        self.add_dict_to_unit_map(SpanishNumericWithUnit.InformationSuffixList)
-        self.add_dict_to_unit_map(SpanishNumericWithUnit.AreaSuffixList)
-        self.add_dict_to_unit_map(SpanishNumericWithUnit.LengthSuffixList)
-        self.add_dict_to_unit_map(SpanishNumericWithUnit.SpeedSuffixList)
-        self.add_dict_to_unit_map(SpanishNumericWithUnit.VolumeSuffixList)
-        self.add_dict_to_unit_map(SpanishNumericWithUnit.WeightSuffixList)
-
-
-class SpanishTemperatureParserConfiguration(SpanishNumberWithUnitParserConfiguration):
-    def __init__(self, culture_info: CultureInfo = None):
-        super().__init__(culture_info)
-        self.add_dict_to_unit_map(SpanishNumericWithUnit.TemperatureSuffixList)

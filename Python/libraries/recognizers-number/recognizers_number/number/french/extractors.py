@@ -8,7 +8,7 @@ from recognizers_text.utilities import RegExpUtility
 from recognizers_number.number.models import NumberMode, LongFormatMode
 from recognizers_number.resources import BaseNumbers
 from recognizers_number.resources.french_numeric import FrenchNumeric
-from recognizers_number.number.extractors import ReVal, ReRe, BaseNumberExtractor, BasePercentageExtractor
+from recognizers_number.number.extractors import ReVal, ReRe, BaseNumberExtractor
 from recognizers_number.number.constants import Constants
 
 
@@ -235,15 +235,4 @@ class FrenchOrdinalExtractor(BaseNumberExtractor):
                 re=RegExpUtility.get_safe_reg_exp(
                     FrenchNumeric.OrdinalFrenchRegex),
                 val=f'Ord{FrenchNumeric.LangMarker}')
-        ]
-
-
-class FrenchPercentageExtractor(BasePercentageExtractor):
-    def __init__(self):
-        super().__init__(FrenchNumberExtractor(NumberMode.DEFAULT))
-
-    def get_definitions(self) -> List[str]:
-        return [
-            FrenchNumeric.NumberWithSuffixPercentage,
-            FrenchNumeric.NumberWithPrefixPercentage
         ]

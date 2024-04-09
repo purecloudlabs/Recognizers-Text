@@ -105,17 +105,6 @@
             ]
         },
         {
-            "input": [ "English", "English-TimeZone" ],
-            "output": "english_time_zone",
-            "header": [
-                "# pylint: disable=line-too-long",
-                "",
-                "",
-                "class TimeZoneDefinitions:"
-            ],
-            "footer": [ "# pylint: enable=line-too-long" ]
-        },
-        {
             "input": [
                 "Dutch", "Dutch-DateTime"
             ],
@@ -130,17 +119,6 @@
             "footer": [
                 "# pylint: enable=line-too-long"
             ]
-        },
-        {
-            "input": [ "Dutch", "Dutch-TimeZone" ],
-            "output": "dutch_time_zone",
-            "header": [
-                "# pylint: disable=line-too-long",
-                "",
-                "",
-                "class TimeZoneDefinitions:"
-            ],
-            "footer": [ "# pylint: enable=line-too-long" ]
         },
         {
             "input": [ "Japanese", "Japanese-DateTime" ],

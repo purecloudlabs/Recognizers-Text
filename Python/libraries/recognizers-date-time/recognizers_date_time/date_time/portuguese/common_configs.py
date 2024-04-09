@@ -35,7 +35,6 @@ from .datetime_extractor_config import PortugueseDateTimeExtractorConfiguration
 from .datetime_parser_config import PortugueseDateTimeParserConfiguration
 from .datetimeperiod_extractor_config import PortugueseDateTimePeriodExtractorConfiguration
 from .datetimeperiod_parser_config import PortugueseDateTimePeriodParserConfiguration
-from ..base_timezone import BaseTimeZoneParser
 
 
 class PortugueseCommonDateTimeParserConfiguration(BaseDateParserConfiguration):
@@ -54,10 +53,6 @@ class PortugueseCommonDateTimeParserConfiguration(BaseDateParserConfiguration):
     @property
     def ordinal_extractor(self) -> BaseNumberExtractor:
         return self._ordinal_extractor
-
-    @property
-    def time_zone_parser(self) -> BaseTimeZoneParser:
-        return self._time_zone_parser
 
     @property
     def number_parser(self) -> BaseNumberParser:
@@ -175,7 +170,6 @@ class PortugueseCommonDateTimeParserConfiguration(BaseDateParserConfiguration):
         self._integer_extractor = PortugueseIntegerExtractor()
         self._ordinal_extractor = PortugueseOrdinalExtractor()
         self._check_both_before_after = PortugueseDateTime.CheckBothBeforeAfter
-        self._time_zone_parser = BaseTimeZoneParser()
         self._number_parser = BaseNumberParser(
             PortugueseNumberParserConfiguration())
         self._date_extractor = BaseDateExtractor(

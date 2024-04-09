@@ -66,7 +66,6 @@ class PortugueseDateTimePeriodParserConfiguration(DateTimePeriodParserConfigurat
         self._date_time_parser = config.date_time_parser
         self._time_period_parser = config.time_period_parser
         self._duration_parser = config.duration_parser
-        self._time_zone_parser = config.time_zone_parser
         self._prefix_day_regex = RegExpUtility.get_safe_reg_exp(
             PortugueseDateTime.PrefixDayRegex)
         self._after_regex = RegExpUtility.get_safe_reg_exp(
@@ -193,10 +192,6 @@ class PortugueseDateTimePeriodParserConfiguration(DateTimePeriodParserConfigurat
     @property
     def duration_parser(self) -> DateTimeParser:
         return self._duration_parser
-
-    @property
-    def time_zone_parser(self) -> DateTimeParser:
-        return self._time_zone_parser
 
     def get_matched_time_range(self, source: str):
         trimmed_source = source.strip()

@@ -11,15 +11,10 @@ from recognizers_text.extractor import ExtractResult
 from .constants import Constants, TimeTypeConstants
 from .extractors import DateTimeExtractor
 from .parsers import DateTimeParser, DateTimeParseResult
-from .utilities import DateTimeOptionsConfiguration, DateTimeOptions, merge_all_tokens, TimeZoneUtility, RegExpUtility
+from .utilities import DateTimeOptionsConfiguration, DateTimeOptions, merge_all_tokens, RegExpUtility
 
 
 class TimeExtractorConfiguration(DateTimeOptionsConfiguration):
-
-    @property
-    @abstractmethod
-    def time_zone_extractor(self) -> DateTimeExtractor:
-        raise NotImplementedError
 
     @property
     @abstractmethod
@@ -61,13 +56,6 @@ class BaseTimeExtractor(DateTimeExtractor):
         tokens.extend(self.specials_regex_match(source))
 
         result = merge_all_tokens(tokens, source, self.extractor_type_name)
-
-        if (self.config.options & DateTimeOptions.ENABLE_PREVIEW) != 0:
-            result = TimeZoneUtility().merge_time_zones(
-                result,
-                self.config.time_zone_extractor.extract(source, reference),
-                source
-            )
 
         return result
 
@@ -169,11 +157,6 @@ class TimeParserConfiguration:
     @property
     @abstractmethod
     def utility_configuration(self):
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def time_zone_parser(self) -> DateTimeParser:
         raise NotImplementedError
 
     @abstractmethod

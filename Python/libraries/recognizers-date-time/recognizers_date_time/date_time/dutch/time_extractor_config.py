@@ -7,15 +7,9 @@ from recognizers_text.utilities import RegExpUtility
 from ...resources.dutch_date_time import DutchDateTime
 from ..base_time import TimeExtractorConfiguration
 from ..utilities import DateTimeOptions
-from ..base_timezone import BaseTimeZoneExtractor
-from .timezone_extractor_config import DutchTimeZoneExtractorConfiguration
 
 
 class DutchTimeExtractorConfiguration(TimeExtractorConfiguration):
-    @property
-    def time_zone_extractor(self):
-        return self._time_zone_extractor
-
     @property
     def time_regex_list(self) -> List[Pattern]:
         return self._time_regex_list
@@ -111,8 +105,6 @@ class DutchTimeExtractorConfiguration(TimeExtractorConfiguration):
         self._time_before_after_regex: Pattern = RegExpUtility.get_safe_reg_exp(
             DutchDateTime.TimeBeforeAfterRegex)
         self._options = DateTimeOptions.NONE
-        self._time_zone_extractor = BaseTimeZoneExtractor(
-            DutchTimeZoneExtractorConfiguration())
         self._desc_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.DescRegex)
         self._hour_num_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.HourNumRegex)
         self._minute_num_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.MinuteNumRegex)

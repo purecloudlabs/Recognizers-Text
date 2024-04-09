@@ -67,21 +67,6 @@
         },
         "Start": 24,
         "Length": 3
-      },
-      {
-        "Text": "chaque semaine",
-        "Type": "datetimeV2.set",
-        "Value": {
-          "values": [
-            {
-              "timex": "P1W",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        },
-        "Start": 28,
-        "Length": 14
       }
     ]
   },
@@ -1243,21 +1228,6 @@
         },
         "Start": 24,
         "Length": 8
-      },
-      {
-        "Text": "chaque semaine",
-        "Type": "datetimeV2.set",
-        "Value": {
-          "values": [
-            {
-              "timex": "P1W",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        },
-        "Start": 33,
-        "Length": 14
       }
     ]
   },
@@ -1279,21 +1249,6 @@
         },
         "Start": 13,
         "Length": 15
-      },
-      {
-        "Text": "chaque mois",
-        "Type": "datetimeV2.set",
-        "Value": {
-          "values": [
-            {
-              "timex": "P1M",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        },
-        "Start": 32,
-        "Length": 11
       }
     ]
   },

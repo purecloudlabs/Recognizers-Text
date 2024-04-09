@@ -8,7 +8,6 @@ class Constants:
     SYS_NUM_INTEGER: str = 'builtin.num.integer'
     SYS_NUM: str = 'builtin.num'
     SYS_NUM_ORDINAL: str = 'builtin.num.ordinal'
-    SYS_NUM_PERCENTAGE: str = 'builtin.num.percentage'
 
     # NARROW NO-BREAK SPACE
     NO_BREAK_SPACE: chr = '\u202f'

@@ -259,21 +259,6 @@
             }
           ]
         }
-      },
-      {
-        "Text": "毎年",
-        "Start": 34,
-        "End": 35,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1Y",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
       }
     ]
   },
@@ -823,21 +808,6 @@
             }
           ]
         }
-      },
-      {
-        "Text": "毎年",
-        "Start": 19,
-        "End": 20,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1Y",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
       }
     ]
   },
@@ -1059,21 +1029,6 @@
               "type": "daterange",
               "sourceEntity": "datetimepoint",
               "value": "2019-04-04"
-            }
-          ]
-        }
-      },
-      {
-        "Text": "毎年",
-        "Start": 29,
-        "End": 30,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1Y",
-              "type": "set",
-              "value": "not resolved"
             }
           ]
         }

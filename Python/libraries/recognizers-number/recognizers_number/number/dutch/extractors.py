@@ -3,7 +3,7 @@ from typing import Pattern, List, NamedTuple
 import regex
 from recognizers_text.utilities import RegExpUtility
 from recognizers_number.number.models import NumberMode, LongFormatMode
-from recognizers_number.number.extractors import ReVal, ReRe, BaseNumberExtractor, BasePercentageExtractor, \
+from recognizers_number.number.extractors import ReVal, ReRe, BaseNumberExtractor, \
     BaseMergedNumberExtractor
 from recognizers_number.number.constants import Constants
 
@@ -239,17 +239,6 @@ class DutchOrdinalExtractor(BaseNumberExtractor):
             ReVal(
                 re=DutchNumeric.OrdinalRoundNumberRegex,
                 val='OrdDut')
-        ]
-
-
-class DutchPercentageExtractor(BasePercentageExtractor):
-    def __init__(self):
-        super().__init__(DutchNumberExtractor(NumberMode.DEFAULT))
-
-    def get_definitions(self) -> List[str]:
-        return [
-            DutchNumeric.NumberWithSuffixPercentage,
-            DutchNumeric.NumberWithPrefixPercentage
         ]
 
 

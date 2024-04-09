@@ -7,15 +7,9 @@ from recognizers_text.utilities import RegExpUtility
 from ...resources.italian_date_time import ItalianDateTime
 from ..base_time import TimeExtractorConfiguration
 from ..utilities import DateTimeOptions
-from ..base_timezone import BaseTimeZoneExtractor
-from .timezone_extractor_config import ItalianTimeZoneExtractorConfiguration
 
 
 class ItalianTimeExtractorConfiguration(TimeExtractorConfiguration):
-    @property
-    def time_zone_extractor(self):
-        return self._time_zone_extractor
-
     @property
     def time_regex_list(self) -> List[Pattern]:
         return self._time_regex_list
@@ -43,8 +37,6 @@ class ItalianTimeExtractorConfiguration(TimeExtractorConfiguration):
         self._time_before_after_regex: Pattern = RegExpUtility.get_safe_reg_exp(
             ItalianDateTime.TimeBeforeAfterRegex)
         self._options = DateTimeOptions.NONE
-        self._time_zone_extractor = BaseTimeZoneExtractor(
-            ItalianTimeZoneExtractorConfiguration())
 
     @staticmethod
     def get_time_regex_list() -> List[Pattern]:

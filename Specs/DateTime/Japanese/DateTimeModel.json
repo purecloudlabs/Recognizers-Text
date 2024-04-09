@@ -1323,198 +1323,6 @@
     ]
   },
   {
-    "Input": "毎週出発する。",
-    "Context": {
-      "ReferenceDateTime": "2016-11-07T00:00:00"
-    },
-    "NotSupportedByDesign": "javascript,python,java",
-    "Results": [
-      {
-        "Text": "毎週",
-        "Start": 0,
-        "End": 1,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1W",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "毎日出発する。",
-    "Context": {
-      "ReferenceDateTime": "2016-11-07T00:00:00"
-    },
-    "NotSupportedByDesign": "javascript,python,java",
-    "Results": [
-      {
-        "Text": "毎日",
-        "Start": 0,
-        "End": 1,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1D",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "毎年出発する。",
-    "Context": {
-      "ReferenceDateTime": "2016-11-07T00:00:00"
-    },
-    "NotSupportedByDesign": "javascript,python,java",
-    "Results": [
-      {
-        "Text": "毎年",
-        "Start": 0,
-        "End": 1,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1Y",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "2日ごとに出発する。",
-    "Context": {
-      "ReferenceDateTime": "2016-11-07T00:00:00"
-    },
-    "NotSupportedByDesign": "javascript,python,java",
-    "Results": [
-      {
-        "Text": "2日ごとに",
-        "Start": 0,
-        "End": 4,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P2D",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "3週間ごとに出発する。",
-    "Context": {
-      "ReferenceDateTime": "2016-11-07T00:00:00"
-    },
-    "NotSupportedByDesign": "javascript,python,java",
-    "Results": [
-      {
-        "Text": "3週間ごとに",
-        "Start": 0,
-        "End": 5,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P3W",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "毎日午後3時に出発する。",
-    "Context": {
-      "ReferenceDateTime": "2016-11-07T00:00:00"
-    },
-    "NotSupportedByDesign": "javascript,python,java",
-    "Results": [
-      {
-        "Text": "毎日午後3時",
-        "Start": 0,
-        "End": 5,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "T15",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "毎週月曜日に出発する。",
-    "Context": {
-      "ReferenceDateTime": "2016-11-07T00:00:00"
-    },
-    "NotSupportedByDesign": "javascript,python,java",
-    "Results": [
-      {
-        "Text": "毎週月曜日",
-        "Start": 0,
-        "End": 4,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "XXXX-WXX-1",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "毎週月曜日午後4時に出発する。",
-    "Context": {
-      "ReferenceDateTime": "2016-11-07T00:00:00"
-    },
-    "NotSupportedByDesign": "javascript,python,java",
-    "Results": [
-      {
-        "Text": "毎週月曜日午後4時",
-        "Start": 0,
-        "End": 8,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "XXXX-WXX-1T16",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
     "Input": "午後7時56分30秒に戻ってきます。",
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"
@@ -2887,21 +2695,6 @@
     "NotSupportedByDesign": "javascript,python,java",
     "Results": [
       {
-        "Text": "毎週",
-        "Start": 0,
-        "End": 1,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1W",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      },
-      {
         "Text": "今週",
         "Start": 5,
         "End": 6,
@@ -2926,21 +2719,6 @@
     },
     "NotSupportedByDesign": "javascript,python,java",
     "Results": [
-      {
-        "Text": "毎週",
-        "Start": 3,
-        "End": 4,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1W",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      },
       {
         "Text": "今週",
         "Start": 60,
@@ -9374,21 +9152,6 @@
     "NotSupportedByDesign": "javascript,python,java",
     "Results": [
       {
-        "Text": "毎週火曜日",
-        "Start": 6,
-        "End": 10,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "XXXX-WXX-2",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      },
-      {
         "Text": "木曜日の19時から21時",
         "Start": 12,
         "End": 23,
@@ -10767,21 +10530,6 @@
             }
           ]
         }
-      },
-      {
-        "Text": "毎年",
-        "Start": 35,
-        "End": 36,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1Y",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
       }
     ]
   },
@@ -11321,30 +11069,6 @@
             }
           ]
         }
-      }
-    ]
-  },
-  {
-    "Input": "事件は毎週の月曜日夜８時に起こします。",
-    "Context": {
-      "ReferenceDateTime": "2017-03-22T00:00:00"
-    },
-    "NotSupported": "javascript, python, java",
-    "Results": [
-      {
-        "Text": "毎週の月曜日夜8時",
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "XXXX-WXX-1T20",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        },
-        "Start": 3,
-        "End": 11
       }
     ]
   },
@@ -11990,21 +11714,6 @@
               "type": "daterange",
               "sourceEntity": "datetimepoint",
               "end": "2019-11-11"
-            }
-          ]
-        }
-      },
-      {
-        "Text": "毎年",
-        "Start": 18,
-        "End": 19,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1Y",
-              "type": "set",
-              "value": "not resolved"
             }
           ]
         }
@@ -12660,30 +12369,6 @@
     ]
   },
   {
-    "Input": "事件は毎年起こします。",
-    "Context": {
-      "ReferenceDateTime": "2017-03-22T00:00:00"
-    },
-    "NotSupported": "javascript, python, java",
-    "Results": [
-      {
-        "Text": "毎年",
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1Y",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        },
-        "Start": 3,
-        "End": 4
-      }
-    ]
-  },
-  {
     "Input": "水曜日",
     "Context": {
       "ReferenceDateTime": "2018-09-18T18:00:00"
@@ -13334,30 +13019,6 @@
     ]
   },
   {
-    "Input": "事件は毎日起こします。",
-    "Context": {
-      "ReferenceDateTime": "2017-03-22T00:00:00"
-    },
-    "NotSupported": "javascript, python, java",
-    "Results": [
-      {
-        "Text": "毎日",
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1D",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        },
-        "Start": 3,
-        "End": 4
-      }
-    ]
-  },
-  {
     "Input": "彼は２００７年後に学校に来たことはありません。",
     "Context": {
       "ReferenceDateTime": "2017-03-22T00:00:00"
@@ -13406,30 +13067,6 @@
             }
           ]
         }
-      }
-    ]
-  },
-  {
-    "Input": "事件は毎週の月曜日に起こします。",
-    "Context": {
-      "ReferenceDateTime": "2017-03-22T00:00:00"
-    },
-    "NotSupported": "javascript, python, java",
-    "Results": [
-      {
-        "Text": "毎週の月曜日",
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "XXXX-WXX-1",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        },
-        "Start": 3,
-        "End": 8
       }
     ]
   },
@@ -13769,54 +13406,6 @@
         },
         "Start": 0,
         "End": 3
-      }
-    ]
-  },
-  {
-    "Input": "事件は毎週起こします。",
-    "Context": {
-      "ReferenceDateTime": "2017-03-22T00:00:00"
-    },
-    "NotSupported": "javascript, python, java",
-    "Results": [
-      {
-        "Text": "毎週",
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1W",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        },
-        "Start": 3,
-        "End": 4
-      }
-    ]
-  },
-  {
-    "Input": "事件は毎月起こします。",
-    "Context": {
-      "ReferenceDateTime": "2017-03-22T00:00:00"
-    },
-    "NotSupported": "javascript, python, java",
-    "Results": [
-      {
-        "Text": "毎月",
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1M",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        },
-        "Start": 3,
-        "End": 4
       }
     ]
   },
@@ -14658,21 +14247,6 @@
               "type": "daterange",
               "sourceEntity": "datetimepoint",
               "start": "2019-09-09"
-            }
-          ]
-        }
-      },
-      {
-        "Text": "毎年",
-        "Start": 35,
-        "End": 36,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1Y",
-              "type": "set",
-              "value": "not resolved"
             }
           ]
         }

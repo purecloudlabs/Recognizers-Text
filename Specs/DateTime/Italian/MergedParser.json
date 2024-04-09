@@ -712,21 +712,6 @@
         },
         "Start": 31,
         "Length": 4
-      },
-      {
-        "Text": "ogni settimana",
-        "Type": "datetimeV2.set",
-        "Value": {
-          "values": [
-            {
-              "timex": "P1W",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        },
-        "Start": 36,
-        "Length": 14
       }
     ]
   },
@@ -751,21 +736,6 @@
         },
         "Start": 13,
         "Length": 14
-      },
-      {
-        "Text": "ogni mese",
-        "Type": "datetimeV2.set",
-        "Value": {
-          "values": [
-            {
-              "timex": "P1M",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        },
-        "Start": 31,
-        "Length": 9
       }
     ]
   },

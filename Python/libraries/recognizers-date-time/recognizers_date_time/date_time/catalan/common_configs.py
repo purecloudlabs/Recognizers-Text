@@ -14,7 +14,6 @@ from ..base_configs import DateTimeUtilityConfiguration
 from ..base_minimal_configs import MinimalBaseDateParserConfiguration
 from ..base_date import BaseDateExtractor, DateExtractorConfiguration, BaseDateParser
 from ..base_time import BaseTimeExtractor, BaseTimeParser
-from ..base_timezone import BaseTimeZoneParser
 from .base_configs import CatalanDateTimeUtilityConfiguration
 from .date_extractor_config import CatalanDateExtractorConfiguration
 from .date_parser_config import CatalanDateParserConfiguration
@@ -43,10 +42,6 @@ class CatalanBaseDateExtractor(BaseDateExtractor):
 
 
 class CatalanCommonDateTimeParserConfiguration(MinimalBaseDateParserConfiguration):
-    @property
-    def time_zone_parser(self) -> DateTimeParser:
-        return self._time_zone_parser
-
     @property
     def check_both_before_after(self) -> Pattern:
         return self._check_both_before_after
@@ -123,7 +118,6 @@ class CatalanCommonDateTimeParserConfiguration(MinimalBaseDateParserConfiguratio
         MinimalBaseDateParserConfiguration.__init__(self)
 
         self._utility_configuration = CatalanDateTimeUtilityConfiguration()
-        self._time_zone_parser = BaseTimeZoneParser()
         self._day_of_week = CatalanDateTime.DayOfWeek
         self._month_of_year = CatalanDateTime.MonthOfYear
         self._day_of_month = {

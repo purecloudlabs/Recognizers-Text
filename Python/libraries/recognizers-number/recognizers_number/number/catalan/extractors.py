@@ -3,7 +3,7 @@ from typing import Pattern, List, NamedTuple
 from recognizers_text.utilities import RegExpUtility
 from recognizers_number.number.models import NumberMode, LongFormatMode
 from recognizers_number.resources.catalan_numeric import CatalanNumeric
-from recognizers_number.number.extractors import ReVal, ReRe, BaseNumberExtractor, BasePercentageExtractor
+from recognizers_number.number.extractors import ReVal, ReRe, BaseNumberExtractor
 from recognizers_number.number.constants import Constants
 
 
@@ -212,11 +212,3 @@ class CatalanOrdinalExtractor(BaseNumberExtractor):
                 re=CatalanNumeric.SuffixRoundNumberOrdinalRegex,
                 val='OrdCat')
         ]
-
-
-class CatalanPercentageExtractor(BasePercentageExtractor):
-    def __init__(self):
-        super().__init__(CatalanNumberExtractor())
-
-    def get_definitions(self) -> List[str]:
-        return []

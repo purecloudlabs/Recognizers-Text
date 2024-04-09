@@ -7,7 +7,6 @@ from ...resources.base_date_time import BaseDateTime
 from recognizers_text.utilities import RegExpUtility
 
 from .holiday_parser_config import EnglishHolidayParserConfiguration
-from .set_parser_config import EnglishSetParserConfiguration
 from ..base_date import BaseDateParser
 from ..base_time import BaseTimeParser
 from ..base_datetime import BaseDateTimeParser
@@ -16,7 +15,6 @@ from ..base_dateperiod import BaseDatePeriodParser
 from ..base_timeperiod import BaseTimePeriodParser
 from ..base_datetimeperiod import BaseDateTimePeriodParser
 from ..base_duration import BaseDurationParser
-from ..base_set import BaseSetParser
 from ..base_merged import MergedParserConfiguration
 from ...resources.english_date_time import EnglishDateTime
 
@@ -82,10 +80,6 @@ class EnglishMergedParserConfiguration(MergedParserConfiguration):
     def duration_parser(self) -> BaseDurationParser:
         return self.__duration_parser
 
-    @property
-    def set_parser(self) -> BaseSetParser:
-        return self.__set_parser
-
     def __init__(self, config):
         self._equal_regex = RegExpUtility.get_safe_reg_exp(
             BaseDateTime.EqualRegex)
@@ -110,5 +104,3 @@ class EnglishMergedParserConfiguration(MergedParserConfiguration):
         self.__time_period_parser = config.time_period_parser
         self.__date_time_period_parser = config.date_time_period_parser
         self.__duration_parser = config.duration_parser
-        self.__set_parser = BaseSetParser(
-            EnglishSetParserConfiguration(config))

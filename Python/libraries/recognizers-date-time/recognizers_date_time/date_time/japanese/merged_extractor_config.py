@@ -4,7 +4,7 @@ from recognizers_text.utilities import RegExpUtility, DefinitionLoader
 from recognizers_date_time.date_time.extractors import DateTimeExtractor
 from recognizers_date_time.date_time.CJK import CJKMergedExtractorConfiguration, BaseCJKTimeExtractor, \
     BaseCJKTimePeriodExtractor, BaseCJKDateTimeExtractor, BaseCJKDateTimePeriodExtractor, BaseCJKDurationExtractor,\
-    BaseCJKHolidayExtractor, BaseCJKSetExtractor
+    BaseCJKHolidayExtractor
 
 from recognizers_date_time.date_time.japanese.time_extractor_config import JapaneseTimeExtractorConfiguration
 from recognizers_date_time.date_time.japanese.timeperiod_extractor_config import \
@@ -13,7 +13,6 @@ from recognizers_date_time.date_time.japanese.datetime_extractor_config import J
 from recognizers_date_time.date_time.japanese.datetimeperiod_extractor_config import \
     JapaneseDateTimePeriodExtractorConfiguration
 from recognizers_date_time.date_time.japanese.duration_extractor_config import JapaneseDurationExtractorConfiguration
-from recognizers_date_time.date_time.japanese.set_extractor_config import JapaneseSetExtractorConfiguration
 from recognizers_date_time.date_time.japanese.holiday_extractor_config import JapaneseHolidayExtractorConfiguration
 from recognizers_date_time.date_time.japanese.date_extractor_config import JapaneseDateExtractorConfiguration
 from recognizers_date_time.date_time.japanese.dateperiod_extractor_config import \
@@ -100,10 +99,6 @@ class JapaneseMergedExtractorConfiguration(CJKMergedExtractorConfiguration):
         return self._duration_extractor
 
     @property
-    def set_extractor(self) -> DateTimeExtractor:
-        return self._set_extractor
-
-    @property
     def holiday_extractor(self) -> DateTimeExtractor:
         return self._holiday_extractor
 
@@ -139,7 +134,6 @@ class JapaneseMergedExtractorConfiguration(CJKMergedExtractorConfiguration):
         self._time_period_extractor = BaseCJKTimePeriodExtractor(JapaneseTimePeriodExtractorConfiguration())
         self._time_extractor = BaseCJKTimeExtractor(JapaneseTimeExtractorConfiguration())
         self._holiday_extractor = BaseCJKHolidayExtractor(JapaneseHolidayExtractorConfiguration())
-        self._set_extractor = BaseCJKSetExtractor(JapaneseSetExtractorConfiguration())
         self._duration_extractor = BaseCJKDurationExtractor(JapaneseDurationExtractorConfiguration())
         self._date_time_period_extractor = BaseCJKDateTimePeriodExtractor(
             JapaneseDateTimePeriodExtractorConfiguration())

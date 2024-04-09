@@ -375,21 +375,6 @@
     "NotSupported": "",
     "Results": [
       {
-        "Text": "each week",
-        "Start": 0,
-        "End": 8,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1W",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      },
-      {
         "Text": "this week",
         "Start": 28,
         "End": 36,
@@ -414,21 +399,6 @@
     },
     "NotSupported": "javascript",
     "Results": [
-      {
-        "Text": "each week",
-        "Start": 66,
-        "End": 74,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1W",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      },
       {
         "Text": "this week",
         "Start": 136,
@@ -1034,52 +1004,6 @@
     ]
   },
   {
-    "Input": "Let's meet once a week",
-    "Context": {
-      "ReferenceDateTime": "2016-11-07T00:00:00"
-    },
-    "Results": [
-      {
-        "Text": "once a week",
-        "Start": 11,
-        "End": 21,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1W",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "I go on vacation once a year",
-    "Context": {
-      "ReferenceDateTime": "2016-11-07T00:00:00"
-    },
-    "Results": [
-      {
-        "Text": "once a year",
-        "Start": 17,
-        "End": 27,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1Y",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
     "Input": "Let's find one morning together",
     "Context": {
       "ReferenceDateTime": "2018-11-30T12:00:00"
@@ -1244,29 +1168,6 @@
               "timex": "T00",
               "type": "time",
               "value": "00:00:00"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "It's an everyday routine.",
-    "Context": {
-      "ReferenceDateTime": "2018-11-30T12:00:00"
-    },
-    "Results": [
-      {
-        "Text": "everyday",
-        "Start": 8,
-        "End": 15,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P1D",
-              "type": "set",
-              "value": "not resolved"
             }
           ]
         }
