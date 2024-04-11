@@ -1763,5 +1763,45 @@
         "Length": 13
       }
     ]
+  },
+   {
+    "Input": "enviame un recibo por la compra hecha el 17 barra 11",
+    "Results": [
+      {
+        "Text": "17 barra 11",
+        "Type": "date",
+        "Value": {
+          "Timex": "XXXX-11-17",
+          "FutureResolution": {
+            "date": "2024-11-17"
+          },
+          "PastResolution": {
+            "date": "2023-11-17"
+          }
+        },
+        "Start": 41,
+        "Length": 11
+      }
+    ]
+  },
+   {
+    "Input": "reserva un hotel para el 21 barra 3 en el marriott",
+    "Results": [
+      {
+        "Text": "21 barra 3",
+        "Type": "date",
+        "Value": {
+          "Timex": "XXXX-03-21",
+          "FutureResolution": {
+            "date": "2025-03-21"
+          },
+          "PastResolution": {
+            "date": "2024-03-21"
+          }
+        },
+        "Start": 25,
+        "Length": 10
+      }
+    ]
   }
 ]
