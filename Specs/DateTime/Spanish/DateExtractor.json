@@ -697,5 +697,27 @@
         "Length": 13
       }
     ]
+  },
+    {
+    "Input": "enviame un recibo por la compra hecha el 17 barra 11",
+    "Results": [
+      {
+        "Text": "17 barra 11",
+        "Type": "date",
+        "Start": 41,
+        "Length": 11
+      }
+    ]
+  },
+    {
+    "Input": "reserva un hotel para el 21 barra 3 en el marriott",
+    "Results": [
+      {
+        "Text": "21 barra 3",
+        "Type": "date",
+        "Start": 25,
+        "Length": 10
+      }
+    ]
   }
 ]
