@@ -243,11 +243,6 @@ class CJKDateParserConfiguration(CJKCommonDateTimeParserConfiguration):
 
     @property
     @abstractmethod
-    def set_extractor(self) -> DateTimeExtractor:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
     def holiday_extractor(self) -> DateTimeExtractor:
         raise NotImplementedError
 
@@ -288,22 +283,12 @@ class CJKDateParserConfiguration(CJKCommonDateTimeParserConfiguration):
 
     @property
     @abstractmethod
-    def set_parser(self) -> DateTimeParser:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
     def holiday_parser(self) -> DateTimeParser:
         raise NotImplementedError
 
     @property
     @abstractmethod
     def date_time_alt_parser(self) -> DateTimeParser:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def time_zone_parser(self) -> DateTimeParser:
         raise NotImplementedError
 
     @property

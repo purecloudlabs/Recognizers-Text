@@ -13,7 +13,6 @@ from recognizers_date_time.date_time.base_dateperiod import BaseDatePeriodExtrac
 from recognizers_date_time.date_time.base_timeperiod import BaseTimePeriodExtractor
 from recognizers_date_time.date_time.base_datetime import BaseDateTimeExtractor
 from recognizers_date_time.date_time.base_datetimeperiod import BaseDateTimePeriodExtractor
-from recognizers_date_time.date_time.base_set import BaseSetExtractor
 from recognizers_date_time.date_time.base_holiday import BaseHolidayExtractor
 from recognizers_date_time.date_time.arabic.date_extractor_config import ArabicDateExtractorConfiguration
 from recognizers_date_time.date_time.arabic.time_extractor_config import ArabicTimeExtractorConfiguration
@@ -22,7 +21,6 @@ from recognizers_date_time.date_time.arabic.dateperiod_extractor_config import A
 from recognizers_date_time.date_time.arabic.timeperiod_extractor_config import ArabicTimePeriodExtractorConfiguration
 from recognizers_date_time.date_time.arabic.datetime_extractor_config import ArabicDateTimeExtractorConfiguration
 from recognizers_date_time.date_time.arabic.datetimeperiod_extractor_config import ArabicDateTimePeriodExtractorConfiguration
-from recognizers_date_time.date_time.arabic.set_extractor_config import ArabicSetExtractorConfiguration
 from recognizers_date_time.date_time.arabic.holiday_extractor_config import ArabicHolidayExtractorConfiguration
 from recognizers_date_time.resources.base_date_time import BaseDateTime
 
@@ -31,10 +29,6 @@ class ArabicMergedExtractorConfiguration(MergedExtractorConfiguration):
     @property
     def check_both_before_after(self):
         return self._check_both_before_after
-
-    @property
-    def time_zone_extractor(self):
-        return self._time_zone_extractor
 
     @property
     def datetime_alt_extractor(self):
@@ -87,10 +81,6 @@ class ArabicMergedExtractorConfiguration(MergedExtractorConfiguration):
     @property
     def duration_extractor(self) -> DateTimeExtractor:
         return self._duration_extractor
-
-    @property
-    def set_extractor(self) -> DateTimeExtractor:
-        return self._set_extractor
 
     @property
     def integer_extractor(self) -> Extractor:
@@ -190,8 +180,6 @@ class ArabicMergedExtractorConfiguration(MergedExtractorConfiguration):
             ArabicDateTimePeriodExtractorConfiguration())
         self._duration_extractor = BaseDurationExtractor(
             ArabicDurationExtractorConfiguration())
-        self._set_extractor = BaseSetExtractor(
-            ArabicSetExtractorConfiguration())
         self._holiday_extractor = BaseHolidayExtractor(
             ArabicHolidayExtractorConfiguration())
         self._integer_extractor = ArabicIntegerExtractor()
@@ -216,5 +204,4 @@ class ArabicMergedExtractorConfiguration(MergedExtractorConfiguration):
         self._superfluous_word_matcher = None
         self._fail_fast_regex = None
         self._datetime_alt_extractor = None
-        self._time_zone_extractor = None
         self._ambiguity_filters_dict = DefinitionLoader.load_ambiguity_filters(ArabicDateTime.AmbiguityFiltersDict)

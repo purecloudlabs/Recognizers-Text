@@ -1481,8 +1481,8 @@
     "NotSupported": "javascript",
     "Results": [
       {
-        "Text": "17/11",
-        "Start": 53,
+        "Text": "dia 17/11",
+        "Start": 49,
         "End": 57,
         "TypeName": "datetimeV2.date",
         "Resolution": {
@@ -3895,54 +3895,6 @@
               "type": "daterange",
               "start": "2000-01-01",
               "end": "2010-01-01"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "Vamos ter uma reunião trimestral.",
-    "Context": {
-      "ReferenceDateTime": "2016-11-07T00:00:00"
-    },
-    "NotSupported": "java, javascript, python",
-    "Results": [
-      {
-        "Text": "trimestral",
-        "Start": 22,
-        "End": 31,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P3M",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "Input": "O Conselho será informado semestralmente sobre o andamento do pedido",
-    "Context": {
-      "ReferenceDateTime": "2016-11-07T00:00:00"
-    },
-    "NotSupported": "java, javascript, python",
-    "Results": [
-      {
-        "Text": "semestralmente",
-        "Start": 26,
-        "End": 39,
-        "TypeName": "datetimeV2.set",
-        "Resolution": {
-          "values": [
-            {
-              "timex": "P0.5Y",
-              "type": "set",
-              "value": "not resolved"
             }
           ]
         }

@@ -50,13 +50,8 @@ class CatalanMergedParserConfiguration(CatalanCommonDateTimeParserConfiguration,
     def date_time_parser(self) -> BaseTimeParser:
         return self._date_time_parser
 
-    @property
-    def time_zone_parser(self) -> DateTimeParser:
-        return self._time_zone_parser
-
     def __init__(self, config):
         CatalanCommonDateTimeParserConfiguration.__init__(self)
-        self._time_zone_parser = config.time_zone_parser
         self._equal_regex = RegExpUtility.get_safe_reg_exp(BaseDateTime.EqualRegex)
         self._suffix_after = RegExpUtility.get_safe_reg_exp(f'^[.]')
         self._year_regex = RegExpUtility.get_safe_reg_exp(

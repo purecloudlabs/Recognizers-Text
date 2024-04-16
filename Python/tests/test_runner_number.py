@@ -6,12 +6,11 @@ import pytest
 
 from recognizers_number.culture import SUPPORTED_CULTURES
 from runner import get_specs
-from recognizers_number.number.number_recognizer import recognize_number, recognize_ordinal, recognize_percentage
+from recognizers_number.number.number_recognizer import recognize_number, recognize_ordinal
 
 MODELFUNCTION = {
     'Number': recognize_number,
     'Ordinal': recognize_ordinal,
-    'Percent': recognize_percentage,
 }
 
 

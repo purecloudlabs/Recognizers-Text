@@ -10,9 +10,7 @@ from ...resources.english_date_time import EnglishDateTime
 from ..extractors import DateTimeExtractor
 from ..base_timeperiod import TimePeriodExtractorConfiguration, MatchedIndex
 from ..base_time import BaseTimeExtractor
-from ..base_timezone import BaseTimeZoneExtractor
 from .time_extractor_config import EnglishTimeExtractorConfiguration
-from .timezone_extractor_config import EnglishTimeZoneExtractorConfiguration
 from ..utilities import DateTimeOptions
 
 
@@ -45,10 +43,6 @@ class EnglishTimePeriodExtractorConfiguration(TimePeriodExtractorConfiguration):
     @property
     def single_time_extractor(self) -> DateTimeExtractor:
         return self._single_time_extractor
-
-    @property
-    def time_zone_extractor(self) -> DateTimeExtractor:
-        return self._time_zone_extractor
 
     @property
     def integer_extractor(self) -> Extractor:
@@ -120,8 +114,6 @@ class EnglishTimePeriodExtractorConfiguration(TimePeriodExtractorConfiguration):
         self._single_time_extractor = BaseTimeExtractor(
             EnglishTimeExtractorConfiguration())
         self._integer_extractor = EnglishIntegerExtractor()
-        self._time_zone_extractor = BaseTimeZoneExtractor(
-            EnglishTimeZoneExtractorConfiguration())
         self._token_before_date = EnglishDateTime.TokenBeforeDate
         self._pure_number_regex = [EnglishDateTime.PureNumFromTo, EnglishDateTime.PureNumFromTo]
         self._options = DateTimeOptions.NONE

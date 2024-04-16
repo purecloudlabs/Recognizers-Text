@@ -23,6 +23,52 @@
     ]
   },
   {
+    "Input": "envoyez-moi un reçu de l'achat effectué le 17 du 11",
+    "Context": {
+      "ReferenceDateTime": "2024-11-17T00:00:00"
+    },
+    "Results": [
+      {
+        "Text": "17 du 11",
+        "Type": "date",
+        "Value": {
+          "Timex": "XXXX-11-17",
+          "FutureResolution": {
+            "date": "2024-11-17"
+          },
+          "PastResolution": {
+            "date": "2023-11-17"
+          }
+        },
+        "Start": 43,
+        "Length": 7
+      }
+    ]
+  },
+  {
+    "Input": "à quelle heure vais-je voir le médecin le mardi 13 du 6e mois",
+    "Context": {
+      "ReferenceDateTime": "2024-6-13T00:00:00"
+    },
+    "Results": [
+      {
+        "Text": "mardi 13 du 6e",
+        "Type": "date",
+        "Value": {
+          "Timex": "XXXX-06-13",
+          "FutureResolution": {
+            "date": "2024-06-13"
+          },
+          "PastResolution": {
+            "date": "2023-06-13"
+          }
+        },
+        "Start": 43,
+        "Length": 7
+      }
+    ]
+  },
+  {
     "Input": "Je reviendrai en 15",
     "Context": {
       "ReferenceDateTime": "2016-11-07T00:00:00"

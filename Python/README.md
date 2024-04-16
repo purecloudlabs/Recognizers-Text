@@ -26,9 +26,17 @@ You can then install each of the local packages:
     pip install -e .\libraries\recognizers-number-with-unit\
     pip install -e .\libraries\recognizers-date-time\
 
-To run tests:
+To run all tests:
 
-    pytest --tb=line
+    pytest --tb=line -n auto
+
+To run a specific test suite, use one of the following commands:
+
+    pytest -n auto tests/test_runner_choice.py
+    pytest -n auto tests/test_runner_datetime.py
+    pytest -n auto tests/test_runner_number.py
+    pytest -n auto tests/test_runner_number_with_unit.py
+    pytest -n auto tests/test_runner_sequence.py
 
 ### Automatized Build
 
@@ -111,27 +119,7 @@ Internally, both methods will cache the instance models to avoid extra costs.
 
     `NumberRecognizer(Culture.English).get_ordinal_model()`
 
-* **Percentages**
-
-    This recognizer will find any number presented as percentage. E.g. _"one hundred percents"_ will return _"100%"_.
-
-    `recognize_percentage('one hundred percents', Culture.English))`
-
-    Or you can obtain a model instance using:
-
-    `NumberRecognizer(Culture.English).get_percentage_model()`
-
 ### Microsoft.Recognizers.Text.NumberWithUnit
-* **Ages**
-
-    This recognizer will find any age number presented. E.g. _"After ninety five years of age, perspectives change"_ will return _"95 Year"_.
-
-    `recognize_age('After ninety five years of age, perspectives change', Culture.English)`
-
-    Or you can obtain a model instance using:
-
-    `NumberWithUnitRecognizer(Culture.English).get_age_model()`
-
 * **Currencies**
 
     This recognizer will find any currency presented. E.g. _"Interest expense in the 1988 third quarter was $ 75.3 million"_ will return _"75300000 Dollar"_.
@@ -141,26 +129,6 @@ Internally, both methods will cache the instance models to avoid extra costs.
     Or you can obtain a model instance using:
 
     `NumberWithUnitRecognizer(Culture.English).get_currency_model()`
-
-* **Dimensions**
-
-    This recognizer will find any dimension presented. E.g. _"The six-mile trip to my airport hotel that had taken 20 minutes earlier in the day took more than three hours."_ will return _"6 Mile"_.
-
-    `recognize_dimension('The six-mile trip to my airport hotel that had taken 20 minutes earlier in the day took more than three hours.', Culture.English)`
-
-    Or you can obtain a model instance using:
-
-    `NumberWithUnitRecognizer(Culture.English).get_dimension_model()`
-
-* **Temperatures**
-
-    This recognizer will find any temperature presented. E.g. _"Set the temperature to 30 degrees celsius"_ will return _"30 C"_.
-
-    `recognize_temperature('Set the temperature to 30 degrees celsius', Culture.English)`
-
-    Or you can obtain a model instance using:
-
-    `NumberWithUnitRecognizer(Culture.English).get_temperature_model()`
 
 ### Microsoft.Recognizers.Text.DateTime
 * **DateTime**

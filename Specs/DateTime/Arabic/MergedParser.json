@@ -796,21 +796,6 @@
             }
           ]
         }
-      },
-      {
-        "Text": "كل اسبوع",
-        "Start": -1,
-        "Length": 8,
-        "Type": "datetimeV2.set",
-        "Value": {
-          "values": [
-            {
-              "timex": "P1W",
-              "type": "set",
-              "value": "not resolved"
-            }
-          ]
-        }
       }
     ]
   },
@@ -834,21 +819,6 @@
               "timex": "2016-11-12",
               "type": "date",
               "value": "2016-11-12"
-            }
-          ]
-        }
-      },
-      {
-        "Text": "كل شهر",
-        "Start": 22,
-        "Length": 6,
-        "Type": "datetimeV2.set",
-        "Value": {
-          "values": [
-            {
-              "timex": "P1M",
-              "type": "set",
-              "value": "not resolved"
             }
           ]
         }

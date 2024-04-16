@@ -2564,5 +2564,122 @@
         }
       }
     ]
+  },
+  {
+    "Input": "هذا الأربعاء",
+    "Context": {
+      "ReferenceDateTime": "2016-11-07T00:00:00"
+    },
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "هذا الأربعاء",
+        "Start": 0,
+        "Length": 2,
+        "Type": "date",
+        "Value": {
+          "Timex": "2016-11-09",
+          "FutureResolution": {
+            "date": "2016-11-09"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "Input": "سأستقل الحافلة في الرابع من فبراير 2013",
+    "Context": {
+      "ReferenceDateTime": "2024-01-01T00:00:00"
+    },
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الرابع من فبراير 2013",
+        "Start": 18,
+        "Length": 21,
+        "Type": "date",
+        "Value": {
+          "Timex": "2013-02-04",
+          "FutureResolution": {
+            "date": "2013-02-04"
+          },
+          "PastResolution": {
+            "date": "2013-02-04"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "Input": "كنت أرغب في الحصول على المعجنات في التاسع من أكتوبر 2021",
+    "Context": {
+      "ReferenceDateTime": "2023-01-01T00:00:00"
+    },
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "التاسع من أكتوبر 2021",
+        "Start": 35,
+        "Length": 21,
+        "Type": "date",
+        "Value": {
+          "Timex": "2021-10-09",
+          "FutureResolution": {
+            "date": "2021-10-09"
+          },
+          "PastResolution": {
+            "date": "2021-10-09"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "Input": "في الثالث عشر من مارس 2012 حدث شيء ما",
+    "Context": {
+      "ReferenceDateTime": "2023-01-01T00:00:00"
+    },
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الثالث عشر من مارس 2012",
+        "Start": 3,
+        "Length": 23,
+        "Type": "date",
+        "Value": {
+          "Timex": "2012-03-13",
+          "FutureResolution": {
+            "date": "2012-03-13"
+          },
+          "PastResolution": {
+            "date": "2012-03-13"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "Input": "بدأت حياتي في الحادي والثلاثين من يناير عام 1934",
+    "Context": {
+      "ReferenceDateTime": "2023-01-01T00:00:00"
+    },
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الحادي والثلاثين من يناير عام 1934",
+        "Start": 14,
+        "Length": 34,
+        "Type": "date",
+        "Value": {
+          "Timex": "1934-01-31",
+          "FutureResolution": {
+            "date": "1934-01-31"
+          },
+          "PastResolution": {
+            "date": "1934-01-31"
+          }
+        }
+      }
+    ]
   }
 ]

@@ -8,7 +8,6 @@ from ..base_datetimeperiod import DateTimePeriodParserConfiguration, MatchedTime
 from ..extractors import DateTimeExtractor
 from ..parsers import DateTimeParser
 from ..base_configs import BaseDateParserConfiguration
-from ..base_timezone import BaseTimeZoneParser
 
 
 class ItalianDateTimePeriodParserConfiguration(DateTimePeriodParserConfiguration):
@@ -90,7 +89,6 @@ class ItalianDateTimePeriodParserConfiguration(DateTimePeriodParserConfiguration
             ItalianDateTime.RelativeTimeUnitRegex)
         self._rest_of_date_time_regex = RegExpUtility.get_safe_reg_exp(
             ItalianDateTime.RestOfDateTimeRegex)
-        self._time_zone_parser = config.time_zone_parser
 
     @property
     def previous_prefix_regex(self):
@@ -211,10 +209,6 @@ class ItalianDateTimePeriodParserConfiguration(DateTimePeriodParserConfiguration
     @property
     def duration_parser(self) -> DateTimeParser:
         return self._duration_parser
-
-    @property
-    def time_zone_parser(self) -> DateTimeParser:
-        return self._time_zone_parser
 
     def get_matched_time_range(self, source: str) -> MatchedTimeRange:
         trimmed_source = source.strip().lower()

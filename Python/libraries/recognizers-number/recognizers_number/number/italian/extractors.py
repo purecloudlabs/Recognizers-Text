@@ -8,7 +8,7 @@ from recognizers_text.utilities import RegExpUtility
 from recognizers_number.number.models import NumberMode, LongFormatMode
 from recognizers_number.resources import BaseNumbers
 from recognizers_number.resources.italian_numeric import ItalianNumeric
-from recognizers_number.number.extractors import ReVal, ReRe, BaseNumberExtractor, BasePercentageExtractor, \
+from recognizers_number.number.extractors import ReVal, ReRe, BaseNumberExtractor, \
     BaseMergedNumberExtractor
 from recognizers_number.number.constants import Constants
 
@@ -241,17 +241,6 @@ class ItalianOrdinalExtractor(BaseNumberExtractor):
             ReVal(
                 re=ItalianNumeric.OrdinalRoundNumberRegex,
                 val=f'Ord{ItalianNumeric.LangMarker}')
-        ]
-
-
-class ItalianPercentageExtractor(BasePercentageExtractor):
-    def __init__(self):
-        super().__init__(ItalianNumberExtractor(NumberMode.DEFAULT))
-
-    def get_definitions(self) -> List[str]:
-        return [
-            ItalianNumeric.NumberWithSuffixPercentage,
-            ItalianNumeric.NumberWithPrefixPercentage
         ]
 
 

@@ -16,7 +16,6 @@ from ..base_dateperiod import BaseDatePeriodExtractor
 from ..base_timeperiod import BaseTimePeriodExtractor
 from ..base_datetime import BaseDateTimeExtractor
 from ..base_datetimeperiod import BaseDateTimePeriodExtractor
-from ..base_set import BaseSetExtractor
 from ..base_holiday import BaseHolidayExtractor
 from .date_extractor_config import FrenchDateExtractorConfiguration
 from .time_extractor_config import FrenchTimeExtractorConfiguration
@@ -25,7 +24,6 @@ from .dateperiod_extractor_config import FrenchDatePeriodExtractorConfiguration
 from .timeperiod_extractor_config import FrenchTimePeriodExtractorConfiguration
 from .datetime_extractor_config import FrenchDateTimeExtractorConfiguration
 from .datetimeperiod_extractor_config import FrenchDateTimePeriodExtractorConfiguration
-from .set_extractor_config import FrenchSetExtractorConfiguration
 from .holiday_extractor_config import FrenchHolidayExtractorConfiguration
 from ...resources.base_date_time import BaseDateTime
 
@@ -34,10 +32,6 @@ class FrenchMergedExtractorConfiguration(MergedExtractorConfiguration):
     @property
     def check_both_before_after(self):
         return self._check_both_before_after
-
-    @property
-    def time_zone_extractor(self):
-        return self._time_zone_extractor
 
     @property
     def datetime_alt_extractor(self):
@@ -90,10 +84,6 @@ class FrenchMergedExtractorConfiguration(MergedExtractorConfiguration):
     @property
     def duration_extractor(self) -> DateTimeExtractor:
         return self._duration_extractor
-
-    @property
-    def set_extractor(self) -> DateTimeExtractor:
-        return self._set_extractor
 
     @property
     def integer_extractor(self) -> Extractor:
@@ -187,8 +177,6 @@ class FrenchMergedExtractorConfiguration(MergedExtractorConfiguration):
             FrenchDateTimePeriodExtractorConfiguration())
         self._duration_extractor = BaseDurationExtractor(
             FrenchDurationExtractorConfiguration())
-        self._set_extractor = BaseSetExtractor(
-            FrenchSetExtractorConfiguration())
         self._holiday_extractor = BaseHolidayExtractor(
             FrenchHolidayExtractorConfiguration())
         self._integer_extractor = FrenchIntegerExtractor()
@@ -207,5 +195,4 @@ class FrenchMergedExtractorConfiguration(MergedExtractorConfiguration):
         self._fail_fast_regex = None
         self._term_filter_regexes = None
         self._datetime_alt_extractor = None
-        self._time_zone_extractor = None
         self._ambiguity_filters_dict = DefinitionLoader.load_ambiguity_filters(FrenchDateTime.AmbiguityFiltersDict)

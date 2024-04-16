@@ -7,15 +7,9 @@ from recognizers_text.utilities import RegExpUtility
 from ...resources.french_date_time import FrenchDateTime
 from ..base_time import TimeExtractorConfiguration
 from ..utilities import DateTimeOptions
-from ..base_timezone import BaseTimeZoneExtractor
-from .timezone_extractor_config import FrenchTimeZoneExtractorConfiguration
 
 
 class FrenchTimeExtractorConfiguration(TimeExtractorConfiguration):
-    @property
-    def time_zone_extractor(self):
-        return self._time_zone_extractor
-
     @property
     def time_regex_list(self) -> List[Pattern]:
         return self._time_regex_list
@@ -43,8 +37,6 @@ class FrenchTimeExtractorConfiguration(TimeExtractorConfiguration):
         self._time_before_after_regex: Pattern = RegExpUtility.get_safe_reg_exp(
             FrenchDateTime.TimeBeforeAfterRegex)
         self._options = DateTimeOptions.NONE
-        self._time_zone_extractor = BaseTimeZoneExtractor(
-            FrenchTimeZoneExtractorConfiguration())
 
     @staticmethod
     def get_time_regex_list() -> List[Pattern]:

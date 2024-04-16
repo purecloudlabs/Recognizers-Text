@@ -16,7 +16,6 @@ from ..base_dateperiod import BaseDatePeriodExtractor
 from ..base_timeperiod import BaseTimePeriodExtractor
 from ..base_datetime import BaseDateTimeExtractor
 from ..base_datetimeperiod import BaseDateTimePeriodExtractor
-from ..base_set import BaseSetExtractor
 from ..base_holiday import BaseHolidayExtractor
 from .date_extractor_config import DutchDateExtractorConfiguration
 from .time_extractor_config import DutchTimeExtractorConfiguration
@@ -25,7 +24,6 @@ from .dateperiod_extractor_config import DutchDatePeriodExtractorConfiguration
 from .timeperiod_extractor_config import DutchTimePeriodExtractorConfiguration
 from .datetime_extractor_config import DutchDateTimeExtractorConfiguration
 from .datetimeperiod_extractor_config import DutchDateTimePeriodExtractorConfiguration
-from .set_extractor_config import DutchSetExtractorConfiguration
 from .holiday_extractor_config import DutchHolidayExtractorConfiguration
 from ...resources.base_date_time import BaseDateTime
 
@@ -34,10 +32,6 @@ class DutchMergedExtractorConfiguration(MergedExtractorConfiguration):
     @property
     def check_both_before_after(self):
         return self._check_both_before_after
-
-    @property
-    def time_zone_extractor(self):
-        return self._time_zone_extractor
 
     @property
     def datetime_alt_extractor(self):
@@ -90,10 +84,6 @@ class DutchMergedExtractorConfiguration(MergedExtractorConfiguration):
     @property
     def duration_extractor(self) -> DateTimeExtractor:
         return self._duration_extractor
-
-    @property
-    def set_extractor(self) -> DateTimeExtractor:
-        return self._set_extractor
 
     @property
     def integer_extractor(self) -> Extractor:
@@ -193,8 +183,6 @@ class DutchMergedExtractorConfiguration(MergedExtractorConfiguration):
             DutchDateTimePeriodExtractorConfiguration())
         self._duration_extractor = BaseDurationExtractor(
             DutchDurationExtractorConfiguration())
-        self._set_extractor = BaseSetExtractor(
-            DutchSetExtractorConfiguration())
         self._holiday_extractor = BaseHolidayExtractor(
             DutchHolidayExtractorConfiguration())
         self._integer_extractor = DutchIntegerExtractor()
@@ -219,5 +207,4 @@ class DutchMergedExtractorConfiguration(MergedExtractorConfiguration):
         self._superfluous_word_matcher = None
         self._fail_fast_regex = None
         self._datetime_alt_extractor = None
-        self._time_zone_extractor = None
         self._ambiguity_filters_dict = DefinitionLoader.load_ambiguity_filters(DutchDateTime.AmbiguityFiltersDict)

@@ -1872,7 +1872,7 @@
   {
     "Input": "答えは１２３４５６７８９１０１２３１です。",
     "IgnoreResolution": true,
-    "NotSupportedByDesign": "javascript, java, python",
+    "NotSupportedByDesign": "javascript, java  ",
     "Results": [
       {
         "Text": "123456789101231",

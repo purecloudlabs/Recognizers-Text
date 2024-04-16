@@ -70,21 +70,6 @@ class MergedParserUtil:
         res[ResolutionKey.type] = type_output
         res[DateTimeResolutionKey.is_lunar] = is_lunar
 
-        has_time_zone = False
-        if hasattr(val, 'timezone_resolution'):
-            if slot_type == Constants.SYS_DATETIME_TIMEZONE:
-                #  single timezone
-                res[Constants.RESOLVE_TIMEZONE] = {
-                    ResolutionKey.value: val.timezone_resolution.value,
-                    Constants.UTC_OFFSET_MINS_KEY: str(val.timezone_resolution.utc_offset_mins)
-                }
-            else:
-                # timezone as clarification of datetime
-                has_time_zone = True
-                res[Constants.SYS_DATETIME_TIMEZONE] = val.timezone_resolution.value
-                res[Constants.TIMEZONE_TEXT] = val.timezone_resolution.timezone_text
-                res[Constants.UTC_OFFSET_MINS_KEY] = str(val.timezone_resolution.utc_offset_mins)
-
         past_resolution_str = slot.value.past_resolution
         future_resolution_str = slot.value.future_resolution
 
@@ -130,16 +115,10 @@ class MergedParserUtil:
                 value[DateTimeResolutionKey.list] = lst
                 value[DateTimeResolutionKey.source_entity] = source_entity
 
-                if has_time_zone:
-                    value[Constants.SYS_DATETIME_TIMEZONE] = val.timezone_resolution.value
-                    value[Constants.TIMEZONE_TEXT] = val.timezone_resolution.timezone_text
-                    value[Constants.UTC_OFFSET_MINS_KEY] = str(val.timezone_resolutions.utc_offset_mins)
-
                 value.update(p)
                 resolutions.append(value)
 
-        if resolution_past and resolution_future and len(resolution_past) == 0 and len(resolution_future) == 0 \
-                and not val.timezone_resolution:
+        if resolution_past and resolution_future and len(resolution_past) == 0 and len(resolution_future) == 0:
             not_resolved = {
                 DateTimeResolutionKey.timex: timex,
                 ResolutionKey.type: type_output,

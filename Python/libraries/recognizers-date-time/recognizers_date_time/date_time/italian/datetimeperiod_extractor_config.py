@@ -13,12 +13,10 @@ from ..base_time import BaseTimeExtractor
 from ..base_duration import BaseDurationExtractor
 from ..base_timeperiod import BaseTimePeriodExtractor
 from ..base_datetime import BaseDateTimeExtractor
-from ..base_timezone import BaseTimeZoneExtractor
 from .date_extractor_config import ItalianDateExtractorConfiguration
 from .time_extractor_config import ItalianTimeExtractorConfiguration
 from .duration_extractor_config import ItalianDurationExtractorConfiguration
 from .timeperiod_extractor_config import ItalianTimePeriodExtractorConfiguration
-from .timezone_extractor_config import ItalianTimeZoneExtractorConfiguration
 from .datetime_extractor_config import ItalianDateTimeExtractorConfiguration
 
 
@@ -54,10 +52,6 @@ class ItalianDateTimePeriodExtractorConfiguration(DateTimePeriodExtractorConfigu
     @property
     def time_period_extractor(self) -> DateTimeExtractor:
         return self._time_period_extractor
-
-    @property
-    def time_zone_extractor(self) -> DateTimeExtractor:
-        return self._time_zone_extractor
 
     @property
     def simple_cases_regexes(self) -> List[Pattern]:
@@ -217,8 +211,6 @@ class ItalianDateTimePeriodExtractorConfiguration(DateTimePeriodExtractorConfigu
             ItalianDurationExtractorConfiguration())
         self._time_period_extractor = BaseTimePeriodExtractor(
             ItalianTimePeriodExtractorConfiguration())
-        self._time_zone_extractor = BaseTimeZoneExtractor(
-            ItalianTimeZoneExtractorConfiguration())
         self._within_next_prefix_regex = RegExpUtility.get_safe_reg_exp(
             ItalianDateTime.WithinNextPrefixRegex
         )

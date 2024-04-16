@@ -4,7 +4,8 @@ from typing import List, Optional
 import regex
 
 from recognizers_text.utilities import RegExpUtility
-from recognizers_number.number.extractors import ReVal, ReRe, BaseNumberExtractor, BasePercentageExtractor
+from recognizers_number.number.extractors import ReVal, ReRe, BaseNumberExtractor, \
+    BaseMergedNumberExtractor
 from recognizers_number.number.models import NumberMode, LongFormatMode
 from recognizers_number.number.number_options import NumberOptions
 from recognizers_number.resources.arabic_numeric import ArabicNumeric
@@ -293,20 +294,12 @@ class ArabicFractionExtractor(BaseNumberExtractor):
 
         # Not add FractionPrepositionRegex when the mode is Unit to avoid wrong recognize cases like "$1000 over 3"
         if mode is not NumberMode.Unit:
-            if NumberOptions.PERCENTAGE_MODE:
-                self.__regexes.append(
-                    ReVal(
-                        re=RegExpUtility.get_safe_reg_exp(ArabicNumeric.FractionPrepositionWithinPercentModeRegex),
-                        val=f'Frac{ArabicNumeric.LangMarker}'
-                    )
+            self.__regexes.append(
+                ReVal(
+                    re=RegExpUtility.get_safe_reg_exp(ArabicNumeric.FractionPrepositionRegex),
+                    val=f'Frac{ArabicNumeric.LangMarker}'
                 )
-            else:
-                self.__regexes.append(
-                    ReVal(
-                        re=RegExpUtility.get_safe_reg_exp(ArabicNumeric.FractionPrepositionRegex),
-                        val=f'Frac{ArabicNumeric.LangMarker}'
-                    )
-                )
+            )
 
 
 class ArabicOrdinalExtractor(BaseNumberExtractor):
@@ -348,19 +341,15 @@ class ArabicOrdinalExtractor(BaseNumberExtractor):
         ]
 
 
-class ArabicPercentageExtractor(BasePercentageExtractor):
+class ArabicMergedNumberExtractor(BaseMergedNumberExtractor):
 
-    def get_definitions(self) -> List[str]:
-        regex_strs = [
-            ArabicNumeric.NumberWithSuffixPercentage,
-            ArabicNumeric.NumberWithPrefixPercentage
-        ]
+    @property
+    def _round_number_integer_regex_with_locks(self) -> Pattern:
+        return RegExpUtility.get_safe_reg_exp(ArabicNumeric.RoundNumberIntegerRegexWithLocks)
 
-        if NumberOptions.PERCENTAGE_MODE:
-            regex_strs.append(ArabicNumeric.FractionNumberWithSuffixPercentage)
-            regex_strs.append(ArabicNumeric.NumberWithPrepositionPercentage)
+    @property
+    def _connector_regex(self) -> Pattern:
+        return RegExpUtility.get_safe_reg_exp(ArabicNumeric.ConnectorRegex)
 
-        return regex_strs
-
-    def __init__(self):
-        super().__init__(ArabicNumberExtractor(NumberMode.DEFAULT))
+    def __init__(self, mode: NumberMode = NumberMode.DEFAULT):
+        self._number_extractor = ArabicNumberExtractor(mode)

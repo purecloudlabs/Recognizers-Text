@@ -10,10 +10,8 @@ from ...resources.italian_date_time import ItalianDateTime
 from ..extractors import DateTimeExtractor
 from ..base_timeperiod import TimePeriodExtractorConfiguration, MatchedIndex
 from ..base_time import BaseTimeExtractor
-from ..base_timezone import BaseTimeZoneExtractor
 from .time_extractor_config import ItalianTimeExtractorConfiguration
 from .base_configs import ItalianDateTimeUtilityConfiguration
-from .timezone_extractor_config import ItalianTimeZoneExtractorConfiguration
 
 
 class ItalianTimePeriodExtractorConfiguration(TimePeriodExtractorConfiguration):
@@ -53,10 +51,6 @@ class ItalianTimePeriodExtractorConfiguration(TimePeriodExtractorConfiguration):
     def pure_number_regex(self) -> List[Pattern]:
         return self._pure_number_regex
 
-    @property
-    def time_zone_extractor(self) -> DateTimeExtractor:
-        return self._time_zone_extractor
-
     def __init__(self):
         super().__init__()
         self._check_both_before_after = ItalianDateTime.CheckBothBeforeAfter
@@ -87,8 +81,6 @@ class ItalianTimePeriodExtractorConfiguration(TimePeriodExtractorConfiguration):
             ItalianDateTime.BeforeRegex2)
         self._token_before_date = ItalianDateTime.TokenBeforeDate
         self._pure_number_regex = [ItalianDateTime.PureNumFromTo, ItalianDateTime.PureNumFromTo]
-        self._time_zone_extractor = BaseTimeZoneExtractor(
-            ItalianTimeZoneExtractorConfiguration())
 
     def get_from_token_index(self, source: str) -> MatchedIndex:
         match = self.from_regex.search(source)

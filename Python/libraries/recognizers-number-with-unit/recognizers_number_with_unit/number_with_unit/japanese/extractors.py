@@ -1,15 +1,15 @@
 from typing import Dict, List, Pattern
 
-from recognizers_text.culture import Culture
-from recognizers_text.extractor import Extractor
-from recognizers_text.utilities import RegExpUtility
 from recognizers_number.culture import CultureInfo
 from recognizers_number.number.japanese.extractors import JapaneseNumberExtractor, JapaneseNumberExtractorMode
 from recognizers_number_with_unit.number_with_unit.constants import Constants
 from recognizers_number_with_unit.number_with_unit.extractors import NumberWithUnitExtractorConfiguration
-from recognizers_number_with_unit.resources.japanese_numeric_with_unit import JapaneseNumericWithUnit
-from recognizers_number_with_unit.resources.base_units import BaseUnits
 from recognizers_number_with_unit.number_with_unit.utilities import CommonUtils
+from recognizers_number_with_unit.resources.base_units import BaseUnits
+from recognizers_number_with_unit.resources.japanese_numeric_with_unit import JapaneseNumericWithUnit
+from recognizers_text.culture import Culture
+from recognizers_text.extractor import Extractor
+from recognizers_text.utilities import RegExpUtility
 
 
 # pylint: disable=abstract-method
@@ -93,4 +93,3 @@ class JapaneseCurrencyExtractorConfiguration(JapaneseNumberWithUnitExtractorConf
         self._suffix_list = JapaneseNumericWithUnit.CurrencySuffixList
         self._prefix_list = JapaneseNumericWithUnit.CurrencyPrefixList
         self._ambiguous_unit_list = JapaneseNumericWithUnit.CurrencyAmbiguousValues
-

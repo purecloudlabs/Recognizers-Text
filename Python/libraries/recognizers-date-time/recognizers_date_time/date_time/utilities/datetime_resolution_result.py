@@ -1,5 +1,4 @@
 from typing import List, Dict
-from recognizers_date_time.date_time.utilities import TimeZoneResolutionResult
 
 
 class DateTimeResolutionResult:
@@ -15,5 +14,4 @@ class DateTimeResolutionResult:
         self.future_value: object = None
         self.past_value: object = None
         self.sub_date_time_entities: List[object] = list()
-        self.timezone_resolution: TimeZoneResolutionResult()
         self.list: List[object] = list()

@@ -1551,5 +1551,77 @@
         "Length": 8
       }
     ]
+  },
+  {
+    "Input": "marque a reunião para 7 do 7",
+    "Context": {
+      "ReferenceDateTime": "2024-07-07T00:00:00"
+    },
+    "NotSupported": "javascript",
+    "Results": [
+      {
+        "Text": "7 do 7",
+        "Type": "date",
+        "Value": {
+          "Timex": "XXXX-07-07",
+          "FutureResolution": {
+            "date": "2024-07-07"
+          },
+          "PastResolution": {
+            "date": "2023-07-07"
+          }
+        },
+        "Start": 23,
+        "Length": 5
+      }
+    ]
+  },
+  {
+    "Input": "me envie um comprovante da minha compra é feita no dia 17 do 11",
+    "Context": {
+      "ReferenceDateTime": "2024-11-17T00:00:00"
+    },
+    "NotSupported": "javascript",
+    "Results": [
+      {
+        "Text": "dia 17 do 11",
+        "Type": "date",
+        "Value": {
+          "Timex": "XXXX-11-17",
+          "FutureResolution": {
+            "date": "2024-11-17"
+          },
+          "PastResolution": {
+            "date": "2023-11-17"
+          }
+        },
+        "Start": 52,
+        "Length": 11
+      }
+    ]
+  },
+  {
+    "Input": "minha compra feita no dia 7/7/2020",
+    "Context": {
+      "ReferenceDateTime": "2024-11-17T00:00:00"
+    },
+    "NotSupported": "javascript",
+    "Results": [
+      {
+        "Text": "dia 7/7/2020",
+        "Type": "date",
+        "Value": {
+          "Timex": "2020-07-07",
+          "FutureResolution": {
+            "date": "2020-07-07"
+          },
+          "PastResolution": {
+            "date": "2020-07-07"
+          }
+        },
+        "Start": 22,
+        "Length": 12
+      }
+    ]
   }
 ]

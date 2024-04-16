@@ -263,7 +263,7 @@
   {
     "Input": "سأعود 7:56 مساءً",
     "IgnoreResolution": "true",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "7:56 مساءً",
@@ -285,7 +285,7 @@
   {
     "Input": "سأعود في 7:56:30 مساءً",
     "IgnoreResolution": "true",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "7:56:30 مساءً",
@@ -307,7 +307,7 @@
   {
     "Input": "سأعود 7:56:30 مساءً",
     "IgnoreResolution": "true",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "7:56:30 مساءً",
@@ -455,7 +455,7 @@
   {
     "Input": "انها الثامنة والنصف",
     "IgnoreResolution": "true",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "الثامنة والنصف",
@@ -477,7 +477,7 @@
   {
     "Input": "إنها 8 والنصف مساءً",
     "IgnoreResolution": "true",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "8 والنصف مساءً",
@@ -562,7 +562,7 @@
   {
     "Input": "إنها 9 مساءً وثلاثة أرباع",
     "IgnoreResolution": "true",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "9 مساءً وثلاثة أرباع",
@@ -606,7 +606,7 @@
   {
     "Input": "إنها الساعة السابعة والنصف",
     "IgnoreResolution": "true",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "الساعة السابعة والنصف",
@@ -628,7 +628,7 @@
   {
     "Input": "إنها الساعة السابعة والنصف بعد الظهر",
     "IgnoreResolution": "true",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "الساعة السابعة والنصف بعد الظهر",
@@ -694,7 +694,7 @@
   {
     "Input": "إنها الساعة الثامنة و20 دقيقة مساءً",
     "IgnoreResolution": "true",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "الساعة الثامنة و20 دقيقة مساءً",
@@ -821,7 +821,7 @@
   {
     "Input": "سأعود الساعة السابعة والنصف مساءً",
     "IgnoreResolution": "true",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "الساعة السابعة والنصف مساءً",
@@ -865,7 +865,7 @@
   {
     "Input": "سأعود الحادية عشر وعشرين مساء",
     "IgnoreResolution": "true",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "الحادية عشر وعشرين مساء",
@@ -971,7 +971,7 @@
   {
     "Input": "سأعود 340 مساءً",
     "IgnoreResolution": "true",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "340 مساءً",
@@ -1376,7 +1376,7 @@
   {
     "Input": "سأعود 7:56:13 مساءً",
     "IgnoreResolution": "true",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "7:56:13 مساءً",
@@ -1505,7 +1505,7 @@
   {
     "Input": "سأعود خمسة وثلاثين في الليل",
     "IgnoreResolution": "true",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "خمسة وثلاثين في الليل",
@@ -1527,7 +1527,7 @@
   {
     "Input": "سأعود في الليلة الخامسة والنصف",
     "IgnoreResolution": "true",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "في الليلة الخامسة والنصف",
@@ -1688,6 +1688,153 @@
           },
           "PastResolution": {
             "time": "04:30:00"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "Input": "أود أن أرى مصرفي ظهرًا",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "ظهرًا",
+        "Start": 17,
+        "Length": 5,
+        "Type": "time",
+        "Value": {
+          "Timex": "T12",
+          "FutureResolution": {
+            "time": "12:00:00"
+          },
+          "PastResolution": {
+            "time": "12:00:00"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "Input": "إلغاء طلبي بحلول الساعة 12 ظهرًا",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الساعة 12 ظهرًا",
+        "Start": 17,
+        "Length": 15,
+        "Type": "time",
+        "Value": {
+          "Timex": "T12",
+          "FutureResolution": {
+            "time": "12:00:00"
+          },
+          "PastResolution": {
+            "time": "12:00:00"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "Input": "الساعة الواحدة وسبع وعشرون دقيقة",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الساعة الواحدة وسبع وعشرون دقيقة",
+        "Start": 0,
+        "Length": 32,
+        "Type": "time",
+        "Value": {
+          "Timex": "T01:27",
+          "FutureResolution": {
+            "time": "01:27:00"
+          },
+          "PastResolution": {
+            "time": "01:27:00"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "Input": "الساعة السابعة والربع صباحاً",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الساعة السابعة والربع صباحا",
+        "Start": 9,
+        "Length": 20,
+        "Type": "time",
+        "Value": {
+          "Timex": "T07:15",
+          "FutureResolution": {
+            "time": "07:15:00"
+          },
+          "PastResolution": {
+            "time": "07:15:00"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "Input": "الساعة التاسعة إلا ربع صباحا",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الساعة التاسعة إلا ربع صباحا",
+        "Start": 0,
+        "Length": 28,
+        "Type": "time",
+        "Value": {
+          "Timex": "T08:45",
+          "FutureResolution": {
+            "time": "08:45:00"
+          },
+          "PastResolution": {
+            "time": "08:45:00"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "Input": "الساعة الرابعة والنصف مساء",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الساعة الرابعة والنصف مساء",
+        "Start": 0,
+        "Length": 27,
+        "Type": "time",
+        "Value": {
+          "Timex": "T16:30",
+          "FutureResolution": {
+            "time": "16:30:00"
+          },
+          "PastResolution": {
+            "time": "16:30:00"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "Input": "الساعة الثامنة إلا ثلاث وعشرون دقيقة",
+    "NotSupportedByDesign": "java, javascript",
+    "Results": [
+      {
+        "Text": "الساعة الثامنة إلا ثلاث وعشرون دقيقة",
+        "Start": 0,
+        "Length": 36,
+        "Type": "time",
+        "Value": {
+          "Timex": "T07:37",
+          "FutureResolution": {
+            "time": "07:37:00"
+          },
+          "PastResolution": {
+            "time": "07:37:00"
           }
         }
       }

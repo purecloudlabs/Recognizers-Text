@@ -4,11 +4,11 @@
 from abc import abstractmethod
 from typing import List
 
-from recognizers_text.model import Model, ModelResult
+from recognizers_number_with_unit.number_with_unit.parsers import CurrencyUnitValue, UnitValue
 from recognizers_text.extractor import Extractor
+from recognizers_text.model import Model, ModelResult
 from recognizers_text.parser import Parser
 from recognizers_text.utilities import QueryProcessor
-from recognizers_number_with_unit.number_with_unit.parsers import UnitValue, CurrencyUnitValue
 
 
 class ExtractorParserModel:
@@ -97,25 +97,7 @@ class AbstractNumberWithUnitModel(Model):
         return None
 
 
-class AgeModel(AbstractNumberWithUnitModel):
-    @property
-    def model_type_name(self) -> str:
-        return 'age'
-
-
 class CurrencyModel(AbstractNumberWithUnitModel):
     @property
     def model_type_name(self) -> str:
         return 'currency'
-
-
-class DimensionModel(AbstractNumberWithUnitModel):
-    @property
-    def model_type_name(self) -> str:
-        return 'dimension'
-
-
-class TemperatureModel(AbstractNumberWithUnitModel):
-    @property
-    def model_type_name(self) -> str:
-        return 'temperature'

@@ -8,7 +8,7 @@ class ArabicDateTime:
     TillRegex = f'(?<till>\\b(إلى|حتى يوم|حتى|خلال|عبر)\\b|{BaseDateTime.RangeConnectorSymbolRegex})'
     RangeConnectorRegex = f'(?<and>و|خلال|عبر|{BaseDateTime.RangeConnectorSymbolRegex})'
     LastNegPrefix = f'(?<!(w(ill|ould|on\\s*\'\\s*t)|m(ay|ight|ust)|sh(all|ould(n\\s*\'\\s*t)?)|c(an(\\s*\'\\s*t|not)?|ould(n\\s*\'\\s*t)?))(\\s+not)?\\s+)'
-    RelativeRegex = f'\\b(?<order>القادم|التالي|الآتي|الحالي|الماضي|المقبل|الحاضر|السابق|الأخير)\\b'
+    RelativeRegex = f'\\b(?<order>القادم|التالي|الآتي|الحالي|الماضي|المقبل|الحاضر|السابق|الأخيرالقادم|التالي|الآتي|الحالي|الماضي|المقبل|الحاضر|السابق|الأخير)\\b'
     StrictRelativeRegex = f'\\b(?<order>القادم|التالي|الآتي|هذا|الحالي|الماضي|السابق|الأخير)\\b'
     UpcomingPrefixRegex = f'((هذه\\s+)?(المقبل(ة)?))'
     NextPrefixRegex = f'\\b(بعد|القادم(ة)?|{UpcomingPrefixRegex})\\b'
@@ -32,7 +32,7 @@ class ArabicDateTime:
     WrittenCenturyOrdinalYearRegex = f'(?<fullyear>({WrittenElevenToNineteenRegex}|مائة|مائتين)\\s+((و)\\s*)?({WrittenOneToNineRegex})\\s+(و)\\s*{WrittenTensRegex})'
     CenturyRegex = f'\\b(?<century>{WrittenCenturyFullYearRegex}|{WrittenCenturyOrdinalYearRegex}(\\s*مائة)?(\\s*و)?)\\b'
     LastTwoYearNumRegex = f'(?:zero\\s+{WrittenOneToNineRegex}|{WrittenElevenToNineteenRegex}|{WrittenTensRegex}(\\s+{WrittenOneToNineRegex})?)'
-    FullTextYearRegex = f'(?<firsttwoyearnum>{CenturyRegex})\\s*(?<lasttwoyearnum>{LastTwoYearNumRegex})|(?<firsttwoyearnum>{WrittenCenturyFullYearRegex})|{WrittenCenturyOrdinalYearRegex}'
+    FullTextYearRegex = f'(?<firsttwoyearnum>{CenturyRegex})\\s*(?<lasttwoyearnum>{LastTwoYearNumRegex})|{WrittenCenturyFullYearRegex}|{WrittenCenturyOrdinalYearRegex}'
     OclockRegex = f'(?<oclock>(ال)?ساعة|(ال)?ساعات)'
     SpecialDescRegex = f'((?<ipm>)p\\b)'
     AmDescRegex = f'(في\\s)?(صباح(ا)?|صباحًا|ص|الصباح|{BaseDateTime.BaseAmDescRegex})'
@@ -54,8 +54,8 @@ class ArabicDateTime:
     TokenBeforeDate = 'في '
     TokenBeforeTime = 'عند '
     HalfTokenRegex = f'^(النصف|نصف|والنصف|ونصف)'
-    QuarterTokenRegex = f'^(ربع|الربع|وربع|والربع|إلا ربع|إلا الربع)'
-    ThreeQuarterTokenRegex = f'^(وثلاثة أرباع|ثلاثة أرباع|إلا الربع)'
+    QuarterTokenRegex = f'^(إلا الربع|إلا ربع|الرُبع|ربع|الربع|وربع|والربع)'
+    ThreeQuarterTokenRegex = f'^(وثلاثة أرباع|ثلاثة أرباع)'
     ToTokenRegex = f'\\b(إلا|الا)'
     ToHalfTokenRegex = f'\\b(إلا\\s+(النصف|نصف))$'
     ForHalfTokenRegex = f'\\b(ل(s+)?(نصف))$'
@@ -64,7 +64,7 @@ class ArabicDateTime:
     OrdinalNumberRegex = f'((ال)?حادي عشر|ل(ال)?ثاني عشر|(ال)?ثالث عشر|(ال)?رابع عشر|(ال)?خامس عشر|(ال)?خمسة عشر|(ال)?سادس عشر|(ال)?سابع عشر|(ال)?ثامن عشر|(ال)?تاسع عشر|(ال)?عشرون|(ال)?عشرين|(ال)?حادي والعشرون|(ال)?حادية والعشرين|(ال)?حادي والعشرين|(ال)?ثاني والعشرون|(ال)?ثانية والعشرين|(ال)?ثالث والعشرون|(ال)?رابع والعشرون|(ال)?خامس والعشرون|(ال)?سادس والعشرون|(ال)?تاسع والعشرون|(ال)?سابع والعشرون|(ال)?رابع والعشرون|الثامن|الأول|الثالث|الرابع|الخامس|السادس|الثاني|العاشر|السابع)'
     SolarMonthRegex = f'(?<month>يناير|فبراير|مارس|أبريل|مايو|يونيو|يوليو|أغسطس|سبتمبر|أكتوبر|نوفمبر|ديسمبر)'
     LunarMonthRegex = f'(?<month>محرم|صفر|ربيع الأول|ربيع الثاني|جمادى الأول|جمادى الثاني|رجب|شعبان|رمضان|شوال|ذو القعدة|ذو الحجة)'
-    ArabicMonthRegex = f'(?<month>كانون الثاني|شباط|آذار|نيسان|حزيران|تموز|آب|أيلول|تشرين الأول|تشرين الثاني|كانون الأول|أيار)'
+    ArabicMonthRegex = f'(?<month>كانون الثاني|شباط|آذار|نيسان|حزيران|تموز|آب|أيلول|تشرين الأول|تشرين الثاني|شهر فبراير|كانون الأول|أيار|إبريل|اكتوبر)'
     SimpleCasePreMonthRegex = f'((بين|من)\\s+)(({DayRegex}-{DayRegex})\\s+)((من|في)\\s+)?((الشهر|{SolarMonthRegex}|{LunarMonthRegex}|{ArabicMonthRegex})\\s+)({RelativeRegex})?({YearRegex})?'
     SimpleCasesRegex = f'(((من)\\s+)?(({DayRegex}|{OrdinalNumberRegex})\\s+)((الشهر|{SolarMonthRegex}|{LunarMonthRegex}|{ArabicMonthRegex})\\s+)?((حتى|إلى)\\s*)(({DayRegex}|{OrdinalNumberRegex})\\s+)((من هذا|من|هذا|في)\\s+)?(الشهر|{SolarMonthRegex}|{LunarMonthRegex}|{ArabicMonthRegex})?(\\s+({RelativeRegex}))?(\\s+{YearRegex})?)|({SimpleCasePreMonthRegex})'
     MonthFrontSimpleCasesRegex = f'(((شهر\\s+)?{SolarMonthRegex}|{LunarMonthRegex}|{ArabicMonthRegex})\\s+(بين|من)\\s+({DayRegex}|{OrdinalNumberRegex})\\s+[و]\\s*({DayRegex}|{OrdinalNumberRegex}))|({DayRegex}\\s*[-\\./]\\s*{DayRegex}\\s+{SolarMonthRegex}|{LunarMonthRegex}|{ArabicMonthRegex})'
@@ -102,13 +102,13 @@ class ArabicDateTime:
     MonthOfRegex = f'(من)(\\s*)(شهر)'
     MonthRegex = f'(?<month>{SolarMonthRegex}|{LunarMonthRegex}|{ArabicMonthRegex})'
     DateYearRegex = f'(?<year>{BaseDateTime.FourDigitYearRegex}|(?<!,\\s?){TwoDigitYearRegex}|{TwoDigitYearRegex}(?=(\\.(?!\\d)|[?!;]|$)))'
-    YearSuffix = f'((\\s*،\\s*|,|\\sمن)?\\s*({DateYearRegex}|{FullTextYearRegex}))'
+    YearSuffix = f'((\\s*،\\s*|,|\\sمن|\\sعام)?\\s*({DateYearRegex}|{FullTextYearRegex})(\\sعام)?)'
     OnRegex = f'(?<=\\bفي\\s+){DayRegex}\\b'
     OrdinalDayOfMonthRegex = f'(?=يوم\\s+)?(الأحد|الإثنين|الاثنين|الثلاثاء|الأربعاء|الخميس|الجمعة|السبت)\\s+(في\\s+)((?:3[0-1]|[1-2]\\d|0?[1-9])|((ال)?حادي عشر|ل(ال)?ثاني عشر|(ال)?ثالث عشر|(ال)?رابع عشر|(ال)?خامس عشر|(ال)?خمسة عشر|(ال)?سادس عشر|(ال)?سابع عشر|(ال)?ثامن عشر|(ال)?تاسع عشر|(ال)?عشرون|(ال)?عشرين|(ال)?حادي والعشرون|(ال)?حادية والعشرين|(ال)?حادي والعشرين|(ال)?ثاني والعشرون|(ال)?ثانية والعشرين|(ال)?ثالث والعشرون|(ال)?رابع والعشرون|(ال)?خامس والعشرون|(ال)?سادس والعشرون|(ال)?تاسع والعشرون|(ال)?سابع والعشرون|(ال)?رابع والعشرون|الثامن|الأول|الثالث|الرابع|الخامس|السادس|الثاني|العاشر|السابع))'
     WeekDayofMonthRegex = f'(?=يوم\\s+)?(الأحد|الإثنين|الاثنين|الثلاثاء|الأربعاء|الخميس|الجمعة|السبت)\\s+(في\\s+)?((?:3[0-1]|[1-2]\\d|0?[1-9])|(الأول|الثاني|الثالث|الرابع|الخامس))'
     RelaxedOnRegex = f'({OrdinalDayOfMonthRegex}|{WeekDayofMonthRegex})'
     PrefixWeekDayRegex = f'(\\s*((,?\\s*on)|[-—–]))'
-    ThisRegex = f'(?=يوم\\s+)?({WeekDayRegex})(\\s+)?(من|هذا|)(\\s+)?(هذا)?(\\s+)({ArabicWeekRegex})((\\s+)({RelativeRegex}))?'
+    ThisRegex = f'({WeekDayRegex}(\\sمن)?\\s(هذا)(\\s{ArabicWeekRegex})?)|((هذا)\\s{WeekDayRegex})'
     LastDayDateRegex = f'(?=يوم\\s+)?({WeekDayRegex})\\s+(الماضي|السابق|الأخير)'
     LastWeekDateRegex = f'({ArabicWeekRegex})\\s+(الماضي|السابق|الأخير)\\s+({WeekDayRegex})'
     LastMonthYearDateRegex = f'(قبل\\s+)(\\d+ )?((بضعة|بضع|عدة)\\s+)?(سنتين|شهرين|الشهور|أشهر|اشهر|شهر|الشهر|أيام|عامين|عام|أعوام|سنة|سنين|سنوات)'
@@ -116,13 +116,12 @@ class ArabicDateTime:
     LastDateRegex = f'({LastDayDateRegex}|{LastWeekDateRegex})'
     NextDayRegex = f'(هذا يوم\\s+|بعد\\s+)?(?=(ال)?يوم\\s+)?({WeekDayRegex})((\\s+)({NextRegex}))?'
     NextWeekDayRegex = f'((بعد )|(في هذا ?=)|(هذا ?=))?((ال|لل|ل)?أسبوع(ين)?|{ArabicWeekRegex}|اليوم|يومي|الغد|غداً|غد|غدا)(يوم)?({ArabicWeekRegex})?(\\s*(الآتي|الأخير|التالي|القادم|من الآن|الحالي|المقبل|الحاضر))?(\\s*{ArabicWeekRegex})?'
-    NextWeekRegex = f'(?=بعد )?(هذا )?({ArabicWeekRegex})\\s*({NextRegex})?\\s+?(يوم)?(\\s+)?({WeekDayRegex})?'
-    NextDateRegex = f'({NextWeekRegex}|{NextDayRegex})'
+    NextWeekRegex = f'(?=بعد )?(هذا )?({ArabicWeekRegex})\\s*({NextRegex})?\\s?(يوم)?(\\s+)?({WeekDayRegex})?'
+    NextDateRegex = f'((يوم\\s)?{WeekDayRegex}(\\sمن)?\\s{NextWeekRegex})|{NextWeekRegex}|{NextDayRegex}'
     CardinalDayOfMonthRegex = f'(((?<=في )|(إلى |لل|يوم ))((((ال)?عاشر|(ال)?حادي(ة)? والعشرين|(ال)?ثاني(ة)? والعشرين|(ال)?ثالث(ة)? والعشرين|(ال)?رابع(ة)? والعشرين|(ال)?خامس(ة)? والعشرين|(ال)?سادس(ة)? والعشرين|(ال)?سابع(ة)? والعشرين|(ال)?ثامن(ة)? والعشرين|(ال)?تاسع(ة)? والعشرين|(ال)?ثلاثين|(ال)?حادي(ة)? والثلاثين|(ال)?أول|(ال)?ثاني|(ال)?ثالث|(ال)?رابع|(ال)?خامس|(ال)?سادس|(ال)?سابع|(ال)?ثامن|(ال)?تاسع))|((?!{DayRegex}){DayRegex})))|((?<=يوم )({DayRegex})[\\./-]\\s+({MonthRegex}))'
     SpecialDayRegex = f'({NextWeekDayRegex}|{CardinalDayOfMonthRegex}|{SpecificDayRegex}|{LastMonthYearDateRegex})'
     SpecialDayWithNumRegex = f'\\b((?<number>{WrittenNumRegex})\\s+days?\\s+from\\s+(?<day>yesterday|tomorrow|tmr|today))\\b'
     RelativeDayRegex = f'\\b(((the\\s+)?{RelativeRegex}\\s+day))\\b'
-    SetWeekDayRegex = f'\\b(?<prefix>on\\s+)?(?<weekday>morning|afternoon|evening|night|(sun|mon|tues|wednes|thurs|fri|satur)day)s\\b'
     WeekDayOfMonthRegex = f'(?<wom>(the\\s+)?(?<cardinal>first|1st|second|2nd|third|3rd|fourth|4th|fifth|5th|last)\\s+(week\\s+{MonthSuffixRegex}[\\.]?\\s+(on\\s+)?{WeekDayRegex}|{WeekDayRegex}\\s+{MonthSuffixRegex}))'
     RelativeWeekDayRegex = f'\\b({WrittenNumRegex}\\s+{WeekDayRegex}\\s+(from\\s+now|later))\\b'
     SpecialDate = f'(?=\\b(on|at)\\s+the\\s+){DayRegex}\\b'
@@ -146,16 +145,16 @@ class ArabicDateTime:
     WeekDayEnd = f'(هذا\\s+)?{WeekDayRegex}\\s*[,،]?\\s*$'
     WeekDayStart = f'^[\\.]'
     RangeUnitRegex = f'\\b(?<unit>years?|months?|weeks?)\\b'
-    HourNumRegex = f'\\b(?<hournum>الأولى|ثمانية|الثانيه|خمسة|الخمسة|ستة|الستة|السبعة|سبعة|أربعة|ربع|الحاديه عشر|(ال)?واحدة|(ال)?ثالثة|(ال)?رابعة|(ال)?خامسة|(ال)?سادسة|(ال)?سابعة|(ال)?ثامنة|(ال)?تاسعة|(ال)?عاشرة|(ال)?حادية عشر(ة)?|الثانية(?!\s*عشر)|(ال)?ثانية عشر(ة)?|خمسة عشر|اثنين|أحد عشر)\\b'
-    MinuteNumRegex = f'\\b(?<minnum>أربع|خمس|ست|سبع|ثمان|تسع|عشر|عشرة|أحد عشر|إثني عشر|إثنا عشر|ثلاثة عشر|خمسة عشر|ثمانية عشر|أربعة عشر|ستة عشر|سبعة عشر|(ال)?حادية عشر(ة)?|تسعة عشر|عشرون|ثلاثون|أربعون|خمسون|عشرين|ثلاث(ين)?|أربعين|خمسين|واحد|إثنان|ثلاثة|خمسة|ثمانية)\\b'
-    DeltaMinuteNumRegex = f'(?<deltaminnum>عشرة|خمس عشرة|عشرون|خمس وعشرون|أحد عشر|اثنا عشر|ثلاثة عشر|خمسة عشر|ثمانية عشر|أربعة|ستة|سبعة|تسعة|عشرين|عشر|أربعة عشر|ستة عشر|سبعة عشر|تسعة عشر|ثلاثون|خمس وثلاثون|أربعون|خمس وأربعون|خمسين|أربعين|خمسون|واحد|اثنان|ثلاثة|خمسة|ثمانية|ثلاث(ين)?|أربع|خمس|ست|سبع|ثمان|تسع|(ال)?واحدة|(ال)?ثانية|(ال)?ثالثة|(ال)?رابعة|(ال)?خامسة|(ال)?سادسة|(ال)?سابعة|(ال)?ثامنة|(ال)?تاسعة|(ال)?عاشرة|(ال)?حادية عشر(ة)?|(?<!الثانية\s*)عشر|(ال)?ثانية عشر(ة)?)'
+    HourNumRegex = f'\\b(?<hournum>الأولى|ثمانية|الثانيه|خمسة|الخمسة|ستة|الستة|السبعة|سبعة|أربعة|الحاديه عشر|(ال)?واحدة|(ال)?ثالثة|(ال)?رابعة|(ال)?خامسة|(ال)?سادسة|(ال)?سابعة|(ال)?ثامنة|(ال)?تاسعة|(ال)?عاشرة|(ال)?حادية عشر(ة)?|الثانية(?!\\s*عشر)|(ال)?ثانية عشر(ة)?|خمسة عشر|اثنين|أحد عشر|تسعة|الوَاحِدَة)\\b'
+    MinuteNumRegex = f'\\b(?<minnum>(واحد|اثنان|ثلاثة|أربعة|خمسة|ستة|سبعة|ثمانية|تسعة|إحدى|اثنين|الثالثة|الرابعة|أربع|خمس|الخامسة|ست|السادسة|سبع|تسع|الثامنة|السابعة|ثلاث|دقيقتين)\\b((\\s*و?\\s*)(عشرون|ثلاثون|أربعون|خمسون|خَمْسُونَ|عشرين|ثلاثين|عشر|عشرة|العشرون|أربعين|خمسين|وثلاثون))?\\b|(أَحَدَ عَشَرَ|اِثْنَا عَشَرَ|ثَلَاثَةَ عَشَرَ|أَرْبَعَةَ عَشَرَ|خَمْسَةَ عَشَرَ|سِتَّةَ عَشَرَ|سَبْعَةَ عَشَرَ|ثَمَانِيَةَ عَشَرَ|تِسْعَةَ عَشَرَ|عشرون|ثلاثون|أربعون|خمسون|خَمْسُونَ|عشرين|ثلاثين|عشر|عشرة|خمس عشرة|أربعين|خمسين|وثلاثون|دقيقتان|واحدة))\\b'
+    DeltaMinuteNumRegex = f'(?<deltaminnum>(واحد|اثنان|ثلاثة|أربعة|خمسة|ستة|سبعة|ثمانية|تسعة|إحدى|اثنين|الثالثة|الرابعة|أربع|خمس|الخامسة|ست|السادسة|سبع|تسع|الثامنة|السابعة|ثلاث|دقيقتين)\\b((\\s*و?\\s*)(عشرون|ثلاثون|أربعون|خمسون|خَمْسُونَ|عشرين|ثلاثين|عشر|عشرة|العشرون|أربعين|خمسين|وثلاثون))?\\b|(أَحَدَ عَشَرَ|اِثْنَا عَشَرَ|ثَلَاثَةَ عَشَرَ|أَرْبَعَةَ عَشَرَ|خَمْسَةَ عَشَرَ|سِتَّةَ عَشَرَ|سَبْعَةَ عَشَرَ|ثَمَانِيَةَ عَشَرَ|تِسْعَةَ عَشَرَ|عشرون|ثلاثون|أربعون|خمسون|خَمْسُونَ|عشرين|ثلاثين|عشر|عشرة|خمس عشرة|أربعين|خمسين|وثلاثون|دقيقتان|واحدة))'
     PmRegex = f'(?<pm>(?:(في|حول)\\s|ل)?(وقت\\s)?(بعد الظهر|بعد الظهيرة|(ال)?مساءً?|منتصف(\\s|-)الليل|الغداء|الليل|ليلا))'
     PmRegexFull = f'(?<pm>(?:(في|حول)\\s|ل)?(وقت\\s)?(بعد الظهر|بعد الظهيرة|(ال)?مساءً?|منتصف(\\s|-)الليل|الغداء|الليل|ليلا))'
     AmRegex = f'(?<am>(?:(في|حول)\\s|ل)?(وقت\\s)?((ال)?صباح|صباحا|صباحًا))'
     LunchRegex = f'\\b(موعد الغذاء|وقت الغذاء)\\b'
     NightRegex = f'\\bمنتصف(\\s|-)الليل\\b'
     CommonDatePrefixRegex = f'^[\\.]'
-    LessThanOneHour = f'(?<lth>((ال)?ربع|ثلاثة أرباع|(ال)?نصف)|({BaseDateTime.DeltaMinuteRegex}(\\s(دقيقة|دقائق))?)|({DeltaMinuteNumRegex}(\\s(دقيقة|دقائق))?))'
+    LessThanOneHour = f'(?<lth>((ال)?ربع|ثلاثة أرباع|(ال)?نصف|الرُبع)|({BaseDateTime.DeltaMinuteRegex}(\\s(دقيقة|دقائق))?)|((و)?{DeltaMinuteNumRegex}(\\s(دقيقة|دقائق))?))'
     WrittenTimeRegex = f'(?<writtentime>((ال)?ساعة\\s)?{HourNumRegex}\\s+(و(\\s)?)?({MinuteNumRegex}|({MinuteNumRegex}\\s+(و(\\s)?)?(?<tens>عشرون|ثلاثون|أربعون|خمسون|عشرين|ثلاثين|أربعين|خمسين))))'
     TimePrefix = f'(?<prefix>(إلا|الا|حتى|و|قبل)?(\\s)?{LessThanOneHour})'
     TimeSuffix = f'(?<suffix>{AmRegex}|{PmRegex}|{OclockRegex})'
@@ -164,7 +163,7 @@ class ArabicDateTime:
     MidnightRegex = f'(?<midnight>منتصف(\\s|(\\s?-\\s?))الليل)'
     MidmorningRegex = f'(?<midmorning>منتصف(\\s|(\\s?-\\s?))الصباح)'
     MidafternoonRegex = f'(?<midafternoon>منتصف(\\s|(\\s?-\\s?))بعد الظهر)'
-    MiddayRegex = f'(?<midday>(وقت الغداء\\s)?(منتصف(\\s|(\\s?-\\s?)))?(النهار|(الساعة\\s)?((((12\\s)?الظهر)|(12\\s)?الظهيرة)|(12\\s)?ظهرا))(\\sوقت الغداء)?)'
+    MiddayRegex = f'(?<midday>(وقت الغداء\\s)?(منتصف(\\s|(\\s?-\\s?)))?(النهار|(الساعة\\s)?((?:12\\s)?(الظهر|ظهرًا|الظهيرة|ظهرا)))(\\sوقت الغداء)?)'
     MidTimeRegex = f'(?<mid>({MidnightRegex}|{MidmorningRegex}|{MidafternoonRegex}|{MiddayRegex}))'
     AtRegex = f'\\b(?:(?:(?<=\\bفي\\s+)?(?:{WrittenTimeRegex}|{HourNumRegex}|{BaseDateTime.HourRegex}(?!\\.\\d)|{MidTimeRegex}))|{MidTimeRegex})\\b'
     IshRegex = f'\\b((({BaseDateTime.HourRegex}|{WrittenTimeRegex})(\\s|-))?(وقت\\s)?((الظهيرة|الظهر|ظهر(ا|اً))))\\b'
@@ -221,12 +220,6 @@ class ArabicDateTime:
     MoreThanRegex = f'\\b(أكثر\\s+من)\\b'
     DurationUnitRegex = f'(?<unit>{DateUnitRegex}|(ال)?ساعة|(ال)?ساعات|(ال)?دقيقة|(ال)?دقائق|(ال)?ثانية|(ال)?ثوان|(ال)?ليلة|(ال)?ليال)|ساعت(ين)?(ان)?|دقيقت(ين)?(ان)?|ثانيت(ين)?(ان)?|ليلت(ين)?(ان)?\\b'
     SuffixAndRegex = f'(?<suffix>\\s*(و)\\s+(?<suffix_num>نصف|ربع))'
-    PeriodicRegex = f'\\b(?<periodic>((?<multiplier>semi|bi|tri)(\\s*|-))?(daily|monthly|weekly|quarterly|yearly|annual(ly)?))\\b'
-    EachUnitRegex = f'\\b(?<each>(each|every|any|once an?)(?<other>\\s+other)?\\s+({DurationUnitRegex}|(?<specialUnit>quarters?|weekends?)|{WeekDayRegex})|(?<specialUnit>weekends))'
-    EachPrefixRegex = f'\\b(?<each>(each|every|once an?)\\s*$)'
-    SetEachRegex = f'\\b(?<each>(each|every)(?<other>\\s+other)?\\s*)(?!the|that)\\b'
-    SetLastRegex = f'(?<last>following|next|upcoming|this|{LastNegPrefix}last|past|previous|current)'
-    EachDayRegex = f'^\\s*(each|every)\\s*day\\b'
     DurationFollowedUnit = f'(^\\s*{DurationUnitRegex}\\s+{SuffixAndRegex})|(^\\s*{SuffixAndRegex}?\\s+?{DurationUnitRegex})'
     NumberCombinedWithDurationUnit = f'((?<num>\\d+(\\.\\d*)?(\\s)?)?({DurationUnitRegex})(\\s{WrittenOneToNineRegex})?(\\sو)?(\\s)?(?<num>\\d+(\\.\\d*)?(\\s)?)?(({DurationUnitRegex})?(\\s{WrittenOneToNineRegex})?)(\\sو)?(\\s)?(?<num>\\d+(\\.\\d*)?(\\s)?)?({DurationUnitRegex})(\\s{WrittenOneToNineRegex})?)'
     AnUnitRegex = f'\\b((?<half>(1/2|½|نصف)))\\s+{DurationUnitRegex}(\\s(أخرى))?'
@@ -305,7 +298,7 @@ class ArabicDateTime:
     StrictRangeConnectorRegex = f'(?<and>\\b(and|through|to)\\b|{BaseDateTime.RangeConnectorSymbolRegex}(?!\\s*(h[1-2]|q[1-4])(?!(\\s+of|\\s*,\\s*))))'
     StartMiddleEndRegex = f'\\b((?<StartOf>((the\\s+)?(start|beginning)\\s+of\\s+)?)(?<MiddleOf>((the\\s+)?middle\\s+of\\s+)?)(?<EndOf>((the\\s+)?end\\s+of\\s+)?))'
     ComplexDatePeriodRegex = f'(?:((from|during|in)\\s+)?{StartMiddleEndRegex}(?<start>.+)\\s*({StrictTillRegex})\\s*{StartMiddleEndRegex}(?<end>.+)|((between)\\s+){StartMiddleEndRegex}(?<start>.+)\\s*({StrictRangeConnectorRegex})\\s*{StartMiddleEndRegex}(?<end>.+))'
-    FailFastRegex = f'{BaseDateTime.DeltaMinuteRegex}|\\b(?:{BaseDateTime.BaseAmDescRegex}|{BaseDateTime.BasePmDescRegex})|{BaseDateTime.BaseAmPmDescRegex}|\\b(?:zero|{WrittenOneToNineRegex}|{WrittenElevenToNineteenRegex}|{WrittenTensRegex}|{WrittenMonthRegex}|{SeasonDescRegex}|{DecadeRegex}|centur(y|ies)|weekends?|quarters?|hal(f|ves)|yesterday|to(morrow|day|night)|tmr|noonish|\\d(-|——)?ish|((the\\s+\\w*)|\\d)(th|rd|nd|st)|(mid\\s*(-\\s*)?)?(night|morning|afternoon|day)s?|evenings?||noon|lunch(time)?|dinner(time)?|(day|night)time|overnight|dawn|dusk|sunset|hours?|hrs?|h|minutes?|mins?|seconds?|secs?|eo[dmy]|mardi[ -]?gras|birthday|eve|christmas|xmas|thanksgiving|halloween|yuandan|easter|yuan dan|april fools|cinco de mayo|all (hallow|souls)|guy fawkes|(st )?patrick|hundreds?|noughties|aughts|thousands?)\\b|{WeekDayRegex}|{SetWeekDayRegex}|{NowRegex}|{PeriodicRegex}|\\b({DateUnitRegex}|{ImplicitDayRegex})'
+    FailFastRegex = f'{BaseDateTime.DeltaMinuteRegex}|\\b(?:{BaseDateTime.BaseAmDescRegex}|{BaseDateTime.BasePmDescRegex})|{BaseDateTime.BaseAmPmDescRegex}|\\b(?:zero|{WrittenOneToNineRegex}|{WrittenElevenToNineteenRegex}|{WrittenTensRegex}|{WrittenMonthRegex}|{SeasonDescRegex}|{DecadeRegex}|centur(y|ies)|weekends?|quarters?|hal(f|ves)|yesterday|to(morrow|day|night)|tmr|noonish|\\d(-|——)?ish|((the\\s+\\w*)|\\d)(th|rd|nd|st)|(mid\\s*(-\\s*)?)?(night|morning|afternoon|day)s?|evenings?||noon|lunch(time)?|dinner(time)?|(day|night)time|overnight|dawn|dusk|sunset|hours?|hrs?|h|minutes?|mins?|seconds?|secs?|eo[dmy]|mardi[ -]?gras|birthday|eve|christmas|xmas|thanksgiving|halloween|yuandan|easter|yuan dan|april fools|cinco de mayo|all (hallow|souls)|guy fawkes|(st )?patrick|hundreds?|noughties|aughts|thousands?)\\b|{WeekDayRegex}|{NowRegex}|\\b({DateUnitRegex}|{ImplicitDayRegex})'
     UnitMap = dict([("قرن", "10Y"),
                     ("حقبة", "10Y"),
                     ("قرون", "10Y"),
@@ -457,6 +450,7 @@ class ArabicDateTime:
                         ("فبراير", 2),
                         ("مارس", 3),
                         ("أبريل", 4),
+                        ("إبريل", 4),
                         ("مايو", 5),
                         ("يونيو", 6),
                         ("يوليو", 7),
@@ -475,6 +469,7 @@ class ArabicDateTime:
                         ("شعبان", 8),
                         ("رمضان", 9),
                         ("شوال", 10),
+                        ("اكتوبر", 10),
                         ("ذو القعدة", 11),
                         ("ذو الحجة", 12),
                         ("كانون الثاني", 1),
@@ -512,8 +507,12 @@ class ArabicDateTime:
                         ("09", 9)])
     Numbers = dict([("صفر", 0),
                     ("واحد", 1),
+                    ("واحدة", 1),
                     ("الواحدة", 1),
+                    ("الوَاحِدَة", 1),
                     ("اثنان", 2),
+                    ("دقيقتان", 2),
+                    ("دقيقتين", 2),
                     ("الثانية", 2),
                     ("الثانيه", 2),
                     ("اثنين", 2),
@@ -521,6 +520,7 @@ class ArabicDateTime:
                     ("ثلاث", 3),
                     ("الثالثة", 3),
                     ("أربعة", 4),
+                    ("أربع", 4),
                     ("الرابعة", 4),
                     ("ربع", 4),
                     ("خمسة", 5),
@@ -528,13 +528,16 @@ class ArabicDateTime:
                     ("خمس", 5),
                     ("الخمسة", 5),
                     ("ستة", 6),
+                    ("ست", 6),
                     ("السادسة", 6),
                     ("سبعة", 7),
+                    ("سبع", 7),
                     ("السابعة", 7),
                     ("السبعة", 7),
                     ("ثمانية", 8),
                     ("الثامنة", 8),
                     ("تسعة", 9),
+                    ("تسع", 9),
                     ("التاسعة", 9),
                     ("عشرة", 10),
                     ("العاشرة", 10),
@@ -548,59 +551,119 @@ class ArabicDateTime:
                     ("الثانية عشرة", 12),
                     ("الثانية عشر", 12),
                     ("ثلاثة عشر", 13),
+                    ("ثلاث عشرة", 13),
                     ("أربعة عشر", 14),
+                    ("الرابعة عشرة", 14),
+                    ("الرابعة عشر", 14),
                     ("خمسة عشر", 15),
                     ("خمس عشرة", 15),
+                    ("خمس عشر", 15),
                     ("ستة عشر", 16),
+                    ("السادسة عشرة", 16),
                     ("سبعة عشر", 17),
+                    ("سبع عشرة", 17),
+                    ("السابعة عشرة", 17),
                     ("ثمانية عشر", 18),
+                    ("الثمانية عشر", 18),
                     ("تسعة عشر", 19),
+                    ("تسع عشرة", 19),
                     ("عشرون", 20),
                     ("عشرين", 20),
                     ("واحد وعشرون", 21),
+                    ("الحادية والعشرون", 21),
                     ("اثنان وعشرون", 22),
+                    ("اثنين وعشرين", 22),
                     ("ثلاثة وعشرون", 23),
+                    ("ثلاثة وعشرين", 23),
+                    ("ثلاث وعشرون", 23),
                     ("أربعة وعشرون", 24),
+                    ("أربعة وعشرين", 24),
+                    ("أربع وعشرون", 24),
                     ("خمسة وعشرون", 25),
+                    ("خمسة وعشرين", 25),
                     ("خمس وعشرون", 25),
                     ("ستة وعشرون", 26),
+                    ("ستة وعشرين", 26),
                     ("سبعة وعشرون", 27),
+                    ("سبع وعشرون", 27),
+                    ("سبعة وعشرين", 27),
+                    ("سبع وعشرين", 27),
                     ("ثمانية وعشرون", 28),
+                    ("ثمانية وعشرين", 28),
                     ("تسعة وعشرون", 29),
+                    ("تسع وعشرين", 29),
+                    ("تسع وعشرون", 29),
                     ("الثلاثين", 30),
                     ("ثلاثين", 30),
+                    ("ثلاثون", 30),
+                    ("وثلاثون", 30),
                     ("واحد وثلاثون", 31),
+                    ("واحد وثلاثين", 31),
+                    ("إحدى وثلاثين", 31),
                     ("اثنان وثلاثون", 32),
+                    ("اثنتين وثلاثين", 32),
+                    ("دقيقتين وثلاثين", 32),
                     ("ثلاثة وثلاثون", 33),
+                    ("ثلاث وثلاثين", 33),
                     ("أربعة وثلاثون", 34),
+                    ("أربعة وثلاثين", 34),
+                    ("أربع وثلاثون", 34),
                     ("خمسة وثلاثون", 35),
                     ("خمس وثلاثون", 35),
+                    ("خمسة وثلاثين", 35),
+                    ("خمس وثلاثين", 35),
                     ("ستة وثلاثون", 36),
+                    ("ستة وثلاثين", 36),
                     ("سبعة وثلاثون", 37),
+                    ("وسبع وثلاثين", 37),
                     ("ثمانية وثلاثون", 38),
+                    ("ثماني وثلاثين", 38),
                     ("تسعة وثلاثون", 39),
+                    ("تسع وثلاثين", 39),
                     ("أربعون", 40),
+                    ("أربعين", 40),
                     ("واحد وأربعون", 41),
+                    ("إحدى وأربعين", 41),
                     ("اثنان وأربعون", 42),
+                    ("اثنتين وأربعين", 42),
                     ("ثلاثة وأربعون", 43),
+                    ("ثلاث وأربعين", 43),
                     ("أربعة وأربعون", 44),
+                    ("أربع وأربعين", 44),
                     ("خمسة وأربعون", 45),
                     ("خمس وأربعون", 45),
+                    ("خمس وأربعين", 45),
                     ("ستة وأربعون", 46),
+                    ("ست وأربعين", 46),
                     ("سبعة وأربعون", 47),
+                    ("سبع وأربعين", 47),
                     ("ثمانية وأربعون", 48),
+                    ("ثماني وأربعين", 48),
                     ("تسعة وأربعون", 49),
+                    ("تسع وأربعين", 49),
                     ("خمسون", 50),
+                    ("خمسين", 50),
                     ("واحد وخمسون", 51),
+                    ("إحدى وخمسين", 51),
                     ("اثنان وخمسون", 52),
+                    ("اثنتين وخمسين", 52),
                     ("ثلاثة وخمسون", 53),
+                    ("ثلاث وخمسين", 53),
                     ("أربعة وخمسون", 54),
+                    ("أربعة وخمسين", 54),
                     ("خمسة وخمسون", 55),
+                    ("خمس وخمسين", 55),
                     ("ستة وخمسون", 56),
+                    ("ست وخمسون", 56),
+                    ("ستة وخمسين", 56),
                     ("سبعة وخمسون", 57),
+                    ("سبع وخمسين", 57),
                     ("ثمانية وخمسون", 58),
+                    ("ثماني وخمسين", 58),
                     ("تسعة وخمسون", 59),
+                    ("تسع وخمسين", 59),
                     ("ستين", 60),
+                    ("ستون", 60),
                     ("واحد وستون", 61),
                     ("اثنان وستون", 62),
                     ("ثلاثة وستون", 63),

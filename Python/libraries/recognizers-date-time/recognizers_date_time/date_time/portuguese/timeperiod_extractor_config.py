@@ -10,10 +10,8 @@ from ...resources.portuguese_date_time import PortugueseDateTime
 from ..extractors import DateTimeExtractor
 from ..base_timeperiod import TimePeriodExtractorConfiguration, MatchedIndex
 from ..base_time import BaseTimeExtractor
-from ..base_timezone import BaseTimeZoneExtractor
 from .base_configs import PortugueseDateTimeUtilityConfiguration
 from .time_extractor_config import PortugueseTimeExtractorConfiguration
-from .timezone_extractor_config import PortugueseTimeZoneExtractorConfiguration
 from ..utilities import DateTimeOptions
 
 
@@ -63,10 +61,6 @@ class PortugueseTimePeriodExtractorConfiguration(TimePeriodExtractorConfiguratio
     def pure_number_regex(self) -> List[Pattern]:
         return self._pure_number_regex
 
-    @property
-    def time_zone_extractor(self) -> DateTimeExtractor:
-        return self._time_zone_extractor
-
     def __init__(self):
         super().__init__()
         self._single_time_extractor = BaseTimeExtractor(
@@ -97,8 +91,6 @@ class PortugueseTimePeriodExtractorConfiguration(TimePeriodExtractorConfiguratio
         self._token_before_date = PortugueseDateTime.TokenBeforeDate
         self._pure_number_regex = [PortugueseDateTime.PureNumFromTo, PortugueseDateTime.PureNumFromTo]
         self._options = DateTimeOptions.NONE
-        self._time_zone_extractor = BaseTimeZoneExtractor(
-            PortugueseTimeZoneExtractorConfiguration())
         self._check_both_before_after = PortugueseDateTime.CheckBothBeforeAfter
 
     def get_from_token_index(self, source: str) -> MatchedIndex:

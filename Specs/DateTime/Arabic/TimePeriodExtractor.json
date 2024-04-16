@@ -1,7 +1,7 @@
 [
   {
     "Input": "سأخرج من 5 إلى 6 مساءً",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "من 5 إلى 6 مساءً",
@@ -49,7 +49,7 @@
   },
   {
     "Input": "سأخرج من الخامسة إلى السادسة مساءً",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "من الخامسة إلى السادسة مساءً",
@@ -61,7 +61,7 @@
   },
   {
     "Input": "سأخرج بين الخامسة والسادسة مساءً",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "بين الخامسة والسادسة مساءً",
@@ -73,7 +73,7 @@
   },
   {
     "Input": "سأخرج بين الساعة 5 و 6 مساءً",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "بين الساعة 5 و 6 مساءً",
@@ -97,7 +97,7 @@
   },
   {
     "Input": "سأكون بالخارج من 4 مساءً حتى 5 مساءً",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "من 4 مساءً حتى 5 مساءً",
@@ -109,7 +109,7 @@
   },
   {
     "Input": "سأخرج الساعة 4 حتى 5 مساءً",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "الساعة 4 حتى 5 مساءً",
@@ -121,7 +121,7 @@
   },
   {
     "Input": "سأكون بالخارج من 4:00 حتى 5 مساءً",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "من 4:00 حتى 5 مساءً",
@@ -133,7 +133,7 @@
   },
   {
     "Input": "سأخرج الساعة 4:00 حتى 5 مساءً",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "الساعة 4:00 حتى 5 مساءً",
@@ -181,7 +181,7 @@
   },
   {
     "Input": "سأكون بالخارج من 4 إلى 5 مساءً",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "من 4 إلى 5 مساءً",
@@ -205,7 +205,7 @@
   },
   {
     "Input": "سأخرج من 4 مساءً إلى 5 مساءً",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "من 4 مساءً إلى 5 مساءً",
@@ -265,7 +265,7 @@
   },
   {
     "Input": "سأخرج بين 3 صباحًا و 5 مساءً",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "بين 3 صباحًا و 5 مساءً",
@@ -481,7 +481,7 @@
   },
   {
     "Input": "عقد اجتماع من الثانية إلى الخامسة مساءً",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "من الثانية إلى الخامسة مساءً",
@@ -625,7 +625,7 @@
   },
   {
     "Input": "عقد الاجتماع من 1:30 مساءً إلى 3:30 مساءً",
-    "NotSupportedByDesign": "java, javascript, python",
+    "NotSupportedByDesign": "java, javascript",
     "Results": [
       {
         "Text": "من 1:30 مساءً إلى 3:30 مساءً",

@@ -14,13 +14,11 @@ from ..base_time import BaseTimeExtractor
 from ..base_duration import BaseDurationExtractor
 from ..base_timeperiod import BaseTimePeriodExtractor
 from ..base_datetime import BaseDateTimeExtractor
-from ..base_timezone import BaseTimeZoneExtractor
 from .date_extractor_config import PortugueseDateExtractorConfiguration
 from .time_extractor_config import PortugueseTimeExtractorConfiguration
 from .duration_extractor_config import PortugueseDurationExtractorConfiguration
 from .timeperiod_extractor_config import PortugueseTimePeriodExtractorConfiguration
 from .datetime_extractor_config import PortugueseDateTimeExtractorConfiguration
-from .timezone_extractor_config import PortugueseTimeZoneExtractorConfiguration
 from ..utilities import DateTimeOptions
 
 
@@ -72,10 +70,6 @@ class PortugueseDateTimePeriodExtractorConfiguration(DateTimePeriodExtractorConf
     @property
     def time_period_extractor(self) -> DateTimeExtractor:
         return self._time_period_extractor
-
-    @property
-    def time_zone_extractor(self) -> DateTimeExtractor:
-        return self._time_zone_extractor
 
     @property
     def simple_cases_regexes(self) -> List[Pattern]:
@@ -194,8 +188,6 @@ class PortugueseDateTimePeriodExtractorConfiguration(DateTimePeriodExtractorConf
             PortugueseDurationExtractorConfiguration())
         self._time_period_extractor = BaseTimePeriodExtractor(
             PortugueseTimePeriodExtractorConfiguration())
-        self._time_zone_extractor = BaseTimeZoneExtractor(
-            PortugueseTimeZoneExtractorConfiguration())
         self._simple_cases_regexes = [
             RegExpUtility.get_safe_reg_exp(PortugueseDateTime.PureNumFromTo),
             RegExpUtility.get_safe_reg_exp(PortugueseDateTime.PureNumBetweenAnd)

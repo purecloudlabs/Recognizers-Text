@@ -10,7 +10,6 @@ from ..constants import Constants
 from ..extractors import DateTimeExtractor
 from ..parsers import DateTimeParser
 from ..base_configs import BaseDateParserConfiguration
-from ..base_timezone import BaseTimeZoneParser
 
 
 class SpanishDateTimePeriodParserConfiguration(DateTimePeriodParserConfiguration):
@@ -99,7 +98,6 @@ class SpanishDateTimePeriodParserConfiguration(DateTimePeriodParserConfiguration
             SpanishDateTime.RelativeTimeUnitRegex)
         self._rest_of_date_time_regex = RegExpUtility.get_safe_reg_exp(
             SpanishDateTime.RestOfDateTimeRegex)
-        self._time_zone_parser = config.time_zone_parser
 
     @property
     def before_regex(self):
@@ -200,10 +198,6 @@ class SpanishDateTimePeriodParserConfiguration(DateTimePeriodParserConfiguration
     @property
     def time_period_parser(self) -> DateTimeParser:
         return self._time_period_parser
-
-    @property
-    def time_zone_parser(self) -> DateTimeParser:
-        return self._time_zone_parser
 
     @property
     def duration_parser(self) -> DateTimeParser:

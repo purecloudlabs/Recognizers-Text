@@ -172,13 +172,13 @@
     "Input": "لقد فزت للتو بألفي دولار!",
     "Results": [
       {
-        "Text": " بألفي دولار",
+        "Text": "بألفي دولار",
         "TypeName": "currency",
         "Resolution": {
           "value": "2000",
           "unit": "Dollar"
         },
-        "Start": 12,
+        "Start": 13,
         "End": 23
       }
     ]
@@ -285,6 +285,36 @@
         },
         "Start": 0,
         "End": 10
+      }
+    ]
+  },
+  {
+    "Input": "خمسمائة ريال سعودي",
+    "Results": [
+      {
+        "Text": "خمسمائة ريال سعودي",
+        "TypeName": "currency",
+        "Resolution": {
+          "value": "500",
+          "unit": "Saudi riyal"
+        },
+        "Start": 0,
+        "End": 17
+      }
+    ]
+  },
+  {
+    "Input": "خمسمائة جنيه مصري",
+    "Results": [
+      {
+        "Text": "خمسمائة جنيه مصري",
+        "TypeName": "currency",
+        "Resolution": {
+          "value": "500",
+          "unit": "Egyptian pound"
+        },
+        "Start": 0,
+        "End": 16
       }
     ]
   }

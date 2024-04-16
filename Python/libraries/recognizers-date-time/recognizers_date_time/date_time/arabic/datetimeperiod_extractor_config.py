@@ -11,13 +11,11 @@ from recognizers_date_time.date_time.base_time import BaseTimeExtractor
 from recognizers_date_time.date_time.base_duration import BaseDurationExtractor
 from recognizers_date_time.date_time.base_timeperiod import BaseTimePeriodExtractor
 from recognizers_date_time.date_time.base_datetime import BaseDateTimeExtractor
-from recognizers_date_time.date_time.base_timezone import BaseTimeZoneExtractor
 from recognizers_date_time.date_time.arabic.date_extractor_config import ArabicDateExtractorConfiguration
 from recognizers_date_time.date_time.arabic.time_extractor_config import ArabicTimeExtractorConfiguration
 from recognizers_date_time.date_time.arabic.duration_extractor_config import ArabicDurationExtractorConfiguration
 from recognizers_date_time.date_time.arabic.timeperiod_extractor_config import ArabicTimePeriodExtractorConfiguration
 from recognizers_date_time.date_time.arabic.datetime_extractor_config import ArabicDateTimeExtractorConfiguration
-from recognizers_date_time.date_time.arabic.timezone_extractor_config import ArabicTimeZoneExtractorConfiguration
 from recognizers_date_time.date_time.utilities import DateTimeOptions
 
 
@@ -50,10 +48,6 @@ class ArabicDateTimePeriodExtractorConfiguration(DateTimePeriodExtractorConfigur
     @property
     def time_period_extractor(self) -> DateTimeExtractor:
         return self._time_period_extractor
-
-    @property
-    def time_zone_extractor(self) -> DateTimeExtractor:
-        return self._time_zone_extractor
 
     @property
     def simple_cases_regexes(self) -> List[Pattern]:
@@ -176,8 +170,6 @@ class ArabicDateTimePeriodExtractorConfiguration(DateTimePeriodExtractorConfigur
             ArabicDurationExtractorConfiguration())
         self._time_period_extractor = BaseTimePeriodExtractor(
             ArabicTimePeriodExtractorConfiguration())
-        self._time_zone_extractor = BaseTimeZoneExtractor(
-            ArabicTimeZoneExtractorConfiguration())
         self._simple_cases_regexes = [
             RegExpUtility.get_safe_reg_exp(ArabicDateTime.PureNumFromTo),
             RegExpUtility.get_safe_reg_exp(ArabicDateTime.PureNumBetweenAnd)

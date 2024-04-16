@@ -242,7 +242,7 @@
   },
   {
     "Input": "genel motorlar corp.'un yavaş satışlara tepki gösteren chevrolet bölümü, çekirdek kompakt otomobil hattının iki kapılı versiyonu olan 1990 beretta'sında 800 $'lık indirim yapacağını söyledi",
-    "NotSupportedByDesign": "javascript,python,java",
+    "NotSupportedByDesign": "javascript ,java",
     "Results": [
       {
         "Text": "800 $",
@@ -339,7 +339,7 @@
   },
   {
     "Input": "walter kirchberger, painewebber şirketinden bir analist, hisse sahiplerine daha yüksek, 70 $ - hisse fiyatı teklifin stena - tiphook teklifini bloke etmenin oldukça etkili bir yöntemi olduğunu söyledi.",
-    "NotSupportedByDesign": "javascript,python,java",
+    "NotSupportedByDesign": "javascript ,java",
     "Results": [
       {
         "Text": "70 $",
@@ -724,7 +724,7 @@
   },
   {
     "Input": "önceki Bellsouth anlaşması, yaklaşık 98 $'lık bir payla değerlendi.",
-    "NotSupportedByDesign": "javascript,python,java",
+    "NotSupportedByDesign": "javascript ,java",
     "Results": [
       {
         "Text": "98 $",
@@ -1119,7 +1119,7 @@
   },
   {
     "Input": "npd araştırma firmasına göre, tüm taşınabilir pencerelerin ortalama satış fiyatı ekim 2008'de 659 $'dan düştü",
-    "NotSupportedByDesign": "javascript,python,java",
+    "NotSupportedByDesign": "javascript ,java",
     "Results": [
       {
         "Text": "659 $",
@@ -1151,7 +1151,7 @@
   },
   {
     "Input": "fulham takım arkadaşı johnny haynes ilk 100 £'lik oyuncu oldu.",
-    "NotSupportedByDesign": "javascript,python,java",
+    "NotSupportedByDesign": "javascript ,java",
     "Results": [
       {
         "Text": "100 £",
@@ -1477,7 +1477,7 @@
   },
   {
     "Input": "Hey, maliyeti 100 元!",
-    "NotSupportedByDesign": "javascript,python,java",
+    "NotSupportedByDesign": "javascript ,java",
     "Results": [
       {
         "Text": "100 元",
@@ -1494,7 +1494,7 @@
   },
   {
     "Input": "Bu kitabın maliyeti 100 ₡",
-    "NotSupportedByDesign": "javascript,python,java",
+    "NotSupportedByDesign": "javascript ,java",
     "Results": [
       {
         "Text": "100 ₡",
@@ -1511,7 +1511,7 @@
   },
   {
     "Input": "Bisikleti almak için 100 ₾  harcadım",
-    "NotSupportedByDesign": "javascript,python,java",
+    "NotSupportedByDesign": "javascript ,java",
     "Results": [
       {
         "Text": "100 ₾",
@@ -1712,7 +1712,7 @@
   },
   {
     "Input": "usd$ 15",
-    "NotSupported": "javascript, python, java",
+    "NotSupported": "javascript , java",
     "Results": [
       {
         "Text": "usd$ 15",
@@ -1729,7 +1729,7 @@
   },
   {
     "Input": "mxn$ 15",
-    "NotSupported": "javascript, python, java",
+    "NotSupported": "javascript , java",
     "Results": [
       {
         "Text": "mxn$ 15",
@@ -1746,7 +1746,7 @@
   },
   {
     "Input": "aud$ 15",
-    "NotSupported": "javascript, python, java",
+    "NotSupported": "javascript , java",
     "Results": [
       {
         "Text": "aud$ 15",
@@ -1763,7 +1763,7 @@
   },
   {
     "Input": "cad$ 15",
-    "NotSupported": "javascript, python, java",
+    "NotSupported": "javascript , java",
     "Results": [
       {
         "Text": "cad$ 15",
@@ -1780,7 +1780,7 @@
   },
   {
     "Input": "nzd$15",
-    "NotSupported": "javascript, python, java",
+    "NotSupported": "javascript , java",
     "Results": [
       {
         "Text": "nzd$15",

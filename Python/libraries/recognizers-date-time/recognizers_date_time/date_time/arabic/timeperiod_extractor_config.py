@@ -93,10 +93,6 @@ class ArabicTimePeriodExtractorConfiguration(TimePeriodExtractorConfiguration):
         return self._single_time_extractor
 
     @property
-    def time_zone_extractor(self) -> DateTimeExtractor:
-        return self._time_zone_extractor
-
-    @property
     def integer_extractor(self) -> Extractor:
         return self._integer_extractor
 
@@ -151,7 +147,6 @@ class ArabicTimePeriodExtractorConfiguration(TimePeriodExtractorConfiguration):
         self._specific_time_between_and_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.SpecificTimeBetweenAnd)
         self._preposition_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.PrepositionRegex)
 
-        self._time_zone_extractor = None
         self._pure_num_between_and = RegExpUtility.get_safe_reg_exp(ArabicDateTime.PureNumBetweenAnd)
         self._pure_num_from_to = RegExpUtility.get_safe_reg_exp(ArabicDateTime.PureNumFromTo)
         self._am_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.AmRegex)

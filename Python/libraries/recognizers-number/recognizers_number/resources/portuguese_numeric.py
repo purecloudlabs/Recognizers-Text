@@ -80,7 +80,6 @@ class PortugueseNumeric:
         return f'(?<=\\s|^)(?<!(\\d+)),\\d+(?!(,\\d+))(?={placeholder})'
     DoubleWithRoundNumber = f'(((?<!\\d+\\s*)-\\s*)|((?<=\\b)(?<!\\d+\\,)))\\d+,\\d+\\s+{RoundNumberIntegerRegex}(?=\\b)'
     DoubleAllFloatRegex = f'((?<=\\b){AllFloatRegex}(?=\\b))'
-    NumberWithSuffixPercentage = f'(?<!%)({BaseNumbers.NumberReplaceToken})(\\s*)(%(?!{BaseNumbers.NumberReplaceToken})|(por cento|pontos percentuais)\\b)'
     TillRegex = f'(\\b[aà]\\b|at[eé]h?|--|-|—|——|~|–)'
     MoreRegex = f'(mais\\s+(alt[oa]s?|grandes?)\\s+que|(mais|maior(es)?|superior(es)?|acima)\\b((\\s+(que|de|a))|(?=\\s+ou\\b))|(?<!<|=)>)'
     LessRegex = f'(mais\\s+baix[oa]\\s+que|(meno(s|r(es)?)|inferior(es)?|abaixo)(\\s+(que|de|a)|(?=\\s+ou\\b))|(?<!>|=)<)'

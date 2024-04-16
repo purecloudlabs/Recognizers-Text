@@ -1,7 +1,7 @@
 [
   {
     "Input": "192",
-    "NotSupportedByDesign": "javascript,python,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "192",
@@ -17,7 +17,7 @@
   {
     "Input": "192.168.1.2",
     "NotSupported": "dotnet",
-    "NotSupportedByDesign": "javascript,python,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "192",
@@ -344,7 +344,7 @@
   },
   {
     "Input": "-1",
-    "NotSupportedByDesign": "javascript,python,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "-1",
@@ -404,7 +404,7 @@
   },
   {
     "Input": "123456789101231",
-    "NotSupportedByDesign": "javascript,python,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "123456789101231",
@@ -419,7 +419,7 @@
   },
   {
     "Input": "-123456789101231",
-    "NotSupportedByDesign": "javascript,python,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "-123456789101231",
@@ -434,7 +434,7 @@
   },
   {
     "Input": " -123456789101231",
-    "NotSupportedByDesign": "javascript,python,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "-123456789101231",
@@ -449,7 +449,7 @@
   },
   {
     "Input": "1",
-    "NotSupportedByDesign": "javascript,python,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "1",
@@ -464,7 +464,7 @@
   },
   {
     "Input": "10k",
-    "NotSupportedByDesign": "javascript,python,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "10k",
@@ -479,7 +479,7 @@
   },
   {
     "Input": "100k",
-    "NotSupportedByDesign": "javascript,python,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "100k",
@@ -494,7 +494,7 @@
   },
   {
     "Input": "10G",
-    "NotSupportedByDesign": "javascript,python,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "10g",
@@ -509,7 +509,7 @@
   },
   {
     "Input": "- 10  k",
-    "NotSupportedByDesign": "javascript,python,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "- 10  k",
@@ -659,7 +659,7 @@
   },
   {
     "Input": "2,33 k",
-    "NotSupportedByDesign": "javascript,python,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "2,33 k",
@@ -704,7 +704,7 @@
   },
   {
     "Input": "1e10",
-    "NotSupportedByDesign": "javascript,python,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "1e10",
@@ -1109,7 +1109,7 @@
   },
   {
     "Input": "1,2b",
-    "NotSupportedByDesign": "javascript,python,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "1,2b",
@@ -1634,7 +1634,7 @@
   },
   {
     "Input": "1234567",
-    "NotSupportedByDesign": "javascript,python,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "1234567",
@@ -1761,7 +1761,7 @@
   },
   {
     "Input": "17/05/2018'de buluşma?",
-    "NotSupportedByDesign": "javascript,python,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "17",
@@ -1794,7 +1794,7 @@
   },
   {
     "Input": "Telefon numaram +1-222-2222/2222",
-    "NotSupportedByDesign": "javascript,python,java",
+    "NotSupportedByDesign": "javascript,java",
     "Results": [
       {
         "Text": "1",

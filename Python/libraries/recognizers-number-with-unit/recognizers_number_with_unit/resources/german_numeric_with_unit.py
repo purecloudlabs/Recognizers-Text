@@ -10,27 +10,12 @@
 # ------------------------------------------------------------------------------
 
 from .base_numbers import BaseNumbers
+
+
 # pylint: disable=line-too-long
 
 
 class GermanNumericWithUnit:
-    AgeSuffixList = dict([("Year", "jahr alt|jahre alt|jahren|jahre|lebensjahr"),
-                          ("Month", "monat alt|monate alt|monaten|monate"),
-                          ("Week", "woche alt|wochen alt|wochen|woche"),
-                          ("Day", "tag alt|tage alt|tagen|tage")])
-    AmbiguousAgeUnitList = [r'jahren', r'jahre', r'monaten', r'monate', r'wochen', r'woche', r'tagen', r'tage']
-    AreaSuffixList = dict([("Square kilometer", "qkm|quadratkilometer|km^2|km²"),
-                           ("Square hectometer", "qhm|quadrathektometer|hm^2|hm²|hektar"),
-                           ("Square decameter", "quadratdekameter|dam^2|dam²"),
-                           ("Square meter", "qm|quadratmeter|m^2|m²"),
-                           ("Square decimeter", "qdm|quadratdezimeter|dm^2|dm²"),
-                           ("Square centimeter", "qcm|quadratzentimeter|cm^2|cm²"),
-                           ("Square millimeter", "qmm|quadratmillimeter|mm^2|mm²"),
-                           ("Square inch", "sqin|quadratzoll|in^2|in²"),
-                           ("Square foot", "sqft|quadratfuß|fuß^2|fuß²|ft2|ft^2|ft²"),
-                           ("Square mile", "sqmi|quadratmeile|mi^2|mi²"),
-                           ("Square yard", "sqyd|quadratyard|yd^2|yd²"),
-                           ("Acre", "-acre|acre|acres")])
     CurrencySuffixList = dict([("Abkhazian apsar", "abkhazian apsar|apsars"),
                                ("Afghan afghani", "afghanischer afghani|afghanische afghani|afghanischen afghani|؋|afn|afghani"),
                                ("Pul", "pul"),
@@ -585,92 +570,8 @@ class GermanNumericWithUnit:
                                ("Turkish lira", "₺"),
                                ("Bitcoin", "₿|btc|xbt")])
     AmbiguousCurrencyUnitList = [r'din.', r'kiwi', r'kina', r'kobo', r'lari', r'lipa', r'napa', r'para', r'sfr.', r'taka', r'tala', r'toea', r'vatu', r'yuan', r'ang', r'ban', r'bob', r'btn', r'byr', r'cad', r'cop', r'cup', r'dop', r'gip', r'jod', r'kgs', r'lak', r'lei', r'mga', r'mop', r'nad', r'omr', r'pul', r'sar', r'sbd', r'scr', r'sdg', r'sek', r'sen', r'sol', r'sos', r'std', r'try', r'yer', r'yen']
-    InformationSuffixList = dict([("Bit", "-bit|bit|bits"),
-                                  ("Kilobit", "kilobit|kilobits|kb|kbit"),
-                                  ("Megabit", "megabit|megabits|Mb|Mbit"),
-                                  ("Gigabit", "gigabit|gigabits|Gb|Gbit"),
-                                  ("Terabit", "terabit|terabits|Tb|Tbit"),
-                                  ("Petabit", "petabit|petabits|Pb|Pbit"),
-                                  ("Byte", "byte|bytes"),
-                                  ("Kilobyte", "kilobyte|kB|kilobytes|kilo byte|kilo bytes|kByte"),
-                                  ("Megabyte", "megabyte|mB|megabytes|mega byte|mega bytes|MByte"),
-                                  ("Gigabyte", "gigabyte|gB|gigabytes|giga byte|giga bytes|GByte"),
-                                  ("Terabyte", "terabyte|tB|terabytes|tera byte|tera bytes|TByte"),
-                                  ("Petabyte", "petabyte|pB|petabytes|peta byte|peta bytes|PByte")])
-    AmbiguousDimensionUnitList = [r'barrel', r'grain', r'gran', r'grän', r'korn', r'pfund', r'stone', r'yard', r'cord', r'dram', r'fuß', r'gill', r'knoten', r'peck', r'cup', r'fps', r'pts', r'in', r'"']
     BuildPrefix = f'(?<=(\\s|^))'
     BuildSuffix = f'(?=(\\s|\\W|$))'
     ConnectorToken = '-'
-    LengthSuffixList = dict([("Kilometer", "km|kilometer|kilometern"),
-                             ("Hectometer", "hm|hektometer|hektometern"),
-                             ("Decameter", "dam|dekameter|dekametern"),
-                             ("Meter", "m|meter|metern"),
-                             ("Decimeter", "dm|dezimeter|dezimetern"),
-                             ("Centimeter", "cm|zentimeter|centimeter|zentimetern|centimetern"),
-                             ("Millimeter", "mm|millimeter|millimetern"),
-                             ("Micrometer", "μm|mikrometer|mikrometern"),
-                             ("Nanometer", "nm|nanometer|nanometern"),
-                             ("Picometer", "pm|pikometer|picometer|pikometern|picometern"),
-                             ("Mile", "meile|meilen"),
-                             ("Yard", "yard|yards"),
-                             ("Inch", "zoll|inch|in|\""),
-                             ("Foot", "fuß|ft"),
-                             ("Light year", "lichtjahr|lichtjahre|lichtjahren"),
-                             ("Pt", "pt|pts")])
-    AmbiguousLengthUnitList = [r'm', r'yard', r'yards', r'pm', r'pt', r'pts']
-    SpeedSuffixList = dict([("Meter per second", "meter/sekunde|m/s|meter pro sekunde|metern pro sekunde"),
-                            ("Kilometer per hour", "km/h|kilometer/stunde|kilometer pro stunde|kilometern pro stunde"),
-                            ("Kilometer per minute", "km/min|kilometer pro minute|kilometern pro minute"),
-                            ("Kilometer per second", "km/s|kilometer pro sekunde|kilometern pro sekunde"),
-                            ("Mile per hour", "mph|mi/h|meilen pro stunde|meilen/stunde|meile pro stunde"),
-                            ("Knot", "kt|knoten|kn"),
-                            ("Foot per second", "ft/s|fuß/sekunde|fuß pro sekunde|fps"),
-                            ("Foot per minute", "ft/min|fuß/minute|fuß pro minute"),
-                            ("Yard per minute", "yard pro minute|yard/minute|yard/min"),
-                            ("Yard per second", "yard pro sekunde|yard/sekunde|yard/s")])
-    TemperatureSuffixList = dict([("F", "grad fahrenheit|°fahrenheit|°f|fahrenheit"),
-                                  ("K", "k|K|kelvin|grad kelvin|°kelvin|°k|°K"),
-                                  ("R", "rankine|°r"),
-                                  ("D", "delisle|°de"),
-                                  ("C", "grad celsius|°celsius|°c|celsius"),
-                                  ("Degree", "grad|°")])
-    AmbiguousTemperatureUnitList = [r'c', r'f', r'k']
-    VolumeSuffixList = dict([("Cubic meter", "m3|kubikmeter|m³"),
-                             ("Cubic centimeter", "kubikzentimeter|cm³"),
-                             ("Cubic millimiter", "kubikmillimeter|mm³"),
-                             ("Hectoliter", "hektoliter"),
-                             ("Decaliter", "dekaliter"),
-                             ("Liter", "l|liter"),
-                             ("Deciliter", "dl|deziliter"),
-                             ("Centiliter", "cl|zentiliter"),
-                             ("Milliliter", "ml|mls|milliliter"),
-                             ("Cubic yard", "kubikyard"),
-                             ("Cubic inch", "kubikzoll"),
-                             ("Cubic foot", "kubikfuß"),
-                             ("Cubic mile", "kubikmeile"),
-                             ("Fluid ounce", "fl oz|flüssigunze|fluessigunze"),
-                             ("Teaspoon", "teelöffel|teeloeffel"),
-                             ("Tablespoon", "esslöffel|essloeffel"),
-                             ("Pint", "pinte"),
-                             ("Volume unit", "fluid dram|fluid drachm|flüssigdrachme|gill|quart|minim|cord|peck|beck|scheffel|hogshead|oxhoft")])
-    AmbiguousVolumeUnitList = [r'l', r'unze', r'oz', r'cup', r'peck', r'cord', r'gill']
-    WeightSuffixList = dict([("Kilogram", "kg|kilogramm|kilo"),
-                             ("Gram", "g|gramm"),
-                             ("Milligram", "mg|milligramm"),
-                             ("Microgram", "μg|mikrogramm"),
-                             ("Barrel", "barrel"),
-                             ("Gallon", "gallone|gallonen"),
-                             ("Metric ton", "metrische tonne|metrische tonnen"),
-                             ("Ton", "tonne|tonnen"),
-                             ("Pound", "pfund|lb"),
-                             ("Ounce", "unze|unzen|oz|ounces"),
-                             ("Weight unit", "pennyweight|grain|british long ton|US short hundredweight|stone|dram")])
-    AmbiguousWeightUnitList = [r'g', r'oz', r'stone', r'dram']
-    AngleSuffixList = dict([("Degree", "grad|°"),
-                            ("Radian", "radiant|rad"),
-                            ("Turn", "turn")])
-    AmbiguousAngleUnitList = [r'turn']
     AmbiguityFiltersDict = dict([("null", "null")])
-    TemperatureAmbiguityFiltersDict = dict([("\\b(grad|°)$", "\\b((grad|°)\\s*(winkel|dreh(ung|en|t)|gedreht)|(dreh(ung|en|t)|gedreht|winkel)(\\s+(\\p{L}+|\\d+)){0,4}\\s*(grad\\b|°))")])
-    DimensionAmbiguityFiltersDict = dict([("\\b(grad|°)$", "\\b((grad|°)\\s*(c(elsius|entigrate)?|f(ah?renheit)?)|(temperatur)(\\s+(\\p{L}+|\\d+)){0,4}\\s*(grad\\b|°))")])
 # pylint: enable=line-too-long

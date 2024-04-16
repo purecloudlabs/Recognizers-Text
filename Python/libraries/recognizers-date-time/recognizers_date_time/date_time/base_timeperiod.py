@@ -78,11 +78,6 @@ class TimePeriodExtractorConfiguration(DateTimeOptionsConfiguration):
     def is_connector_token(self, middle):
         raise NotImplementedError
 
-    @property
-    @abstractmethod
-    def time_zone_extractor(self) -> DateTimeExtractor:
-        raise NotImplementedError
-
 
 class BaseTimePeriodExtractor(DateTimeExtractor):
     @property
@@ -185,12 +180,6 @@ class BaseTimePeriodExtractor(DateTimeExtractor):
                                                     source.index(match.group()) + (match.end() - match.start())))
 
         return result
-
-    def starts_with_time_zone(self, after_text: str):
-        # it needs TimeZone
-        starts_with_time_zone = False
-
-        time_zone_extract_results = self.config.time
 
     def merge_two_time_points(self, source: str, reference: datetime) -> List[Token]:
         result: List[Token] = list()
@@ -342,11 +331,6 @@ class TimePeriodParserConfiguration:
     @property
     @abstractmethod
     def integer_extractor(self) -> Extractor:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def time_zone_parser(self) -> DateTimeParser:
         raise NotImplementedError
 
     @property

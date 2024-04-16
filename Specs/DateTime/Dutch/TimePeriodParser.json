@@ -1346,7 +1346,7 @@
       "ReferenceDateTime": "2017-12-01T13:37:00"
     },
     "NotSupportedByDesign": "javascript,java",
-    "NotSupported": "python",
+    "NotSupported": "",
     "Results": [
       {
         "Text": "van 0:01 's ochtends tot 1",
@@ -1816,7 +1816,7 @@
     "Context": {
       "ReferenceDateTime": "2016-11-07T16:12:00"
     },
-    "NotSupported": "dotnet,python",
+    "NotSupported": "dotnet",
     "NotSupportedByDesign": "java, javascript",
     "Results": [
       {

@@ -16,7 +16,6 @@ from ..base_dateperiod import BaseDatePeriodExtractor
 from ..base_timeperiod import BaseTimePeriodExtractor
 from ..base_datetime import BaseDateTimeExtractor
 from ..base_datetimeperiod import BaseDateTimePeriodExtractor
-from ..base_set import BaseSetExtractor
 from ..base_holiday import BaseHolidayExtractor
 from .date_extractor_config import PortugueseDateExtractorConfiguration
 from .time_extractor_config import PortugueseTimeExtractorConfiguration
@@ -25,11 +24,8 @@ from .dateperiod_extractor_config import PortugueseDatePeriodExtractorConfigurat
 from .timeperiod_extractor_config import PortugueseTimePeriodExtractorConfiguration
 from .datetime_extractor_config import PortugueseDateTimeExtractorConfiguration
 from .datetimeperiod_extractor_config import PortugueseDateTimePeriodExtractorConfiguration
-from .set_extractor_config import PortugueseSetExtractorConfiguration
 from .holiday_extractor_config import PortugueseHolidayExtractorConfiguration
 from ...resources.base_date_time import BaseDateTime
-from ..base_timezone import BaseTimeZoneExtractor
-from .timezone_extractor_config import PortugueseTimeZoneExtractorConfiguration
 
 
 class PortugueseMergedExtractorConfiguration(MergedExtractorConfiguration):
@@ -78,16 +74,8 @@ class PortugueseMergedExtractorConfiguration(MergedExtractorConfiguration):
         return self._holiday_extractor
 
     @property
-    def time_zone_extractor(self):
-        return self._time_zone_extractor
-
-    @property
     def duration_extractor(self) -> DateTimeExtractor:
         return self._duration_extractor
-
-    @property
-    def set_extractor(self) -> DateTimeExtractor:
-        return self._set_extractor
 
     @property
     def integer_extractor(self) -> Extractor:
@@ -169,8 +157,6 @@ class PortugueseMergedExtractorConfiguration(MergedExtractorConfiguration):
             PortugueseDateTimeExtractorConfiguration())
         self._date_time_period_extractor = BaseDateTimePeriodExtractor(
             PortugueseDateTimePeriodExtractorConfiguration())
-        self._set_extractor = BaseSetExtractor(
-            PortugueseSetExtractorConfiguration())
         self._holiday_extractor = BaseHolidayExtractor(
             PortugueseHolidayExtractorConfiguration())
         self._after_regex = RegExpUtility.get_safe_reg_exp(
@@ -202,7 +188,5 @@ class PortugueseMergedExtractorConfiguration(MergedExtractorConfiguration):
         self._superfluous_word_matcher = None
         self._fail_fast_regex = None
         self._check_both_before_after = PortugueseDateTime.CheckBothBeforeAfter
-        self._time_zone_extractor = BaseTimeZoneExtractor(
-            PortugueseTimeZoneExtractorConfiguration())
         # TODO When the implementation for these properties is added, change the None values to their respective Regexps
         self._datetime_alt_extractor = None
