@@ -719,5 +719,38 @@
         "Length": 10
       }
     ]
+  },
+    {
+    "Input": "reserva un hotel para el veintiseis barra 6 en el marriott",
+    "Results": [
+      {
+        "Text": "veintiseis barra 6",
+        "Type": "date",
+        "Start": 25,
+        "Length": 18
+      }
+    ]
+  },
+    {
+    "Input": "reservar el vuelo para el diecisiete barra tres",
+    "Results": [
+      {
+        "Text": "diecisiete barra tres",
+        "Type": "date",
+        "Start": 26,
+        "Length": 21
+      }
+    ]
+  },
+    {
+    "Input": "envíame el correo del 17 barra once",
+    "Results": [
+      {
+        "Text": "17 barra once",
+        "Type": "date",
+        "Start": 22,
+        "Length": 13
+      }
+    ]
   }
 ]

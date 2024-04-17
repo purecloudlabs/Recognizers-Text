@@ -159,7 +159,8 @@ class SpanishDateParserConfiguration(DateParserConfiguration):
         self._number_parser = config.number_parser
         self._duration_parser = config.duration_parser
         self._month_of_year = config.month_of_year
-        self._day_of_month = config.day_of_month
+        self._day_of_month = {
+            **config.day_of_month, **SpanishDateTime.DayOfMonth}
         self._day_of_week = config.day_of_week
         self._unit_map = config.unit_map
         self._cardinal_map = config.cardinal_map

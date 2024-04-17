@@ -19,7 +19,8 @@ class SpanishDateTime:
     TillRegex = f'(?<till>\\b(hasta|hacia|al?)\\b(\\s+(el|la(s)?)\\b)?|{BaseDateTime.RangeConnectorSymbolRegex})'
     StrictTillRegex = f'(?<till>\\b(hasta|hacia|al?)(\\s+(el|la(s)?))?\\b|{BaseDateTime.RangeConnectorSymbolRegex}(?!\\s*[qt][1-4](?!(\\s+de|\\s*,\\s*))))'
     RangeConnectorRegex = f'(?<and>\\b(y\\s*(el|(la(s)?)?))\\b|{BaseDateTime.RangeConnectorSymbolRegex})'
-    WrittenDayRegex = f'(?<day>uno|dos|tres|cuatro|cinco|seis|siete|ocho|nueve|diez|once|doce|trece|catorce|quince|dieciséis|diecisiete|dieciocho|diecinueve|veinte|veintiuno|veintidós|veintitrés|veinticuatro|veinticinco|veintiséis|veintisiete|veintiocho|veintinueve|treinta(\\s+y\\s+uno)?)'
+    WrittenDayRegex = f'(?<day>uno|dos|tres|cuatro|cinco|seis|siete|ocho|nueve|diez|once|doce|trece|catorce|quince|dieciséis|diecisiete|dieciocho|diecinueve|veinte|veintiuno|veintidós|veintitrés|veinticuatro|veinticinco|veintis[ée]is|veintisiete|veintiocho|veintinueve|treinta(\\s+y\\s+uno)?)'
+    WrittenMonthNumRegex = f'(?<month>uno|dos|tres|cuatro|cinco|seis|siete|ocho|nueve|diez|once|doce)'
     DayRegex = f'\\b(?<day>01|02|03|04|05|06|07|08|09|10|11|12|13|14|15|16|17|18|19|1|20|21|22|23|24|25|26|27|28|29|2|30|31|3|4|5|6|7|8|9)(?:\\.[º°])?(?=\\b|t)'
     MonthNumRegex = f'(?<month>1[0-2]|(0)?[1-9])\\b'
     OclockRegex = f'(?<oclock>en\\s+punto)'
@@ -117,7 +118,7 @@ class SpanishDateTime:
     DateExtractor6 = f'(?<=\\b(en|el)\\s+){MonthNumRegex}[\\-\\.]{DayRegex}{BaseDateTime.CheckDecimalRegex}\\b(?!\\s*[/\\\\\\.]\\s*\\d+)'
     DateExtractor7 = f'\\b(?<!\\d[.,]){MonthNumRegex}\\s*/\\s*{DayRegex}((\\s+|\\s*,\\s*|\\s+d[eo]\\s+){DateYearRegex})?\\b{BaseDateTime.CheckDecimalRegex}(?!\\s*[/\\\\\\.]\\s*\\d+)'
     DateExtractor8 = f'(?<=\\b(en|el)\\s+){DayRegex}[\\\\\\-]{MonthNumRegex}{BaseDateTime.CheckDecimalRegex}\\b(?!\\s*[/\\\\\\.]\\s*\\d+)'
-    DateExtractor9 = f'\\b({WeekDayRegex}\\s+)?(?<!\\d[.,]){DayRegex}\\s*(/|\\bdel|barra\\b)\\s*{MonthNumRegex}((\\s+|\\s*,\\s*|\\s+d[eo]\\s+){DateYearRegex})?\\b{BaseDateTime.CheckDecimalRegex}(?!\\s*[/\\\\\\.]\\s*\\d+)'
+    DateExtractor9 = f'\\b({WeekDayRegex}\\s+)?(?<!\\d[.,])({DayRegex}|{WrittenDayRegex})\\s*(/|\\bdel|barra\\b)\\s*({MonthNumRegex}|{WrittenMonthNumRegex})((\\s+|\\s*,\\s*|\\s+d[eo]\\s+){DateYearRegex})?\\b{BaseDateTime.CheckDecimalRegex}(?!\\s*[/\\\\\\.]\\s*\\d+)'
     DateExtractor10 = f'\\b(?<!\\d[.,])(({YearRegex}\\s*[/\\\\\\-\\.]\\s*({MonthNumRegex}|{MonthRegex})\\s*[/\\\\\\-\\.]\\s*{DayRegex}(?!\\s*[/\\\\\\-\\.]\\s*\\d+))|({MonthRegex}\\s*[/\\\\\\-\\.]\\s*{BaseDateTime.FourDigitYearRegex}\\s*[/\\\\\\-\\.]\\s*{DayRegex})|({DayRegex}\\s*[/\\\\\\-\\.]\\s*{BaseDateTime.FourDigitYearRegex}\\s*[/\\\\\\-\\.]\\s*{MonthRegex}))'
     HourRegex = f'\\b(?<!\\d[,.])(?<hour>2[0-4]|[0-1]?\\d)'
     HourNumRegex = f'\\b(?<hournum>cero|una|dos|tres|cuatro|cinco|seis|siete|ocho|nueve|diez|once|doce)\\b'
@@ -458,6 +459,18 @@ class SpanishDateTime:
                         ("oct.", 10),
                         ("nov.", 11),
                         ("dic.", 12),
+                        ("uno", 1),
+                        ("dos", 2),
+                        ("tres", 3),
+                        ("cuatro", 4),
+                        ("cinco", 5),
+                        ("seis", 6),
+                        ("siete", 7),
+                        ("ocho", 8),
+                        ("nueve", 9),
+                        ("diez", 10),
+                        ("once", 11),
+                        ("doce", 12),
                         ("1", 1),
                         ("2", 2),
                         ("3", 3),
@@ -479,6 +492,41 @@ class SpanishDateTime:
                         ("07", 7),
                         ("08", 8),
                         ("09", 9)])
+    DayOfMonth = dict([
+                       ("uno", 1),
+                       ("dos", 2),
+                       ("tres", 3),
+                       ("cuatro", 4),
+                       ("cinco", 5),
+                       ("seis", 6),
+                       ("siete", 7),
+                       ("ocho", 8),
+                       ("nueve", 9),
+                       ("diez", 10),
+                       ("once", 11),
+                       ("doce", 12),
+                       ("trece", 13),
+                       ("catorce", 14),
+                       ("quince", 15),
+                       ("dieciséis", 16),
+                       ("dieciseis", 16),
+                       ("diecisiete", 17),
+                       ("dieciocho", 18),
+                       ("diecinueve", 19),
+                       ("veinte", 20),
+                       ("veintiuno", 21),
+                       ("veintidós", 22),
+                       ("veintidos", 22),
+                       ("veintitrés", 23),
+                       ("veinticuatro", 24),
+                       ("veinticinco", 25),
+                       ("veintiséis", 26),
+                       ("veintiseis", 26),
+                       ("veintisiete", 27),
+                       ("veintiocho", 28),
+                       ("veintinueve", 29),
+                       ("treinta", 30),
+                       ("treinta y uno", 31)])
     Numbers = dict([("cero", 0),
                     ("un", 1),
                     ("una", 1),
