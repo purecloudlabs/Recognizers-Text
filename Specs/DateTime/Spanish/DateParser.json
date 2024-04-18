@@ -1766,6 +1766,9 @@
   },
    {
     "Input": "enviame un recibo por la compra hecha el 17 barra 11",
+     "Context": {
+      "ReferenceDateTime": "2024-04-11T00:00:00"
+    },
     "Results": [
       {
         "Text": "17 barra 11",
@@ -1786,6 +1789,9 @@
   },
    {
     "Input": "reserva un hotel para el 21 barra 3 en el marriott",
+     "Context": {
+      "ReferenceDateTime": "2024-04-11T00:00:00"
+    },
     "Results": [
       {
         "Text": "21 barra 3",
@@ -1801,6 +1807,75 @@
         },
         "Start": 25,
         "Length": 10
+      }
+    ]
+  },
+   {
+    "Input": "reserva un hotel para el veintiseis barra 6 en el marriott",
+     "Context": {
+      "ReferenceDateTime": "2024-04-17T00:00:00"
+    },
+    "Results": [
+      {
+        "Text": "veintiseis barra 6",
+        "Type": "date",
+        "Value": {
+          "Timex": "XXXX-06-26",
+          "FutureResolution": {
+            "date": "2024-06-26"
+          },
+          "PastResolution": {
+            "date": "2023-06-26"
+          }
+        },
+        "Start": 25,
+        "Length": 18
+      }
+    ]
+  },
+   {
+    "Input": "reservar el vuelo para el diecisiete barra tres",
+     "Context": {
+      "ReferenceDateTime": "2024-04-17T00:00:00"
+    },
+    "Results": [
+      {
+        "Text": "diecisiete barra tres",
+        "Type": "date",
+        "Value": {
+          "Timex": "XXXX-03-17",
+          "FutureResolution": {
+            "date": "2025-03-17"
+          },
+          "PastResolution": {
+            "date": "2024-03-17"
+          }
+        },
+        "Start": 26,
+        "Length": 21
+      }
+    ]
+  },
+   {
+    "Input": "envíame el correo del 17 barra once",
+     "Context": {
+      "ReferenceDateTime": "2024-04-17T00:00:00"
+    },
+    "Results": [
+      {
+        "Text": "17 barra once",
+        "Type": "date",
+        "Value": {
+          "Timex": "XXXX-11-17",
+          "FutureResolution": {
+            "date": "2024-11-17"
+          },
+          "PastResolution": {
+            "date": "2023-11-17"
+          }
+        },
+        "Start": 22,
+        "Length": 13
       }
     ]
   }
