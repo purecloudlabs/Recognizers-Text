@@ -5,20 +5,21 @@ from recognizers_number.culture import CultureInfo
 from recognizers_text import Culture, Recognizer
 from recognizers_text.model import Model, ModelResult
 
-from .arabic import ArabicCurrencyExtractorConfiguration, ArabicCurrencyParserConfiguration
-from .catalan import CatalanCurrencyExtractorConfiguration, CatalanCurrencyParserConfiguration
-from .chinese import ChineseCurrencyExtractorConfiguration, ChineseCurrencyParserConfiguration
-from .dutch import DutchCurrencyExtractorConfiguration, DutchCurrencyParserConfiguration
-from .english import EnglishCurrencyExtractorConfiguration, EnglishCurrencyParserConfiguration
+from .configs import (ArabicCurrencyExtractorConfiguration, ArabicCurrencyParserConfiguration,
+    CatalanCurrencyExtractorConfiguration, CatalanCurrencyParserConfiguration,
+    ChineseCurrencyExtractorConfiguration, ChineseCurrencyParserConfiguration,
+    DutchCurrencyExtractorConfiguration, DutchCurrencyParserConfiguration,
+    EnglishCurrencyExtractorConfiguration, EnglishCurrencyParserConfiguration,
+    FrenchCurrencyExtractorConfiguration, FrenchCurrencyParserConfiguration,
+    GermanCurrencyExtractorConfiguration, GermanCurrencyParserConfiguration,
+    ItalianCurrencyExtractorConfiguration, ItalianCurrencyParserConfiguration,
+    JapaneseCurrencyExtractorConfiguration, JapaneseCurrencyParserConfiguration,
+    PortugueseCurrencyExtractorConfiguration, PortugueseCurrencyParserConfiguration,
+    SpanishCurrencyExtractorConfiguration, SpanishCurrencyParserConfiguration,
+)
 from .extractors import BaseMergedUnitExtractor, NumberWithUnitExtractor
-from .french import FrenchCurrencyExtractorConfiguration, FrenchCurrencyParserConfiguration
-from .german import GermanCurrencyExtractorConfiguration, GermanCurrencyParserConfiguration
-from .italian import ItalianCurrencyExtractorConfiguration, ItalianCurrencyParserConfiguration
-from .japanese import JapaneseCurrencyExtractorConfiguration, JapaneseCurrencyParserConfiguration
 from .models import CurrencyModel, ExtractorParserModel
 from .parsers import BaseMergedUnitParser, NumberWithUnitParser
-from .portuguese import PortugueseCurrencyExtractorConfiguration, PortugueseCurrencyParserConfiguration
-from .spanish import SpanishCurrencyExtractorConfiguration, SpanishCurrencyParserConfiguration
 
 
 class NumberWithUnitOptions(IntFlag):

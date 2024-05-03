@@ -5,8 +5,7 @@ from recognizers_date_time.date_time.CJK import CJKDurationParserConfiguration, 
 from recognizers_date_time.date_time.japanese.duration_extractor_config import JapaneseDurationExtractorConfiguration
 from recognizers_date_time.date_time.utilities import DateTimeExtractor
 from recognizers_number.culture import CultureInfo, Culture
-from recognizers_number_with_unit.number_with_unit import NumberWithUnitParser
-from recognizers_number_with_unit.number_with_unit.japanese import JapaneseNumberWithUnitParserConfiguration
+from recognizers_number_with_unit import NumberWithUnitParser, JapaneseNumberWithUnitParserConfiguration
 from recognizers_text import Parser
 
 

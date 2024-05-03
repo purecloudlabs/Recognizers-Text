@@ -5,7 +5,7 @@ from typing import Dict
 
 from recognizers_text import RegExpUtility
 from recognizers_number.culture import Culture, CultureInfo
-from recognizers_number_with_unit.number_with_unit.chinese.extractors import ChineseNumberWithUnitExtractorConfiguration
+from recognizers_number_with_unit import ChineseNumberWithUnitExtractorConfiguration
 from ...resources.chinese_date_time import ChineseDateTime
 from ..constants import Constants
 

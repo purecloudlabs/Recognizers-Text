@@ -4,18 +4,21 @@
 from typing import Dict, List, Pattern
 
 import regex
-from recognizers_number.culture import CultureInfo
-from recognizers_number.number.chinese.extractors import ChineseNumberExtractor, ChineseNumberExtractorMode
 from recognizers_number_with_unit.number_with_unit.constants import Constants
 from recognizers_number_with_unit.number_with_unit.extractors import (
     NumberWithUnitExtractor, NumberWithUnitExtractorConfiguration,
 )
 from recognizers_number_with_unit.resources.base_units import BaseUnits
+from recognizers_text.utilities import RegExpUtility
+from recognizers_number.culture import CultureInfo
+from recognizers_number.number.chinese.extractors import ChineseNumberExtractor, ChineseNumberExtractorMode
+from recognizers_number.number.chinese.parsers import ChineseNumberParserConfiguration
+from recognizers_number.number.parser_factory import AgnosticNumberParserFactory, ParserType
+from recognizers_number_with_unit.number_with_unit.parsers import NumberWithUnitParserConfiguration
 from recognizers_number_with_unit.resources.chinese_numeric_with_unit import ChineseNumericWithUnit
 from recognizers_text.culture import Culture
-from recognizers_text.extractor import Extractor, ExtractResult
-from recognizers_text.matcher.match_result import MatchResult
-from recognizers_text.utilities import RegExpUtility
+from recognizers_text.extractor import Extractor
+from recognizers_text.parser import Parser
 
 
 class ChineseNumberWithUnitExtractorConfiguration(NumberWithUnitExtractorConfiguration):
@@ -65,3 +68,25 @@ class ChineseCurrencyExtractorConfiguration(ChineseNumberWithUnitExtractorConfig
 
     def __init__(self, culture_info: CultureInfo = Culture.Chinese):
         super().__init__(culture_info)
+
+
+class ChineseNumberWithUnitParserConfiguration(NumberWithUnitParserConfiguration):
+
+    internal_number_extractor: Extractor = ChineseNumberExtractor(ChineseNumberExtractorMode.EXTRACT_ALL)
+    connector_token: str = ''
+
+    def __init__(self, culture_info: CultureInfo):
+        culture_info = culture_info or CultureInfo(Culture.Chinese)
+        super().__init__(culture_info)
+        self.internal_number_parser: Parser = AgnosticNumberParserFactory.get_parser(
+            ParserType.NUMBER, ChineseNumberParserConfiguration(culture_info))
+        self.currency_name_to_iso_code_map = ChineseNumericWithUnit.CurrencyNameToIsoCodeMap
+        self.currency_fraction_code_list = ChineseNumericWithUnit.FractionalUnitNameToCodeMap
+
+
+class ChineseCurrencyParserConfiguration(ChineseNumberWithUnitParserConfiguration):
+
+    def __init__(self, culture_info: CultureInfo = None):
+        super().__init__(culture_info)
+        self.add_dict_to_unit_map(ChineseNumericWithUnit.CurrencySuffixList)
+        self.add_dict_to_unit_map(ChineseNumericWithUnit.CurrencyPrefixList)
