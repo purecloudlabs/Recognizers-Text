@@ -1,0 +1,22 @@
+[tool.isort]
+profile = "black"
+atomic = true
+line_length = 120
+lines_after_imports = 2
+# Add a custom section for internal libraries.
+known_internal_libraries = ['datatypes_timex_expression', 'recognizers_choice', 'recognizers_date_time',
+                            'recognizers_number', 'recognizers_number_with_unit', 'recognizers_sequence',
+                            'recognizers_suite', 'recognizers_text']
+# What sections isort should display imports for and in what order.
+sections = ['FUTURE', 'STDLIB', 'THIRDPARTY', 'INTERNAL_LIBRARIES', 'FIRSTPARTY', 'LOCALFOLDER']
+
+
+[tool.black]
+line-length = 120
+target-version = ['py38']
+include = '\.pyi?$'
+skip-string-normalization = true
+
+[tool.ruff]
+# Same as Black.
+line-length = 120
