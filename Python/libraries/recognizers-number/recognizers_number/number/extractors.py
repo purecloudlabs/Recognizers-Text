@@ -2,14 +2,12 @@
 #  Licensed under the MIT License.
 import copy
 from abc import abstractmethod
-from typing import List, Pattern, Dict, Match, Optional
+from typing import List, Pattern, Match, Optional
 from collections import namedtuple
 import regex
 
-from recognizers_text.utilities import RegExpUtility
 from recognizers_text.extractor import Extractor, ExtractResult
 from recognizers_number.resources.base_numbers import BaseNumbers
-from recognizers_number.resources.english_numeric import EnglishNumeric
 from recognizers_number.number.models import LongFormatType
 from recognizers_number.number.constants import Constants
 

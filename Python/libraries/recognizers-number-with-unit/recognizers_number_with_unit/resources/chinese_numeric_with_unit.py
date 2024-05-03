@@ -9,7 +9,6 @@
 # Licensed under the MIT License.
 # ------------------------------------------------------------------------------
 
-from .base_numbers import BaseNumbers
 
 
 # pylint: disable=line-too-long
@@ -488,7 +487,7 @@ class ChineseNumericWithUnit:
                                         ("Tiyin", "TIYIN"),
                                         ("Hào", "HAO"),
                                         ("Ngwee", "NGWEE")])
-    CompoundUnitConnectorRegex = f'(?<spacer>又|再)'
+    CompoundUnitConnectorRegex = '(?<spacer>又|再)'
     CurrencyPrefixList = dict([("Dollar", "$"),
                                ("United States dollar", "us$"),
                                ("British Virgin Islands dollar", "bvi$"),
@@ -515,5 +514,5 @@ class ChineseNumericWithUnit:
     CurrencyAmbiguousValues = [r'元', r'仙', r'分', r'圆', r'块', r'毛', r'盾', r'箍', r'蚊', r'角']
     AmbiguityFiltersDict = dict([("五角", "五角大楼"),
                                  ("普尔", "标准普尔")])
-    HalfUnitRegex = f'半'
+    HalfUnitRegex = '半'
 # pylint: enable=line-too-long

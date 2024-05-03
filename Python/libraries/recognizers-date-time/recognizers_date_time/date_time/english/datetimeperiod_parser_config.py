@@ -7,7 +7,7 @@ import regex
 from recognizers_text.utilities import RegExpUtility
 from ...resources.english_date_time import EnglishDateTime
 from ..base_datetimeperiod import DateTimePeriodParserConfiguration, MatchedTimeRange
-from ..constants import Constants, TimeTypeConstants
+from ..constants import Constants
 from ..extractors import DateTimeExtractor
 from ..parsers import DateTimeParser
 from ..base_configs import BaseDateParserConfiguration

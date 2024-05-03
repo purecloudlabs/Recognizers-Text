@@ -1,5 +1,5 @@
 from recognizers_number.resources.dutch_numeric import DutchNumeric
-from typing import Pattern, List, NamedTuple, Optional
+from typing import Pattern, List, Optional
 import regex
 from recognizers_text.utilities import RegExpUtility
 from recognizers_number.number.models import NumberMode, LongFormatMode

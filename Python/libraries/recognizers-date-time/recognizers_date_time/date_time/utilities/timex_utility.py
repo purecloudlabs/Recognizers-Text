@@ -240,7 +240,7 @@ class TimexUtil:
     @staticmethod
     def _process_double_timex(resolution_dic: Dict[str, object], future_key: str, past_key: str, origin_timex: str):
         timexes = origin_timex.split(Constants.COMPOSTIE_TIMEX_DELIMITER)
-        if not future_key in resolution_dic or not past_key in resolution_dic or len(timexes) != 2:
+        if future_key not in resolution_dic or past_key not in resolution_dic or len(timexes) != 2:
             return
         future_resolution = resolution_dic[future_key]
         past_resolution = resolution_dic[past_key]

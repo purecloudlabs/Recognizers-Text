@@ -2,7 +2,7 @@
 #  Licensed under the MIT License.
 
 from abc import abstractmethod
-from typing import List, Optional, Pattern, Dict, Match
+from typing import List, Optional, Pattern, Dict
 from datetime import datetime, timedelta
 from collections import namedtuple
 import regex

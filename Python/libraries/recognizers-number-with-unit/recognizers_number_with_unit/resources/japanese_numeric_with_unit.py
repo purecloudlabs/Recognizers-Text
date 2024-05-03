@@ -9,7 +9,6 @@
 # Licensed under the MIT License.
 # ------------------------------------------------------------------------------
 
-from .base_numbers import BaseNumbers
 
 
 # pylint: disable=line-too-long
@@ -489,7 +488,7 @@ class JapaneseNumericWithUnit:
                                         ("Tiyin", "TIYIN"),
                                         ("Hào", "HAO"),
                                         ("Ngwee", "NGWEE")])
-    CompoundUnitConnectorRegex = f'(?<spacer>と)'
+    CompoundUnitConnectorRegex = '(?<spacer>と)'
     CurrencyPrefixList = dict([("Dollar", "$"),
                                ("United States dollar", "us$"),
                                ("British Virgin Islands dollar", "bvi$"),
@@ -515,5 +514,5 @@ class JapaneseNumericWithUnit:
     CurrencyAmbiguousValues = [r'円', r'銭', r'分', r'レク', r'プル', r'ブル', r'\\', r'元']
     AmbiguityFiltersDict = dict([("五角", "五角大楼"),
                                  ("普尔", "标准普尔")])
-    HalfUnitRegex = f'半'
+    HalfUnitRegex = '半'
 # pylint: enable=line-too-long

@@ -1,5 +1,5 @@
 from re import Pattern
-from typing import List, Dict, Optional, Any
+from typing import List, Dict, Optional
 
 
 from recognizers_text.utilities import RegExpUtility

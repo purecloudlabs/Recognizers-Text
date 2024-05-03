@@ -159,21 +159,21 @@ class CatalanDateParserConfiguration(DateParserConfiguration):
         self._special_day_regex = RegExpUtility.get_safe_reg_exp(CatalanDateTime.SpecialDayRegex)
         self._special_day_with_num_regex = RegExpUtility.get_safe_reg_exp(
             CatalanDateTime.SpecialDayWithNumRegex)
-        self._next_regex = RegExpUtility.get_safe_reg_exp(f'^[.]')
-        self._unit_regex = RegExpUtility.get_safe_reg_exp(f'^[.]')
+        self._next_regex = RegExpUtility.get_safe_reg_exp('^[.]')
+        self._unit_regex = RegExpUtility.get_safe_reg_exp('^[.]')
         self._month_regex = RegExpUtility.get_safe_reg_exp(
             CatalanDateTime.MonthRegex)
         self._week_day_regex = RegExpUtility.get_safe_reg_exp(
             CatalanDateTime.WeekDayRegex)
-        self._last_regex = RegExpUtility.get_safe_reg_exp(f'^[.]')
-        self._this_regex = RegExpUtility.get_safe_reg_exp(f'^[.]')
-        self._week_day_of_month_regex = RegExpUtility.get_safe_reg_exp(f'^[.]')
-        self._for_the_regex = RegExpUtility.get_safe_reg_exp(f'^[.]')
+        self._last_regex = RegExpUtility.get_safe_reg_exp('^[.]')
+        self._this_regex = RegExpUtility.get_safe_reg_exp('^[.]')
+        self._week_day_of_month_regex = RegExpUtility.get_safe_reg_exp('^[.]')
+        self._for_the_regex = RegExpUtility.get_safe_reg_exp('^[.]')
         self._week_day_and_day_of_month_regex = RegExpUtility.get_safe_reg_exp(
             CatalanDateTime.WeekDayAndDayOfMonthRegex)
         self._week_day_and_day_regex = RegExpUtility.get_safe_reg_exp(
             CatalanDateTime.WeekDayAndDayRegex)
-        self._relative_month_regex = RegExpUtility.get_safe_reg_exp(f'^[.]')
+        self._relative_month_regex = RegExpUtility.get_safe_reg_exp('^[.]')
         self._relative_week_day_regex = RegExpUtility.get_safe_reg_exp(
             CatalanDateTime.RelativeWeekDayRegex)
         self._utility_configuration = config.utility_configuration
@@ -207,7 +207,7 @@ class CatalanDateParserConfiguration(DateParserConfiguration):
 
     def is_cardinal_last(self, source: str) -> bool:
         trimmed_text = source.strip().lower()
-        return not regex.search(CatalanDateParserConfiguration._past_prefix_regex, trimmed_text) is None
+        return regex.search(CatalanDateParserConfiguration._past_prefix_regex, trimmed_text) is not None
 
     def __normalize(self, source: str) -> str:
         return source.replace('á', 'a').replace('é', 'e').replace('í', 'i').replace('ó', 'o').\

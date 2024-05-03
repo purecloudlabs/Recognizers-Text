@@ -30,7 +30,7 @@ class NumberWithUnitTokenizer(SimpleTokenizer):
                 if in_token:
                     tokens.append(Token(token_start, i - token_start, input[token_start: token_start + (i - token_start)]))
                     in_token = False
-            elif not (c in self.special_tokens_characters) and not (str.isdigit(c) or str.isalpha(c)) or \
+            elif c not in self.special_tokens_characters and not (str.isdigit(c) or str.isalpha(c)) or \
                     self.is_chinese(c) or self.is_japanese(c):
 
                 # Non-splittable currency units (as "$") are treated as regular letters. For instance, 'us$' should be

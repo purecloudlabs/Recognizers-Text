@@ -5,7 +5,6 @@ from typing import Pattern, Dict
 
 from recognizers_text.utilities import RegExpUtility
 from recognizers_text.extractor import Extractor
-from recognizers_number.number.italian.extractors import ItalianIntegerExtractor
 from ...resources.italian_date_time import ItalianDateTime
 from ..extractors import DateTimeExtractor
 from ..parsers import DateTimeParser

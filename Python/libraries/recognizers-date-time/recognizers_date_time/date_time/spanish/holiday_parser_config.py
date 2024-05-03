@@ -5,7 +5,7 @@ from typing import List, Dict, Callable
 from datetime import datetime
 
 from recognizers_text.utilities import RegExpUtility
-from ..utilities import DateUtils, HolidayFunctions
+from ..utilities import HolidayFunctions
 from ..base_holiday import BaseHolidayParserConfiguration
 from ...resources.spanish_date_time import SpanishDateTime
 

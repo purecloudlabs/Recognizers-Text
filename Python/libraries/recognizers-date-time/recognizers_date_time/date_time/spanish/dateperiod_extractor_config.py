@@ -1,17 +1,13 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from typing import List, Pattern
 
-from recognizers_text import Extractor
 from recognizers_text.utilities import RegExpUtility
-from recognizers_number.number import BaseNumberParser, BaseNumberExtractor
+from recognizers_number.number import BaseNumberParser
 from recognizers_number.number.spanish.extractors import SpanishIntegerExtractor,\
     SpanishCardinalExtractor, SpanishOrdinalExtractor
 from recognizers_number.number.spanish.parsers import SpanishNumberParserConfiguration
-from ...resources.base_date_time import BaseDateTime
 from ...resources.spanish_date_time import SpanishDateTime
-from ..extractors import DateTimeExtractor
 from ..base_duration import BaseDurationExtractor
 from ..base_date import BaseDateExtractor
 from ..base_dateperiod import DatePeriodExtractorConfiguration, MatchedIndex
@@ -71,4 +67,4 @@ class SpanishDatePeriodExtractorConfiguration(DatePeriodExtractorConfiguration):
         return MatchedIndex(False, -1)
 
     def has_connector_token(self, source: str) -> bool:
-        return not self.range_connector_regex.search(source) is None
+        return self.range_connector_regex.search(source) is not None

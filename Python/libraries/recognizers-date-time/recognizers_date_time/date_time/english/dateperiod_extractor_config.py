@@ -1,16 +1,12 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from typing import List, Pattern
 
-from recognizers_text.extractor import Extractor
 from recognizers_text.utilities import RegExpUtility
-from recognizers_number.number import BaseNumberParser, BaseNumberExtractor
+from recognizers_number.number import BaseNumberParser
 from recognizers_number.number.english.extractors import EnglishIntegerExtractor
 from recognizers_number.number.english.parsers import EnglishNumberParserConfiguration
-from ...resources.base_date_time import BaseDateTime
 from ...resources.english_date_time import EnglishDateTime
-from ..extractors import DateTimeExtractor
 from ..base_duration import BaseDurationExtractor
 from ..base_date import BaseDateExtractor
 from ..base_dateperiod import DatePeriodExtractorConfiguration, MatchedIndex

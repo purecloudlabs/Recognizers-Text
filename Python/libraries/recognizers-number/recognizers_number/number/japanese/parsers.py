@@ -2,18 +2,12 @@
 #  Licensed under the MIT License.
 
 from typing import List, Dict, Pattern, Optional
-from collections import namedtuple
-from decimal import Decimal
-import copy
-import regex
 
 from recognizers_text.utilities import RegExpUtility
 from recognizers_text.culture import Culture
-from recognizers_text.extractor import ExtractResult
 from recognizers_text.parser import ParseResult
 from recognizers_number.resources.japanese_numeric import JapaneseNumeric
 from recognizers_number.number.cjk_parsers import CJKNumberParserConfiguration
-from recognizers_number.number.parsers import BaseNumberParser, NumberParserConfiguration
 from recognizers_number.culture import CultureInfo
 
 

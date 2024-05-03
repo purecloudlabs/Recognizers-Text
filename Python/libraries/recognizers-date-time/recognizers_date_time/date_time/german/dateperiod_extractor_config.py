@@ -1,22 +1,18 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from typing import List, Pattern
 
 from recognizers_text.utilities import RegExpUtility
 from recognizers_number.number import BaseNumberParser
 from recognizers_number.number.german.extractors import GermanIntegerExtractor, GermanCardinalExtractor
 from recognizers_number.number.german.parsers import GermanNumberParserConfiguration
-from ...resources.base_date_time import BaseDateTime
 from ...resources.german_date_time import GermanDateTime
-from ..extractors import DateTimeExtractor
 from ..base_duration import BaseDurationExtractor
 from ..base_date import BaseDateExtractor
 from ..base_dateperiod import DatePeriodExtractorConfiguration, MatchedIndex
 from .duration_extractor_config import GermanDurationExtractorConfiguration
 from .date_extractor_config import GermanDateExtractorConfiguration
-from recognizers_text.extractor import Extractor
-from recognizers_number import GermanOrdinalExtractor, BaseNumberExtractor, GermanCardinalExtractor
+from recognizers_number import GermanOrdinalExtractor, GermanCardinalExtractor
 
 
 class GermanDatePeriodExtractorConfiguration(DatePeriodExtractorConfiguration):
@@ -73,4 +69,4 @@ class GermanDatePeriodExtractorConfiguration(DatePeriodExtractorConfiguration):
         return MatchedIndex(False, -1)
 
     def has_connector_token(self, source: str) -> bool:
-        return not self.range_connector_regex.search(source) is None
+        return self.range_connector_regex.search(source) is not None

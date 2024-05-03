@@ -237,4 +237,4 @@ class GermanDateParserConfiguration(DateParserConfiguration):
 
     def is_cardinal_last(self, source: str) -> bool:
         trimmed_text = source.strip().lower()
-        return not regex.search(GermanDateParserConfiguration._past_prefix_regex, trimmed_text) is None
+        return regex.search(GermanDateParserConfiguration._past_prefix_regex, trimmed_text) is not None

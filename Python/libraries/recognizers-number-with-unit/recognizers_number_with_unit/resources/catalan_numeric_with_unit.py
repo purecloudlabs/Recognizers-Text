@@ -1,4 +1,3 @@
-from .base_numbers import BaseNumbers
 
 
 # pylint: disable=line-too-long
@@ -594,8 +593,8 @@ class CatalanNumericWithUnit:
                                         ("Ngwee", "NGWEE"),
                                         ("Millibitcoin", "MILLIBITCOIN"),
                                         ("Satoshi", "SATOSHI")])
-    CompoundUnitConnectorRegex = f'(?<spacer>i|amb)'
-    MultiplierRegex = f'\\s*\\b(((mil\\s+)?el meu|bi|quatri|quinti|sexti|sèpti)ll[oó]n|mil)(és)?\\b'
+    CompoundUnitConnectorRegex = '(?<spacer>i|amb)'
+    MultiplierRegex = '\\s*\\b(((mil\\s+)?el meu|bi|quatri|quinti|sexti|sèpti)ll[oó]n|mil)(és)?\\b'
     CurrencyPrefixList = dict([("Dobra", "db|std"),
                                ("Dòlar", "$|dòlar|dòlars|dolar|dolars"),
                                ("Dòlar nord-americà", "us$|u$d|usd"),
@@ -631,8 +630,8 @@ class CatalanNumericWithUnit:
                                ("Lira turca", "₺"),
                                ("Bitcoin", "₿|btc|xbt")])
     AmbiguousCurrencyUnitList = [r'le', r'db', r'std']
-    BuildPrefix = f'(?<=(\\s|^|\\P{{L}}))'
-    BuildSuffix = f'(?=(\\s|\\P{{L}}|$))'
+    BuildPrefix = '(?<=(\\s|^|\\P{L}))'
+    BuildSuffix = '(?=(\\s|\\P{L}|$))'
     ConnectorToken = 'de'
 
 # pylint: enable=line-too-long

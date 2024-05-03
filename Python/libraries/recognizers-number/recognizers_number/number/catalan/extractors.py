@@ -1,4 +1,4 @@
-from typing import Pattern, List, NamedTuple
+from typing import List
 
 from recognizers_text.utilities import RegExpUtility
 from recognizers_number.number.models import NumberMode, LongFormatMode

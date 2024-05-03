@@ -1,16 +1,11 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from typing import List, Pattern, Dict
+from typing import List, Pattern
 
 from recognizers_text import RegExpUtility
-from recognizers_number import BaseNumberExtractor, BaseNumberParser
 from ...resources import ChineseDateTime
-from ..constants import Constants
-from ..extractors import DateTimeExtractor
-from ..base_date import DateTimeUtilityConfiguration
 from ..base_date import DateExtractorConfiguration
-from ...resources.base_date_time import BaseDateTime
 
 
 class ChineseDateExtractorConfiguration(DateExtractorConfiguration):

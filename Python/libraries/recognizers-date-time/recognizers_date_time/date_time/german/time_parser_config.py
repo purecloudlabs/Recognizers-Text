@@ -9,7 +9,6 @@ from ...resources.german_date_time import GermanDateTime
 from ..base_time import TimeParserConfiguration, AdjustParams
 from ..base_configs import BaseDateParserConfiguration, DateTimeUtilityConfiguration
 from .time_extractor_config import GermanTimeExtractorConfiguration
-from ..parsers import DateTimeParser
 
 
 class GermanTimeParserConfiguration(TimeParserConfiguration):

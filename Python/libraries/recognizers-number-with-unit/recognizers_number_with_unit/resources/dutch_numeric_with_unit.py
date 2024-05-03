@@ -9,15 +9,14 @@
 # Licensed under the MIT License.
 # ------------------------------------------------------------------------------
 
-from .base_numbers import BaseNumbers
 
 
 # pylint: disable=line-too-long
 
 
 class DutchNumericWithUnit:
-    BuildPrefix = f'(?<=(\\s|^))'
-    BuildSuffix = f'(?=(\\s|\\W|$))'
+    BuildPrefix = '(?<=(\\s|^))'
+    BuildSuffix = '(?=(\\s|\\W|$))'
     CurrencySuffixList = dict([("Abkhazian apsar", "abkhazian apsar|apsars"),
                                ("Afghan afghani", "afghaanse afghani|؋|afn|afghanis|afghani"),
                                ("Pul", "pul"),
@@ -539,7 +538,7 @@ class DutchNumericWithUnit:
                                         ("Stuiver", "STUIVER"),
                                         ("Millibitcoin", "MILLIBITCOIN"),
                                         ("Satoshi", "SATOSHI")])
-    CompoundUnitConnectorRegex = f'(?<spacer>en)'
+    CompoundUnitConnectorRegex = '(?<spacer>en)'
     CurrencyPrefixList = dict([("Dollar", "$"),
                                ("United States dollar", "amerikaanse $|united states $|us$|us $|u.s. $|u.s $"),
                                ("East Caribbean dollar", "oost-caribische $|oost caribische $|east caribbean $"),

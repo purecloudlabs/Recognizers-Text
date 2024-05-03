@@ -20,7 +20,7 @@ from .base_dateperiod import BaseDatePeriodParser
 from .base_timeperiod import BaseTimePeriodParser
 from .base_datetimeperiod import BaseDateTimePeriodParser
 from .base_duration import BaseDurationParser
-from .utilities import Token, merge_all_tokens, RegExpUtility, DateTimeOptions, DateTimeFormatUtil, DateUtils,\
+from .utilities import Token, merge_all_tokens, DateTimeOptions, DateTimeFormatUtil, DateUtils,\
     MatchingUtil, RegExpUtility, TimexUtil
 from .datetime_list_extractor import DateTimeListExtractor
 

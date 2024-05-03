@@ -10,8 +10,7 @@ from ...resources.chinese_date_time import ChineseDateTime
 from ..extractors import DateTimeExtractor
 from ..parsers import DateTimeParser
 from ..utilities import DateTimeUtilityConfiguration
-from ..base_configs import BaseDateParserConfiguration
-from ..base_datetime import DateTimeParserConfiguration, MatchedTimex
+from ..base_datetime import MatchedTimex
 from .date_extractor import ChineseDateExtractor
 from .time_extractor import ChineseTimeExtractor
 from .date_parser import ChineseDateParser

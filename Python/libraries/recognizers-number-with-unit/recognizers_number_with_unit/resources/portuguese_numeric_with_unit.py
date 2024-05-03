@@ -9,7 +9,6 @@
 # Licensed under the MIT License.
 # ------------------------------------------------------------------------------
 
-from .base_numbers import BaseNumbers
 
 
 # pylint: disable=line-too-long
@@ -584,8 +583,8 @@ class PortugueseNumericWithUnit:
                                         ("Ngwee", "NGWEE"),
                                         ("Millibitcoin", "MILLIBITCOIN"),
                                         ("Satoshi", "SATOSHI")])
-    CompoundUnitConnectorRegex = f'\\b(?<spacer>e|com)\\b'
-    MultiplierRegex = f'\\s*\\b(mil(h([ãa]o|[õo]es))?|bilh([ãa]o|[õo]es)|trilh([ãa]o|[õo]es)|qua[td]rilh([ãa]o|[õo]es)|quintilh([ãa]o|[õo]es))\\b'
+    CompoundUnitConnectorRegex = '\\b(?<spacer>e|com)\\b'
+    MultiplierRegex = '\\s*\\b(mil(h([ãa]o|[õo]es))?|bilh([ãa]o|[õo]es)|trilh([ãa]o|[õo]es)|qua[td]rilh([ãa]o|[õo]es)|quintilh([ãa]o|[õo]es))\\b'
     CurrencyPrefixList = dict([("Dólar", "$|dólar|dolar|dólares|dolares"),
                                ("Dólar estadunidense", "us$|u$d|usd$|usd"),
                                ("Dólar do Caribe Oriental", "ec$|xcd"),
@@ -619,8 +618,8 @@ class PortugueseNumericWithUnit:
                                ("Lira turca", "₺"),
                                ("Bitcoin", "₿|btc|xbt")])
     AmbiguousCurrencyUnitList = [r'le', r'agora']
-    BuildPrefix = f'(?<=(\\s|^|\\P{{L}}))'
-    BuildSuffix = f'(?=(\\s|\\P{{L}}|$))'
+    BuildPrefix = '(?<=(\\s|^|\\P{L}))'
+    BuildSuffix = '(?=(\\s|\\P{L}|$))'
     ConnectorToken = 'de'
     AmbiguityFiltersDict = dict([("\\b\\d+\\s*\\p{L}+$", "((\\d+(\\s*\\p{L}+[-—–-]|\\p{L}+)\\d+)|(((\\p{L}|\\d)[-—–-]\\d+\\s*|\\p{L}\\d+)\\p{L}+))"),
                                  ("\\bum$", "\\p{L}\\s+um\\b")])

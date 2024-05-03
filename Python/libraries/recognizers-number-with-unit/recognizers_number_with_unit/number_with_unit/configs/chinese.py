@@ -6,7 +6,7 @@ from typing import Dict, List, Pattern
 import regex
 from recognizers_number_with_unit.number_with_unit.constants import Constants
 from recognizers_number_with_unit.number_with_unit.extractors import (
-    NumberWithUnitExtractor, NumberWithUnitExtractorConfiguration,
+    NumberWithUnitExtractorConfiguration,
 )
 from recognizers_number_with_unit.resources.base_units import BaseUnits
 from recognizers_text.utilities import RegExpUtility

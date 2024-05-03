@@ -1,19 +1,17 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from typing import Pattern, List, Dict
+from typing import Pattern, List
 from recognizers_number import (BaseNumberExtractor, BaseNumberParser,
                                 GermanOrdinalExtractor, GermanIntegerExtractor, GermanNumberParserConfiguration)
 from recognizers_text.utilities import RegExpUtility
 from ...resources.german_date_time import GermanDateTime
-from ..extractors import DateTimeExtractor
 from ..base_duration import BaseDurationExtractor
 from ..base_date import DateExtractorConfiguration, DateTimeUtilityConfiguration
 from ..utilities import DateTimeUtilityConfiguration
 from .duration_extractor_config import GermanDurationExtractorConfiguration
 from .base_configs import GermanDateTimeUtilityConfiguration
 from ..constants import Constants
-from ...resources.base_date_time import BaseDateTime
 
 
 class GermanDateExtractorConfiguration(DateExtractorConfiguration):

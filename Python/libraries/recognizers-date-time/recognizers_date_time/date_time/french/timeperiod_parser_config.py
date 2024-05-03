@@ -5,7 +5,6 @@ from typing import Pattern, Dict
 
 from recognizers_text.utilities import RegExpUtility
 from recognizers_text.extractor import Extractor
-from recognizers_number.number.french.extractors import FrenchIntegerExtractor
 from ...resources.french_date_time import FrenchDateTime
 from ..extractors import DateTimeExtractor
 from ..parsers import DateTimeParser

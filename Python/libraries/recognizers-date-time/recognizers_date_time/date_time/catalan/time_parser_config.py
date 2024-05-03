@@ -6,7 +6,6 @@ from ...resources.catalan_date_time import CatalanDateTime
 from ..base_time import TimeParserConfiguration, AdjustParams
 from ..base_configs import BaseDateParserConfiguration, DateTimeUtilityConfiguration
 from .time_extractor_config import CatalanTimeExtractorConfiguration
-from ..parsers import DateTimeParser
 
 
 class CatalanTimeParserConfiguration(TimeParserConfiguration):

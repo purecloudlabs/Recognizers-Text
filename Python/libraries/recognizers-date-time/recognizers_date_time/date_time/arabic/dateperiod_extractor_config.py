@@ -1,19 +1,15 @@
-from typing import List, Pattern
 
 from recognizers_text.utilities import RegExpUtility
 from recognizers_number.number import BaseNumberParser
 from recognizers_number.number.arabic.extractors import ArabicIntegerExtractor
 from recognizers_number.number.arabic.parsers import ArabicNumberParserConfiguration
-from recognizers_date_time.resources.base_date_time import BaseDateTime, BaseDateTimeResource
 from recognizers_date_time.resources.arabic_date_time import ArabicDateTime
-from recognizers_date_time.date_time.extractors import DateTimeExtractor
 from recognizers_date_time.date_time.base_duration import BaseDurationExtractor
 from recognizers_date_time.date_time.base_date import BaseDateExtractor
 from recognizers_date_time.date_time.base_dateperiod import DatePeriodExtractorConfiguration, MatchedIndex
 from recognizers_date_time.date_time.arabic.date_extractor_config import ArabicDateExtractorConfiguration
 from recognizers_date_time.date_time.arabic.duration_extractor_config import ArabicDurationExtractorConfiguration
-from recognizers_text.extractor import Extractor
-from recognizers_number import ArabicOrdinalExtractor, BaseNumberExtractor, ArabicCardinalExtractor
+from recognizers_number import ArabicOrdinalExtractor, ArabicCardinalExtractor
 
 
 class ArabicDatePeriodExtractorConfiguration(DatePeriodExtractorConfiguration):

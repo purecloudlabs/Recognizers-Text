@@ -10,8 +10,6 @@ from recognizers_date_time.date_time.abstract_year_extractor import AbstractYear
 from datedelta import datedelta
 from recognizers_text.extractor import ExtractResult
 from recognizers_text.utilities import RegExpUtility, flatten
-from recognizers_number.number.extractors import ReVal, ReRe, BaseNumberExtractor
-from recognizers_number.number.parsers import BaseNumberParser
 from recognizers_number.number import Constants as NumberConstants
 from recognizers_date_time.resources import BaseDateTime, BaseDateTimeResource
 
@@ -1234,7 +1232,6 @@ class BaseDateParser(DateTimeParser):
 
     def parser_duration_with_ago_and_later(self, source: str, reference: datetime) -> DateTimeParseResult:
         from .utilities import AgoLaterUtil
-        from .utilities import AgoLaterMode
         return AgoLaterUtil.parse_duration_with_ago_and_later(
             source,
             reference,

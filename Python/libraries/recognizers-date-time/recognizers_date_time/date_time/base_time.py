@@ -11,7 +11,7 @@ from recognizers_text.extractor import ExtractResult
 from .constants import Constants, TimeTypeConstants
 from .extractors import DateTimeExtractor
 from .parsers import DateTimeParser, DateTimeParseResult
-from .utilities import DateTimeOptionsConfiguration, DateTimeOptions, merge_all_tokens, RegExpUtility
+from .utilities import DateTimeOptionsConfiguration, merge_all_tokens, RegExpUtility
 
 
 class TimeExtractorConfiguration(DateTimeOptionsConfiguration):

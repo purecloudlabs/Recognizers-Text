@@ -35,7 +35,7 @@ class CatalanTimeExtractorConfiguration(TimeExtractorConfiguration):
         )
         self._at_regex: Pattern = RegExpUtility.get_safe_reg_exp(
             CatalanDateTime.AtRegex)
-        self._time_before_after_regex: Pattern = RegExpUtility.get_safe_reg_exp(f'^[.]')
+        self._time_before_after_regex: Pattern = RegExpUtility.get_safe_reg_exp('^[.]')
         self._ish_regex: Pattern = None
 
     @staticmethod

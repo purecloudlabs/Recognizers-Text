@@ -9,7 +9,6 @@
 # Licensed under the MIT License.
 # ------------------------------------------------------------------------------
 
-from .base_numbers import BaseNumbers
 
 
 # pylint: disable=line-too-long
@@ -506,7 +505,7 @@ class FrenchNumericWithUnit:
                                         ("Ngwee", "NGWEE"),
                                         ("Millibitcoin", "MILLIBITCOIN"),
                                         ("Satoshi", "SATOSHI")])
-    CompoundUnitConnectorRegex = f'(?<spacer>et)'
+    CompoundUnitConnectorRegex = '(?<spacer>et)'
     CurrencyPrefixList = dict([("Dollar", "$"),
                                ("Dollar États-Unis", "$us|usd|us$"),
                                ("Dollar des Caraïbes orientales", "xcd|$ec"),
@@ -537,8 +536,8 @@ class FrenchNumericWithUnit:
                                ("Livre", "£"),
                                ("Bitcoin", "₿|btc|xbt")])
     AmbiguousCurrencyUnitList = [r'din.', r'kina', r'lari', r'taka', r'tala', r'vatu', r'yuan', r'bob', r'btn', r'cop', r'cup', r'dop', r'gip', r'jod', r'kgs', r'lak', r'mga', r'mop', r'nad', r'omr', r'sar', r'sbd', r'scr', r'sdg', r'sek', r'sos', r'std', r'try', r'yer', r'livre', r'ils']
-    BuildPrefix = f'(?<=(\\s|^|\\P{{L}}))'
-    BuildSuffix = f'(?=(\\s|\\P{{L}}|$))'
+    BuildPrefix = '(?<=(\\s|^|\\P{L}))'
+    BuildSuffix = '(?=(\\s|\\P{L}|$))'
     ConnectorToken = 'de'
     AmbiguityFiltersDict = dict([("\\bcent\\b", "\\bpour\\s+cent\\b")])
 # pylint: enable=line-too-long

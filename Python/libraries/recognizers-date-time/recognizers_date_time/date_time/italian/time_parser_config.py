@@ -9,7 +9,6 @@ from ...resources.italian_date_time import ItalianDateTime
 from ..base_time import TimeParserConfiguration, AdjustParams
 from ..base_configs import BaseDateParserConfiguration, DateTimeUtilityConfiguration
 from .time_extractor_config import ItalianTimeExtractorConfiguration
-from ..parsers import DateTimeParser
 
 
 class ItalianTimeParserConfiguration(TimeParserConfiguration):

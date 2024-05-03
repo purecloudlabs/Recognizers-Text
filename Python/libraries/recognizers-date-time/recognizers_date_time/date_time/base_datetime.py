@@ -16,7 +16,7 @@ from recognizers_number.number.constants import Constants as NumConstants
 from .extractors import DateTimeExtractor
 from .parsers import DateTimeParser, DateTimeParseResult
 from .utilities import Token, merge_all_tokens, DateTimeResolutionResult, DateTimeUtilityConfiguration, AgoLaterUtil,\
-    DateTimeFormatUtil, RegExpUtility, AgoLaterMode, DateTimeOptionsConfiguration, DateTimeOptions
+    DateTimeFormatUtil, RegExpUtility, DateTimeOptionsConfiguration, DateTimeOptions
 
 
 class DateTimeExtractorConfiguration(DateTimeOptionsConfiguration):

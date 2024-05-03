@@ -9,7 +9,6 @@ from ...resources.french_date_time import FrenchDateTime
 from ..base_time import TimeParserConfiguration, AdjustParams
 from ..base_configs import BaseDateParserConfiguration, DateTimeUtilityConfiguration
 from .time_extractor_config import FrenchTimeExtractorConfiguration
-from ..parsers import DateTimeParser
 
 
 class FrenchTimeParserConfiguration(TimeParserConfiguration):

@@ -1,7 +1,7 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from typing import Pattern, List, Dict
+from typing import Pattern, List
 from recognizers_number import (BaseNumberExtractor, BaseNumberParser,
                                 DutchOrdinalExtractor, DutchIntegerExtractor, DutchNumberParserConfiguration)
 from recognizers_text.utilities import RegExpUtility
@@ -13,7 +13,6 @@ from ..utilities import DateTimeUtilityConfiguration
 from .duration_extractor_config import DutchDurationExtractorConfiguration
 from .base_configs import DutchDateTimeUtilityConfiguration
 from ..constants import Constants
-from ...resources.base_date_time import BaseDateTime
 
 
 class DutchDateExtractorConfiguration(DateExtractorConfiguration):

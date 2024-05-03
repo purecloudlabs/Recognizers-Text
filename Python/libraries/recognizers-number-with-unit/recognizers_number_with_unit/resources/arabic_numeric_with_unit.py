@@ -1,4 +1,3 @@
-from .base_numbers import BaseNumbers
 
 
 # pylint: disable=line-too-long
@@ -576,8 +575,8 @@ class ArabicNumericWithUnit:
                                         ("Ngwee", "NGWEE"),
                                         ("Millibitcoin", "MILLIBITCOIN"),
                                         ("Satoshi", "SATOSHI")])
-    CompoundUnitConnectorRegex = f'(?<spacer>ًا و|أيضا|واو العطف|و)'
-    MultiplierRegex = f'\\s*\\b(ألف|مليون|مليار|تريليون)s?\\b'
+    CompoundUnitConnectorRegex = '(?<spacer>ًا و|أيضا|واو العطف|و)'
+    MultiplierRegex = '\\s*\\b(ألف|مليون|مليار|تريليون)s?\\b'
     CurrencyPrefixList = dict([("Dobra", "ديسيبل | الأمراض المنقولة جنسيا"),
                                ("Dollar", "$"),
                                ("Brazilian Real", "ريال $"),
@@ -630,7 +629,7 @@ class ArabicNumericWithUnit:
                                  r'mop', r'nad', r'omr', r'pul', r'sar', r'sbd', r'scr', r'sdg', r'sek', r'sen', r'sol',
                                  r'sos', r'std', r'try', r'yer', r'yen', r'db', r'pen', r'ron', r'mad', r'zar', r'gel',
                                  r'satoshi', r'satoshis']
-    BuildPrefix = f'(?<=(\\s|^))'
-    BuildSuffix = f'(?=(\\s|\\W|$))'
+    BuildPrefix = '(?<=(\\s|^))'
+    BuildSuffix = '(?=(\\s|\\W|$))'
 
 # pylint: enable=line-too-long

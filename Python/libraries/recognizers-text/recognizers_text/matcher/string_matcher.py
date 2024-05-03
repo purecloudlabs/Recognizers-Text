@@ -7,7 +7,6 @@ from .simple_tokenizer import SimpleTokenizer
 from .matcher import Matcher
 from .trie_tree import TrieTree
 from .ac_automaton import AcAutomaton
-from multipledispatch import dispatch
 from .match_result import MatchResult
 
 

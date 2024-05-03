@@ -2,7 +2,6 @@
 #  Licensed under the MIT License.
 
 from typing import Dict, Pattern, List, Optional
-import regex
 
 from recognizers_text.utilities import RegExpUtility
 from recognizers_text.culture import Culture

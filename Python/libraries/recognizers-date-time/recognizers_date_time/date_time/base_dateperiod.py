@@ -10,9 +10,7 @@ from collections import namedtuple
 import regex
 from datedelta import datedelta
 
-from recognizers_text.extractor import ExtractResult, Extractor, Metadata
-from recognizers_date_time.date_time.date_extractor import DateExtractor
-from recognizers_number.number import BaseNumberParser, BaseNumberExtractor
+from recognizers_text.extractor import ExtractResult, Metadata
 from .constants import Constants, TimeTypeConstants
 from .extractors import DateTimeExtractor
 from .parsers import DateTimeParser, DateTimeParseResult

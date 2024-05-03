@@ -1,9 +1,7 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from typing import List
 
-from recognizers_text import ModelResult
 
 from .node import Node
 from .abstract_matcher import AbstractMatcher

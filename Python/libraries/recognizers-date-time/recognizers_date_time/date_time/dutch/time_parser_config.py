@@ -9,7 +9,6 @@ from ...resources.dutch_date_time import DutchDateTime
 from ..base_time import TimeParserConfiguration, AdjustParams
 from ..base_configs import BaseDateParserConfiguration, DateTimeUtilityConfiguration
 from .time_extractor_config import DutchTimeExtractorConfiguration
-from ..parsers import DateTimeParser
 from ..constants import Constants
 
 

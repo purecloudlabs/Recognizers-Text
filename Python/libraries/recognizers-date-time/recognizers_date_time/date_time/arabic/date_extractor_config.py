@@ -1,8 +1,8 @@
-from typing import Pattern, List, Dict
+from typing import Pattern, List
 from recognizers_number import (BaseNumberExtractor, BaseNumberParser,
                                 ArabicOrdinalExtractor, ArabicIntegerExtractor, ArabicNumberParserConfiguration)
 from recognizers_text.utilities import RegExpUtility
-from recognizers_date_time.resources import ArabicDateTime, BaseDateTime
+from recognizers_date_time.resources import ArabicDateTime
 from recognizers_date_time.date_time.extractors import DateTimeExtractor
 from recognizers_date_time.date_time.base_date import DateExtractorConfiguration, DateTimeUtilityConfiguration
 from recognizers_date_time.date_time.base_duration import BaseDurationExtractor

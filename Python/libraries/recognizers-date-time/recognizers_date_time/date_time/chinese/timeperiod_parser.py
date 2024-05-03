@@ -217,7 +217,7 @@ class ChineseTimePeriodParser(BaseTimePeriodParser):
         if span_hour < 0:
             span_hour += 24
 
-        span_timex = f'PT'
+        span_timex = 'PT'
         if span_hour != 0:
             span_timex += f'{span_hour}H'
         if span_min != 0:

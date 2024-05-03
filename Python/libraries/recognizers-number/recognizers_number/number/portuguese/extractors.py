@@ -2,11 +2,10 @@
 #  Licensed under the MIT License.
 
 import regex
-from typing import Pattern, List, NamedTuple, Optional
+from typing import Pattern, List, Optional
 
 from recognizers_text.utilities import RegExpUtility
 from recognizers_number.number.models import NumberMode, LongFormatMode
-from recognizers_number.resources import BaseNumbers
 from recognizers_number.resources.portuguese_numeric import PortugueseNumeric
 from recognizers_number.number.extractors import ReVal, ReRe, BaseNumberExtractor
 from recognizers_number.number.constants import Constants

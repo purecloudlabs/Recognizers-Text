@@ -1,5 +1,4 @@
 from typing import List, Dict, Callable
-import re
 from datetime import datetime
 
 from recognizers_text.utilities import RegExpUtility

@@ -6,7 +6,6 @@ from typing import List, Pattern
 from recognizers_text.utilities import RegExpUtility
 from ...resources.english_date_time import EnglishDateTime
 from ..base_time import TimeExtractorConfiguration
-from ..extractors import DateTimeExtractor
 
 
 class EnglishTimeExtractorConfiguration(TimeExtractorConfiguration):

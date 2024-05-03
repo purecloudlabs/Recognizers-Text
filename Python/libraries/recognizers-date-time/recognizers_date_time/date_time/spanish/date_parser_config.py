@@ -234,7 +234,7 @@ class SpanishDateParserConfiguration(DateParserConfiguration):
 
     def is_cardinal_last(self, source: str) -> bool:
         trimmed_text = source.strip().lower()
-        return not regex.search(SpanishDateParserConfiguration._past_prefix_regex, trimmed_text) is None
+        return regex.search(SpanishDateParserConfiguration._past_prefix_regex, trimmed_text) is not None
 
     def __normalize(self, source: str) -> str:
         return source.replace('á', 'a').replace('é', 'e').replace('í', 'i').replace('ó', 'o').replace('ú', 'u')

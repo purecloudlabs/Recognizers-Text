@@ -7,7 +7,6 @@ from recognizers_text.utilities import RegExpUtility
 from recognizers_number.number.extractors import ReVal, ReRe, BaseNumberExtractor, \
     BaseMergedNumberExtractor
 from recognizers_number.number.models import NumberMode, LongFormatMode
-from recognizers_number.number.number_options import NumberOptions
 from recognizers_number.resources.arabic_numeric import ArabicNumeric
 from recognizers_number.number.constants import Constants
 

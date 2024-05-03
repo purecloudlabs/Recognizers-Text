@@ -9,7 +9,6 @@
 # Licensed under the MIT License.
 # ------------------------------------------------------------------------------
 
-from .base_numbers import BaseNumbers
 
 
 # pylint: disable=line-too-long
@@ -528,8 +527,8 @@ class EnglishNumericWithUnit:
                                         ("Ngwee", "NGWEE"),
                                         ("Millibitcoin", "MILLIBITCOIN"),
                                         ("Satoshi", "SATOSHI")])
-    CompoundUnitConnectorRegex = f'(?<spacer>and)'
-    MultiplierRegex = f'\\s*\\b(thousand|million|billion|trillion)s?\\b'
+    CompoundUnitConnectorRegex = '(?<spacer>and)'
+    MultiplierRegex = '\\s*\\b(thousand|million|billion|trillion)s?\\b'
     CurrencyPrefixList = dict([("Dobra", "db|std"),
                                ("Dollar", "$"),
                                ("Brazilian Real", "R$"),
@@ -576,8 +575,8 @@ class EnglishNumericWithUnit:
                                ("Turkish lira", "₺|try"),
                                ("Bitcoin", "₿|btc|xbt")])
     AmbiguousCurrencyUnitList = [r'din.', r'kiwi', r'kina', r'kobo', r'lari', r'lipa', r'napa', r'para', r'sfr.', r'taka', r'tala', r'toea', r'vatu', r'yuan', r'all', r'ang', r'ban', r'bob', r'btn', r'byr', r'cad', r'cop', r'cup', r'dop', r'gip', r'jod', r'kgs', r'lak', r'lei', r'mga', r'mop', r'nad', r'omr', r'pul', r'sar', r'sbd', r'scr', r'sdg', r'sek', r'sen', r'sol', r'sos', r'std', r'try', r'yer', r'yen', r'db', r'pen', r'ron', r'mad', r'zar', r'gel', r'satoshi', r'satoshis']
-    BuildPrefix = f'(?<=(\\s|^))'
-    BuildSuffix = f'(?=(\\s|\\W|$))'
+    BuildPrefix = '(?<=(\\s|^))'
+    BuildSuffix = '(?=(\\s|\\W|$))'
     AmbiguityFiltersDict = dict([("\\bm\\b", "((('|’)\\s*m)|(m\\s*('|’)))"),
                                  ("^\\d{5} [cf]$", "\\b([a-z]{2} \\d{5} [cf])\\b"),
                                  ("\\b\\d+\\s*\\p{L}+$", "((\\d+(\\s*\\p{L}+[-—–-]|\\p{L}+)\\d+)|(((\\p{L}|\\d)[-—–-]\\d+\\s*|\\p{L}\\d+)\\p{L}+))"),

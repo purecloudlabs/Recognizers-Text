@@ -1,5 +1,4 @@
 from typing import List, Pattern
-import regex
 
 from recognizers_number import BaseNumberExtractor, ArabicCardinalExtractor
 from recognizers_text.utilities import RegExpUtility

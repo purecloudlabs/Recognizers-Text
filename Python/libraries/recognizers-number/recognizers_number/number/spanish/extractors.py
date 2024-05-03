@@ -1,11 +1,10 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from typing import Pattern, List, NamedTuple
+from typing import List
 
 from recognizers_text.utilities import RegExpUtility
 from recognizers_number.number.models import NumberMode, LongFormatMode
-from recognizers_number.resources import BaseNumbers
 from recognizers_number.resources.spanish_numeric import SpanishNumeric
 from recognizers_number.number.extractors import ReVal, ReRe, BaseNumberExtractor
 from recognizers_number.number.constants import Constants

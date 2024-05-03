@@ -9,7 +9,6 @@
 # Licensed under the MIT License.
 # ------------------------------------------------------------------------------
 
-from .base_numbers import BaseNumbers
 
 
 # pylint: disable=line-too-long
@@ -588,8 +587,8 @@ class SpanishNumericWithUnit:
                                         ("Ngwee", "NGWEE"),
                                         ("Millibitcoin", "MILLIBITCOIN"),
                                         ("Satoshi", "SATOSHI")])
-    CompoundUnitConnectorRegex = f'(?<spacer>y|con)'
-    MultiplierRegex = f'\\s*\\b(((mil\\s+)?mi|bi|cuatri|quinti|sexti|septi)ll[oó]n|mil)(es)?\\b'
+    CompoundUnitConnectorRegex = '(?<spacer>y|con)'
+    MultiplierRegex = '\\s*\\b(((mil\\s+)?mi|bi|cuatri|quinti|sexti|septi)ll[oó]n|mil)(es)?\\b'
     CurrencyPrefixList = dict([("Dobra", "db|std"),
                                ("Dólar", "$|dólar|dólares|dolar|dolares"),
                                ("Dólar estadounidense", "us$|u$d|usd"),
@@ -625,8 +624,8 @@ class SpanishNumericWithUnit:
                                ("Lira turca", "₺"),
                                ("Bitcoin", "₿|btc|xbt")])
     AmbiguousCurrencyUnitList = [r'le', r'db', r'std']
-    BuildPrefix = f'(?<=(\\s|^|\\P{{L}}))'
-    BuildSuffix = f'(?=(\\s|\\P{{L}}|$))'
+    BuildPrefix = '(?<=(\\s|^|\\P{L}))'
+    BuildSuffix = '(?=(\\s|\\P{L}|$))'
     ConnectorToken = 'de'
     AmbiguityFiltersDict = dict([("null", "null")])
 # pylint: enable=line-too-long

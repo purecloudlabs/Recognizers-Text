@@ -338,7 +338,7 @@ class PortugueseDatePeriodParserConfiguration(DatePeriodParserConfiguration):
 
     def is_last_cardinal(self, source: str) -> bool:
         trimmed_source = source.strip().lower()
-        return not self.previous_prefix_regex.search(trimmed_source) is None
+        return self.previous_prefix_regex.search(trimmed_source) is not None
 
     def is_year_only(self, source: str) -> bool:
         trimmed_source = source.strip().lower()

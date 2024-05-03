@@ -7,7 +7,7 @@ from recognizers_number import BaseNumberExtractor, BaseNumberParser
 from recognizers_number.number.portuguese.parsers import PortugueseNumberParserConfiguration
 from recognizers_number.number.portuguese.extractors import PortugueseCardinalExtractor, PortugueseIntegerExtractor, PortugueseOrdinalExtractor
 
-from ...resources.portuguese_date_time import BaseDateTime, PortugueseDateTime
+from ...resources.portuguese_date_time import PortugueseDateTime
 from ..extractors import DateTimeExtractor
 from ..parsers import DateTimeParser
 from ..base_configs import BaseDateParserConfiguration, DateTimeUtilityConfiguration

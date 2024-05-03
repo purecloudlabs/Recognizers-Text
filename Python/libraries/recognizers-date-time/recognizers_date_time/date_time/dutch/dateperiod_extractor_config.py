@@ -1,22 +1,18 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from typing import List, Pattern
 
 from recognizers_text.utilities import RegExpUtility
 from recognizers_number.number import BaseNumberParser
 from recognizers_number.number.dutch.extractors import DutchIntegerExtractor, DutchCardinalExtractor
 from recognizers_number.number.dutch.parsers import DutchNumberParserConfiguration
-from ...resources.base_date_time import BaseDateTime
 from ...resources.dutch_date_time import DutchDateTime
-from ..extractors import DateTimeExtractor
 from ..base_duration import BaseDurationExtractor
 from ..base_date import BaseDateExtractor
 from ..base_dateperiod import DatePeriodExtractorConfiguration, MatchedIndex
 from .duration_extractor_config import DutchDurationExtractorConfiguration
 from .date_extractor_config import DutchDateExtractorConfiguration
-from recognizers_text.extractor import Extractor
-from recognizers_number import DutchOrdinalExtractor, BaseNumberExtractor, DutchCardinalExtractor
+from recognizers_number import DutchOrdinalExtractor, DutchCardinalExtractor
 
 
 class DutchDatePeriodExtractorConfiguration(DatePeriodExtractorConfiguration):
@@ -71,4 +67,4 @@ class DutchDatePeriodExtractorConfiguration(DatePeriodExtractorConfiguration):
         return MatchedIndex(False, -1)
 
     def has_connector_token(self, source: str) -> bool:
-        return not self.range_connector_regex.search(source) is None
+        return self.range_connector_regex.search(source) is not None

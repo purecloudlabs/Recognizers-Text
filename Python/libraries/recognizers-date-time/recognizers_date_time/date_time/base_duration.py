@@ -13,8 +13,7 @@ from recognizers_number.number.parsers import BaseNumberParser
 from .constants import Constants, TimeTypeConstants
 from .extractors import DateTimeExtractor
 from .parsers import DateTimeParser, DateTimeParseResult
-from .utilities import Token, merge_all_tokens, DateTimeResolutionResult, RegExpUtility,\
-    DateTimeOptionsConfiguration, DateTimeOptions, DurationParsingUtil, RegExpUtility
+from .utilities import Token, merge_all_tokens, DateTimeResolutionResult, DateTimeOptionsConfiguration, DateTimeOptions, DurationParsingUtil, RegExpUtility
 
 
 class DurationExtractorConfiguration(DateTimeOptionsConfiguration):

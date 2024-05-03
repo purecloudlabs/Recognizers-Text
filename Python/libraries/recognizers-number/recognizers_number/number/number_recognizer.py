@@ -5,13 +5,13 @@ from enum import IntFlag
 from typing import List
 
 from recognizers_number.number.arabic.extractors import ArabicOrdinalExtractor, \
-    ArabicNumberExtractor, ArabicMergedNumberExtractor
+    ArabicMergedNumberExtractor
 from recognizers_number.number.arabic.parsers import ArabicNumberParserConfiguration
 from recognizers_text import Culture, Recognizer, Model
 from recognizers_number.culture import CultureInfo
 from recognizers_number.number.models import NumberMode, NumberModel, OrdinalModel, ModelResult
 from recognizers_number.number.parser_factory import ParserType, AgnosticNumberParserFactory
-from recognizers_number.number.english.extractors import EnglishNumberExtractor, EnglishOrdinalExtractor, \
+from recognizers_number.number.english.extractors import EnglishOrdinalExtractor, \
     EnglishMergedNumberExtractor
 from recognizers_number.number.english.parsers import EnglishNumberParserConfiguration
 from recognizers_number.number.spanish.extractors import SpanishNumberExtractor, SpanishOrdinalExtractor

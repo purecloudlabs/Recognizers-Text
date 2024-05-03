@@ -1,7 +1,7 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from typing import Pattern, List, Dict
+from typing import Pattern, List
 from recognizers_number import (BaseNumberExtractor, BaseNumberParser,
                                 FrenchOrdinalExtractor, FrenchIntegerExtractor, FrenchNumberParserConfiguration)
 from recognizers_text.utilities import RegExpUtility
@@ -13,8 +13,6 @@ from ..utilities import DateTimeUtilityConfiguration
 from .duration_extractor_config import FrenchDurationExtractorConfiguration
 from .base_configs import FrenchDateTimeUtilityConfiguration
 from ..constants import Constants
-from ...resources.base_date_time import BaseDateTime
-from ..utilities import DateTimeOptions
 
 
 class FrenchDateExtractorConfiguration(DateExtractorConfiguration):

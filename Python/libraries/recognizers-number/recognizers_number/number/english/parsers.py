@@ -5,7 +5,6 @@ from typing import Dict, Pattern, List, Optional
 
 from recognizers_text.utilities import RegExpUtility
 from recognizers_text.culture import Culture
-from recognizers_text.parser import ParseResult
 from recognizers_number.culture import CultureInfo
 from recognizers_number.number.parsers import BaseNumberParserConfiguration
 from recognizers_number.resources.english_numeric import EnglishNumeric

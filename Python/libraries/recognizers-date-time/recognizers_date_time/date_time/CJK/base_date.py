@@ -6,7 +6,6 @@ from dateutil.relativedelta import relativedelta
 
 from typing import List, Pattern, Dict, Match
 
-from regex import regex
 
 from recognizers_number.number import CJKNumberParser, Constants as Num_Constants
 from recognizers_date_time.date_time import Constants as Date_Constants

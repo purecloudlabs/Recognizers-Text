@@ -1,22 +1,18 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from typing import List, Pattern
 
 from recognizers_text.utilities import RegExpUtility
 from recognizers_number.number import BaseNumberParser
 from recognizers_number.number.french.extractors import FrenchIntegerExtractor, FrenchCardinalExtractor
 from recognizers_number.number.french.parsers import FrenchNumberParserConfiguration
-from ...resources.base_date_time import BaseDateTime
 from ...resources.french_date_time import FrenchDateTime
-from ..extractors import DateTimeExtractor
 from ..base_duration import BaseDurationExtractor
 from ..base_date import BaseDateExtractor
 from ..base_dateperiod import DatePeriodExtractorConfiguration, MatchedIndex
 from .duration_extractor_config import FrenchDurationExtractorConfiguration
 from .date_extractor_config import FrenchDateExtractorConfiguration
-from recognizers_text.extractor import Extractor
-from recognizers_number import FrenchOrdinalExtractor, BaseNumberExtractor, FrenchCardinalExtractor
+from recognizers_number import FrenchOrdinalExtractor, FrenchCardinalExtractor
 
 
 class FrenchDatePeriodExtractorConfiguration(DatePeriodExtractorConfiguration):
@@ -70,4 +66,4 @@ class FrenchDatePeriodExtractorConfiguration(DatePeriodExtractorConfiguration):
         return MatchedIndex(False, -1)
 
     def has_connector_token(self, source: str) -> bool:
-        return not self.connector_and_regex.search(source) is None
+        return self.connector_and_regex.search(source) is not None

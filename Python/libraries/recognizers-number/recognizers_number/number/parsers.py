@@ -1,7 +1,6 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 import sys
-from abc import ABC, abstractmethod
 from typing import Dict, Pattern, Optional, List
 from decimal import Decimal, getcontext
 import regex

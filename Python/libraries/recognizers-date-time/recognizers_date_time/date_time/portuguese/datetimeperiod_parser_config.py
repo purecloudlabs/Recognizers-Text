@@ -2,12 +2,10 @@
 #  Licensed under the MIT License.
 
 from typing import Pattern, Dict
-import regex
 
 from recognizers_text.utilities import RegExpUtility
 from ...resources.portuguese_date_time import PortugueseDateTime
 from ..base_datetimeperiod import DateTimePeriodParserConfiguration, MatchedTimeRange
-from ..constants import Constants, TimeTypeConstants
 from ..extractors import DateTimeExtractor
 from ..parsers import DateTimeParser
 from ..base_configs import BaseDateParserConfiguration

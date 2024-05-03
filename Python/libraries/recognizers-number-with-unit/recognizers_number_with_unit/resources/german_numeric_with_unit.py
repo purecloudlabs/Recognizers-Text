@@ -9,7 +9,6 @@
 # Licensed under the MIT License.
 # ------------------------------------------------------------------------------
 
-from .base_numbers import BaseNumbers
 
 
 # pylint: disable=line-too-long
@@ -527,7 +526,7 @@ class GermanNumericWithUnit:
                                         ("Ngwee", "NGWEE"),
                                         ("Millibitcoin", "MILLIBITCOIN"),
                                         ("Satoshi", "SATOSHI")])
-    CompoundUnitConnectorRegex = f'(?<spacer>und)'
+    CompoundUnitConnectorRegex = '(?<spacer>und)'
     CurrencyPrefixList = dict([("Dollar", "$"),
                                ("United States dollar", "united states $|us$|us $|u.s. $|u.s $"),
                                ("East Caribbean dollar", "east caribbean $"),
@@ -570,8 +569,8 @@ class GermanNumericWithUnit:
                                ("Turkish lira", "₺"),
                                ("Bitcoin", "₿|btc|xbt")])
     AmbiguousCurrencyUnitList = [r'din.', r'kiwi', r'kina', r'kobo', r'lari', r'lipa', r'napa', r'para', r'sfr.', r'taka', r'tala', r'toea', r'vatu', r'yuan', r'ang', r'ban', r'bob', r'btn', r'byr', r'cad', r'cop', r'cup', r'dop', r'gip', r'jod', r'kgs', r'lak', r'lei', r'mga', r'mop', r'nad', r'omr', r'pul', r'sar', r'sbd', r'scr', r'sdg', r'sek', r'sen', r'sol', r'sos', r'std', r'try', r'yer', r'yen']
-    BuildPrefix = f'(?<=(\\s|^))'
-    BuildSuffix = f'(?=(\\s|\\W|$))'
+    BuildPrefix = '(?<=(\\s|^))'
+    BuildSuffix = '(?=(\\s|\\W|$))'
     ConnectorToken = '-'
     AmbiguityFiltersDict = dict([("null", "null")])
 # pylint: enable=line-too-long

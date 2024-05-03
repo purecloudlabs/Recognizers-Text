@@ -2,7 +2,6 @@
 #  Licensed under the MIT License.
 
 from datetime import datetime
-import regex
 
 from recognizers_text.utilities import RegExpUtility
 from ..utilities import DateTimeResolutionResult

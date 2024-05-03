@@ -1,7 +1,6 @@
 from typing import Dict, List, Pattern
 from datetime import datetime, timedelta
 
-from regex import regex
 from recognizers_date_time.date_time.constants import Constants
 from recognizers_date_time.date_time.utilities import DateTimeResolutionResult, RegExpUtility, TimexUtil
 

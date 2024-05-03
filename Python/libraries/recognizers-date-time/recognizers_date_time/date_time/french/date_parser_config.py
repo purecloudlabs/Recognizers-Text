@@ -2,7 +2,6 @@
 #  Licensed under the MIT License.
 
 from typing import Pattern, List, Dict
-import regex
 
 from recognizers_text.utilities import RegExpUtility
 from recognizers_number import BaseNumberExtractor, BaseNumberParser
