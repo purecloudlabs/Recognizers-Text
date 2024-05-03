@@ -13,73 +13,33 @@ from recognizers_text.utilities import RegExpUtility
 
 
 class CatalanNumberWithUnitExtractorConfiguration(NumberWithUnitExtractorConfiguration):
-    @property
-    def ambiguity_filters_dict(self) -> Dict[Pattern, Pattern]:
-        return None
 
-    @property
-    def unit_num_extractor(self) -> Extractor:
-        return self._unit_num_extractor
-
-    @property
-    def build_prefix(self) -> str:
-        return self._build_prefix
-
-    @property
-    def build_suffix(self) -> str:
-        return self._build_suffix
-
-    @property
-    def connector_token(self) -> str:
-        return CatalanNumericWithUnit.ConnectorToken
-
-    @property
-    def compound_unit_connector_regex(self) -> Pattern:
-        return self._compound_unit_connector_regex
-
-    @property
-    def non_unit_regex(self) -> Pattern:
-        return self._pm_non_unit_regex
-
-    @property
-    def ambiguous_unit_number_multiplier_regex(self) -> Pattern:
-        return None
+    ambiguity_filters_dict: Dict[Pattern, Pattern] = None
+    unit_num_extractor: Extractor = CatalanNumberExtractor(NumberMode.Unit)
+    build_prefix: str = CatalanNumericWithUnit.BuildPrefix
+    build_suffix: str = CatalanNumericWithUnit.BuildSuffix
+    connector_token: str = CatalanNumericWithUnit.ConnectorToken
+    compound_unit_connector_regex: Pattern = RegExpUtility.get_safe_reg_exp(
+        CatalanNumericWithUnit.CompoundUnitConnectorRegex)
+    non_unit_regex: Pattern = RegExpUtility.get_safe_reg_exp(BaseUnits.PmNonUnitRegex)
+    ambiguous_unit_number_multiplier_regex: Pattern = None
+    culture_info: CultureInfo = None
 
     def expand_half_suffix(self, source, result, numbers):
         pass
 
     def __init__(self, culture_info: CultureInfo):
-        if culture_info is None:
-            culture_info = CultureInfo(Culture.Catalan)
+        culture_info = culture_info or CultureInfo(Culture.Catalan)
         super().__init__(culture_info)
-        self._unit_num_extractor = CatalanNumberExtractor(NumberMode.Unit)
-        self._build_prefix = CatalanNumericWithUnit.BuildPrefix
-        self._build_suffix = CatalanNumericWithUnit.BuildSuffix
-        self._compound_unit_connector_regex = RegExpUtility.get_safe_reg_exp(
-            CatalanNumericWithUnit.CompoundUnitConnectorRegex)
-        self._pm_non_unit_regex = RegExpUtility.get_safe_reg_exp(
-            BaseUnits.PmNonUnitRegex)
 
 
 class CatalanCurrencyExtractorConfiguration(CatalanNumberWithUnitExtractorConfiguration):
-    @property
-    def extract_type(self) -> str:
-        return Constants.SYS_UNIT_CURRENCY
 
-    @property
-    def suffix_list(self) -> Dict[str, str]:
-        return self._suffix_list
-
-    @property
-    def prefix_list(self) -> Dict[str, str]:
-        return self._prefix_list
-
-    @property
-    def ambiguous_unit_list(self) -> List[str]:
-        return self._ambiguous_unit_list
+    extract_type: str = Constants.SYS_UNIT_CURRENCY
+    suffix_list: Dict[str, str] = CatalanNumericWithUnit.CurrencySuffixList
+    prefix_list: Dict[str, str] = CatalanNumericWithUnit.CurrencyPrefixList
+    ambiguous_unit_list: List[str] = CatalanNumericWithUnit.AmbiguousCurrencyUnitList
+    culture_info: CultureInfo = None
 
     def __init__(self, culture_info: CultureInfo = None):
         super().__init__(culture_info)
-        self._suffix_list = CatalanNumericWithUnit.CurrencySuffixList
-        self._prefix_list = CatalanNumericWithUnit.CurrencyPrefixList
-        self._ambiguous_unit_list = CatalanNumericWithUnit.AmbiguousCurrencyUnitList

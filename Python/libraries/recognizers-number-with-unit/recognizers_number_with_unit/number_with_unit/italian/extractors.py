@@ -15,186 +15,36 @@ from recognizers_text.extractor import Extractor
 from recognizers_text.utilities import DefinitionLoader, RegExpUtility
 
 
-# pylint: disable=abstract-method
 class ItalianNumberWithUnitExtractorConfiguration(NumberWithUnitExtractorConfiguration):
-    @property
-    def ambiguity_filters_dict(self) -> Dict[Pattern, Pattern]:
-        return DefinitionLoader.load_ambiguity_filters(ItalianNumericWithUnit.AmbiguityFiltersDict)
 
-    @property
-    def unit_num_extractor(self) -> Extractor:
-        return self._unit_num_extractor
-
-    @property
-    def build_prefix(self) -> str:
-        return self._build_prefix
-
-    @property
-    def build_suffix(self) -> str:
-        return self._build_suffix
-
-    @property
-    def connector_token(self) -> str:
-        return self._connector_token
-
-    @property
-    def compound_unit_connector_regex(self) -> Pattern:
-        return self._compound_unit_connector_regex
-
-    @property
-    def non_unit_regex(self) -> Pattern:
-        return self._pm_non_unit_regex
-
-    @property
-    def ambiguous_unit_number_multiplier_regex(self) -> Pattern:
-        return None
+    ambiguity_filters_dict: Dict[Pattern, Pattern] = DefinitionLoader.load_ambiguity_filters(
+        ItalianNumericWithUnit.AmbiguityFiltersDict
+    )
+    unit_num_extractor: Extractor = ItalianNumberExtractor(NumberMode.Unit)
+    build_prefix: str = ItalianNumericWithUnit.BuildPrefix
+    build_suffix: str = ItalianNumericWithUnit.BuildSuffix
+    connector_token: str = ItalianNumericWithUnit.ConnectorToken
+    compound_unit_connector_regex: Pattern = RegExpUtility.get_safe_reg_exp(
+        ItalianNumericWithUnit.CompoundUnitConnectorRegex)
+    non_unit_regex: Pattern = RegExpUtility.get_safe_reg_exp(BaseUnits.PmNonUnitRegex)
+    ambiguous_unit_number_multiplier_regex: Pattern = None
+    culture_info: CultureInfo = None
 
     def expand_half_suffix(self, source, result, numbers):
         pass
 
     def __init__(self, culture_info: CultureInfo):
-        if culture_info is None:
-            culture_info = CultureInfo(Culture.Italian)
+        culture_info = culture_info or CultureInfo(Culture.Italian)
         super().__init__(culture_info)
-        self._unit_num_extractor = ItalianNumberExtractor(NumberMode.Unit)
-        self._build_prefix = ItalianNumericWithUnit.BuildPrefix
-        self._build_suffix = ItalianNumericWithUnit.BuildSuffix
-        self._connector_token = ItalianNumericWithUnit.ConnectorToken
-        self._compound_unit_connector_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianNumericWithUnit.CompoundUnitConnectorRegex)
-        self._pm_non_unit_regex = RegExpUtility.get_safe_reg_exp(
-            BaseUnits.PmNonUnitRegex)
-
-
-# pylint: enable=abstract-method
-
-class ItalianAgeExtractorConfiguration(ItalianNumberWithUnitExtractorConfiguration):
-    @property
-    def ambiguity_filters_dict(self) -> Dict[Pattern, Pattern]:
-        return ItalianNumericWithUnit.AmbiguityFiltersDict
-
-    @property
-    def extract_type(self) -> str:
-        return Constants.SYS_UNIT_AGE
-
-    @property
-    def suffix_list(self) -> Dict[str, str]:
-        return self._suffix_list
-
-    @property
-    def prefix_list(self) -> Dict[str, str]:
-        return self._prefix_list
-
-    @property
-    def ambiguous_unit_list(self) -> List[str]:
-        return self._ambiguous_unit_list
-
-    def __init__(self, culture_info: CultureInfo = None):
-        super().__init__(culture_info)
-        self._suffix_list = ItalianNumericWithUnit.AgeSuffixList
-        self._prefix_list = ItalianNumericWithUnit.AgePrefixList
-        self._ambiguous_unit_list = ItalianNumericWithUnit.AmbiguousAgeUnitList
 
 
 class ItalianCurrencyExtractorConfiguration(ItalianNumberWithUnitExtractorConfiguration):
 
-    @property
-    def ambiguity_filters_dict(self) -> Dict[Pattern, Pattern]:
-        return ItalianNumericWithUnit.AmbiguityFiltersDict
-
-    @property
-    def extract_type(self) -> str:
-        return Constants.SYS_UNIT_CURRENCY
-
-    @property
-    def suffix_list(self) -> Dict[str, str]:
-        return self._suffix_list
-
-    @property
-    def prefix_list(self) -> Dict[str, str]:
-        return self._prefix_list
-
-    @property
-    def ambiguous_unit_list(self) -> List[str]:
-        return self._ambiguous_unit_list
+    extract_type: str = Constants.SYS_UNIT_CURRENCY
+    suffix_list: Dict[str, str] = ItalianNumericWithUnit.CurrencySuffixList
+    prefix_list: Dict[str, str] = ItalianNumericWithUnit.CurrencyPrefixList
+    ambiguous_unit_list: List[str] = ItalianNumericWithUnit.AmbiguousCurrencyUnitList
+    culture_info: CultureInfo = None
 
     def __init__(self, culture_info: CultureInfo = None):
         super().__init__(culture_info)
-        self._suffix_list = ItalianNumericWithUnit.CurrencySuffixList
-        self._prefix_list = ItalianNumericWithUnit.CurrencyPrefixList
-        self._ambiguous_unit_list = ItalianNumericWithUnit.AmbiguousCurrencyUnitList
-
-
-class ItalianDimensionExtractorConfiguration(ItalianNumberWithUnitExtractorConfiguration):
-
-    @property
-    def ambiguity_filters_dict(self) -> Dict[Pattern, Pattern]:
-        return ItalianNumericWithUnit.AmbiguityFiltersDict
-
-    @property
-    def extract_type(self) -> str:
-        return Constants.SYS_UNIT_DIMENSION
-
-    @property
-    def suffix_list(self) -> Dict[str, str]:
-        return self._suffix_list
-
-    @property
-    def prefix_list(self) -> Dict[str, str]:
-        return self._prefix_list
-
-    @property
-    def ambiguous_unit_list(self) -> List[str]:
-        return self._ambiguous_unit_list
-
-    def __init__(self, culture_info: CultureInfo = None):
-        super().__init__(culture_info)
-        self._suffix_list = {
-            **ItalianNumericWithUnit.InformationSuffixList,
-            **ItalianNumericWithUnit.AreaSuffixList,
-            **ItalianNumericWithUnit.LengthSuffixList,
-            **ItalianNumericWithUnit.SpeedSuffixList,
-            **ItalianNumericWithUnit.VolumeSuffixList,
-            **ItalianNumericWithUnit.WeightSuffixList
-        }
-        self._prefix_list = dict()
-        self._ambiguous_unit_list = ItalianNumericWithUnit.AmbiguousDimensionUnitList +\
-            ItalianNumericWithUnit.AmbiguousAngleUnitList +\
-            ItalianNumericWithUnit.AmbiguousLengthUnitList +\
-            ItalianNumericWithUnit.AmbiguousVolumeUnitList +\
-            ItalianNumericWithUnit.AmbiguousWeightUnitList
-
-
-class ItalianTemperatureExtractorConfiguration(ItalianNumberWithUnitExtractorConfiguration):
-
-    @property
-    def ambiguity_filters_dict(self) -> Dict[Pattern, Pattern]:
-        return ItalianNumericWithUnit.AmbiguityFiltersDict
-
-    @property
-    def extract_type(self) -> str:
-        return Constants.SYS_UNIT_TEMPERATURE
-
-    @property
-    def suffix_list(self) -> Dict[str, str]:
-        return self._suffix_list
-
-    @property
-    def prefix_list(self) -> Dict[str, str]:
-        return self._prefix_list
-
-    @property
-    def ambiguous_unit_list(self) -> List[str]:
-        return self._ambiguous_unit_list
-
-    @property
-    def ambiguous_unit_number_multiplier_regex(self) -> Pattern:
-        return self._ambiguous_unit_number_multiplier_regex
-
-    def __init__(self, culture_info: CultureInfo = None):
-        super().__init__(culture_info)
-        self._suffix_list = ItalianNumericWithUnit.TemperatureSuffixList
-        self._prefix_list = dict()
-        self._ambiguous_unit_list = ItalianNumericWithUnit.AmbiguousTemperatureUnitList
-        self._ambiguous_unit_number_multiplier_regex = RegExpUtility.get_safe_reg_exp(
-            BaseUnits.AmbiguousUnitNumberMultiplierRegex)

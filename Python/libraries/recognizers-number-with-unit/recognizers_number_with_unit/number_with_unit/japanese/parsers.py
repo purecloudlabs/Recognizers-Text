@@ -13,33 +13,23 @@ from recognizers_text.parser import Parser
 
 
 class JapaneseNumberWithUnitParserConfiguration(NumberWithUnitParserConfiguration):
-    @property
-    def internal_number_parser(self) -> Parser:
-        return self._internal_number_parser
 
-    @property
-    def internal_number_extractor(self) -> Extractor:
-        return self._internal_number_extractor
-
-    @property
-    def connector_token(self) -> str:
-        return self._connector_token
+    internal_number_extractor: Extractor = JapaneseNumberExtractor(JapaneseNumberExtractorMode.EXTRACT_ALL)
+    connector_token: str = JapaneseNumericWithUnit.ConnectorToken
 
     def __init__(self, culture_info: CultureInfo):
-        if culture_info is None:
-            culture_info = CultureInfo(Culture.Japanese)
+        culture_info = culture_info or CultureInfo(Culture.Japanese)
         super().__init__(culture_info)
-        self._internal_number_extractor = JapaneseNumberExtractor(
-            JapaneseNumberExtractorMode.EXTRACT_ALL)
-        self._internal_number_parser = AgnosticNumberParserFactory.get_parser(
+        self.internal_number_parser: Parser = AgnosticNumberParserFactory.get_parser(
             ParserType.NUMBER, JapaneseNumberParserConfiguration(culture_info))
-        self._connector_token = JapaneseNumericWithUnit.ConnectorToken
 
 
 class JapaneseCurrencyParserConfiguration(JapaneseNumberWithUnitParserConfiguration):
+
     def __init__(self, culture_info: CultureInfo = None):
         super().__init__(culture_info)
         self.add_dict_to_unit_map(JapaneseNumericWithUnit.CurrencySuffixList)
         self.add_dict_to_unit_map(JapaneseNumericWithUnit.CurrencyPrefixList)
         self.currency_name_to_iso_code_map = JapaneseNumericWithUnit.CurrencyNameToIsoCodeMap
         self.currency_fraction_code_list = JapaneseNumericWithUnit.FractionalUnitNameToCodeMap
+

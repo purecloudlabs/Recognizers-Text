@@ -15,80 +15,36 @@ from recognizers_text.extractor import Extractor
 from recognizers_text.utilities import DefinitionLoader, RegExpUtility
 
 
-# pylint: disable=abstract-method
 class DutchNumberWithUnitExtractorConfiguration(NumberWithUnitExtractorConfiguration):
-    @property
-    def ambiguity_filters_dict(self) -> Dict[Pattern, Pattern]:
-        return DefinitionLoader.load_ambiguity_filters(DutchNumericWithUnit.AmbiguityFiltersDict)
 
-    @property
-    def dimension_ambiguity_filters_dict(self) -> Dict[Pattern, Pattern]:
-        return DefinitionLoader.load_ambiguity_filters(DutchNumericWithUnit.DimensionAmbiguityFiltersDict)
-
-    @property
-    def unit_num_extractor(self) -> Extractor:
-        return self._unit_num_extractor
-
-    @property
-    def build_prefix(self) -> str:
-        return self._build_prefix
-
-    @property
-    def build_suffix(self) -> str:
-        return self._build_suffix
-
-    @property
-    def connector_token(self) -> str:
-        return ''
-
-    @property
-    def compound_unit_connector_regex(self) -> Pattern:
-        return self._compound_unit_connector_regex
-
-    @property
-    def non_unit_regex(self) -> Pattern:
-        return self._pm_non_unit_regex
-
-    @property
-    def ambiguous_unit_number_multiplier_regex(self) -> Pattern:
-        return None
+    ambiguity_filters_dict: Dict[Pattern, Pattern] = DefinitionLoader.load_ambiguity_filters(
+        DutchNumericWithUnit.AmbiguityFiltersDict
+    )
+    unit_num_extractor: Extractor = DutchNumberExtractor(NumberMode.Unit)
+    build_prefix: str = DutchNumericWithUnit.BuildPrefix
+    build_suffix: str = DutchNumericWithUnit.BuildSuffix
+    connector_token: str = ''
+    compound_unit_connector_regex: Pattern = RegExpUtility.get_safe_reg_exp(
+        DutchNumericWithUnit.CompoundUnitConnectorRegex)
+    non_unit_regex: Pattern = RegExpUtility.get_safe_reg_exp(BaseUnits.PmNonUnitRegex)
+    ambiguous_unit_number_multiplier_regex: Pattern = None
+    culture_info: CultureInfo = None
 
     def expand_half_suffix(self, source, result, numbers):
         pass
 
     def __init__(self, culture_info: CultureInfo):
-        if culture_info is None:
-            culture_info = CultureInfo(Culture.Dutch)
+        culture_info = culture_info or CultureInfo(Culture.Dutch)
         super().__init__(culture_info)
-        self._unit_num_extractor = DutchNumberExtractor(NumberMode.Unit)
-        self._build_prefix = DutchNumericWithUnit.BuildPrefix
-        self._build_suffix = DutchNumericWithUnit.BuildSuffix
-        self._compound_unit_connector_regex = RegExpUtility.get_safe_reg_exp(
-            DutchNumericWithUnit.CompoundUnitConnectorRegex)
-        self._pm_non_unit_regex = RegExpUtility.get_safe_reg_exp(
-            BaseUnits.PmNonUnitRegex)
 
 
 class DutchCurrencyExtractorConfiguration(DutchNumberWithUnitExtractorConfiguration):
 
-    @property
-    def extract_type(self) -> str:
-        return Constants.SYS_UNIT_CURRENCY
-
-    @property
-    def suffix_list(self) -> Dict[str, str]:
-        return self._suffix_list
-
-    @property
-    def prefix_list(self) -> Dict[str, str]:
-        return self._prefix_list
-
-    @property
-    def ambiguous_unit_list(self) -> List[str]:
-        return self._ambiguous_unit_list
+    extract_type: str = Constants.SYS_UNIT_CURRENCY
+    suffix_list: Dict[str, str] = DutchNumericWithUnit.CurrencySuffixList
+    prefix_list: Dict[str, str] = DutchNumericWithUnit.CurrencyPrefixList
+    ambiguous_unit_list: List[str] = DutchNumericWithUnit.AmbiguousCurrencyUnitList
+    culture_info: CultureInfo = None
 
     def __init__(self, culture_info: CultureInfo = None):
         super().__init__(culture_info)
-        self._suffix_list = DutchNumericWithUnit.CurrencySuffixList
-        self._prefix_list = DutchNumericWithUnit.CurrencyPrefixList
-        self._ambiguous_unit_list = DutchNumericWithUnit.AmbiguousCurrencyUnitList

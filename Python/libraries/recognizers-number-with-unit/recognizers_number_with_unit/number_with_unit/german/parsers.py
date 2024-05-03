@@ -13,30 +13,19 @@ from recognizers_text.parser import Parser
 
 
 class GermanNumberWithUnitParserConfiguration(NumberWithUnitParserConfiguration):
-    @property
-    def internal_number_parser(self) -> Parser:
-        return self._internal_number_parser
 
-    @property
-    def internal_number_extractor(self) -> Extractor:
-        return self._internal_number_extractor
-
-    @property
-    def connector_token(self) -> str:
-        return self._connector_token
+    internal_number_extractor: Extractor = GermanNumberExtractor(NumberMode.DEFAULT)
+    connector_token: str = GermanNumericWithUnit.ConnectorToken
 
     def __init__(self, culture_info: CultureInfo):
-        if culture_info is None:
-            culture_info = CultureInfo(Culture.German)
+        culture_info = culture_info or CultureInfo(Culture.German)
         super().__init__(culture_info)
-        self._internal_number_extractor = GermanNumberExtractor(
-            NumberMode.DEFAULT)
-        self._internal_number_parser = AgnosticNumberParserFactory.get_parser(
+        self.internal_number_parser: Parser = AgnosticNumberParserFactory.get_parser(
             ParserType.NUMBER, GermanNumberParserConfiguration(culture_info))
-        self._connector_token = GermanNumericWithUnit.ConnectorToken
 
 
 class GermanCurrencyParserConfiguration(GermanNumberWithUnitParserConfiguration):
+
     def __init__(self, culture_info: CultureInfo = None):
         super().__init__(culture_info)
         self.add_dict_to_unit_map(GermanNumericWithUnit.CurrencySuffixList)

@@ -24,76 +24,27 @@ from .utilities import Token
 PrefixUnitResult = namedtuple('PrefixUnitResult', ['offset', 'unit'])
 
 
-class NumberWithUnitExtractorConfiguration(ABC):
-    @property
-    def ambiguity_filters_dict(self) -> Dict[Pattern, Pattern]:
-        pass
+class NumberWithUnitExtractorConfiguration:
 
-    @property
-    @abstractmethod
-    def extract_type(self) -> str:
-        raise NotImplementedError
+    ambiguity_filters_dict: Dict[Pattern, Pattern]
+    ambiguous_unit_list: List[str]
+    ambiguous_unit_number_multiplier_regex: Pattern
+    extract_type: str
+    suffix_list: Dict[str, str]
+    prefix_list: Dict[str, str]
+    unit_num_extractor: Extractor
+    build_prefix: str
+    build_suffix: str
+    connector_token: str
+    compound_unit_connector_regex: Pattern
+    non_unit_regex: Pattern
+    culture_info: CultureInfo
 
-    @property
-    @abstractmethod
-    def suffix_list(self) -> Dict[str, str]:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def prefix_list(self) -> Dict[str, str]:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def ambiguous_unit_list(self) -> List[str]:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def unit_num_extractor(self) -> Extractor:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def build_prefix(self) -> str:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def build_suffix(self) -> str:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def connector_token(self) -> str:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def compound_unit_connector_regex(self) -> Pattern:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def non_unit_regex(self) -> Pattern:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def ambiguous_unit_number_multiplier_regex(self) -> Pattern:
-        raise NotImplementedError
-
-    @property
-    def culture_info(self) -> CultureInfo:
-        return self._culture_info
-
-    @abstractmethod
     def expand_half_suffix(self, source, result, numbers):
         pass
 
     def __init__(self, culture_info: CultureInfo):
-        self._culture_info = culture_info
+        self.culture_info = culture_info
 
 
 class NumberWithUnitExtractor(Extractor):

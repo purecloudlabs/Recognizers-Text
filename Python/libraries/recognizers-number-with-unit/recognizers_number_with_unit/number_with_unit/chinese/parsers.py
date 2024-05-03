@@ -13,31 +13,21 @@ from recognizers_text.parser import Parser
 
 
 class ChineseNumberWithUnitParserConfiguration(NumberWithUnitParserConfiguration):
-    @property
-    def internal_number_parser(self) -> Parser:
-        return self._internal_number_parser
 
-    @property
-    def internal_number_extractor(self) -> Extractor:
-        return self._internal_number_extractor
-
-    @property
-    def connector_token(self) -> str:
-        return ''
+    internal_number_extractor: Extractor = ChineseNumberExtractor(ChineseNumberExtractorMode.EXTRACT_ALL)
+    connector_token: str = ''
 
     def __init__(self, culture_info: CultureInfo):
-        if culture_info is None:
-            culture_info = CultureInfo(Culture.Chinese)
+        culture_info = culture_info or CultureInfo(Culture.Chinese)
         super().__init__(culture_info)
-        self._internal_number_extractor = ChineseNumberExtractor(
-            ChineseNumberExtractorMode.EXTRACT_ALL)
-        self._internal_number_parser = AgnosticNumberParserFactory.get_parser(
+        self.internal_number_parser: Parser = AgnosticNumberParserFactory.get_parser(
             ParserType.NUMBER, ChineseNumberParserConfiguration(culture_info))
         self.currency_name_to_iso_code_map = ChineseNumericWithUnit.CurrencyNameToIsoCodeMap
         self.currency_fraction_code_list = ChineseNumericWithUnit.FractionalUnitNameToCodeMap
 
 
 class ChineseCurrencyParserConfiguration(ChineseNumberWithUnitParserConfiguration):
+
     def __init__(self, culture_info: CultureInfo = None):
         super().__init__(culture_info)
         self.add_dict_to_unit_map(ChineseNumericWithUnit.CurrencySuffixList)

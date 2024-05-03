@@ -18,21 +18,11 @@ UnitValue = namedtuple('UnitValue', ['number', 'unit'])
 CurrencyUnitValue = namedtuple('UnitValue', ['number', 'unit', 'iso_currency'])
 
 
-class NumberWithUnitParserConfiguration(ABC):
-    @property
-    @abstractmethod
-    def internal_number_parser(self) -> Parser:
-        raise NotImplementedError
+class NumberWithUnitParserConfiguration:
 
-    @property
-    @abstractmethod
-    def internal_number_extractor(self) -> Extractor:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def connector_token(self) -> str:
-        raise NotImplementedError
+    internal_number_parser: Parser
+    internal_number_extractor: Extractor
+    connector_token: str
 
     def __init__(self, culture_info: CultureInfo):
         self.culture_info: CultureInfo = culture_info

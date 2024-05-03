@@ -10,32 +10,23 @@ from recognizers_text.parser import Parser
 
 
 class CatalanNumberWithUnitParserConfiguration(NumberWithUnitParserConfiguration):
-    @property
-    def internal_number_parser(self) -> Parser:
-        return self._internal_number_parser
 
-    @property
-    def internal_number_extractor(self) -> Extractor:
-        return self._internal_number_extractor
-
-    @property
-    def connector_token(self) -> str:
-        return CatalanNumericWithUnit.ConnectorToken
+    internal_number_extractor: Extractor = CatalanNumberExtractor(NumberMode.DEFAULT)
+    connector_token: str = CatalanNumericWithUnit.ConnectorToken
 
     def __init__(self, culture_info: CultureInfo):
-        if culture_info is None:
-            culture_info = CultureInfo(Culture.Catalan)
+        culture_info = culture_info or CultureInfo(Culture.Catalan)
         super().__init__(culture_info)
-        self._internal_number_extractor = CatalanNumberExtractor(
-            NumberMode.DEFAULT)
-        self._internal_number_parser = AgnosticNumberParserFactory.get_parser(
+        self.internal_number_parser: Parser = AgnosticNumberParserFactory.get_parser(
             ParserType.NUMBER, CatalanNumberParserConfiguration(culture_info))
 
 
 class CatalanCurrencyParserConfiguration(CatalanNumberWithUnitParserConfiguration):
+
     def __init__(self, culture_info: CultureInfo = None):
         super().__init__(culture_info)
         self.add_dict_to_unit_map(CatalanNumericWithUnit.CurrencySuffixList)
         self.add_dict_to_unit_map(CatalanNumericWithUnit.CurrencyPrefixList)
         self.currency_name_to_iso_code_map = CatalanNumericWithUnit.CurrencyNameToIsoCodeMap
         self.currency_fraction_code_list = CatalanNumericWithUnit.FractionalUnitNameToCodeMap
+

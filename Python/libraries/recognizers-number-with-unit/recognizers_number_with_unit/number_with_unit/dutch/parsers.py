@@ -13,32 +13,23 @@ from recognizers_text.parser import Parser
 
 
 class DutchNumberWithUnitParserConfiguration(NumberWithUnitParserConfiguration):
-    @property
-    def internal_number_parser(self) -> Parser:
-        return self._internal_number_parser
 
-    @property
-    def internal_number_extractor(self) -> Extractor:
-        return self._internal_number_extractor
-
-    @property
-    def connector_token(self) -> str:
-        return ''
+    internal_number_extractor: Extractor = DutchNumberExtractor(NumberMode.DEFAULT)
+    connector_token: str = ''
 
     def __init__(self, culture_info: CultureInfo):
-        if culture_info is None:
-            culture_info = CultureInfo(Culture.Dutch)
+        culture_info = culture_info or CultureInfo(Culture.Dutch)
         super().__init__(culture_info)
-        self._internal_number_extractor = DutchNumberExtractor(
-            NumberMode.DEFAULT)
-        self._internal_number_parser = AgnosticNumberParserFactory.get_parser(
+        self.internal_number_parser: Parser = AgnosticNumberParserFactory.get_parser(
             ParserType.NUMBER, DutchNumberParserConfiguration(culture_info))
 
 
 class DutchCurrencyParserConfiguration(DutchNumberWithUnitParserConfiguration):
+
     def __init__(self, culture_info: CultureInfo = None):
         super().__init__(culture_info)
         self.add_dict_to_unit_map(DutchNumericWithUnit.CurrencySuffixList)
         self.add_dict_to_unit_map(DutchNumericWithUnit.CurrencyPrefixList)
         self.currency_name_to_iso_code_map = DutchNumericWithUnit.CurrencyNameToIsoCodeMap
         self.currency_fraction_code_list = DutchNumericWithUnit.FractionalUnitNameToCodeMap
+
