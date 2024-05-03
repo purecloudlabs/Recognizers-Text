@@ -9,11 +9,11 @@
 # Licensed under the MIT License.
 # ------------------------------------------------------------------------------
 
-from .base_date_time import BaseDateTime
+from .base_date_time import BaseDateTime, BaseDateTimeResource
 # pylint: disable=line-too-long
 
 
-class PortugueseDateTime:
+class PortugueseDateTime(BaseDateTimeResource):
     LangMarker = 'Por'
     CheckBothBeforeAfter = False
     TillRegex = f'(?<till>\\b(at[eé]h?|[aà]s|ao?)\\b|--|-|—|——)(\\s+\\b(o|[aà](s)?)\\b)?'

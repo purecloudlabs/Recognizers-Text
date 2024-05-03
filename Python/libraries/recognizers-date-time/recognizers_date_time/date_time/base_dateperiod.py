@@ -18,200 +18,79 @@ from .extractors import DateTimeExtractor
 from .parsers import DateTimeParser, DateTimeParseResult
 from .base_date import BaseDateParser
 from .base_duration import BaseDurationParser
+from recognizers_date_time.resources.base_date_time import BaseDateTime, BaseDateTimeResource
 from .utilities import Token, merge_all_tokens, DateTimeFormatUtil, DateTimeResolutionResult, DateUtils, DayOfWeek, \
     RegExpUtility, DateContext, TimexUtil
 
 MatchedIndex = namedtuple('MatchedIndex', ['matched', 'index'])
 
 
-class DatePeriodExtractorConfiguration(ABC):
+class DatePeriodExtractorConfiguration:
 
-    @property
-    @abstractmethod
-    def previous_prefix_regex(self) -> Pattern:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def simple_cases_regexes(self) -> List[Pattern]:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def check_both_before_after(self) -> Pattern:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def illegal_year_regex(self) -> Pattern:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def year_regex(self) -> Pattern:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def till_regex(self) -> Pattern:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def followed_unit(self) -> Pattern:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def number_combined_with_unit(self) -> Pattern:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def past_regex(self) -> Pattern:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def future_regex(self) -> Pattern:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def week_of_regex(self) -> Pattern:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def month_of_regex(self) -> Pattern:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def date_unit_regex(self) -> Pattern:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def time_unit_regex(self) -> Pattern:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def in_connector_regex(self) -> Pattern:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def range_unit_regex(self) -> Pattern:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def now_regex(self) -> Pattern:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def date_point_extractor(self) -> DateExtractor:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def integer_extractor(self) -> BaseNumberExtractor:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def ordinal_extractor(self) -> Extractor:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def cardinal_extractor(self) -> Extractor:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def number_parser(self) -> BaseNumberParser:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def duration_extractor(self) -> DateTimeExtractor:
-        raise NotImplementedError
-
-    @abstractmethod
     def get_from_token_index(self, source: str) -> MatchedIndex:
         raise NotImplementedError
 
-    @abstractmethod
     def get_between_token_index(self, source: str) -> MatchedIndex:
         raise NotImplementedError
 
-    @abstractmethod
     def has_connector_token(self, source: str) -> bool:
         raise NotImplementedError
 
-    @property
-    @abstractmethod
-    def within_next_prefix_regex(self) -> Pattern:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def future_suffix_regex(self) -> Pattern:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def ago_regex(self) -> Pattern:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def later_regex(self) -> Pattern:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def less_than_regex(self) -> Pattern:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def more_than_regex(self) -> Pattern:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def duration_date_restrictions(self) -> [str]:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def year_period_regex(self) -> Pattern:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def century_suffix_regex(self) -> Pattern:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def month_num_regex(self) -> Pattern:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def check_both_before_after(self) -> bool:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def previous_prefix_regex(self) -> Pattern:
-        raise NotImplementedError
+    def __init__(self, resource: BaseDateTimeResource):
+        self.of_year_regex = RegExpUtility.get_safe_reg_exp(resource.OfYearRegex)
+        self.week_with_week_day_range_regex = RegExpUtility.get_safe_reg_exp(resource.WeekWithWeekDayRangeRegex)
+        self.later_early_year_regex = RegExpUtility.get_safe_reg_exp(resource.LaterEarlyPeriodRegex)
+        self.all_half_year_regex = RegExpUtility.get_safe_reg_exp(resource.AllHalfYearRegex)
+        self.complex_date_period_regex = RegExpUtility.get_safe_reg_exp(resource.ComplexDatePeriodRegex)
+        self.rest_of_date_regex = RegExpUtility.get_safe_reg_exp(resource.RestOfDateRegex)
+        self.which_week_regex = RegExpUtility.get_safe_reg_exp(resource.WhichWeekRegex)
+        self.next_prefix_regex = RegExpUtility.get_safe_reg_exp(resource.NextPrefixRegex)
+        self.month_suffix_regex = RegExpUtility.get_safe_reg_exp(resource.MonthSuffixRegex)
+        self.relative_month_regex = RegExpUtility.get_safe_reg_exp(resource.RelativeMonthRegex)
+        self.week_day_regex = RegExpUtility.get_safe_reg_exp(resource.WeekDayRegex)
+        self.day_regex = RegExpUtility.get_safe_reg_exp(resource.DayRegex)
+        self.range_connector_regex = RegExpUtility.get_safe_reg_exp(resource.RangeConnectorRegex)
+        self.time_unit_regex = RegExpUtility.get_safe_reg_exp(resource.TimeUnitRegex)
+        self.first_last_regex = RegExpUtility.get_safe_reg_exp(resource.FirstLastRegex)
+        self.previous_prefix_regex = RegExpUtility.get_safe_reg_exp(resource.PastSuffixRegex)
+        self.past_prefix_regex = RegExpUtility.get_safe_reg_exp(resource.PastSuffixRegex)
+        self.check_both_before_after = resource.CheckBothBeforeAfter
+        self.week_of_month_regex = resource.WeekOfMonthRegex
+        self.check_both_before_after = resource.CheckBothBeforeAfter
+        self.illegal_year_regex = RegExpUtility.get_safe_reg_exp(BaseDateTime.IllegalYearRegex)
+        self.year_regex = RegExpUtility.get_safe_reg_exp(resource.YearRegex)
+        self.till_regex = RegExpUtility.get_safe_reg_exp(resource.TillRegex)
+        self.followed_unit = RegExpUtility.get_safe_reg_exp(resource.FollowedDateUnit)
+        self.number_combined_with_unit = RegExpUtility.get_safe_reg_exp(resource.NumberCombinedWithDateUnit)
+        self.past_regex = RegExpUtility.get_safe_reg_exp(resource.PreviousPrefixRegex)
+        self.previous_prefix_regex = RegExpUtility.get_safe_reg_exp(resource.PreviousPrefixRegex)
+        self.future_regex = RegExpUtility.get_safe_reg_exp(resource.NextPrefixRegex)
+        self.week_of_regex = RegExpUtility.get_safe_reg_exp(resource.WeekOfRegex)
+        self.month_of_regex = RegExpUtility.get_safe_reg_exp(resource.MonthOfRegex)
+        self.date_unit_regex = RegExpUtility.get_safe_reg_exp(resource.DateUnitRegex)
+        self.within_next_prefix_regex = RegExpUtility.get_safe_reg_exp(resource.WithinNextPrefixRegex)
+        self.in_connector_regex = RegExpUtility.get_safe_reg_exp(resource.InConnectorRegex)
+        self.range_unit_regex = RegExpUtility.get_safe_reg_exp(resource.RangeUnitRegex)
+        self.from_regex = RegExpUtility.get_safe_reg_exp(resource.FromRegex)
+        self.before_regex = RegExpUtility.get_safe_reg_exp(resource.BeforeRegex)
+        self.now_regex = RegExpUtility.get_safe_reg_exp(resource.NowRegex)
+        self.future_suffix_regex = RegExpUtility.get_safe_reg_exp(resource.FutureSuffixRegex)
+        self.ago_regex = RegExpUtility.get_safe_reg_exp(resource.AgoRegex)
+        self.later_regex = RegExpUtility.get_safe_reg_exp(resource.LaterRegex)
+        self.less_than_regex = RegExpUtility.get_safe_reg_exp(resource.LessThanRegex)
+        self.more_than_regex = RegExpUtility.get_safe_reg_exp(resource.MoreThanRegex)
+        self.duration_date_restrictions = resource.DurationDateRestrictions
+        self.year_period_regex = RegExpUtility.get_safe_reg_exp(resource.YearPeriodRegex)
+        self.month_num_regex = RegExpUtility.get_safe_reg_exp(resource.MonthNumRegex)
+        self.century_suffix_regex = RegExpUtility.get_safe_reg_exp(resource.CenturySuffixRegex)
+        self.decade_with_century_regex = RegExpUtility.get_safe_reg_exp(resource.DecadeWithCenturyRegex)
+        self.time_unit_regex = RegExpUtility.get_safe_reg_exp(resource.TimeUnitRegex)
+        if hasattr(resource, 'WrittenMonthRegex'):
+            self.written_month_regex = RegExpUtility.get_safe_reg_exp(resource.WrittenMonthRegex)
+        if hasattr(resource, 'BetweenTokenRegex'):
+            self.between_token_regex = RegExpUtility.get_safe_reg_exp(resource.BetweenTokenRegex)
+        if hasattr(resource, 'ThisPrefixRegex'):
+            self.this_prefix_regex = RegExpUtility.get_safe_reg_exp(resource.ThisPrefixRegex)
 
 
 class BaseDatePeriodExtractor(DateTimeExtractor):

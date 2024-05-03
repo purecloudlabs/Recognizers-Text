@@ -9,11 +9,11 @@
 # Licensed under the MIT License.
 # ------------------------------------------------------------------------------
 
-from .base_date_time import BaseDateTime
+from .base_date_time import BaseDateTime, BaseDateTimeResource
 # pylint: disable=line-too-long
 
 
-class DutchDateTime:
+class DutchDateTime(BaseDateTimeResource):
     LangMarker = 'Dut'
     CheckBothBeforeAfter = False
     TillRegex = f'(?<till>\\b(tot(dat|\\s+en\\s+met)?|en|gedurende|tijdens|ten tijde van)\\b|{BaseDateTime.RangeConnectorSymbolRegex})'

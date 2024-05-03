@@ -10,6 +10,79 @@
 # ------------------------------------------------------------------------------
 
 # pylint: disable=line-too-long
+from typing import List
+
+
+class BaseDateTimeResource:
+    OfYearRegex: str
+    WeekWithWeekDayRangeRegex: str
+    LaterEarlyPeriodRegex: str
+    AllHalfYearRegex: str
+    ComplexDatePeriodRegex: str
+    RestOfDateRegex: str
+    WhichWeekRegex: str
+    NextPrefixRegex: str
+    MonthSuffixRegex: str
+    RelativeMonthRegex: str
+    WrittenMonthRegex: str
+    WeekDayRegex: str
+    DayRegex: str
+    RangeConnectorRegex: str
+    TimeUnitRegex: str
+    FirstLastRegex: str
+    BetweenTokenRegex: str
+    PastSuffixRegex: str
+    WeekOfMonthRegex: str
+    CheckBothBeforeAfter: bool
+    DurationDateRestrictions: List[str]
+    SimpleCasesRegex: str
+    BetweenRegex: str
+    OneWordPeriodRegex: str
+    MonthWithYear: str
+    MonthNumWithYear: str
+    YearRegex: str
+    WeekOfMonthRegex: str
+    WeekOfYearRegex: str
+    MonthFrontBetweenRegex: str
+    MonthFrontSimpleCasesRegex: str
+    QuarterRegex: str
+    QuarterRegexYearFront: str
+    AllHalfYearRegex: str
+    SeasonRegex: str
+    WhichWeekRegex: str
+    RestOfDateRegex: str
+    LaterEarlyPeriodRegex: str
+    WeekWithWeekDayRangeRegex: str
+    YearPlusNumberRegex: str
+    DecadeWithCenturyRegex: str
+    RelativeDecadeRegex: str
+    ReferenceDatePeriodRegex: str
+    YearRegex: str
+    TillRegex: str
+    FollowedDateUnit: str
+    NumberCombinedWithDateUnit: str
+    PreviousPrefixRegex: str
+    NextPrefixRegex: str
+    WeekOfRegex: str
+    MonthOfRegex: str
+    DateUnitRegex: str
+    WithinNextPrefixRegex: str
+    InConnectorRegex: str
+    RangeUnitRegex: str
+    FromRegex: str
+    BeforeRegex: str
+    NowRegex: str
+    FutureSuffixRegex: str
+    AgoRegex: str
+    LaterRegex: str
+    LessThanRegex: str
+    MoreThanRegex: str
+    YearPeriodRegex: str
+    MonthNumRegex: str
+    CenturySuffixRegex: str
+    DecadeWithCenturyRegex: str
+    PreviousPrefixRegex: str
+    TimeUnitRegex: str
 
 
 class BaseDateTime:

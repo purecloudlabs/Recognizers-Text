@@ -9,11 +9,11 @@
 # Licensed under the MIT License.
 # ------------------------------------------------------------------------------
 
-from .base_date_time import BaseDateTime
+from .base_date_time import BaseDateTime, BaseDateTimeResource
 # pylint: disable=line-too-long
 
 
-class FrenchDateTime:
+class FrenchDateTime(BaseDateTimeResource):
     LangMarker = 'Fre'
     CheckBothBeforeAfter = False
     TillRegex = f'(?<till>\\b(au|et|(jusqu\')?a|avant)\\b|(jusqu\')?à|--|-|—|——)'

@@ -9,11 +9,11 @@
 # Licensed under the MIT License.
 # ------------------------------------------------------------------------------
 
-from .base_date_time import BaseDateTime
+from .base_date_time import BaseDateTime, BaseDateTimeResource
 # pylint: disable=line-too-long
 
 
-class GermanDateTime:
+class GermanDateTime(BaseDateTimeResource):
     LangMarker = 'Ger'
     CheckBothBeforeAfter = False
     TillRegex = f'(?<till>zu|bis\\s*zum|zum|bis|bis\\s*hin(\\s*zum)?|--|-|—|——)'

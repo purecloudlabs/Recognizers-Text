@@ -1,8 +1,8 @@
-from .base_date_time import BaseDateTime
+from .base_date_time import BaseDateTime, BaseDateTimeResource
 # pylint: disable=line-too-long
 
 
-class ArabicDateTime:
+class ArabicDateTime(BaseDateTimeResource):
     LangMarker = 'Ara'
     CheckBothBeforeAfter = False
     TillRegex = f'(?<till>\\b(إلى|حتى يوم|حتى|خلال|عبر)\\b|{BaseDateTime.RangeConnectorSymbolRegex})'

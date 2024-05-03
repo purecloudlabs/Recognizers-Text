@@ -9,11 +9,11 @@
 # Licensed under the MIT License.
 # ------------------------------------------------------------------------------
 
-from .base_date_time import BaseDateTime
+from .base_date_time import BaseDateTime, BaseDateTimeResource
 # pylint: disable=line-too-long
 
 
-class EnglishDateTime:
+class EnglishDateTime(BaseDateTimeResource):
     LangMarker = 'Eng'
     CheckBothBeforeAfter = False
     TillRegex = f'(?<till>\\b(to|(un)?till?|thru|through)\\b(\\s+the\\b)?|{BaseDateTime.RangeConnectorSymbolRegex})'

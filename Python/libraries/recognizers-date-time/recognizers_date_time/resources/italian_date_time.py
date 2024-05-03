@@ -9,11 +9,11 @@
 # Licensed under the MIT License.
 # ------------------------------------------------------------------------------
 
-from .base_date_time import BaseDateTime
+from .base_date_time import BaseDateTime, BaseDateTimeResource
 # pylint: disable=line-too-long
 
 
-class ItalianDateTime:
+class ItalianDateTime(BaseDateTimeResource):
     LangMarker = 'Ita'
     CheckBothBeforeAfter = False
     TillRegex = f'(?<till>\\b(fino\\s+a(l(l[aoe\'])?|gli|i|d)?|a(l(l[aoe\'])?|gli|i|d)?|e\\s+(il?|l[aoe\']|gli))\\b|--|-|—|——|~)'
