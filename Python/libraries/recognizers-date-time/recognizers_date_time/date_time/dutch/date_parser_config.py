@@ -142,12 +142,9 @@ class DutchDateParserConfiguration(DateParserConfiguration):
     def date_token_prefix(self) -> str:
         return self._date_token_prefix
 
-    _relative_day_regex = RegExpUtility.get_safe_reg_exp(
-        DutchDateTime.RelativeDayRegex)
-    _next_prefix_regex = RegExpUtility.get_safe_reg_exp(
-        DutchDateTime.NextPrefixRegex)
-    _past_prefix_regex = RegExpUtility.get_safe_reg_exp(
-        DutchDateTime.PreviousPrefixRegex)
+    _relative_day_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.RelativeDayRegex)
+    _next_prefix_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.NextPrefixRegex)
+    _past_prefix_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.PreviousPrefixRegex)
 
     def __init__(self, config: BaseDateParserConfiguration):
         self._ordinal_extractor = config.ordinal_extractor
@@ -164,34 +161,20 @@ class DutchDateParserConfiguration(DateParserConfiguration):
         self._cardinal_map = config.cardinal_map
         self._date_regex = (DutchDateExtractorConfiguration()).date_regex_list
         self._on_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.OnRegex)
-        self._special_day_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.SpecialDayRegex)
-        self._special_day_with_num_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.SpecialDayWithNumRegex)
-        self._next_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.NextDateRegex)
-        self._unit_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.DateUnitRegex)
-        self._month_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.MonthRegex)
-        self._week_day_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.WeekDayRegex)
-        self._last_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.LastDateRegex)
-        self._this_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.ThisRegex)
-        self._week_day_of_month_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.WeekDayOfMonthRegex)
-        self._for_the_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.ForTheRegex)
-        self._week_day_and_day_of_month_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.WeekDayAndDayOfMonthRegex)
-        self._week_day_and_day_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.WeekDayAndDayRegex)
-        self._relative_month_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.RelativeMonthRegex)
-        self._relative_week_day_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.RelativeWeekDayRegex)
+        self._special_day_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.SpecialDayRegex)
+        self._special_day_with_num_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.SpecialDayWithNumRegex)
+        self._next_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.NextDateRegex)
+        self._unit_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.DateUnitRegex)
+        self._month_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.MonthRegex)
+        self._week_day_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.WeekDayRegex)
+        self._last_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.LastDateRegex)
+        self._this_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.ThisRegex)
+        self._week_day_of_month_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.WeekDayOfMonthRegex)
+        self._for_the_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.ForTheRegex)
+        self._week_day_and_day_of_month_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.WeekDayAndDayOfMonthRegex)
+        self._week_day_and_day_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.WeekDayAndDayRegex)
+        self._relative_month_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.RelativeMonthRegex)
+        self._relative_week_day_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.RelativeWeekDayRegex)
         self._utility_configuration = config.utility_configuration
         self._date_token_prefix = DutchDateTime.DateTokenPrefix
         self._check_both_before_after = DutchDateTime.CheckBothBeforeAfter
@@ -199,8 +182,7 @@ class DutchDateParserConfiguration(DateParserConfiguration):
     def get_swift_day(self, source: str) -> int:
         trimmed_text = source.strip().lower()
         swift = 0
-        matches = regex.search(
-            DutchDateParserConfiguration._relative_day_regex, source)
+        matches = regex.search(DutchDateParserConfiguration._relative_day_regex, source)
         if trimmed_text == 'vandaag':
             swift = 0
         elif trimmed_text == 'morgen':
@@ -226,10 +208,8 @@ class DutchDateParserConfiguration(DateParserConfiguration):
     def get_swift(self, source: str) -> int:
         trimmed_text = source.strip().lower()
         swift = 0
-        next_prefix_matches = regex.search(
-            DutchDateParserConfiguration._next_prefix_regex, trimmed_text)
-        past_prefix_matches = regex.search(
-            DutchDateParserConfiguration._past_prefix_regex, trimmed_text)
+        next_prefix_matches = regex.search(DutchDateParserConfiguration._next_prefix_regex, trimmed_text)
+        past_prefix_matches = regex.search(DutchDateParserConfiguration._past_prefix_regex, trimmed_text)
         if next_prefix_matches:
             swift = 1
         elif past_prefix_matches:

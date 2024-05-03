@@ -145,12 +145,9 @@ class SpanishDateParserConfiguration(DateParserConfiguration):
     # The following three regexes only used in this configuration
     # They are not used in the base parser, therefore they are not extracted
     # If the spanish date parser need the same regexes, they should be extracted
-    _relative_day_regex = RegExpUtility.get_safe_reg_exp(
-        SpanishDateTime.RelativeDayRegex)
-    _next_prefix_regex = RegExpUtility.get_safe_reg_exp(
-        SpanishDateTime.NextPrefixRegex)
-    _past_prefix_regex = RegExpUtility.get_safe_reg_exp(
-        SpanishDateTime.PreviousPrefixRegex)
+    _relative_day_regex = RegExpUtility.get_safe_reg_exp(SpanishDateTime.RelativeDayRegex)
+    _next_prefix_regex = RegExpUtility.get_safe_reg_exp(SpanishDateTime.NextPrefixRegex)
+    _past_prefix_regex = RegExpUtility.get_safe_reg_exp(SpanishDateTime.PreviousPrefixRegex)
 
     def __init__(self, config: BaseDateParserConfiguration):
         self._ordinal_extractor = config.ordinal_extractor
@@ -161,43 +158,28 @@ class SpanishDateParserConfiguration(DateParserConfiguration):
         self._number_parser = config.number_parser
         self._duration_parser = config.duration_parser
         self._month_of_year = config.month_of_year
-        self._day_of_month = {
-            **config.day_of_month, **SpanishDateTime.DayOfMonth}
+        self._day_of_month = {**config.day_of_month, **SpanishDateTime.DayOfMonth}
         self._day_of_week = config.day_of_week
         self._unit_map = config.unit_map
         self._cardinal_map = config.cardinal_map
-        self._date_regex = (
-            SpanishDateExtractorConfiguration()).date_regex_list
-        self._on_regex = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.OnRegex)
-        self._special_day_regex = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.SpecialDayRegex)
-        self._special_day_with_num_regex = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.SpecialDayWithNumRegex)
-        self._next_regex = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.NextDateRegex)
-        self._unit_regex = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.DateUnitRegex)
-        self._month_regex = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.MonthRegex)
-        self._week_day_regex = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.WeekDayRegex)
-        self._last_regex = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.LastDateRegex)
-        self._this_regex = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.ThisRegex)
-        self._week_day_of_month_regex = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.WeekDayOfMonthRegex)
-        self._for_the_regex = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.ForTheRegex)
+        self._date_regex = (SpanishDateExtractorConfiguration()).date_regex_list
+        self._on_regex = RegExpUtility.get_safe_reg_exp(SpanishDateTime.OnRegex)
+        self._special_day_regex = RegExpUtility.get_safe_reg_exp(SpanishDateTime.SpecialDayRegex)
+        self._special_day_with_num_regex = RegExpUtility.get_safe_reg_exp(SpanishDateTime.SpecialDayWithNumRegex)
+        self._next_regex = RegExpUtility.get_safe_reg_exp(SpanishDateTime.NextDateRegex)
+        self._unit_regex = RegExpUtility.get_safe_reg_exp(SpanishDateTime.DateUnitRegex)
+        self._month_regex = RegExpUtility.get_safe_reg_exp(SpanishDateTime.MonthRegex)
+        self._week_day_regex = RegExpUtility.get_safe_reg_exp(SpanishDateTime.WeekDayRegex)
+        self._last_regex = RegExpUtility.get_safe_reg_exp(SpanishDateTime.LastDateRegex)
+        self._this_regex = RegExpUtility.get_safe_reg_exp(SpanishDateTime.ThisRegex)
+        self._week_day_of_month_regex = RegExpUtility.get_safe_reg_exp(SpanishDateTime.WeekDayOfMonthRegex)
+        self._for_the_regex = RegExpUtility.get_safe_reg_exp(SpanishDateTime.ForTheRegex)
         self._week_day_and_day_of_month_regex = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.WeekDayAndDayOfMonthRegex)
-        self._week_day_and_day_regex = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.WeekDayAndDayRegex)
-        self._relative_month_regex = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.RelativeMonthRegex)
-        self._relative_week_day_regex = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.RelativeWeekDayRegex)
+            SpanishDateTime.WeekDayAndDayOfMonthRegex
+        )
+        self._week_day_and_day_regex = RegExpUtility.get_safe_reg_exp(SpanishDateTime.WeekDayAndDayRegex)
+        self._relative_month_regex = RegExpUtility.get_safe_reg_exp(SpanishDateTime.RelativeMonthRegex)
+        self._relative_week_day_regex = RegExpUtility.get_safe_reg_exp(SpanishDateTime.RelativeWeekDayRegex)
         self._utility_configuration = config.utility_configuration
         self._date_token_prefix = SpanishDateTime.DateTokenPrefix
         self._check_both_before_after = SpanishDateTime.CheckBothBeforeAfter
@@ -209,7 +191,12 @@ class SpanishDateParserConfiguration(DateParserConfiguration):
         # TODO: add the relative day logic if needed. If yes, the whole method should be abstracted.
         if trimmed_text == 'hoy' or trimmed_text == 'el dia':
             swift = 0
-        elif trimmed_text == 'mañana' or trimmed_text.endswith('dia siguiente') or trimmed_text.endswith('el dia de mañana') or trimmed_text.endswith('proximo dia'):
+        elif (
+            trimmed_text == 'mañana'
+            or trimmed_text.endswith('dia siguiente')
+            or trimmed_text.endswith('el dia de mañana')
+            or trimmed_text.endswith('proximo dia')
+        ):
             swift = 1
         elif trimmed_text == 'ayer':
             swift = -1

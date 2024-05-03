@@ -65,18 +65,12 @@ class EnglishTimePeriodParserConfiguration(TimePeriodParserConfiguration):
         self._time_extractor = config.time_extractor
         self._time_parser = config.time_parser
         self._integer_extractor = EnglishIntegerExtractor()
-        self._pure_number_from_to_regex = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.PureNumFromTo)
-        self._pure_number_between_and_regex = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.PureNumBetweenAnd)
-        self._specific_time_from_to_regex = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.SpecificTimeFromTo)
-        self._specific_time_between_and_regex = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.SpecificTimeBetweenAnd)
-        self._time_of_day_regex = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.TimeOfDayRegex)
-        self._till_regex = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.TillRegex)
+        self._pure_number_from_to_regex = RegExpUtility.get_safe_reg_exp(EnglishDateTime.PureNumFromTo)
+        self._pure_number_between_and_regex = RegExpUtility.get_safe_reg_exp(EnglishDateTime.PureNumBetweenAnd)
+        self._specific_time_from_to_regex = RegExpUtility.get_safe_reg_exp(EnglishDateTime.SpecificTimeFromTo)
+        self._specific_time_between_and_regex = RegExpUtility.get_safe_reg_exp(EnglishDateTime.SpecificTimeBetweenAnd)
+        self._time_of_day_regex = RegExpUtility.get_safe_reg_exp(EnglishDateTime.TimeOfDayRegex)
+        self._till_regex = RegExpUtility.get_safe_reg_exp(EnglishDateTime.TillRegex)
         self._numbers = EnglishDateTime.Numbers
         self._utility_configuration = config.utility_configuration
 
@@ -112,13 +106,7 @@ class EnglishTimePeriodParserConfiguration(TimePeriodParserConfiguration):
         elif any(trimmed_text.endswith(o) for o in EnglishDateTime.MealtimeDinnerTermList):
             time_of_day = Constants.MEALTIME_DINNER
         else:
-            return MatchedTimeRegex(
-                matched=False,
-                timex='',
-                begin_hour=0,
-                end_hour=0,
-                end_min=0
-            )
+            return MatchedTimeRegex(matched=False, timex='', begin_hour=0, end_hour=0, end_min=0)
 
         parse_result = TimexUtil.parse_time_of_day(time_of_day)
         timex = parse_result.timex
@@ -126,10 +114,4 @@ class EnglishTimePeriodParserConfiguration(TimePeriodParserConfiguration):
         end_hour = parse_result.end_hour
         end_min = parse_result.end_min
 
-        return MatchedTimeRegex(
-            matched=True,
-            timex=timex,
-            begin_hour=begin_hour,
-            end_hour=end_hour,
-            end_min=end_min
-        )
+        return MatchedTimeRegex(matched=True, timex=timex, begin_hour=begin_hour, end_hour=end_hour, end_min=end_min)

@@ -56,15 +56,15 @@ class JapaneseDurationParserConfiguration(CJKDurationParserConfiguration):
     class DurationParserConfiguration(JapaneseNumberWithUnitParserConfiguration):
         def __init__(self, culture_info: CultureInfo = CultureInfo(Culture.Japanese)):
             super().__init__(culture_info)
-            self.bind_dictionary = \
+            self.bind_dictionary = (
                 JapaneseDurationExtractorConfiguration.DurationExtractorConfiguration.duration_suffix_list
+            )
 
     def __init__(self, config: CJKCommonDateTimeParserConfiguration):
         super().__init__()
         self._internal_parser = NumberWithUnitParser(self.DurationParserConfiguration())
 
-        self._duration_extractor = BaseCJKDurationExtractor(
-            JapaneseDurationExtractorConfiguration(), False)
+        self._duration_extractor = BaseCJKDurationExtractor(JapaneseDurationExtractorConfiguration(), False)
 
         self._year_regex = JapaneseDurationExtractorConfiguration().year_regex
         self._some_regex = JapaneseDurationExtractorConfiguration().some_regex
@@ -75,4 +75,3 @@ class JapaneseDurationParserConfiguration(CJKDurationParserConfiguration):
 
         self._unit_map = config.unit_map
         self._unit_value_map = config.unit_value_map
-

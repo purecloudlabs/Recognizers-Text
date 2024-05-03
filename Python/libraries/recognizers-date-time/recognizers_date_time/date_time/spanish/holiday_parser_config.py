@@ -29,37 +29,36 @@ class SpanishHolidayParserConfiguration(BaseHolidayParserConfiguration):
         self._holiday_regexes = [
             RegExpUtility.get_safe_reg_exp(SpanishDateTime.HolidayRegex1),
             RegExpUtility.get_safe_reg_exp(SpanishDateTime.HolidayRegex2),
-            RegExpUtility.get_safe_reg_exp(SpanishDateTime.HolidayRegex3)
+            RegExpUtility.get_safe_reg_exp(SpanishDateTime.HolidayRegex3),
         ]
         self._holiday_names = SpanishDateTime.HolidayNames
         self._variable_holidays_timex_dictionary = SpanishDateTime.VariableHolidaysTimexDictionary
 
-        self.next_prefix_regex = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.NextPrefixRegex)
-        self.previous_prefix_regex = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.PreviousPrefixRegex)
-        self.this_prefix_regex = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.ThisPrefixRegex)
+        self.next_prefix_regex = RegExpUtility.get_safe_reg_exp(SpanishDateTime.NextPrefixRegex)
+        self.previous_prefix_regex = RegExpUtility.get_safe_reg_exp(SpanishDateTime.PreviousPrefixRegex)
+        self.this_prefix_regex = RegExpUtility.get_safe_reg_exp(SpanishDateTime.ThisPrefixRegex)
 
     def _init_holiday_funcs(self) -> Dict[str, Callable[[int], datetime]]:
-        local = dict([
-            ('padres', SpanishHolidayParserConfiguration.fathers_day),
-            ('madres', SpanishHolidayParserConfiguration.mothers_day),
-            ('acciondegracias', SpanishHolidayParserConfiguration.thanksgiving_day),
-            ('trabajador', SpanishHolidayParserConfiguration.international_workers_day),
-            ('delaraza', SpanishHolidayParserConfiguration.columbus_day),
-            ('memoria', SpanishHolidayParserConfiguration.memorial_day),
-            ('pascuas', SpanishHolidayParserConfiguration.easter_day),
-            ('navidad', SpanishHolidayParserConfiguration.christmas_day),
-            ('nochebuena', SpanishHolidayParserConfiguration.christmas_eve),
-            ('añonuevo', SpanishHolidayParserConfiguration.new_year),
-            ('nochevieja', SpanishHolidayParserConfiguration.new_year_eve),
-            ('yuandan', SpanishHolidayParserConfiguration.new_year),
-            ('maestro', SpanishHolidayParserConfiguration.teacher_day),
-            ('todoslossantos', SpanishHolidayParserConfiguration.halloween_day),
-            ('niño', SpanishHolidayParserConfiguration.children_day),
-            ('mujer', SpanishHolidayParserConfiguration.female_day)
-        ])
+        local = dict(
+            [
+                ('padres', SpanishHolidayParserConfiguration.fathers_day),
+                ('madres', SpanishHolidayParserConfiguration.mothers_day),
+                ('acciondegracias', SpanishHolidayParserConfiguration.thanksgiving_day),
+                ('trabajador', SpanishHolidayParserConfiguration.international_workers_day),
+                ('delaraza', SpanishHolidayParserConfiguration.columbus_day),
+                ('memoria', SpanishHolidayParserConfiguration.memorial_day),
+                ('pascuas', SpanishHolidayParserConfiguration.easter_day),
+                ('navidad', SpanishHolidayParserConfiguration.christmas_day),
+                ('nochebuena', SpanishHolidayParserConfiguration.christmas_eve),
+                ('añonuevo', SpanishHolidayParserConfiguration.new_year),
+                ('nochevieja', SpanishHolidayParserConfiguration.new_year_eve),
+                ('yuandan', SpanishHolidayParserConfiguration.new_year),
+                ('maestro', SpanishHolidayParserConfiguration.teacher_day),
+                ('todoslossantos', SpanishHolidayParserConfiguration.halloween_day),
+                ('niño', SpanishHolidayParserConfiguration.children_day),
+                ('mujer', SpanishHolidayParserConfiguration.female_day),
+            ]
+        )
 
         return {**super()._init_holiday_funcs(), **local}
 
@@ -115,4 +114,11 @@ class SpanishHolidayParserConfiguration(BaseHolidayParserConfiguration):
         return swift
 
     def sanitize_holiday_token(self, holiday: str) -> str:
-        return holiday.replace(' ', '').replace('á', 'a').replace('é', 'e').replace('í', 'i').replace('ó', 'o').replace('ú', 'u')
+        return (
+            holiday.replace(' ', '')
+            .replace('á', 'a')
+            .replace('é', 'e')
+            .replace('í', 'i')
+            .replace('ó', 'o')
+            .replace('ú', 'u')
+        )

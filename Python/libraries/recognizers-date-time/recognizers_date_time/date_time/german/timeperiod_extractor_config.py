@@ -55,8 +55,7 @@ class GermanTimePeriodExtractorConfiguration(TimePeriodExtractorConfiguration):
     def __init__(self):
         super().__init__()
         self._check_both_before_after = GermanDateTime.CheckBothBeforeAfter
-        self._single_time_extractor = BaseTimeExtractor(
-            GermanTimeExtractorConfiguration())
+        self._single_time_extractor = BaseTimeExtractor(GermanTimeExtractorConfiguration())
         self._integer_extractor = GermanIntegerExtractor()
         self.utility_configuration = GermanDateTimeUtilityConfiguration()
 
@@ -64,22 +63,16 @@ class GermanTimePeriodExtractorConfiguration(TimePeriodExtractorConfiguration):
             RegExpUtility.get_safe_reg_exp(GermanDateTime.PureNumFromTo),
             RegExpUtility.get_safe_reg_exp(GermanDateTime.PureNumBetweenAnd),
             RegExpUtility.get_safe_reg_exp(GermanDateTime.PmRegex),
-            RegExpUtility.get_safe_reg_exp(GermanDateTime.AmRegex)
+            RegExpUtility.get_safe_reg_exp(GermanDateTime.AmRegex),
         ]
 
-        self._till_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.TillRegex)
-        self._time_of_day_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.TimeOfDayRegex)
-        self._general_ending_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.GeneralEndingRegex)
+        self._till_regex: Pattern = RegExpUtility.get_safe_reg_exp(GermanDateTime.TillRegex)
+        self._time_of_day_regex: Pattern = RegExpUtility.get_safe_reg_exp(GermanDateTime.TimeOfDayRegex)
+        self._general_ending_regex: Pattern = RegExpUtility.get_safe_reg_exp(GermanDateTime.GeneralEndingRegex)
 
-        self.from_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.FromRegex)
-        self.range_connector_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.RangeConnectorRegex)
-        self.before_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.BeforeRegex)
+        self.from_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.FromRegex)
+        self.range_connector_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.RangeConnectorRegex)
+        self.before_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.BeforeRegex)
         self._token_before_date = GermanDateTime.TokenBeforeDate
         self._pure_number_regex = [GermanDateTime.PureNumFromTo, GermanDateTime.PureNumFromTo]
 

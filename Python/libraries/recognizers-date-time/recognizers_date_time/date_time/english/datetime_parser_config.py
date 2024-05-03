@@ -111,24 +111,19 @@ class EnglishDateTimeParserConfiguration(DateTimeParserConfiguration):
         self._time_extractor = config.time_extractor
         self._date_parser = config.date_parser
         self._time_parser = config.time_parser
-        self._now_regex = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.NowRegex)
-        self._am_time_regex = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.AMTimeRegex)
-        self._pm_time_regex = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.PMTimeRegex)
+        self._now_regex = RegExpUtility.get_safe_reg_exp(EnglishDateTime.NowRegex)
+        self._am_time_regex = RegExpUtility.get_safe_reg_exp(EnglishDateTime.AMTimeRegex)
+        self._pm_time_regex = RegExpUtility.get_safe_reg_exp(EnglishDateTime.PMTimeRegex)
         self._simple_time_of_today_after_regex = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.SimpleTimeOfTodayAfterRegex)
+            EnglishDateTime.SimpleTimeOfTodayAfterRegex
+        )
         self._simple_time_of_today_before_regex = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.SimpleTimeOfTodayBeforeRegex)
-        self._specific_time_of_day_regex = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.SpecificTimeOfDayRegex)
-        self._specific_end_of_regex = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.SpecificEndOfRegex)
-        self._unspecific_end_of_regex = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.UnspecificEndOfRegex)
-        self._unit_regex = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.TimeUnitRegex)
+            EnglishDateTime.SimpleTimeOfTodayBeforeRegex
+        )
+        self._specific_time_of_day_regex = RegExpUtility.get_safe_reg_exp(EnglishDateTime.SpecificTimeOfDayRegex)
+        self._specific_end_of_regex = RegExpUtility.get_safe_reg_exp(EnglishDateTime.SpecificEndOfRegex)
+        self._unspecific_end_of_regex = RegExpUtility.get_safe_reg_exp(EnglishDateTime.UnspecificEndOfRegex)
+        self._unit_regex = RegExpUtility.get_safe_reg_exp(EnglishDateTime.TimeUnitRegex)
         self._numbers = config.numbers
         self._cardinal_extractor = config.cardinal_extractor
         self._number_parser = config.number_parser

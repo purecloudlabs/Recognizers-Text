@@ -90,7 +90,8 @@ class JapaneseDateTimeExtractorConfiguration(CJKDateTimeExtractorConfiguration):
         self._after_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.AfterRegex)
         self._datetime_period_unit_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.DateTimePeriodUnitRegex)
         self._duration_relative_duration_unit_regex = RegExpUtility.get_safe_reg_exp(
-            JapaneseDateTime.DurationRelativeDurationUnitRegex)
+            JapaneseDateTime.DurationRelativeDurationUnitRegex
+        )
         self._ago_later_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.AgoLaterRegex)
         self._connector_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.ConnectorRegex)
 

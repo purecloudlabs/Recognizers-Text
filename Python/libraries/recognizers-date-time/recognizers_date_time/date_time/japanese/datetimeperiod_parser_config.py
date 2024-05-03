@@ -23,7 +23,7 @@ class JapaneseDateTimePeriodParserConfiguration(CJKDateTimePeriodParserConfigura
     @property
     def mo_regex(self) -> Pattern:
         return self._mo_regex
-    
+
     @property
     def mi_regex(self) -> Pattern:
         return self._mi_regex
@@ -141,7 +141,8 @@ class JapaneseDateTimePeriodParserConfiguration(CJKDateTimePeriodParserConfigura
         super().__init__()
         self._cardinal_extractor = JapaneseCardinalExtractor()
         self._cardinal_parser = AgnosticNumberParserFactory.get_parser(
-                ParserType.NUMBER, JapaneseNumberParserConfiguration())
+            ParserType.NUMBER, JapaneseNumberParserConfiguration()
+        )
 
         self._date_extractor = config.date_extractor
         self._time_extractor = config.time_extractor

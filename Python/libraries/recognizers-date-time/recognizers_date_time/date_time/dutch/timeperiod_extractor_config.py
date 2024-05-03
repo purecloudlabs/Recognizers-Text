@@ -91,8 +91,7 @@ class DutchTimePeriodExtractorConfiguration(TimePeriodExtractorConfiguration):
     def __init__(self):
         super().__init__()
         self._check_both_before_after = DutchDateTime.CheckBothBeforeAfter
-        self._single_time_extractor = BaseTimeExtractor(
-            DutchTimeExtractorConfiguration())
+        self._single_time_extractor = BaseTimeExtractor(DutchTimeExtractorConfiguration())
         self._integer_extractor = DutchIntegerExtractor()
         self.utility_configuration = DutchDateTimeUtilityConfiguration()
 
@@ -100,49 +99,33 @@ class DutchTimePeriodExtractorConfiguration(TimePeriodExtractorConfiguration):
             RegExpUtility.get_safe_reg_exp(DutchDateTime.PureNumFromTo),
             RegExpUtility.get_safe_reg_exp(DutchDateTime.PureNumBetweenAnd),
             RegExpUtility.get_safe_reg_exp(DutchDateTime.PmRegex),
-            RegExpUtility.get_safe_reg_exp(DutchDateTime.AmRegex)
+            RegExpUtility.get_safe_reg_exp(DutchDateTime.AmRegex),
         ]
 
-        self._till_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.TillRegex)
-        self._time_of_day_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.TimeOfDayRegex)
-        self._general_ending_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.GeneralEndingRegex)
+        self._till_regex: Pattern = RegExpUtility.get_safe_reg_exp(DutchDateTime.TillRegex)
+        self._time_of_day_regex: Pattern = RegExpUtility.get_safe_reg_exp(DutchDateTime.TimeOfDayRegex)
+        self._general_ending_regex: Pattern = RegExpUtility.get_safe_reg_exp(DutchDateTime.GeneralEndingRegex)
         self._hour_regex: Pattern = RegExpUtility.get_safe_reg_exp(DutchDateTime.HourRegex)
-        self._period_desc_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.DescRegex)
-        self._period_hour_num_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.PeriodHourNumRegex)
-        self._specific_time_of_day_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.SpecificTimeOfDayRegex)
-        self.time_followed_unit: Pattern = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.TimeFollowedUnit)
+        self._period_desc_regex: Pattern = RegExpUtility.get_safe_reg_exp(DutchDateTime.DescRegex)
+        self._period_hour_num_regex: Pattern = RegExpUtility.get_safe_reg_exp(DutchDateTime.PeriodHourNumRegex)
+        self._specific_time_of_day_regex: Pattern = RegExpUtility.get_safe_reg_exp(DutchDateTime.SpecificTimeOfDayRegex)
+        self.time_followed_unit: Pattern = RegExpUtility.get_safe_reg_exp(DutchDateTime.TimeFollowedUnit)
         self.time_number_combined_with_unit: Pattern = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.TimeNumberCombinedWithUnit)
+            DutchDateTime.TimeNumberCombinedWithUnit
+        )
 
-        self.from_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.FromRegex)
-        self.between_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.BetweenRegex)
-        self._time_unit_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.TimeUnitRegex)
-        self.range_connector_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.RangeConnectorRegex)
-        self.before_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.BeforeRegex)
-        self._time_date_from_to_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.TimeDateFromTo)
-        self._specific_time_from_to_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.SpecificTimeFromTo)
-        self._specific_time_between_and_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.SpecificTimeBetweenAnd)
-        self._preposition_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.PrepositionRegex)
+        self.from_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.FromRegex)
+        self.between_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.BetweenRegex)
+        self._time_unit_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.TimeUnitRegex)
+        self.range_connector_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.RangeConnectorRegex)
+        self.before_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.BeforeRegex)
+        self._time_date_from_to_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.TimeDateFromTo)
+        self._specific_time_from_to_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.SpecificTimeFromTo)
+        self._specific_time_between_and_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.SpecificTimeBetweenAnd)
+        self._preposition_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.PrepositionRegex)
         self._token_before_date = DutchDateTime.TokenBeforeDate
         self._pure_number_regex = [DutchDateTime.PureNumFromTo, DutchDateTime.PureNumFromTo]
-        self.between_token_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.BetweenTokenRegex)
+        self.between_token_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.BetweenTokenRegex)
 
     def get_from_token_index(self, source: str) -> MatchedIndex:
         match = self.from_regex.search(source)
@@ -160,4 +143,3 @@ class DutchTimePeriodExtractorConfiguration(TimePeriodExtractorConfiguration):
 
     def is_connector_token(self, source: str):
         return self.range_connector_regex.match(source)
-

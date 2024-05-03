@@ -44,10 +44,14 @@ class DutchDateTime(BaseDateTimeResource):
     ImplicitDayRegex = '(de\\s*)?(?<day>(3[0-1]|[0-2]?\\d)(\\s*(ste|de|e)))\\b'
     MonthNumRegex = '\\b(?<month>01|02|03|04|05|06|07|08|09|10|11|12|1|2|3|4|5|6|7|8|9)\\b'
     WrittenTensRegex = '(tien|twintig|dertig|veertig|vijftig|zestig|zeventig|tachtig|negentig)'
-    WrittenNumRegex = f'({WrittenOneToNineRegex}|{WrittenElevenToNineteenRegex}|{WrittenTensRegex}(\\s+{WrittenOneToNineRegex})?)'
+    WrittenNumRegex = (
+        f'({WrittenOneToNineRegex}|{WrittenElevenToNineteenRegex}|{WrittenTensRegex}(\\s+{WrittenOneToNineRegex})?)'
+    )
     WrittenCenturyFullYearRegex = f'((twee)\\s*duizend(\\s+en)?(\\s*{WrittenOneToNineRegex}\\s*honderd)?)'
     WrittenCenturyOrdinalYearRegex = '((ee|éé)nentwintig|tweeëntwintig|tien|elf|elven|twaalf|dertien|veertien|vijftien|zestien|zeventien|achttien|negentien|twintig|een|twee|drie|vier|vijf|zes|zeven|acht|negen)'
-    CenturyRegex = f'\\b(?<century>{WrittenCenturyFullYearRegex}|{WrittenCenturyOrdinalYearRegex}(\\s*honderd)?(\\s+en)?)'
+    CenturyRegex = (
+        f'\\b(?<century>{WrittenCenturyFullYearRegex}|{WrittenCenturyOrdinalYearRegex}(\\s*honderd)?(\\s+en)?)'
+    )
     LastTwoYearNumRegex = f'((zero|nul|en)\\s+{WrittenOneToNineRegex}|{WrittenElevenToNineteenRegex}|({WrittenOneToNineRegex}[eë]n)?{WrittenTensRegex})'
     FullTextYearRegex = f'\\b((?<firsttwoyearnum>{CenturyRegex})\\s*(?<lasttwoyearnum>{LastTwoYearNumRegex})\\b|\\b(?<firsttwoyearnum>{WrittenCenturyFullYearRegex}|{WrittenCenturyOrdinalYearRegex}\\s+hundred(\\s+and)?))\\b'
     OclockRegex = '(?<oclock>u(ur)?)\\b'
@@ -60,7 +64,9 @@ class DutchDateTime(BaseDateTimeResource):
     PmRegexFull = f'(?<pm>(({ApostrofsRegex}|des)\\s+(\\bmiddags|avonds|nachts)|((in|tegen|op|om|met)\\s+(de\\s+)?)?(((na)?middag|(?<!kerst|oude?jaars)avond|(midder)?nacht|lunchtijd))))'
     AmRegex = f'(?<am>(({ApostrofsRegex}|des)\\s+(ochtends|morgens)|((in|tegen|op)\\s+de)(\\s+(ochtend|morgen))|(?<=gisteren|morgen|vandaag|(maan|dins|woens|donder|vrij|zater|zon)dag)(ochtend|morgen)|^?ochtend))'
     FullDescRegex = f'({DescRegex}|{AmRegex}|{PmRegexFull})'
-    TwoDigitYearRegex = f'\\b(?<!\\$)(?<year>([0-24-9]\\d))(?!(\\s*(([:\\.]\\d)|keer|uurs?|{AmDescRegex}|{PmDescRegex})))\\b'
+    TwoDigitYearRegex = (
+        f'\\b(?<!\\$)(?<year>([0-24-9]\\d))(?!(\\s*(([:\\.]\\d)|keer|uurs?|{AmDescRegex}|{PmDescRegex})))\\b'
+    )
     YearRegex = f'({BaseDateTime.FourDigitYearRegex}|{FullTextYearRegex})'
     WeekDayRegex = '\\b(?<weekday>((ma|di(ns)?|wo(e(ns)?)?|do|vr(ij)?|zat?|zo)(\\.|\\b))|((?:maan|dins|woens|donder|vrij|zater|zon)(dag(en)?)?(middag)?)\\b)'
     SingleWeekDayRegex = '\\b(?<weekday>(((ma|di(ns)?|wo(e(ns)?)?|do|vr|za)\\b(\\.)?)|(vrij|zat|zon?)\\.(?!$)|(((?<!in\\s+de\\s+)(maan|dins|woens|donder|zater)(dag(en)?)?|(?<=(op|voor)\\s+)(vrij|zon?|zat)|vrij(dag(en)?))\\b))|zondag|maandag|dinsdag|woensdag|donderdag|vrijdag|zaterdag)'
@@ -96,14 +102,18 @@ class DutchDateTime(BaseDateTimeResource):
     NumberCombinedWithDateUnit = f'\\b(?<num>\\d+(\\.\\d*)?){DateUnitRegex}'
     QuarterTermRegex = '\\b(((?<cardinal>eerste|1e|1ste|tweede|2e|2de|derde|3e|3de|vierde|4e|4de)[ -]+kwartaal)|(k(?<number>[1-4])))\\b'
     QuarterRegex = f'(het\\s+)?{QuarterTermRegex}((\\s+van|\\s*,\\s*)?\\s+({YearRegex}|{RelativeRegex}\\s+jaar))?'
-    QuarterRegexYearFront = f'({YearRegex}|({RelativeRegex}\\s+jaar))({ApostrofsRegex})?\\s+((het|de)\\s+)?{QuarterTermRegex}'
+    QuarterRegexYearFront = (
+        f'({YearRegex}|({RelativeRegex}\\s+jaar))({ApostrofsRegex})?\\s+((het|de)\\s+)?{QuarterTermRegex}'
+    )
     HalfYearTermRegex = '(?<cardinal>eerste|1e|1ste|tweede|2e|2de)\\s+(helft)'
     HalfYearFrontRegex = f'(?<year>(de\\s+){HalfYearTermRegex}(\\s+helft van\\s+)((1[5-9]|2[0-1]])\\d{{2}}))'
     HalfYearBackRegex = f'(het\\s+)?(H(?<number>[1-2])|({HalfYearTermRegex}))(\\s+van|\\s*,\\s*)?\\s+({YearRegex})'
     HalfYearRelativeRegex = f'(het\\s+)?{HalfYearTermRegex}(\\s+van|\\s*,\\s*)?\\s+({RelativeRegex}\\s+jaar)'
     AllHalfYearRegex = f'({HalfYearFrontRegex})|({HalfYearBackRegex})|({HalfYearRelativeRegex})'
     EarlyPrefixRegex = '\\b(?<EarlyPrefix>((?<RelEarly>eerder)|vroeg(er)?|((de|het)\\s+)?(begin(nend)?|start(end)?))(\\s+(in|op|van)(\\s+de)?)?)\\b'
-    MidPrefixRegex = '\\b(?<MidPrefix>(het\\s+)?(mid(den|-)?|halverwege|op\\s+de\\s+helft|half)(\\s+(in|op|van)(\\s+de)?)?)'
+    MidPrefixRegex = (
+        '\\b(?<MidPrefix>(het\\s+)?(mid(den|-)?|halverwege|op\\s+de\\s+helft|half)(\\s+(in|op|van)(\\s+de)?)?)'
+    )
     LaterPrefixRegex = '\\b(?<LatePrefix>(laat|(?<RelLate>later)|(aan\\s+)?het\\s+einde?(\\s+van(\\s+de)?)?|eind(e|igend)?|afsluitend)(\\s+(in|op|van)(\\s+de)?)?)\\b'
     PrefixPeriodRegex = f'({EarlyPrefixRegex}|{MidPrefixRegex}|{LaterPrefixRegex})'
     PrefixDayRegex = f'\\b(((?<!{WeekDayRegex}\\s+)(?<EarlyPrefix>eerder|vroeg(er)?|begin|start)|(?<MidPrefix>midden|halverwege|op\\s+de\\s+helft)|(?<LatePrefix>laat|later))(\\s+(in|op|van))?(\\s+de\\s+dag)?$)|^\\s*(((?<!{WeekDayRegex}\\s+)(?<EarlyPrefix>eerder|vroeg(er)?|begin|start)|(?<MidPrefix>midden|halverwege|op\\s+de\\s+helft)|in\\s+de|(?<LatePrefix>laat|later))(\\s+(in|op|van))(\\s+de\\s+dag))\\b'
@@ -118,14 +128,18 @@ class DutchDateTime(BaseDateTimeResource):
     OnRegex = f'(?<=\\bop\\s+)({DayRegex})\\b(?!(\\.|:)\\d+)'
     RelaxedOnRegex = '\\b(?<=op\\s+)(?:de\\s+)?(?<day>(?:3[0-1]|[1-2]\\d|0?[1-9]))(?:\\s*(ste|de|e))?\\b(?!(\\.|:)\\d+)'
     PrefixWeekDayRegex = '(\\s*((,?\\s*op)|[-—–]))'
-    ThisRegex = f'\\b((deze(\\s+week{PrefixWeekDayRegex}?)?\\s*){WeekDayRegex})|({WeekDayRegex}((\\s+van)?\\s*deze\\s+week))\\b'
+    ThisRegex = (
+        f'\\b((deze(\\s+week{PrefixWeekDayRegex}?)?\\s*){WeekDayRegex})|({WeekDayRegex}((\\s+van)?\\s*deze\\s+week))\\b'
+    )
     LastDateRegex = f'\\b({PreviousPrefixRegex}(\\s*week{PrefixWeekDayRegex}?)?\\s+{WeekDayRegex})|({WeekDayRegex}(\\s+van)?(\\s+vorige\\s+week))\\b'
     WeekDayForNextDateRegex = '\\b(?<weekday>((ma|di(ns)?|wo(e(ns)?)?|do|vr(ij)?|za(t)?|zo)(\\.|\\b))|((?:maan(?!den)|dins|woens|donder|vrij|zater|zon)(dag)?))'
     NextDateRegex1 = f'\\b({NextPrefixRegex}(\\s*week{PrefixWeekDayRegex}?)?\\s+{WeekDayForNextDateRegex}|(op\\s+)?{WeekDayForNextDateRegex}\\s+((van\\s+)?(de\\s+)?{NextPrefixRegex})\\s*week|(op\\s+)?{NextPrefixRegex}\\s*week\\s+{WeekDayForNextDateRegex})'
     NextDateRegex2 = f'\\b({NextPrefixRegex}(\\s*week(\\s*,?\\s*op)?)?\\s+{WeekDayRegex}|(op\\s+)?{WeekDayRegex}\\s+((van\\s+)?(de\\s+)?{NextPrefixRegex})\\s*week|(op\\s+)?{NextPrefixRegex}\\s*week\\s+{WeekDayRegex})'
     NextDateRegex = f'({NextDateRegex1}|{NextDateRegex2})'
     SpecialDayRegex = f'\\b(eergisteren|overmorgen|(de\\s+)?dag\\s+na\\s+morgen|(de\\s+)?dag\\s+(ervoor|erna)|((de\\s+)?({StrictRelativeRegex}|mijn)\\s+dag)\\b|(de\\s+dag(?!\\s+van))|gisteren|(deze\\s+)?morgen|vandaag|morgen(middag))(?!s\\b)'
-    SpecialDayWithNumRegex = f'\\b((?<number>{WrittenNumRegex})\\s+dag(en)?\\s+(gerekend\\s+)?(vanaf\\s+)(?<day>gisteren|morgen|vandaag))\\b'
+    SpecialDayWithNumRegex = (
+        f'\\b((?<number>{WrittenNumRegex})\\s+dag(en)?\\s+(gerekend\\s+)?(vanaf\\s+)(?<day>gisteren|morgen|vandaag))\\b'
+    )
     RelativeDayRegex = f'\\b(((de\\s+)?{RelativeRegex}\\s+dag))\\b'
     WeekDayOfMonthRegex = f'(?<wom>((de\\s+|\\b))?(?<cardinal>eerste|tweede|derde|vierde|vijfde|zesde|tiende|1e|1ste|2e|2de|3e|3de|4e|4de|5e|5de|laatste)\\s+{WeekDayRegex}(\\s+{MonthSuffixRegex}))'
     RelativeWeekDayRegex = f'\\b({WrittenNumRegex}\\s+{WeekDayRegex}\\s+(vanaf\\s+nu|later))\\b'
@@ -134,10 +148,14 @@ class DutchDateTime(BaseDateTimeResource):
     DateExtractorYearTermRegex = f'(\\s+(van\\s+)?|\\s*[,./-]\\s*){DateYearRegex}'
     DateExtractor1 = f'\\b({WeekDayRegex}\\s*[,-]?\\s*)?(({MonthRegex}(\\.)?\\s*[/\\\\.,-]?\\s*{DayRegex}(?!\\s*({MonthRegex}|\\-\\s*\\d{{2}}\\b)))|(\\({MonthRegex}\\s*[-.]\\s*{DayRegex}\\))|({DayRegex}(\\.)?\\s*[/\\\\.,-]?\\s*{MonthRegex}))(\\s*\\(\\s*{WeekDayRegex}\\s*\\))?({DateExtractorYearTermRegex}(?!\\s*{MonthRegex})\\b)?'
     DateExtractor3 = f'\\b({WeekDayRegex}(\\s+|\\s*,\\s*)?(de\\s+)?)?(({DayRegex}(\\s*dag|\\.)?)((\\s+|\\s*[,/-]\\s*|\\s+van\\s+)?{MonthRegex})((\\.)?(\\s+|\\s*[,/-]\\s*|\\s+in\\s+)?{DateYearRegex})?|{BaseDateTime.FourDigitYearRegex}\\s*[,./-]?\\s*(de\\s*)?(?<day>(?:3[0-1]|[1-2]\\d|0?[1-9]))(?:\\s*(ste|de|e))?(\\s*dag|\\.)?\\s*[,./-]?\\s*{MonthRegex})\\b'
-    DateExtractor4 = f'\\b{MonthNumRegex}\\s*[/\\\\\\-]\\s*{DayRegex}[\\.]?\\s*[/\\\\\\-]\\s*{ApostrofRegex}?{DateYearRegex}'
+    DateExtractor4 = (
+        f'\\b{MonthNumRegex}\\s*[/\\\\\\-]\\s*{DayRegex}[\\.]?\\s*[/\\\\\\-]\\s*{ApostrofRegex}?{DateYearRegex}'
+    )
     DateExtractor5 = f'\\b{DayRegex}\\s*[/\\\\\\-\\.]\\s*({MonthNumRegex}|{MonthRegex})\\s*[/\\\\\\-\\.]\\s*{DateYearRegex}(?!\\s*[/\\\\\\-\\.]\\s*\\d+)'
     DateExtractor6 = f'(?<={DatePreposition}\\s+)({StrictRelativeRegex}\\s+)?({WeekDayRegex}\\s+)?{MonthNumRegex}[\\.]{DayRegex}(?!([%]|\\s*{FullDescRegex}))\\b|(?<={DatePreposition}\\s+){MonthNumRegex}[\\-\\.]{DayRegex}(?!([%]|\\s*{FullDescRegex}))\\b'
-    DateExtractor7L = f'\\b({WeekDayRegex}\\s+)?{MonthNumRegex}\\s*/\\s*{DayRegex}{DateExtractorYearTermRegex}(?![%])\\b'
+    DateExtractor7L = (
+        f'\\b({WeekDayRegex}\\s+)?{MonthNumRegex}\\s*/\\s*{DayRegex}{DateExtractorYearTermRegex}(?![%])\\b'
+    )
     DateExtractor7S = f'\\b((?<=(^|{DatePreposition}\\s+)){WeekDayRegex}\\s+)?{MonthNumRegex}\\s*/\\s*{DayRegex}{BaseDateTime.CheckDecimalRegex}(?!([%]|\\s*{FullDescRegex}))\\b'
     DateExtractor8 = f'\\b((?<=(^|{DatePreposition}\\s+)){WeekDayRegex}\\s+)?(?<!(morgen|ochtend|middag|avond|nacht)s?\\s+){DayRegex}[\\\\\\-]{MonthNumRegex}{BaseDateTime.CheckDecimalRegex}(?!([%]|\\s*{FullDescRegex}))\\b'
     DateExtractor9L = f'\\b({WeekDayRegex}\\s+)?{DayRegex}\\s*[-|\\/|.]\\s*{MonthNumRegex}((\\s+|\\s*,\\s*|\\s+in\\s+){DateYearRegex})(?![%])\\b'
@@ -163,7 +181,9 @@ class DutchDateTime(BaseDateTimeResource):
     MinuteDTRegEx = f'({BaseDateTime.MinuteRegex})'
     SecondDTRegEx = f'({BaseDateTime.SecondRegex})'
     BasicTime = f'\\b(?<basictime>{WrittenTimeRegex}|{HourNumRegex}|{HourDTRegEx}(:|\\.){MinuteDTRegEx}(:{SecondDTRegEx})?|((?<prefix>half)\\s+)?{HourDTRegEx}(?![.,:]?[%\\d]))'
-    MidnightRegex = f'(?<midnight>mid\\s*(-\\s*)?nacht|middernacht|(in\\s+)?de nacht(\\s+van)?|({ApostrofsRegex}|des)\\s*nachts)'
+    MidnightRegex = (
+        f'(?<midnight>mid\\s*(-\\s*)?nacht|middernacht|(in\\s+)?de nacht(\\s+van)?|({ApostrofsRegex}|des)\\s*nachts)'
+    )
     MidmorningRegex = '(?<midmorning>mid\\s*(-\\s*)?(morgen|ochtend)|halverwege de ochtend|het midden van de ochtend)'
     MidafternoonRegex = '(?<midafternoon>mid\\s*(-\\s*)?middag|halverwege de middag|het midden van de middag)'
     MiddayRegex = f'(?<midday>(?<!gisteren|morgen)(((rond\\s+)?(het|de)|{ApostrofsRegex})\\s+)?middag(uur|s|loos)?|namiddag|noen|lunchtijd)'
@@ -191,11 +211,15 @@ class DutchDateTime(BaseDateTimeResource):
     TimeRegex10 = f'\\b({TimePrefix}\\s+)?{BaseDateTime.HourRegex}(\\s*(u\\b|h))(\\s*{BaseDateTime.MinuteRegex})?(\\s*{DescRegex})?'
     TimeRegex11 = f'\\b(?<!{TimeRegexFilter}\\s+)((?:({TimeTokenPrefix})?{TimeRegexWithDotConnector}(\\s*({DescRegex}|{TimeSuffix})))|(?:(?:{TimeTokenPrefix}{TimeRegexWithDotConnector})(?!\\s*(per|pro)\\s*cent|%|\\s+{TimeRegexFilter})))'
     TimeRegex12 = f'({BaseDateTime.HourRegex}(?=\\s+(vandaag|morgen|op)))'
-    FirstTimeRegexInTimeRange = f'\\b{TimeRegexWithDotConnector}(?!\\s*(per|pro)\\s*cent|%|\\s+{TimeRegexFilter})(\\s*{DescRegex})?'
+    FirstTimeRegexInTimeRange = (
+        f'\\b{TimeRegexWithDotConnector}(?!\\s*(per|pro)\\s*cent|%|\\s+{TimeRegexFilter})(\\s*{DescRegex})?'
+    )
     PureNumFromToPrefixExcluded = f'({HourDTRegEx}|{PeriodHourNumRegex})(\\s*(?<leftDesc>({PmRegex}|{AmRegex}|{DescRegex})))?\\s*{TillRegex}\\s*({HourDTRegEx}|{PeriodHourNumRegex})(?<rightDesc>\\s*({PmRegex}|{AmRegex}|{DescRegex}))?'
     PureNumFromToPrefix = f'(({PmRegexFull}|{AmRegex})\\s+)?({RangePrefixRegex}\\s+)({HourDTRegEx}|{PeriodHourNumRegex})(\\s+uur)?(\\s*(?<leftDesc>({PmRegex}|{AmRegex}|{DescRegex})))?\\s*{RangeConnectorRegex}\\s*({HourDTRegEx}|{PeriodHourNumRegex})(\\s+uur)?(?<rightDesc>\\s*({PmRegex}|{AmRegex}|{DescRegex}))?'
     PureNumFromToWithDateBefore = f'({RangePrefixRegex}\\s+)({HourDTRegEx})(\\s+(vandaag|morgen)\\s+)?(\\s*{RangeConnectorRegex}\\s*)({HourDTRegEx})'
-    PureNumFromToWithDateAfter = f'({RangePrefixRegex}\\s+)({HourDTRegEx})(\\s*{RangeConnectorRegex}\\s*)({HourDTRegEx}(\\s+(vandaag|morgen))?)'
+    PureNumFromToWithDateAfter = (
+        f'({RangePrefixRegex}\\s+)({HourDTRegEx})(\\s*{RangeConnectorRegex}\\s*)({HourDTRegEx}(\\s+(vandaag|morgen))?)'
+    )
     PureNumFromTo = f'({PureNumFromToPrefix}|{PureNumFromToPrefixExcluded})'
     TimeDateFromTo = f'({PureNumFromToWithDateAfter}|{PureNumFromToWithDateBefore})'
     PureNumBetweenAnd = f'(tussen\\s+)({HourDTRegEx}|{PeriodHourNumRegex})(\\s*(?<leftDesc>{DescRegex}))?\\s*{RangeConnectorRegex}\\s*({HourDTRegEx}|{PeriodHourNumRegex})(?<rightDesc>\\s*({PmRegex}|{AmRegex}|{DescRegex}))?'
@@ -205,36 +229,52 @@ class DutchDateTime(BaseDateTimeResource):
     MealTimeRegex = '\\b((((tijdens\\s+)?de|het)\\s+)?(?<mealTime>ontbijt|lunch|avondeten)|((om|tegen|tijdens)\\s+)?(?<mealTime>lunchtijd))\\b'
     EarlyLateRegex = '\\b(((?<early>vroege?|(in\\s+het\\s+)?(begin))|(?<late>laat|later|late|aan\\s+het\\s+einde?))((\\s+|-)(in\\s+de|op\\s+de|van\\s+de|deze|in|op|van|de))?)'
     TimeOfDayRegex = f'(?<timeOfDay>(({EarlyLateRegex}\\s+)(aanstaande\\s+)?(zondag|maandag|dinsdag|woensdag|donderdag|vrijdag|zaterdag)\\s*(ochtend|morgen|(na)?middag|avond|nacht))|(((van\\s+deze\\s+)|\\b(in\\s+(de)?\\s+)|de\\s+)?({EarlyLateRegex}\\s+)?({ApostrofsRegex}\\s+)?(ochtend(en)?|morgen|middag(en)?|avond(en)?|nacht(\\s+van)?)s?((\\s+|-)({EarlyLateRegex}))?)|{MealTimeRegex}|((tijdens\\s+(de\\s+)?)?(kantoor|werk)uren))\\b'
-    SpecificTimeOfDayRegex = f'\\b((({StrictRelativeRegex}\\s+{TimeOfDayRegex})\\b|\\bvan(ochtend|morgen|middag|avond|nacht)))s?\\b'
+    SpecificTimeOfDayRegex = (
+        f'\\b((({StrictRelativeRegex}\\s+{TimeOfDayRegex})\\b|\\bvan(ochtend|morgen|middag|avond|nacht)))s?\\b'
+    )
     TimeFollowedUnit = f'^\\s*{TimeUnitRegex}'
     TimeNumberCombinedWithUnit = f'\\b(?<num>\\d+(\\.\\d*)?){TimeUnitRegex}'
     BusinessHourSplitStrings = [r'werk', r'uren']
     BusinessHourSplitStrings2 = [r'kantoor', r'uren']
-    NowRegex = '(?<!vanaf\\s+)\\b(?<now>nu(\\s+meteen)?|zo snel mogelijk|zo spoedig mogelijk|asap|recent|onlangs|zojuist)\\b'
+    NowRegex = (
+        '(?<!vanaf\\s+)\\b(?<now>nu(\\s+meteen)?|zo snel mogelijk|zo spoedig mogelijk|asap|recent|onlangs|zojuist)\\b'
+    )
     SuffixRegex = '^\\s*(in de\\s+)?(vroege\\s+|late\\s+)?(ochtend|(na)?middag|avond|nacht)\\b'
     DateTimeTimeOfDayRegex = '\\b(?<timeOfDay>morgen|ochtend|(na)?middag|avond|nacht)\\b'
-    DateTimeSpecificTimeOfDayRegex = f'\\b(({RelativeRegex}\\s+{DateTimeTimeOfDayRegex})|van(nacht|avond|middag|ochtend|morgen))\\b'
+    DateTimeSpecificTimeOfDayRegex = (
+        f'\\b(({RelativeRegex}\\s+{DateTimeTimeOfDayRegex})|van(nacht|avond|middag|ochtend|morgen))\\b'
+    )
     TimeOfTodayAfterRegex = f'^\\s*(,\\s*)?((in\\s+de)|(op\\s+de))?{DateTimeSpecificTimeOfDayRegex}'
     TimeOfTodayBeforeRegex = f'{DateTimeSpecificTimeOfDayRegex}(\\s*,)?(\\s+(om|rond|tegen|op\\s+de|op))?\\s*$'
     NonTimeContextTokens = '\\b(gebouw)'
     SimpleTimeOfTodayAfterRegex = f'(?<!{NonTimeContextTokens}\\s*)\\b({HourNumRegex}|{BaseDateTime.HourRegex})(\\s*({OclockRegex}|u))?\\s*(,\\s*)?((in|op)\\s+de\\s+)?{DateTimeSpecificTimeOfDayRegex}'
     SimpleTimeOfTodayBeforeRegex = f'\\b{DateTimeSpecificTimeOfDayRegex}(\\s*,)?(\\s+(om|rond|tegen|op(\\s+de)?))?\\s*(?<!van(avond|nacht)\\s+)({HourNumRegex}|{BaseDateTime.HourRegex})\\b'
-    SpecificEndOfRegex = '((\\baan\\s+)?((de|het)\\s+)?eind(e? van)?(\\s+(de|het))?\\s*$|^\\s*(het\\s+)?einde? van(\\s+de(\\s+dag)))'
+    SpecificEndOfRegex = (
+        '((\\baan\\s+)?((de|het)\\s+)?eind(e? van)?(\\s+(de|het))?\\s*$|^\\s*(het\\s+)?einde? van(\\s+de(\\s+dag)))'
+    )
     UnspecificEndOfRegex = '\\b(((om|rond|tegen|op)\\s+)?het\\s+)?(einde?\\s+van\\s+(de\\s+)?dag)\\b'
     UnspecificEndOfRangeRegex = '\\b(evj)\\b'
     MiddlePauseRegex = '\\s*(,)\\s*'
     PeriodTimeOfDayRegex = f'((in\\s+(de)?\\s+)?({EarlyLateRegex}(\\s+|-))?(zondag|maandag|dinsdag|woensdag|donderdag|vrijdag|zaterdag|(eer)?gisteren|morgen)?(?<timeOfDay>ochtend|(na)?middag|avond|nacht))\\b'
-    PeriodSpecificTimeOfDayRegex = f'\\b(({StrictRelativeRegex}(\\s+)?{PeriodTimeOfDayRegex})\\b|\\bvan(nacht|avond|(na)?middag|ochtend))\\b'
+    PeriodSpecificTimeOfDayRegex = (
+        f'\\b(({StrictRelativeRegex}(\\s+)?{PeriodTimeOfDayRegex})\\b|\\bvan(nacht|avond|(na)?middag|ochtend))\\b'
+    )
     PeriodTimeOfDayWithDateRegex = f'(({TimeOfDayRegex}(\\s+(om|rond|van|tegen|op(\\s+de)?))?))\\b'
     PeriodTimeOfDayWithDateRegexWithAnchors = f'((({TimeOfDayRegex}(\\s+(om|rond|van|tegen|op(\\s+de)?))?))(?=({MiddlePauseRegex})?\\s*$)|(?<=^\\s*({MiddlePauseRegex})?)(?!{MealTimeRegex}){TimeOfDayRegex})'
     LessThanRegex = '\\b((binnen\\s+)?minder\\s+dan)\\b'
     MoreThanRegex = '\\b((meer|langer)\\s+dan|ruim)\\b'
     DurationUnitRegex = f'(?<unit>{DateUnitRegex}|(min\\.|sec\\.)|((?<half>halfuur)|(?<quarter>kwartier\\s+uur)|(?<quarter>kwartier)|uur|uren|u|minuten|minuut|m(ins?)?|seconde[ns]?|s(ecs?)?|nacht(en)?)\\b)(\\s+lang\\b)?'
-    SuffixAndRegex = '(?<suffix>\\s+(en|ën)(\\s*een)?\\s*(?<suffix_num>hal(f|ve)|kwart|kwartier)|(?<suffix_num>(een\\s+)?kwartier))'
+    SuffixAndRegex = (
+        '(?<suffix>\\s+(en|ën)(\\s*een)?\\s*(?<suffix_num>hal(f|ve)|kwart|kwartier)|(?<suffix_num>(een\\s+)?kwartier))'
+    )
     BeforeEachDayRegex = '(iedere|elke)\\s*dag\\s*'
-    DurationFollowedUnit = f'^\\s*((?<suffix>(?<unit>(?<suffix_num>(een\\s+)?kwartier)))|{SuffixAndRegex}?(\\s+|-)?{DurationUnitRegex})'
+    DurationFollowedUnit = (
+        f'^\\s*((?<suffix>(?<unit>(?<suffix_num>(een\\s+)?kwartier)))|{SuffixAndRegex}?(\\s+|-)?{DurationUnitRegex})'
+    )
     NumberCombinedWithDurationUnit = f'\\b(?<num>\\d+([.,:]\\d*)?)(-)?{DurationUnitRegex}'
-    AnUnitRegex = f'\\b((((nog een|een|nog)\\s+(?<half>anderhalf|anderhalve|half|halve)?))|andere)\\s*{DurationUnitRegex}'
+    AnUnitRegex = (
+        f'\\b((((nog een|een|nog)\\s+(?<half>anderhalf|anderhalve|half|halve)?))|andere)\\s*{DurationUnitRegex}'
+    )
     DuringRegex = '\\b(voor\\s+een|gedurende\\s+(het|de))\\s+(?<unit>jaar|maand|week|dag)\\b'
     AllRegex = '\\b(?<all>((de|het|een)\\s+)?((ge)?hele|volledige|ganse|heel|volledig|volle)(\\s+|-)(?<unit>jaar|maand|week|dag))\\b'
     HalfRegex = '(((een)\\s*)|\\b)(?<half>(half|halve)\\s+(?<unit>jaar|maand|week|dag|uur|halfuur)|(?<unit>halfuur))\\b'
@@ -244,7 +284,9 @@ class DutchDateTime(BaseDateTimeResource):
     HolidayList3 = '(?<holiday>(martin luther king|mlk|dankzeggings|valentijns|nieuwjaars|(eerste|1e|tweede|2e)\\s+paas|prinsjes|konings|koninginne|bevrijdings|hemelvaarts|(eerste|1e|tweede|2e)\\s+kerst|vader|moeder|meisjes|(amerikaanse|us\\s+)?onafhankelijk(heid)?s|(nederlandse\\s+)?veteranen|boomplant|(nationale\\s+)?boomfeest)dag)'
     HolidayRegex = f'\\b(({StrictRelativeRegex}\\s+({HolidayList1}|{HolidayList2}|{HolidayList3}))|(({HolidayList1}|{HolidayList2}|{HolidayList3})(\\s+(van\\s+)?({YearRegex}|{RelativeRegex}\\s+jaar))?))\\b'
     AMTimeRegex = f'(?<am>{ApostrofsRegex}\\s*(morgens|ochtends)|in\\s+de\\s+(morgen|ochtend))'
-    PMTimeRegex = f'(?<pm>{ApostrofsRegex}\\s*(middags|avonds|nachts)|(in\\s+de\\s+)?(deze\\s+)?((na)?middag|avond|nacht))\\b'
+    PMTimeRegex = (
+        f'(?<pm>{ApostrofsRegex}\\s*(middags|avonds|nachts)|(in\\s+de\\s+)?(deze\\s+)?((na)?middag|avond|nacht))\\b'
+    )
     MorningTimeRegex = '(morgens?|ochtends?)'
     NightTimeRegex = '(nacht)'
     NowTimeRegex = '\\b(nu)\\b'
@@ -281,8 +323,12 @@ class DutchDateTime(BaseDateTimeResource):
     FlexibleDayRegex = '(?<DayOfMonth>([A-Za-zë]+\\s+)?[A-Za-zë\\d]+?\\s*(ste|de|e))'
     ForTheRegex = f'\\b((((?<=voor\\s+)de\\s+{FlexibleDayRegex})|((?<=op\\s+)de\\s+{FlexibleDayRegex}(?<=(ste|de|e))))(?<end>(\\s+(tussen|binnen|terug|tegen|aan|uit|mee|bij|vol|uit|aan|op|in|na|af)\\s*)?(\\s+(ge\\w\\w\\w+|\\w\\w\\w+en)\\s*)?(,|\\.|!|\\?|$)))'
     WeekDayAndDayOfMonthRegex = f'\\b{WeekDayRegex}\\s+(de\\s+{FlexibleDayRegex})\\b'
-    WeekDayAndDayRegex = f'\\b{WeekDayRegex}\\s+{DayRegex}(?!([-]|:\\d+|\\.\\d+|(\\s+({AmDescRegex}|{PmDescRegex}|{OclockRegex}))))\\b'
-    RestOfDateRegex = '\\brest\\s+(van\\s+)?((de|het|mijn|dit|deze|(de\\s+)?huidige)\\s+)?(?<duration>week|maand|jaar|decennium)\\b'
+    WeekDayAndDayRegex = (
+        f'\\b{WeekDayRegex}\\s+{DayRegex}(?!([-]|:\\d+|\\.\\d+|(\\s+({AmDescRegex}|{PmDescRegex}|{OclockRegex}))))\\b'
+    )
+    RestOfDateRegex = (
+        '\\brest\\s+(van\\s+)?((de|het|mijn|dit|deze|(de\\s+)?huidige)\\s+)?(?<duration>week|maand|jaar|decennium)\\b'
+    )
     RestOfDateTimeRegex = '\\brest\\s+(van\\s+)?((de|het|mijn|dit|deze|(de\\s+)?huidige)\\s+)?(?<unit>vandaag|dag)\\b'
     AmbiguousRangeModifierPrefix = '(voor)'
     PotentialAmbiguousRangeRegex = f'\\b{AmbiguousRangeModifierPrefix}(?!\\s+het\\s+(einde?|begin(nen)?))(.+\\b(boven|later|groter|erna|daarna|hoger|(?<!de\\s+)({DateUnitRegex}|uur|uren|minuten|minuut|mins|min|secondes|seconden|secs|sec|nacht(en)?)|van(af)?|beginnend|die\\s+begint|startend|aanvangend|tussen|tot(dat|\\s+en\\s+met)?|gedurende|tijdens|ten tijde van|(?<ambiguous>{BaseDateTime.RangeConnectorSymbolRegex}))\\b)'
@@ -307,500 +353,558 @@ class DutchDateTime(BaseDateTimeResource):
     StartMiddleEndRegex = '\\b((?<StartOf>(((de|het)\\s+)?(start|begin)\\s+van\\s+)?)(?<MiddleOf>((het\\s+)?midden\\s+van\\s+)?)(?<EndOf>((het\\s+)?einde?\\s+van\\s+)?))'
     ComplexDatePeriodRegex = f'(((van(af)?|tijdens|gedurende|in(\\s+de)?)\\s+)?{StartMiddleEndRegex}(?<start>.+)\\s*({TillRegex})\\s*{StartMiddleEndRegex}(?<end>.+)|((tussen)\\s+){StartMiddleEndRegex}(?<start>.+)\\s*({RangeConnectorRegex})\\s*{StartMiddleEndRegex}(?<end>.+)|(?<start>{WrittenMonthRegex})\\s+(?<end>{WrittenMonthRegex}(\\s+|\\s*,\\s*){YearRegex}))'
     ComplexTillRegex = f'({TillRegex}|{WrittenMonthRegex})'
-    UnitMap = dict([("millennium", "1000Y"),
-                    ("eeuw", "100Y"),
-                    ("centennium", "100Y"),
-                    ("decennium", "10Y"),
-                    ("decennia", "10Y"),
-                    ("jaren", "Y"),
-                    ("jaar", "Y"),
-                    ("jr", "Y"),
-                    ("maanden", "MON"),
-                    ("maand", "MON"),
-                    ("mnd", "MON"),
-                    ("weken", "W"),
-                    ("week", "W"),
-                    ("weekend", "WE"),
-                    ("weekenden", "WE"),
-                    ("dagen", "D"),
-                    ("dag", "D"),
-                    ("werkdagen", "D"),
-                    ("werkdag", "D"),
-                    ("weekdagen", "D"),
-                    ("weekdag", "D"),
-                    ("vandaag", "D"),
-                    ("dgn", "D"),
-                    ("nachten", "D"),
-                    ("nacht", "D"),
-                    ("uren", "H"),
-                    ("uur", "H"),
-                    ("u", "H"),
-                    ("minuten", "M"),
-                    ("minuut", "M"),
-                    ("min", "M"),
-                    ("min.", "M"),
-                    ("secondes", "S"),
-                    ("seconden", "S"),
-                    ("seconde", "S"),
-                    ("secs", "S"),
-                    ("sec", "S"),
-                    ("kwartier", "H"),
-                    ("kwartier uur", "H"),
-                    ("halfuur", "H")])
-    UnitValueMap = dict([("decennium", 315360000),
-                         ("decennia", 315360000),
-                         ("decenniën", 315360000),
-                         ("jaren", 31536000),
-                         ("jaar", 31536000),
-                         ("jr", 31536000),
-                         ("maanden", 2592000),
-                         ("maand", 2592000),
-                         ("mnd", 2592000),
-                         ("weken", 604800),
-                         ("week", 604800),
-                         ("weekenden", 172800),
-                         ("weekend", 172800),
-                         ("dagen", 86400),
-                         ("dag", 86400),
-                         ("vandaag", 86400),
-                         ("dgn", 86400),
-                         ("nachten", 86400),
-                         ("nacht", 86400),
-                         ("werkdagen", 86400),
-                         ("werkdag", 86400),
-                         ("weekdagen", 86400),
-                         ("weekdag", 86400),
-                         ("uren", 3600),
-                         ("uur", 3600),
-                         ("u", 3600),
-                         ("minuten", 60),
-                         ("minuut", 60),
-                         ("min", 60),
-                         ("min.", 60),
-                         ("secondes", 1),
-                         ("seconden", 1),
-                         ("seconde", 1),
-                         ("secs", 1),
-                         ("sec", 1),
-                         ("kwartier", 3600),
-                         ("kwartier uur", 3600),
-                         ("halfuur", 3600)])
+    UnitMap = dict(
+        [
+            ("millennium", "1000Y"),
+            ("eeuw", "100Y"),
+            ("centennium", "100Y"),
+            ("decennium", "10Y"),
+            ("decennia", "10Y"),
+            ("jaren", "Y"),
+            ("jaar", "Y"),
+            ("jr", "Y"),
+            ("maanden", "MON"),
+            ("maand", "MON"),
+            ("mnd", "MON"),
+            ("weken", "W"),
+            ("week", "W"),
+            ("weekend", "WE"),
+            ("weekenden", "WE"),
+            ("dagen", "D"),
+            ("dag", "D"),
+            ("werkdagen", "D"),
+            ("werkdag", "D"),
+            ("weekdagen", "D"),
+            ("weekdag", "D"),
+            ("vandaag", "D"),
+            ("dgn", "D"),
+            ("nachten", "D"),
+            ("nacht", "D"),
+            ("uren", "H"),
+            ("uur", "H"),
+            ("u", "H"),
+            ("minuten", "M"),
+            ("minuut", "M"),
+            ("min", "M"),
+            ("min.", "M"),
+            ("secondes", "S"),
+            ("seconden", "S"),
+            ("seconde", "S"),
+            ("secs", "S"),
+            ("sec", "S"),
+            ("kwartier", "H"),
+            ("kwartier uur", "H"),
+            ("halfuur", "H"),
+        ]
+    )
+    UnitValueMap = dict(
+        [
+            ("decennium", 315360000),
+            ("decennia", 315360000),
+            ("decenniën", 315360000),
+            ("jaren", 31536000),
+            ("jaar", 31536000),
+            ("jr", 31536000),
+            ("maanden", 2592000),
+            ("maand", 2592000),
+            ("mnd", 2592000),
+            ("weken", 604800),
+            ("week", 604800),
+            ("weekenden", 172800),
+            ("weekend", 172800),
+            ("dagen", 86400),
+            ("dag", 86400),
+            ("vandaag", 86400),
+            ("dgn", 86400),
+            ("nachten", 86400),
+            ("nacht", 86400),
+            ("werkdagen", 86400),
+            ("werkdag", 86400),
+            ("weekdagen", 86400),
+            ("weekdag", 86400),
+            ("uren", 3600),
+            ("uur", 3600),
+            ("u", 3600),
+            ("minuten", 60),
+            ("minuut", 60),
+            ("min", 60),
+            ("min.", 60),
+            ("secondes", 1),
+            ("seconden", 1),
+            ("seconde", 1),
+            ("secs", 1),
+            ("sec", 1),
+            ("kwartier", 3600),
+            ("kwartier uur", 3600),
+            ("halfuur", 3600),
+        ]
+    )
     SpecialYearPrefixesMap = dict([("", "")])
-    SeasonMap = dict([("lente", "SP"),
-                      ("zomer", "SU"),
-                      ("herfst", "FA"),
-                      ("winter", "WI")])
-    SeasonValueMap = dict([("SP", 3),
-                           ("SU", 6),
-                           ("FA", 9),
-                           ("WI", 12)])
-    CardinalMap = dict([("eerste", 1),
-                        ("1e", 1),
-                        ("1ste", 1),
-                        ("tweede", 2),
-                        ("2e", 2),
-                        ("2de", 2),
-                        ("derde", 3),
-                        ("3e", 3),
-                        ("3de", 3),
-                        ("vierde", 4),
-                        ("4e", 4),
-                        ("4de", 4),
-                        ("vijfde", 5),
-                        ("5e", 5),
-                        ("5de", 5)])
-    DayOfWeek = dict([("maandag", 1),
-                      ("dinsdag", 2),
-                      ("woensdag", 3),
-                      ("donderdag", 4),
-                      ("vrijdag", 5),
-                      ("zaterdag", 6),
-                      ("zondag", 0),
-                      ("zondagmiddag", 0),
-                      ("maandagen", 1),
-                      ("dinsdagen", 2),
-                      ("woensdagen", 3),
-                      ("donderdagen", 4),
-                      ("vrijdagen", 5),
-                      ("zaterdagen", 6),
-                      ("zondagen", 0),
-                      ("ma", 1),
-                      ("ma.", 1),
-                      ("dins", 2),
-                      ("dins.", 2),
-                      ("woens", 3),
-                      ("woens.", 3),
-                      ("di", 2),
-                      ("di.", 2),
-                      ("wo", 3),
-                      ("wo.", 3),
-                      ("woe", 3),
-                      ("woe.", 3),
-                      ("do", 4),
-                      ("do.", 4),
-                      ("vr", 5),
-                      ("vr.", 5),
-                      ("vrij", 5),
-                      ("vrij.", 5),
-                      ("za", 6),
-                      ("za.", 6),
-                      ("zat", 6),
-                      ("zat.", 6),
-                      ("zo", 0),
-                      ("zo.", 0),
-                      ("zon", 0),
-                      ("zon.", 0),
-                      ("monday", 1),
-                      ("tuesday", 2),
-                      ("wednesday", 3),
-                      ("thursday", 4),
-                      ("friday", 5),
-                      ("saturday", 6),
-                      ("sunday", 0),
-                      ("mon", 1),
-                      ("tue", 2),
-                      ("tues", 2),
-                      ("wed", 3),
-                      ("wedn", 3),
-                      ("weds", 3),
-                      ("thu", 4),
-                      ("thur", 4),
-                      ("thurs", 4),
-                      ("fri", 5),
-                      ("sat", 6),
-                      ("sun", 0)])
-    MonthOfYear = dict([("januari", 1),
-                        ("februari", 2),
-                        ("maart", 3),
-                        ("april", 4),
-                        ("mei", 5),
-                        ("juni", 6),
-                        ("juli", 7),
-                        ("augustus", 8),
-                        ("september", 9),
-                        ("oktober", 10),
-                        ("november", 11),
-                        ("december", 12),
-                        ("jan", 1),
-                        ("feb", 2),
-                        ("mar", 3),
-                        ("mrt", 3),
-                        ("apr", 4),
-                        ("jun", 6),
-                        ("jul", 7),
-                        ("aug", 8),
-                        ("sep", 9),
-                        ("sept", 9),
-                        ("oct", 10),
-                        ("okt", 10),
-                        ("nov", 11),
-                        ("dec", 12),
-                        ("jan.", 1),
-                        ("feb.", 2),
-                        ("mar.", 3),
-                        ("mrt.", 3),
-                        ("apr.", 4),
-                        ("jun.", 6),
-                        ("jul.", 7),
-                        ("aug.", 8),
-                        ("sep.", 9),
-                        ("sept.", 9),
-                        ("oct.", 10),
-                        ("okt.", 10),
-                        ("nov.", 11),
-                        ("dec.", 12),
-                        ("1", 1),
-                        ("2", 2),
-                        ("3", 3),
-                        ("4", 4),
-                        ("5", 5),
-                        ("6", 6),
-                        ("7", 7),
-                        ("8", 8),
-                        ("9", 9),
-                        ("10", 10),
-                        ("11", 11),
-                        ("12", 12),
-                        ("01", 1),
-                        ("02", 2),
-                        ("03", 3),
-                        ("04", 4),
-                        ("05", 5),
-                        ("06", 6),
-                        ("07", 7),
-                        ("08", 8),
-                        ("09", 9)])
-    Numbers = dict([("nul", 0),
-                    ("een", 1),
-                    ("één", 1),
-                    ("twee", 2),
-                    ("drie", 3),
-                    ("vier", 4),
-                    ("vijf", 5),
-                    ("zes", 6),
-                    ("zeven", 7),
-                    ("acht", 8),
-                    ("negen", 9),
-                    ("tien", 10),
-                    ("elf", 11),
-                    ("elven", 11),
-                    ("twaalf", 12),
-                    ("dertien", 13),
-                    ("veertien", 14),
-                    ("vijftien", 15),
-                    ("zestien", 16),
-                    ("zeventien", 17),
-                    ("achttien", 18),
-                    ("negentien", 19),
-                    ("twintig", 20),
-                    ("eenentwintig", 21),
-                    ("éénentwintig", 21),
-                    ("tweeentwintig", 22),
-                    ("tweeëntwintig", 22),
-                    ("drieëntwintig", 23),
-                    ("vierentwintig", 24),
-                    ("vijfentwintig", 25),
-                    ("vijventwintig", 25),
-                    ("zesentwintig", 26),
-                    ("zevenentwintig", 27),
-                    ("achtentwintig", 28),
-                    ("negenentwintig", 29),
-                    ("dertig", 30),
-                    ("eenendertig", 31),
-                    ("tweeëndertig", 32),
-                    ("drieëndertig", 33),
-                    ("vierendertig", 34),
-                    ("vijfendertig", 35),
-                    ("zesendertig", 36),
-                    ("zevenendertig", 37),
-                    ("achtendertig", 38),
-                    ("negenendertig", 39),
-                    ("veertig", 40),
-                    ("eenenveertig", 41),
-                    ("tweeënveertig", 42),
-                    ("drieënveertig", 43),
-                    ("vierenveertig", 44),
-                    ("vijfenveertig", 45),
-                    ("zesenveertig", 46),
-                    ("zevenenveertig", 47),
-                    ("achtenveertig", 48),
-                    ("negenenveertig", 49),
-                    ("eenenvijftig", 50),
-                    ("vijftig", 51),
-                    ("tweeënvijftig", 52),
-                    ("drieënvijftig", 53),
-                    ("vierenvijftig", 54),
-                    ("vijfenvijftig", 55),
-                    ("zesenvijftig", 56),
-                    ("zevenenvijftig", 57),
-                    ("achtenvijftig", 58),
-                    ("negenenvijftig", 59),
-                    ("zestig", 60),
-                    ("eenenzestig", 61),
-                    ("tweeënzestig", 62),
-                    ("drieënzestig", 63),
-                    ("vierenzestig", 64),
-                    ("vijfenzestig", 65),
-                    ("zesenzestig", 66),
-                    ("zevenenzestig", 67),
-                    ("achtenzestig", 68),
-                    ("negenenzestig", 69),
-                    ("zeventig", 70),
-                    ("eenenzeventig", 71),
-                    ("tweeënzeventig", 72),
-                    ("drieënzeventig", 73),
-                    ("vierenzeventig", 74),
-                    ("vijfenzeventig", 75),
-                    ("zesenzeventig", 76),
-                    ("zevenenzeventig", 77),
-                    ("achtenzeventig", 78),
-                    ("negenenzeventig", 79),
-                    ("tachtig", 80),
-                    ("eenentachtig", 81),
-                    ("tweeëntachtig", 82),
-                    ("drieëntachtig", 83),
-                    ("vierentachtig", 84),
-                    ("vijfentachtig", 85),
-                    ("zesentachtig", 86),
-                    ("zevenentachtig", 87),
-                    ("achtentachtig", 88),
-                    ("negenentachtig", 89),
-                    ("negentig", 90),
-                    ("eenennegentig", 91),
-                    ("tweeënnegentig", 92),
-                    ("drieënnegentig", 93),
-                    ("vierennegentig", 94),
-                    ("vijfennegentig", 95),
-                    ("zesennegentig", 96),
-                    ("zevenennegentig", 97),
-                    ("achtennegentig", 98),
-                    ("negenennegentig", 99),
-                    ("honderd", 100)])
-    DayOfMonth = dict([("1e", 1),
-                       ("1ste", 1),
-                       ("2e", 2),
-                       ("2de", 2),
-                       ("3e", 3),
-                       ("3de", 3),
-                       ("4e", 4),
-                       ("4de", 4),
-                       ("5e", 5),
-                       ("5de", 5),
-                       ("6e", 6),
-                       ("6de", 6),
-                       ("7e", 7),
-                       ("7de", 7),
-                       ("8e", 8),
-                       ("8de", 8),
-                       ("9e", 9),
-                       ("9de", 9),
-                       ("10e", 10),
-                       ("10de", 10),
-                       ("11e", 11),
-                       ("11de", 11),
-                       ("12e", 12),
-                       ("12de", 12),
-                       ("13e", 13),
-                       ("13de", 13),
-                       ("14e", 14),
-                       ("14de", 14),
-                       ("15e", 15),
-                       ("15de", 15),
-                       ("16e", 16),
-                       ("16de", 16),
-                       ("17e", 17),
-                       ("17de", 17),
-                       ("18e", 18),
-                       ("19e", 19),
-                       ("20e", 20),
-                       ("21e", 21),
-                       ("22e", 22),
-                       ("23e", 23),
-                       ("24e", 24),
-                       ("25e", 25),
-                       ("26e", 26),
-                       ("27e", 27),
-                       ("28e", 28),
-                       ("29e", 29),
-                       ("30e", 30),
-                       ("31e", 31)])
-    DoubleNumbers = dict([("half", 0.5),
-                          ("anderhalf", 1.5),
-                          ("anderhalve", 1.5),
-                          ("halve", 0.5),
-                          ("een kwartier", 0.25),
-                          ("kwartier", 0.25),
-                          ("kwart", 0.25),
-                          ("driekwart", 0.75),
-                          ("drie kwart", 0.75),
-                          ("kwartaal", 0.25)])
-    HolidayNames = dict([("kingsday", ["koningsdag"]),
-                         ("queensday", ["koninginnedag"]),
-                         ("prinsjesdag", ["prinsjesdag"]),
-                         ("dodenherdenking", ["nationaledodenherdenking", "nationaleherdenking", "dodenherdenking"]),
-                         ("bevrijdingsdag", ["bevrijdingsdag"]),
-                         ("teachersday", ["dagvandeleraar", "dagvandeleerkracht", "dagvandeleerkrachten"]),
-                         ("veteransday", ["nederlandseveteranendag", "veteranendag"]),
-                         ("eerstekerstdag", ["eerstekerstdag", "1ekerstdag"]),
-                         ("tweedekerstdag", ["tweedekerstdag", "2ekerstdag"]),
-                         ("dagvandearbeid", ["dagvandearbeid", "feestvandearbeid"]),
-                         ("treeplantingday", ["nationaleboomfeestdag", "boomfeestdag", "boomplantdag"]),
-                         ("sinterklaas", ["sinterklaas", "sinterklaasavond", "sinterklaasfeest", "pakjesavond"]),
-                         ("driekoningen", ["driekoningen"]),
-                         ("ketikoti", ["ketikoti", "keti-koti"]),
-                         ("stmartinsday", ["sint-maartensfeest", "sint-maarten"]),
-                         ("ascensionday", ["hemelvaartsdag"]),
-                         ("whitesunday", ["pinksteren"]),
-                         ("christmas", ["kerstfeest", "kerstmis", "kerst", "xmas"]),
-                         ("easterday", ["pasen", "eerstepaasdag", "paasdag", "paaszondag"]),
-                         ("eastermonday", ["tweedepaasdag", "paasmaandag"]),
-                         ("fathers", ["vaderdag"]),
-                         ("goodfriday", ["goedevrijdag"]),
-                         ("mothers", ["moederdag"]),
-                         ("newyear", ["nieuwjaar"]),
-                         ("newyearday", ["nieuwjaarsdag"]),
-                         ("newyearsday", ["nieuwjaarsdag"]),
-                         ("newyeareve", ["oudjaar", "oudejaar", "oudejaarsavond", "oudjaarsavond", "silvester", "silvesteravond", "oudennieuw", "oud&nieuw"]),
-                         ("valentinesday", ["valentijnsdag", "valetijnsdag"]),
-                         ("independenceday", ["onafhankelijkheidsdag", "onafhankelijksdag"]),
-                         ("bastilleday", ["fransenationalefeestdag", "bestormingvandebastille"]),
-                         ("halloweenday", ["halloween", "allerheiligenavond"]),
-                         ("allhallowday", ["allerheiligen"]),
-                         ("allsoulsday", ["allerzielen"]),
-                         ("christmaseve", ["kerstavond"]),
-                         ("yuandan", ["yuandan"]),
-                         ("chinesenewyear", ["chineesnieuwjaar", "lentefestival", "lentefeest"]),
-                         ("ramadan", ["ramadan"]),
-                         ("eidalfitr", ["eidalfitr", "suikerfeest"]),
-                         ("sacrifice", ["eidaladha", "offerfeest"]),
-                         ("islamicnewyear", ["islamitischnieuwjaar"]),
-                         ("thanksgiving", ["thanksgivingday", "thanksgiving", "dankzeggingsdag"]),
-                         ("martinlutherking", ["martinlutherkingday", "martinlutherkingjrday", "martinlutherkingdag", "mlkdag"]),
-                         ("usindependenceday", ["amerikaanseonafhankelijkheidsdag", "usonafhankelijkheidsdag"]),
-                         ("blackfriday", ["blackfriday"]),
-                         ("cybermonday", ["cybermonday"]),
-                         ("earthday", ["dagvandeaarde"]),
-                         ("juneteenth", ["jubileeday", "juneteenth", "vrijheidsdag"])])
-    WrittenDecades = dict([("jaren 0", 0),
-                           ("jaren nul", 0),
-                           ("jaren 10", 10),
-                           ("jaren tien", 10),
-                           ("jaren 20", 20),
-                           ("jaren twintig", 20),
-                           ("twintiger jaren", 20),
-                           ("jaren 30", 30),
-                           ("jaren dertig", 30),
-                           ("dertiger jaren", 30),
-                           ("jaren 40", 40),
-                           ("jaren veertig", 40),
-                           ("veertiger jaren", 40),
-                           ("jaren 50", 50),
-                           ("jaren vijftig", 50),
-                           ("vijftiger jaren", 50),
-                           ("jaren 60", 60),
-                           ("jaren zestig", 60),
-                           ("zestiger jaren", 60),
-                           ("jaren 70", 70),
-                           ("jaren zeventig", 70),
-                           ("zeventiger jaren", 70),
-                           ("jaren 80", 80),
-                           ("jaren tachtig", 80),
-                           ("tachtiger jaren", 80),
-                           ("jaren 90", 90),
-                           ("jaren negentig", 90),
-                           ("nul", 0),
-                           ("tien", 10),
-                           ("twintig", 20),
-                           ("twintiger", 20),
-                           ("dertig", 30),
-                           ("dertiger", 30),
-                           ("veertig", 40),
-                           ("veertiger", 40),
-                           ("vijftig", 50),
-                           ("vijftiger", 50),
-                           ("zestig", 60),
-                           ("zestiger", 60),
-                           ("zeventig", 70),
-                           ("zeventiger", 70),
-                           ("tachtig", 80),
-                           ("tachtiger", 80),
-                           ("negentig", 90),
-                           ("negentiger", 90),
-                           ("honderd", 0)])
-    SpecialDecadeCases = dict([("21e eeuw", 2000),
-                               ("eenentwintigste eeuw", 2000),
-                               ("tweeduizend", 2000),
-                               ("jaren nul", 0),
-                               ("nul", 0)])
+    SeasonMap = dict([("lente", "SP"), ("zomer", "SU"), ("herfst", "FA"), ("winter", "WI")])
+    SeasonValueMap = dict([("SP", 3), ("SU", 6), ("FA", 9), ("WI", 12)])
+    CardinalMap = dict(
+        [
+            ("eerste", 1),
+            ("1e", 1),
+            ("1ste", 1),
+            ("tweede", 2),
+            ("2e", 2),
+            ("2de", 2),
+            ("derde", 3),
+            ("3e", 3),
+            ("3de", 3),
+            ("vierde", 4),
+            ("4e", 4),
+            ("4de", 4),
+            ("vijfde", 5),
+            ("5e", 5),
+            ("5de", 5),
+        ]
+    )
+    DayOfWeek = dict(
+        [
+            ("maandag", 1),
+            ("dinsdag", 2),
+            ("woensdag", 3),
+            ("donderdag", 4),
+            ("vrijdag", 5),
+            ("zaterdag", 6),
+            ("zondag", 0),
+            ("zondagmiddag", 0),
+            ("maandagen", 1),
+            ("dinsdagen", 2),
+            ("woensdagen", 3),
+            ("donderdagen", 4),
+            ("vrijdagen", 5),
+            ("zaterdagen", 6),
+            ("zondagen", 0),
+            ("ma", 1),
+            ("ma.", 1),
+            ("dins", 2),
+            ("dins.", 2),
+            ("woens", 3),
+            ("woens.", 3),
+            ("di", 2),
+            ("di.", 2),
+            ("wo", 3),
+            ("wo.", 3),
+            ("woe", 3),
+            ("woe.", 3),
+            ("do", 4),
+            ("do.", 4),
+            ("vr", 5),
+            ("vr.", 5),
+            ("vrij", 5),
+            ("vrij.", 5),
+            ("za", 6),
+            ("za.", 6),
+            ("zat", 6),
+            ("zat.", 6),
+            ("zo", 0),
+            ("zo.", 0),
+            ("zon", 0),
+            ("zon.", 0),
+            ("monday", 1),
+            ("tuesday", 2),
+            ("wednesday", 3),
+            ("thursday", 4),
+            ("friday", 5),
+            ("saturday", 6),
+            ("sunday", 0),
+            ("mon", 1),
+            ("tue", 2),
+            ("tues", 2),
+            ("wed", 3),
+            ("wedn", 3),
+            ("weds", 3),
+            ("thu", 4),
+            ("thur", 4),
+            ("thurs", 4),
+            ("fri", 5),
+            ("sat", 6),
+            ("sun", 0),
+        ]
+    )
+    MonthOfYear = dict(
+        [
+            ("januari", 1),
+            ("februari", 2),
+            ("maart", 3),
+            ("april", 4),
+            ("mei", 5),
+            ("juni", 6),
+            ("juli", 7),
+            ("augustus", 8),
+            ("september", 9),
+            ("oktober", 10),
+            ("november", 11),
+            ("december", 12),
+            ("jan", 1),
+            ("feb", 2),
+            ("mar", 3),
+            ("mrt", 3),
+            ("apr", 4),
+            ("jun", 6),
+            ("jul", 7),
+            ("aug", 8),
+            ("sep", 9),
+            ("sept", 9),
+            ("oct", 10),
+            ("okt", 10),
+            ("nov", 11),
+            ("dec", 12),
+            ("jan.", 1),
+            ("feb.", 2),
+            ("mar.", 3),
+            ("mrt.", 3),
+            ("apr.", 4),
+            ("jun.", 6),
+            ("jul.", 7),
+            ("aug.", 8),
+            ("sep.", 9),
+            ("sept.", 9),
+            ("oct.", 10),
+            ("okt.", 10),
+            ("nov.", 11),
+            ("dec.", 12),
+            ("1", 1),
+            ("2", 2),
+            ("3", 3),
+            ("4", 4),
+            ("5", 5),
+            ("6", 6),
+            ("7", 7),
+            ("8", 8),
+            ("9", 9),
+            ("10", 10),
+            ("11", 11),
+            ("12", 12),
+            ("01", 1),
+            ("02", 2),
+            ("03", 3),
+            ("04", 4),
+            ("05", 5),
+            ("06", 6),
+            ("07", 7),
+            ("08", 8),
+            ("09", 9),
+        ]
+    )
+    Numbers = dict(
+        [
+            ("nul", 0),
+            ("een", 1),
+            ("één", 1),
+            ("twee", 2),
+            ("drie", 3),
+            ("vier", 4),
+            ("vijf", 5),
+            ("zes", 6),
+            ("zeven", 7),
+            ("acht", 8),
+            ("negen", 9),
+            ("tien", 10),
+            ("elf", 11),
+            ("elven", 11),
+            ("twaalf", 12),
+            ("dertien", 13),
+            ("veertien", 14),
+            ("vijftien", 15),
+            ("zestien", 16),
+            ("zeventien", 17),
+            ("achttien", 18),
+            ("negentien", 19),
+            ("twintig", 20),
+            ("eenentwintig", 21),
+            ("éénentwintig", 21),
+            ("tweeentwintig", 22),
+            ("tweeëntwintig", 22),
+            ("drieëntwintig", 23),
+            ("vierentwintig", 24),
+            ("vijfentwintig", 25),
+            ("vijventwintig", 25),
+            ("zesentwintig", 26),
+            ("zevenentwintig", 27),
+            ("achtentwintig", 28),
+            ("negenentwintig", 29),
+            ("dertig", 30),
+            ("eenendertig", 31),
+            ("tweeëndertig", 32),
+            ("drieëndertig", 33),
+            ("vierendertig", 34),
+            ("vijfendertig", 35),
+            ("zesendertig", 36),
+            ("zevenendertig", 37),
+            ("achtendertig", 38),
+            ("negenendertig", 39),
+            ("veertig", 40),
+            ("eenenveertig", 41),
+            ("tweeënveertig", 42),
+            ("drieënveertig", 43),
+            ("vierenveertig", 44),
+            ("vijfenveertig", 45),
+            ("zesenveertig", 46),
+            ("zevenenveertig", 47),
+            ("achtenveertig", 48),
+            ("negenenveertig", 49),
+            ("eenenvijftig", 50),
+            ("vijftig", 51),
+            ("tweeënvijftig", 52),
+            ("drieënvijftig", 53),
+            ("vierenvijftig", 54),
+            ("vijfenvijftig", 55),
+            ("zesenvijftig", 56),
+            ("zevenenvijftig", 57),
+            ("achtenvijftig", 58),
+            ("negenenvijftig", 59),
+            ("zestig", 60),
+            ("eenenzestig", 61),
+            ("tweeënzestig", 62),
+            ("drieënzestig", 63),
+            ("vierenzestig", 64),
+            ("vijfenzestig", 65),
+            ("zesenzestig", 66),
+            ("zevenenzestig", 67),
+            ("achtenzestig", 68),
+            ("negenenzestig", 69),
+            ("zeventig", 70),
+            ("eenenzeventig", 71),
+            ("tweeënzeventig", 72),
+            ("drieënzeventig", 73),
+            ("vierenzeventig", 74),
+            ("vijfenzeventig", 75),
+            ("zesenzeventig", 76),
+            ("zevenenzeventig", 77),
+            ("achtenzeventig", 78),
+            ("negenenzeventig", 79),
+            ("tachtig", 80),
+            ("eenentachtig", 81),
+            ("tweeëntachtig", 82),
+            ("drieëntachtig", 83),
+            ("vierentachtig", 84),
+            ("vijfentachtig", 85),
+            ("zesentachtig", 86),
+            ("zevenentachtig", 87),
+            ("achtentachtig", 88),
+            ("negenentachtig", 89),
+            ("negentig", 90),
+            ("eenennegentig", 91),
+            ("tweeënnegentig", 92),
+            ("drieënnegentig", 93),
+            ("vierennegentig", 94),
+            ("vijfennegentig", 95),
+            ("zesennegentig", 96),
+            ("zevenennegentig", 97),
+            ("achtennegentig", 98),
+            ("negenennegentig", 99),
+            ("honderd", 100),
+        ]
+    )
+    DayOfMonth = dict(
+        [
+            ("1e", 1),
+            ("1ste", 1),
+            ("2e", 2),
+            ("2de", 2),
+            ("3e", 3),
+            ("3de", 3),
+            ("4e", 4),
+            ("4de", 4),
+            ("5e", 5),
+            ("5de", 5),
+            ("6e", 6),
+            ("6de", 6),
+            ("7e", 7),
+            ("7de", 7),
+            ("8e", 8),
+            ("8de", 8),
+            ("9e", 9),
+            ("9de", 9),
+            ("10e", 10),
+            ("10de", 10),
+            ("11e", 11),
+            ("11de", 11),
+            ("12e", 12),
+            ("12de", 12),
+            ("13e", 13),
+            ("13de", 13),
+            ("14e", 14),
+            ("14de", 14),
+            ("15e", 15),
+            ("15de", 15),
+            ("16e", 16),
+            ("16de", 16),
+            ("17e", 17),
+            ("17de", 17),
+            ("18e", 18),
+            ("19e", 19),
+            ("20e", 20),
+            ("21e", 21),
+            ("22e", 22),
+            ("23e", 23),
+            ("24e", 24),
+            ("25e", 25),
+            ("26e", 26),
+            ("27e", 27),
+            ("28e", 28),
+            ("29e", 29),
+            ("30e", 30),
+            ("31e", 31),
+        ]
+    )
+    DoubleNumbers = dict(
+        [
+            ("half", 0.5),
+            ("anderhalf", 1.5),
+            ("anderhalve", 1.5),
+            ("halve", 0.5),
+            ("een kwartier", 0.25),
+            ("kwartier", 0.25),
+            ("kwart", 0.25),
+            ("driekwart", 0.75),
+            ("drie kwart", 0.75),
+            ("kwartaal", 0.25),
+        ]
+    )
+    HolidayNames = dict(
+        [
+            ("kingsday", ["koningsdag"]),
+            ("queensday", ["koninginnedag"]),
+            ("prinsjesdag", ["prinsjesdag"]),
+            ("dodenherdenking", ["nationaledodenherdenking", "nationaleherdenking", "dodenherdenking"]),
+            ("bevrijdingsdag", ["bevrijdingsdag"]),
+            ("teachersday", ["dagvandeleraar", "dagvandeleerkracht", "dagvandeleerkrachten"]),
+            ("veteransday", ["nederlandseveteranendag", "veteranendag"]),
+            ("eerstekerstdag", ["eerstekerstdag", "1ekerstdag"]),
+            ("tweedekerstdag", ["tweedekerstdag", "2ekerstdag"]),
+            ("dagvandearbeid", ["dagvandearbeid", "feestvandearbeid"]),
+            ("treeplantingday", ["nationaleboomfeestdag", "boomfeestdag", "boomplantdag"]),
+            ("sinterklaas", ["sinterklaas", "sinterklaasavond", "sinterklaasfeest", "pakjesavond"]),
+            ("driekoningen", ["driekoningen"]),
+            ("ketikoti", ["ketikoti", "keti-koti"]),
+            ("stmartinsday", ["sint-maartensfeest", "sint-maarten"]),
+            ("ascensionday", ["hemelvaartsdag"]),
+            ("whitesunday", ["pinksteren"]),
+            ("christmas", ["kerstfeest", "kerstmis", "kerst", "xmas"]),
+            ("easterday", ["pasen", "eerstepaasdag", "paasdag", "paaszondag"]),
+            ("eastermonday", ["tweedepaasdag", "paasmaandag"]),
+            ("fathers", ["vaderdag"]),
+            ("goodfriday", ["goedevrijdag"]),
+            ("mothers", ["moederdag"]),
+            ("newyear", ["nieuwjaar"]),
+            ("newyearday", ["nieuwjaarsdag"]),
+            ("newyearsday", ["nieuwjaarsdag"]),
+            (
+                "newyeareve",
+                [
+                    "oudjaar",
+                    "oudejaar",
+                    "oudejaarsavond",
+                    "oudjaarsavond",
+                    "silvester",
+                    "silvesteravond",
+                    "oudennieuw",
+                    "oud&nieuw",
+                ],
+            ),
+            ("valentinesday", ["valentijnsdag", "valetijnsdag"]),
+            ("independenceday", ["onafhankelijkheidsdag", "onafhankelijksdag"]),
+            ("bastilleday", ["fransenationalefeestdag", "bestormingvandebastille"]),
+            ("halloweenday", ["halloween", "allerheiligenavond"]),
+            ("allhallowday", ["allerheiligen"]),
+            ("allsoulsday", ["allerzielen"]),
+            ("christmaseve", ["kerstavond"]),
+            ("yuandan", ["yuandan"]),
+            ("chinesenewyear", ["chineesnieuwjaar", "lentefestival", "lentefeest"]),
+            ("ramadan", ["ramadan"]),
+            ("eidalfitr", ["eidalfitr", "suikerfeest"]),
+            ("sacrifice", ["eidaladha", "offerfeest"]),
+            ("islamicnewyear", ["islamitischnieuwjaar"]),
+            ("thanksgiving", ["thanksgivingday", "thanksgiving", "dankzeggingsdag"]),
+            ("martinlutherking", ["martinlutherkingday", "martinlutherkingjrday", "martinlutherkingdag", "mlkdag"]),
+            ("usindependenceday", ["amerikaanseonafhankelijkheidsdag", "usonafhankelijkheidsdag"]),
+            ("blackfriday", ["blackfriday"]),
+            ("cybermonday", ["cybermonday"]),
+            ("earthday", ["dagvandeaarde"]),
+            ("juneteenth", ["jubileeday", "juneteenth", "vrijheidsdag"]),
+        ]
+    )
+    WrittenDecades = dict(
+        [
+            ("jaren 0", 0),
+            ("jaren nul", 0),
+            ("jaren 10", 10),
+            ("jaren tien", 10),
+            ("jaren 20", 20),
+            ("jaren twintig", 20),
+            ("twintiger jaren", 20),
+            ("jaren 30", 30),
+            ("jaren dertig", 30),
+            ("dertiger jaren", 30),
+            ("jaren 40", 40),
+            ("jaren veertig", 40),
+            ("veertiger jaren", 40),
+            ("jaren 50", 50),
+            ("jaren vijftig", 50),
+            ("vijftiger jaren", 50),
+            ("jaren 60", 60),
+            ("jaren zestig", 60),
+            ("zestiger jaren", 60),
+            ("jaren 70", 70),
+            ("jaren zeventig", 70),
+            ("zeventiger jaren", 70),
+            ("jaren 80", 80),
+            ("jaren tachtig", 80),
+            ("tachtiger jaren", 80),
+            ("jaren 90", 90),
+            ("jaren negentig", 90),
+            ("nul", 0),
+            ("tien", 10),
+            ("twintig", 20),
+            ("twintiger", 20),
+            ("dertig", 30),
+            ("dertiger", 30),
+            ("veertig", 40),
+            ("veertiger", 40),
+            ("vijftig", 50),
+            ("vijftiger", 50),
+            ("zestig", 60),
+            ("zestiger", 60),
+            ("zeventig", 70),
+            ("zeventiger", 70),
+            ("tachtig", 80),
+            ("tachtiger", 80),
+            ("negentig", 90),
+            ("negentiger", 90),
+            ("honderd", 0),
+        ]
+    )
+    SpecialDecadeCases = dict(
+        [("21e eeuw", 2000), ("eenentwintigste eeuw", 2000), ("tweeduizend", 2000), ("jaren nul", 0), ("nul", 0)]
+    )
     DefaultLanguageFallback = 'DMY'
     SuperfluousWordList = [r'preferably', r'how about', r'maybe', r'say', r'like']
     DurationDateRestrictions = [r'vandaag', r'nu']
-    AmbiguityFiltersDict = dict([("^\\d{4}$", "(\\d\\.\\d{4}|\\d{4}\\.\\d)"),
-                                 ("\\b(ontbijt|lunch|avondeten)$", "(?<!\\b(op|om|voor|na(ar)?|rond)(\\s+(het|de))?\\s+)(ontbijt|lunch|avondeten)"),
-                                 ("^(morgen|middag|avond|nacht|dag)\\b", "\\b(goe[di]en?\\s*(morgen|middag|avond|nacht|dag))\\b"),
-                                 ("^\\d{1,4}-\\d{1,4}$", "\\d{1,4}-\\d{1,4}-\\d|\\d-\\d{1,4}-\\d{1,4}"),
-                                 ("^\\d{1,4}-\\d{1,4}-\\d{1,4}$", "\\d{1,4}-\\d{1,4}-\\d{1,4}-\\d|\\d-\\d{1,4}-\\d{1,4}-\\d{1,4}")])
-    AmbiguityTimeFiltersDict = dict([("^(\\d{1,2}|\\p{L}+)\\s+uur$", "(?<LB>(?<!\\b(om|is|vanaf|morgen|vandaag|gisteren|\\d+)(\\s+(\\d{1,2}|\\p{L}+)\\s+uur\\s+(of|en))?\\s+)\\b(\\d{1,2}|\\p{L}+)\\s+uur\\b)(?(LB)(?!\\s+(tot|morgen|vandaag|gisteren|\\d+)\\b))")])
+    AmbiguityFiltersDict = dict(
+        [
+            ("^\\d{4}$", "(\\d\\.\\d{4}|\\d{4}\\.\\d)"),
+            (
+                "\\b(ontbijt|lunch|avondeten)$",
+                "(?<!\\b(op|om|voor|na(ar)?|rond)(\\s+(het|de))?\\s+)(ontbijt|lunch|avondeten)",
+            ),
+            ("^(morgen|middag|avond|nacht|dag)\\b", "\\b(goe[di]en?\\s*(morgen|middag|avond|nacht|dag))\\b"),
+            ("^\\d{1,4}-\\d{1,4}$", "\\d{1,4}-\\d{1,4}-\\d|\\d-\\d{1,4}-\\d{1,4}"),
+            ("^\\d{1,4}-\\d{1,4}-\\d{1,4}$", "\\d{1,4}-\\d{1,4}-\\d{1,4}-\\d|\\d-\\d{1,4}-\\d{1,4}-\\d{1,4}"),
+        ]
+    )
+    AmbiguityTimeFiltersDict = dict(
+        [
+            (
+                "^(\\d{1,2}|\\p{L}+)\\s+uur$",
+                "(?<LB>(?<!\\b(om|is|vanaf|morgen|vandaag|gisteren|\\d+)(\\s+(\\d{1,2}|\\p{L}+)\\s+uur\\s+(of|en))?\\s+)\\b(\\d{1,2}|\\p{L}+)\\s+uur\\b)(?(LB)(?!\\s+(tot|morgen|vandaag|gisteren|\\d+)\\b))",
+            )
+        ]
+    )
     MorningTermList = [r'morgen', r'morgens', r'ochtend', r'ochtends']
     AfternoonTermList = [r'middag', r'namiddag', r'voormiddag']
     EveningTermList = [r'avond', r'avonden']
@@ -809,7 +913,16 @@ class DutchDateTime(BaseDateTimeResource):
     MealtimeDinnerTermList = [r'avondeten']
     DaytimeTermList = [r'dag', r'overdag']
     NightTermList = [r'nacht']
-    SameDayTerms = [r'vandaag', r'huidige dag', r'huidige datum', r'actuele datum', r'actuele dag', r'deze morgen', r'actuele morgen', r'vanmorgen']
+    SameDayTerms = [
+        r'vandaag',
+        r'huidige dag',
+        r'huidige datum',
+        r'actuele datum',
+        r'actuele dag',
+        r'deze morgen',
+        r'actuele morgen',
+        r'vanmorgen',
+    ]
     PlusOneDayTerms = [r'morgen', r'dag na', r'dag erna', r'volgende dag', r'morgenochtend', r'morgenavond']
     MinusOneDayTerms = [r'gisteren', r'dag voor', r'dag ervoor', r'vorige dag', r'gisterenochtend', r'gisterenavond']
     PlusTwoDayTerms = [r'overmorgen', r'dag na morgen']
@@ -831,4 +944,6 @@ class DutchDateTime(BaseDateTimeResource):
     QuarterTypeRegex = '^(kwartaal|driemaandelijkse?)$'
     YearTypeRegex = '^(elk\\s+jaar|jaar(lijkse?)?)$'
     SemiYearTypeRegex = '^(halfjaar(lijkse?)?)$'
+
+
 # pylint: enable=line-too-long

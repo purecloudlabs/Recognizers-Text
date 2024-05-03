@@ -18,7 +18,7 @@ from .time_extractor import ChineseTimeExtractor
 from .time_parser import ChineseTimeParser
 
 
-class ChineseDateTimeParserConfiguration():
+class ChineseDateTimeParserConfiguration:
     @property
     def token_before_date(self) -> str:
         raise NotImplementedError()
@@ -112,14 +112,10 @@ class ChineseDateTimeParserConfiguration():
         self._time_extractor = ChineseTimeExtractor()
         self._date_parser = ChineseDateParser()
         self._time_parser = ChineseTimeParser()
-        self._pm_time_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.DateTimeSimplePmRegex)
-        self._am_time_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.DateTimeSimpleAmRegex)
-        self._specific_time_of_day_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.TimeOfSpecialDayRegex)
-        self._now_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.NowRegex)
+        self._pm_time_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.DateTimeSimplePmRegex)
+        self._am_time_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.DateTimeSimpleAmRegex)
+        self._specific_time_of_day_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.TimeOfSpecialDayRegex)
+        self._now_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.NowRegex)
 
     def have_ambiguous_token(self, source: str, matched_text: str) -> bool:
         return False

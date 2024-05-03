@@ -67,4 +67,3 @@ class GermanDateExtractorConfiguration(DateExtractorConfiguration):
             RegExpUtility.get_safe_reg_exp(GermanDateTime.DateExtractor9),
             RegExpUtility.get_safe_reg_exp(GermanDateTime.DateExtractorA),
         ]
-

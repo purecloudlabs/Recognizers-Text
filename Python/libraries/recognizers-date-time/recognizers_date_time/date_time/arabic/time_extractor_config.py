@@ -105,14 +105,10 @@ class ArabicTimeExtractorConfiguration(TimeExtractorConfiguration):
     def __init__(self):
         super().__init__()
 
-        self._time_regex_list: List[Pattern] = ArabicTimeExtractorConfiguration.get_time_regex_list(
-        )
-        self._at_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.AtRegex)
-        self._ish_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.IshRegex)
-        self._time_before_after_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.TimeBeforeAfterRegex)
+        self._time_regex_list: List[Pattern] = ArabicTimeExtractorConfiguration.get_time_regex_list()
+        self._at_regex: Pattern = RegExpUtility.get_safe_reg_exp(ArabicDateTime.AtRegex)
+        self._ish_regex: Pattern = RegExpUtility.get_safe_reg_exp(ArabicDateTime.IshRegex)
+        self._time_before_after_regex: Pattern = RegExpUtility.get_safe_reg_exp(ArabicDateTime.TimeBeforeAfterRegex)
 
         self._options = DateTimeOptions.NONE
         self._duration_extractor = BaseDurationExtractor(ArabicDurationExtractorConfiguration())
@@ -150,5 +146,5 @@ class ArabicTimeExtractorConfiguration(TimeExtractorConfiguration):
             RegExpUtility.get_safe_reg_exp(ArabicDateTime.TimeRegex9),
             RegExpUtility.get_safe_reg_exp(ArabicDateTime.TimeRegex10),
             RegExpUtility.get_safe_reg_exp(ArabicDateTime.TimeRegex11),
-            RegExpUtility.get_safe_reg_exp(ArabicDateTime.ConnectNumRegex)
+            RegExpUtility.get_safe_reg_exp(ArabicDateTime.ConnectNumRegex),
         ]

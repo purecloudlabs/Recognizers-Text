@@ -16,8 +16,7 @@ class MatchedIndex:
 
 class MatchingUtil:
 
-    invalid_day_number_prefix = RegExpUtility.get_safe_reg_exp(
-        BaseDateTime.InvalidDayNumberPrefix)
+    invalid_day_number_prefix = RegExpUtility.get_safe_reg_exp(BaseDateTime.InvalidDayNumberPrefix)
 
     @staticmethod
     def is_invalid_day_number_prefix(prefix: str) -> bool:
@@ -30,15 +29,16 @@ class MatchingUtil:
         bias = 0
 
         for match in superfluous_word_matches:
-            text = text[match.start - bias: match.length]
+            text = text[match.start - bias : match.length]
 
             bias += match.length
 
         return text, superfluous_word_matches
 
     @staticmethod
-    def post_process_recover_superfluous_words(extract_results: List[ExtractResult], superfluous_word_matches,
-                                               origin_text: str):
+    def post_process_recover_superfluous_words(
+        extract_results: List[ExtractResult], superfluous_word_matches, origin_text: str
+    ):
         for match in superfluous_word_matches:
             for extract_result in extract_results:
 
@@ -50,7 +50,7 @@ class MatchingUtil:
                     extract_result.start += len(match)
 
         for extract_result in extract_results:
-            extract_result.text = origin_text[extract_result.start: extract_result.start + extract_result.length]
+            extract_result.text = origin_text[extract_result.start : extract_result.start + extract_result.length]
 
         return extract_results
 
@@ -58,9 +58,20 @@ class MatchingUtil:
     def remove_sub_matches(match_results: List[MatchResult]):
         match_list = list(match_results)
 
-        match_list = (list(filter(lambda item: not any(list(filter(
-            lambda ritem: (ritem.start < item.start and ritem.end >= item.end) or (
-                ritem.start <= item.start and ritem.end > item.end), match_list))), match_list)))
+        match_list = list(
+            filter(
+                lambda item: not any(
+                    list(
+                        filter(
+                            lambda ritem: (ritem.start < item.start and ritem.end >= item.end)
+                            or (ritem.start <= item.start and ritem.end > item.end),
+                            match_list,
+                        )
+                    )
+                ),
+                match_list,
+            )
+        )
 
         return match_list
 
@@ -68,8 +79,11 @@ class MatchingUtil:
     def get_ago_later_index(source: str, regexp: Pattern, in_suffix) -> MatchedIndex:
         result = MatchedIndex(matched=False, index=-1)
         trimmed_source = source.strip().lower()
-        match = RegExpUtility.match_begin(regexp, trimmed_source, True) if in_suffix else\
-            RegExpUtility.match_end(regexp, trimmed_source, True)
+        match = (
+            RegExpUtility.match_begin(regexp, trimmed_source, True)
+            if in_suffix
+            else RegExpUtility.match_end(regexp, trimmed_source, True)
+        )
 
         if match and match.success:
             result.index = source.lower().find(match.group()) + (match.length if in_suffix else 0)
@@ -84,12 +98,10 @@ class MatchingUtil:
     @staticmethod
     def get_term_index(source: str, regexp: Pattern) -> MatchedIndex:
         result = MatchedIndex(matched=False, index=-1)
-        referenced_match = regex.search(
-            regexp, source.strip().lower().split(' ').pop())
+        referenced_match = regex.search(regexp, source.strip().lower().split(' ').pop())
 
         if referenced_match:
-            result = MatchedIndex(matched=True, index=len(
-                source) - source.lower().rfind(referenced_match.group()))
+            result = MatchedIndex(matched=True, index=len(source) - source.lower().rfind(referenced_match.group()))
 
         return result
 

@@ -80,20 +80,14 @@ class ArabicMergedParserConfiguration(ArabicCommonDateTimeParserConfiguration, M
 
     def __init__(self, config):
         ArabicCommonDateTimeParserConfiguration.__init__(self)
-        self._suffix_after = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.SuffixAfterRegex)
+        self._suffix_after = RegExpUtility.get_safe_reg_exp(ArabicDateTime.SuffixAfterRegex)
         self._year_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.YearRegex)
         self._equal_regex = RegExpUtility.get_safe_reg_exp(BaseDateTime.EqualRegex)
         self._around_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.AroundRegex)
-        self._before_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.BeforeRegex)
-        self._after_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.AfterRegex)
-        self._since_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.SinceRegex)
+        self._before_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.BeforeRegex)
+        self._after_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.AfterRegex)
+        self._since_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.SinceRegex)
 
-        self._date_period_parser = BaseDatePeriodParser(
-            ArabicDatePeriodParserConfiguration(self))
-        self._time_period_parser = BaseTimePeriodParser(
-            ArabicTimePeriodParserConfiguration(self))
+        self._date_period_parser = BaseDatePeriodParser(ArabicDatePeriodParserConfiguration(self))
+        self._time_period_parser = BaseTimePeriodParser(ArabicTimePeriodParserConfiguration(self))
         self._holiday_parser = BaseHolidayParser(ArabicHolidayParserConfiguration(self))

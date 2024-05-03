@@ -77,32 +77,30 @@ class ChineseDatePeriodExtractor(BaseDatePeriodExtractor):
         durations: List[Token] = list()
 
         for er in self.config.integer_extractor.extract(source):
-            after_str = source[er.start + er.length:]
-            followed_unit_match = regex.search(
-                self.config.followed_unit, after_str)
+            after_str = source[er.start + er.length :]
+            followed_unit_match = regex.search(self.config.followed_unit, after_str)
 
             if followed_unit_match and followed_unit_match.start() == 0:
-                durations.append(Token(er.start, er.start +
-                                       er.length + len(followed_unit_match.group())))
+                durations.append(Token(er.start, er.start + er.length + len(followed_unit_match.group())))
 
         for match in regex.finditer(self.config.number_combined_with_unit, source):
             durations.append(Token(match.start(), match.end()))
 
         for duration in durations:
-            before_str = source[:duration.start].lower()
+            before_str = source[: duration.start].lower()
 
             if not before_str.strip():
                 continue
 
             match = regex.search(self.config.past_regex, before_str)
 
-            if match and not before_str[match.end():].strip():
+            if match and not before_str[match.end() :].strip():
                 tokens.append(Token(match.start(), duration.end))
                 continue
 
             match = regex.search(self.config.future_regex, before_str)
 
-            if match and not before_str[match.end():].strip():
+            if match and not before_str[match.end() :].strip():
                 tokens.append(Token(match.start(), duration.end))
 
         return tokens

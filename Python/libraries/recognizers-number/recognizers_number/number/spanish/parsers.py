@@ -64,12 +64,12 @@ class SpanishNumberParserConfiguration(BaseNumberParserConfiguration):
             if temp_word.endswith('avo') or temp_word.endswith('ava'):
                 oringinal_temp_word = temp_word
                 new_length = len(temp_word)
-                temp_word = oringinal_temp_word[0:new_length-3]
+                temp_word = oringinal_temp_word[0 : new_length - 3]
                 if temp_word in self.cardinal_number_map:
                     result.append(temp_word)
                     continue
                 else:
-                    temp_word = oringinal_temp_word[0:new_length-2]
+                    temp_word = oringinal_temp_word[0 : new_length - 2]
                     if temp_word in self.cardinal_number_map:
                         result.append(temp_word)
                         continue
@@ -80,8 +80,10 @@ class SpanishNumberParserConfiguration(BaseNumberParserConfiguration):
         # It works by inserting the numerator 'un' ('a') in the list result
         # so that the pattern is correctly processed.
         if len(result) > 2:
-            if result[len(result) - 1] == SpanishNumeric.OneHalfTokens[1] and \
-                    result[len(result) - 2] == SpanishNumeric.WordSeparatorToken:
+            if (
+                result[len(result) - 1] == SpanishNumeric.OneHalfTokens[1]
+                and result[len(result) - 2] == SpanishNumeric.WordSeparatorToken
+            ):
                 result[len(result) - 2] = SpanishNumeric.WrittenFractionSeparatorTexts[0]
                 result.insert(len(result) - 1, SpanishNumeric.OneHalfTokens[0])
 
@@ -102,11 +104,10 @@ class SpanishNumberParserConfiguration(BaseNumberParserConfiguration):
         i = 0
         while i < number_str_len:
             str_builder += number_str[i]
-            if (str_builder in self.cardinal_number_map and
-                    self.cardinal_number_map[str_builder] > 0):
+            if str_builder in self.cardinal_number_map and self.cardinal_number_map[str_builder] > 0:
                 last_good_char = i
                 value = self.cardinal_number_map[str_builder]
-            if i+1 == number_str_len:
+            if i + 1 == number_str_len:
                 final_value += value
                 str_builder = ''
                 last_good_char += 1

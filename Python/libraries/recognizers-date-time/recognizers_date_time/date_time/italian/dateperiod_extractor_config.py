@@ -39,21 +39,16 @@ class ItalianDatePeriodExtractorConfiguration(DatePeriodExtractorConfiguration):
             RegExpUtility.get_safe_reg_exp(ItalianDateTime.YearPeriodRegex),
             RegExpUtility.get_safe_reg_exp(ItalianDateTime.WeekOfYearRegex),
             RegExpUtility.get_safe_reg_exp(ItalianDateTime.WeekDayOfMonthRegex),
-            RegExpUtility.get_safe_reg_exp(
-                    ItalianDateTime.MonthFrontBetweenRegex),
-            RegExpUtility.get_safe_reg_exp(
-                    ItalianDateTime.MonthFrontSimpleCasesRegex),
+            RegExpUtility.get_safe_reg_exp(ItalianDateTime.MonthFrontBetweenRegex),
+            RegExpUtility.get_safe_reg_exp(ItalianDateTime.MonthFrontSimpleCasesRegex),
             RegExpUtility.get_safe_reg_exp(ItalianDateTime.QuarterRegex),
-            RegExpUtility.get_safe_reg_exp(
-                    ItalianDateTime.QuarterRegexYearFront),
+            RegExpUtility.get_safe_reg_exp(ItalianDateTime.QuarterRegexYearFront),
             RegExpUtility.get_safe_reg_exp(ItalianDateTime.SeasonRegex),
-            RegExpUtility.get_safe_reg_exp(
-                    ItalianDateTime.LaterEarlyPeriodRegex),
-            RegExpUtility.get_safe_reg_exp(
-                    ItalianDateTime.WeekWithWeekDayRangeRegex),
+            RegExpUtility.get_safe_reg_exp(ItalianDateTime.LaterEarlyPeriodRegex),
+            RegExpUtility.get_safe_reg_exp(ItalianDateTime.WeekWithWeekDayRangeRegex),
             RegExpUtility.get_safe_reg_exp(ItalianDateTime.YearPlusNumberRegex),
             RegExpUtility.get_safe_reg_exp(ItalianDateTime.DecadeWithCenturyRegex),
-            RegExpUtility.get_safe_reg_exp(ItalianDateTime.RelativeDecadeRegex)
+            RegExpUtility.get_safe_reg_exp(ItalianDateTime.RelativeDecadeRegex),
         ]
 
     def get_from_token_index(self, source: str) -> MatchedIndex:

@@ -23,7 +23,8 @@ class ArabicNumberWithUnitExtractorConfiguration(NumberWithUnitExtractorConfigur
     build_suffix: str = ArabicNumericWithUnit.BuildSuffix
     connector_token: str = None
     compound_unit_connector_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-        ArabicNumericWithUnit.CompoundUnitConnectorRegex)
+        ArabicNumericWithUnit.CompoundUnitConnectorRegex
+    )
     non_unit_regex: Pattern = RegExpUtility.get_safe_reg_exp(BaseUnits.PmNonUnitRegex)
     ambiguous_unit_number_multiplier_regex: Pattern = None
     culture_info: CultureInfo = None
@@ -57,7 +58,8 @@ class ArabicNumberWithUnitParserConfiguration(NumberWithUnitParserConfiguration)
         culture_info = culture_info or CultureInfo(Culture.Arabic)
         super().__init__(culture_info)
         self.internal_number_parser: Parser = AgnosticNumberParserFactory.get_parser(
-            ParserType.NUMBER, ArabicNumberParserConfiguration(culture_info))
+            ParserType.NUMBER, ArabicNumberParserConfiguration(culture_info)
+        )
 
 
 class ArabicCurrencyParserConfiguration(ArabicNumberWithUnitParserConfiguration):
@@ -68,4 +70,3 @@ class ArabicCurrencyParserConfiguration(ArabicNumberWithUnitParserConfiguration)
         self.add_dict_to_unit_map(ArabicNumericWithUnit.CurrencyPrefixList)
         self.currency_name_to_iso_code_map = ArabicNumericWithUnit.CurrencyNameToIsoCodeMap
         self.currency_fraction_code_list = ArabicNumericWithUnit.FractionalUnitNameToCodeMap
-

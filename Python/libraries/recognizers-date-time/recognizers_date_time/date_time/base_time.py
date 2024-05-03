@@ -65,6 +65,7 @@ class BaseTimeExtractor(DateTimeExtractor):
         from recognizers_date_time import DateTimeOptions
 
         from .utilities import Token
+
         result: List[Token] = list()
 
         if (self.config.options & DateTimeOptions.CALENDAR) != 0:
@@ -73,8 +74,9 @@ class BaseTimeExtractor(DateTimeExtractor):
             if before_after_regex.search(source):
                 matches: Match = before_after_regex.match(source)
                 for match in matches:
-                    result.append(Token(source.index(match.group()), source.index(match.group()) +
-                                        (match.end() - match.start())))
+                    result.append(
+                        Token(source.index(match.group()), source.index(match.group()) + (match.end() - match.start()))
+                    )
 
         return result
 
@@ -87,10 +89,13 @@ class BaseTimeExtractor(DateTimeExtractor):
         if match.re.groupindex.keys().__contains__('lth'):
             lth = match.group('lth')
 
-        return (lth is None) or (len(lth) != len(match_val) and not (len(match_val) == len(lth) + 1 and match_val.endswith(' ')))
+        return (lth is None) or (
+            len(lth) != len(match_val) and not (len(match_val) == len(lth) + 1 and match_val.endswith(' '))
+        )
 
     def basic_regex_match(self, source: str) -> []:
         from .utilities import Token
+
         result: List[Token] = list()
 
         for pattern in self.config.time_regex_list:
@@ -105,9 +110,9 @@ class BaseTimeExtractor(DateTimeExtractor):
 
     def at_regex_match(self, source: str) -> []:
         from .utilities import Token
+
         result: List[Token] = list()
-        matches = list(filter(lambda x: x.group(),
-                              regex.finditer(self.config.at_regex, source)))
+        matches = list(filter(lambda x: x.group(), regex.finditer(self.config.at_regex, source)))
 
         for match in matches:
             if match.end() < len(source) and source[match.end()] == '%':
@@ -118,17 +123,18 @@ class BaseTimeExtractor(DateTimeExtractor):
 
     def specials_regex_match(self, source: str) -> []:
         from .utilities import Token
+
         result: List[Token] = list()
         if self.config.ish_regex:
-            matches = list(filter(lambda x: x.group(),
-                                  regex.finditer(self.config.ish_regex, source)))
+            matches = list(filter(lambda x: x.group(), regex.finditer(self.config.ish_regex, source)))
             result.extend(map(lambda x: Token(x.start(), x.end()), matches))
         return result
 
 
 class AdjustParams:
-    def __init__(self, hour: int = 0, minute: int = 0, has_minute: bool = False,
-                 has_am: bool = False, has_pm: bool = False):
+    def __init__(
+        self, hour: int = 0, minute: int = 0, has_minute: bool = False, has_am: bool = False, has_pm: bool = False
+    ):
         self.hour = hour
         self.minute = minute
         self.has_minute = has_minute
@@ -181,6 +187,7 @@ class BaseTimeParser(DateTimeParser):
 
     def parse(self, source: ExtractResult, reference: datetime = None) -> Optional[DateTimeParseResult]:
         from .utilities import DateTimeFormatUtil
+
         if reference is None:
             reference = datetime.now()
 
@@ -192,9 +199,11 @@ class BaseTimeParser(DateTimeParser):
             inner_result = self.internal_parser(source_text, reference)
             if inner_result.success:
                 inner_result.future_resolution[TimeTypeConstants.TIME] = DateTimeFormatUtil.format_time(
-                    inner_result.future_value)
+                    inner_result.future_value
+                )
                 inner_result.past_resolution[TimeTypeConstants.TIME] = DateTimeFormatUtil.format_time(
-                    inner_result.past_value)
+                    inner_result.past_value
+                )
                 result.value = inner_result
                 result.timex_str = inner_result.timex if inner_result is not None else ''
                 result.resolution_str = ''
@@ -207,12 +216,12 @@ class BaseTimeParser(DateTimeParser):
 
     def parse_basic_regex_match(self, source: str, reference: datetime):
         from .utilities import DateTimeResolutionResult, DateUtils
+
         source = source.strip().lower()
         offset = 0
         match = regex.search(self.config.at_regex, source)
         if not match:
-            match = regex.search(self.config.at_regex,
-                                 self.config.time_token_prefix + source)
+            match = regex.search(self.config.at_regex, self.config.time_token_prefix + source)
             offset = len(self.config.time_token_prefix)
 
         if match is not None and match.start() == offset and match.group() == source:
@@ -228,7 +237,8 @@ class BaseTimeParser(DateTimeParser):
 
             result.timex = f'T{hour:02d}'
             result.future_value = DateUtils.safe_create_from_min_value(
-                reference.year, reference.month, reference.day, hour, 0, 0)
+                reference.year, reference.month, reference.day, hour, 0, 0
+            )
             result.past_value = result.future_value
             result.success = True
             return result
@@ -301,8 +311,7 @@ class BaseTimeParser(DateTimeParser):
                 if hour is None:
                     return result
             else:
-                hour = int(hour_str) if hour_str.isnumeric(
-                ) else self.config.numbers.get(hour_str, None)
+                hour = int(hour_str) if hour_str.isnumeric() else self.config.numbers.get(hour_str, None)
                 if hour is None:
                     return result
             # get minute
@@ -330,15 +339,19 @@ class BaseTimeParser(DateTimeParser):
         # adjust by desc string
         desc_str = RegExpUtility.get_group(match, Constants.DESC_GROUP_NAME).lower()
 
-        if any([regex.search(self.config.utility_configuration.am_desc_regex, desc_str),
-                regex.search(self.config.utility_configuration.am_pm_desc_regex, desc_str)]) or RegExpUtility.get_group(
-                match, Constants.IMPLICIT_AM_GROUP_NAME):
+        if any(
+            [
+                regex.search(self.config.utility_configuration.am_desc_regex, desc_str),
+                regex.search(self.config.utility_configuration.am_pm_desc_regex, desc_str),
+            ]
+        ) or RegExpUtility.get_group(match, Constants.IMPLICIT_AM_GROUP_NAME):
             if hour >= 12:
                 hour -= 12
             if regex.search(self.config.utility_configuration.am_pm_desc_regex, desc_str) is None:
                 has_am = True
-        elif regex.search(self.config.utility_configuration.pm_desc__regex,
-                          desc_str) is not None or RegExpUtility.get_group(match, Constants.IMPLICIT_PM_GROUP_NAME):
+        elif regex.search(
+            self.config.utility_configuration.pm_desc__regex, desc_str
+        ) is not None or RegExpUtility.get_group(match, Constants.IMPLICIT_PM_GROUP_NAME):
             if hour < 12:
                 hour += 12
             has_pm = True

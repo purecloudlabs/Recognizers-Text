@@ -26,7 +26,8 @@ class FrenchNumberWithUnitExtractorConfiguration(NumberWithUnitExtractorConfigur
     build_suffix: str = FrenchNumericWithUnit.BuildSuffix
     connector_token: str = FrenchNumericWithUnit.ConnectorToken
     compound_unit_connector_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-        FrenchNumericWithUnit.CompoundUnitConnectorRegex)
+        FrenchNumericWithUnit.CompoundUnitConnectorRegex
+    )
     non_unit_regex: Pattern = RegExpUtility.get_safe_reg_exp(BaseUnits.PmNonUnitRegex)
     ambiguous_unit_number_multiplier_regex: Pattern = None
     culture_info: CultureInfo = None
@@ -60,7 +61,8 @@ class FrenchNumberWithUnitParserConfiguration(NumberWithUnitParserConfiguration)
         culture_info = culture_info or CultureInfo(Culture.French)
         super().__init__(culture_info)
         self.internal_number_parser: Parser = AgnosticNumberParserFactory.get_parser(
-            ParserType.NUMBER, FrenchNumberParserConfiguration(culture_info))
+            ParserType.NUMBER, FrenchNumberParserConfiguration(culture_info)
+        )
 
 
 class FrenchCurrencyParserConfiguration(FrenchNumberWithUnitParserConfiguration):
@@ -71,4 +73,3 @@ class FrenchCurrencyParserConfiguration(FrenchNumberWithUnitParserConfiguration)
         self.add_dict_to_unit_map(FrenchNumericWithUnit.CurrencyPrefixList)
         self.currency_name_to_iso_code_map = FrenchNumericWithUnit.CurrencyNameToIsoCodeMap
         self.currency_fraction_code_list = FrenchNumericWithUnit.FractionalUnitNameToCodeMap
-

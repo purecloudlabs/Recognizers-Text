@@ -49,8 +49,10 @@ class FrenchNumberParserConfiguration(BaseNumberParserConfiguration):
         # It works by inserting the numerator 'un' ('a') in the list frac_words
         #
         if len(frac_words) > 2:
-            if frac_words[len(frac_words) - 1] == FrenchNumeric.OneHalfTokens[1] and \
-                    frac_words[len(frac_words) - 2] == FrenchNumeric.WordSeparatorToken:
+            if (
+                frac_words[len(frac_words) - 1] == FrenchNumeric.OneHalfTokens[1]
+                and frac_words[len(frac_words) - 2] == FrenchNumeric.WordSeparatorToken
+            ):
                 frac_words.insert(len(frac_words) - 1, FrenchNumeric.OneHalfTokens[0])
 
         return frac_words
@@ -68,8 +70,7 @@ class FrenchNumberParserConfiguration(BaseNumberParserConfiguration):
         i = 0
         while i < len(number_str):
             str_builder += number_str[i]
-            if (str_builder in self.cardinal_number_map
-                    and self.cardinal_number_map[str_builder] > value):
+            if str_builder in self.cardinal_number_map and self.cardinal_number_map[str_builder] > value:
                 last_good_char = i
                 value = self.cardinal_number_map[str_builder]
 

@@ -36,8 +36,7 @@ class MinimalDateTimeExtractor(DateTimeExtractor):
         tokens: List[Token] = list()
         # handle "now"
         now_regex = RegExpUtility.get_safe_reg_exp(CatalanDateTime.NowRegex)
-        matches: List[Match] = list(
-            regex.finditer(now_regex, source))
+        matches: List[Match] = list(regex.finditer(now_regex, source))
         tokens.extend(map(lambda x: Token(x.start(), x.end()), matches))
         return tokens
 
@@ -59,9 +58,11 @@ class MinimalDateTimeParser(DateTimeParser):
 
             if inner_result.success:
                 inner_result.future_resolution[TimeTypeConstants.DATETIME] = DateTimeFormatUtil.format_date_time(
-                    inner_result.future_value)
+                    inner_result.future_value
+                )
                 inner_result.past_resolution[TimeTypeConstants.DATETIME] = DateTimeFormatUtil.format_date_time(
-                    inner_result.past_value)
+                    inner_result.past_value
+                )
                 result.value = inner_result
                 result.timex_str = inner_result.timex if inner_result else ''
                 result.resolution_str = ''

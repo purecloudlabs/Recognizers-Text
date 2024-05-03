@@ -28,7 +28,8 @@ class PortugueseNumberWithUnitExtractorConfiguration(NumberWithUnitExtractorConf
     build_suffix: str = PortugueseNumericWithUnit.BuildSuffix
     connector_token: str = PortugueseNumericWithUnit.ConnectorToken
     compound_unit_connector_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-        PortugueseNumericWithUnit.CompoundUnitConnectorRegex)
+        PortugueseNumericWithUnit.CompoundUnitConnectorRegex
+    )
     non_unit_regex: Pattern = RegExpUtility.get_safe_reg_exp(BaseUnits.PmNonUnitRegex)
     ambiguous_unit_number_multiplier_regex: Pattern = None
     culture_info: CultureInfo = None
@@ -62,7 +63,8 @@ class PortugueseNumberWithUnitParserConfiguration(NumberWithUnitParserConfigurat
         culture_info = culture_info or CultureInfo(Culture.Portuguese)
         super().__init__(culture_info)
         self.internal_number_parser: Parser = AgnosticNumberParserFactory.get_parser(
-            ParserType.NUMBER, PortugueseNumberParserConfiguration(culture_info))
+            ParserType.NUMBER, PortugueseNumberParserConfiguration(culture_info)
+        )
 
 
 class PortugueseCurrencyParserConfiguration(PortugueseNumberWithUnitParserConfiguration):

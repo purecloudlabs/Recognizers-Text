@@ -68,4 +68,3 @@ class FrenchDateExtractorConfiguration(DateExtractorConfiguration):
             RegExpUtility.get_safe_reg_exp(FrenchDateTime.DateExtractor9),
             RegExpUtility.get_safe_reg_exp(FrenchDateTime.DateExtractorA),
         ]
-

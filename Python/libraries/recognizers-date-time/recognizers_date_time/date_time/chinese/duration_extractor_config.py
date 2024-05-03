@@ -38,12 +38,8 @@ class ChineseDurationExtractorConfiguration(ChineseNumberWithUnitExtractorConfig
 
     def __init__(self):
         super().__init__(CultureInfo(Culture.Chinese))
-        self._year_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.DurationYearRegex
-        )
-        self._half_suffix_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.DurationHalfSuffixRegex
-        )
+        self._year_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.DurationYearRegex)
+        self._half_suffix_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.DurationHalfSuffixRegex)
         self._extract_type = Constants.SYS_DATETIME_DURATION
         self._suffix_list = ChineseDateTime.DurationSuffixList
         self._prefix_list = dict()

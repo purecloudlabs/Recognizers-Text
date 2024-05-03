@@ -79,8 +79,7 @@ class ChineseBaseDateTimeExtractor(DateTimeExtractor):
         match_source: Dict[Match, any] = dict()
         matched: List[bool] = [False] * len(source)
 
-        collections = list(map(lambda x: (
-            list(regex.finditer(x[0], source)), x[1]), self._regex_dict.items()))
+        collections = list(map(lambda x: (list(regex.finditer(x[0], source)), x[1]), self._regex_dict.items()))
         collections = list(filter(lambda x: len(x[0]) > 0, collections))
 
         for collection in collections:
@@ -95,9 +94,11 @@ class ChineseBaseDateTimeExtractor(DateTimeExtractor):
                 if i + 1 == len(source) or not matched[i + 1]:
                     start = last + 1
                     length = i - last
-                    text = source[start:start+length].strip()
-                    src_match = next((x for x in iter(match_source) if (
-                        x.start() == start and (x.end() - x.start()) == length)), None)
+                    text = source[start : start + length].strip()
+                    src_match = next(
+                        (x for x in iter(match_source) if (x.start() == start and (x.end() - x.start()) == length)),
+                        None,
+                    )
                     if src_match:
                         value = ExtractResult()
                         value.start = start

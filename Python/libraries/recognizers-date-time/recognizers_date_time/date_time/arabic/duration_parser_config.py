@@ -69,25 +69,18 @@ class ArabicDurationParserConfiguration(DurationParserConfiguration):
         return self._duration_extractor
 
     def __init__(self, config):
-        self._duration_extractor = BaseDurationExtractor(
-            ArabicDurationExtractorConfiguration(), False)
+        self._duration_extractor = BaseDurationExtractor(ArabicDurationExtractorConfiguration(), False)
         self._cardinal_extractor: BaseNumberExtractor = ArabicCardinalExtractor()
-        self._number_parser: BaseNumberParser = BaseNumberParser(
-            ArabicNumberParserConfiguration())
-        self._followed_unit: Pattern = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.DurationFollowedUnit)
-        self._suffix_and_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.SuffixAndRegex)
+        self._number_parser: BaseNumberParser = BaseNumberParser(ArabicNumberParserConfiguration())
+        self._followed_unit: Pattern = RegExpUtility.get_safe_reg_exp(ArabicDateTime.DurationFollowedUnit)
+        self._suffix_and_regex: Pattern = RegExpUtility.get_safe_reg_exp(ArabicDateTime.SuffixAndRegex)
         self._number_combined_with_unit: Pattern = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.NumberCombinedWithDurationUnit)
-        self._an_unit_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.AnUnitRegex)
-        self._all_date_unit_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.AllRegex)
-        self._half_date_unit_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.HalfRegex)
-        self._inexact_number_unit_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.InexactNumberUnitRegex)
+            ArabicDateTime.NumberCombinedWithDurationUnit
+        )
+        self._an_unit_regex: Pattern = RegExpUtility.get_safe_reg_exp(ArabicDateTime.AnUnitRegex)
+        self._all_date_unit_regex: Pattern = RegExpUtility.get_safe_reg_exp(ArabicDateTime.AllRegex)
+        self._half_date_unit_regex: Pattern = RegExpUtility.get_safe_reg_exp(ArabicDateTime.HalfRegex)
+        self._inexact_number_unit_regex: Pattern = RegExpUtility.get_safe_reg_exp(ArabicDateTime.InexactNumberUnitRegex)
         self._unit_map: Dict[str, str] = ArabicDateTime.UnitMap
         self._unit_value_map: Dict[str, int] = ArabicDateTime.UnitValueMap
         self._double_numbers: Dict[str, float] = ArabicDateTime.DoubleNumbers

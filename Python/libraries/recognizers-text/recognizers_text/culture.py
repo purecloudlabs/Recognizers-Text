@@ -1,6 +1,7 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
+
 class Culture:
     Arabic: str = 'ar-ae'
     Chinese: str = 'zh-cn'
@@ -35,7 +36,7 @@ class Culture:
             Culture.Turkish,
             Culture.German,
             Culture.Catalan,
-            Culture.Arabic
+            Culture.Arabic,
         ]
 
     @staticmethod

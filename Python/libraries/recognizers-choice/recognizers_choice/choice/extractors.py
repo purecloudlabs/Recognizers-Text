@@ -46,7 +46,7 @@ class ChoiceExtractor(Extractor):
             return results
         source_tokens = self.__tokenize(trimmed_source)
 
-        for (regexp, type_extracted) in self.config.regexes_map.items():
+        for regexp, type_extracted in self.config.regexes_map.items():
             for match in RegExpUtility.get_matches(regexp, trimmed_source):
                 match_tokens = self.__tokenize(match)
                 top_score = 0.0
@@ -59,7 +59,7 @@ class ChoiceExtractor(Extractor):
                     value = ExtractResult()
                     start = trimmed_source.index(match)
                     length = len(match)
-                    text = source[start: start + length].strip()
+                    text = source[start : start + length].strip()
                     value.start = start
                     value.length = length
                     value.text = text
@@ -77,14 +77,14 @@ class ChoiceExtractor(Extractor):
             top_score = 0.0
             top_result_index = 0
             for i in range(len(partial_results)):
-                data = ChoiceExtractDataResult(
-                    source, partial_results[i].data.score)
+                data = ChoiceExtractDataResult(source, partial_results[i].data.score)
                 if data.score > top_score:
                     top_score = data.score
                     top_result_index = i
 
-            top_result = ChoiceExtractDataResult(partial_results[top_result_index].data.source,
-                                                 partial_results[top_result_index].data.score)
+            top_result = ChoiceExtractDataResult(
+                partial_results[top_result_index].data.source, partial_results[top_result_index].data.score
+            )
             top_result.other_matches = partial_results
             results.append(partial_results[top_result_index])
         else:
@@ -159,10 +159,7 @@ class BooleanExtractor(ChoiceExtractor):
 
     def __init__(self, config: BooleanExtractorConfiguration):
         regexes_map = {}
-        update_values = {
-            config.regex_true: Constants.SYS_BOOLEAN_TRUE,
-            config.regex_false: Constants.SYS_BOOLEAN_FALSE
-        }
+        update_values = {config.regex_true: Constants.SYS_BOOLEAN_TRUE, config.regex_false: Constants.SYS_BOOLEAN_FALSE}
         regexes_map.update(update_values)
         options_config = ChoiceExtractorConfiguration()
         options_config.regexes_map = regexes_map

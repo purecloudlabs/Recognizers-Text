@@ -154,30 +154,24 @@ class CatalanDateParserConfiguration(DateParserConfiguration):
         self._day_of_week = config.day_of_week
         self._unit_map = config.unit_map
         self._cardinal_map = config.cardinal_map
-        self._date_regex = (
-            CatalanDateExtractorConfiguration()).date_regex_list
-        self._on_regex = RegExpUtility.get_safe_reg_exp(
-            CatalanDateTime.OnRegex)
+        self._date_regex = (CatalanDateExtractorConfiguration()).date_regex_list
+        self._on_regex = RegExpUtility.get_safe_reg_exp(CatalanDateTime.OnRegex)
         self._special_day_regex = RegExpUtility.get_safe_reg_exp(CatalanDateTime.SpecialDayRegex)
-        self._special_day_with_num_regex = RegExpUtility.get_safe_reg_exp(
-            CatalanDateTime.SpecialDayWithNumRegex)
+        self._special_day_with_num_regex = RegExpUtility.get_safe_reg_exp(CatalanDateTime.SpecialDayWithNumRegex)
         self._next_regex = RegExpUtility.get_safe_reg_exp('^[.]')
         self._unit_regex = RegExpUtility.get_safe_reg_exp('^[.]')
-        self._month_regex = RegExpUtility.get_safe_reg_exp(
-            CatalanDateTime.MonthRegex)
-        self._week_day_regex = RegExpUtility.get_safe_reg_exp(
-            CatalanDateTime.WeekDayRegex)
+        self._month_regex = RegExpUtility.get_safe_reg_exp(CatalanDateTime.MonthRegex)
+        self._week_day_regex = RegExpUtility.get_safe_reg_exp(CatalanDateTime.WeekDayRegex)
         self._last_regex = RegExpUtility.get_safe_reg_exp('^[.]')
         self._this_regex = RegExpUtility.get_safe_reg_exp('^[.]')
         self._week_day_of_month_regex = RegExpUtility.get_safe_reg_exp('^[.]')
         self._for_the_regex = RegExpUtility.get_safe_reg_exp('^[.]')
         self._week_day_and_day_of_month_regex = RegExpUtility.get_safe_reg_exp(
-            CatalanDateTime.WeekDayAndDayOfMonthRegex)
-        self._week_day_and_day_regex = RegExpUtility.get_safe_reg_exp(
-            CatalanDateTime.WeekDayAndDayRegex)
+            CatalanDateTime.WeekDayAndDayOfMonthRegex
+        )
+        self._week_day_and_day_regex = RegExpUtility.get_safe_reg_exp(CatalanDateTime.WeekDayAndDayRegex)
         self._relative_month_regex = RegExpUtility.get_safe_reg_exp('^[.]')
-        self._relative_week_day_regex = RegExpUtility.get_safe_reg_exp(
-            CatalanDateTime.RelativeWeekDayRegex)
+        self._relative_week_day_regex = RegExpUtility.get_safe_reg_exp(CatalanDateTime.RelativeWeekDayRegex)
         self._utility_configuration = config.utility_configuration
         self._date_token_prefix = CatalanDateTime.DateTokenPrefix
         self._check_both_before_after = CatalanDateTime.CheckBothBeforeAfter
@@ -212,5 +206,11 @@ class CatalanDateParserConfiguration(DateParserConfiguration):
         return regex.search(CatalanDateParserConfiguration._past_prefix_regex, trimmed_text) is not None
 
     def __normalize(self, source: str) -> str:
-        return source.replace('á', 'a').replace('é', 'e').replace('í', 'i').replace('ó', 'o').\
-            replace('ú', 'u').replace('à', 'a')
+        return (
+            source.replace('á', 'a')
+            .replace('é', 'e')
+            .replace('í', 'i')
+            .replace('ó', 'o')
+            .replace('ú', 'u')
+            .replace('à', 'a')
+        )

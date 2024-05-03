@@ -149,17 +149,11 @@ class ChineseDateTimePeriodParserConfiguration(DateTimePeriodParserConfiguration
     def __init__(self):
         self._after_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.AfterRegex)
         self._before_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.BeforeRegex)
-        self._specific_time_of_day_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.SpecificTimeOfDayRegex)
-        self._time_of_day_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.TimeOfDayRegex
-        )
-        self._past_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.PastRegex)
-        self._future_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.FutureRegex)
-        self._relative_time_unit_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.TimeOfDayRegex)
+        self._specific_time_of_day_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.SpecificTimeOfDayRegex)
+        self._time_of_day_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.TimeOfDayRegex)
+        self._past_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.PastRegex)
+        self._future_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.FutureRegex)
+        self._relative_time_unit_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.TimeOfDayRegex)
         self._unit_map = ChineseDateTime.ParserConfigurationUnitMap
         self._date_extractor = ChineseDateExtractor()
         self._time_extractor = ChineseTimeExtractor()

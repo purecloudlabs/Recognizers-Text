@@ -49,8 +49,10 @@ class ItalianNumberParserConfiguration(BaseNumberParserConfiguration):
         # It works by inserting the numerator 'un' ('a') in the list frac_words
         # so that the pattern is correctly processed.
         if len(frac_words) > 2:
-            if frac_words[len(frac_words) - 1] == ItalianNumeric.OneHalfTokens[1] and \
-                    frac_words[len(frac_words) - 2] == ItalianNumeric.WordSeparatorToken:
+            if (
+                frac_words[len(frac_words) - 1] == ItalianNumeric.OneHalfTokens[1]
+                and frac_words[len(frac_words) - 2] == ItalianNumeric.WordSeparatorToken
+            ):
                 frac_words[len(frac_words) - 2] = ItalianNumeric.WrittenFractionSeparatorTexts[0]
                 frac_words.insert(len(frac_words) - 1, ItalianNumeric.OneHalfTokens[0])
 

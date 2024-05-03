@@ -64,8 +64,9 @@ class DateTimeFormatUtil:
         has_min = False if timex is None else Constants.TIME_TIMEX_CONNECTOR in timex
         has_sec = False if timex is None else len(timex.split(Constants.TIME_TIMEX_CONNECTOR)) > 2
 
-        return DateTimeFormatUtil.luis_date_from_datetime(time) + DateTimeFormatUtil.format_short_time(time, has_min,
-                                                                                                       has_sec)
+        return DateTimeFormatUtil.luis_date_from_datetime(time) + DateTimeFormatUtil.format_short_time(
+            time, has_min, has_sec
+        )
 
     @staticmethod
     def format_short_time(time: datetime, has_min: bool = False, has_sec: bool = False) -> str:
@@ -113,16 +114,15 @@ class DateTimeFormatUtil:
 
     @staticmethod
     def all_str_to_pm(source: str) -> str:
-        matches = list(regex.finditer(
-            DateTimeFormatUtil.HourTimeRegex, source))
+        matches = list(regex.finditer(DateTimeFormatUtil.HourTimeRegex, source))
         split: List[str] = list()
         last_position = 0
 
         for match in matches:
             if last_position != match.start():
-                split.append(source[last_position:match.start()])
+                split.append(source[last_position : match.start()])
 
-            split.append(source[match.start():match.end()])
+            split.append(source[match.start() : match.end()])
             last_position = match.end()
 
         if source[:last_position]:
@@ -149,8 +149,14 @@ class DateTimeFormatUtil:
         return result + ':'.join(split)
 
     @staticmethod
-    def parse_dynasty_year(year_str: str, dynasty_year_regex: Pattern, dynasty_start_year: str,
-                           dynasty_year_map: dict, integer_extractor, number_parser):
+    def parse_dynasty_year(
+        year_str: str,
+        dynasty_year_regex: Pattern,
+        dynasty_start_year: str,
+        dynasty_year_map: dict,
+        integer_extractor,
+        number_parser,
+    ):
         dynasty_year_match = regex.search(dynasty_year_regex, year_str)
         if dynasty_year_match and dynasty_year_match.start() == 0 and len(dynasty_year_match.group()) == len(year_str):
             # handle "康熙元年" refer to https://zh.wikipedia.org/wiki/%E5%B9%B4%E5%8F%B7

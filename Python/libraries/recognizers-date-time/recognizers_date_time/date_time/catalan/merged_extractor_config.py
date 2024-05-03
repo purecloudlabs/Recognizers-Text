@@ -58,12 +58,11 @@ class CatalanMergedExtractorConfiguration(MinimalMergedExtractorConfiguration):
 
     def __init__(self):
         self._ambiguous_range_modifier_prefix = RegExpUtility.get_safe_reg_exp(
-            CatalanDateTime.AmbiguousRangeModifierPrefix)
-        self._number_ending_pattern = RegExpUtility.get_safe_reg_exp(
-            CatalanDateTime.NumberEndingPattern)
+            CatalanDateTime.AmbiguousRangeModifierPrefix
+        )
+        self._number_ending_pattern = RegExpUtility.get_safe_reg_exp(CatalanDateTime.NumberEndingPattern)
 
-        self._date_extractor = BaseDateExtractor(
-            CatalanDateExtractorConfiguration())
+        self._date_extractor = BaseDateExtractor(CatalanDateExtractorConfiguration())
         self._time_extractor = BaseTimeExtractor(CatalanTimeExtractorConfiguration())
         self._date_time_extractor = MinimalDateTimeExtractor()
         self._integer_extractor = CatalanIntegerExtractor()

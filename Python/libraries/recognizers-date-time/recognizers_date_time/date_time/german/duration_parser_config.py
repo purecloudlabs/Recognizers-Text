@@ -66,24 +66,16 @@ class GermanDurationParserConfiguration(DurationParserConfiguration):
         return self._duration_extractor
 
     def __init__(self, config):
-        self._duration_extractor = BaseDurationExtractor(
-            GermanDurationExtractorConfiguration(), False)
+        self._duration_extractor = BaseDurationExtractor(GermanDurationExtractorConfiguration(), False)
         self._cardinal_extractor = config.cardinal_extractor
         self._number_parser = config.number_parser
-        self._followed_unit = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.DurationFollowedUnit)
-        self._suffix_and_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.SuffixAndRegex)
-        self._number_combined_with_unit = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.NumberCombinedWithDurationUnit)
-        self._an_unit_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.AnUnitRegex)
-        self._all_date_unit_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.AllRegex)
-        self._half_date_unit_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.HalfRegex)
-        self._inexact_number_unit_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.InexactNumberUnitRegex)
+        self._followed_unit = RegExpUtility.get_safe_reg_exp(GermanDateTime.DurationFollowedUnit)
+        self._suffix_and_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.SuffixAndRegex)
+        self._number_combined_with_unit = RegExpUtility.get_safe_reg_exp(GermanDateTime.NumberCombinedWithDurationUnit)
+        self._an_unit_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.AnUnitRegex)
+        self._all_date_unit_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.AllRegex)
+        self._half_date_unit_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.HalfRegex)
+        self._inexact_number_unit_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.InexactNumberUnitRegex)
         self._unit_map = config.unit_map
         self._unit_value_map = config.unit_value_map
         self._double_numbers = config.double_numbers

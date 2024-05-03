@@ -66,18 +66,12 @@ class FrenchTimePeriodParserConfiguration(TimePeriodParserConfiguration):
         self._integer_extractor = config.integer_extractor
         self._numbers = config.numbers
         self._utility_configuration = config.utility_configuration
-        self._pure_number_from_to_regex = RegExpUtility.get_safe_reg_exp(
-            FrenchDateTime.PureNumFromTo)
-        self._pure_number_between_and_regex = RegExpUtility.get_safe_reg_exp(
-            FrenchDateTime.PureNumBetweenAnd)
-        self._specific_time_from_to_regex = RegExpUtility.get_safe_reg_exp(
-            FrenchDateTime.SpecificTimeFromTo)
-        self._specific_time_between_and_regex = RegExpUtility.get_safe_reg_exp(
-            FrenchDateTime.SpecificTimeBetweenAnd)
-        self._time_of_day_regex = RegExpUtility.get_safe_reg_exp(
-            FrenchDateTime.TimeOfDayRegex)
-        self._till_regex = RegExpUtility.get_safe_reg_exp(
-            FrenchDateTime.TillRegex)
+        self._pure_number_from_to_regex = RegExpUtility.get_safe_reg_exp(FrenchDateTime.PureNumFromTo)
+        self._pure_number_between_and_regex = RegExpUtility.get_safe_reg_exp(FrenchDateTime.PureNumBetweenAnd)
+        self._specific_time_from_to_regex = RegExpUtility.get_safe_reg_exp(FrenchDateTime.SpecificTimeFromTo)
+        self._specific_time_between_and_regex = RegExpUtility.get_safe_reg_exp(FrenchDateTime.SpecificTimeBetweenAnd)
+        self._time_of_day_regex = RegExpUtility.get_safe_reg_exp(FrenchDateTime.TimeOfDayRegex)
+        self._till_regex = RegExpUtility.get_safe_reg_exp(FrenchDateTime.TillRegex)
 
     def get_matched_timex_range(self, source: str) -> MatchedTimeRegex:
         trimmed_text = source.strip().lower()
@@ -96,19 +90,16 @@ class FrenchTimePeriodParserConfiguration(TimePeriodParserConfiguration):
             time_of_day = Constants.AFTERNOON
         elif any(trimmed_text.endswith(o) for o in FrenchDateTime.EveningTermList):
             time_of_day = Constants.EVENING
-        elif source == FrenchDateTime.DaytimeTermList[0] or source.endswith(FrenchDateTime.DaytimeTermList[1]) \
-                or source.endswith(FrenchDateTime.DaytimeTermList[2]):
+        elif (
+            source == FrenchDateTime.DaytimeTermList[0]
+            or source.endswith(FrenchDateTime.DaytimeTermList[1])
+            or source.endswith(FrenchDateTime.DaytimeTermList[2])
+        ):
             time_of_day = Constants.DAYTIME
         elif any(trimmed_text.endswith(o) for o in FrenchDateTime.NightTermList):
             time_of_day = Constants.NIGHT
         else:
-            return MatchedTimeRegex(
-                matched=False,
-                timex='',
-                begin_hour=0,
-                end_hour=0,
-                end_min=0
-            )
+            return MatchedTimeRegex(matched=False, timex='', begin_hour=0, end_hour=0, end_min=0)
 
         parse_result = TimexUtil.parse_time_of_day(time_of_day)
         timex = parse_result.timex
@@ -116,10 +107,4 @@ class FrenchTimePeriodParserConfiguration(TimePeriodParserConfiguration):
         end_hour = parse_result.end_hour
         end_min = parse_result.end_min
 
-        return MatchedTimeRegex(
-            matched=True,
-            timex=timex,
-            begin_hour=begin_hour,
-            end_hour=end_hour,
-            end_min=end_min
-        )
+        return MatchedTimeRegex(matched=True, timex=timex, begin_hour=begin_hour, end_hour=end_hour, end_min=end_min)

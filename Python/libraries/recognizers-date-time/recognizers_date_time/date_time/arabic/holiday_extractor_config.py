@@ -17,6 +17,4 @@ class ArabicHolidayExtractorConfiguration(HolidayExtractorConfiguration):
 
     def __init__(self):
         self._year_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.YearRegex)
-        self._holiday_regexes = [
-            RegExpUtility.get_safe_reg_exp(ArabicDateTime.HolidayRegex)
-        ]
+        self._holiday_regexes = [RegExpUtility.get_safe_reg_exp(ArabicDateTime.HolidayRegex)]

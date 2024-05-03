@@ -81,22 +81,14 @@ class EnglishMergedParserConfiguration(MergedParserConfiguration):
         return self.__duration_parser
 
     def __init__(self, config):
-        self._equal_regex = RegExpUtility.get_safe_reg_exp(
-            BaseDateTime.EqualRegex)
-        self._suffix_after = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.SuffixAfterRegex)
-        self._year_regex = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.YearRegex)
-        self._around_regex = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.AroundRegex)
-        self.__before_regex = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.BeforeRegex)
-        self.__after_regex = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.AfterRegex)
-        self.__since_regex = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.SinceRegex)
-        self.__holiday_parser = BaseHolidayParser(
-            EnglishHolidayParserConfiguration(config))
+        self._equal_regex = RegExpUtility.get_safe_reg_exp(BaseDateTime.EqualRegex)
+        self._suffix_after = RegExpUtility.get_safe_reg_exp(EnglishDateTime.SuffixAfterRegex)
+        self._year_regex = RegExpUtility.get_safe_reg_exp(EnglishDateTime.YearRegex)
+        self._around_regex = RegExpUtility.get_safe_reg_exp(EnglishDateTime.AroundRegex)
+        self.__before_regex = RegExpUtility.get_safe_reg_exp(EnglishDateTime.BeforeRegex)
+        self.__after_regex = RegExpUtility.get_safe_reg_exp(EnglishDateTime.AfterRegex)
+        self.__since_regex = RegExpUtility.get_safe_reg_exp(EnglishDateTime.SinceRegex)
+        self.__holiday_parser = BaseHolidayParser(EnglishHolidayParserConfiguration(config))
         self.__date_parser = config.date_parser
         self.__time_parser = config.time_parser
         self.__date_time_parser = config.date_time_parser

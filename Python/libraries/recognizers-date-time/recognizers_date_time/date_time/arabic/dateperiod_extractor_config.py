@@ -1,4 +1,3 @@
-
 from recognizers_date_time.date_time.arabic.date_extractor_config import ArabicDateExtractorConfiguration
 from recognizers_date_time.date_time.arabic.duration_extractor_config import ArabicDurationExtractorConfiguration
 from recognizers_date_time.date_time.base_date import BaseDateExtractor
@@ -46,7 +45,7 @@ class ArabicDatePeriodExtractorConfiguration(DatePeriodExtractorConfiguration):
             RegExpUtility.get_safe_reg_exp(ArabicDateTime.YearPlusNumberRegex),
             RegExpUtility.get_safe_reg_exp(ArabicDateTime.DecadeWithCenturyRegex),
             RegExpUtility.get_safe_reg_exp(ArabicDateTime.RelativeDecadeRegex),
-            RegExpUtility.get_safe_reg_exp(ArabicDateTime.ReferenceDatePeriodRegex)
+            RegExpUtility.get_safe_reg_exp(ArabicDateTime.ReferenceDatePeriodRegex),
         ]
 
     def get_from_token_index(self, source: str) -> MatchedIndex:

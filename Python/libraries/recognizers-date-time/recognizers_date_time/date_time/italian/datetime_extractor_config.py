@@ -107,57 +107,39 @@ class ItalianDateTimeExtractorConfiguration(DateTimeExtractorConfiguration):
 
     def __init__(self):
         super().__init__()
-        self.preposition_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.PrepositionRegex)
-        self._now_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.NowRegex)
-        self._suffix_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.SuffixRegex)
+        self.preposition_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.PrepositionRegex)
+        self._now_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.NowRegex)
+        self._suffix_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.SuffixRegex)
 
-        self._time_of_day_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.TimeOfDayRegex)
-        self._specific_time_of_day_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.SpecificTimeOfDayRegex)
-        self._time_of_today_after_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.TimeOfTodayAfterRegex)
-        self._time_of_today_before_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.TimeOfTodayBeforeRegex)
+        self._time_of_day_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.TimeOfDayRegex)
+        self._specific_time_of_day_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.SpecificTimeOfDayRegex)
+        self._time_of_today_after_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.TimeOfTodayAfterRegex)
+        self._time_of_today_before_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.TimeOfTodayBeforeRegex)
         self._simple_time_of_today_after_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.SimpleTimeOfTodayAfterRegex)
+            ItalianDateTime.SimpleTimeOfTodayAfterRegex
+        )
         self._simple_time_of_today_before_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.SimpleTimeOfTodayBeforeRegex)
-        self._specific_end_of_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.SpecificEndOfRegex)
-        self._unspecific_end_of_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.UnspecificEndOfRegex)
-        self._unit_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.TimeUnitRegex)
-        self.connector_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.ConnectorRegex)
-        self._night_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.NightRegex)
-        self._number_as_time_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.NumberAsTimeRegex)
-        self._date_number_connector_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.DateNumberConnectorRegex
+            ItalianDateTime.SimpleTimeOfTodayBeforeRegex
         )
-        self._suffix_after_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.SuffixAfterRegex
-        )
-        self._year_suffix = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.YearSuffix
-        )
-        self._year_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.YearRegex
-        )
+        self._specific_end_of_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.SpecificEndOfRegex)
+        self._unspecific_end_of_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.UnspecificEndOfRegex)
+        self._unit_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.TimeUnitRegex)
+        self.connector_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.ConnectorRegex)
+        self._night_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.NightRegex)
+        self._number_as_time_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.NumberAsTimeRegex)
+        self._date_number_connector_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.DateNumberConnectorRegex)
+        self._suffix_after_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.SuffixAfterRegex)
+        self._year_suffix = RegExpUtility.get_safe_reg_exp(ItalianDateTime.YearSuffix)
+        self._year_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.YearRegex)
 
-        self._date_point_extractor = BaseDateExtractor(
-            ItalianDateExtractorConfiguration())
-        self._time_point_extractor = BaseTimeExtractor(
-            ItalianTimeExtractorConfiguration())
-        self._duration_extractor = BaseDurationExtractor(
-            ItalianDurationExtractorConfiguration())
+        self._date_point_extractor = BaseDateExtractor(ItalianDateExtractorConfiguration())
+        self._time_point_extractor = BaseTimeExtractor(ItalianTimeExtractorConfiguration())
+        self._duration_extractor = BaseDurationExtractor(ItalianDurationExtractorConfiguration())
         self._utility_configuration = ItalianDateTimeUtilityConfiguration()
 
     def is_connector_token(self, source: str) -> bool:
-        return source.strip() == '' or regex.search(self.connector_regex, source) is not None or regex.search(self.preposition_regex, source) is not None
+        return (
+            source.strip() == ''
+            or regex.search(self.connector_regex, source) is not None
+            or regex.search(self.preposition_regex, source) is not None
+        )

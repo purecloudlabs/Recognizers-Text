@@ -72,7 +72,7 @@ class StringMatcher:
             end_token = query_tokens[r.start + r.length - 1]
             start = start_token.start
             length = end_token.end - start_token.start
-            r_text = tokenized_query[start: start + length]
+            r_text = tokenized_query[start : start + length]
 
             match_result = MatchResult()
             match_result.start = start

@@ -142,12 +142,9 @@ class GermanDateParserConfiguration(DateParserConfiguration):
     def date_token_prefix(self) -> str:
         return self._date_token_prefix
 
-    _relative_day_regex = RegExpUtility.get_safe_reg_exp(
-        GermanDateTime.RelativeDayRegex)
-    _next_prefix_regex = RegExpUtility.get_safe_reg_exp(
-        GermanDateTime.NextPrefixRegex)
-    _past_prefix_regex = RegExpUtility.get_safe_reg_exp(
-        GermanDateTime.PreviousPrefixRegex)
+    _relative_day_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.RelativeDayRegex)
+    _next_prefix_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.NextPrefixRegex)
+    _past_prefix_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.PreviousPrefixRegex)
 
     def __init__(self, config: BaseDateParserConfiguration):
         self._ordinal_extractor = config.ordinal_extractor
@@ -164,34 +161,20 @@ class GermanDateParserConfiguration(DateParserConfiguration):
         self._cardinal_map = config.cardinal_map
         self._date_regex = (GermanDateExtractorConfiguration()).date_regex_list
         self._on_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.OnRegex)
-        self._special_day_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.SpecialDayRegex)
-        self._special_day_with_num_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.SpecialDayWithNumRegex)
-        self._next_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.NextDateRegex)
-        self._unit_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.DateUnitRegex)
-        self._month_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.MonthRegex)
-        self._week_day_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.WeekDayRegex)
-        self._last_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.LastDateRegex)
-        self._this_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.ThisRegex)
-        self._week_day_of_month_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.WeekDayOfMonthRegex)
-        self._for_the_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.ForTheRegex)
-        self._week_day_and_day_of_month_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.WeekDayAndDayOfMonthRegex)
-        self._week_day_and_day_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.WeekDayAndDayRegex)
-        self._relative_month_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.RelativeMonthRegex)
-        self._relative_week_day_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.RelativeWeekDayRegex)
+        self._special_day_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.SpecialDayRegex)
+        self._special_day_with_num_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.SpecialDayWithNumRegex)
+        self._next_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.NextDateRegex)
+        self._unit_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.DateUnitRegex)
+        self._month_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.MonthRegex)
+        self._week_day_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.WeekDayRegex)
+        self._last_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.LastDateRegex)
+        self._this_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.ThisRegex)
+        self._week_day_of_month_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.WeekDayOfMonthRegex)
+        self._for_the_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.ForTheRegex)
+        self._week_day_and_day_of_month_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.WeekDayAndDayOfMonthRegex)
+        self._week_day_and_day_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.WeekDayAndDayRegex)
+        self._relative_month_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.RelativeMonthRegex)
+        self._relative_week_day_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.RelativeWeekDayRegex)
         self._utility_configuration = config.utility_configuration
         self._date_token_prefix = GermanDateTime.DateTokenPrefix
         self._check_both_before_after = GermanDateTime.CheckBothBeforeAfter
@@ -199,8 +182,7 @@ class GermanDateParserConfiguration(DateParserConfiguration):
     def get_swift_day(self, source: str) -> int:
         trimmed_text = source.strip().lower()
         swift = 0
-        matches = regex.search(
-            GermanDateParserConfiguration._relative_day_regex, source)
+        matches = regex.search(GermanDateParserConfiguration._relative_day_regex, source)
         if trimmed_text == 'heute':
             swift = 0
         elif trimmed_text == 'morgen':
@@ -226,10 +208,8 @@ class GermanDateParserConfiguration(DateParserConfiguration):
     def get_swift(self, source: str) -> int:
         trimmed_text = source.strip().lower()
         swift = 0
-        next_prefix_matches = regex.search(
-            GermanDateParserConfiguration._next_prefix_regex, trimmed_text)
-        past_prefix_matches = regex.search(
-            GermanDateParserConfiguration._past_prefix_regex, trimmed_text)
+        next_prefix_matches = regex.search(GermanDateParserConfiguration._next_prefix_regex, trimmed_text)
+        past_prefix_matches = regex.search(GermanDateParserConfiguration._past_prefix_regex, trimmed_text)
         if next_prefix_matches:
             swift = 1
         elif past_prefix_matches:

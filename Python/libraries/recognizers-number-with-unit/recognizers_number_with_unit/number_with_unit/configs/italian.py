@@ -28,7 +28,8 @@ class ItalianNumberWithUnitExtractorConfiguration(NumberWithUnitExtractorConfigu
     build_suffix: str = ItalianNumericWithUnit.BuildSuffix
     connector_token: str = ItalianNumericWithUnit.ConnectorToken
     compound_unit_connector_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-        ItalianNumericWithUnit.CompoundUnitConnectorRegex)
+        ItalianNumericWithUnit.CompoundUnitConnectorRegex
+    )
     non_unit_regex: Pattern = RegExpUtility.get_safe_reg_exp(BaseUnits.PmNonUnitRegex)
     ambiguous_unit_number_multiplier_regex: Pattern = None
     culture_info: CultureInfo = None
@@ -62,7 +63,8 @@ class ItalianNumberWithUnitParserConfiguration(NumberWithUnitParserConfiguration
         culture_info = culture_info or CultureInfo(Culture.Italian)
         super().__init__(culture_info)
         self.internal_number_parser: Parser = AgnosticNumberParserFactory.get_parser(
-            ParserType.NUMBER, ItalianNumberParserConfiguration(culture_info))
+            ParserType.NUMBER, ItalianNumberParserConfiguration(culture_info)
+        )
 
 
 class ItalianCurrencyParserConfiguration(ItalianNumberWithUnitParserConfiguration):

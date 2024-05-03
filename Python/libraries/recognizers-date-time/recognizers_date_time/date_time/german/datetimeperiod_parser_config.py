@@ -49,48 +49,29 @@ class GermanDateTimePeriodParserConfiguration(DateTimePeriodParserConfiguration)
         self._check_both_before_after = GermanDateTime.CheckBothBeforeAfter
         self._token_before_date = GermanDateTime.TokenBeforeDate
         self._token_before_time = GermanDateTime.TokenBeforeTime
-        self._prefix_day_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.PrefixDayRegex)
-        self._before_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.BeforeRegex)
-        self._after_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.AfterRegex)
-        self.next_prefix_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.NextPrefixRegex)
-        self._previous_prefix_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.PastSuffixRegex)
-        self.this_prefix_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.ThisPrefixRegex)
-        self.morning_start_end_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.MorningStartEndRegex)
-        self.afternoon_start_end_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.AfternoonStartEndRegex)
-        self.evening_start_end_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.EveningStartEndRegex)
-        self.night_start_end_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.NightStartEndRegex)
-        self._pure_number_from_to_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.PureNumFromTo)
-        self._pure_number_between_and_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.PureNumBetweenAnd)
-        self._specific_time_of_day_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.SpecificTimeOfDayRegex)
-        self._time_of_day_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.TimeOfDayRegex)
-        self._past_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.PastSuffixRegex)
-        self._future_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.FutureSuffixRegex)
-        self.number_combined_with_unit_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.TimeNumberCombinedWithUnit)
-        self.unit_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.TimeUnitRegex)
+        self._prefix_day_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.PrefixDayRegex)
+        self._before_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.BeforeRegex)
+        self._after_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.AfterRegex)
+        self.next_prefix_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.NextPrefixRegex)
+        self._previous_prefix_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.PastSuffixRegex)
+        self.this_prefix_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.ThisPrefixRegex)
+        self.morning_start_end_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.MorningStartEndRegex)
+        self.afternoon_start_end_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.AfternoonStartEndRegex)
+        self.evening_start_end_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.EveningStartEndRegex)
+        self.night_start_end_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.NightStartEndRegex)
+        self._pure_number_from_to_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.PureNumFromTo)
+        self._pure_number_between_and_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.PureNumBetweenAnd)
+        self._specific_time_of_day_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.SpecificTimeOfDayRegex)
+        self._time_of_day_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.TimeOfDayRegex)
+        self._past_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.PastSuffixRegex)
+        self._future_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.FutureSuffixRegex)
+        self.number_combined_with_unit_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.TimeNumberCombinedWithUnit)
+        self.unit_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.TimeUnitRegex)
         self._period_time_of_day_with_date_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.PeriodTimeOfDayWithDateRegex)
-        self._relative_time_unit_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.RelativeTimeUnitRegex)
-        self._rest_of_date_time_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.RestOfDateTimeRegex)
+            GermanDateTime.PeriodTimeOfDayWithDateRegex
+        )
+        self._relative_time_unit_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.RelativeTimeUnitRegex)
+        self._rest_of_date_time_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.RestOfDateTimeRegex)
 
     @property
     def previous_prefix_regex(self):

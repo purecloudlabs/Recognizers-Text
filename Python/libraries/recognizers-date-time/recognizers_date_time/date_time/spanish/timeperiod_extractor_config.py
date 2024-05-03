@@ -64,8 +64,7 @@ class SpanishTimePeriodExtractorConfiguration(TimePeriodExtractorConfiguration):
 
     def __init__(self):
         super().__init__()
-        self._single_time_extractor = BaseTimeExtractor(
-            SpanishTimeExtractorConfiguration())
+        self._single_time_extractor = BaseTimeExtractor(SpanishTimeExtractorConfiguration())
         self._integer_extractor = SpanishIntegerExtractor()
         self.utility_configuration = SpanishDateTimeUtilityConfiguration()
 
@@ -73,22 +72,16 @@ class SpanishTimePeriodExtractorConfiguration(TimePeriodExtractorConfiguration):
             RegExpUtility.get_safe_reg_exp(SpanishDateTime.PureNumFromTo),
             RegExpUtility.get_safe_reg_exp(SpanishDateTime.PureNumBetweenAnd),
             RegExpUtility.get_safe_reg_exp(SpanishDateTime.SpecificTimeFromTo),
-            RegExpUtility.get_safe_reg_exp(SpanishDateTime.SpecificTimeBetweenAnd)
+            RegExpUtility.get_safe_reg_exp(SpanishDateTime.SpecificTimeBetweenAnd),
         ]
 
-        self._till_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.TillRegex)
-        self._time_of_day_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.TimeOfDayRegex)
-        self._general_ending_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.GeneralEndingRegex)
+        self._till_regex: Pattern = RegExpUtility.get_safe_reg_exp(SpanishDateTime.TillRegex)
+        self._time_of_day_regex: Pattern = RegExpUtility.get_safe_reg_exp(SpanishDateTime.TimeOfDayRegex)
+        self._general_ending_regex: Pattern = RegExpUtility.get_safe_reg_exp(SpanishDateTime.GeneralEndingRegex)
 
-        self.from_regex = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.FromRegex)
-        self.range_connector_regex = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.RangeConnectorRegex)
-        self.between_regex = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.BetweenRegex)
+        self.from_regex = RegExpUtility.get_safe_reg_exp(SpanishDateTime.FromRegex)
+        self.range_connector_regex = RegExpUtility.get_safe_reg_exp(SpanishDateTime.RangeConnectorRegex)
+        self.between_regex = RegExpUtility.get_safe_reg_exp(SpanishDateTime.BetweenRegex)
         self._token_before_date = SpanishDateTime.TokenBeforeDate
         self._pure_number_regex = [SpanishDateTime.PureNumFromTo, SpanishDateTime.PureNumFromTo]
         self._options = DateTimeOptions.NONE

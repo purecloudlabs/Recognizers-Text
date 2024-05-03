@@ -50,7 +50,7 @@ class DutchDatePeriodExtractorConfiguration(DatePeriodExtractorConfiguration):
             RegExpUtility.get_safe_reg_exp(DutchDateTime.YearPlusNumberRegex),
             RegExpUtility.get_safe_reg_exp(DutchDateTime.DecadeWithCenturyRegex),
             RegExpUtility.get_safe_reg_exp(DutchDateTime.RelativeDecadeRegex),
-            RegExpUtility.get_safe_reg_exp(DutchDateTime.ReferenceDatePeriodRegex)
+            RegExpUtility.get_safe_reg_exp(DutchDateTime.ReferenceDatePeriodRegex),
         ]
 
     def get_from_token_index(self, source: str) -> MatchedIndex:

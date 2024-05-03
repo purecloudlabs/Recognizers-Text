@@ -147,49 +147,31 @@ class ItalianMergedExtractorConfiguration(MergedExtractorConfiguration):
         return self._ambiguity_filters_dict
 
     def __init__(self):
-        self._before_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.BeforeRegex)
-        self._after_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.AfterRegex)
-        self._since_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.SinceRegex)
-        self._from_to_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.FromToRegex)
-        self._single_ambiguous_month_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.SingleAmbiguousMonthRegex)
-        self._preposition_suffix_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.PrepositionSuffixRegex)
+        self._before_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.BeforeRegex)
+        self._after_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.AfterRegex)
+        self._since_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.SinceRegex)
+        self._from_to_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.FromToRegex)
+        self._single_ambiguous_month_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.SingleAmbiguousMonthRegex)
+        self._preposition_suffix_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.PrepositionSuffixRegex)
         self._ambiguous_range_modifier_prefix = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.AmbiguousRangeModifierPrefix)
-        self._number_ending_pattern = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.NumberEndingPattern)
+            ItalianDateTime.AmbiguousRangeModifierPrefix
+        )
+        self._number_ending_pattern = RegExpUtility.get_safe_reg_exp(ItalianDateTime.NumberEndingPattern)
 
-        self._date_extractor = BaseDateExtractor(
-            ItalianDateExtractorConfiguration())
-        self._time_extractor = BaseTimeExtractor(
-            ItalianTimeExtractorConfiguration())
-        self._date_time_extractor = BaseDateTimeExtractor(
-            ItalianDateTimeExtractorConfiguration())
-        self._date_period_extractor = BaseDatePeriodExtractor(
-            ItalianDatePeriodExtractorConfiguration())
-        self._time_period_extractor = BaseTimePeriodExtractor(
-            ItalianTimePeriodExtractorConfiguration())
-        self._date_time_period_extractor = BaseDateTimePeriodExtractor(
-            ItalianDateTimePeriodExtractorConfiguration())
-        self._duration_extractor = BaseDurationExtractor(
-            ItalianDurationExtractorConfiguration())
-        self._holiday_extractor = BaseHolidayExtractor(
-            ItalianHolidayExtractorConfiguration())
+        self._date_extractor = BaseDateExtractor(ItalianDateExtractorConfiguration())
+        self._time_extractor = BaseTimeExtractor(ItalianTimeExtractorConfiguration())
+        self._date_time_extractor = BaseDateTimeExtractor(ItalianDateTimeExtractorConfiguration())
+        self._date_period_extractor = BaseDatePeriodExtractor(ItalianDatePeriodExtractorConfiguration())
+        self._time_period_extractor = BaseTimePeriodExtractor(ItalianTimePeriodExtractorConfiguration())
+        self._date_time_period_extractor = BaseDateTimePeriodExtractor(ItalianDateTimePeriodExtractorConfiguration())
+        self._duration_extractor = BaseDurationExtractor(ItalianDurationExtractorConfiguration())
+        self._holiday_extractor = BaseHolidayExtractor(ItalianHolidayExtractorConfiguration())
         self._integer_extractor = ItalianIntegerExtractor()
         self._filter_word_regex_list = []
-        self._unspecified_date_period_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.UnspecificDatePeriodRegex
-        )
+        self._unspecified_date_period_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.UnspecificDatePeriodRegex)
         self._around_regex = ItalianDateTime.AroundRegex
         self._equal_regex = BaseDateTime.EqualRegex
-        self._suffix_after_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.SuffixAfterRegex
-        )
+        self._suffix_after_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.SuffixAfterRegex)
         self._check_both_before_after = ItalianDateTime.CheckBothBeforeAfter
         # TODO When the implementation for these properties is added, change the None values to their respective Regexps
         self._superfluous_word_matcher = None

@@ -28,7 +28,8 @@ class ChineseNumberWithUnitExtractorConfiguration(NumberWithUnitExtractorConfigu
     build_suffix: str = ChineseNumericWithUnit.BuildSuffix
     connector_token: str = ChineseNumericWithUnit.ConnectorToken
     compound_unit_connector_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-        ChineseNumericWithUnit.CompoundUnitConnectorRegex)
+        ChineseNumericWithUnit.CompoundUnitConnectorRegex
+    )
     non_unit_regex: Pattern = RegExpUtility.get_safe_reg_exp(BaseUnits.PmNonUnitRegex)
     ambiguous_unit_number_multiplier_regex: Pattern = None
     culture_info: CultureInfo = None
@@ -78,7 +79,8 @@ class ChineseNumberWithUnitParserConfiguration(NumberWithUnitParserConfiguration
         culture_info = culture_info or CultureInfo(Culture.Chinese)
         super().__init__(culture_info)
         self.internal_number_parser: Parser = AgnosticNumberParserFactory.get_parser(
-            ParserType.NUMBER, ChineseNumberParserConfiguration(culture_info))
+            ParserType.NUMBER, ChineseNumberParserConfiguration(culture_info)
+        )
         self.currency_name_to_iso_code_map = ChineseNumericWithUnit.CurrencyNameToIsoCodeMap
         self.currency_fraction_code_list = ChineseNumericWithUnit.FractionalUnitNameToCodeMap
 

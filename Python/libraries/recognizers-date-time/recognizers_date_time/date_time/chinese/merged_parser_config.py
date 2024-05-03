@@ -81,15 +81,10 @@ class ChineseMergedParserConfiguration(MergedParserConfiguration):
 
     def __init__(self):
         self._equal_regex = RegExpUtility.get_safe_reg_exp(BaseDateTime.EqualRegex)
-        self._year_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.YearRegex
-        )
-        self._before_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.MergedBeforeRegex)
-        self._after_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.MergedAfterRegex)
-        self._since_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.MergedAfterRegex)
+        self._year_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.YearRegex)
+        self._before_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.MergedBeforeRegex)
+        self._after_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.MergedAfterRegex)
+        self._since_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.MergedAfterRegex)
         self._date_parser = ChineseDateParser()
         self._holiday_parser = ChineseHolidayParser()
         self._time_parser = ChineseTimeParser()

@@ -154,83 +154,45 @@ class ArabicDateTimePeriodExtractorConfiguration(DateTimePeriodExtractorConfigur
 
     def __init__(self, dmyDateFormat=True):
         super().__init__()
-        self._week_day_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.WeekDayRegex
-        )
+        self._week_day_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.WeekDayRegex)
         self._check_both_before_after = ArabicDateTime.CheckBothBeforeAfter
         self._cardinal_extractor = ArabicCardinalExtractor()
-        self._single_date_extractor = BaseDateExtractor(
-            ArabicDateExtractorConfiguration())
-        self._single_time_extractor = BaseTimeExtractor(
-            ArabicTimeExtractorConfiguration())
-        self._single_date_time_extractor = BaseDateTimeExtractor(
-            ArabicDateTimeExtractorConfiguration(dmyDateFormat))
-        self._duration_extractor = BaseDurationExtractor(
-            ArabicDurationExtractorConfiguration())
-        self._time_period_extractor = BaseTimePeriodExtractor(
-            ArabicTimePeriodExtractorConfiguration())
+        self._single_date_extractor = BaseDateExtractor(ArabicDateExtractorConfiguration())
+        self._single_time_extractor = BaseTimeExtractor(ArabicTimeExtractorConfiguration())
+        self._single_date_time_extractor = BaseDateTimeExtractor(ArabicDateTimeExtractorConfiguration(dmyDateFormat))
+        self._duration_extractor = BaseDurationExtractor(ArabicDurationExtractorConfiguration())
+        self._time_period_extractor = BaseTimePeriodExtractor(ArabicTimePeriodExtractorConfiguration())
         self._simple_cases_regexes = [
             RegExpUtility.get_safe_reg_exp(ArabicDateTime.PureNumFromTo),
-            RegExpUtility.get_safe_reg_exp(ArabicDateTime.PureNumBetweenAnd)
+            RegExpUtility.get_safe_reg_exp(ArabicDateTime.PureNumBetweenAnd),
         ]
-        self._preposition_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.PrepositionRegex)
-        self._till_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.TillRegex)
-        self._specific_time_of_day_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.PeriodSpecificTimeOfDayRegex)
-        self._time_of_day_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.PeriodTimeOfDayRegex)
+        self._preposition_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.PrepositionRegex)
+        self._till_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.TillRegex)
+        self._specific_time_of_day_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.PeriodSpecificTimeOfDayRegex)
+        self._time_of_day_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.PeriodTimeOfDayRegex)
         self._period_time_of_day_with_date_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.PeriodTimeOfDayWithDateRegex)
-        self._followed_unit = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.TimeFollowedUnit)
-        self._number_combined_with_unit = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.TimeNumberCombinedWithUnit)
-        self._time_unit_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.TimeUnitRegex)
-        self._past_prefix_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.PreviousPrefixRegex)
-        self._next_prefix_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.NextPrefixRegex)
-        self._relative_time_unit_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.RelativeTimeUnitRegex)
-        self._rest_of_date_time_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.RestOfDateTimeRegex)
-        self._general_ending_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.GeneralEndingRegex)
-        self._middle_pause_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.MiddlePauseRegex)
-        self.range_connector_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.RangeConnectorRegex)
+            ArabicDateTime.PeriodTimeOfDayWithDateRegex
+        )
+        self._followed_unit = RegExpUtility.get_safe_reg_exp(ArabicDateTime.TimeFollowedUnit)
+        self._number_combined_with_unit = RegExpUtility.get_safe_reg_exp(ArabicDateTime.TimeNumberCombinedWithUnit)
+        self._time_unit_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.TimeUnitRegex)
+        self._past_prefix_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.PreviousPrefixRegex)
+        self._next_prefix_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.NextPrefixRegex)
+        self._relative_time_unit_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.RelativeTimeUnitRegex)
+        self._rest_of_date_time_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.RestOfDateTimeRegex)
+        self._general_ending_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.GeneralEndingRegex)
+        self._middle_pause_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.MiddlePauseRegex)
+        self.range_connector_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.RangeConnectorRegex)
         self._token_before_date = ArabicDateTime.TokenBeforeDate
-        self._within_next_prefix_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.WithinNextPrefixRegex
-        )
-        self._future_suffix_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.FutureSuffixRegex
-        )
-        self._date_unit_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.DateUnitRegex
-        )
-        self._am_desc_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.AmDescRegex
-        )
-        self._pm_desc_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.PmDescRegex
-        )
-        self._prefix_day_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.PrefixDayRegex
-        )
-        self._before_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.BeforeRegex
-        )
-        self._after_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.AfterRegex
-        )
-        self._suffix_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.SuffixRegex
-        )
+        self._within_next_prefix_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.WithinNextPrefixRegex)
+        self._future_suffix_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.FutureSuffixRegex)
+        self._date_unit_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.DateUnitRegex)
+        self._am_desc_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.AmDescRegex)
+        self._pm_desc_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.PmDescRegex)
+        self._prefix_day_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.PrefixDayRegex)
+        self._before_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.BeforeRegex)
+        self._after_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.AfterRegex)
+        self._suffix_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.SuffixRegex)
         self._options = DateTimeOptions.NONE
         self._check_both_before_after = ArabicDateTime.CheckBothBeforeAfter
 

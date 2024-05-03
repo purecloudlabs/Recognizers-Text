@@ -25,8 +25,7 @@ class AgnosticNumberParserFactory:
         parser = BaseNumberParser(language_config)
 
         chinese = isinstance(language_config, ChineseNumberParserConfiguration)
-        japanese = isinstance(
-            language_config, JapaneseNumberParserConfiguration)
+        japanese = isinstance(language_config, JapaneseNumberParserConfiguration)
 
         if chinese:
             parser = CJKNumberParser(language_config)
@@ -34,11 +33,7 @@ class AgnosticNumberParserFactory:
             parser = CJKNumberParser(language_config)
 
         if parser_type is ParserType.CARDINAL:
-            parser.supported_types = [
-                Constants.SYS_NUM_CARDINAL,
-                Constants.SYS_NUM_INTEGER,
-                Constants.SYS_NUM_DOUBLE
-            ]
+            parser.supported_types = [Constants.SYS_NUM_CARDINAL, Constants.SYS_NUM_INTEGER, Constants.SYS_NUM_DOUBLE]
         elif parser_type is ParserType.DOUBLE:
             parser.supported_types = [Constants.SYS_NUM_DOUBLE]
         elif parser_type is ParserType.FRACTION:

@@ -76,8 +76,5 @@ class JapaneseTimePeriodExtractorConfiguration(CJKTimePeriodExtractorConfigurati
         self._regexes: Dict[Pattern, PeriodType] = {
             RegExpUtility.get_safe_reg_exp(JapaneseDateTime.TimePeriodRegexes1): PeriodType.FullTime,
             RegExpUtility.get_safe_reg_exp(JapaneseDateTime.TimePeriodRegexes2): PeriodType.ShortTime,
-            RegExpUtility.get_safe_reg_exp(JapaneseDateTime.TimeOfDayRegex): PeriodType.ShortTime
+            RegExpUtility.get_safe_reg_exp(JapaneseDateTime.TimeOfDayRegex): PeriodType.ShortTime,
         }
-
-
-

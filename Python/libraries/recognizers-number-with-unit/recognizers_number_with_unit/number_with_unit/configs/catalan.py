@@ -23,7 +23,8 @@ class CatalanNumberWithUnitExtractorConfiguration(NumberWithUnitExtractorConfigu
     build_suffix: str = CatalanNumericWithUnit.BuildSuffix
     connector_token: str = CatalanNumericWithUnit.ConnectorToken
     compound_unit_connector_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-        CatalanNumericWithUnit.CompoundUnitConnectorRegex)
+        CatalanNumericWithUnit.CompoundUnitConnectorRegex
+    )
     non_unit_regex: Pattern = RegExpUtility.get_safe_reg_exp(BaseUnits.PmNonUnitRegex)
     ambiguous_unit_number_multiplier_regex: Pattern = None
     culture_info: CultureInfo = None
@@ -57,7 +58,8 @@ class CatalanNumberWithUnitParserConfiguration(NumberWithUnitParserConfiguration
         culture_info = culture_info or CultureInfo(Culture.Catalan)
         super().__init__(culture_info)
         self.internal_number_parser: Parser = AgnosticNumberParserFactory.get_parser(
-            ParserType.NUMBER, CatalanNumberParserConfiguration(culture_info))
+            ParserType.NUMBER, CatalanNumberParserConfiguration(culture_info)
+        )
 
 
 class CatalanCurrencyParserConfiguration(CatalanNumberWithUnitParserConfiguration):
@@ -68,4 +70,3 @@ class CatalanCurrencyParserConfiguration(CatalanNumberWithUnitParserConfiguratio
         self.add_dict_to_unit_map(CatalanNumericWithUnit.CurrencyPrefixList)
         self.currency_name_to_iso_code_map = CatalanNumericWithUnit.CurrencyNameToIsoCodeMap
         self.currency_fraction_code_list = CatalanNumericWithUnit.FractionalUnitNameToCodeMap
-

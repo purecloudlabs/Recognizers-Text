@@ -211,16 +211,15 @@ class JapaneseCommonDateTimeParserConfiguration(CJKCommonDateTimeParserConfigura
         self._number_parser = CJKNumberParser(JapaneseNumberParserConfiguration())
 
         # Do not change order. The order of initialization can lead to side effects
-        self._date_extractor = BaseCJKDateExtractor(
-            JapaneseDateExtractorConfiguration())
+        self._date_extractor = BaseCJKDateExtractor(JapaneseDateExtractorConfiguration())
         self._time_extractor = BaseCJKTimeExtractor(JapaneseTimeExtractorConfiguration())
         self._date_time_extractor = BaseCJKDateTimeExtractor(JapaneseDateTimeExtractorConfiguration())
         self._duration_extractor = BaseCJKDurationExtractor(JapaneseDurationExtractorConfiguration())
-        self._date_period_extractor = BaseCJKDatePeriodExtractor(
-            JapaneseDatePeriodExtractorConfiguration())
+        self._date_period_extractor = BaseCJKDatePeriodExtractor(JapaneseDatePeriodExtractorConfiguration())
         self._time_period_extractor = BaseCJKTimePeriodExtractor(JapaneseTimePeriodExtractorConfiguration())
         self._date_time_period_extractor = BaseCJKDateTimePeriodExtractor(
-            JapaneseDateTimePeriodExtractorConfiguration())
+            JapaneseDateTimePeriodExtractorConfiguration()
+        )
         self._holiday_extractor = BaseCJKHolidayExtractor(JapaneseHolidayExtractorConfiguration())
 
         self._duration_parser = BaseCJKDurationParser(JapaneseDurationParserConfiguration(self))

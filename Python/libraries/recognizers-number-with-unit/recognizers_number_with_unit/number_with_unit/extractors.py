@@ -93,8 +93,7 @@ class NumberWithUnitExtractor(Extractor):
         self.max_prefix_match_len = 0
 
         if self.config.suffix_list:
-            self.__suffix_matcher = self._build_matcher_from_set(
-                list(self.config.suffix_list.values()))
+            self.__suffix_matcher = self._build_matcher_from_set(list(self.config.suffix_list.values()))
         else:
             self.__suffix_matcher = StringMatcher()
 
@@ -134,7 +133,12 @@ class NumberWithUnitExtractor(Extractor):
 
             numbers: List[ExtractResult] = sorted(self.config.unit_num_extractor.extract(source), key=lambda o: o.start)
 
-            if len(numbers) > 0 and self.config.extract_type is Constants.SYS_UNIT_CURRENCY and len(prefix_match) > 0 and len(suffix_match) > 0:
+            if (
+                len(numbers) > 0
+                and self.config.extract_type is Constants.SYS_UNIT_CURRENCY
+                and len(prefix_match) > 0
+                and len(suffix_match) > 0
+            ):
 
                 for number in numbers:
                     start = number.start
@@ -143,20 +147,20 @@ class NumberWithUnitExtractor(Extractor):
                     number_suffix = [mr.start == (start + length) for mr in suffix_match]
                     if True in number_prefix and True in number_suffix and "," in number.text:
                         comma_index = number.start + number.text.index(",")
-                        source = source[:comma_index] + " " + source[comma_index + 1:]
+                        source = source[:comma_index] + " " + source[comma_index + 1 :]
 
-                numbers: List[ExtractResult] = sorted(self.config.unit_num_extractor.extract(source), key=lambda o: o.start)
+                numbers: List[ExtractResult] = sorted(
+                    self.config.unit_num_extractor.extract(source), key=lambda o: o.start
+                )
 
             # Special case for cases where number multipliers clash with unit
             ambiguous_multiplier_regex = self.config.ambiguous_unit_number_multiplier_regex
             if ambiguous_multiplier_regex is not None:
 
                 for num in numbers:
-                    match = list(filter(lambda x: x.group(), regex.finditer(
-                        ambiguous_multiplier_regex, num.text)))
+                    match = list(filter(lambda x: x.group(), regex.finditer(ambiguous_multiplier_regex, num.text)))
                     if match and len(match) == 1:
-                        new_length = num.length - \
-                            (match[0].span()[1] - match[0].span()[0])
+                        new_length = num.length - (match[0].span()[1] - match[0].span()[0])
                         num.text = num.text[0:new_length]
                         num.length = new_length
 
@@ -176,13 +180,13 @@ class NumberWithUnitExtractor(Extractor):
                         if m.length > 0 and m.end > start:
                             break
 
-                        if m.length > 0 and source[m.start: m.start + (last_index - m.start)].strip() == m.text:
+                        if m.length > 0 and source[m.start : m.start + (last_index - m.start)].strip() == m.text:
                             best_match = m
                             break
 
                     if best_match is not None:
                         off_set = last_index - best_match.start
-                        unit_str = source[best_match.start:best_match.start + off_set]
+                        unit_str = source[best_match.start : best_match.start + off_set]
                         self.add_element(mapping_prefix, number.start, (PrefixUnitResult(off_set, unit_str)))
                 prefix_unit = mapping_prefix.get(start, None)
                 if max_find_suff > 0:
@@ -196,19 +200,24 @@ class NumberWithUnitExtractor(Extractor):
 
                             end_pos = m.start + m.length - first_index
                             if max_len < end_pos:
-                                mid_str = source[first_index: first_index + (m.start - first_index)]
-                                if mid_str is None or not mid_str or str.isspace(mid_str) \
-                                        or mid_str.strip() == self.config.connector_token:
+                                mid_str = source[first_index : first_index + (m.start - first_index)]
+                                if (
+                                    mid_str is None
+                                    or not mid_str
+                                    or str.isspace(mid_str)
+                                    or mid_str.strip() == self.config.connector_token
+                                ):
                                     max_len = end_pos
                                 if m.end < len(source) and (
-                                    (mid_str.endswith('(') and source[m.end] == ')') or
-                                    (mid_str.endswith('[') and source[m.end] == ']') or
-                                    (mid_str.endswith('{') and source[m.end] == '}') or
-                                        (mid_str.endswith('<') and source[m.end] == '>')):
+                                    (mid_str.endswith('(') and source[m.end] == ')')
+                                    or (mid_str.endswith('[') and source[m.end] == ']')
+                                    or (mid_str.endswith('{') and source[m.end] == '}')
+                                    or (mid_str.endswith('<') and source[m.end] == '>')
+                                ):
                                     max_len = m.end - first_index + 1
 
                     if max_len != 0:
-                        substr = source[start: start + length + max_len]
+                        substr = source[start : start + length + max_len]
                         er = ExtractResult()
 
                         er.start = start
@@ -235,8 +244,9 @@ class NumberWithUnitExtractor(Extractor):
                             for time in non_unit_match:
                                 trimmed_source = source.lower()
                                 index = trimmed_source.index(time.group())
-                                if er.start >= time.start() and er.start + er.length <= \
-                                        time.start() + len(time.group()):
+                                if er.start >= time.start() and er.start + er.length <= time.start() + len(
+                                    time.group()
+                                ):
                                     is_not_unit = True
                                     break
 
@@ -289,7 +299,9 @@ class NumberWithUnitExtractor(Extractor):
     def _pre_check_str(self, source: str) -> bool:
         return len(source) != 0
 
-    def _extract_separate_units(self, source: str, num_depend_source: List[ExtractResult], non_unit_matches) -> List[ExtractResult]:
+    def _extract_separate_units(
+        self, source: str, num_depend_source: List[ExtractResult], non_unit_matches
+    ) -> List[ExtractResult]:
         result = deepcopy(num_depend_source)
         match_result: List[bool] = [False] * len(source)
         for ex_result in num_depend_source:
@@ -299,8 +311,7 @@ class NumberWithUnitExtractor(Extractor):
                 match_result[start + i] = True
                 i += 1
 
-        match_collection = list(
-            filter(lambda x: x.group(), regex.finditer(self.separate_regex, source)))
+        match_collection = list(filter(lambda x: x.group(), regex.finditer(self.separate_regex, source)))
         for match in match_collection:
             i = 0
             while i < len(match.group()) and not match_result[match.start() + i]:
@@ -332,10 +343,14 @@ class NumberWithUnitExtractor(Extractor):
 
         matcher = StringMatcher(match_strategy=MatchStrategy.TrieTree, tokenizer=NumberWithUnitTokenizer())
 
-        match_term_list = list(map(lambda words:
-                                   list(filter(lambda word: not str.isspace(word) and word is not None,
-                                               str(words).strip().split('|'))),
-                                   definitions))
+        match_term_list = list(
+            map(
+                lambda words: list(
+                    filter(lambda word: not str.isspace(word) and word is not None, str(words).strip().split('|'))
+                ),
+                definitions,
+            )
+        )
 
         match_terms = self.distinct(match_term_list)
 
@@ -355,11 +370,9 @@ class NumberWithUnitExtractor(Extractor):
     def _build_separate_regex_from_config(self, ignore_case: bool = False) -> Pattern:
         separate_words: Set[str] = set()
         for add_word in self.config.prefix_list.values():
-            separate_words |= set(
-                filter(self.validate_unit, add_word.split('|')))
+            separate_words |= set(filter(self.validate_unit, add_word.split('|')))
         for add_word in self.config.suffix_list.values():
-            separate_words |= set(
-                filter(self.validate_unit, add_word.split('|')))
+            separate_words |= set(filter(self.validate_unit, add_word.split('|')))
         for to_delete in self.config.ambiguous_unit_list:
             separate_words.discard(to_delete)
 
@@ -437,8 +450,17 @@ class NumberWithUnitExtractor(Extractor):
                             reg_match = list(filter(lambda x: x.group(), regex.finditer(regexvar_value, text)))
 
                             if len(reg_match) > 0:
-                                ers = list(filter(lambda x: not any([m.start() < x.start + x.length and m.start() +
-                                                                     len(m.group()) > x.start for m in reg_match]), ers))
+                                ers = list(
+                                    filter(
+                                        lambda x: not any(
+                                            [
+                                                m.start() < x.start + x.length and m.start() + len(m.group()) > x.start
+                                                for m in reg_match
+                                            ]
+                                        ),
+                                        ers,
+                                    )
+                                )
                         except Exception:
                             pass
 
@@ -453,7 +475,9 @@ class NumberWithUnitExtractor(Extractor):
 
         return ers
 
-    def _select_candidates(self, source: str, ers: List[ExtractResult], unit_is_prefix: List[bool]) -> List[ExtractResult]:
+    def _select_candidates(
+        self, source: str, ers: List[ExtractResult], unit_is_prefix: List[bool]
+    ) -> List[ExtractResult]:
 
         total_candidate = len(unit_is_prefix)
         have_conflict = False
@@ -493,7 +517,7 @@ class NumberWithUnitExtractor(Extractor):
         no_space_units: List[Token] = []
         for unit_prefix in prefix_result:
             if isinstance(unit_prefix.data, ExtractResult):
-                unit_str = unit_prefix.text[:unit_prefix.data.start]
+                unit_str = unit_prefix.text[: unit_prefix.data.start]
                 if len(unit_str) > 0 and unit_str == unit_str.rstrip():
                     no_space_units.append(Token(unit_prefix.start, unit_prefix.start + len(unit_str)))
 
@@ -510,8 +534,10 @@ class NumberWithUnitExtractor(Extractor):
             suffix_result.append(ers[index])
 
         if len(suffix_result) >= len(prefix_result):
+
             def sort_by_start(e):
                 return e.start
+
             suffix_result.sort(key=sort_by_start)
             return suffix_result
 
@@ -539,7 +565,11 @@ class BaseMergedUnitExtractor(Extractor):
 
         idx = 0
         while idx < len(ers) - 1:
-            if ers[idx].type != ers[idx + 1].type and not ers[idx].type == Constants.SYS_NUM and not ers[idx + 1].type == Constants.SYS_NUM:
+            if (
+                ers[idx].type != ers[idx + 1].type
+                and not ers[idx].type == Constants.SYS_NUM
+                and not ers[idx + 1].type == Constants.SYS_NUM
+            ):
                 idx = idx + 1
                 continue
 
@@ -551,8 +581,7 @@ class BaseMergedUnitExtractor(Extractor):
             middle_begin = ers[idx].start + ers[idx].length
             middle_end = ers[idx + 1].start
 
-            middle_str = source[middle_begin: middle_begin + (middle_end -
-                                                              middle_begin)].strip().lower()
+            middle_str = source[middle_begin : middle_begin + (middle_end - middle_begin)].strip().lower()
 
             # Separated by whitespace
             if not middle_str:
@@ -593,7 +622,7 @@ class BaseMergedUnitExtractor(Extractor):
                 period_end = ers[idx + 1].start + ers[idx + 1].length
 
                 result[group].length = period_end - period_begin
-                result[group].text = source[period_begin:period_begin + (period_end - period_begin)]
+                result[group].text = source[period_begin : period_begin + (period_end - period_begin)]
                 result[group].type = Constants.SYS_UNIT_CURRENCY
                 if isinstance(result[group].data, list):
                     result[group].data.append(ers[idx + 1])
@@ -629,8 +658,7 @@ class BaseMergedUnitExtractor(Extractor):
             middle_begin = ers[j - 1].start + ers[j - 1].length
             middle_end = num_ers[i].start
 
-            middle_str = source[middle_begin: middle_begin + (middle_end -
-                                                              middle_begin)].strip().lower()
+            middle_str = source[middle_begin : middle_begin + (middle_end - middle_begin)].strip().lower()
 
             # separated by whitespace
             if not middle_str:

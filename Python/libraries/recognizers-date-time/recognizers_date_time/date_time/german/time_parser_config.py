@@ -36,27 +36,17 @@ class GermanTimeParserConfiguration(TimeParserConfiguration):
 
     def __init__(self, config: BaseDateParserConfiguration):
         self._time_token_prefix: str = GermanDateTime.TimeTokenPrefix
-        self._at_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.AtRegex)
-        self._time_regexes: List[Pattern] = GermanTimeExtractorConfiguration.get_time_regex_list(
-        )
-        self.less_than_one_hour = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.LessThanOneHour)
-        self.time_suffix = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.TimeSuffix)
-        self.night_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.NightRegex)
+        self._at_regex: Pattern = RegExpUtility.get_safe_reg_exp(GermanDateTime.AtRegex)
+        self._time_regexes: List[Pattern] = GermanTimeExtractorConfiguration.get_time_regex_list()
+        self.less_than_one_hour = RegExpUtility.get_safe_reg_exp(GermanDateTime.LessThanOneHour)
+        self.time_suffix = RegExpUtility.get_safe_reg_exp(GermanDateTime.TimeSuffix)
+        self.night_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.NightRegex)
 
-        self._half_token_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.HalfTokenRegex)
-        self._quarter_to_token_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.QuarterToTokenRegex)
-        self._quarter_past_token_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.QuarterPastTokenRegex)
-        self._three_quarter_to_token_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.ThreeQuarterToTokenRegex)
-        self._three_quarter_past_token_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.ThreeQuarterPastTokenRegex)
+        self._half_token_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.HalfTokenRegex)
+        self._quarter_to_token_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.QuarterToTokenRegex)
+        self._quarter_past_token_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.QuarterPastTokenRegex)
+        self._three_quarter_to_token_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.ThreeQuarterToTokenRegex)
+        self._three_quarter_past_token_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.ThreeQuarterPastTokenRegex)
 
         self._utility_configuration = config.utility_configuration
         self._numbers: Dict[str, int] = config.numbers
@@ -83,8 +73,7 @@ class GermanTimeParserConfiguration(TimeParserConfiguration):
                 if min_str:
                     delta_min = int(min_str)
                 else:
-                    min_str = RegExpUtility.get_group(
-                        match, 'deltaminnum').lower()
+                    min_str = RegExpUtility.get_group(match, 'deltaminnum').lower()
                     delta_min = self.numbers.get(min_str)
 
             if trimmed_prefix.endswith('vor'):

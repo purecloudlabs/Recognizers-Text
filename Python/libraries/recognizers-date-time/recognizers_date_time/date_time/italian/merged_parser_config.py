@@ -84,21 +84,14 @@ class ItalianMergedParserConfiguration(ItalianCommonDateTimeParserConfiguration,
 
     def __init__(self, config):
         ItalianCommonDateTimeParserConfiguration.__init__(self)
-        self._suffix_after = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.SuffixAfterRegex)
+        self._suffix_after = RegExpUtility.get_safe_reg_exp(ItalianDateTime.SuffixAfterRegex)
         self._year_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.YearRegex)
         self._equal_regex = RegExpUtility.get_safe_reg_exp(BaseDateTime.EqualRegex)
         self._around_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.AroundRegex)
-        self._before_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.BeforeRegex)
-        self._after_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.AfterRegex)
-        self._since_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.SinceRegex)
+        self._before_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.BeforeRegex)
+        self._after_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.AfterRegex)
+        self._since_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.SinceRegex)
 
-        self._date_period_parser = BaseDatePeriodParser(
-            ItalianDatePeriodParserConfiguration(self))
-        self._time_period_parser = BaseTimePeriodParser(
-            ItalianTimePeriodParserConfiguration(self))
-        self._holiday_parser = BaseHolidayParser(
-            ItalianHolidayParserConfiguration(config))
+        self._date_period_parser = BaseDatePeriodParser(ItalianDatePeriodParserConfiguration(self))
+        self._time_period_parser = BaseTimePeriodParser(ItalianTimePeriodParserConfiguration(self))
+        self._holiday_parser = BaseHolidayParser(ItalianHolidayParserConfiguration(config))

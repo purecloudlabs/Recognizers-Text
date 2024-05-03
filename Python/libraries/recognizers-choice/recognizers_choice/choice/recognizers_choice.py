@@ -15,25 +15,29 @@ class ChoiceOptions(IntFlag):
     NONE = 0
 
 
-def recognize_boolean(query: str,
-                      culture: str,
-                      options: ChoiceOptions = ChoiceOptions.NONE,
-                      fallback_to_default_culture: bool = True) -> List[ModelResult]:
+def recognize_boolean(
+    query: str, culture: str, options: ChoiceOptions = ChoiceOptions.NONE, fallback_to_default_culture: bool = True
+) -> List[ModelResult]:
     recognizer = ChoiceRecognizer(culture, options)
     model = recognizer.get_boolean_model(culture, fallback_to_default_culture)
     return model.parse(query)
 
 
-class ChoiceRecognizer (Recognizer[ChoiceOptions]):
+class ChoiceRecognizer(Recognizer[ChoiceOptions]):
 
-    def __init__(self, target_culture: str = None, options: ChoiceOptions = ChoiceOptions.NONE, lazy_initialization: bool = False):
+    def __init__(
+        self, target_culture: str = None, options: ChoiceOptions = ChoiceOptions.NONE, lazy_initialization: bool = False
+    ):
         if options < ChoiceOptions.NONE or options > ChoiceOptions.NONE:
             raise ValueError()
         super().__init__(target_culture, options, lazy_initialization)
 
     def initialize_configuration(self):
-        self.register_model('BooleanModel', Culture.English, lambda options: BooleanModel(
-            BooleanParser(), BooleanExtractor(EnglishBooleanExtractorConfiguration())))
+        self.register_model(
+            'BooleanModel',
+            Culture.English,
+            lambda options: BooleanModel(BooleanParser(), BooleanExtractor(EnglishBooleanExtractorConfiguration())),
+        )
 
     @staticmethod
     def is_valid_option(options: int) -> bool:

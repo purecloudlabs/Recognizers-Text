@@ -120,8 +120,7 @@ class JapaneseMergedExtractorConfiguration(CJKMergedExtractorConfiguration):
     def __init__(self):
         super().__init__()
         self._ambiguity_filters_dict = DefinitionLoader.load_ambiguity_filters(JapaneseDateTime.AmbiguityFiltersDict)
-        self._potential_ambiguous_range_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.FromToRegex
-                                                                               )
+        self._potential_ambiguous_range_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.FromToRegex)
         self._equal_regex = RegExpUtility.get_safe_reg_exp(BaseDateTime.EqualRegex)
         self._around_prefix_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.ParserConfigurationAroundPrefix)
         self._since_suffix_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.ParserConfigurationSinceSuffix)
@@ -143,7 +142,8 @@ class JapaneseMergedExtractorConfiguration(CJKMergedExtractorConfiguration):
         self._holiday_extractor = BaseCJKHolidayExtractor(JapaneseHolidayExtractorConfiguration())
         self._duration_extractor = BaseCJKDurationExtractor(JapaneseDurationExtractorConfiguration())
         self._date_time_period_extractor = BaseCJKDateTimePeriodExtractor(
-            JapaneseDateTimePeriodExtractorConfiguration())
+            JapaneseDateTimePeriodExtractorConfiguration()
+        )
         self._date_period_extractor = BaseCJKDatePeriodExtractor(JapaneseDatePeriodExtractorConfiguration())
         self._date_time_extractor = BaseCJKDateTimeExtractor(JapaneseDateTimeExtractorConfiguration())
         self._date_extractor = BaseCJKDateExtractor(JapaneseDateExtractorConfiguration())

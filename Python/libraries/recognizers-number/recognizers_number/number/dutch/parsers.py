@@ -56,7 +56,7 @@ class DutchNumberParserConfiguration(BaseNumberParserConfiguration):
             pass
         for idx, word in enumerate(frac_words):
             if self.fraction_half_regex.search(word):
-                frac_words[idx] = word[0:(len(word) - 6)]
+                frac_words[idx] = word[0 : (len(word) - 6)]
                 frac_words.append(self.written_fraction_separator_texts[0])
                 frac_words.append(DutchNumeric.OneHalfTokens[0])
                 frac_words.append(DutchNumeric.OneHalfTokens[1])
@@ -69,16 +69,19 @@ class DutchNumberParserConfiguration(BaseNumberParserConfiguration):
                     frac_words.append(DutchNumeric.OneHalfTokens[1])
                     length = 4
                 if m.group("quarter"):
-                    frac_words[idx] = word[0:len("drie")]
+                    frac_words[idx] = word[0 : len("drie")]
                     frac_words.append(self.written_fraction_separator_texts[0])
-                    frac_words.append(word[len(frac_words[idx]):len("kwartaal") + len(frac_words[idx])])
+                    frac_words.append(word[len(frac_words[idx]) : len("kwartaal") + len(frac_words[idx])])
                     length = 3
 
         fracLen = len(frac_words)
 
         if fracLen > length and frac_words[fracLen - length - 1] != DutchNumeric.WordSeparatorToken:
-            if not (all(i in frac_words for i in ["op", "de"]) or all(i in frac_words for i in ["van", "de"])
-                    or all(i in frac_words for i in ["uit", "de"])):
+            if not (
+                all(i in frac_words for i in ["op", "de"])
+                or all(i in frac_words for i in ["van", "de"])
+                or all(i in frac_words for i in ["uit", "de"])
+            ):
                 frac_words.insert(fracLen - length, DutchNumeric.WordSeparatorToken)
 
         return frac_words

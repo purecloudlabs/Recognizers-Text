@@ -171,34 +171,19 @@ class ItalianCommonDateTimeParserConfiguration(BaseDateParserConfiguration):
         self._integer_extractor = ItalianIntegerExtractor()
         self._ordinal_extractor = ItalianOrdinalExtractor()
 
-        self._day_of_month = {
-            **BaseDateTime.DayOfMonthDictionary, **ItalianDateTime.DayOfMonth}
-        self._number_parser = BaseNumberParser(
-            ItalianNumberParserConfiguration())
-        self._date_extractor = BaseDateExtractor(
-            ItalianDateExtractorConfiguration())
-        self._time_extractor = BaseTimeExtractor(
-            ItalianTimeExtractorConfiguration())
-        self._duration_extractor = BaseDurationExtractor(
-            ItalianDurationExtractorConfiguration())
-        self._date_period_extractor = BaseDatePeriodExtractor(
-            ItalianDatePeriodExtractorConfiguration())
-        self._time_period_extractor = BaseTimePeriodExtractor(
-            ItalianTimePeriodExtractorConfiguration())
-        self._date_time_extractor = BaseDateTimeExtractor(
-            ItalianDateTimeExtractorConfiguration())
-        self._date_time_period_extractor = BaseDateTimePeriodExtractor(
-            ItalianDateTimePeriodExtractorConfiguration())
-        self._duration_parser = BaseDurationParser(
-            ItalianDurationParserConfiguration(self))
+        self._day_of_month = {**BaseDateTime.DayOfMonthDictionary, **ItalianDateTime.DayOfMonth}
+        self._number_parser = BaseNumberParser(ItalianNumberParserConfiguration())
+        self._date_extractor = BaseDateExtractor(ItalianDateExtractorConfiguration())
+        self._time_extractor = BaseTimeExtractor(ItalianTimeExtractorConfiguration())
+        self._duration_extractor = BaseDurationExtractor(ItalianDurationExtractorConfiguration())
+        self._date_period_extractor = BaseDatePeriodExtractor(ItalianDatePeriodExtractorConfiguration())
+        self._time_period_extractor = BaseTimePeriodExtractor(ItalianTimePeriodExtractorConfiguration())
+        self._date_time_extractor = BaseDateTimeExtractor(ItalianDateTimeExtractorConfiguration())
+        self._date_time_period_extractor = BaseDateTimePeriodExtractor(ItalianDateTimePeriodExtractorConfiguration())
+        self._duration_parser = BaseDurationParser(ItalianDurationParserConfiguration(self))
         self._date_parser = BaseDateParser(ItalianDateParserConfiguration(self))
-        self._time_parser = ItalianTimeParser(
-            ItalianTimeParserConfiguration(self))
-        self._date_period_parser = BaseDatePeriodParser(
-            ItalianDatePeriodParserConfiguration(self))
-        self._time_period_parser = BaseTimePeriodParser(
-            ItalianTimePeriodParserConfiguration(self))
-        self._date_time_parser = BaseDateTimeParser(
-            ItalianDateTimeParserConfiguration(self))
-        self._date_time_period_parser = BaseDateTimePeriodParser(
-            ItalianDateTimePeriodParserConfiguration(self))
+        self._time_parser = ItalianTimeParser(ItalianTimeParserConfiguration(self))
+        self._date_period_parser = BaseDatePeriodParser(ItalianDatePeriodParserConfiguration(self))
+        self._time_period_parser = BaseTimePeriodParser(ItalianTimePeriodParserConfiguration(self))
+        self._date_time_parser = BaseDateTimeParser(ItalianDateTimeParserConfiguration(self))
+        self._date_time_period_parser = BaseDateTimePeriodParser(ItalianDateTimePeriodParserConfiguration(self))

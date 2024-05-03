@@ -41,9 +41,11 @@ class ChineseDateTimeParser(BaseDateTimeParser):
 
             if inner_result.success:
                 inner_result.future_resolution = {
-                    TimeTypeConstants.DATETIME: DateTimeFormatUtil.format_date_time(inner_result.future_value)}
+                    TimeTypeConstants.DATETIME: DateTimeFormatUtil.format_date_time(inner_result.future_value)
+                }
                 inner_result.past_resolution = {
-                    TimeTypeConstants.DATETIME: DateTimeFormatUtil.format_date_time(inner_result.past_value)}
+                    TimeTypeConstants.DATETIME: DateTimeFormatUtil.format_date_time(inner_result.past_value)
+                }
                 value = inner_result
 
         ret = DateTimeParseResult(source)
@@ -85,19 +87,22 @@ class ChineseDateTimeParser(BaseDateTimeParser):
 
         time_str = pr2.timex_str
         if time_str.endswith('ampm'):
-            time_str = time_str[0:len(time_str)-4]
+            time_str = time_str[0 : len(time_str) - 4]
 
         time_str = 'T' + DateTimeFormatUtil.to_str(hour, 2) + time_str[3:]
         ret.timex = pr1.timex_str + time_str
 
         val = pr2.value
-        if hour <= 12 and not self.config.pm_time_regex.search(source) and not self.config.am_time_regex.search(source) and val.comment:
+        if (
+            hour <= 12
+            and not self.config.pm_time_regex.search(source)
+            and not self.config.am_time_regex.search(source)
+            and val.comment
+        ):
             ret.comment = 'ampm'
 
-        ret.future_value = datetime(
-            future_date.year, future_date.month, future_date.day, hour, minute, second)
-        ret.past_value = datetime(
-            past_date.year, past_date.month, past_date.day, hour, minute, second)
+        ret.future_value = datetime(future_date.year, future_date.month, future_date.day, hour, minute, second)
+        ret.past_value = datetime(past_date.year, past_date.month, past_date.day, hour, minute, second)
         ret.success = True
 
         return ret
@@ -137,8 +142,7 @@ class ChineseDateTimeParser(BaseDateTimeParser):
             time_str = 'T' + DateTimeFormatUtil.to_str(hour, 2) + time_str[3:]
 
             ret.timex = DateTimeFormatUtil.format_date(date) + time_str
-            ret.future_value = datetime(
-                date.year, date.month, date.day, hour, minute, second)
+            ret.future_value = datetime(date.year, date.month, date.day, hour, minute, second)
             ret.past_value = ret.future_value
             ret.success = True
             return ret
@@ -153,10 +157,10 @@ class ChineseDateTimeParser(BaseDateTimeParser):
         if duration_res:
             match = ChineseDateTimeExtractor.date_time_period_unit_regex.search(source)
             if match:
-                suffix = source[duration_res.start + duration_res.length:]
+                suffix = source[duration_res.start + duration_res.length :]
                 src_unit = RegExpUtility.get_group(match, 'unit')
 
-                number_str = source[duration_res.start:match.lastindex - duration_res.start + 1]
+                number_str = source[duration_res.start : match.lastindex - duration_res.start + 1]
                 number = ChineseDateParser.parse_chinese_written_number_to_value(ChineseDateParser(), number_str)
 
                 if src_unit in self.config.unit_map:

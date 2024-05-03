@@ -40,60 +40,57 @@ class ArabicHolidayParserConfiguration(BaseHolidayParserConfiguration):
 
     def __init__(self, config):
         super().__init__()
-        self._holiday_regexes = [
-            RegExpUtility.get_safe_reg_exp(ArabicDateTime.HolidayRegex)
-        ]
+        self._holiday_regexes = [RegExpUtility.get_safe_reg_exp(ArabicDateTime.HolidayRegex)]
         self._holiday_names = ArabicDateTime.HolidayNames
 
-        self.next_prefix_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.NextPrefixRegex)
-        self.previous_prefix_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.PreviousPrefixRegex)
-        self.this_prefix_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.ThisPrefixRegex)
+        self.next_prefix_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.NextPrefixRegex)
+        self.previous_prefix_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.PreviousPrefixRegex)
+        self.this_prefix_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.ThisPrefixRegex)
 
     def _init_holiday_funcs(self) -> Dict[str, Callable[[int], datetime]]:
-        local = dict([
-            ('maosbirthday', ArabicHolidayParserConfiguration.mao_birthday),
-            ('yuandan', ArabicHolidayParserConfiguration.new_year),
-            ('teachersday', ArabicHolidayParserConfiguration.teacher_day),
-            ('singleday', ArabicHolidayParserConfiguration.singles_day),
-            ('allsaintsday', ArabicHolidayParserConfiguration.halloween_day),
-            ('youthday', ArabicHolidayParserConfiguration.youth_day),
-            ('childrenday', ArabicHolidayParserConfiguration.children_day),
-            ('femaleday', ArabicHolidayParserConfiguration.female_day),
-            ('treeplantingday', ArabicHolidayParserConfiguration.tree_plant_day),
-            ('arborday', ArabicHolidayParserConfiguration.tree_plant_day),
-            ('girlsday', ArabicHolidayParserConfiguration.girls_day),
-            ('whiteloverday', ArabicHolidayParserConfiguration.white_lover_day),
-            ('loverday', ArabicHolidayParserConfiguration.valentines_day),
-            ('christmas', ArabicHolidayParserConfiguration.christmas_day),
-            ('xmas', ArabicHolidayParserConfiguration.christmas_day),
-            ('newyear', ArabicHolidayParserConfiguration.new_year),
-            ('newyearday', ArabicHolidayParserConfiguration.new_year),
-            ('newyearsday', ArabicHolidayParserConfiguration.new_year),
-            ('inaugurationday', ArabicHolidayParserConfiguration.inauguration_day),
-            ('groundhougday', ArabicHolidayParserConfiguration.groundhog_day),
-            ('valentinesday', ArabicHolidayParserConfiguration.valentines_day),
-            ('stpatrickday', ArabicHolidayParserConfiguration.st_patrick_day),
-            ('aprilfools', ArabicHolidayParserConfiguration.fool_day),
-            ('stgeorgeday', ArabicHolidayParserConfiguration.st_george_day),
-            ('mayday', ArabicHolidayParserConfiguration.may_day),
-            ('cincodemayoday', ArabicHolidayParserConfiguration.cinco_de_mayo_day),
-            ('baptisteday', ArabicHolidayParserConfiguration.baptiste_day),
-            ('usindependenceday', ArabicHolidayParserConfiguration.usa_independence_day),
-            ('independenceday', ArabicHolidayParserConfiguration.usa_independence_day),
-            ('bastilleday', ArabicHolidayParserConfiguration.bastille_day),
-            ('halloweenday', ArabicHolidayParserConfiguration.halloween_day),
-            ('allhallowday', ArabicHolidayParserConfiguration.all_hallow_day),
-            ('allsoulsday', ArabicHolidayParserConfiguration.all_souls_day),
-            ('guyfawkesday', ArabicHolidayParserConfiguration.guy_fawkes_day),
-            ('veteransday', ArabicHolidayParserConfiguration.veterans_day),
-            ('christmaseve', ArabicHolidayParserConfiguration.christmas_eve),
-            ('newyeareve', ArabicHolidayParserConfiguration.new_year_eve),
-            ('easterday', ArabicHolidayParserConfiguration.easter_day),
-            ('juneteenth', ArabicHolidayParserConfiguration.juneteenth),
-        ])
+        local = dict(
+            [
+                ('maosbirthday', ArabicHolidayParserConfiguration.mao_birthday),
+                ('yuandan', ArabicHolidayParserConfiguration.new_year),
+                ('teachersday', ArabicHolidayParserConfiguration.teacher_day),
+                ('singleday', ArabicHolidayParserConfiguration.singles_day),
+                ('allsaintsday', ArabicHolidayParserConfiguration.halloween_day),
+                ('youthday', ArabicHolidayParserConfiguration.youth_day),
+                ('childrenday', ArabicHolidayParserConfiguration.children_day),
+                ('femaleday', ArabicHolidayParserConfiguration.female_day),
+                ('treeplantingday', ArabicHolidayParserConfiguration.tree_plant_day),
+                ('arborday', ArabicHolidayParserConfiguration.tree_plant_day),
+                ('girlsday', ArabicHolidayParserConfiguration.girls_day),
+                ('whiteloverday', ArabicHolidayParserConfiguration.white_lover_day),
+                ('loverday', ArabicHolidayParserConfiguration.valentines_day),
+                ('christmas', ArabicHolidayParserConfiguration.christmas_day),
+                ('xmas', ArabicHolidayParserConfiguration.christmas_day),
+                ('newyear', ArabicHolidayParserConfiguration.new_year),
+                ('newyearday', ArabicHolidayParserConfiguration.new_year),
+                ('newyearsday', ArabicHolidayParserConfiguration.new_year),
+                ('inaugurationday', ArabicHolidayParserConfiguration.inauguration_day),
+                ('groundhougday', ArabicHolidayParserConfiguration.groundhog_day),
+                ('valentinesday', ArabicHolidayParserConfiguration.valentines_day),
+                ('stpatrickday', ArabicHolidayParserConfiguration.st_patrick_day),
+                ('aprilfools', ArabicHolidayParserConfiguration.fool_day),
+                ('stgeorgeday', ArabicHolidayParserConfiguration.st_george_day),
+                ('mayday', ArabicHolidayParserConfiguration.may_day),
+                ('cincodemayoday', ArabicHolidayParserConfiguration.cinco_de_mayo_day),
+                ('baptisteday', ArabicHolidayParserConfiguration.baptiste_day),
+                ('usindependenceday', ArabicHolidayParserConfiguration.usa_independence_day),
+                ('independenceday', ArabicHolidayParserConfiguration.usa_independence_day),
+                ('bastilleday', ArabicHolidayParserConfiguration.bastille_day),
+                ('halloweenday', ArabicHolidayParserConfiguration.halloween_day),
+                ('allhallowday', ArabicHolidayParserConfiguration.all_hallow_day),
+                ('allsoulsday', ArabicHolidayParserConfiguration.all_souls_day),
+                ('guyfawkesday', ArabicHolidayParserConfiguration.guy_fawkes_day),
+                ('veteransday', ArabicHolidayParserConfiguration.veterans_day),
+                ('christmaseve', ArabicHolidayParserConfiguration.christmas_eve),
+                ('newyeareve', ArabicHolidayParserConfiguration.new_year_eve),
+                ('easterday', ArabicHolidayParserConfiguration.easter_day),
+                ('juneteenth', ArabicHolidayParserConfiguration.juneteenth),
+            ]
+        )
 
         return {**super()._init_holiday_funcs(), **local}
 

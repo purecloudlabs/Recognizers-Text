@@ -25,7 +25,8 @@ class GermanNumberWithUnitExtractorConfiguration(NumberWithUnitExtractorConfigur
     build_suffix: str = GermanNumericWithUnit.BuildSuffix
     connector_token: str = GermanNumericWithUnit.ConnectorToken
     compound_unit_connector_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-        GermanNumericWithUnit.CompoundUnitConnectorRegex)
+        GermanNumericWithUnit.CompoundUnitConnectorRegex
+    )
     non_unit_regex: Pattern = RegExpUtility.get_safe_reg_exp(BaseUnits.PmNonUnitRegex)
     ambiguous_unit_number_multiplier_regex: Pattern = None
     culture_info: CultureInfo = None
@@ -59,7 +60,8 @@ class GermanNumberWithUnitParserConfiguration(NumberWithUnitParserConfiguration)
         culture_info = culture_info or CultureInfo(Culture.German)
         super().__init__(culture_info)
         self.internal_number_parser: Parser = AgnosticNumberParserFactory.get_parser(
-            ParserType.NUMBER, GermanNumberParserConfiguration(culture_info))
+            ParserType.NUMBER, GermanNumberParserConfiguration(culture_info)
+        )
 
 
 class GermanCurrencyParserConfiguration(GermanNumberWithUnitParserConfiguration):

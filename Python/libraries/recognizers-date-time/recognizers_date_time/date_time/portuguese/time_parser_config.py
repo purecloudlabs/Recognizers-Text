@@ -35,8 +35,7 @@ class PortugueseTimeParserConfiguration(TimeParserConfiguration):
 
     def __init__(self, config: BaseDateParserConfiguration):
         self._time_token_prefix: str = PortugueseDateTime.TimeTokenPrefix
-        self._at_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.AtRegex)
+        self._at_regex: Pattern = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.AtRegex)
         self._time_regexes: List[Pattern] = [
             RegExpUtility.get_safe_reg_exp(PortugueseDateTime.TimeRegex1),
             RegExpUtility.get_safe_reg_exp(PortugueseDateTime.TimeRegex2),
@@ -49,24 +48,25 @@ class PortugueseTimeParserConfiguration(TimeParserConfiguration):
             RegExpUtility.get_safe_reg_exp(PortugueseDateTime.TimeRegex9),
             RegExpUtility.get_safe_reg_exp(PortugueseDateTime.TimeRegex11),
             RegExpUtility.get_safe_reg_exp(PortugueseDateTime.TimeRegex12),
-            RegExpUtility.get_safe_reg_exp(PortugueseDateTime.ConnectNumRegex)
+            RegExpUtility.get_safe_reg_exp(PortugueseDateTime.ConnectNumRegex),
         ]
         self._numbers: Dict[str, int] = PortugueseDateTime.Numbers
         self._utility_configuration = config.utility_configuration
-        self.less_than_one_hour = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.LessThanOneHour)
-        self.time_suffix_full = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.TimeSuffix)
-        self.night_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.NightRegex)
+        self.less_than_one_hour = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.LessThanOneHour)
+        self.time_suffix_full = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.TimeSuffix)
+        self.night_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.NightRegex)
 
     def adjust_by_prefix(self, prefix: str, adjust: AdjustParams):
         delta_min = 0
         prefix = prefix.strip().lower()
         if prefix.startswith('meia') or prefix.startswith('e meia'):
             delta_min = 30
-        elif prefix.startswith('quarto') or prefix.startswith('e um quarto') \
-                or prefix.startswith('quinze') or prefix.startswith('e quinze'):
+        elif (
+            prefix.startswith('quarto')
+            or prefix.startswith('e um quarto')
+            or prefix.startswith('quinze')
+            or prefix.startswith('e quinze')
+        ):
             delta_min = 15
         elif prefix.startswith('menos um quarto'):
             delta_min = -15
@@ -78,8 +78,14 @@ class PortugueseTimeParserConfiguration(TimeParserConfiguration):
             else:
                 min_str = RegExpUtility.get_group(match, 'deltaminnum').lower()
                 delta_min = self.numbers[min_str]
-        if prefix.endswith('para a') or prefix.endswith('para as') or prefix.endswith('pra')  \
-                or prefix.endswith('pras') or prefix.endswith('antes da') or prefix.endswith('antes das'):
+        if (
+            prefix.endswith('para a')
+            or prefix.endswith('para as')
+            or prefix.endswith('pra')
+            or prefix.endswith('pras')
+            or prefix.endswith('antes da')
+            or prefix.endswith('antes das')
+        ):
             delta_min = delta_min * -1
         adjust.minute += delta_min
         if adjust.minute < 0:

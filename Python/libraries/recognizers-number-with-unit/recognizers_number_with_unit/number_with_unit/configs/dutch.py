@@ -28,7 +28,8 @@ class DutchNumberWithUnitExtractorConfiguration(NumberWithUnitExtractorConfigura
     build_suffix: str = DutchNumericWithUnit.BuildSuffix
     connector_token: str = ''
     compound_unit_connector_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-        DutchNumericWithUnit.CompoundUnitConnectorRegex)
+        DutchNumericWithUnit.CompoundUnitConnectorRegex
+    )
     non_unit_regex: Pattern = RegExpUtility.get_safe_reg_exp(BaseUnits.PmNonUnitRegex)
     ambiguous_unit_number_multiplier_regex: Pattern = None
     culture_info: CultureInfo = None
@@ -62,7 +63,8 @@ class DutchNumberWithUnitParserConfiguration(NumberWithUnitParserConfiguration):
         culture_info = culture_info or CultureInfo(Culture.Dutch)
         super().__init__(culture_info)
         self.internal_number_parser: Parser = AgnosticNumberParserFactory.get_parser(
-            ParserType.NUMBER, DutchNumberParserConfiguration(culture_info))
+            ParserType.NUMBER, DutchNumberParserConfiguration(culture_info)
+        )
 
 
 class DutchCurrencyParserConfiguration(DutchNumberWithUnitParserConfiguration):
@@ -73,4 +75,3 @@ class DutchCurrencyParserConfiguration(DutchNumberWithUnitParserConfiguration):
         self.add_dict_to_unit_map(DutchNumericWithUnit.CurrencyPrefixList)
         self.currency_name_to_iso_code_map = DutchNumericWithUnit.CurrencyNameToIsoCodeMap
         self.currency_fraction_code_list = DutchNumericWithUnit.FractionalUnitNameToCodeMap
-

@@ -123,8 +123,9 @@ class JapaneseDateTimeParserConfiguration(CJKDateTimeParserConfiguration):
         self._datetime_period_unit_regex = JapaneseDateTimeExtractorConfiguration().datetime_period_unit_regex
         self._before_regex = JapaneseDateTimeExtractorConfiguration().before_regex
         self._after_regex = JapaneseDateTimeExtractorConfiguration().after_regex
-        self._duration_relative_duration_unit_regex = \
+        self._duration_relative_duration_unit_regex = (
             JapaneseDateTimeExtractorConfiguration().duration_relative_duration_unit_regex
+        )
         self._ago_later_regex = JapaneseDateTimeExtractorConfiguration().ago_later_regex
 
         self._lunar_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.LunarRegex)
@@ -152,37 +153,19 @@ class JapaneseDateTimeParserConfiguration(CJKDateTimeParserConfiguration):
         source = source.strip().lower()
         swift = 0
 
-        if (
-                source == '今天' or
-                source == '今日' or
-                source == '最近'
-        ):
+        if source == '今天' or source == '今日' or source == '最近':
             swift = 0
-        elif (
-                source.startswith('明')
-        ):
+        elif source.startswith('明'):
             swift = 1
-        elif (
-                source.startswith('昨')
-        ):
+        elif source.startswith('昨'):
             swift = -1
-        elif (
-            source == '大后天' or
-            source == '大後天'
-        ):
+        elif source == '大后天' or source == '大後天':
             swift = 3
-        elif (
-            source == '大前天'
-        ):
+        elif source == '大前天':
             swift = -3
-        elif (
-            source == '后天' or
-            source == '後天'
-        ):
+        elif source == '后天' or source == '後天':
             swift = 2
-        elif (
-            source == '前天'
-        ):
+        elif source == '前天':
             swift = -2
 
         return swift

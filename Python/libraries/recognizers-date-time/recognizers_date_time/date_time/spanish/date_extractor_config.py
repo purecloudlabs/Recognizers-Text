@@ -71,4 +71,3 @@ class SpanishDateExtractorConfiguration(DateExtractorConfiguration):
             RegExpUtility.get_safe_reg_exp(date_extractor_9),
             RegExpUtility.get_safe_reg_exp(SpanishDateTime.DateExtractor10),
         ]
-

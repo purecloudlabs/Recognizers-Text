@@ -35,8 +35,7 @@ class EnglishTimeParser(BaseTimeParser):
             hour = int(hour_str)
 
         result.timex = f'T{hour:02d}'
-        result.future_value = datetime(
-            reference.year, reference.month, reference.day, hour, 0, 0)
+        result.future_value = datetime(reference.year, reference.month, reference.day, hour, 0, 0)
         result.past_value = result.future_value
         result.success = True
         return result

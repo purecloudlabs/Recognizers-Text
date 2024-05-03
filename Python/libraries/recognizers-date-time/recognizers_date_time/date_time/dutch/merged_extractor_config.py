@@ -151,51 +151,32 @@ class DutchMergedExtractorConfiguration(MergedExtractorConfiguration):
         return self._year_regex
 
     def __init__(self):
-        self._before_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.BeforeRegex)
-        self._after_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.AfterRegex)
-        self._since_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.SinceRegex)
-        self._from_to_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.FromToRegex)
-        self._year_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.YearRegex)
-        self._single_ambiguous_month_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.SingleAmbiguousMonthRegex)
-        self._preposition_suffix_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.PrepositionSuffixRegex)
+        self._before_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.BeforeRegex)
+        self._after_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.AfterRegex)
+        self._since_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.SinceRegex)
+        self._from_to_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.FromToRegex)
+        self._year_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.YearRegex)
+        self._single_ambiguous_month_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.SingleAmbiguousMonthRegex)
+        self._preposition_suffix_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.PrepositionSuffixRegex)
         self._ambiguous_range_modifier_prefix = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.AmbiguousRangeModifierPrefix)
-        self._number_ending_pattern = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.NumberEndingPattern)
+            DutchDateTime.AmbiguousRangeModifierPrefix
+        )
+        self._number_ending_pattern = RegExpUtility.get_safe_reg_exp(DutchDateTime.NumberEndingPattern)
 
-        self._date_extractor = BaseDateExtractor(
-            DutchDateExtractorConfiguration())
-        self._time_extractor = BaseTimeExtractor(
-            DutchTimeExtractorConfiguration())
-        self._date_time_extractor = BaseDateTimeExtractor(
-            DutchDateTimeExtractorConfiguration())
-        self._date_period_extractor = BaseDatePeriodExtractor(
-            DutchDatePeriodExtractorConfiguration())
-        self._time_period_extractor = BaseTimePeriodExtractor(
-            DutchTimePeriodExtractorConfiguration())
-        self._date_time_period_extractor = BaseDateTimePeriodExtractor(
-            DutchDateTimePeriodExtractorConfiguration())
-        self._duration_extractor = BaseDurationExtractor(
-            DutchDurationExtractorConfiguration())
-        self._holiday_extractor = BaseHolidayExtractor(
-            DutchHolidayExtractorConfiguration())
+        self._date_extractor = BaseDateExtractor(DutchDateExtractorConfiguration())
+        self._time_extractor = BaseTimeExtractor(DutchTimeExtractorConfiguration())
+        self._date_time_extractor = BaseDateTimeExtractor(DutchDateTimeExtractorConfiguration())
+        self._date_period_extractor = BaseDatePeriodExtractor(DutchDatePeriodExtractorConfiguration())
+        self._time_period_extractor = BaseTimePeriodExtractor(DutchTimePeriodExtractorConfiguration())
+        self._date_time_period_extractor = BaseDateTimePeriodExtractor(DutchDateTimePeriodExtractorConfiguration())
+        self._duration_extractor = BaseDurationExtractor(DutchDurationExtractorConfiguration())
+        self._holiday_extractor = BaseHolidayExtractor(DutchHolidayExtractorConfiguration())
         self._integer_extractor = DutchIntegerExtractor()
         self._filter_word_regex_list = []
-        self._unspecified_date_period_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.UnspecificDatePeriodRegex
-        )
+        self._unspecified_date_period_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.UnspecificDatePeriodRegex)
         self._around_regex = DutchDateTime.AroundRegex
         self._equal_regex = BaseDateTime.EqualRegex
-        self._suffix_after_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.SuffixAfterRegex
-        )
+        self._suffix_after_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.SuffixAfterRegex)
         self._potential_ambiguous_range_regex = RegExpUtility.get_safe_reg_exp(
             DutchDateTime.PotentialAmbiguousRangeRegex
         )

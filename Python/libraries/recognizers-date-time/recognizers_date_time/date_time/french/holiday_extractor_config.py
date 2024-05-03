@@ -24,5 +24,5 @@ class FrenchHolidayExtractorConfiguration(HolidayExtractorConfiguration):
             RegExpUtility.get_safe_reg_exp(FrenchDateTime.HolidayRegex1),
             RegExpUtility.get_safe_reg_exp(FrenchDateTime.HolidayRegex2),
             RegExpUtility.get_safe_reg_exp(FrenchDateTime.HolidayRegex3),
-            RegExpUtility.get_safe_reg_exp(FrenchDateTime.HolidayRegex4)
+            RegExpUtility.get_safe_reg_exp(FrenchDateTime.HolidayRegex4),
         ]

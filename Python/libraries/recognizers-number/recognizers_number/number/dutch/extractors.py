@@ -18,11 +18,9 @@ class DutchNumberExtractor(BaseNumberExtractor):
         cardinal_ex: Optional[DutchCardinalExtractor] = None
 
         if self.mode is NumberMode.PURE_NUMBER:
-            cardinal_ex = DutchCardinalExtractor(
-                DutchNumeric.PlaceHolderPureNumber)
+            cardinal_ex = DutchCardinalExtractor(DutchNumeric.PlaceHolderPureNumber)
         elif self.mode is NumberMode.CURRENCY:
-            _regexes.append(ReVal(re=RegExpUtility.get_safe_reg_exp(
-                DutchNumeric.CurrencyRegex), val='IntegerNum'))
+            _regexes.append(ReVal(re=RegExpUtility.get_safe_reg_exp(DutchNumeric.CurrencyRegex), val='IntegerNum'))
 
         cardinal_ex = cardinal_ex or DutchCardinalExtractor()
         _regexes.extend(cardinal_ex.regexes)
@@ -37,8 +35,9 @@ class DutchNumberExtractor(BaseNumberExtractor):
 
         if self.mode != NumberMode.Unit:
             for key, value in DutchNumeric.AmbiguityFiltersDict.items():
-                _ambiguity_filters_dict.append(ReRe(reKey=RegExpUtility.get_safe_reg_exp(key),
-                                                    reVal=RegExpUtility.get_safe_reg_exp(value)))
+                _ambiguity_filters_dict.append(
+                    ReRe(reKey=RegExpUtility.get_safe_reg_exp(key), reVal=RegExpUtility.get_safe_reg_exp(value))
+                )
         return _ambiguity_filters_dict
 
     @property
@@ -54,8 +53,7 @@ class DutchCardinalExtractor(BaseNumberExtractor):
 
     @property
     def regexes(self) -> List[ReVal]:
-        return (DutchIntegerExtractor(self.placeholder).regexes +
-                DutchDoubleExtractor(self.placeholder).regexes)
+        return DutchIntegerExtractor(self.placeholder).regexes + DutchDoubleExtractor(self.placeholder).regexes
 
     def __init__(self, placeholder: str = DutchNumeric.PlaceHolderDefault):
         self.placeholder = placeholder
@@ -68,41 +66,32 @@ class DutchIntegerExtractor(BaseNumberExtractor):
     def regexes(self) -> List[ReVal]:
         return [
             ReVal(
-                re=RegExpUtility.get_safe_reg_exp(
-                    DutchNumeric.NumbersWithPlaceHolder(self.placeholder)),
-                val='IntegerNum'),
+                re=RegExpUtility.get_safe_reg_exp(DutchNumeric.NumbersWithPlaceHolder(self.placeholder)),
+                val='IntegerNum',
+            ),
+            ReVal(re=RegExpUtility.get_safe_reg_exp(DutchNumeric.NumbersWithSuffix, regex.S), val='IntegerNum'),
             ReVal(
                 re=RegExpUtility.get_safe_reg_exp(
-                    DutchNumeric.NumbersWithSuffix, regex.S),
-                val='IntegerNum'),
-            ReVal(
-                re=RegExpUtility.get_safe_reg_exp(self._generate_format_regex(
-                    LongFormatMode.INTEGER_COMMA, self.placeholder)),
-                val='IntegerNum'),
-            ReVal(
-                re=RegExpUtility.get_safe_reg_exp(self._generate_format_regex(
-                    LongFormatMode.INTEGER_BLANK, self.placeholder)),
-                val='IntegerNum'),
-            ReVal(
-                re=RegExpUtility.get_safe_reg_exp(self._generate_format_regex(
-                    LongFormatMode.INTEGER_NO_BREAK_SPACE, self.placeholder)),
-                val='IntegerNum'),
+                    self._generate_format_regex(LongFormatMode.INTEGER_COMMA, self.placeholder)
+                ),
+                val='IntegerNum',
+            ),
             ReVal(
                 re=RegExpUtility.get_safe_reg_exp(
-                    DutchNumeric.RoundNumberIntegerRegexWithLocks),
-                val='IntegerNum'),
+                    self._generate_format_regex(LongFormatMode.INTEGER_BLANK, self.placeholder)
+                ),
+                val='IntegerNum',
+            ),
             ReVal(
                 re=RegExpUtility.get_safe_reg_exp(
-                    DutchNumeric.NumbersWithDozenSuffix),
-                val='IntegerNum'),
-            ReVal(
-                re=RegExpUtility.get_safe_reg_exp(
-                    DutchNumeric.AllIntRegexWithLocks),
-                val='IntegerDut'),
-            ReVal(
-                re=RegExpUtility.get_safe_reg_exp(
-                    DutchNumeric.AllIntRegexWithDozenSuffixLocks),
-                val='IntegerDut')
+                    self._generate_format_regex(LongFormatMode.INTEGER_NO_BREAK_SPACE, self.placeholder)
+                ),
+                val='IntegerNum',
+            ),
+            ReVal(re=RegExpUtility.get_safe_reg_exp(DutchNumeric.RoundNumberIntegerRegexWithLocks), val='IntegerNum'),
+            ReVal(re=RegExpUtility.get_safe_reg_exp(DutchNumeric.NumbersWithDozenSuffix), val='IntegerNum'),
+            ReVal(re=RegExpUtility.get_safe_reg_exp(DutchNumeric.AllIntRegexWithLocks), val='IntegerDut'),
+            ReVal(re=RegExpUtility.get_safe_reg_exp(DutchNumeric.AllIntRegexWithDozenSuffixLocks), val='IntegerDut'),
         ]
 
     def __init__(self, placeholder: str = DutchNumeric.PlaceHolderDefault):
@@ -116,44 +105,39 @@ class DutchDoubleExtractor(BaseNumberExtractor):
     def regexes(self) -> List[ReVal]:
         return [
             ReVal(
-                re=RegExpUtility.get_safe_reg_exp(
-                    DutchNumeric.DoubleDecimalPointRegex(self.placeholder)),
-                val='DoubleNum'),
+                re=RegExpUtility.get_safe_reg_exp(DutchNumeric.DoubleDecimalPointRegex(self.placeholder)),
+                val='DoubleNum',
+            ),
+            ReVal(
+                re=RegExpUtility.get_safe_reg_exp(DutchNumeric.DoubleWithoutIntegralRegex(self.placeholder)),
+                val='DoubleNum',
+            ),
             ReVal(
                 re=RegExpUtility.get_safe_reg_exp(
-                    DutchNumeric.DoubleWithoutIntegralRegex(self.placeholder)),
-                val='DoubleNum'),
-            ReVal(
-                re=RegExpUtility.get_safe_reg_exp(self._generate_format_regex(
-                    LongFormatMode.DOUBLE_DOT_COMMA, self.placeholder)),
-                val='DoubleNum'),
-            ReVal(
-                re=RegExpUtility.get_safe_reg_exp(self._generate_format_regex(
-                    LongFormatMode.DOUBLE_NO_BREAK_SPACE_COMMA, self.placeholder)),
-                val='DoubleNum'),
-            ReVal(
-                re=RegExpUtility.get_safe_reg_exp(self._generate_format_regex(
-                    LongFormatMode.DOUBLE_NUM_BLANK_COMMA, self.placeholder)),
-                val='DoubleNum'),
-            ReVal(
-                re=DutchNumeric.DoubleWithMultiplierRegex,
-                val='DoubleNum'),
+                    self._generate_format_regex(LongFormatMode.DOUBLE_DOT_COMMA, self.placeholder)
+                ),
+                val='DoubleNum',
+            ),
             ReVal(
                 re=RegExpUtility.get_safe_reg_exp(
-                    DutchNumeric.DoubleWithRoundNumber),
-                val='DoubleNum'),
+                    self._generate_format_regex(LongFormatMode.DOUBLE_NO_BREAK_SPACE_COMMA, self.placeholder)
+                ),
+                val='DoubleNum',
+            ),
             ReVal(
                 re=RegExpUtility.get_safe_reg_exp(
-                    DutchNumeric.DoubleAllFloatRegex),
-                val=f'Double{DutchNumeric.LangMarker}'),
+                    self._generate_format_regex(LongFormatMode.DOUBLE_NUM_BLANK_COMMA, self.placeholder)
+                ),
+                val='DoubleNum',
+            ),
+            ReVal(re=DutchNumeric.DoubleWithMultiplierRegex, val='DoubleNum'),
+            ReVal(re=RegExpUtility.get_safe_reg_exp(DutchNumeric.DoubleWithRoundNumber), val='DoubleNum'),
             ReVal(
-                re=RegExpUtility.get_safe_reg_exp(
-                    DutchNumeric.DoubleExponentialNotationRegex),
-                val='DoublePow'),
-            ReVal(
-                re=RegExpUtility.get_safe_reg_exp(
-                    DutchNumeric.DoubleCaretExponentialNotationRegex),
-                val='DoublePow')
+                re=RegExpUtility.get_safe_reg_exp(DutchNumeric.DoubleAllFloatRegex),
+                val=f'Double{DutchNumeric.LangMarker}',
+            ),
+            ReVal(re=RegExpUtility.get_safe_reg_exp(DutchNumeric.DoubleExponentialNotationRegex), val='DoublePow'),
+            ReVal(re=RegExpUtility.get_safe_reg_exp(DutchNumeric.DoubleCaretExponentialNotationRegex), val='DoublePow'),
         ]
 
     def __init__(self, placeholder):
@@ -166,29 +150,23 @@ class DutchFractionExtractor(BaseNumberExtractor):
     @property
     def regexes(self) -> List[ReVal]:
         _regexes = [
+            ReVal(re=RegExpUtility.get_safe_reg_exp(DutchNumeric.FractionNotationWithSpacesRegex), val='FracNum'),
+            ReVal(re=RegExpUtility.get_safe_reg_exp(DutchNumeric.FractionNotationRegex), val='FracNum'),
             ReVal(
-                re=RegExpUtility.get_safe_reg_exp(
-                    DutchNumeric.FractionNotationWithSpacesRegex),
-                val='FracNum'),
+                re=RegExpUtility.get_safe_reg_exp(DutchNumeric.FractionNounRegex), val=f'Frac{DutchNumeric.LangMarker}'
+            ),
             ReVal(
-                re=RegExpUtility.get_safe_reg_exp(
-                    DutchNumeric.FractionNotationRegex),
-                val='FracNum'),
-            ReVal(
-                re=RegExpUtility.get_safe_reg_exp(
-                    DutchNumeric.FractionNounRegex),
-                val=f'Frac{DutchNumeric.LangMarker}'),
-            ReVal(
-                re=RegExpUtility.get_safe_reg_exp(
-                    DutchNumeric.FractionNounWithArticleRegex),
-                val=f'Frac{DutchNumeric.LangMarker}')
+                re=RegExpUtility.get_safe_reg_exp(DutchNumeric.FractionNounWithArticleRegex),
+                val=f'Frac{DutchNumeric.LangMarker}',
+            ),
         ]
         if self.mode != NumberMode.Unit:
             _regexes.append(
                 ReVal(
-                    re=RegExpUtility.get_safe_reg_exp(
-                        DutchNumeric.FractionPrepositionRegex),
-                    val=f'Frac{DutchNumeric.LangMarker}'))
+                    re=RegExpUtility.get_safe_reg_exp(DutchNumeric.FractionPrepositionRegex),
+                    val=f'Frac{DutchNumeric.LangMarker}',
+                )
+            )
         return _regexes
 
     def __init__(self, mode):
@@ -201,18 +179,10 @@ class DutchOrdinalExtractor(BaseNumberExtractor):
     @property
     def regexes(self) -> List[ReVal]:
         return [
-            ReVal(
-                re=DutchNumeric.OrdinalSuffixRegex,
-                val='OrdinalNum'),
-            ReVal(
-                re=DutchNumeric.OrdinalNumericRegex,
-                val='OrdinalNum'),
-            ReVal(
-                re=DutchNumeric.OrdinalDutchRegex,
-                val='OrdDut'),
-            ReVal(
-                re=DutchNumeric.OrdinalRoundNumberRegex,
-                val='OrdDut')
+            ReVal(re=DutchNumeric.OrdinalSuffixRegex, val='OrdinalNum'),
+            ReVal(re=DutchNumeric.OrdinalNumericRegex, val='OrdinalNum'),
+            ReVal(re=DutchNumeric.OrdinalDutchRegex, val='OrdDut'),
+            ReVal(re=DutchNumeric.OrdinalRoundNumberRegex, val='OrdDut'),
         ]
 
 

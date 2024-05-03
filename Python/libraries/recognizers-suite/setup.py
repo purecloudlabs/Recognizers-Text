@@ -18,7 +18,7 @@ REQUIRES = [
     'recognizers-text-date-time-genesys==1.1.33',
     'recognizers-text-sequence-genesys==1.1.33',
     'recognizers-text-choice-genesys==1.1.33',
-    'datatypes_timex_expression_genesys==1.1.33'
+    'datatypes_timex_expression_genesys==1.1.33',
 ]
 
 setup(
@@ -27,8 +27,7 @@ setup(
     url='https://github.com/Microsoft/Recognizers-Text',
     author='Microsoft',
     description='recognizers-text-suite README',
-    keywords=['nlp', 'nlp-entity-extraction',
-              'entity-extraction', 'parser-library'],
+    keywords=['nlp', 'nlp-entity-extraction', 'entity-extraction', 'parser-library'],
     long_description=read('README.rst'),
     license='MIT',
     packages=find_packages(),
@@ -40,5 +39,5 @@ setup(
         'Operating System :: OS Independent',
         'Development Status :: 3 - Alpha',
         'Topic :: Scientific/Engineering :: Artificial Intelligence',
-    ]
+    ],
 )

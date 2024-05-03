@@ -107,57 +107,39 @@ class GermanDateTimeExtractorConfiguration(DateTimeExtractorConfiguration):
 
     def __init__(self):
         super().__init__()
-        self.preposition_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.PrepositionRegex)
-        self._now_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.NowRegex)
-        self._suffix_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.SuffixRegex)
+        self.preposition_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.PrepositionRegex)
+        self._now_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.NowRegex)
+        self._suffix_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.SuffixRegex)
 
-        self._time_of_day_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.TimeOfDayRegex)
-        self._specific_time_of_day_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.SpecificTimeOfDayRegex)
-        self._time_of_today_after_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.TimeOfTodayAfterRegex)
-        self._time_of_today_before_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.TimeOfTodayBeforeRegex)
+        self._time_of_day_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.TimeOfDayRegex)
+        self._specific_time_of_day_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.SpecificTimeOfDayRegex)
+        self._time_of_today_after_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.TimeOfTodayAfterRegex)
+        self._time_of_today_before_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.TimeOfTodayBeforeRegex)
         self._simple_time_of_today_after_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.SimpleTimeOfTodayAfterRegex)
+            GermanDateTime.SimpleTimeOfTodayAfterRegex
+        )
         self._simple_time_of_today_before_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.SimpleTimeOfTodayBeforeRegex)
-        self._specific_end_of_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.SpecificEndOfRegex)
-        self._unspecific_end_of_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.UnspecificEndOfRegex)
-        self._unit_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.TimeUnitRegex)
-        self.connector_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.ConnectorRegex)
-        self._night_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.NightRegex)
-        self._number_as_time_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.NumberAsTimeRegex)
-        self._date_number_connector_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.DateNumberConnectorRegex
+            GermanDateTime.SimpleTimeOfTodayBeforeRegex
         )
-        self._suffix_after_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.SuffixAfterRegex
-        )
-        self._year_suffix = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.YearSuffix
-        )
-        self._year_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.YearRegex
-        )
+        self._specific_end_of_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.SpecificEndOfRegex)
+        self._unspecific_end_of_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.UnspecificEndOfRegex)
+        self._unit_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.TimeUnitRegex)
+        self.connector_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.ConnectorRegex)
+        self._night_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.NightRegex)
+        self._number_as_time_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.NumberAsTimeRegex)
+        self._date_number_connector_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.DateNumberConnectorRegex)
+        self._suffix_after_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.SuffixAfterRegex)
+        self._year_suffix = RegExpUtility.get_safe_reg_exp(GermanDateTime.YearSuffix)
+        self._year_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.YearRegex)
 
-        self._date_point_extractor = BaseDateExtractor(
-            GermanDateExtractorConfiguration())
-        self._time_point_extractor = BaseTimeExtractor(
-            GermanTimeExtractorConfiguration())
-        self._duration_extractor = BaseDurationExtractor(
-            GermanDurationExtractorConfiguration())
+        self._date_point_extractor = BaseDateExtractor(GermanDateExtractorConfiguration())
+        self._time_point_extractor = BaseTimeExtractor(GermanTimeExtractorConfiguration())
+        self._duration_extractor = BaseDurationExtractor(GermanDurationExtractorConfiguration())
         self._utility_configuration = GermanDateTimeUtilityConfiguration()
 
     def is_connector_token(self, source: str) -> bool:
-        return source.strip() == '' or regex.search(self.connector_regex, source) is not None or regex.search(self.preposition_regex, source) is not None
+        return (
+            source.strip() == ''
+            or regex.search(self.connector_regex, source) is not None
+            or regex.search(self.preposition_regex, source) is not None
+        )

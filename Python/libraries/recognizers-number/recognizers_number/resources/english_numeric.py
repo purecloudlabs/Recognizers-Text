@@ -36,10 +36,13 @@ class EnglishNumeric:
 
     def NumbersWithPlaceHolder(placeholder):
         return f'(((?<!(\\d+(\\s*(K|k|MM?|mil|G|T|B|b))?\\s*|\\p{{L}}))-\\s*)|(?<={placeholder}))\\d+(?!([\\.,]\\d+[a-zA-Z]))(?={placeholder})'
+
     IndianNumberingSystemRegex = '(?<=\\b)((?:\\d{1,2},(?:\\d{2},)*\\d{3})(?=\\b))'
     NumbersWithSuffix = f'(((?<!\\d+(\\s*{BaseNumbers.NumberMultiplierRegex})?\\s*)-\\s*)|(?<=\\b))\\d+\\s*{BaseNumbers.NumberMultiplierRegex}(?=\\b)'
     RoundNumberIntegerRegexWithLocks = f'(?<=\\b)\\d+\\s+{RoundNumberIntegerRegex}(?=\\b)'
-    NumbersWithDozenSuffix = f'(((?<!\\d+(\\s*{BaseNumbers.NumberMultiplierRegex})?\\s*)-\\s*)|(?<=\\b))\\d+\\s+(doz(en)?|dz)s?(?=\\b)'
+    NumbersWithDozenSuffix = (
+        f'(((?<!\\d+(\\s*{BaseNumbers.NumberMultiplierRegex})?\\s*)-\\s*)|(?<=\\b))\\d+\\s+(doz(en)?|dz)s?(?=\\b)'
+    )
     AllIntRegexWithLocks = f'((?<=\\b){AllIntRegex}(?=\\b))'
     AllIntRegexWithDozenSuffixLocks = f'(?<=\\b)(((half\\s+)?a\\s+dozen)|({AllIntRegex}\\s+(doz(en)?|dz)s?))(?=\\b)'
     RoundNumberOrdinalRegex = '(?:hundredth|thousandth|millionth|billionth|trillionth)'
@@ -57,7 +60,9 @@ class EnglishNumeric:
     FractionNotationRegex = f'{BaseNumbers.FractionNotationRegex}'
     FractionMultiplierRegex = f'(?<fracMultiplier>\\s+and\\s+(a|one|{TwoToNineIntegerRegex})\\s+(half|quarter|third|fourth|fifth|sixth|seventh|eighth|nine?th|tenth)s?)'
     RoundMultiplierWithFraction = f'(?<=(?<!{RoundNumberIntegerRegex}){FractionMultiplierRegex}\\s+)?(?<multiplier>(?:million|mln|billion|bln|trillion|tln)s?)(?={FractionMultiplierRegex}?$)'
-    RoundMultiplierRegex = f'\\b\\s*((of\\s+)?a\\s+)?({RoundMultiplierWithFraction}|(?<multiplier>(?:hundred|thousand|lakh|crore)s?)$)'
+    RoundMultiplierRegex = (
+        f'\\b\\s*((of\\s+)?a\\s+)?({RoundMultiplierWithFraction}|(?<multiplier>(?:hundred|thousand|lakh|crore)s?)$)'
+    )
     FractionNounRegex = f'(?<=\\b)({AllIntRegex}\\s+(and\\s+)?)?(({AllIntRegex})(\\s+|\\s*-\\s*)((({AllOrdinalNumberRegex})|({RoundNumberOrdinalRegex}))s|halves|quarters)((\\s+of\\s+a)?\\s+{RoundNumberIntegerRegex})?|(half(\\s+a)?|quarter(\\s+of\\s+a)?)\\s+{RoundNumberIntegerRegex})(?=\\b)'
     FractionNounWithArticleRegex = f'(?<=\\b)(((({AllIntRegex}|{RoundNumberIntegerRegexWithLocks})\\s+(and\\s+)?)?(an?|one)(\\s+|\\s*-\\s*)(?!\\bfirst\\b|\\bsecond\\b)(({AllOrdinalNumberRegex})|({RoundNumberOrdinalRegex})|(half|quarter)(((\\s+of)?\\s+a)?\\s+{RoundNumberIntegerRegex})?))|(half))(?=\\b)'
     FractionPrepositionRegex = f'(?<!{BaseNumbers.CommonCurrencySymbol}\\s*)(?<=\\b)(?<numerator>({AllIntRegex})|((?<![\\.,])\\d+))\\s+(over|(?<ambiguousSeparator>in|out\\s+of))\\s+(?<denominator>({AllIntRegex})|(\\d+)(?![\\.,]))(?=\\b)'
@@ -70,15 +75,19 @@ class EnglishNumeric:
 
     def DoubleDecimalPointRegex(placeholder):
         return f'(((?<!(\\d+(\\s*(K|k|MM?|mil|G|T|B|b))?\\s*|\\p{{L}}))-\\s*)|((?<={placeholder})(?<!\\d+[\\.,])))(\\d{{1,3}}(,\\d{{3}})+(\\.\\d+)?|\\d+[\\.,]\\d+)(?!([\\.,]\\d+))(?={placeholder})'
+
     DoubleIndianDecimalPointRegex = '(?<=\\b)((?:\\d{1,2},(?:\\d{2},)*\\d{3})(?:\\.\\d{2})(?=\\b))'
 
     def DoubleWithoutIntegralRegex(placeholder):
         return f'(?<=\\s|^)(?<!(\\d+))[\\.,]\\d+(?!([\\.,]\\d+))(?={placeholder})'
+
     DoubleWithRoundNumber = f'(((?<!\\d+(\\s*{BaseNumbers.NumberMultiplierRegex})?\\s*)-\\s*)|((?<=\\b)(?<!\\d+[\\.,])))(\\d{{1,3}}(,\\d{{3}})+(\\.\\d+)?|\\d+[\\.,]\\d+)\\s+{RoundNumberIntegerRegex}(?=\\b)'
     DoubleAllFloatRegex = f'((?<=\\b){AllFloatRegex}(?=\\b))'
     ConnectorRegex = '(?<spacer>and)'
     FractionNumberWithSuffixPercentage = f'(({BaseNumbers.FractionNumberReplaceToken})\\s+of)'
-    NumberWithPrepositionPercentage = f'({BaseNumbers.NumberReplaceToken})\\s*(in|out\\s+of)\\s*({BaseNumbers.NumberReplaceToken})'
+    NumberWithPrepositionPercentage = (
+        f'({BaseNumbers.NumberReplaceToken})\\s*(in|out\\s+of)\\s*({BaseNumbers.NumberReplaceToken})'
+    )
     TillRegex = '((?<!\\bequal\\s+)to|through|--|-|—|——|~|–)'
     MoreRegex = '(?:(bigger|greater|more|higher|larger)(\\s+than)?|above|over|beyond|exceed(ed|ing)?|surpass(ed|ing)?|(?<!<|=)>)'
     LessRegex = '(?:(less|lower|smaller|fewer)(\\s+than)?|below|under|(?<!>|=)<)'
@@ -90,8 +99,12 @@ class EnglishNumeric:
     LessOrEqual = f'(({LessRegex}\\s+(or)?\\s+{EqualRegex})|({EqualRegex}\\s+(or)?\\s+{LessRegex})|{LessOrEqualPrefix}(\\s+(or)?\\s+{EqualRegex})?|({EqualRegex}\\s+(or)?\\s+)?{LessOrEqualPrefix}|<\\s*=|≤)'
     LessOrEqualSuffix = '((and|or)\\s+(less|lower|smaller|fewer)((?!\\s+than)|(\\s+than(?!(\\s*\\d+)))))'
     NumberSplitMark = f'(?![,.](?!\\d+))(?!\\s*\\b(and\\s+({LessRegex}|{MoreRegex})|but|or|to)\\b)'
-    MoreRegexNoNumberSucceed = '((bigger|greater|more|higher|larger)((?!\\s+than)|\\s+(than(?!(\\s*\\d+))))|(above|over)(?!(\\s*\\d+)))'
-    LessRegexNoNumberSucceed = '((less|lower|smaller|fewer)((?!\\s+than)|\\s+(than(?!(\\s*\\d+))))|(below|under)(?!(\\s*\\d+)))'
+    MoreRegexNoNumberSucceed = (
+        '((bigger|greater|more|higher|larger)((?!\\s+than)|\\s+(than(?!(\\s*\\d+))))|(above|over)(?!(\\s*\\d+)))'
+    )
+    LessRegexNoNumberSucceed = (
+        '((less|lower|smaller|fewer)((?!\\s+than)|\\s+(than(?!(\\s*\\d+))))|(below|under)(?!(\\s*\\d+)))'
+    )
     EqualRegexNoNumberSucceed = '(equal(s|ing)?((?!\\s+(to|than))|(\\s+(to|than)(?!(\\s*\\d+)))))'
     OneNumberRangeMoreRegex1 = f'({MoreOrEqual}|{MoreRegex})\\s*(the\\s+)?(?<number1>({NumberSplitMark}.)+)'
     OneNumberRangeMoreRegex1LB = f'(?<!no\\s+){OneNumberRangeMoreRegex1}'
@@ -102,7 +115,9 @@ class EnglishNumeric:
     OneNumberRangeLessRegex2 = f'(?<number2>({NumberSplitMark}.)+)\\s*{LessOrEqualSuffix}'
     OneNumberRangeLessSeparateRegex = f'({EqualRegex}\\s+(?<number1>({NumberSplitMark}.)+)(\\s+or\\s+){LessRegexNoNumberSucceed})|({LessRegex}\\s+(?<number1>({NumberSplitMark}.)+)(\\s+or\\s+){EqualRegexNoNumberSucceed})'
     OneNumberRangeEqualRegex = f'(?<!\\bthan\\s+or\\s+){EqualRegex}\\s*(the\\s+)?(?<number1>({NumberSplitMark}.)+)'
-    TwoNumberRangeRegex1 = f'between\\s*(the\\s+)?(?<number1>({NumberSplitMark}.)+)\\s*and\\s*(the\\s+)?(?<number2>({NumberSplitMark}.)+)'
+    TwoNumberRangeRegex1 = (
+        f'between\\s*(the\\s+)?(?<number1>({NumberSplitMark}.)+)\\s*and\\s*(the\\s+)?(?<number2>({NumberSplitMark}.)+)'
+    )
     TwoNumberRangeRegex2 = f'({OneNumberRangeMoreRegex1}|{OneNumberRangeMoreRegex2})\\s*(and|but|,)\\s*({OneNumberRangeLessRegex1}|{OneNumberRangeLessRegex2})'
     TwoNumberRangeRegex3 = f'({OneNumberRangeLessRegex1}|{OneNumberRangeLessRegex2})\\s*(and|but|,)\\s*({OneNumberRangeMoreRegex1}|{OneNumberRangeMoreRegex2})'
     TwoNumberRangeRegex4 = f'(from\\s+)?(?<number1>({NumberSplitMark}(?!\\bfrom\\b).)+)\\s*{TillRegex}\\s*(the\\s+)?(?<number2>({NumberSplitMark}.)+)'
@@ -118,198 +133,220 @@ class EnglishNumeric:
     WrittenFractionSeparatorTexts = [r'and']
     HalfADozenRegex = 'half\\s+a\\s+dozen'
     DigitalNumberRegex = f'((?<=\\b)(hundred|thousand|[mb]illion|trillion|[mbt]ln|lakh|crore|(doz(en)?|dz)s?)(?=\\b))|((?<=(\\d|\\b)){BaseNumbers.MultiplierLookupRegex}(?=\\b))'
-    CardinalNumberMap = dict([("a", 1),
-                              ("zero", 0),
-                              ("naught", 0),
-                              ("nought", 0),
-                              ("an", 1),
-                              ("one", 1),
-                              ("two", 2),
-                              ("three", 3),
-                              ("four", 4),
-                              ("five", 5),
-                              ("six", 6),
-                              ("seven", 7),
-                              ("eight", 8),
-                              ("nine", 9),
-                              ("ten", 10),
-                              ("eleven", 11),
-                              ("twelve", 12),
-                              ("dozen", 12),
-                              ("dozens", 12),
-                              ("dz", 12),
-                              ("doz", 12),
-                              ("dzs", 12),
-                              ("dozs", 12),
-                              ("thirteen", 13),
-                              ("fourteen", 14),
-                              ("fifteen", 15),
-                              ("sixteen", 16),
-                              ("seventeen", 17),
-                              ("eighteen", 18),
-                              ("nineteen", 19),
-                              ("twenty", 20),
-                              ("thirty", 30),
-                              ("forty", 40),
-                              ("fifty", 50),
-                              ("sixty", 60),
-                              ("seventy", 70),
-                              ("eighty", 80),
-                              ("ninety", 90),
-                              ("hundred", 100),
-                              ("thousand", 1000),
-                              ("million", 1000000),
-                              ("mln", 1000000),
-                              ("billion", 1000000000),
-                              ("bln", 1000000000),
-                              ("trillion", 1000000000000),
-                              ("tln", 1000000000000),
-                              ("lakh", 100000),
-                              ("crore", 10000000),
-                              ("hundreds", 100),
-                              ("thousands", 1000),
-                              ("millions", 1000000),
-                              ("billions", 1000000000),
-                              ("trillions", 1000000000000),
-                              ("lakhs", 100000),
-                              ("crores", 10000000)])
-    OrdinalNumberMap = dict([("first", 1),
-                             ("second", 2),
-                             ("secondary", 2),
-                             ("half", 2),
-                             ("third", 3),
-                             ("fourth", 4),
-                             ("quarter", 4),
-                             ("fifth", 5),
-                             ("sixth", 6),
-                             ("seventh", 7),
-                             ("eighth", 8),
-                             ("ninth", 9),
-                             ("nineth", 9),
-                             ("tenth", 10),
-                             ("eleventh", 11),
-                             ("twelfth", 12),
-                             ("thirteenth", 13),
-                             ("fourteenth", 14),
-                             ("fifteenth", 15),
-                             ("sixteenth", 16),
-                             ("seventeenth", 17),
-                             ("eighteenth", 18),
-                             ("nineteenth", 19),
-                             ("twentieth", 20),
-                             ("thirtieth", 30),
-                             ("fortieth", 40),
-                             ("fiftieth", 50),
-                             ("sixtieth", 60),
-                             ("seventieth", 70),
-                             ("eightieth", 80),
-                             ("ninetieth", 90),
-                             ("hundredth", 100),
-                             ("thousandth", 1000),
-                             ("millionth", 1000000),
-                             ("billionth", 1000000000),
-                             ("trillionth", 1000000000000),
-                             ("firsts", 1),
-                             ("halves", 2),
-                             ("thirds", 3),
-                             ("fourths", 4),
-                             ("quarters", 4),
-                             ("fifths", 5),
-                             ("sixths", 6),
-                             ("sevenths", 7),
-                             ("eighths", 8),
-                             ("ninths", 9),
-                             ("nineths", 9),
-                             ("tenths", 10),
-                             ("elevenths", 11),
-                             ("twelfths", 12),
-                             ("thirteenths", 13),
-                             ("fourteenths", 14),
-                             ("fifteenths", 15),
-                             ("sixteenths", 16),
-                             ("seventeenths", 17),
-                             ("eighteenths", 18),
-                             ("nineteenths", 19),
-                             ("twentieths", 20),
-                             ("thirtieths", 30),
-                             ("fortieths", 40),
-                             ("fiftieths", 50),
-                             ("sixtieths", 60),
-                             ("seventieths", 70),
-                             ("eightieths", 80),
-                             ("ninetieths", 90),
-                             ("hundredths", 100),
-                             ("thousandths", 1000),
-                             ("millionths", 1000000),
-                             ("billionths", 1000000000),
-                             ("trillionths", 1000000000000)])
-    RoundNumberMap = dict([("hundred", 100),
-                           ("thousand", 1000),
-                           ("million", 1000000),
-                           ("mln", 1000000),
-                           ("billion", 1000000000),
-                           ("bln", 1000000000),
-                           ("trillion", 1000000000000),
-                           ("tln", 1000000000000),
-                           ("lakh", 100000),
-                           ("crore", 10000000),
-                           ("hundreds", 100),
-                           ("thousands", 1000),
-                           ("millions", 1000000),
-                           ("billions", 1000000000),
-                           ("trillions", 1000000000000),
-                           ("lakhs", 100000),
-                           ("crores", 10000000),
-                           ("hundredth", 100),
-                           ("thousandth", 1000),
-                           ("millionth", 1000000),
-                           ("billionth", 1000000000),
-                           ("trillionth", 1000000000000),
-                           ("hundredths", 100),
-                           ("thousandths", 1000),
-                           ("millionths", 1000000),
-                           ("billionths", 1000000000),
-                           ("trillionths", 1000000000000),
-                           ("dozen", 12),
-                           ("dozens", 12),
-                           ("dz", 12),
-                           ("doz", 12),
-                           ("dzs", 12),
-                           ("dozs", 12),
-                           ("k", 1000),
-                           ("m", 1000000),
-                           ("mm", 1000000),
-                           ("mil", 1000000),
-                           ("g", 1000000000),
-                           ("b", 1000000000),
-                           ("t", 1000000000000)])
+    CardinalNumberMap = dict(
+        [
+            ("a", 1),
+            ("zero", 0),
+            ("naught", 0),
+            ("nought", 0),
+            ("an", 1),
+            ("one", 1),
+            ("two", 2),
+            ("three", 3),
+            ("four", 4),
+            ("five", 5),
+            ("six", 6),
+            ("seven", 7),
+            ("eight", 8),
+            ("nine", 9),
+            ("ten", 10),
+            ("eleven", 11),
+            ("twelve", 12),
+            ("dozen", 12),
+            ("dozens", 12),
+            ("dz", 12),
+            ("doz", 12),
+            ("dzs", 12),
+            ("dozs", 12),
+            ("thirteen", 13),
+            ("fourteen", 14),
+            ("fifteen", 15),
+            ("sixteen", 16),
+            ("seventeen", 17),
+            ("eighteen", 18),
+            ("nineteen", 19),
+            ("twenty", 20),
+            ("thirty", 30),
+            ("forty", 40),
+            ("fifty", 50),
+            ("sixty", 60),
+            ("seventy", 70),
+            ("eighty", 80),
+            ("ninety", 90),
+            ("hundred", 100),
+            ("thousand", 1000),
+            ("million", 1000000),
+            ("mln", 1000000),
+            ("billion", 1000000000),
+            ("bln", 1000000000),
+            ("trillion", 1000000000000),
+            ("tln", 1000000000000),
+            ("lakh", 100000),
+            ("crore", 10000000),
+            ("hundreds", 100),
+            ("thousands", 1000),
+            ("millions", 1000000),
+            ("billions", 1000000000),
+            ("trillions", 1000000000000),
+            ("lakhs", 100000),
+            ("crores", 10000000),
+        ]
+    )
+    OrdinalNumberMap = dict(
+        [
+            ("first", 1),
+            ("second", 2),
+            ("secondary", 2),
+            ("half", 2),
+            ("third", 3),
+            ("fourth", 4),
+            ("quarter", 4),
+            ("fifth", 5),
+            ("sixth", 6),
+            ("seventh", 7),
+            ("eighth", 8),
+            ("ninth", 9),
+            ("nineth", 9),
+            ("tenth", 10),
+            ("eleventh", 11),
+            ("twelfth", 12),
+            ("thirteenth", 13),
+            ("fourteenth", 14),
+            ("fifteenth", 15),
+            ("sixteenth", 16),
+            ("seventeenth", 17),
+            ("eighteenth", 18),
+            ("nineteenth", 19),
+            ("twentieth", 20),
+            ("thirtieth", 30),
+            ("fortieth", 40),
+            ("fiftieth", 50),
+            ("sixtieth", 60),
+            ("seventieth", 70),
+            ("eightieth", 80),
+            ("ninetieth", 90),
+            ("hundredth", 100),
+            ("thousandth", 1000),
+            ("millionth", 1000000),
+            ("billionth", 1000000000),
+            ("trillionth", 1000000000000),
+            ("firsts", 1),
+            ("halves", 2),
+            ("thirds", 3),
+            ("fourths", 4),
+            ("quarters", 4),
+            ("fifths", 5),
+            ("sixths", 6),
+            ("sevenths", 7),
+            ("eighths", 8),
+            ("ninths", 9),
+            ("nineths", 9),
+            ("tenths", 10),
+            ("elevenths", 11),
+            ("twelfths", 12),
+            ("thirteenths", 13),
+            ("fourteenths", 14),
+            ("fifteenths", 15),
+            ("sixteenths", 16),
+            ("seventeenths", 17),
+            ("eighteenths", 18),
+            ("nineteenths", 19),
+            ("twentieths", 20),
+            ("thirtieths", 30),
+            ("fortieths", 40),
+            ("fiftieths", 50),
+            ("sixtieths", 60),
+            ("seventieths", 70),
+            ("eightieths", 80),
+            ("ninetieths", 90),
+            ("hundredths", 100),
+            ("thousandths", 1000),
+            ("millionths", 1000000),
+            ("billionths", 1000000000),
+            ("trillionths", 1000000000000),
+        ]
+    )
+    RoundNumberMap = dict(
+        [
+            ("hundred", 100),
+            ("thousand", 1000),
+            ("million", 1000000),
+            ("mln", 1000000),
+            ("billion", 1000000000),
+            ("bln", 1000000000),
+            ("trillion", 1000000000000),
+            ("tln", 1000000000000),
+            ("lakh", 100000),
+            ("crore", 10000000),
+            ("hundreds", 100),
+            ("thousands", 1000),
+            ("millions", 1000000),
+            ("billions", 1000000000),
+            ("trillions", 1000000000000),
+            ("lakhs", 100000),
+            ("crores", 10000000),
+            ("hundredth", 100),
+            ("thousandth", 1000),
+            ("millionth", 1000000),
+            ("billionth", 1000000000),
+            ("trillionth", 1000000000000),
+            ("hundredths", 100),
+            ("thousandths", 1000),
+            ("millionths", 1000000),
+            ("billionths", 1000000000),
+            ("trillionths", 1000000000000),
+            ("dozen", 12),
+            ("dozens", 12),
+            ("dz", 12),
+            ("doz", 12),
+            ("dzs", 12),
+            ("dozs", 12),
+            ("k", 1000),
+            ("m", 1000000),
+            ("mm", 1000000),
+            ("mil", 1000000),
+            ("g", 1000000000),
+            ("b", 1000000000),
+            ("t", 1000000000000),
+        ]
+    )
     AmbiguityFiltersDict = dict([("\\bone\\b", "\\b(the|this|that|which)\\s+(one)\\b")])
-    RelativeReferenceOffsetMap = dict([("last", "0"),
-                                       ("next one", "1"),
-                                       ("current", "0"),
-                                       ("current one", "0"),
-                                       ("previous one", "-1"),
-                                       ("the second to last", "-1"),
-                                       ("the one before the last one", "-1"),
-                                       ("the one before the last", "-1"),
-                                       ("next to last", "-1"),
-                                       ("penultimate", "-1"),
-                                       ("the last but one", "-1"),
-                                       ("antepenultimate", "-2"),
-                                       ("next", "1"),
-                                       ("previous", "-1")])
-    RelativeReferenceRelativeToMap = dict([("last", "end"),
-                                           ("next one", "current"),
-                                           ("previous one", "current"),
-                                           ("current", "current"),
-                                           ("current one", "current"),
-                                           ("the second to last", "end"),
-                                           ("the one before the last one", "end"),
-                                           ("the one before the last", "end"),
-                                           ("next to last", "end"),
-                                           ("penultimate", "end"),
-                                           ("the last but one", "end"),
-                                           ("antepenultimate", "end"),
-                                           ("next", "current"),
-                                           ("previous", "current")])
+    RelativeReferenceOffsetMap = dict(
+        [
+            ("last", "0"),
+            ("next one", "1"),
+            ("current", "0"),
+            ("current one", "0"),
+            ("previous one", "-1"),
+            ("the second to last", "-1"),
+            ("the one before the last one", "-1"),
+            ("the one before the last", "-1"),
+            ("next to last", "-1"),
+            ("penultimate", "-1"),
+            ("the last but one", "-1"),
+            ("antepenultimate", "-2"),
+            ("next", "1"),
+            ("previous", "-1"),
+        ]
+    )
+    RelativeReferenceRelativeToMap = dict(
+        [
+            ("last", "end"),
+            ("next one", "current"),
+            ("previous one", "current"),
+            ("current", "current"),
+            ("current one", "current"),
+            ("the second to last", "end"),
+            ("the one before the last one", "end"),
+            ("the one before the last", "end"),
+            ("next to last", "end"),
+            ("penultimate", "end"),
+            ("the last but one", "end"),
+            ("antepenultimate", "end"),
+            ("next", "current"),
+            ("previous", "current"),
+        ]
+    )
+
+
 # pylint: enable=line-too-long

@@ -46,10 +46,14 @@ class CatalanNumberParserConfiguration(BaseNumberParserConfiguration):
         # It works by inserting the numerator 'un' ('a') in the catalan numbers regex
         # so that the pattern is correctly processed.
         if len(frac_words) >= 2:
-            if frac_words[-1] in CatalanNumeric.FractionalTokens and \
-                    frac_words[-2] == CatalanNumeric.WordSeparatorToken:
+            if (
+                frac_words[-1] in CatalanNumeric.FractionalTokens
+                and frac_words[-2] == CatalanNumeric.WordSeparatorToken
+            ):
                 frac_words.insert(-1, CatalanNumeric.FractionWithoutNumeratorToken)
-            elif frac_words[-1] in CatalanNumeric.WrittenFractionSeparatorTexts and \
-                    frac_words[-2] in CatalanNumeric.FractionalTokens:
+            elif (
+                frac_words[-1] in CatalanNumeric.WrittenFractionSeparatorTexts
+                and frac_words[-2] in CatalanNumeric.FractionalTokens
+            ):
                 frac_words.pop(-1)
         return frac_words

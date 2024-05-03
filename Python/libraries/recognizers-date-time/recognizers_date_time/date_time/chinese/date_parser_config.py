@@ -187,7 +187,7 @@ class ChineseDateParserConfiguration(DateParserConfiguration):
             RegExpUtility.get_safe_reg_exp(ChineseDateTime.DateRegexList2),
             RegExpUtility.get_safe_reg_exp(ChineseDateTime.DateRegexList3),
             # 2015-12-23 - This regex represents the standard format in Chinese dates (YMD) and has precedence over other orderings
-            RegExpUtility.get_safe_reg_exp(ChineseDateTime.DateRegexList8)
+            RegExpUtility.get_safe_reg_exp(ChineseDateTime.DateRegexList8),
         ]
 
         # Regex precedence where the order between D and M varies is controlled by DefaultLanguageFallback
@@ -196,7 +196,10 @@ class ChineseDateParserConfiguration(DateParserConfiguration):
         else:
             order_regex_list = [ChineseDateTime.DateRegexList4, ChineseDateTime.DateRegexList5]
 
-        if ChineseDateTime.DefaultLanguageFallback in [Constants.DEFAULT_LANGUAGE_FALLBACK_DMY, Constants.DEFAULT_LANGUAGE_FALLBACK_YMD]:
+        if ChineseDateTime.DefaultLanguageFallback in [
+            Constants.DEFAULT_LANGUAGE_FALLBACK_DMY,
+            Constants.DEFAULT_LANGUAGE_FALLBACK_YMD,
+        ]:
             order_regex_list.extend([ChineseDateTime.DateRegexList7, ChineseDateTime.DateRegexList6])
         else:
             order_regex_list.extend([ChineseDateTime.DateRegexList6, ChineseDateTime.DateRegexList7])
@@ -205,27 +208,17 @@ class ChineseDateParserConfiguration(DateParserConfiguration):
         self._month_of_year = ChineseDateTime.ParserConfigurationMonthOfYear
         self._day_of_month = ChineseDateTime.ParserConfigurationDayOfMonth
         self._day_of_week = ChineseDateTime.ParserConfigurationDayOfWeek
-        self._special_day_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.SpecialDayRegex)
-        self._special_day_with_num_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.SpecialDayWithNumRegex)
-        self._this_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.DateThisRegex)
-        self._next_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.DateNextRegex)
-        self._last_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.DateLastRegex)
-        self._unit_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.DateUnitRegex)
+        self._special_day_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.SpecialDayRegex)
+        self._special_day_with_num_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.SpecialDayWithNumRegex)
+        self._this_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.DateThisRegex)
+        self._next_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.DateNextRegex)
+        self._last_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.DateLastRegex)
+        self._unit_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.DateUnitRegex)
         self._unit_map = ChineseDateTime.ParserConfigurationUnitMap
-        self._week_day_of_month_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.WeekDayOfMonthRegex)
-        self._week_day_and_day_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.WeekDayAndDayRegex)
-        self._week_day_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.WeekDayRegex)
-        self._dynasty_year_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.DynastyYearRegex)
+        self._week_day_of_month_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.WeekDayOfMonthRegex)
+        self._week_day_and_day_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.WeekDayAndDayRegex)
+        self._week_day_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.WeekDayRegex)
+        self._dynasty_year_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.DynastyYearRegex)
         self._dynasty_year_map = ChineseDateTime.DynastyYearMap
         self._integer_extractor = ChineseIntegerExtractor()
         self._number_parser = CJKNumberParser(ChineseNumberParserConfiguration())

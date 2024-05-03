@@ -17,6 +17,7 @@ from recognizers_text import ExtractResult, ResolutionKey
 
 class MergedParserUtil:
     parser_type_name = "datetimeV2"
+
     @staticmethod
     def is_duration_with_ago_and_later(er: ExtractResult) -> bool:
         return er.meta_data and er.meta_data.is_duration_with_ago_and_later
@@ -33,13 +34,16 @@ class MergedParserUtil:
         slot.value = MergedParserUtil.date_time_resolution(slot, config)
 
         # Change the type at last for the after or before modes
-        slot.type = f"{MergedParserUtil.parser_type_name}." \
-                    f"{MergedParserUtil.determine_datetime_type(slot.type, has_mod, config)}"
+        slot.type = (
+            f"{MergedParserUtil.parser_type_name}."
+            f"{MergedParserUtil.determine_datetime_type(slot.type, has_mod, config)}"
+        )
         return slot
 
     @staticmethod
-    def date_time_resolution(slot: DateTimeParseResult, config: DateTimeOptionsConfiguration) -> \
-            Optional[Dict[str, object]]:
+    def date_time_resolution(
+        slot: DateTimeParseResult, config: DateTimeOptionsConfiguration
+    ) -> Optional[Dict[str, object]]:
         if not slot:
             return None
 
@@ -110,8 +114,9 @@ class MergedParserUtil:
             res = MergedParserUtil.resolve_week_of(res, Constants.RESOLVE_TO_PAST_KEY)
 
         if comment and TimexUtil.has_double_timex(comment):
-            res = TimexUtil.process_double_timex(res, Constants.RESOLVE_TO_FUTURE_KEY,
-                                                 Constants.RESOLVE_TO_PAST_KEY, timex)
+            res = TimexUtil.process_double_timex(
+                res, Constants.RESOLVE_TO_FUTURE_KEY, Constants.RESOLVE_TO_PAST_KEY, timex
+            )
 
         for p in res.values():
             if isinstance(p, dict):
@@ -130,7 +135,7 @@ class MergedParserUtil:
             not_resolved = {
                 DateTimeResolutionKey.timex: timex,
                 ResolutionKey.type: type_output,
-                ResolutionKey.value: "not resolved"
+                ResolutionKey.value: "not resolved",
             }
             resolutions.append(not_resolved)
         return {ResolutionKey.value_set: resolutions}
@@ -175,8 +180,9 @@ class MergedParserUtil:
     def generate_resolution(dt_type: str, resolution_dict: Dict[str, str], mod: str) -> Dict[str, str]:
         res: Dict[str, str] = {}
         if dt_type == Constants.SYS_DATETIME_DATETIME:
-            res = MergedParserUtil.add_single_datetime_to_resolution(resolution_dict,
-                                                                     TimeTypeConstants.DATETIME, mod, res)
+            res = MergedParserUtil.add_single_datetime_to_resolution(
+                resolution_dict, TimeTypeConstants.DATETIME, mod, res
+            )
         elif dt_type == Constants.SYS_DATETIME_TIME:
             res = MergedParserUtil.add_single_datetime_to_resolution(resolution_dict, TimeTypeConstants.TIME, mod, res)
         elif dt_type == Constants.SYS_DATETIME_DATE:
@@ -185,14 +191,17 @@ class MergedParserUtil:
             if TimeTypeConstants.DURATION in resolution_dict:
                 res[ResolutionKey.value] = resolution_dict[TimeTypeConstants.DURATION]
         elif dt_type == Constants.SYS_DATETIME_TIMEPERIOD:
-            res = MergedParserUtil.add_period_to_resolution(resolution_dict, TimeTypeConstants.START_TIME,
-                                                            TimeTypeConstants.END_TIME, mod, res)
+            res = MergedParserUtil.add_period_to_resolution(
+                resolution_dict, TimeTypeConstants.START_TIME, TimeTypeConstants.END_TIME, mod, res
+            )
         elif dt_type == Constants.SYS_DATETIME_DATEPERIOD:
-            res = MergedParserUtil.add_period_to_resolution(resolution_dict, TimeTypeConstants.START_DATE,
-                                                            TimeTypeConstants.END_DATE, mod, res)
+            res = MergedParserUtil.add_period_to_resolution(
+                resolution_dict, TimeTypeConstants.START_DATE, TimeTypeConstants.END_DATE, mod, res
+            )
         elif dt_type == Constants.SYS_DATETIME_DATETIMEPERIOD:
-            res = MergedParserUtil.add_period_to_resolution(resolution_dict, TimeTypeConstants.START_TIME,
-                                                            TimeTypeConstants.END_TIME, mod, res)
+            res = MergedParserUtil.add_period_to_resolution(
+                resolution_dict, TimeTypeConstants.START_TIME, TimeTypeConstants.END_TIME, mod, res
+            )
         elif dt_type == Constants.SYS_DATETIME_DATETIMEALT:
             # for a period
             if len(resolution_dict) > 2 or mod:
@@ -203,8 +212,9 @@ class MergedParserUtil:
         return res
 
     @staticmethod
-    def add_single_datetime_to_resolution(resolution_dict: Dict[str, str], dt_type: str, mod: str,
-                                          res: Dict[str, str]) -> Dict[str, str]:
+    def add_single_datetime_to_resolution(
+        resolution_dict: Dict[str, str], dt_type: str, mod: str, res: Dict[str, str]
+    ) -> Dict[str, str]:
         # If an "invalid" Date or DateTime is extracted, it should not have an assigned resolution.
         # Only valid entities should pass this condition.
         if dt_type in resolution_dict:
@@ -225,8 +235,9 @@ class MergedParserUtil:
         return res
 
     @staticmethod
-    def add_period_to_resolution(resolution_dict: Dict[str, str], start_type: str, end_type: str, mod: str,
-                                 res: Dict[str, str]):
+    def add_period_to_resolution(
+        resolution_dict: Dict[str, str], start_type: str, end_type: str, mod: str, res: Dict[str, str]
+    ):
         start = ""
         end = ""
         if start_type in resolution_dict:
@@ -287,23 +298,29 @@ class MergedParserUtil:
     @staticmethod
     def add_alt_period_to_resolution(resolution_dict: Dict[str, str], mod: str, res: Dict[str, str]) -> Dict[str, str]:
         if TimeTypeConstants.START_DATETIME in resolution_dict or TimeTypeConstants.END_DATETIME in resolution_dict:
-            return MergedParserUtil.add_period_to_resolution(resolution_dict, TimeTypeConstants.START_DATETIME,
-                                                             TimeTypeConstants.END_DATETIME, mod, res)
+            return MergedParserUtil.add_period_to_resolution(
+                resolution_dict, TimeTypeConstants.START_DATETIME, TimeTypeConstants.END_DATETIME, mod, res
+            )
         elif TimeTypeConstants.START_DATE in resolution_dict or TimeTypeConstants.END_DATE in resolution_dict:
-            return MergedParserUtil.add_period_to_resolution(resolution_dict, TimeTypeConstants.START_DATE,
-                                                             TimeTypeConstants.END_DATE, mod, res)
+            return MergedParserUtil.add_period_to_resolution(
+                resolution_dict, TimeTypeConstants.START_DATE, TimeTypeConstants.END_DATE, mod, res
+            )
         elif TimeTypeConstants.START_TIME in resolution_dict or TimeTypeConstants.END_TIME in resolution_dict:
-            return MergedParserUtil.add_period_to_resolution(resolution_dict, TimeTypeConstants.START_TIME,
-                                                             TimeTypeConstants.END_TIME, mod, res)
+            return MergedParserUtil.add_period_to_resolution(
+                resolution_dict, TimeTypeConstants.START_TIME, TimeTypeConstants.END_TIME, mod, res
+            )
         return res
 
     @staticmethod
-    def add_alt_single_datetime_to_resolution(resolution_dict: Dict[str, str], mod: str,
-                                              res: Dict[str, str]) -> Dict[str, str]:
+    def add_alt_single_datetime_to_resolution(
+        resolution_dict: Dict[str, str], mod: str, res: Dict[str, str]
+    ) -> Dict[str, str]:
         if TimeTypeConstants.DATE in resolution_dict:
             return MergedParserUtil.add_single_datetime_to_resolution(resolution_dict, TimeTypeConstants.DATE, mod, res)
         elif TimeTypeConstants.DATETIME in resolution_dict:
-            return MergedParserUtil.add_single_datetime_to_resolution(resolution_dict, TimeTypeConstants.DATETIME, mod, res)
+            return MergedParserUtil.add_single_datetime_to_resolution(
+                resolution_dict, TimeTypeConstants.DATETIME, mod, res
+            )
         elif TimeTypeConstants.TIME in resolution_dict:
             return MergedParserUtil.add_single_datetime_to_resolution(resolution_dict, TimeTypeConstants.TIME, mod, res)
         return res
@@ -333,46 +350,60 @@ class MergedParserUtil:
             elif resolution_dict[ResolutionKey.type] == Constants.SYS_DATETIME_TIMEPERIOD:
                 if DateTimeResolutionKey.start in resolution:
                     resolution_pm[DateTimeResolutionKey.start] = DateTimeFormatUtil.to_pm(
-                        resolution[DateTimeResolutionKey.start])
+                        resolution[DateTimeResolutionKey.start]
+                    )
                 if DateTimeResolutionKey.end in resolution:
                     resolution_pm[DateTimeResolutionKey.end] = DateTimeFormatUtil.to_pm(
-                        resolution[DateTimeResolutionKey.end])
+                        resolution[DateTimeResolutionKey.end]
+                    )
                 if DateTimeResolutionKey.value in resolution:
                     resolution_pm[ResolutionKey.value] = DateTimeFormatUtil.to_pm(resolution[ResolutionKey.value])
                 resolution_pm[DateTimeResolutionKey.timex] = DateTimeFormatUtil.all_str_to_pm(timex)
 
             elif resolution_dict[ResolutionKey.type] == Constants.SYS_DATETIME_DATETIMEPERIOD:
                 if DateTimeResolutionKey.start in resolution:
-                    if datetime.datetime.strptime(resolution[DateTimeResolutionKey.start], "%Y-%m-%d %H:%M:%S"
-                                                  ).strftime('%Y-%m-%d %H:%M:%S'):
-                        start = datetime.datetime.strptime(resolution[DateTimeResolutionKey.start],
-                                                         "%Y-%m-%d %H:%M:%S").time()
+                    if datetime.datetime.strptime(
+                        resolution[DateTimeResolutionKey.start], "%Y-%m-%d %H:%M:%S"
+                    ).strftime('%Y-%m-%d %H:%M:%S'):
+                        start = datetime.datetime.strptime(
+                            resolution[DateTimeResolutionKey.start], "%Y-%m-%d %H:%M:%S"
+                        ).time()
                     else:
                         start = datetime.datetime.strptime(resolution[DateTimeResolutionKey.start], '%H')
 
                     if start.hour == Constants.HALF_DAY_HOUR_COUNT:
-                        start = (datetime.datetime.combine(datetime.datetime.now().date(), start) -
-                                 datetime.timedelta(hours=Constants.HALF_DAY_HOUR_COUNT)).time()
+                        start = (
+                            datetime.datetime.combine(datetime.datetime.now().date(), start)
+                            - datetime.timedelta(hours=Constants.HALF_DAY_HOUR_COUNT)
+                        ).time()
                     else:
-                        start = (datetime.datetime.combine(datetime.datetime.now().date(), start) +
-                                 datetime.timedelta(hours=Constants.HALF_DAY_HOUR_COUNT)).time()
+                        start = (
+                            datetime.datetime.combine(datetime.datetime.now().date(), start)
+                            + datetime.timedelta(hours=Constants.HALF_DAY_HOUR_COUNT)
+                        ).time()
 
                     resolution_pm[DateTimeResolutionKey.start] = DateTimeFormatUtil.format_time(start)
 
                 if DateTimeResolutionKey.end in resolution:
-                    if datetime.datetime.strptime(resolution[DateTimeResolutionKey.end], "%Y-%m-%d %H:%M:%S"
-                                                  ).strftime('%Y-%m-%d %H:%M:%S'):
-                        end = datetime.datetime.strptime(resolution[DateTimeResolutionKey.end],
-                                                         "%Y-%m-%d %H:%M:%S").time()
+                    if datetime.datetime.strptime(resolution[DateTimeResolutionKey.end], "%Y-%m-%d %H:%M:%S").strftime(
+                        '%Y-%m-%d %H:%M:%S'
+                    ):
+                        end = datetime.datetime.strptime(
+                            resolution[DateTimeResolutionKey.end], "%Y-%m-%d %H:%M:%S"
+                        ).time()
                     else:
                         end = datetime.datetime.strptime(resolution[DateTimeResolutionKey.end], '%H')
 
                     if end.hour == Constants.HALF_DAY_HOUR_COUNT:
-                        end = (datetime.datetime.combine(datetime.datetime.now().date(), end) -
-                               datetime.timedelta(hours=Constants.HALF_DAY_HOUR_COUNT)).time()
+                        end = (
+                            datetime.datetime.combine(datetime.datetime.now().date(), end)
+                            - datetime.timedelta(hours=Constants.HALF_DAY_HOUR_COUNT)
+                        ).time()
                     else:
-                        end = (datetime.datetime.combine(datetime.datetime.now().date(), end) +
-                               datetime.timedelta(hours=Constants.HALF_DAY_HOUR_COUNT)).time()
+                        end = (
+                            datetime.datetime.combine(datetime.datetime.now().date(), end)
+                            + datetime.timedelta(hours=Constants.HALF_DAY_HOUR_COUNT)
+                        ).time()
 
                     resolution_pm[DateTimeResolutionKey.end] = DateTimeFormatUtil.format_time(end)
 
@@ -390,9 +421,3 @@ class MergedParserUtil:
             resolution_dict.pop(key_name)
             resolution_dict[key_name] = resolution
         return resolution_dict
-
-
-
-
-
-

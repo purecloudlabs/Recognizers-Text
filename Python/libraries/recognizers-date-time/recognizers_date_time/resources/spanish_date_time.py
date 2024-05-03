@@ -36,7 +36,9 @@ class SpanishDateTime(BaseDateTimeResource):
     PreviousSuffixRegex = '\\b(pasad[ao]|anterior(?!\\s+(al?|del?)\\b))\\b'
     RelativeSuffixRegex = f'({AfterNextSuffixRegex}|{NextSuffixRegex}|{PreviousSuffixRegex})'
     RangePrefixRegex = '((de(l|sde)?|entre)(\\s+la(s)?)?)'
-    TwoDigitYearRegex = f'\\b(?<![$])(?<year>([0-9]\\d))(?!(\\s*((\\:\\d)|{AmDescRegex}|{PmDescRegex}|\\.\\d))|\\.?[º°ª])\\b'
+    TwoDigitYearRegex = (
+        f'\\b(?<![$])(?<year>([0-9]\\d))(?!(\\s*((\\:\\d)|{AmDescRegex}|{PmDescRegex}|\\.\\d))|\\.?[º°ª])\\b'
+    )
     RelativeRegex = '(?<order>est[ae]s?|pr[oó]xim[oa]s?|siguiente|(([uú]ltim|pasad)[ao]s?))\\b'
     StrictRelativeRegex = '(?<order>est[ae]|pr[oó]xim[oa]|siguiente|(([uú]ltim|pasad)(o|as|os)))\\b'
     WrittenOneToNineRegex = '(un[ao]?|dos|tres|cuatro|cinco|seis|siete|ocho|nueve)'
@@ -111,8 +113,12 @@ class SpanishDateTime(BaseDateTimeResource):
     MonthEnd = f'({MonthRegex}\\s*(el)?\\s*$)'
     WeekDayEnd = f'{WeekDayRegex}\\s*,?\\s*$'
     WeekDayStart = '^\\b$'
-    DateYearRegex = f'(?<year>{YearRegex}|(?<!,\\s?)\\\'?{TwoDigitYearRegex}|\\\'?{TwoDigitYearRegex}(?=(\\.(?!\\d)|[?!;]|$)))'
-    DateExtractor1 = f'\\b({WeekDayRegex}(\\s+|\\s*,\\s*))?(?<!\\d[.,]){DayRegex}((\\s*(d[eo])|[/\\\\\\.\\-])\\s*)?{MonthRegex}\\b'
+    DateYearRegex = (
+        f'(?<year>{YearRegex}|(?<!,\\s?)\\\'?{TwoDigitYearRegex}|\\\'?{TwoDigitYearRegex}(?=(\\.(?!\\d)|[?!;]|$)))'
+    )
+    DateExtractor1 = (
+        f'\\b({WeekDayRegex}(\\s+|\\s*,\\s*))?(?<!\\d[.,]){DayRegex}((\\s*(d[eo])|[/\\\\\\.\\-])\\s*)?{MonthRegex}\\b'
+    )
     DateExtractor2 = f'\\b((el\\s+d[ií]a|{WeekDayRegex})(\\s+|\\s*,\\s*))?(?<!\\d[.,])(({DayRegex}((\\s+((del?|do)\\s+)?|\\s*[.,/-]\\s*){MonthRegex}((\\s+(del?\\s+)?|\\s*[.,/-]\\s*){DateYearRegex}\\b)?|\\s+((del?|do)\\s+){MonthNumRegex}\\s+(del?\\s+{DateYearRegex}\\b)))|{BaseDateTime.FourDigitYearRegex}\\s*[.,/-]?\\s*(el\\s+d[ií]a\\s+)?{DayRegex}(\\s+(d[eo]\\s+)?|\\s*[.,/-]\\s*){MonthRegex})'
     DateExtractor3 = f'\\b({WeekDayRegex}(\\s+|\\s*,\\s*))?{MonthRegex}(\\s*[.,/-]?\\s*)(el\\s+d[ií]a\\s+)?{DayRegex}(?!\\s*\\-\\s*\\d{{2}}\\b)((\\s+(del?\\s+)?|\\s*[.,/-]\\s*){DateYearRegex})?\\b'
     DateExtractor4 = f'\\b(?<!\\d[.,]){MonthNumRegex}\\s*[/\\\\\\-]\\s*{DayRegex}\\s*[/\\\\\\-]\\s*{DateYearRegex}(?!\\s*[/\\\\\\-\\.]\\s*\\d+)'
@@ -137,8 +143,12 @@ class SpanishDateTime(BaseDateTimeResource):
     AsapTimeRegex = '(posible|pueda[ns]?|podamos)'
     LessThanOneHour = f'(?<lth>((\\s+y\\s+)?cuarto|(\\s*)menos cuarto|(\\s+y\\s+)media|{BaseDateTime.DeltaMinuteRegex}(\\s+(minutos?|mins?))|{DeltaMinuteNumRegex}(\\s+(minutos?|mins?))))'
     TensTimeRegex = '(?<tens>diez|veint(i|e)|treinta|cuarenta|cincuenta)'
-    WrittenTimeRegex = f'(?<writtentime>{HourNumRegex}\\s*((y|(?<prefix>menos))\\s+)?(({TensTimeRegex}(\\s*y\\s+)?)?{MinuteNumRegex}))'
-    TimePrefix = f'(?<prefix>{LessThanOneHour}(\\s+(pasad[ao]s)\\s+(de\\s+las|las)?|\\s+(para|antes\\s+de)?\\s+(las?))?)'
+    WrittenTimeRegex = (
+        f'(?<writtentime>{HourNumRegex}\\s*((y|(?<prefix>menos))\\s+)?(({TensTimeRegex}(\\s*y\\s+)?)?{MinuteNumRegex}))'
+    )
+    TimePrefix = (
+        f'(?<prefix>{LessThanOneHour}(\\s+(pasad[ao]s)\\s+(de\\s+las|las)?|\\s+(para|antes\\s+de)?\\s+(las?))?)'
+    )
     TimeSuffix = f'(?<suffix>({LessThanOneHour}\\s+)?({AmRegex}|{PmRegex}|{OclockRegex}))'
     GeneralDescRegex = f'({DescRegex}|(?<suffix>{AmRegex}|{PmRegex}))'
     BasicTime = f'(?<basictime>{WrittenTimeRegex}|{HourNumRegex}|{BaseDateTime.HourRegex}:{BaseDateTime.MinuteRegex}(:{BaseDateTime.SecondRegex})?|{BaseDateTime.HourRegex})'
@@ -156,23 +166,35 @@ class SpanishDateTime(BaseDateTimeResource):
     TimeRegex8 = f'\\b{TimeSuffix}\\s+{BasicTime}((\\s*{DescRegex})|\\b)'
     TimeRegex9 = f'\\b(?<writtentime>{HourNumRegex}\\s+({TensTimeRegex}\\s*)(y\\s+)?{MinuteNumRegex}?)\\b'
     TimeRegex11 = f'\\b({WrittenTimeRegex})(\\s+{DescRegex})?\\b'
-    TimeRegex12 = f'(\\b{TimePrefix}\\s+)?{BaseDateTime.HourRegex}(\\s*h\\s*){BaseDateTime.MinuteRegex}(\\s*{DescRegex})?'
+    TimeRegex12 = (
+        f'(\\b{TimePrefix}\\s+)?{BaseDateTime.HourRegex}(\\s*h\\s*){BaseDateTime.MinuteRegex}(\\s*{DescRegex})?'
+    )
     PrepositionRegex = '(?<prep>^(,\\s*)?(a(l)?|en|de(l)?)?(\\s*(la(s)?|el|los))?$)'
     LaterEarlyRegex = '((?<early>temprano)|(?<late>fin(al)?(\\s+de)?|m[aá]s\\s+tarde))'
     NowRegex = '\\b(?<now>(justo\\s+)?ahora(\\s+mismo)?|en\\s+este\\s+momento|tan\\s+pronto\\s+como\\s+sea\\s+posible|tan\\s+pronto\\s+como\\s+(pueda|puedas|podamos|puedan)|lo\\s+m[aá]s\\s+pronto\\s+posible|recientemente|previamente|este entonces)\\b'
-    SuffixRegex = '^\\s*(((y|a|en|por)\\s+la|al)\\s+)?(mañana|madrugada|medio\\s*d[ií]a|(?<!(m[áa]s\\s+))tarde|noche)\\b'
+    SuffixRegex = (
+        '^\\s*(((y|a|en|por)\\s+la|al)\\s+)?(mañana|madrugada|medio\\s*d[ií]a|(?<!(m[áa]s\\s+))tarde|noche)\\b'
+    )
     TimeOfDayRegex = f'\\b((?<timeOfDay>(({LaterEarlyRegex}\\s+)((del?|en|por)(\\s+(el|los?|las?))?\\s+)?)?(mañana|madrugada|pasado\\s+(el\\s+)?medio\\s?d[ií]a|(?<!((m[áa]s|tan)\\s+))tarde|noche))|(en|por)\\s+las?\\s+mañana)\\b'
-    SpecificTimeOfDayRegex = f'\\b(((((a\\s+)?la|esta|siguiente|pr[oó]xim[oa]|[uú]ltim[oa])\\s+)?{TimeOfDayRegex})|anoche)\\b'
+    SpecificTimeOfDayRegex = (
+        f'\\b(((((a\\s+)?la|esta|siguiente|pr[oó]xim[oa]|[uú]ltim[oa])\\s+)?{TimeOfDayRegex})|anoche)\\b'
+    )
     TimeOfTodayAfterRegex = f'^\\s*(,\\s*)?(en|de(l)?\\s+)?{SpecificTimeOfDayRegex}'
-    TimeOfTodayBeforeRegex = f'({SpecificTimeOfDayRegex}(\\s*,)?(\\s+(((cerca|alrededor)?\\s*(de|a)\\s+)la(s)?|para))?\\s*$)'
+    TimeOfTodayBeforeRegex = (
+        f'({SpecificTimeOfDayRegex}(\\s*,)?(\\s+(((cerca|alrededor)?\\s*(de|a)\\s+)la(s)?|para))?\\s*$)'
+    )
     NonTimeContextTokens = '(edificio)'
     SimpleTimeOfTodayAfterRegex = f'(?<!{NonTimeContextTokens}\\s*)\\b({HourNumRegex}|{BaseDateTime.HourRegex})\\s*(,\\s*)?((en|de(l)?)?\\s+)?{SpecificTimeOfDayRegex}\\b'
     SimpleTimeOfTodayBeforeRegex = f'({SpecificTimeOfDayRegex}(\\s*,)?(\\s+(((cerca|alrededor)?\\s*(de|a)\\s+)la(s)?|para))?\\s*({HourNumRegex}|{BaseDateTime.HourRegex}))\\b'
     SpecificEndOfRegex = '((a|e)l\\s+)?fin(alizar|al)?(\\s+(el|de(l)?)(\\s+d[ií]a)?(\\s+de)?)?\\s*$'
     UnspecificEndOfRegex = '\\b([ae]l\\s+)?(fin(al)?\\s+del?\\s+d[ií]a)\\b'
     UnspecificEndOfRangeRegex = '^[.]'
-    DateTimeTimeOfDayRegex = '\\b(?<timeOfDay>mañana|madrugada|(?<pm>pasado\\s+(el\\s+)?medio\\s?d[ií]a|tarde|noche))\\b'
-    PeriodTimeOfDayRegex = f'\\b((en\\s+(el|la|lo)?\\s+)?({LaterEarlyRegex}\\s+)?(est[ae]\\s+)?{DateTimeTimeOfDayRegex})\\b'
+    DateTimeTimeOfDayRegex = (
+        '\\b(?<timeOfDay>mañana|madrugada|(?<pm>pasado\\s+(el\\s+)?medio\\s?d[ií]a|tarde|noche))\\b'
+    )
+    PeriodTimeOfDayRegex = (
+        f'\\b((en\\s+(el|la|lo)?\\s+)?({LaterEarlyRegex}\\s+)?(est[ae]\\s+)?{DateTimeTimeOfDayRegex})\\b'
+    )
     PeriodSpecificTimeOfDayRegex = f'\\b(({LaterEarlyRegex}\\s+)?est[ae]\\s+{DateTimeTimeOfDayRegex}|({StrictRelativeRegex}\\s+{PeriodTimeOfDayRegex})|anoche)\\b'
     UnitRegex = '(?<unit>años?|(bi|tri|cuatri|se)mestre|mes(es)?|semanas?|fin(es)?\\s+de\\s+semana|finde|d[ií]as?|horas?|hra?s?|hs?|minutos?|mins?|segundos?|segs?|noches?)\\b'
     ConnectorRegex = '^(,|t|(para|y|a|en|por) las?|(\\s*,\\s*)?((cerca|alrededor)\\s+)?(de\\s+las?|del))$'
@@ -232,397 +254,438 @@ class SpanishDateTime(BaseDateTimeResource):
     AgoRegex = '\\b(antes\\s+de\\s+(?<day>hoy|ayer|mañana)|antes|hace)\\b'
     LaterRegex = '\\b(despu[eé]s(?!\\s+de\\b)|desde\\s+ahora|(a\\s+partir|despu[eé]s)\\s+de\\s+(ahora|(?<day>hoy|ayer|mañana)))\\b'
     Tomorrow = 'mañana'
-    UnitMap = dict([("años", "Y"),
-                    ("año", "Y"),
-                    ("meses", "MON"),
-                    ("mes", "MON"),
-                    ("trimestre", "3MON"),
-                    ("trimestres", "3MON"),
-                    ("cuatrimestre", "4MON"),
-                    ("cuatrimestres", "4MON"),
-                    ("semestre", "6MON"),
-                    ("semestres", "6MON"),
-                    ("bimestre", "2MON"),
-                    ("bimestres", "2MON"),
-                    ("semanas", "W"),
-                    ("semana", "W"),
-                    ("fin de semana", "WE"),
-                    ("fines de semana", "WE"),
-                    ("finde", "WE"),
-                    ("dias", "D"),
-                    ("dia", "D"),
-                    ("días", "D"),
-                    ("día", "D"),
-                    ("jornada", "D"),
-                    ("noche", "D"),
-                    ("noches", "D"),
-                    ("horas", "H"),
-                    ("hora", "H"),
-                    ("hrs", "H"),
-                    ("hras", "H"),
-                    ("hra", "H"),
-                    ("hr", "H"),
-                    ("h", "H"),
-                    ("minutos", "M"),
-                    ("minuto", "M"),
-                    ("mins", "M"),
-                    ("min", "M"),
-                    ("segundos", "S"),
-                    ("segundo", "S"),
-                    ("segs", "S"),
-                    ("seg", "S")])
-    UnitValueMap = dict([("años", 31536000),
-                         ("año", 31536000),
-                         ("meses", 2592000),
-                         ("mes", 2592000),
-                         ("semanas", 604800),
-                         ("semana", 604800),
-                         ("fin de semana", 172800),
-                         ("fines de semana", 172800),
-                         ("finde", 172800),
-                         ("dias", 86400),
-                         ("dia", 86400),
-                         ("días", 86400),
-                         ("día", 86400),
-                         ("noche", 86400),
-                         ("noches", 86400),
-                         ("horas", 3600),
-                         ("hora", 3600),
-                         ("hrs", 3600),
-                         ("hras", 3600),
-                         ("hra", 3600),
-                         ("hr", 3600),
-                         ("h", 3600),
-                         ("minutos", 60),
-                         ("minuto", 60),
-                         ("mins", 60),
-                         ("min", 60),
-                         ("segundos", 1),
-                         ("segundo", 1),
-                         ("segs", 1),
-                         ("seg", 1)])
-    SpecialYearPrefixesMap = dict([("fiscal", "FY"),
-                                   ("escolar", "SY")])
-    SeasonMap = dict([("primavera", "SP"),
-                      ("verano", "SU"),
-                      ("otoño", "FA"),
-                      ("invierno", "WI")])
-    SeasonValueMap = dict([("SP", 3),
-                           ("SU", 6),
-                           ("FA", 9),
-                           ("WI", 12)])
-    CardinalMap = dict([("primer", 1),
-                        ("primero", 1),
-                        ("primera", 1),
-                        ("1er", 1),
-                        ("1ro", 1),
-                        ("1ra", 1),
-                        ("1.º", 1),
-                        ("1º", 1),
-                        ("1ª", 1),
-                        ("segundo", 2),
-                        ("segunda", 2),
-                        ("2do", 2),
-                        ("2da", 2),
-                        ("2.º", 2),
-                        ("2º", 2),
-                        ("2ª", 2),
-                        ("tercer", 3),
-                        ("tercero", 3),
-                        ("tercera", 3),
-                        ("3er", 3),
-                        ("3ro", 3),
-                        ("3ra", 3),
-                        ("3.º", 3),
-                        ("3º", 3),
-                        ("3ª", 3),
-                        ("cuarto", 4),
-                        ("cuarta", 4),
-                        ("4to", 4),
-                        ("4ta", 4),
-                        ("4.º", 4),
-                        ("4º", 4),
-                        ("4ª", 4),
-                        ("quinto", 5),
-                        ("quinta", 5),
-                        ("5to", 5),
-                        ("5ta", 5),
-                        ("5.º", 5),
-                        ("5º", 5),
-                        ("5ª", 5),
-                        ("sexto", 6),
-                        ("sexta", 6),
-                        ("6to", 6),
-                        ("6ta", 6),
-                        ("septimo", 7),
-                        ("séptimo", 7),
-                        ("septima", 7),
-                        ("séptima", 7),
-                        ("7mo", 7),
-                        ("7ma", 7),
-                        ("octavo", 8),
-                        ("octava", 8),
-                        ("8vo", 8),
-                        ("8va", 8),
-                        ("noveno", 9),
-                        ("novena", 9),
-                        ("9no", 9),
-                        ("9na", 9),
-                        ("decimo", 10),
-                        ("décimo", 10),
-                        ("decima", 10),
-                        ("décima", 10),
-                        ("10mo", 10),
-                        ("10ma", 10),
-                        ("undecimo", 11),
-                        ("undécimo", 11),
-                        ("undecima", 11),
-                        ("undécima", 11),
-                        ("11mo", 11),
-                        ("11ma", 11),
-                        ("duodecimo", 12),
-                        ("duodécimo", 12),
-                        ("duodecima", 12),
-                        ("duodécima", 12),
-                        ("12mo", 12),
-                        ("12ma", 12)])
-    DayOfWeek = dict([("lunes", 1),
-                      ("martes", 2),
-                      ("miercoles", 3),
-                      ("miércoles", 3),
-                      ("jueves", 4),
-                      ("viernes", 5),
-                      ("sabado", 6),
-                      ("sábado", 6),
-                      ("domingo", 0),
-                      ("dom", 0),
-                      ("lun", 1),
-                      ("mar", 2),
-                      ("mie", 3),
-                      ("mié", 3),
-                      ("jue", 4),
-                      ("vie", 5),
-                      ("sab", 6),
-                      ("sáb", 6),
-                      ("dom.", 0),
-                      ("lun.", 1),
-                      ("mar.", 2),
-                      ("mie.", 3),
-                      ("mié.", 3),
-                      ("jue.", 4),
-                      ("vie.", 5),
-                      ("sab.", 6),
-                      ("sáb.", 6),
-                      ("do", 0),
-                      ("lu", 1),
-                      ("ma", 2),
-                      ("mi", 3),
-                      ("ju", 4),
-                      ("vi", 5),
-                      ("sa", 6)])
-    MonthOfYear = dict([("enero", 1),
-                        ("febrero", 2),
-                        ("marzo", 3),
-                        ("abril", 4),
-                        ("mayo", 5),
-                        ("junio", 6),
-                        ("julio", 7),
-                        ("agosto", 8),
-                        ("septiembre", 9),
-                        ("setiembre", 9),
-                        ("octubre", 10),
-                        ("noviembre", 11),
-                        ("diciembre", 12),
-                        ("ene", 1),
-                        ("feb", 2),
-                        ("mar", 3),
-                        ("abr", 4),
-                        ("may", 5),
-                        ("jun", 6),
-                        ("jul", 7),
-                        ("ago", 8),
-                        ("sept", 9),
-                        ("sep", 9),
-                        ("set", 9),
-                        ("oct", 10),
-                        ("nov", 11),
-                        ("dic", 12),
-                        ("ene.", 1),
-                        ("feb.", 2),
-                        ("mar.", 3),
-                        ("abr.", 4),
-                        ("may.", 5),
-                        ("jun.", 6),
-                        ("jul.", 7),
-                        ("ago.", 8),
-                        ("sept.", 9),
-                        ("sep.", 9),
-                        ("set.", 9),
-                        ("oct.", 10),
-                        ("nov.", 11),
-                        ("dic.", 12),
-                        ("uno", 1),
-                        ("dos", 2),
-                        ("tres", 3),
-                        ("cuatro", 4),
-                        ("cinco", 5),
-                        ("seis", 6),
-                        ("siete", 7),
-                        ("ocho", 8),
-                        ("nueve", 9),
-                        ("diez", 10),
-                        ("once", 11),
-                        ("doce", 12),
-                        ("1", 1),
-                        ("2", 2),
-                        ("3", 3),
-                        ("4", 4),
-                        ("5", 5),
-                        ("6", 6),
-                        ("7", 7),
-                        ("8", 8),
-                        ("9", 9),
-                        ("10", 10),
-                        ("11", 11),
-                        ("12", 12),
-                        ("01", 1),
-                        ("02", 2),
-                        ("03", 3),
-                        ("04", 4),
-                        ("05", 5),
-                        ("06", 6),
-                        ("07", 7),
-                        ("08", 8),
-                        ("09", 9)])
-    DayOfMonth = dict([
-                       ("uno", 1),
-                       ("dos", 2),
-                       ("tres", 3),
-                       ("cuatro", 4),
-                       ("cinco", 5),
-                       ("seis", 6),
-                       ("siete", 7),
-                       ("ocho", 8),
-                       ("nueve", 9),
-                       ("diez", 10),
-                       ("once", 11),
-                       ("doce", 12),
-                       ("trece", 13),
-                       ("catorce", 14),
-                       ("quince", 15),
-                       ("dieciséis", 16),
-                       ("dieciseis", 16),
-                       ("diecisiete", 17),
-                       ("dieciocho", 18),
-                       ("diecinueve", 19),
-                       ("veinte", 20),
-                       ("veintiuno", 21),
-                       ("veintidós", 22),
-                       ("veintidos", 22),
-                       ("veintitrés", 23),
-                       ("veinticuatro", 24),
-                       ("veinticinco", 25),
-                       ("veintiséis", 26),
-                       ("veintiseis", 26),
-                       ("veintisiete", 27),
-                       ("veintiocho", 28),
-                       ("veintinueve", 29),
-                       ("treinta", 30),
-                       ("treinta y uno", 31)])
-    Numbers = dict([("cero", 0),
-                    ("un", 1),
-                    ("una", 1),
-                    ("uno", 1),
-                    ("dos", 2),
-                    ("dós", 2),
-                    ("tres", 3),
-                    ("trés", 3),
-                    ("cuatro", 4),
-                    ("cinco", 5),
-                    ("seis", 6),
-                    ("séis", 6),
-                    ("siete", 7),
-                    ("ocho", 8),
-                    ("nueve", 9),
-                    ("diez", 10),
-                    ("once", 11),
-                    ("doce", 12),
-                    ("docena", 12),
-                    ("docenas", 12),
-                    ("trece", 13),
-                    ("catorce", 14),
-                    ("quince", 15),
-                    ("dieciseis", 16),
-                    ("dieciséis", 16),
-                    ("diecisiete", 17),
-                    ("dieciocho", 18),
-                    ("diecinueve", 19),
-                    ("veinte", 20),
-                    ("veinti", 20),
-                    ("ventiuna", 21),
-                    ("ventiuno", 21),
-                    ("veintiun", 21),
-                    ("veintiún", 21),
-                    ("veintiuno", 21),
-                    ("veintiuna", 21),
-                    ("veintidos", 22),
-                    ("veintidós", 22),
-                    ("veintitres", 23),
-                    ("veintitrés", 23),
-                    ("veinticuatro", 24),
-                    ("veinticinco", 25),
-                    ("veintiseis", 26),
-                    ("veintiséis", 26),
-                    ("veintisiete", 27),
-                    ("veintiocho", 28),
-                    ("veintinueve", 29),
-                    ("treinta", 30),
-                    ("cuarenta", 40),
-                    ("cincuenta", 50)])
-    HolidayNames = dict([("padres", ["diadelpadre"]),
-                         ("madres", ["diadelamadre"]),
-                         ("acciondegracias", ["diadegracias", "diadeacciondegracias", "acciondegracias"]),
-                         ("trabajador", ["diadeltrabajador", "diadelostrabajadores", "diainternacionaldeltrabajador", "diainternacionaldelostrabajadores"]),
-                         ("delaraza", ["diadelaraza", "diadeladiversidadcultural"]),
-                         ("memoria", ["diadelamemoria"]),
-                         ("pascuas", ["diadepascuas", "pascuas"]),
-                         ("navidad", ["navidad", "diadenavidad"]),
-                         ("nochebuena", ["diadenochebuena", "nochebuena"]),
-                         ("añonuevo", ["a\u00f1onuevo", "diadea\u00f1onuevo"]),
-                         ("nochevieja", ["nochevieja", "diadenochevieja"]),
-                         ("yuandan", ["yuandan"]),
-                         ("earthday", ["diadelatierra"]),
-                         ("maestro", ["diadelmaestro"]),
-                         ("todoslossantos", ["todoslossantos"]),
-                         ("niño", ["diadelni\u00f1o"]),
-                         ("mujer", ["diadelamujer"]),
-                         ("independencia", ["diadelaindependencia", "diadeindependencia", "independencia"]),
-                         ("blackfriday", ["viernesnegro"]),
-                         ("goodfriday", ["viernessanto"]),
-                         ("stpatrickday", ["sanpatricio", "diadesanpatricio"]),
-                         ("valentinesday", ["sanvalentin", "diadesanvalentin"])])
-    VariableHolidaysTimexDictionary = dict([("padres", "-06-WXX-7-3"),
-                                            ("madres", "-05-WXX-7-2"),
-                                            ("acciondegracias", "-11-WXX-4-4"),
-                                            ("delaraza", "-10-WXX-1-2"),
-                                            ("memoria", "-03-WXX-2-4")])
-    DoubleNumbers = dict([("mitad", 0.5),
-                          ("cuarto", 0.25)])
+    UnitMap = dict(
+        [
+            ("años", "Y"),
+            ("año", "Y"),
+            ("meses", "MON"),
+            ("mes", "MON"),
+            ("trimestre", "3MON"),
+            ("trimestres", "3MON"),
+            ("cuatrimestre", "4MON"),
+            ("cuatrimestres", "4MON"),
+            ("semestre", "6MON"),
+            ("semestres", "6MON"),
+            ("bimestre", "2MON"),
+            ("bimestres", "2MON"),
+            ("semanas", "W"),
+            ("semana", "W"),
+            ("fin de semana", "WE"),
+            ("fines de semana", "WE"),
+            ("finde", "WE"),
+            ("dias", "D"),
+            ("dia", "D"),
+            ("días", "D"),
+            ("día", "D"),
+            ("jornada", "D"),
+            ("noche", "D"),
+            ("noches", "D"),
+            ("horas", "H"),
+            ("hora", "H"),
+            ("hrs", "H"),
+            ("hras", "H"),
+            ("hra", "H"),
+            ("hr", "H"),
+            ("h", "H"),
+            ("minutos", "M"),
+            ("minuto", "M"),
+            ("mins", "M"),
+            ("min", "M"),
+            ("segundos", "S"),
+            ("segundo", "S"),
+            ("segs", "S"),
+            ("seg", "S"),
+        ]
+    )
+    UnitValueMap = dict(
+        [
+            ("años", 31536000),
+            ("año", 31536000),
+            ("meses", 2592000),
+            ("mes", 2592000),
+            ("semanas", 604800),
+            ("semana", 604800),
+            ("fin de semana", 172800),
+            ("fines de semana", 172800),
+            ("finde", 172800),
+            ("dias", 86400),
+            ("dia", 86400),
+            ("días", 86400),
+            ("día", 86400),
+            ("noche", 86400),
+            ("noches", 86400),
+            ("horas", 3600),
+            ("hora", 3600),
+            ("hrs", 3600),
+            ("hras", 3600),
+            ("hra", 3600),
+            ("hr", 3600),
+            ("h", 3600),
+            ("minutos", 60),
+            ("minuto", 60),
+            ("mins", 60),
+            ("min", 60),
+            ("segundos", 1),
+            ("segundo", 1),
+            ("segs", 1),
+            ("seg", 1),
+        ]
+    )
+    SpecialYearPrefixesMap = dict([("fiscal", "FY"), ("escolar", "SY")])
+    SeasonMap = dict([("primavera", "SP"), ("verano", "SU"), ("otoño", "FA"), ("invierno", "WI")])
+    SeasonValueMap = dict([("SP", 3), ("SU", 6), ("FA", 9), ("WI", 12)])
+    CardinalMap = dict(
+        [
+            ("primer", 1),
+            ("primero", 1),
+            ("primera", 1),
+            ("1er", 1),
+            ("1ro", 1),
+            ("1ra", 1),
+            ("1.º", 1),
+            ("1º", 1),
+            ("1ª", 1),
+            ("segundo", 2),
+            ("segunda", 2),
+            ("2do", 2),
+            ("2da", 2),
+            ("2.º", 2),
+            ("2º", 2),
+            ("2ª", 2),
+            ("tercer", 3),
+            ("tercero", 3),
+            ("tercera", 3),
+            ("3er", 3),
+            ("3ro", 3),
+            ("3ra", 3),
+            ("3.º", 3),
+            ("3º", 3),
+            ("3ª", 3),
+            ("cuarto", 4),
+            ("cuarta", 4),
+            ("4to", 4),
+            ("4ta", 4),
+            ("4.º", 4),
+            ("4º", 4),
+            ("4ª", 4),
+            ("quinto", 5),
+            ("quinta", 5),
+            ("5to", 5),
+            ("5ta", 5),
+            ("5.º", 5),
+            ("5º", 5),
+            ("5ª", 5),
+            ("sexto", 6),
+            ("sexta", 6),
+            ("6to", 6),
+            ("6ta", 6),
+            ("septimo", 7),
+            ("séptimo", 7),
+            ("septima", 7),
+            ("séptima", 7),
+            ("7mo", 7),
+            ("7ma", 7),
+            ("octavo", 8),
+            ("octava", 8),
+            ("8vo", 8),
+            ("8va", 8),
+            ("noveno", 9),
+            ("novena", 9),
+            ("9no", 9),
+            ("9na", 9),
+            ("decimo", 10),
+            ("décimo", 10),
+            ("decima", 10),
+            ("décima", 10),
+            ("10mo", 10),
+            ("10ma", 10),
+            ("undecimo", 11),
+            ("undécimo", 11),
+            ("undecima", 11),
+            ("undécima", 11),
+            ("11mo", 11),
+            ("11ma", 11),
+            ("duodecimo", 12),
+            ("duodécimo", 12),
+            ("duodecima", 12),
+            ("duodécima", 12),
+            ("12mo", 12),
+            ("12ma", 12),
+        ]
+    )
+    DayOfWeek = dict(
+        [
+            ("lunes", 1),
+            ("martes", 2),
+            ("miercoles", 3),
+            ("miércoles", 3),
+            ("jueves", 4),
+            ("viernes", 5),
+            ("sabado", 6),
+            ("sábado", 6),
+            ("domingo", 0),
+            ("dom", 0),
+            ("lun", 1),
+            ("mar", 2),
+            ("mie", 3),
+            ("mié", 3),
+            ("jue", 4),
+            ("vie", 5),
+            ("sab", 6),
+            ("sáb", 6),
+            ("dom.", 0),
+            ("lun.", 1),
+            ("mar.", 2),
+            ("mie.", 3),
+            ("mié.", 3),
+            ("jue.", 4),
+            ("vie.", 5),
+            ("sab.", 6),
+            ("sáb.", 6),
+            ("do", 0),
+            ("lu", 1),
+            ("ma", 2),
+            ("mi", 3),
+            ("ju", 4),
+            ("vi", 5),
+            ("sa", 6),
+        ]
+    )
+    MonthOfYear = dict(
+        [
+            ("enero", 1),
+            ("febrero", 2),
+            ("marzo", 3),
+            ("abril", 4),
+            ("mayo", 5),
+            ("junio", 6),
+            ("julio", 7),
+            ("agosto", 8),
+            ("septiembre", 9),
+            ("setiembre", 9),
+            ("octubre", 10),
+            ("noviembre", 11),
+            ("diciembre", 12),
+            ("ene", 1),
+            ("feb", 2),
+            ("mar", 3),
+            ("abr", 4),
+            ("may", 5),
+            ("jun", 6),
+            ("jul", 7),
+            ("ago", 8),
+            ("sept", 9),
+            ("sep", 9),
+            ("set", 9),
+            ("oct", 10),
+            ("nov", 11),
+            ("dic", 12),
+            ("ene.", 1),
+            ("feb.", 2),
+            ("mar.", 3),
+            ("abr.", 4),
+            ("may.", 5),
+            ("jun.", 6),
+            ("jul.", 7),
+            ("ago.", 8),
+            ("sept.", 9),
+            ("sep.", 9),
+            ("set.", 9),
+            ("oct.", 10),
+            ("nov.", 11),
+            ("dic.", 12),
+            ("uno", 1),
+            ("dos", 2),
+            ("tres", 3),
+            ("cuatro", 4),
+            ("cinco", 5),
+            ("seis", 6),
+            ("siete", 7),
+            ("ocho", 8),
+            ("nueve", 9),
+            ("diez", 10),
+            ("once", 11),
+            ("doce", 12),
+            ("1", 1),
+            ("2", 2),
+            ("3", 3),
+            ("4", 4),
+            ("5", 5),
+            ("6", 6),
+            ("7", 7),
+            ("8", 8),
+            ("9", 9),
+            ("10", 10),
+            ("11", 11),
+            ("12", 12),
+            ("01", 1),
+            ("02", 2),
+            ("03", 3),
+            ("04", 4),
+            ("05", 5),
+            ("06", 6),
+            ("07", 7),
+            ("08", 8),
+            ("09", 9),
+        ]
+    )
+    DayOfMonth = dict(
+        [
+            ("uno", 1),
+            ("dos", 2),
+            ("tres", 3),
+            ("cuatro", 4),
+            ("cinco", 5),
+            ("seis", 6),
+            ("siete", 7),
+            ("ocho", 8),
+            ("nueve", 9),
+            ("diez", 10),
+            ("once", 11),
+            ("doce", 12),
+            ("trece", 13),
+            ("catorce", 14),
+            ("quince", 15),
+            ("dieciséis", 16),
+            ("dieciseis", 16),
+            ("diecisiete", 17),
+            ("dieciocho", 18),
+            ("diecinueve", 19),
+            ("veinte", 20),
+            ("veintiuno", 21),
+            ("veintidós", 22),
+            ("veintidos", 22),
+            ("veintitrés", 23),
+            ("veinticuatro", 24),
+            ("veinticinco", 25),
+            ("veintiséis", 26),
+            ("veintiseis", 26),
+            ("veintisiete", 27),
+            ("veintiocho", 28),
+            ("veintinueve", 29),
+            ("treinta", 30),
+            ("treinta y uno", 31),
+        ]
+    )
+    Numbers = dict(
+        [
+            ("cero", 0),
+            ("un", 1),
+            ("una", 1),
+            ("uno", 1),
+            ("dos", 2),
+            ("dós", 2),
+            ("tres", 3),
+            ("trés", 3),
+            ("cuatro", 4),
+            ("cinco", 5),
+            ("seis", 6),
+            ("séis", 6),
+            ("siete", 7),
+            ("ocho", 8),
+            ("nueve", 9),
+            ("diez", 10),
+            ("once", 11),
+            ("doce", 12),
+            ("docena", 12),
+            ("docenas", 12),
+            ("trece", 13),
+            ("catorce", 14),
+            ("quince", 15),
+            ("dieciseis", 16),
+            ("dieciséis", 16),
+            ("diecisiete", 17),
+            ("dieciocho", 18),
+            ("diecinueve", 19),
+            ("veinte", 20),
+            ("veinti", 20),
+            ("ventiuna", 21),
+            ("ventiuno", 21),
+            ("veintiun", 21),
+            ("veintiún", 21),
+            ("veintiuno", 21),
+            ("veintiuna", 21),
+            ("veintidos", 22),
+            ("veintidós", 22),
+            ("veintitres", 23),
+            ("veintitrés", 23),
+            ("veinticuatro", 24),
+            ("veinticinco", 25),
+            ("veintiseis", 26),
+            ("veintiséis", 26),
+            ("veintisiete", 27),
+            ("veintiocho", 28),
+            ("veintinueve", 29),
+            ("treinta", 30),
+            ("cuarenta", 40),
+            ("cincuenta", 50),
+        ]
+    )
+    HolidayNames = dict(
+        [
+            ("padres", ["diadelpadre"]),
+            ("madres", ["diadelamadre"]),
+            ("acciondegracias", ["diadegracias", "diadeacciondegracias", "acciondegracias"]),
+            (
+                "trabajador",
+                [
+                    "diadeltrabajador",
+                    "diadelostrabajadores",
+                    "diainternacionaldeltrabajador",
+                    "diainternacionaldelostrabajadores",
+                ],
+            ),
+            ("delaraza", ["diadelaraza", "diadeladiversidadcultural"]),
+            ("memoria", ["diadelamemoria"]),
+            ("pascuas", ["diadepascuas", "pascuas"]),
+            ("navidad", ["navidad", "diadenavidad"]),
+            ("nochebuena", ["diadenochebuena", "nochebuena"]),
+            ("añonuevo", ["a\u00f1onuevo", "diadea\u00f1onuevo"]),
+            ("nochevieja", ["nochevieja", "diadenochevieja"]),
+            ("yuandan", ["yuandan"]),
+            ("earthday", ["diadelatierra"]),
+            ("maestro", ["diadelmaestro"]),
+            ("todoslossantos", ["todoslossantos"]),
+            ("niño", ["diadelni\u00f1o"]),
+            ("mujer", ["diadelamujer"]),
+            ("independencia", ["diadelaindependencia", "diadeindependencia", "independencia"]),
+            ("blackfriday", ["viernesnegro"]),
+            ("goodfriday", ["viernessanto"]),
+            ("stpatrickday", ["sanpatricio", "diadesanpatricio"]),
+            ("valentinesday", ["sanvalentin", "diadesanvalentin"]),
+        ]
+    )
+    VariableHolidaysTimexDictionary = dict(
+        [
+            ("padres", "-06-WXX-7-3"),
+            ("madres", "-05-WXX-7-2"),
+            ("acciondegracias", "-11-WXX-4-4"),
+            ("delaraza", "-10-WXX-1-2"),
+            ("memoria", "-03-WXX-2-4"),
+        ]
+    )
+    DoubleNumbers = dict([("mitad", 0.5), ("cuarto", 0.25)])
     UpcomingPrefixRegex = '((este\\s+))'
     NextPrefixRegex = f'\\b({UpcomingPrefixRegex}?pr[oó]xim[oa]s?|siguiente|que\\s+viene)\\b'
     PastPrefixRegex = '((este\\s+))'
-    PreviousPrefixRegex = f'\\b({PastPrefixRegex}?pasad[oa]s?(?!(\\s+el)?\\s+medio\\s*d[ií]a)|[uú]ltim[oa]s?|anterior)\\b'
+    PreviousPrefixRegex = (
+        f'\\b({PastPrefixRegex}?pasad[oa]s?(?!(\\s+el)?\\s+medio\\s*d[ií]a)|[uú]ltim[oa]s?|anterior)\\b'
+    )
     ThisPrefixRegex = '(est?[ea]|actual)\\b'
     PrefixWeekDayRegex = '(\\s*((,?\\s*el)|[-—–]))'
     ThisRegex = f'\\b((est[ae]\\s*)(semana{PrefixWeekDayRegex}?)?\\s*{WeekDayRegex})|({WeekDayRegex}\\s*((de\\s+)?esta\\s+semana))\\b'
     LastDateRegex = f'\\b(({PreviousPrefixRegex}\\s+(semana{PrefixWeekDayRegex}?)?|(la\\s+)?semana\\s+{PreviousPrefixRegex}{PrefixWeekDayRegex})\\s*{WeekDayRegex})|(este\\s+)?({WeekDayRegex}\\s+([uú]ltimo|pasado|anterior))|({WeekDayRegex}(\\s+((de\\s+)?((esta|la)\\s+([uú]ltima\\s+)?semana)|(de\\s+)?(la\\s+)?semana\\s+(pasada|anterior))))\\b'
     NextDateRegex = f'\\b((({NextPrefixRegex}\\s+)(semana{PrefixWeekDayRegex}?)?|(la\\s+)?semana\\s+{NextPrefixRegex}{PrefixWeekDayRegex})\\s*{WeekDayRegex})|(este\\s+)?({WeekDayRegex}\\s+(pr[oó]ximo|siguiente|que\\s+viene))|({WeekDayRegex}(\\s+(de\\s+)?(la\\s+)?((pr[oó]xima|siguiente)\\s+semana|semana\\s+(pr[oó]xima|siguiente))))\\b'
     RelativeDayRegex = '(?<relday>((este|pr[oó]ximo|([uú]ltim(o|as|os)))\\s+días)|(días\\s+((que\\s+viene)|pasado)))\\b'
-    RestOfDateRegex = '\\bresto\\s+((del|de)\\s+)?((la|el|est?[ae])\\s+)?(?<duration>semana|mes|año|decada)(\\s+actual)?\\b'
+    RestOfDateRegex = (
+        '\\bresto\\s+((del|de)\\s+)?((la|el|est?[ae])\\s+)?(?<duration>semana|mes|año|decada)(\\s+actual)?\\b'
+    )
     WithinNextPrefixRegex = f'\\b(dentro\\s+de((\\s+(el|l[ao]s?))?\\s+(?<next>{NextPrefixRegex}))?)(?=\\s*$)\\b'
     DurationUnitRegex = f'(?<unit>{DateUnitRegex}|horas?|hra?s?|hs?|minutos?|mins?|segundos?|segs?|noches?)\\b'
     DurationConnectorRegex = '^\\s*(?<connector>\\s+|y|,)\\s*$'
-    RelativeDurationUnitRegex = f'(?:(?<=({NextPrefixRegex}|{PreviousPrefixRegex}|{ThisPrefixRegex})\\s+)({DurationUnitRegex}))'
+    RelativeDurationUnitRegex = (
+        f'(?:(?<=({NextPrefixRegex}|{PreviousPrefixRegex}|{ThisPrefixRegex})\\s+)({DurationUnitRegex}))'
+    )
     ReferencePrefixRegex = '(mism[ao]|aquel|est?e)\\b'
     ReferenceDatePeriodRegex = f'\\b{ReferencePrefixRegex}\\s+({DateUnitRegex}|fin\\s+de\\s+semana)\\b'
     FromToRegex = '\\b(from).+(to)\\b.+'
@@ -642,14 +705,24 @@ class SpanishDateTime(BaseDateTimeResource):
     SpecialDecadeCases = dict([("", 0)])
     DefaultLanguageFallback = 'DMY'
     DurationDateRestrictions = [r'hoy']
-    AmbiguityFiltersDict = dict([("^\\d{4}$", "(\\d\\.\\d{4}|\\d{4}\\.\\d)"),
-                                 ("^(este\\s+)?mi(\\s+([uú]ltimo|pasado|anterior|pr[oó]ximo|siguiente|que\\s+viene))?$", "\\b(este\\s+)?mi(\\s+([uú]ltimo|pasado|anterior|pr[oó]ximo|siguiente|que\\s+viene))?\\b"),
-                                 ("^a[nñ]o$", "(?<!el\\s+)a[nñ]o"),
-                                 ("^semana$", "(?<!la\\s+)semana"),
-                                 ("^mes$", "(?<!el\\s+)mes"),
-                                 ("^(abr|ago|dic|feb|ene|ju[ln]|mar|may|nov|oct|sep?t|sep)$", "([$%£&!?@#])(abr|ago|dic|feb|ene|ju[ln]|mar|may|nov|oct|sep?t|sep)|(abr|ago|dic|feb|ene|ju[ln]|mar|may|nov|oct|sep?t|sep)([$%£&@#])"),
-                                 ("^\\d{1,4}-\\d{1,4}$", "\\d{1,4}-\\d{1,4}-\\d|\\d-\\d{1,4}-\\d{1,4}"),
-                                 ("^\\d{1,4}-\\d{1,4}-\\d{1,4}$", "\\d{1,4}-\\d{1,4}-\\d{1,4}-\\d|\\d-\\d{1,4}-\\d{1,4}-\\d{1,4}")])
+    AmbiguityFiltersDict = dict(
+        [
+            ("^\\d{4}$", "(\\d\\.\\d{4}|\\d{4}\\.\\d)"),
+            (
+                "^(este\\s+)?mi(\\s+([uú]ltimo|pasado|anterior|pr[oó]ximo|siguiente|que\\s+viene))?$",
+                "\\b(este\\s+)?mi(\\s+([uú]ltimo|pasado|anterior|pr[oó]ximo|siguiente|que\\s+viene))?\\b",
+            ),
+            ("^a[nñ]o$", "(?<!el\\s+)a[nñ]o"),
+            ("^semana$", "(?<!la\\s+)semana"),
+            ("^mes$", "(?<!el\\s+)mes"),
+            (
+                "^(abr|ago|dic|feb|ene|ju[ln]|mar|may|nov|oct|sep?t|sep)$",
+                "([$%£&!?@#])(abr|ago|dic|feb|ene|ju[ln]|mar|may|nov|oct|sep?t|sep)|(abr|ago|dic|feb|ene|ju[ln]|mar|may|nov|oct|sep?t|sep)([$%£&@#])",
+            ),
+            ("^\\d{1,4}-\\d{1,4}$", "\\d{1,4}-\\d{1,4}-\\d|\\d-\\d{1,4}-\\d{1,4}"),
+            ("^\\d{1,4}-\\d{1,4}-\\d{1,4}$", "\\d{1,4}-\\d{1,4}-\\d{1,4}-\\d|\\d-\\d{1,4}-\\d{1,4}-\\d{1,4}"),
+        ]
+    )
     EarlyMorningStartEndRegex = '(^(madrugada)|(madrugada)$)'
     MorningStartEndRegex = '(^((la\\s+)?mañana))|(((la\\s+)?mañana)$)'
     AfternoonStartEndRegex = '(^(pasado\\s+(el\\s+)?medio\\s*dia))|((pasado\\s+(el\\s+)?medio\\s*dia)$)'
@@ -657,7 +730,16 @@ class SpanishDateTime(BaseDateTimeResource):
     NightStartEndRegex = '(^(noche)|(noche)$)'
     EarlyMorningTermList = [r'madrugada']
     MorningTermList = [r'mañana', r'la mañana']
-    AfternoonTermList = [r'pasado mediodia', r'pasado el mediodia', r'pasado mediodía', r'pasado el mediodía', r'pasado medio dia', r'pasado el medio dia', r'pasado medio día', r'pasado el medio día']
+    AfternoonTermList = [
+        r'pasado mediodia',
+        r'pasado el mediodia',
+        r'pasado mediodía',
+        r'pasado el mediodía',
+        r'pasado medio dia',
+        r'pasado el medio dia',
+        r'pasado medio día',
+        r'pasado el medio día',
+    ]
     EveningTermList = [r'tarde']
     NightTermList = [r'noche']
     SameDayTerms = [r'hoy', r'el dia']
@@ -672,11 +754,7 @@ class SpanishDateTime(BaseDateTimeResource):
     FortnightTerms = [r'quincena', r'la quincena']
     YearTerms = [r'año', r'años']
     YearToDateTerms = [r'año a la fecha', r'año hasta la fecha']
-    SpecialCharactersEquivalent = dict([("á", "a"),
-                                        ("é", "e"),
-                                        ("í", "i"),
-                                        ("ó", "o"),
-                                        ("ú", "u")])
+    SpecialCharactersEquivalent = dict([("á", "a"), ("é", "e"), ("í", "i"), ("ó", "o"), ("ú", "u")])
     DoubleMultiplierRegex = '^(bi)(-|\\s)?'
     DayTypeRegex = '(d[ií]as?|diari(o|as|amente))$'
     WeekTypeRegex = '(semanas?|semanalmente)$'
@@ -686,4 +764,6 @@ class SpanishDateTime(BaseDateTimeResource):
     QuarterTypeRegex = '(trimestral(es|mente)?)$'
     SemiAnnualTypeRegex = '(semestral(es|mente)?)$'
     YearTypeRegex = '(años?|anual(mente)?)$'
+
+
 # pylint: enable=line-too-long

@@ -147,49 +147,31 @@ class GermanMergedExtractorConfiguration(MergedExtractorConfiguration):
         return self._ambiguity_filters_dict
 
     def __init__(self):
-        self._before_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.BeforeRegex)
-        self._after_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.AfterRegex)
-        self._since_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.SinceRegex)
-        self._from_to_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.FromToRegex)
-        self._single_ambiguous_month_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.SingleAmbiguousMonthRegex)
-        self._preposition_suffix_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.PrepositionSuffixRegex)
+        self._before_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.BeforeRegex)
+        self._after_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.AfterRegex)
+        self._since_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.SinceRegex)
+        self._from_to_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.FromToRegex)
+        self._single_ambiguous_month_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.SingleAmbiguousMonthRegex)
+        self._preposition_suffix_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.PrepositionSuffixRegex)
         self._ambiguous_range_modifier_prefix = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.AmbiguousRangeModifierPrefix)
-        self._number_ending_pattern = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.NumberEndingPattern)
+            GermanDateTime.AmbiguousRangeModifierPrefix
+        )
+        self._number_ending_pattern = RegExpUtility.get_safe_reg_exp(GermanDateTime.NumberEndingPattern)
 
-        self._date_extractor = BaseDateExtractor(
-            GermanDateExtractorConfiguration())
-        self._time_extractor = BaseTimeExtractor(
-            GermanTimeExtractorConfiguration())
-        self._date_time_extractor = BaseDateTimeExtractor(
-            GermanDateTimeExtractorConfiguration())
-        self._date_period_extractor = BaseDatePeriodExtractor(
-            GermanDatePeriodExtractorConfiguration())
-        self._time_period_extractor = BaseTimePeriodExtractor(
-            GermanTimePeriodExtractorConfiguration())
-        self._date_time_period_extractor = BaseDateTimePeriodExtractor(
-            GermanDateTimePeriodExtractorConfiguration())
-        self._duration_extractor = BaseDurationExtractor(
-            GermanDurationExtractorConfiguration())
-        self._holiday_extractor = BaseHolidayExtractor(
-            GermanHolidayExtractorConfiguration())
+        self._date_extractor = BaseDateExtractor(GermanDateExtractorConfiguration())
+        self._time_extractor = BaseTimeExtractor(GermanTimeExtractorConfiguration())
+        self._date_time_extractor = BaseDateTimeExtractor(GermanDateTimeExtractorConfiguration())
+        self._date_period_extractor = BaseDatePeriodExtractor(GermanDatePeriodExtractorConfiguration())
+        self._time_period_extractor = BaseTimePeriodExtractor(GermanTimePeriodExtractorConfiguration())
+        self._date_time_period_extractor = BaseDateTimePeriodExtractor(GermanDateTimePeriodExtractorConfiguration())
+        self._duration_extractor = BaseDurationExtractor(GermanDurationExtractorConfiguration())
+        self._holiday_extractor = BaseHolidayExtractor(GermanHolidayExtractorConfiguration())
         self._integer_extractor = GermanIntegerExtractor()
         self._filter_word_regex_list = []
-        self._unspecified_date_period_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.UnspecificDatePeriodRegex
-        )
+        self._unspecified_date_period_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.UnspecificDatePeriodRegex)
         self._around_regex = GermanDateTime.AroundRegex
         self._equal_regex = BaseDateTime.EqualRegex
-        self._suffix_after_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.SuffixAfterRegex
-        )
+        self._suffix_after_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.SuffixAfterRegex)
         self._check_both_before_after = GermanDateTime.CheckBothBeforeAfter
         # TODO When the implementation for these properties is added, change the None values to their respective Regexps
         self._superfluous_word_matcher = None

@@ -15,4 +15,6 @@
 class PortuguesePhoneNumbers:
     NumberReplaceToken = '@builtin.phonenumber'
     FalsePositivePrefixRegex = f'conta(\\s+(número|bancária(\\s+número)?))?(\\s+é)?:?\\s*$'
+
+
 # pylint: enable=line-too-long

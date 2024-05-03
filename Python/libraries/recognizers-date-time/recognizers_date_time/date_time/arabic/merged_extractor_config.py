@@ -149,54 +149,33 @@ class ArabicMergedExtractorConfiguration(MergedExtractorConfiguration):
         return self._year_regex
 
     def __init__(self):
-        self._before_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.BeforeRegex)
-        self._after_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.AfterRegex)
-        self._since_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.SinceRegex)
-        self._from_to_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.FromToRegex)
-        self._year_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.YearRegex)
-        self._single_ambiguous_month_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.SingleAmbiguousMonthRegex)
-        self._preposition_suffix_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.PrepositionSuffixRegex)
+        self._before_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.BeforeRegex)
+        self._after_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.AfterRegex)
+        self._since_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.SinceRegex)
+        self._from_to_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.FromToRegex)
+        self._year_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.YearRegex)
+        self._single_ambiguous_month_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.SingleAmbiguousMonthRegex)
+        self._preposition_suffix_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.PrepositionSuffixRegex)
         self._ambiguous_range_modifier_prefix = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.AmbiguousRangeModifierPrefix)
-        self._number_ending_pattern = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.NumberEndingPattern)
+            ArabicDateTime.AmbiguousRangeModifierPrefix
+        )
+        self._number_ending_pattern = RegExpUtility.get_safe_reg_exp(ArabicDateTime.NumberEndingPattern)
 
-        self._date_extractor = BaseDateExtractor(
-            ArabicDateExtractorConfiguration())
-        self._time_extractor = BaseTimeExtractor(
-            ArabicTimeExtractorConfiguration())
-        self._date_time_extractor = BaseDateTimeExtractor(
-            ArabicDateTimeExtractorConfiguration())
-        self._date_period_extractor = BaseDatePeriodExtractor(
-            ArabicDatePeriodExtractorConfiguration())
-        self._time_period_extractor = BaseTimePeriodExtractor(
-            ArabicTimePeriodExtractorConfiguration())
-        self._date_time_period_extractor = BaseDateTimePeriodExtractor(
-            ArabicDateTimePeriodExtractorConfiguration())
-        self._duration_extractor = BaseDurationExtractor(
-            ArabicDurationExtractorConfiguration())
-        self._holiday_extractor = BaseHolidayExtractor(
-            ArabicHolidayExtractorConfiguration())
+        self._date_extractor = BaseDateExtractor(ArabicDateExtractorConfiguration())
+        self._time_extractor = BaseTimeExtractor(ArabicTimeExtractorConfiguration())
+        self._date_time_extractor = BaseDateTimeExtractor(ArabicDateTimeExtractorConfiguration())
+        self._date_period_extractor = BaseDatePeriodExtractor(ArabicDatePeriodExtractorConfiguration())
+        self._time_period_extractor = BaseTimePeriodExtractor(ArabicTimePeriodExtractorConfiguration())
+        self._date_time_period_extractor = BaseDateTimePeriodExtractor(ArabicDateTimePeriodExtractorConfiguration())
+        self._duration_extractor = BaseDurationExtractor(ArabicDurationExtractorConfiguration())
+        self._holiday_extractor = BaseHolidayExtractor(ArabicHolidayExtractorConfiguration())
         self._integer_extractor = ArabicIntegerExtractor()
         self._filter_word_regex_list = []
-        self._unspecified_date_period_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.UnspecificDatePeriodRegex
-        )
+        self._unspecified_date_period_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.UnspecificDatePeriodRegex)
         self._around_regex = ArabicDateTime.AroundRegex
         self._equal_regex = BaseDateTime.EqualRegex
-        self._suffix_after_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.SuffixAfterRegex
-        )
-        self._potential_ambiguous_range_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.FromToRegex
-        )
+        self._suffix_after_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.SuffixAfterRegex)
+        self._potential_ambiguous_range_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.FromToRegex)
         self._check_both_before_after = ArabicDateTime.CheckBothBeforeAfter
         self._term_filter_regexes = [
             RegExpUtility.get_safe_reg_exp(ArabicDateTime.OneOnOneRegex),

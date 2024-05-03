@@ -21,13 +21,15 @@ from recognizers_text.utilities import DefinitionLoader, RegExpUtility
 class EnglishNumberWithUnitExtractorConfiguration(NumberWithUnitExtractorConfiguration):
 
     ambiguity_filters_dict: Dict[Pattern, Pattern] = DefinitionLoader.load_ambiguity_filters(
-        EnglishNumericWithUnit.AmbiguityFiltersDict)
+        EnglishNumericWithUnit.AmbiguityFiltersDict
+    )
     unit_num_extractor: Extractor = EnglishNumberExtractor(NumberMode.Unit)
     build_prefix: str = EnglishNumericWithUnit.BuildPrefix
     build_suffix: str = EnglishNumericWithUnit.BuildSuffix
     connector_token: str = ''
     compound_unit_connector_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-        EnglishNumericWithUnit.CompoundUnitConnectorRegex)
+        EnglishNumericWithUnit.CompoundUnitConnectorRegex
+    )
     non_unit_regex: Pattern = RegExpUtility.get_safe_reg_exp(BaseUnits.PmNonUnitRegex)
     ambiguous_unit_number_multiplier_regex: Pattern = None
     culture_info: CultureInfo = None
@@ -62,7 +64,8 @@ class EnglishNumberWithUnitParserConfiguration(NumberWithUnitParserConfiguration
         culture_info = culture_info or CultureInfo(Culture.English)
         super().__init__(culture_info)
         self.internal_number_parser: Parser = AgnosticNumberParserFactory.get_parser(
-            ParserType.NUMBER, EnglishNumberParserConfiguration(culture_info))
+            ParserType.NUMBER, EnglishNumberParserConfiguration(culture_info)
+        )
 
 
 class EnglishCurrencyParserConfiguration(EnglishNumberWithUnitParserConfiguration):
@@ -73,4 +76,3 @@ class EnglishCurrencyParserConfiguration(EnglishNumberWithUnitParserConfiguratio
         self.add_dict_to_unit_map(EnglishNumericWithUnit.CurrencyPrefixList)
         self.currency_name_to_iso_code_map = EnglishNumericWithUnit.CurrencyNameToIsoCodeMap
         self.currency_fraction_code_list = EnglishNumericWithUnit.FractionalUnitNameToCodeMap
-

@@ -147,49 +147,31 @@ class FrenchMergedExtractorConfiguration(MergedExtractorConfiguration):
         return self._ambiguity_filters_dict
 
     def __init__(self):
-        self._before_regex = RegExpUtility.get_safe_reg_exp(
-            FrenchDateTime.BeforeRegex)
-        self._after_regex = RegExpUtility.get_safe_reg_exp(
-            FrenchDateTime.AfterRegex)
-        self._since_regex = RegExpUtility.get_safe_reg_exp(
-            FrenchDateTime.SinceRegex)
-        self._from_to_regex = RegExpUtility.get_safe_reg_exp(
-            FrenchDateTime.FromToRegex)
-        self._single_ambiguous_month_regex = RegExpUtility.get_safe_reg_exp(
-            FrenchDateTime.SingleAmbiguousMonthRegex)
-        self._preposition_suffix_regex = RegExpUtility.get_safe_reg_exp(
-            FrenchDateTime.PrepositionSuffixRegex)
+        self._before_regex = RegExpUtility.get_safe_reg_exp(FrenchDateTime.BeforeRegex)
+        self._after_regex = RegExpUtility.get_safe_reg_exp(FrenchDateTime.AfterRegex)
+        self._since_regex = RegExpUtility.get_safe_reg_exp(FrenchDateTime.SinceRegex)
+        self._from_to_regex = RegExpUtility.get_safe_reg_exp(FrenchDateTime.FromToRegex)
+        self._single_ambiguous_month_regex = RegExpUtility.get_safe_reg_exp(FrenchDateTime.SingleAmbiguousMonthRegex)
+        self._preposition_suffix_regex = RegExpUtility.get_safe_reg_exp(FrenchDateTime.PrepositionSuffixRegex)
         self._ambiguous_range_modifier_prefix = RegExpUtility.get_safe_reg_exp(
-            FrenchDateTime.AmbiguousRangeModifierPrefix)
-        self._number_ending_pattern = RegExpUtility.get_safe_reg_exp(
-            FrenchDateTime.NumberEndingPattern)
+            FrenchDateTime.AmbiguousRangeModifierPrefix
+        )
+        self._number_ending_pattern = RegExpUtility.get_safe_reg_exp(FrenchDateTime.NumberEndingPattern)
 
-        self._date_extractor = BaseDateExtractor(
-            FrenchDateExtractorConfiguration())
-        self._time_extractor = BaseTimeExtractor(
-            FrenchTimeExtractorConfiguration())
-        self._date_time_extractor = BaseDateTimeExtractor(
-            FrenchDateTimeExtractorConfiguration())
-        self._date_period_extractor = BaseDatePeriodExtractor(
-            FrenchDatePeriodExtractorConfiguration())
-        self._time_period_extractor = BaseTimePeriodExtractor(
-            FrenchTimePeriodExtractorConfiguration())
-        self._date_time_period_extractor = BaseDateTimePeriodExtractor(
-            FrenchDateTimePeriodExtractorConfiguration())
-        self._duration_extractor = BaseDurationExtractor(
-            FrenchDurationExtractorConfiguration())
-        self._holiday_extractor = BaseHolidayExtractor(
-            FrenchHolidayExtractorConfiguration())
+        self._date_extractor = BaseDateExtractor(FrenchDateExtractorConfiguration())
+        self._time_extractor = BaseTimeExtractor(FrenchTimeExtractorConfiguration())
+        self._date_time_extractor = BaseDateTimeExtractor(FrenchDateTimeExtractorConfiguration())
+        self._date_period_extractor = BaseDatePeriodExtractor(FrenchDatePeriodExtractorConfiguration())
+        self._time_period_extractor = BaseTimePeriodExtractor(FrenchTimePeriodExtractorConfiguration())
+        self._date_time_period_extractor = BaseDateTimePeriodExtractor(FrenchDateTimePeriodExtractorConfiguration())
+        self._duration_extractor = BaseDurationExtractor(FrenchDurationExtractorConfiguration())
+        self._holiday_extractor = BaseHolidayExtractor(FrenchHolidayExtractorConfiguration())
         self._integer_extractor = FrenchIntegerExtractor()
         self._filter_word_regex_list = []
-        self._unspecified_date_period_regex = RegExpUtility.get_safe_reg_exp(
-            FrenchDateTime.UnspecificDatePeriodRegex
-        )
+        self._unspecified_date_period_regex = RegExpUtility.get_safe_reg_exp(FrenchDateTime.UnspecificDatePeriodRegex)
         self._around_regex = FrenchDateTime.AroundRegex
         self._equal_regex = BaseDateTime.EqualRegex
-        self._suffix_after_regex = RegExpUtility.get_safe_reg_exp(
-            FrenchDateTime.SuffixAfterRegex
-        )
+        self._suffix_after_regex = RegExpUtility.get_safe_reg_exp(FrenchDateTime.SuffixAfterRegex)
         self._check_both_before_after = FrenchDateTime.CheckBothBeforeAfter
         # TODO When the implementation for these properties is added, change the None values to their respective Regexps
         self._superfluous_word_matcher = None

@@ -13,8 +13,9 @@ class ExtractResultExtension:
 
     @staticmethod
     def is_cover(er1: ExtractResult, er2: ExtractResult) -> bool:
-        return (er2.start < er1.start and er2.start + er2.length >= er1.start + er1.length) or \
-               (er2.start <= er1.start and er2.start+ er2.length > er1.start + er1.length)
+        return (er2.start < er1.start and er2.start + er2.length >= er1.start + er1.length) or (
+            er2.start <= er1.start and er2.start + er2.length > er1.start + er1.length
+        )
 
     @staticmethod
     def merge_all_tokens(results: List[ExtractResult]) -> List[ExtractResult]:
@@ -47,8 +48,9 @@ class ExtractResultExtension:
         return merged_results
 
     @staticmethod
-    def filter_ambiguity(extract_results: List[ExtractResult], text: str,
-                         ambiguity_filters_dict: Dict[Pattern, Pattern]) -> List[ExtractResult]:
+    def filter_ambiguity(
+        extract_results: List[ExtractResult], text: str, ambiguity_filters_dict: Dict[Pattern, Pattern]
+    ) -> List[ExtractResult]:
         if ambiguity_filters_dict:
             for key, value in ambiguity_filters_dict.items():
                 for er in reversed(extract_results):
@@ -56,11 +58,9 @@ class ExtractResultExtension:
                     if regex.match(key, er.text):
                         matches = RegExpUtility.get_matches(value, text)
 
-                        if any(text.index(m) < er.start + er.length and text.index(m) + len(m) > er.start
-                               for m in matches):
+                        if any(
+                            text.index(m) < er.start + er.length and text.index(m) + len(m) > er.start for m in matches
+                        ):
                             extract_results.remove(er)
 
         return extract_results
-
-
-

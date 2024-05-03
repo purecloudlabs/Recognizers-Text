@@ -82,8 +82,6 @@ class Constants:
     MEAL_TIME_DINNER_BEGIN_HOUR = 16
     MEAL_TIME_DINNER_END_HOUR = 20
 
-
-
     # Failed connector extraction
     INVALID_CONNECTOR_CODE = -1
 

@@ -21,11 +21,9 @@ class GermanNumberExtractor(BaseNumberExtractor):
         cardinal_ex: GermanCardinalExtractor = None
 
         if self.mode is NumberMode.PURE_NUMBER:
-            cardinal_ex = GermanCardinalExtractor(
-                GermanNumeric.PlaceHolderPureNumber)
+            cardinal_ex = GermanCardinalExtractor(GermanNumeric.PlaceHolderPureNumber)
         elif self.mode is NumberMode.CURRENCY:
-            _regexes.append(ReVal(re=RegExpUtility.get_safe_reg_exp(
-                GermanNumeric.CurrencyRegex), val='IntegerNum'))
+            _regexes.append(ReVal(re=RegExpUtility.get_safe_reg_exp(GermanNumeric.CurrencyRegex), val='IntegerNum'))
 
         cardinal_ex = cardinal_ex or GermanCardinalExtractor()
         _regexes.extend(cardinal_ex.regexes)
@@ -38,8 +36,9 @@ class GermanNumberExtractor(BaseNumberExtractor):
         _ambiguity_filters_dict: List[ReRe] = list()
         if self.mode != NumberMode.Unit:
             for key, value in GermanNumeric.AmbiguityFiltersDict.items():
-                _ambiguity_filters_dict.append(ReRe(reKey=RegExpUtility.get_safe_reg_exp(key),
-                                                    reVal=RegExpUtility.get_safe_reg_exp(value)))
+                _ambiguity_filters_dict.append(
+                    ReRe(reKey=RegExpUtility.get_safe_reg_exp(key), reVal=RegExpUtility.get_safe_reg_exp(value))
+                )
         return _ambiguity_filters_dict
 
     @property
@@ -55,8 +54,7 @@ class GermanCardinalExtractor(BaseNumberExtractor):
 
     @property
     def regexes(self) -> List[ReVal]:
-        return (GermanIntegerExtractor(self.placeholder).regexes +
-                GermanDoubleExtractor(self.placeholder).regexes)
+        return GermanIntegerExtractor(self.placeholder).regexes + GermanDoubleExtractor(self.placeholder).regexes
 
     def __init__(self, placeholder: str = GermanNumeric.PlaceHolderDefault):
         self.placeholder = placeholder
@@ -69,41 +67,32 @@ class GermanIntegerExtractor(BaseNumberExtractor):
     def regexes(self) -> List[ReVal]:
         return [
             ReVal(
-                re=RegExpUtility.get_safe_reg_exp(
-                    GermanNumeric.NumbersWithPlaceHolder(self.placeholder)),
-                val='IntegerNum'),
+                re=RegExpUtility.get_safe_reg_exp(GermanNumeric.NumbersWithPlaceHolder(self.placeholder)),
+                val='IntegerNum',
+            ),
+            ReVal(re=RegExpUtility.get_safe_reg_exp(GermanNumeric.NumbersWithSuffix, regex.S), val='IntegerNum'),
             ReVal(
                 re=RegExpUtility.get_safe_reg_exp(
-                    GermanNumeric.NumbersWithSuffix, regex.S),
-                val='IntegerNum'),
-            ReVal(
-                re=RegExpUtility.get_safe_reg_exp(self._generate_format_regex(
-                    LongFormatMode.INTEGER_COMMA, self.placeholder)),
-                val='IntegerNum'),
-            ReVal(
-                re=RegExpUtility.get_safe_reg_exp(self._generate_format_regex(
-                    LongFormatMode.INTEGER_BLANK, self.placeholder)),
-                val='IntegerNum'),
-            ReVal(
-                re=RegExpUtility.get_safe_reg_exp(self._generate_format_regex(
-                    LongFormatMode.INTEGER_NO_BREAK_SPACE, self.placeholder)),
-                val='IntegerNum'),
+                    self._generate_format_regex(LongFormatMode.INTEGER_COMMA, self.placeholder)
+                ),
+                val='IntegerNum',
+            ),
             ReVal(
                 re=RegExpUtility.get_safe_reg_exp(
-                    GermanNumeric.RoundNumberIntegerRegexWithLocks),
-                val='IntegerNum'),
+                    self._generate_format_regex(LongFormatMode.INTEGER_BLANK, self.placeholder)
+                ),
+                val='IntegerNum',
+            ),
             ReVal(
                 re=RegExpUtility.get_safe_reg_exp(
-                    GermanNumeric.NumbersWithDozenSuffix),
-                val='IntegerNum'),
-            ReVal(
-                re=RegExpUtility.get_safe_reg_exp(
-                    GermanNumeric.AllIntRegexWithLocks),
-                val='IntegerGer'),
-            ReVal(
-                re=RegExpUtility.get_safe_reg_exp(
-                    GermanNumeric.AllIntRegexWithDozenSuffixLocks),
-                val='IntegerGer')
+                    self._generate_format_regex(LongFormatMode.INTEGER_NO_BREAK_SPACE, self.placeholder)
+                ),
+                val='IntegerNum',
+            ),
+            ReVal(re=RegExpUtility.get_safe_reg_exp(GermanNumeric.RoundNumberIntegerRegexWithLocks), val='IntegerNum'),
+            ReVal(re=RegExpUtility.get_safe_reg_exp(GermanNumeric.NumbersWithDozenSuffix), val='IntegerNum'),
+            ReVal(re=RegExpUtility.get_safe_reg_exp(GermanNumeric.AllIntRegexWithLocks), val='IntegerGer'),
+            ReVal(re=RegExpUtility.get_safe_reg_exp(GermanNumeric.AllIntRegexWithDozenSuffixLocks), val='IntegerGer'),
         ]
 
     def __init__(self, placeholder: str = GermanNumeric.PlaceHolderDefault):
@@ -117,41 +106,32 @@ class GermanDoubleExtractor(BaseNumberExtractor):
     def regexes(self) -> List[ReVal]:
         return [
             ReVal(
-                re=RegExpUtility.get_safe_reg_exp(
-                    GermanNumeric.DoubleDecimalPointRegex(self.placeholder)),
-                val='DoubleNum'),
+                re=RegExpUtility.get_safe_reg_exp(GermanNumeric.DoubleDecimalPointRegex(self.placeholder)),
+                val='DoubleNum',
+            ),
+            ReVal(
+                re=RegExpUtility.get_safe_reg_exp(GermanNumeric.DoubleWithoutIntegralRegex(self.placeholder)),
+                val='DoubleNum',
+            ),
             ReVal(
                 re=RegExpUtility.get_safe_reg_exp(
-                    GermanNumeric.DoubleWithoutIntegralRegex(self.placeholder)),
-                val='DoubleNum'),
-            ReVal(
-                re=RegExpUtility.get_safe_reg_exp(self._generate_format_regex(
-                    LongFormatMode.DOUBLE_COMMA_DOT, self.placeholder)),
-                val='DoubleNum'),
-            ReVal(
-                re=RegExpUtility.get_safe_reg_exp(self._generate_format_regex(
-                    LongFormatMode.DOUBLE_NO_BREAK_SPACE_DOT, self.placeholder)),
-                val='DoubleNum'),
+                    self._generate_format_regex(LongFormatMode.DOUBLE_COMMA_DOT, self.placeholder)
+                ),
+                val='DoubleNum',
+            ),
             ReVal(
                 re=RegExpUtility.get_safe_reg_exp(
-                    GermanNumeric.DoubleWithMultiplierRegex, regex.S),
-                val='DoubleNum'),
+                    self._generate_format_regex(LongFormatMode.DOUBLE_NO_BREAK_SPACE_DOT, self.placeholder)
+                ),
+                val='DoubleNum',
+            ),
+            ReVal(re=RegExpUtility.get_safe_reg_exp(GermanNumeric.DoubleWithMultiplierRegex, regex.S), val='DoubleNum'),
+            ReVal(re=RegExpUtility.get_safe_reg_exp(GermanNumeric.DoubleWithRoundNumber), val='DoubleNum'),
+            ReVal(re=RegExpUtility.get_safe_reg_exp(GermanNumeric.DoubleAllFloatRegex), val='DoubleGer'),
+            ReVal(re=RegExpUtility.get_safe_reg_exp(GermanNumeric.DoubleExponentialNotationRegex), val='DoublePow'),
             ReVal(
-                re=RegExpUtility.get_safe_reg_exp(
-                    GermanNumeric.DoubleWithRoundNumber),
-                val='DoubleNum'),
-            ReVal(
-                re=RegExpUtility.get_safe_reg_exp(
-                    GermanNumeric.DoubleAllFloatRegex),
-                val='DoubleGer'),
-            ReVal(
-                re=RegExpUtility.get_safe_reg_exp(
-                    GermanNumeric.DoubleExponentialNotationRegex),
-                val='DoublePow'),
-            ReVal(
-                re=RegExpUtility.get_safe_reg_exp(
-                    GermanNumeric.DoubleCaretExponentialNotationRegex),
-                val='DoublePow')
+                re=RegExpUtility.get_safe_reg_exp(GermanNumeric.DoubleCaretExponentialNotationRegex), val='DoublePow'
+            ),
         ]
 
     def __init__(self, placeholder: str = GermanNumeric.PlaceHolderDefault):
@@ -164,30 +144,16 @@ class GermanFractionExtractor(BaseNumberExtractor):
     @property
     def regexes(self) -> List[ReVal]:
         _regexes = [
-            ReVal(
-                re=RegExpUtility.get_safe_reg_exp(
-                    GermanNumeric.FractionNotationWithSpacesRegex),
-                val='FracNum'),
-            ReVal(
-                re=RegExpUtility.get_safe_reg_exp(
-                    GermanNumeric.FractionNotationRegex),
-                val='FracNum'),
-            ReVal(
-                re=RegExpUtility.get_safe_reg_exp(
-                    GermanNumeric.FractionNounRegex),
-                val='FracGer'),
-            ReVal(
-                re=RegExpUtility.get_safe_reg_exp(
-                    GermanNumeric.FractionNounWithArticleRegex),
-                val='FracGer')
+            ReVal(re=RegExpUtility.get_safe_reg_exp(GermanNumeric.FractionNotationWithSpacesRegex), val='FracNum'),
+            ReVal(re=RegExpUtility.get_safe_reg_exp(GermanNumeric.FractionNotationRegex), val='FracNum'),
+            ReVal(re=RegExpUtility.get_safe_reg_exp(GermanNumeric.FractionNounRegex), val='FracGer'),
+            ReVal(re=RegExpUtility.get_safe_reg_exp(GermanNumeric.FractionNounWithArticleRegex), val='FracGer'),
         ]
 
         if self.mode != NumberMode.Unit:
             _regexes.append(
-                ReVal(
-                    re=RegExpUtility.get_safe_reg_exp(
-                        GermanNumeric.FractionPrepositionRegex),
-                    val='FracGer'))
+                ReVal(re=RegExpUtility.get_safe_reg_exp(GermanNumeric.FractionPrepositionRegex), val='FracGer')
+            )
         return _regexes
 
     def __init__(self, mode: NumberMode = NumberMode.DEFAULT):
@@ -203,7 +169,7 @@ class GermanOrdinalExtractor(BaseNumberExtractor):
             ReVal(re=GermanNumeric.OrdinalSuffixRegex, val='OrdinalNum'),
             ReVal(re=GermanNumeric.OrdinalNumericRegex, val='OrdinalNum'),
             ReVal(re=GermanNumeric.OrdinalGermanRegex, val='OrdGer'),
-            ReVal(re=GermanNumeric.OrdinalRoundNumberRegex, val='OrdGer')
+            ReVal(re=GermanNumeric.OrdinalRoundNumberRegex, val='OrdGer'),
         ]
 
 

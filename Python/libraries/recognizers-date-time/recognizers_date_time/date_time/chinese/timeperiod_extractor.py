@@ -21,11 +21,12 @@ class ChineseTimePeriodExtractor(ChineseBaseDateTimeExtractor):
         return Constants.SYS_DATETIME_TIMEPERIOD
 
     def __init__(self):
-        super().__init__(dict([
-            (RegExpUtility.get_safe_reg_exp(
-                ChineseDateTime.TimePeriodRegexes1), TimePeriodType.FullTime),
-            (RegExpUtility.get_safe_reg_exp(
-                ChineseDateTime.TimePeriodRegexes2), TimePeriodType.ShortTime),
-            (RegExpUtility.get_safe_reg_exp(
-                ChineseDateTime.TimeOfDayRegex), TimePeriodType.ShortTime)
-        ]))
+        super().__init__(
+            dict(
+                [
+                    (RegExpUtility.get_safe_reg_exp(ChineseDateTime.TimePeriodRegexes1), TimePeriodType.FullTime),
+                    (RegExpUtility.get_safe_reg_exp(ChineseDateTime.TimePeriodRegexes2), TimePeriodType.ShortTime),
+                    (RegExpUtility.get_safe_reg_exp(ChineseDateTime.TimeOfDayRegex), TimePeriodType.ShortTime),
+                ]
+            )
+        )

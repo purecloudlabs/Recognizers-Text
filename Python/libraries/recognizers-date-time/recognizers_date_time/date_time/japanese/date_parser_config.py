@@ -231,8 +231,9 @@ class JapaneseDateParserConfiguration(CJKDateParserConfiguration):
         self._last_regex = JapaneseDateExtractorConfiguration().last_regex
         self._week_day_of_month_regex = JapaneseDateExtractorConfiguration().week_day_of_month_regex
         self._week_day_and_day_regex = JapaneseDateExtractorConfiguration().week_day_and_day_regex
-        self._duration_relative_duration_unit_regex = \
+        self._duration_relative_duration_unit_regex = (
             JapaneseDateExtractorConfiguration().duration_relative_duration_unit_regex
+        )
         self._special_day_with_num_regex = JapaneseDateExtractorConfiguration().special_day_with_num_regex
 
         self._cardinal_map = config.cardinal_map

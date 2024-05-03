@@ -33,6 +33,7 @@ class CatalanBaseDateExtractor(BaseDateExtractor):
 
     def extract(self, source: str, reference: datetime = None) -> List[ExtractResult]:
         from ..utilities import merge_all_tokens
+
         if reference is None:
             reference = datetime.now()
 
@@ -124,20 +125,16 @@ class CatalanCommonDateTimeParserConfiguration(MinimalBaseDateParserConfiguratio
         self._utility_configuration = CatalanDateTimeUtilityConfiguration()
         self._day_of_week = CatalanDateTime.DayOfWeek
         self._month_of_year = CatalanDateTime.MonthOfYear
-        self._day_of_month = {
-            **BaseDateTime.DayOfMonthDictionary, **CatalanDateTime.DayOfMonth}
+        self._day_of_month = {**BaseDateTime.DayOfMonthDictionary, **CatalanDateTime.DayOfMonth}
         self._numbers = CatalanDateTime.Numbers
         self._check_both_before_after = CatalanDateTime.CheckBothBeforeAfter
         self._cardinal_extractor = CatalanCardinalExtractor()
         self._integer_extractor = CatalanIntegerExtractor()
         self._ordinal_extractor = CatalanOrdinalExtractor()
-        self._number_parser = BaseNumberParser(
-            CatalanNumberParserConfiguration())
-        self._date_extractor = CatalanBaseDateExtractor(
-            CatalanDateExtractorConfiguration())
+        self._number_parser = BaseNumberParser(CatalanNumberParserConfiguration())
+        self._date_extractor = CatalanBaseDateExtractor(CatalanDateExtractorConfiguration())
         self._time_extractor = BaseTimeExtractor(CatalanTimeExtractorConfiguration())
-        self._date_parser = BaseDateParser(
-            CatalanDateParserConfiguration(self))
+        self._date_parser = BaseDateParser(CatalanDateParserConfiguration(self))
         self._time_parser = BaseTimeParser(CatalanTimeParserConfiguration(self))
         self._date_time_extractor = MinimalDateTimeExtractor()
         self._date_time_parser = MinimalDateTimeParser()

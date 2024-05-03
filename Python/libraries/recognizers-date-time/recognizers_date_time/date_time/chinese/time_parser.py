@@ -25,7 +25,7 @@ class ChineseTimeParser(BaseTimeParser):
         self.function_map = {
             TimeType.ChineseTime: self.handle_chinese,
             TimeType.DigitTime: self.handle_digit,
-            TimeType.LessTime: self.handle_less
+            TimeType.LessTime: self.handle_less,
         }
         self.inner_extractor = ChineseTimeExtractor()
 
@@ -36,8 +36,7 @@ class ChineseTimeParser(BaseTimeParser):
         extra: DateTimeExtra = source.data
 
         if not extra:
-            inner_result = next(iter(self.inner_extractor.extract(
-                source.text, reference)), ExtractResult())
+            inner_result = next(iter(self.inner_extractor.extract(source.text, reference)), ExtractResult())
             extra = inner_result.data
 
         time_result = self.function_map[extra.data_type](extra)
@@ -45,9 +44,11 @@ class ChineseTimeParser(BaseTimeParser):
 
         if parse_result.success:
             parse_result.future_resolution[TimeTypeConstants.TIME] = DateTimeFormatUtil.format_time(
-                parse_result.future_value)
+                parse_result.future_value
+            )
             parse_result.past_resolution[TimeTypeConstants.TIME] = DateTimeFormatUtil.format_time(
-                parse_result.past_value)
+                parse_result.past_value
+            )
 
         result = DateTimeParseResult(source)
         result.value = parse_result
@@ -59,8 +60,7 @@ class ChineseTimeParser(BaseTimeParser):
 
     def handle_less(self, extra: DateTimeExtra) -> TimeResult:
         hour = self.match_to_value(next(iter(extra.named_entity['hour']), ''))
-        quarter = self.match_to_value(
-            next(iter(extra.named_entity['quarter']), ''))
+        quarter = self.match_to_value(next(iter(extra.named_entity['quarter']), ''))
         has_half = next(iter(extra.named_entity['half']), '') == ''
         minute = 30 if not has_half else quarter * 15 if quarter != -1 else 0
         second = self.match_to_value(next(iter(extra.named_entity['sec']), ''))
@@ -81,16 +81,20 @@ class ChineseTimeParser(BaseTimeParser):
 
     def handle_chinese(self, extra: DateTimeExtra) -> TimeResult:
         hour = self.match_to_value(next(iter(extra.named_entity['hour']), ''))
-        quarter = self.match_to_value(
-            next(iter(extra.named_entity['quarter']), ''))
+        quarter = self.match_to_value(next(iter(extra.named_entity['quarter']), ''))
         has_half = next(iter(extra.named_entity['half']), '') == ''
-        minute = 30 if not has_half else quarter * 15 if quarter != - \
-            1 else self.match_to_value(next(iter(extra.named_entity['min']), ''))
+        minute = (
+            30
+            if not has_half
+            else quarter * 15 if quarter != -1 else self.match_to_value(next(iter(extra.named_entity['min']), ''))
+        )
         second = self.match_to_value(next(iter(extra.named_entity['sec']), ''))
 
         return TimeResult(hour, minute, second)
 
-    def pack_time_result(self, extra: DateTimeExtra, time_result: TimeResult, reference: datetime) -> DateTimeResolutionResult:
+    def pack_time_result(
+        self, extra: DateTimeExtra, time_result: TimeResult, reference: datetime
+    ) -> DateTimeResolutionResult:
         result = DateTimeResolutionResult()
 
         day_description = next(iter(extra.named_entity['daydesc']), '')
@@ -120,10 +124,8 @@ class ChineseTimeParser(BaseTimeParser):
         if hour == 24:
             hour = 0
 
-        result.future_value = DateUtils.safe_create_from_min_value(
-            year, month, day, hour, minute, second)
-        result.past_value = DateUtils.safe_create_from_min_value(
-            year, month, day, hour, minute, second)
+        result.future_value = DateUtils.safe_create_from_min_value(year, month, day, hour, minute, second)
+        result.past_value = DateUtils.safe_create_from_min_value(year, month, day, hour, minute, second)
         result.timex = timex
         result.success = True
 
@@ -136,5 +138,4 @@ class ChineseTimeParser(BaseTimeParser):
         return TimeResolutionUtils.match_to_value(self.only_digit_match, self.numbers_map, source)
 
     def add_description(self, time_result: TimeResult, description: str):
-        TimeResolutionUtils.add_description(
-            time_result, self.low_bound_map, description)
+        TimeResolutionUtils.add_description(time_result, self.low_bound_map, description)

@@ -203,91 +203,58 @@ class PortugueseDatePeriodParserConfiguration(DatePeriodParserConfiguration):
 
     def __init__(self, config: BaseDateParserConfiguration):
         self._check_both_before_after = PortugueseDateTime.CheckBothBeforeAfter
-        self._later_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.LaterRegex)
-        self._ago_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.AgoRegex)
+        self._later_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.LaterRegex)
+        self._ago_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.AgoRegex)
         self._date_extractor = config.date_extractor
         self._date_parser = config.date_parser
         self._duration_extractor = config.duration_extractor
         self._duration_parser = config.duration_parser
-        self._month_front_between_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.MonthFrontBetweenRegex)
-        self._between_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.BetweenRegex)
+        self._month_front_between_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.MonthFrontBetweenRegex)
+        self._between_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.BetweenRegex)
         self._month_front_simple_cases_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.MonthFrontSimpleCasesRegex)
-        self._simple_cases_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.SimpleCasesRegex)
-        self._one_word_period_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.OneWordPeriodRegex)
-        self._month_with_year = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.MonthWithYearRegex)
-        self._month_num_with_year = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.MonthNumWithYearRegex)
-        self._year_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.YearRegex)
-        self._past_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.PreviousPrefixRegex)
-        self._future_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.NextPrefixRegex)
+            PortugueseDateTime.MonthFrontSimpleCasesRegex
+        )
+        self._simple_cases_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.SimpleCasesRegex)
+        self._one_word_period_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.OneWordPeriodRegex)
+        self._month_with_year = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.MonthWithYearRegex)
+        self._month_num_with_year = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.MonthNumWithYearRegex)
+        self._year_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.YearRegex)
+        self._past_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.PreviousPrefixRegex)
+        self._future_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.NextPrefixRegex)
         self._in_connector_regex = config.utility_configuration.in_connector_regex
-        self._week_of_month_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.WeekOfMonthRegex)
-        self._week_of_year_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.WeekOfYearRegex)
-        self._quarter_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.QuarterRegex)
-        self._quarter_regex_year_front = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.QuarterRegexYearFront)
-        self._all_half_year_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.AllHalfYearRegex)
-        self._season_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.SeasonRegex)
-        self._week_of_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.WeekOfRegex)
-        self._month_of_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.MonthOfRegex)
-        self._which_week_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.WhichWeekRegex)
-        self._next_prefix_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.NextPrefixRegex)
-        self._past_prefix_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.PreviousPrefixRegex)
-        self._this_prefix_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.ThisPrefixRegex)
-        self._rest_of_date_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.RestOfDateRegex)
-        self._later_early_period_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.LaterEarlyPeriodRegex)
+        self._week_of_month_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.WeekOfMonthRegex)
+        self._week_of_year_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.WeekOfYearRegex)
+        self._quarter_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.QuarterRegex)
+        self._quarter_regex_year_front = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.QuarterRegexYearFront)
+        self._all_half_year_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.AllHalfYearRegex)
+        self._season_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.SeasonRegex)
+        self._week_of_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.WeekOfRegex)
+        self._month_of_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.MonthOfRegex)
+        self._which_week_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.WhichWeekRegex)
+        self._next_prefix_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.NextPrefixRegex)
+        self._past_prefix_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.PreviousPrefixRegex)
+        self._this_prefix_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.ThisPrefixRegex)
+        self._rest_of_date_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.RestOfDateRegex)
+        self._later_early_period_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.LaterEarlyPeriodRegex)
         self._week_with_week_day_range_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.WeekWithWeekDayRangeRegex)
+            PortugueseDateTime.WeekWithWeekDayRangeRegex
+        )
         self._unspecific_end_of_range_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.UnspecificEndOfRangeRegex)
+            PortugueseDateTime.UnspecificEndOfRangeRegex
+        )
         self._token_before_date = PortugueseDateTime.TokenBeforeDate
         self._day_of_month = config.day_of_month
         self._month_of_year = config.month_of_year
         self._cardinal_map = config.cardinal_map
         self._season_map = config.season_map
         self._unit_map = config.unit_map
-        self._now_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.NowRegex)
-        self._relative_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.RelativeRegex)
-        self._decade_with_century_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.DecadeWithCenturyRegex)
-        self._complex_dateperiod_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.ComplexDatePeriodRegex
-        )
-        self._relative_decade_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.RelativeDecadeRegex
-        )
-        self._reference_date_period_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.ReferenceDatePeriodRegex
-        )
-        self._less_than_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.LessThanRegex
-        )
+        self._now_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.NowRegex)
+        self._relative_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.RelativeRegex)
+        self._decade_with_century_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.DecadeWithCenturyRegex)
+        self._complex_dateperiod_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.ComplexDatePeriodRegex)
+        self._relative_decade_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.RelativeDecadeRegex)
+        self._reference_date_period_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.ReferenceDatePeriodRegex)
+        self._less_than_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.LessThanRegex)
 
     def get_swift_day_or_month(self, source: str) -> int:
         trimmed_source = source.strip().lower()

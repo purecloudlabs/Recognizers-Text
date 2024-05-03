@@ -24,6 +24,6 @@ class JapaneseHolidayExtractorConfiguration(CJKHolidayExtractorConfiguration):
         self._holiday_regex_list = [
             RegExpUtility.get_safe_reg_exp(JapaneseDateTime.HolidayRegexList1),
             RegExpUtility.get_safe_reg_exp(JapaneseDateTime.HolidayRegexList2),
-            self._lunar_holiday_regex
+            self._lunar_holiday_regex,
         ]
         self._holiday_regexes = self._holiday_regex_list

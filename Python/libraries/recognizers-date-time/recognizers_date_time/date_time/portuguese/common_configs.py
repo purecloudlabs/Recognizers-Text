@@ -173,33 +173,18 @@ class PortugueseCommonDateTimeParserConfiguration(BaseDateParserConfiguration):
         self._integer_extractor = PortugueseIntegerExtractor()
         self._ordinal_extractor = PortugueseOrdinalExtractor()
         self._check_both_before_after = PortugueseDateTime.CheckBothBeforeAfter
-        self._number_parser = BaseNumberParser(
-            PortugueseNumberParserConfiguration())
-        self._date_extractor = BaseDateExtractor(
-            PortugueseDateExtractorConfiguration())
-        self._time_extractor = BaseTimeExtractor(
-            PortugueseTimeExtractorConfiguration())
-        self._duration_extractor = BaseDurationExtractor(
-            PortugueseDurationExtractorConfiguration())
-        self._date_period_extractor = BaseDatePeriodExtractor(
-            PortugueseDatePeriodExtractorConfiguration())
-        self._time_period_extractor = BaseTimePeriodExtractor(
-            PortugueseTimePeriodExtractorConfiguration())
-        self._date_time_extractor = BaseDateTimeExtractor(
-            PortugueseDateTimeExtractorConfiguration())
-        self._date_time_period_extractor = BaseDateTimePeriodExtractor(
-            PortugueseDateTimePeriodExtractorConfiguration())
-        self._duration_parser = BaseDurationParser(
-            PortugueseDurationParserConfiguration(self))
-        self._date_parser = BaseDateParser(
-            PortugueseDateParserConfiguration(self))
-        self._time_parser = PortugueseTimeParser(
-            PortugueseTimeParserConfiguration(self))
-        self._date_period_parser = BaseDatePeriodParser(
-            PortugueseDatePeriodParserConfiguration(self))
-        self._time_period_parser = BaseTimePeriodParser(
-            PortugueseTimePeriodParserConfiguration(self))
-        self._date_time_parser = BaseDateTimeParser(
-            PortugueseDateTimeParserConfiguration(self))
-        self._date_time_period_parser = BaseDateTimePeriodParser(
-            PortugueseDateTimePeriodParserConfiguration(self))
+        self._number_parser = BaseNumberParser(PortugueseNumberParserConfiguration())
+        self._date_extractor = BaseDateExtractor(PortugueseDateExtractorConfiguration())
+        self._time_extractor = BaseTimeExtractor(PortugueseTimeExtractorConfiguration())
+        self._duration_extractor = BaseDurationExtractor(PortugueseDurationExtractorConfiguration())
+        self._date_period_extractor = BaseDatePeriodExtractor(PortugueseDatePeriodExtractorConfiguration())
+        self._time_period_extractor = BaseTimePeriodExtractor(PortugueseTimePeriodExtractorConfiguration())
+        self._date_time_extractor = BaseDateTimeExtractor(PortugueseDateTimeExtractorConfiguration())
+        self._date_time_period_extractor = BaseDateTimePeriodExtractor(PortugueseDateTimePeriodExtractorConfiguration())
+        self._duration_parser = BaseDurationParser(PortugueseDurationParserConfiguration(self))
+        self._date_parser = BaseDateParser(PortugueseDateParserConfiguration(self))
+        self._time_parser = PortugueseTimeParser(PortugueseTimeParserConfiguration(self))
+        self._date_period_parser = BaseDatePeriodParser(PortugueseDatePeriodParserConfiguration(self))
+        self._time_period_parser = BaseTimePeriodParser(PortugueseTimePeriodParserConfiguration(self))
+        self._date_time_parser = BaseDateTimeParser(PortugueseDateTimeParserConfiguration(self))
+        self._date_time_period_parser = BaseDateTimePeriodParser(PortugueseDateTimePeriodParserConfiguration(self))

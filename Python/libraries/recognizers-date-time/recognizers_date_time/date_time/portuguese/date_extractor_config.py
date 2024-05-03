@@ -28,7 +28,9 @@ class PortugueseDateExtractorConfiguration(DateExtractorConfiguration):
         self.ordinal_extractor: BaseNumberExtractor = PortugueseOrdinalExtractor()
         self.integer_extractor: BaseNumberExtractor = PortugueseIntegerExtractor()
         self.number_parser: BaseNumberParser = BaseNumberParser(PortugueseNumberParserConfiguration())
-        self.duration_extractor: BaseDurationExtractor = BaseDurationExtractor(PortugueseDurationExtractorConfiguration())
+        self.duration_extractor: BaseDurationExtractor = BaseDurationExtractor(
+            PortugueseDurationExtractorConfiguration()
+        )
         self.utility_configuration: DateTimeUtilityConfiguration = PortugueseDateTimeUtilityConfiguration()
         self.implicit_date_list: List[Pattern] = [
             RegExpUtility.get_safe_reg_exp(PortugueseDateTime.OnRegex),
@@ -71,4 +73,3 @@ class PortugueseDateExtractorConfiguration(DateExtractorConfiguration):
             RegExpUtility.get_safe_reg_exp(date_extractor_9),
             RegExpUtility.get_safe_reg_exp(PortugueseDateTime.DateExtractor10),
         ]
-

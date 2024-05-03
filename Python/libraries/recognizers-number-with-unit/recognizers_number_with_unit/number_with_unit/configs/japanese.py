@@ -26,7 +26,8 @@ class JapaneseNumberWithUnitExtractorConfiguration(NumberWithUnitExtractorConfig
     build_suffix: str = JapaneseNumericWithUnit.BuildSuffix
     connector_token: str = JapaneseNumericWithUnit.ConnectorToken
     compound_unit_connector_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-        JapaneseNumericWithUnit.CompoundUnitConnectorRegex)
+        JapaneseNumericWithUnit.CompoundUnitConnectorRegex
+    )
     non_unit_regex: Pattern = RegExpUtility.get_safe_reg_exp(BaseUnits.PmNonUnitRegex)
     ambiguous_unit_number_multiplier_regex: Pattern = None
     culture_info: CultureInfo = None
@@ -61,7 +62,8 @@ class JapaneseNumberWithUnitParserConfiguration(NumberWithUnitParserConfiguratio
         culture_info = culture_info or CultureInfo(Culture.Japanese)
         super().__init__(culture_info)
         self.internal_number_parser: Parser = AgnosticNumberParserFactory.get_parser(
-            ParserType.NUMBER, JapaneseNumberParserConfiguration(culture_info))
+            ParserType.NUMBER, JapaneseNumberParserConfiguration(culture_info)
+        )
 
 
 class JapaneseCurrencyParserConfiguration(JapaneseNumberWithUnitParserConfiguration):
@@ -72,4 +74,3 @@ class JapaneseCurrencyParserConfiguration(JapaneseNumberWithUnitParserConfigurat
         self.add_dict_to_unit_map(JapaneseNumericWithUnit.CurrencyPrefixList)
         self.currency_name_to_iso_code_map = JapaneseNumericWithUnit.CurrencyNameToIsoCodeMap
         self.currency_fraction_code_list = JapaneseNumericWithUnit.FractionalUnitNameToCodeMap
-

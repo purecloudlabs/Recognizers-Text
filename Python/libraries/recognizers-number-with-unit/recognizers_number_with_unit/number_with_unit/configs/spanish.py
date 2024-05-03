@@ -26,7 +26,8 @@ class SpanishNumberWithUnitExtractorConfiguration(NumberWithUnitExtractorConfigu
     build_suffix: str = SpanishNumericWithUnit.BuildSuffix
     connector_token: str = SpanishNumericWithUnit.ConnectorToken
     compound_unit_connector_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-        SpanishNumericWithUnit.CompoundUnitConnectorRegex)
+        SpanishNumericWithUnit.CompoundUnitConnectorRegex
+    )
     non_unit_regex: Pattern = RegExpUtility.get_safe_reg_exp(BaseUnits.PmNonUnitRegex)
     ambiguous_unit_number_multiplier_regex: Pattern = None
     culture_info: CultureInfo = None
@@ -60,7 +61,8 @@ class SpanishNumberWithUnitParserConfiguration(NumberWithUnitParserConfiguration
         culture_info = culture_info or CultureInfo(Culture.Spanish)
         super().__init__(culture_info)
         self.internal_number_parser: Parser = AgnosticNumberParserFactory.get_parser(
-            ParserType.NUMBER, SpanishNumberParserConfiguration(culture_info))
+            ParserType.NUMBER, SpanishNumberParserConfiguration(culture_info)
+        )
 
 
 class SpanishCurrencyParserConfiguration(SpanishNumberWithUnitParserConfiguration):
@@ -71,4 +73,3 @@ class SpanishCurrencyParserConfiguration(SpanishNumberWithUnitParserConfiguratio
         self.add_dict_to_unit_map(SpanishNumericWithUnit.CurrencyPrefixList)
         self.currency_name_to_iso_code_map = SpanishNumericWithUnit.CurrencyNameToIsoCodeMap
         self.currency_fraction_code_list = SpanishNumericWithUnit.FractionalUnitNameToCodeMap
-

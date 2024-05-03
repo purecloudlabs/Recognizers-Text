@@ -67,4 +67,3 @@ class ItalianDateExtractorConfiguration(DateExtractorConfiguration):
             RegExpUtility.get_safe_reg_exp(ItalianDateTime.DateExtractor9),
             RegExpUtility.get_safe_reg_exp(ItalianDateTime.DateExtractorA),
         ]
-

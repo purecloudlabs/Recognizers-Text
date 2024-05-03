@@ -215,36 +215,22 @@ class ArabicDateParserConfiguration(DateParserConfiguration):
         self._cardinal_map = config.cardinal_map
 
         self._on_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.OnRegex)
-        self._special_day_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.SpecialDayRegex)
-        self._special_day_with_num_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.SpecialDayWithNumRegex)
-        self._next_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.NextDateRegex)
-        self._last_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.LastDateRegex)
-        self._this_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.ThisRegex)
-        self._unit_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.DateUnitRegex)
-        self._month_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.MonthRegex)
-        self._week_day_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.WeekDayRegex)
-        self._week_day_of_month_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.WeekDayOfMonthRegex)
-        self._for_the_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.ForTheRegex)
-        self._week_day_and_day_of_month_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.WeekDayAndDayOfMonthRegex)
-        self._week_day_and_day_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.WeekDayAndDayRegex)
-        self._relative_month_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.RelativeMonthRegex)
+        self._special_day_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.SpecialDayRegex)
+        self._special_day_with_num_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.SpecialDayWithNumRegex)
+        self._next_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.NextDateRegex)
+        self._last_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.LastDateRegex)
+        self._this_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.ThisRegex)
+        self._unit_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.DateUnitRegex)
+        self._month_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.MonthRegex)
+        self._week_day_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.WeekDayRegex)
+        self._week_day_of_month_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.WeekDayOfMonthRegex)
+        self._for_the_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.ForTheRegex)
+        self._week_day_and_day_of_month_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.WeekDayAndDayOfMonthRegex)
+        self._week_day_and_day_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.WeekDayAndDayRegex)
+        self._relative_month_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.RelativeMonthRegex)
         self._strict_relative_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.StrictRelativeRegex)
         self._year_suffix = RegExpUtility.get_safe_reg_exp(ArabicDateTime.YearSuffix)
-        self._relative_week_day_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.RelativeWeekDayRegex)
+        self._relative_week_day_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.RelativeWeekDayRegex)
         self._before_after_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.BeforeAfterRegex)
 
         self._utility_configuration = config.utility_configuration
@@ -308,10 +294,8 @@ class ArabicDateParserConfiguration(DateParserConfiguration):
     def get_swift(self, source: str) -> int:
         trimmed_text = source.strip().lower()
         swift = 0
-        next_prefix_matches = regex.search(
-            self.next_prefix_regex, trimmed_text)
-        past_prefix_matches = regex.search(
-            self.past_prefix_regex, trimmed_text)
+        next_prefix_matches = regex.search(self.next_prefix_regex, trimmed_text)
+        past_prefix_matches = regex.search(self.past_prefix_regex, trimmed_text)
         if next_prefix_matches:
             swift = 1
         elif past_prefix_matches:

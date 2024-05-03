@@ -73,25 +73,20 @@ class PortugueseDurationParserConfiguration(DurationParserConfiguration):
         return self._duration_extractor
 
     def __init__(self, config):
-        self._duration_extractor = BaseDurationExtractor(
-            PortugueseDurationExtractorConfiguration(), False)
+        self._duration_extractor = BaseDurationExtractor(PortugueseDurationExtractorConfiguration(), False)
         self._cardinal_extractor: BaseNumberExtractor = PortugueseCardinalExtractor()
-        self._number_parser: BaseNumberParser = BaseNumberParser(
-            PortugueseNumberParserConfiguration())
-        self._followed_unit: Pattern = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.FollowedUnit)
-        self._suffix_and_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.SuffixAndRegex)
+        self._number_parser: BaseNumberParser = BaseNumberParser(PortugueseNumberParserConfiguration())
+        self._followed_unit: Pattern = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.FollowedUnit)
+        self._suffix_and_regex: Pattern = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.SuffixAndRegex)
         self._number_combined_with_unit: Pattern = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.DurationNumberCombinedWithUnit)
-        self._an_unit_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.AnUnitRegex)
-        self._all_date_unit_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.AllRegex)
-        self._half_date_unit_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.HalfRegex)
+            PortugueseDateTime.DurationNumberCombinedWithUnit
+        )
+        self._an_unit_regex: Pattern = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.AnUnitRegex)
+        self._all_date_unit_regex: Pattern = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.AllRegex)
+        self._half_date_unit_regex: Pattern = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.HalfRegex)
         self._inexact_number_unit_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.InexactNumberUnitRegex)
+            PortugueseDateTime.InexactNumberUnitRegex
+        )
         self._unit_map: Dict[str, str] = PortugueseDateTime.UnitMap
         self._unit_value_map: Dict[str, int] = PortugueseDateTime.UnitValueMap
         self._double_numbers: Dict[str, float] = PortugueseDateTime.DoubleNumbers

@@ -50,10 +50,11 @@ class AbstractNumberWithUnitModel(Model):
                     model_result.end = parse_result.start + parse_result.length - 1
                     model_result.text = parse_result.text
                     model_result.type_name = self.model_type_name
-                    model_result.resolution = self.get_resolution(
-                        parse_result.value)
+                    model_result.resolution = self.get_resolution(parse_result.value)
 
-                    b_add = not [x for x in extraction_results if (model_result.start <= x.start and model_result.end >= x.end)]
+                    b_add = not [
+                        x for x in extraction_results if (model_result.start <= x.start and model_result.end >= x.end)
+                    ]
 
                     if b_add:
                         extraction_results.append(model_result)
@@ -67,32 +68,20 @@ class AbstractNumberWithUnitModel(Model):
     @staticmethod
     def get_resolution(data):
         if isinstance(data, str):
-            return {
-                'value': data
-            }
+            return {'value': data}
         elif isinstance(data, UnitValue):
-            return {
-                'value': data.number,
-                'unit': data.unit
-            }
+            return {'value': data.number, 'unit': data.unit}
         elif isinstance(data, CurrencyUnitValue):
-            return {
-                'value': data.number,
-                'unit': data.unit,
-                'isoCurrency': data.iso_currency
-            }
+            return {'value': data.number, 'unit': data.unit, 'isoCurrency': data.iso_currency}
         elif isinstance(data, list):
             if hasattr(data[0].value, 'iso_currency'):
                 return {
                     'value': data[0].value.number,
                     'unit': data[0].value.unit,
-                    'isoCurrency': data[0].value.iso_currency
+                    'isoCurrency': data[0].value.iso_currency,
                 }
             else:
-                return {
-                    'value': data[0].value.number,
-                    'unit': data[0].value.unit
-                }
+                return {'value': data[0].value.number, 'unit': data[0].value.unit}
 
         return None
 

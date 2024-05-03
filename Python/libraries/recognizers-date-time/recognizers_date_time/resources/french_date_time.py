@@ -20,7 +20,9 @@ class FrenchDateTime(BaseDateTimeResource):
     CheckBothBeforeAfter = False
     TillRegex = '(?<till>\\b(au|et|(jusqu\')?a|avant)\\b|(jusqu\')?à|--|-|—|——)'
     RangeConnectorRegex = '(?<and>\\b(de\\s+la|au|(jusqu\')?a|et(\\s*la)?)\\b|(jusqu\')?à|--|-|—|——)'
-    RelativeRegex = '(?<order>prochaine?|de|du|ce(tte)?|l[ae]|derni[eè]re|hier|pr[eé]c[eé]dente|au\\s+cours+(de|du\\s*))'
+    RelativeRegex = (
+        '(?<order>prochaine?|de|du|ce(tte)?|l[ae]|derni[eè]re|hier|pr[eé]c[eé]dente|au\\s+cours+(de|du\\s*))'
+    )
     StrictRelativeRegex = '(?<order>prochaine?|derni[eè]re|hier|pr[eé]c[eé]dente|au\\s+cours+(de|du\\s*))'
     NextSuffixRegex = '(?<order>prochain(es?)?|suivante)\\b'
     PastSuffixRegex = '(?<order>derni[eè]r(es?)?|pr[eé]c[eé]dente)\\b'
@@ -41,11 +43,15 @@ class FrenchDateTime(BaseDateTimeResource):
     WrittenCenturyFullYearRegex = f'(?:(deux\\s+)?mille((\\s+{WrittenOneToNineRegex})?\\s+cents?)?)'
     WrittenCenturyOrdinalYearRegex = f'({WrittenOneToNineRegex}|{WrittenElevenToNineteenRegex}|dix)'
     CenturyRegex = f'\\b(?<century>{WrittenCenturyFullYearRegex}|{WrittenCenturyOrdinalYearRegex}(\\s+cents?)?)\\b'
-    LastTwoYearNumRegex = f'(({WrittenTensRegex}(\\s+|-))?({WrittenOneToNineRegex}|{WrittenElevenToNineteenRegex})|{WrittenTensRegex})'
+    LastTwoYearNumRegex = (
+        f'(({WrittenTensRegex}(\\s+|-))?({WrittenOneToNineRegex}|{WrittenElevenToNineteenRegex})|{WrittenTensRegex})'
+    )
     FullTextYearRegex = f'\\b(?<fullyear>(?<firsttwoyearnum>{CenturyRegex})\\s+(?<lasttwoyearnum>{LastTwoYearNumRegex})\\b|\\b(?<firsttwoyearnum>{WrittenCenturyFullYearRegex}|{WrittenCenturyOrdinalYearRegex}\\s+cents))\\b'
     YearRegex = f'({BaseDateTime.FourDigitYearRegex}|{FullTextYearRegex})'
     WeekDayRegex = '(?<weekday>dimanche|lundi|mardi|mercredi|jeudi|vendredi|samedi|lun(\\.)?|mar(\\.)?|mer(\\.)?|jeu(\\.)?|ven(\\.)?|sam(\\.)?|dim(\\.)?)'
-    RelativeMonthRegex = f'(?<relmonth>({ThisPrefixRegex}\\s+mois)|(mois\\s+{PastSuffixRegex})|(mois\\s+{NextSuffixRegex}))\\b'
+    RelativeMonthRegex = (
+        f'(?<relmonth>({ThisPrefixRegex}\\s+mois)|(mois\\s+{PastSuffixRegex})|(mois\\s+{NextSuffixRegex}))\\b'
+    )
     WrittenMonthRegex = '(?<month>avril|avr(\\.)?|ao[uû]t|d[eé]cembre|d[eé]c(\\.)?|f[eé]vrier|f[eé]vr?(\\.)?|janvier|janv?(\\.)?|juillet|jui?[ln](\\.)?|mars?(\\.)?|mai|novembre|nov(\\.)?|octobre|oct(\\.)?|septembre|sept?(\\.)?(?!\\s+heures))'
     MonthSuffixRegex = f'(?<msuf>(en\\s*|le\\s*|de\\s*|dans\\s*)?({RelativeMonthRegex}|{WrittenMonthRegex}))'
     DateUnitRegex = '(?<unit>an|mois|((l\')?ann[eé]e|semaine|journ[eé]e|jour)(?<plural>s)?)\\b'
@@ -56,7 +62,9 @@ class FrenchDateTime(BaseDateTimeResource):
     YearWordRegex = '\\b(?<year>l\'ann[ée]e)\\b'
     MonthWithYear = f'\\b({WrittenMonthRegex}(\\s*),?(\\s+de)?(\\s*)({YearRegex}|\\\'?{TwoDigitYearRegex}|(?<order>cette)\\s*{YearWordRegex})|{YearWordRegex}\\s*({PastSuffixRegex}|{NextSuffixRegex}))'
     OneWordPeriodRegex = f'\\b(({RelativeRegex}\\s+)?{WrittenMonthRegex}|(la\\s+)?(weekend|(fin de )?semaine|week-end|mois|ans?|l\'année)\\s+{StrictRelativeRegex}|{RelativeRegex}\\s+(weekend|(fin de )?semaine|week-end|mois|ans?|l\'année)|weekend|week-end|mois|l\'année|an)\\b'
-    MonthNumWithYear = f'({YearRegex}(\\s*)[/\\-\\.](\\s*){MonthNumRegex})|({MonthNumRegex}(\\s*)[/\\-](\\s*){YearRegex})'
+    MonthNumWithYear = (
+        f'({YearRegex}(\\s*)[/\\-\\.](\\s*){MonthNumRegex})|({MonthNumRegex}(\\s*)[/\\-](\\s*){YearRegex})'
+    )
     WeekOfMonthRegex = f'(?<wom>(le\\s+)?(?<cardinal>premier|1er|duexi[èe]me|2|troisi[èe]me|3|quatri[èe]me|4|cinqi[èe]me|5)\\s+semaine(\\s+de)?\\s+{MonthSuffixRegex})'
     WeekOfYearRegex = f'(?<woy>(le\\s+)?(?<cardinal>premier|1er|duexi[èe]me|2|troisi[èe]me|3|quatri[èe]me|4|cinqi[èe]me|5)\\s+semaine(\\s+de)?\\s+({YearRegex}|{RelativeRegex}\\s+ann[ée]e))'
     OfYearRegex = f'\\b((of|in)\\s+({YearRegex}|{StrictRelativeRegex}\\s+year))\\b'
@@ -90,10 +98,16 @@ class FrenchDateTime(BaseDateTimeResource):
     DateExtractor1 = f'\\b({WeekDayRegex}(\\s+|\\s*,\\s*))?{MonthRegex}\\s*[/\\\\\\.\\-]?\\s*{DayRegex}(\\s*([/\\\\\\.\\-]|\\bde\\b)?\\s*{BaseDateTime.FourDigitYearRegex})?\\b'
     DateExtractor2 = f'\\b({WeekDayRegex}(\\s+|\\s*,\\s*))?{DayRegex}(\\s+|\\s*,\\s*|\\s+){MonthRegex}\\s*([\\.\\-]|\\bde\\b)?\\s*{DateYearRegex}\\b'
     DateExtractor3 = f'\\b({WeekDayRegex}(\\s+|\\s*,\\s*))?((?<!\\d\\s)(?<!\\d){DayRegex}(\\s+|\\s*[.,/-])({MonthRegex}((\\s+|\\s*[.,/-]\\s*){DateYearRegex}(?!\\s*\\d))?|{MonthNumRegex}(\\s+|\\s*[.,/-]\\s*){DateYearRegex}(?!\\s*\\d))|{BaseDateTime.FourDigitYearRegex}\\s*[.,/-]?\\s*{DayRegex}\\s*[.,/-]?\\s*{MonthRegex})\\b'
-    DateExtractor4 = f'\\b{MonthNumRegex}\\s*[/\\\\\\-]\\s*{DayRegex}\\s*[/\\\\\\-]\\s*{DateYearRegex}(?!\\s*[/\\\\\\-\\.]\\s*\\d+)'
+    DateExtractor4 = (
+        f'\\b{MonthNumRegex}\\s*[/\\\\\\-]\\s*{DayRegex}\\s*[/\\\\\\-]\\s*{DateYearRegex}(?!\\s*[/\\\\\\-\\.]\\s*\\d+)'
+    )
     DateExtractor5 = f'\\b{DayRegex}\\s*[/\\\\\\-\\.]\\s*({MonthNumRegex}|{MonthRegex})\\s*[/\\\\\\-\\.]\\s*{DateYearRegex}(?!\\s*[/\\\\\\-\\.]\\s*\\d+)'
-    DateExtractor6 = f'(?<=\\b(le|sur(\\sl[ae])?)\\s+){MonthNumRegex}[\\-\\.\\/]{DayRegex}{BaseDateTime.CheckDecimalRegex}\\b'
-    DateExtractor7 = f'\\b{DayRegex}\\s*/\\s*{MonthNumRegex}((\\s+|\\s*,\\s*){DateYearRegex})?{BaseDateTime.CheckDecimalRegex}\\b'
+    DateExtractor6 = (
+        f'(?<=\\b(le|sur(\\sl[ae])?)\\s+){MonthNumRegex}[\\-\\.\\/]{DayRegex}{BaseDateTime.CheckDecimalRegex}\\b'
+    )
+    DateExtractor7 = (
+        f'\\b{DayRegex}\\s*/\\s*{MonthNumRegex}((\\s+|\\s*,\\s*){DateYearRegex})?{BaseDateTime.CheckDecimalRegex}\\b'
+    )
     DateExtractor8 = f'(?<=\\b(le)\\s+){DayRegex}[\\\\\\-]{MonthNumRegex}{BaseDateTime.CheckDecimalRegex}\\b'
     DateExtractor9 = f'\\b({WeekDayRegex}(\\s+|\\s*,\\s*))?{DayRegex}\\s*(/|du)\\s*{MonthNumRegex}((\\s+|\\s*,\\s*){DateYearRegex})?{BaseDateTime.CheckDecimalRegex}\\b'
     DateExtractorA = f'\\b({DateYearRegex}\\s*[/\\\\\\-\\.]\\s*({MonthNumRegex}|{MonthRegex})\\s*[/\\\\\\-\\.]\\s*{DayRegex}|{MonthRegex}\\s*[/\\\\\\-\\.]\\s*{BaseDateTime.FourDigitYearRegex}\\s*[/\\\\\\-\\.]\\s*{DayRegex}|{DayRegex}\\s*[/\\\\\\-\\.]\\s*{BaseDateTime.FourDigitYearRegex}\\s*[/\\\\\\-\\.]\\s*{MonthRegex})(?!\\s*[/\\\\\\-\\.:]\\s*\\d+)'
@@ -106,10 +120,14 @@ class FrenchDateTime(BaseDateTimeResource):
     MinuteNumRegex = '(?<minnum>((vingt|trente|quarante|cinquante)(\\s*(et|-)?\\s*))?(un|deux|trois|quatre|cinq|six|sept|huit|neuf)|onze|douze|treize|quatorze|quinze|seize|dix-sept|dix-huit|dix-neuf|vingt|trente|quarante|cinquante|dix)'
     DeltaMinuteNumRegex = '(?<deltaminnum>((vingt|trente|quarante|cinquante)(\\s*(et|-)?\\s*))?(un|deux|trois|quatre|cinq|six|sept|huit|neuf)|onze|douze|treize|quatorze|quinze|seize|dix-sept|dix-huit|dix-neuf|vingt|trente|quarante|cinquante|dix)'
     OclockRegex = '(?<oclock>heures?|h)'
-    PmRegex = '(?<pm>(dans l\'\\s*)?apr[eè]s(\\s*|-)midi|(du|ce|de|le)\\s*(soir([ée]e)?)|(dans l[ea]\\s+)?(nuit|soir[eé]e))'
+    PmRegex = (
+        '(?<pm>(dans l\'\\s*)?apr[eè]s(\\s*|-)midi|(du|ce|de|le)\\s*(soir([ée]e)?)|(dans l[ea]\\s+)?(nuit|soir[eé]e))'
+    )
     AmRegex = '(?<am>(du|de|ce|(du|de|dans)\\s*l[ea]|le)?\\s*matin[ée]e|(du|de|ce|dans l[ea]|le)?\\s*matin)'
     LessThanOneHour = f'(?<lth>(une\\s+)?quart|trois quart(s)?|demie( heure)?|({BaseDateTime.DeltaMinuteRegex}|{DeltaMinuteNumRegex})(\\s+(minutes?|mins?))|(?<=heures?\\s+((et|moins)\\s+)?)({BaseDateTime.DeltaMinuteRegex}|{DeltaMinuteNumRegex}))'
-    WrittenTimeRegex = f'(?<writtentime>{HourNumRegex}\\s+(heures\\s+)?(et\\s+)?{MinuteNumRegex}(?!\\s+heures)(\\s+(minutes?|mins?))?)'
+    WrittenTimeRegex = (
+        f'(?<writtentime>{HourNumRegex}\\s+(heures\\s+)?(et\\s+)?{MinuteNumRegex}(?!\\s+heures)(\\s+(minutes?|mins?))?)'
+    )
     TimePrefix = f'(?<prefix>(heures?\\s+((et|moins)\\s+)?{LessThanOneHour}|(et|moins)\\s+{LessThanOneHour}|{LessThanOneHour}\\s+[àa]))'
     TimeSuffix = f'(?<suffix>{AmRegex}|{PmRegex}|{OclockRegex})'
     BasicTime = f'(?<basictime>{WrittenTimeRegex}|{HourNumRegex}|{BaseDateTime.HourRegex}(:|\\s*h\\s*){BaseDateTime.MinuteRegex}(:{BaseDateTime.SecondRegex})?|{BaseDateTime.HourRegex})'
@@ -137,10 +155,14 @@ class FrenchDateTime(BaseDateTimeResource):
     TimeRegex7 = f'\\b{TimeSuffix}\\s+[àa]\\s+{BasicTime}((\\s*{DescRegex})|\\b)'
     TimeRegex8 = f'\\b{TimeSuffix}\\s+{BasicTime}((\\s*{DescRegex})|\\b)'
     TimeRegex9 = f'\\b{PeriodHourNumRegex}\\s+{FivesRegex}((\\s*{DescRegex})|\\b)'
-    TimeRegex10 = f'\\b{BaseDateTime.HourRegex}(\\s*h\\s*){BaseDateTime.MinuteRegex}(\\s*{DescRegex})?(\\s+{TimePrefix})?'
+    TimeRegex10 = (
+        f'\\b{BaseDateTime.HourRegex}(\\s*h\\s*){BaseDateTime.MinuteRegex}(\\s*{DescRegex})?(\\s+{TimePrefix})?'
+    )
     HourRegex = f'\\b{BaseDateTime.HourRegex}'
     PeriodDescRegex = '(?<desc>pm|am|p\\.m\\.|a\\.m\\.|p)'
-    PeriodPmRegex = '(?<pm>dans l\'apr[eè]s-midi|ce soir|d[eu] soir|dans l[ea] soir[eé]e|dans la nuit|d[eu] soir[ée]e)s?'
+    PeriodPmRegex = (
+        '(?<pm>dans l\'apr[eè]s-midi|ce soir|d[eu] soir|dans l[ea] soir[eé]e|dans la nuit|d[eu] soir[ée]e)s?'
+    )
     PeriodAmRegex = '(?<am>d[eu] matin|matin([ée]e)s?'
     PureNumFromTo = f'((du|depuis|des?)\\s+)?(?<!\\d[\\/.,:\\-])({HourRegex}|{PeriodHourNumRegex})(\\s*(?<leftDesc>{PeriodDescRegex}))?\\s*{TillRegex}\\s*({HourRegex}|{PeriodHourNumRegex})\\s*(?<rightDesc>{PmRegex}|{AmRegex}|{PeriodDescRegex})?'
     PureNumBetweenAnd = f'(entre\\s+)({HourRegex}|{PeriodHourNumRegex})(\\s*(?<leftDesc>{PeriodDescRegex}))?\\s*{RangeConnectorRegex}\\s*({HourRegex}|{PeriodHourNumRegex})\\s*(?<rightDesc>{PmRegex}|{AmRegex}|{PeriodDescRegex})?'
@@ -148,26 +170,38 @@ class FrenchDateTime(BaseDateTimeResource):
     SpecificTimeBetweenAnd = '^\\b$'
     PrepositionRegex = '(?<prep>^([aà](\\s+?la)?|en|sur(\\s*l[ea])?|de)$)'
     TimeOfDayRegex = '\\b(?<timeOfDay>((((dans\\s+(l[ea])?\\s+)?((?<early>d[eé]but(\\s+|-)|t[oô]t(\\s+|-)(l[ea]\\s*)?)|(?<late>fin\\s*|fin de(\\s+(la)?)|tard\\s*))?(matin([ée]e)?|((d|l)?\'?)apr[eè]s[-|\\s*]midi|nuit|soir([eé]e)?)))|(((\\s+(l[ea])?\\s+)?)jour(n[eé]e)?))s?)\\b'
-    SpecificTimeOfDayRegex = f'\\b(({RelativeRegex}\\s+{TimeOfDayRegex})|({TimeOfDayRegex}\\s*({NextSuffixRegex}))\\b|\\b(du )?soir)s?\\b'
+    SpecificTimeOfDayRegex = (
+        f'\\b(({RelativeRegex}\\s+{TimeOfDayRegex})|({TimeOfDayRegex}\\s*({NextSuffixRegex}))\\b|\\b(du )?soir)s?\\b'
+    )
     TimeFollowedUnit = f'^\\s*{TimeUnitRegex}'
     TimeNumberCombinedWithUnit = f'\\b(?<num>\\d+(\\.\\d*)?){TimeUnitRegex}'
     NowRegex = '\\b(?<now>(ce\\s+)?moment|maintenant|(d[eè]s|aussit[oô]t) que possible|dqp|r[eé]cemment|auparavant|le plus tôt( que)? possible)\\b'
     SuffixRegex = '^\\s*((dans\\s+l[ea]\\s+)|(en\\s+)|(d(u|\\\'))?(matin([eé]e)?|apr[eè]s-midi|soir[eé]e|nuit))\\b'
     DateTimeTimeOfDayRegex = '\\b(?<timeOfDay>matin([eé]e)?|apr[eè]s-midi|nuit|soir)\\b'
-    DateTimeSpecificTimeOfDayRegex = f'\\b(({RelativeRegex}\\s+{DateTimeTimeOfDayRegex})\\b|\\b(ce(tte)?\\s+)(soir|nuit))\\b'
+    DateTimeSpecificTimeOfDayRegex = (
+        f'\\b(({RelativeRegex}\\s+{DateTimeTimeOfDayRegex})\\b|\\b(ce(tte)?\\s+)(soir|nuit))\\b'
+    )
     TimeOfTodayAfterRegex = f'^\\s*(,\\s*)?(en|dans|du\\s+)?{DateTimeSpecificTimeOfDayRegex}'
     TimeOfTodayBeforeRegex = f'{DateTimeSpecificTimeOfDayRegex}(\\s*,)?(\\s+([àa]|vers|pour))?\\s*$'
-    SimpleTimeOfTodayAfterRegex = f'({HourNumRegex}|{BaseDateTime.HourRegex})\\s*(,\\s*)?(en|[àa]\\s+)?{DateTimeSpecificTimeOfDayRegex}'
-    SimpleTimeOfTodayBeforeRegex = f'{DateTimeSpecificTimeOfDayRegex}(\\s*,)?(\\s+([àa]|vers|pour))?\\s*({HourNumRegex}|{BaseDateTime.HourRegex})'
+    SimpleTimeOfTodayAfterRegex = (
+        f'({HourNumRegex}|{BaseDateTime.HourRegex})\\s*(,\\s*)?(en|[àa]\\s+)?{DateTimeSpecificTimeOfDayRegex}'
+    )
+    SimpleTimeOfTodayBeforeRegex = (
+        f'{DateTimeSpecificTimeOfDayRegex}(\\s*,)?(\\s+([àa]|vers|pour))?\\s*({HourNumRegex}|{BaseDateTime.HourRegex})'
+    )
     SpecificEndOfRegex = '(la\\s+)?fin(\\s+de\\s*|\\s*de*l[ea])?\\s*$'
     UnspecificEndOfRegex = '^\\b$'
     UnspecificEndOfRangeRegex = '^\\b$'
     PeriodTimeOfDayRegex = '\\b((dans\\s+(le)?\\s+)?((?<early>d[eé]but(\\s+|-|d[ue]|de la)|t[oô]t)|(?<late>tard\\s*|fin(\\s+|-|d[eu])?))?(?<timeOfDay>matin|((d|l)?\'?)apr[eè]s-midi|nuit|soir([eé]e)?))\\b'
-    PeriodSpecificTimeOfDayRegex = f'\\b(({RelativeRegex}\\s+{PeriodTimeOfDayRegex})\\b|\\b(ce(tte)?\\s+)(soir|nuit))\\b'
+    PeriodSpecificTimeOfDayRegex = (
+        f'\\b(({RelativeRegex}\\s+{PeriodTimeOfDayRegex})\\b|\\b(ce(tte)?\\s+)(soir|nuit))\\b'
+    )
     PeriodTimeOfDayWithDateRegex = f'\\b(({TimeOfDayRegex}))\\b'
     LessThanRegex = '^\\b$'
     MoreThanRegex = '^\\b$'
-    DurationUnitRegex = '(?<unit>ann[eé]es?|ans?|mois|semaines?|jours?|heures?|hrs?|h|minutes?|mins?|secondes?|secs?|journ[eé]e)\\b'
+    DurationUnitRegex = (
+        '(?<unit>ann[eé]es?|ans?|mois|semaines?|jours?|heures?|hrs?|h|minutes?|mins?|secondes?|secs?|journ[eé]e)\\b'
+    )
     SuffixAndRegex = '(?<suffix>\\s*(et)\\s+(une?\\s+)?(?<suffix_num>demi|quart))'
     DurationFollowedUnit = f'^\\s*{SuffixAndRegex}?(\\s+|-)?{DurationUnitRegex}'
     NumberCombinedWithDurationUnit = f'\\b(?<num>\\d+(\\.\\d*)?)(-)?{DurationUnitRegex}'
@@ -197,7 +231,9 @@ class FrenchDateTime(BaseDateTimeResource):
     SinceRegex = '\\b(depuis)\\b'
     AroundRegex = '\\b(vers|à\\s+peu\\s+près|environ)\\b'
     AgoPrefixRegex = '\\b(y a)\\b'
-    LaterRegex = '\\b(plus\\s+tard|à\\s+partir\\s+(de\\s+(maintenant|demain)|d\'aujourd\'hui)|après\\s+(aujourd\'hui|demain))\\b'
+    LaterRegex = (
+        '\\b(plus\\s+tard|à\\s+partir\\s+(de\\s+(maintenant|demain)|d\'aujourd\'hui)|après\\s+(aujourd\'hui|demain))\\b'
+    )
     AgoRegex = f'\\b((depuis|il\\s+y\\s*a)(\\s+{AroundRegex})?|auparavant|avant\\s+(?<day>hier|aujourd\'hui))\\b'
     BeforeAfterRegex = '^\\b$'
     InConnectorRegex = '\\b(dans|en|sur)\\b'
@@ -229,7 +265,9 @@ class FrenchDateTime(BaseDateTimeResource):
     FlexibleDayRegex = '(?<DayOfMonth>([A-Za-z]+\\s)?[A-Za-z\\d]+)'
     ForTheRegex = f'\\b(((pour le {FlexibleDayRegex})|(dans (le\\s+)?{FlexibleDayRegex}(?<=(st|nd|rd|th))))(?<end>\\s*(,|\\.|!|\\?|$)))'
     WeekDayAndDayOfMonthRegex = f'\\b({WeekDayRegex}\\s+(le\\s+{FlexibleDayRegex})|le\\s+(?<DayOfMonth>{DayRegex}|{WrittenDayRegex})\\s+{WeekDayRegex})\\b'
-    WeekDayAndDayRegex = f'\\b{WeekDayRegex}\\s+(?!(the)){DayRegex}(?!([-:]|(\\s+({AmDescRegex}|{PmDescRegex}|{OclockRegex}))))\\b'
+    WeekDayAndDayRegex = (
+        f'\\b{WeekDayRegex}\\s+(?!(the)){DayRegex}(?!([-:]|(\\s+({AmDescRegex}|{PmDescRegex}|{OclockRegex}))))\\b'
+    )
     RestOfDateRegex = '\\b(reste|fin)\\s+(d[eu]\\s+)?((le|ce(tte)?)\\s+)?(?<duration>semaine|mois|l\'ann[ée]e)\\b'
     RestOfDateTimeRegex = '\\b(reste|fin)\\s+(d[eu]\\s+)?((le|ce(tte)?)\\s+)?(?<unit>jour)\\b'
     LaterEarlyPeriodRegex = '^\\b$'
@@ -254,432 +292,467 @@ class FrenchDateTime(BaseDateTimeResource):
     ModSuffixRegex = f'\\b({AgoRegex}|{LaterRegex}|{BeforeAfterRegex}|{FutureSuffixRegex}|{PastSuffixRegex})\\b'
     ComplexDatePeriodRegex = '^\\b$'
     AmbiguousPointRangeRegex = '^(mar\\.?)$'
-    UnitMap = dict([("annees", "Y"),
-                    ("annee", "Y"),
-                    ("an", "Y"),
-                    ("ans", "Y"),
-                    ("mois", "MON"),
-                    ("semaines", "W"),
-                    ("semaine", "W"),
-                    ("journees", "D"),
-                    ("journee", "D"),
-                    ("jour", "D"),
-                    ("jours", "D"),
-                    ("heures", "H"),
-                    ("heure", "H"),
-                    ("hrs", "H"),
-                    ("hr", "H"),
-                    ("h", "H"),
-                    ("minutes", "M"),
-                    ("minute", "M"),
-                    ("mins", "M"),
-                    ("min", "M"),
-                    ("secondes", "S"),
-                    ("seconde", "S"),
-                    ("secs", "S"),
-                    ("sec", "S")])
-    UnitValueMap = dict([("annees", 31536000),
-                         ("annee", 31536000),
-                         ("l'annees", 31536000),
-                         ("l'annee", 31536000),
-                         ("an", 31536000),
-                         ("ans", 31536000),
-                         ("mois", 2592000),
-                         ("semaines", 604800),
-                         ("semaine", 604800),
-                         ("journees", 86400),
-                         ("journee", 86400),
-                         ("jour", 86400),
-                         ("jours", 86400),
-                         ("heures", 3600),
-                         ("heure", 3600),
-                         ("hrs", 3600),
-                         ("hr", 3600),
-                         ("h", 3600),
-                         ("minutes", 60),
-                         ("minute", 60),
-                         ("mins", 60),
-                         ("min", 60),
-                         ("secondes", 1),
-                         ("seconde", 1),
-                         ("secs", 1),
-                         ("sec", 1)])
+    UnitMap = dict(
+        [
+            ("annees", "Y"),
+            ("annee", "Y"),
+            ("an", "Y"),
+            ("ans", "Y"),
+            ("mois", "MON"),
+            ("semaines", "W"),
+            ("semaine", "W"),
+            ("journees", "D"),
+            ("journee", "D"),
+            ("jour", "D"),
+            ("jours", "D"),
+            ("heures", "H"),
+            ("heure", "H"),
+            ("hrs", "H"),
+            ("hr", "H"),
+            ("h", "H"),
+            ("minutes", "M"),
+            ("minute", "M"),
+            ("mins", "M"),
+            ("min", "M"),
+            ("secondes", "S"),
+            ("seconde", "S"),
+            ("secs", "S"),
+            ("sec", "S"),
+        ]
+    )
+    UnitValueMap = dict(
+        [
+            ("annees", 31536000),
+            ("annee", 31536000),
+            ("l'annees", 31536000),
+            ("l'annee", 31536000),
+            ("an", 31536000),
+            ("ans", 31536000),
+            ("mois", 2592000),
+            ("semaines", 604800),
+            ("semaine", 604800),
+            ("journees", 86400),
+            ("journee", 86400),
+            ("jour", 86400),
+            ("jours", 86400),
+            ("heures", 3600),
+            ("heure", 3600),
+            ("hrs", 3600),
+            ("hr", 3600),
+            ("h", 3600),
+            ("minutes", 60),
+            ("minute", 60),
+            ("mins", 60),
+            ("min", 60),
+            ("secondes", 1),
+            ("seconde", 1),
+            ("secs", 1),
+            ("sec", 1),
+        ]
+    )
     SpecialYearPrefixesMap = dict([("", "")])
-    SeasonMap = dict([("printemps", "SP"),
-                      ("été", "SU"),
-                      ("automne", "FA"),
-                      ("hiver", "WI")])
-    SeasonValueMap = dict([("SP", 3),
-                           ("SU", 6),
-                           ("FA", 9),
-                           ("WI", 12)])
-    CardinalMap = dict([("premier", 1),
-                        ("1er", 1),
-                        ("deuxième", 2),
-                        ("2e", 2),
-                        ("troisième", 3),
-                        ("troisieme", 3),
-                        ("3e", 3),
-                        ("quatrième", 4),
-                        ("4e", 4),
-                        ("cinqième", 5),
-                        ("5e", 5)])
-    DayOfWeek = dict([("lundi", 1),
-                      ("mardi", 2),
-                      ("mercredi", 3),
-                      ("jeudi", 4),
-                      ("vendredi", 5),
-                      ("samedi", 6),
-                      ("dimanche", 0),
-                      ("lun", 1),
-                      ("mar", 2),
-                      ("mer", 3),
-                      ("jeu", 4),
-                      ("ven", 5),
-                      ("sam", 6),
-                      ("dim", 0),
-                      ("lun.", 1),
-                      ("mar.", 2),
-                      ("mer.", 3),
-                      ("jeu.", 4),
-                      ("ven.", 5),
-                      ("sam.", 6),
-                      ("dim.", 0)])
-    MonthOfYear = dict([("janvier", 1),
-                        ("fevrier", 2),
-                        ("février", 2),
-                        ("mars", 3),
-                        ("mar", 3),
-                        ("mar.", 3),
-                        ("avril", 4),
-                        ("avr", 4),
-                        ("avr.", 4),
-                        ("mai", 5),
-                        ("juin", 6),
-                        ("jun", 6),
-                        ("jun.", 6),
-                        ("juillet", 7),
-                        ("aout", 8),
-                        ("août", 8),
-                        ("septembre", 9),
-                        ("octobre", 10),
-                        ("novembre", 11),
-                        ("decembre", 12),
-                        ("décembre", 12),
-                        ("janv", 1),
-                        ("janv.", 1),
-                        ("jan", 1),
-                        ("jan.", 1),
-                        ("fevr", 2),
-                        ("fevr.", 2),
-                        ("févr.", 2),
-                        ("févr", 2),
-                        ("fev", 2),
-                        ("fev.", 2),
-                        ("juil", 7),
-                        ("jul", 7),
-                        ("jul.", 7),
-                        ("sep", 9),
-                        ("sep.", 9),
-                        ("sept.", 9),
-                        ("sept", 9),
-                        ("oct", 10),
-                        ("oct.", 10),
-                        ("nov", 11),
-                        ("nov.", 11),
-                        ("dec", 12),
-                        ("dec.", 12),
-                        ("déc.", 12),
-                        ("déc", 12),
-                        ("1", 1),
-                        ("2", 2),
-                        ("3", 3),
-                        ("4", 4),
-                        ("5", 5),
-                        ("6", 6),
-                        ("7", 7),
-                        ("8", 8),
-                        ("9", 9),
-                        ("10", 10),
-                        ("11", 11),
-                        ("12", 12),
-                        ("01", 1),
-                        ("02", 2),
-                        ("03", 3),
-                        ("04", 4),
-                        ("05", 5),
-                        ("06", 6),
-                        ("07", 7),
-                        ("08", 8),
-                        ("09", 9)])
-    Numbers = dict([("zero", 0),
-                    ("un", 1),
-                    ("une", 1),
-                    ("a", 1),
-                    ("deux", 2),
-                    ("trois", 3),
-                    ("quatre", 4),
-                    ("cinq", 5),
-                    ("six", 6),
-                    ("sept", 7),
-                    ("huit", 8),
-                    ("neuf", 9),
-                    ("dix", 10),
-                    ("onze", 11),
-                    ("douze", 12),
-                    ("treize", 13),
-                    ("quatorze", 14),
-                    ("quinze", 15),
-                    ("seize", 16),
-                    ("dix-sept", 17),
-                    ("dix-huit", 18),
-                    ("dix-neuf", 19),
-                    ("vingt-et-un", 21),
-                    ("vingt et un", 21),
-                    ("vingt", 20),
-                    ("vingt deux", 22),
-                    ("vingt-deux", 22),
-                    ("vingt trois", 23),
-                    ("vingt-trois", 23),
-                    ("vingt quatre", 24),
-                    ("vingt-quatre", 24),
-                    ("vingt cinq", 25),
-                    ("vingt-cinq", 25),
-                    ("vingt six", 26),
-                    ("vingt-six", 26),
-                    ("vingt sept", 27),
-                    ("vingt-sept", 27),
-                    ("vingt huit", 28),
-                    ("vingt-huit", 28),
-                    ("vingt neuf", 29),
-                    ("vingt-neuf", 29),
-                    ("trente", 30),
-                    ("trente et un", 31),
-                    ("trente-et-un", 31),
-                    ("trente deux", 32),
-                    ("trente-deux", 32),
-                    ("trente trois", 33),
-                    ("trente-trois", 33),
-                    ("trente quatre", 34),
-                    ("trente-quatre", 34),
-                    ("trente cinq", 35),
-                    ("trente-cinq", 35),
-                    ("trente six", 36),
-                    ("trente-six", 36),
-                    ("trente sept", 37),
-                    ("trente-sept", 37),
-                    ("trente huit", 38),
-                    ("trente-huit", 38),
-                    ("trente neuf", 39),
-                    ("trente-neuf", 39),
-                    ("quarante", 40),
-                    ("quarante et un", 41),
-                    ("quarante-et-un", 41),
-                    ("quarante deux", 42),
-                    ("quarante-duex", 42),
-                    ("quarante trois", 43),
-                    ("quarante-trois", 43),
-                    ("quarante quatre", 44),
-                    ("quarante-quatre", 44),
-                    ("quarante cinq", 45),
-                    ("quarante-cinq", 45),
-                    ("quarante six", 46),
-                    ("quarante-six", 46),
-                    ("quarante sept", 47),
-                    ("quarante-sept", 47),
-                    ("quarante huit", 48),
-                    ("quarante-huit", 48),
-                    ("quarante neuf", 49),
-                    ("quarante-neuf", 49),
-                    ("cinquante", 50),
-                    ("cinquante et un", 51),
-                    ("cinquante-et-un", 51),
-                    ("cinquante deux", 52),
-                    ("cinquante-deux", 52),
-                    ("cinquante trois", 53),
-                    ("cinquante-trois", 53),
-                    ("cinquante quatre", 54),
-                    ("cinquante-quatre", 54),
-                    ("cinquante cinq", 55),
-                    ("cinquante-cinq", 55),
-                    ("cinquante six", 56),
-                    ("cinquante-six", 56),
-                    ("cinquante sept", 57),
-                    ("cinquante-sept", 57),
-                    ("cinquante huit", 58),
-                    ("cinquante-huit", 58),
-                    ("cinquante neuf", 59),
-                    ("cinquante-neuf", 59),
-                    ("soixante", 60),
-                    ("soixante et un", 61),
-                    ("soixante-et-un", 61),
-                    ("soixante deux", 62),
-                    ("soixante-deux", 62),
-                    ("soixante trois", 63),
-                    ("soixante-trois", 63),
-                    ("soixante quatre", 64),
-                    ("soixante-quatre", 64),
-                    ("soixante cinq", 65),
-                    ("soixante-cinq", 65),
-                    ("soixante six", 66),
-                    ("soixante-six", 66),
-                    ("soixante sept", 67),
-                    ("soixante-sept", 67),
-                    ("soixante huit", 68),
-                    ("soixante-huit", 68),
-                    ("soixante neuf", 69),
-                    ("soixante-neuf", 69),
-                    ("soixante dix", 70),
-                    ("soixante-dix", 70),
-                    ("soixante et onze", 71),
-                    ("soixante-et-onze", 71),
-                    ("soixante douze", 72),
-                    ("soixante-douze", 72),
-                    ("soixante treize", 73),
-                    ("soixante-treize", 73),
-                    ("soixante quatorze", 74),
-                    ("soixante-quatorze", 74),
-                    ("soixante quinze", 75),
-                    ("soixante-quinze", 75),
-                    ("soixante seize", 76),
-                    ("soixante-seize", 76),
-                    ("soixante dix sept", 77),
-                    ("soixante-dix-sept", 77),
-                    ("soixante dix huit", 78),
-                    ("soixante-dix-huit", 78),
-                    ("soixante dix neuf", 79),
-                    ("soixante-dix-neuf", 79),
-                    ("quatre vingt", 80),
-                    ("quatre-vingt", 80),
-                    ("quatre vingt un", 81),
-                    ("quatre-vingt-un", 81),
-                    ("quatre vingt deux", 82),
-                    ("quatre-vingt-duex", 82),
-                    ("quatre vingt trois", 83),
-                    ("quatre-vingt-trois", 83),
-                    ("quatre vingt quatre", 84),
-                    ("quatre-vingt-quatre", 84),
-                    ("quatre vingt cinq", 85),
-                    ("quatre-vingt-cinq", 85),
-                    ("quatre vingt six", 86),
-                    ("quatre-vingt-six", 86),
-                    ("quatre vingt sept", 87),
-                    ("quatre-vingt-sept", 87),
-                    ("quatre vingt huit", 88),
-                    ("quatre-vingt-huit", 88),
-                    ("quatre vingt neuf", 89),
-                    ("quatre-vingt-neuf", 89),
-                    ("quatre vingt dix", 90),
-                    ("quatre-vingt-dix", 90),
-                    ("quatre vingt onze", 91),
-                    ("quatre-vingt-onze", 91),
-                    ("quatre vingt douze", 92),
-                    ("quatre-vingt-douze", 92),
-                    ("quatre vingt treize", 93),
-                    ("quatre-vingt-treize", 93),
-                    ("quatre vingt quatorze", 94),
-                    ("quatre-vingt-quatorze", 94),
-                    ("quatre vingt quinze", 95),
-                    ("quatre-vingt-quinze", 95),
-                    ("quatre vingt seize", 96),
-                    ("quatre-vingt-seize", 96),
-                    ("quatre vingt dix sept", 97),
-                    ("quatre-vingt-dix-sept", 97),
-                    ("quatre vingt dix huit", 98),
-                    ("quatre-vingt-dix-huit", 98),
-                    ("quatre vingt dix neuf", 99),
-                    ("quatre-vingt-dix-neuf", 99),
-                    ("cent", 100)])
-    DayOfMonth = dict([("1er", 1),
-                       ("2e", 2),
-                       ("3e", 3),
-                       ("4e", 4),
-                       ("5e", 5),
-                       ("6e", 6),
-                       ("7e", 7),
-                       ("8e", 8),
-                       ("9e", 9),
-                       ("10e", 10),
-                       ("11e", 11),
-                       ("12e", 12),
-                       ("13e", 13),
-                       ("14e", 14),
-                       ("15e", 15),
-                       ("16e", 16),
-                       ("17e", 17),
-                       ("18e", 18),
-                       ("19e", 19),
-                       ("20e", 20),
-                       ("21e", 21),
-                       ("22e", 22),
-                       ("23e", 23),
-                       ("24e", 24),
-                       ("25e", 25),
-                       ("26e", 26),
-                       ("27e", 27),
-                       ("28e", 28),
-                       ("29e", 29),
-                       ("30e", 30),
-                       ("31e", 31)])
-    DoubleNumbers = dict([("demi", 0.5),
-                          ("quart", 0.25)])
-    HolidayNames = dict([("fathers", ["peres", "p\u00e8res", "f\u00eatedesp\u00e8res", "fetedesperes"]),
-                         ("mothers", ["f\u00eatedesm\u00e8res", "fetedesmeres"]),
-                         ("thanksgiving", ["lactiondegrace", "lactiondegr\u00e2ce", "jourdethanksgiving", "thanksgiving"]),
-                         ("martinlutherking", ["journeemartinlutherking", "martinlutherkingjr"]),
-                         ("washingtonsbirthday", ["washingtonsbirthday", "washingtonbirthday"]),
-                         ("canberra", ["canberraday"]),
-                         ("labour", ["fetedetravail", "travail", "fetedutravail"]),
-                         ("columbus", ["columbusday"]),
-                         ("memorial", ["jourcomm\u00e9moratif", "jourcommemoratif"]),
-                         ("yuandan", ["yuandan", "nouvelanchinois"]),
-                         ("maosbirthday", ["maosbirthday"]),
-                         ("teachersday", ["teachersday", "teacherday"]),
-                         ("singleday", ["singleday"]),
-                         ("allsaintsday", ["allsaintsday"]),
-                         ("youthday", ["youthday"]),
-                         ("childrenday", ["childrenday", "childday"]),
-                         ("femaleday", ["femaleday"]),
-                         ("treeplantingday", ["treeplantingday"]),
-                         ("arborday", ["arborday"]),
-                         ("girlsday", ["girlsday"]),
-                         ("whiteloverday", ["whiteloverday"]),
-                         ("loverday", ["loverday"]),
-                         ("christmas", ["noel", "no\u00ebl"]),
-                         ("xmas", ["xmas"]),
-                         ("newyear", ["nouvellesannees", "nouvelan"]),
-                         ("newyearday", ["jourdunouvelan"]),
-                         ("newyearsday", ["jourdel'an", "jourpremierdelannee", "jourpremierdelann\u00e9e"]),
-                         ("inaugurationday", ["jourd'inaugueration", "inaugueration"]),
-                         ("groundhougday", ["marmotte"]),
-                         ("valentinesday", ["lasaint-valentin", "lasaintvalentin"]),
-                         ("stpatrickday", ["stpatrickday"]),
-                         ("aprilfools", ["poissond'avril"]),
-                         ("stgeorgeday", ["stgeorgeday"]),
-                         ("mayday", ["premier-mai", "ler-mai", "1-mai"]),
-                         ("cincodemayoday", ["cincodemayo"]),
-                         ("baptisteday", ["bapteme", "bapt\u00eame"]),
-                         ("usindependenceday", ["l'independanceamericaine", "lind\u00e9pendanceam\u00e9ricaine"]),
-                         ("independenceday", ["l'ind\u00e9pendance", "lindependance"]),
-                         ("bastilleday", ["laprisedelabastille", "bastille"]),
-                         ("halloweenday", ["halloween"]),
-                         ("allhallowday", ["allhallowday"]),
-                         ("allsoulsday", ["allsoulsday"]),
-                         ("guyfawkesday", ["guyfawkesday"]),
-                         ("veteransday", ["veteransday"]),
-                         ("christmaseve", ["reveillondenoel", "r\u00e9veillondeno\u00ebl", "veilledenoel", "veilledeno\u00ebl"]),
-                         ("newyeareve", ["r\u00e9veillondenouvelan", "reveillondenouvelan", "lasaint-sylvestre", "lasaintsylvestre"])])
+    SeasonMap = dict([("printemps", "SP"), ("été", "SU"), ("automne", "FA"), ("hiver", "WI")])
+    SeasonValueMap = dict([("SP", 3), ("SU", 6), ("FA", 9), ("WI", 12)])
+    CardinalMap = dict(
+        [
+            ("premier", 1),
+            ("1er", 1),
+            ("deuxième", 2),
+            ("2e", 2),
+            ("troisième", 3),
+            ("troisieme", 3),
+            ("3e", 3),
+            ("quatrième", 4),
+            ("4e", 4),
+            ("cinqième", 5),
+            ("5e", 5),
+        ]
+    )
+    DayOfWeek = dict(
+        [
+            ("lundi", 1),
+            ("mardi", 2),
+            ("mercredi", 3),
+            ("jeudi", 4),
+            ("vendredi", 5),
+            ("samedi", 6),
+            ("dimanche", 0),
+            ("lun", 1),
+            ("mar", 2),
+            ("mer", 3),
+            ("jeu", 4),
+            ("ven", 5),
+            ("sam", 6),
+            ("dim", 0),
+            ("lun.", 1),
+            ("mar.", 2),
+            ("mer.", 3),
+            ("jeu.", 4),
+            ("ven.", 5),
+            ("sam.", 6),
+            ("dim.", 0),
+        ]
+    )
+    MonthOfYear = dict(
+        [
+            ("janvier", 1),
+            ("fevrier", 2),
+            ("février", 2),
+            ("mars", 3),
+            ("mar", 3),
+            ("mar.", 3),
+            ("avril", 4),
+            ("avr", 4),
+            ("avr.", 4),
+            ("mai", 5),
+            ("juin", 6),
+            ("jun", 6),
+            ("jun.", 6),
+            ("juillet", 7),
+            ("aout", 8),
+            ("août", 8),
+            ("septembre", 9),
+            ("octobre", 10),
+            ("novembre", 11),
+            ("decembre", 12),
+            ("décembre", 12),
+            ("janv", 1),
+            ("janv.", 1),
+            ("jan", 1),
+            ("jan.", 1),
+            ("fevr", 2),
+            ("fevr.", 2),
+            ("févr.", 2),
+            ("févr", 2),
+            ("fev", 2),
+            ("fev.", 2),
+            ("juil", 7),
+            ("jul", 7),
+            ("jul.", 7),
+            ("sep", 9),
+            ("sep.", 9),
+            ("sept.", 9),
+            ("sept", 9),
+            ("oct", 10),
+            ("oct.", 10),
+            ("nov", 11),
+            ("nov.", 11),
+            ("dec", 12),
+            ("dec.", 12),
+            ("déc.", 12),
+            ("déc", 12),
+            ("1", 1),
+            ("2", 2),
+            ("3", 3),
+            ("4", 4),
+            ("5", 5),
+            ("6", 6),
+            ("7", 7),
+            ("8", 8),
+            ("9", 9),
+            ("10", 10),
+            ("11", 11),
+            ("12", 12),
+            ("01", 1),
+            ("02", 2),
+            ("03", 3),
+            ("04", 4),
+            ("05", 5),
+            ("06", 6),
+            ("07", 7),
+            ("08", 8),
+            ("09", 9),
+        ]
+    )
+    Numbers = dict(
+        [
+            ("zero", 0),
+            ("un", 1),
+            ("une", 1),
+            ("a", 1),
+            ("deux", 2),
+            ("trois", 3),
+            ("quatre", 4),
+            ("cinq", 5),
+            ("six", 6),
+            ("sept", 7),
+            ("huit", 8),
+            ("neuf", 9),
+            ("dix", 10),
+            ("onze", 11),
+            ("douze", 12),
+            ("treize", 13),
+            ("quatorze", 14),
+            ("quinze", 15),
+            ("seize", 16),
+            ("dix-sept", 17),
+            ("dix-huit", 18),
+            ("dix-neuf", 19),
+            ("vingt-et-un", 21),
+            ("vingt et un", 21),
+            ("vingt", 20),
+            ("vingt deux", 22),
+            ("vingt-deux", 22),
+            ("vingt trois", 23),
+            ("vingt-trois", 23),
+            ("vingt quatre", 24),
+            ("vingt-quatre", 24),
+            ("vingt cinq", 25),
+            ("vingt-cinq", 25),
+            ("vingt six", 26),
+            ("vingt-six", 26),
+            ("vingt sept", 27),
+            ("vingt-sept", 27),
+            ("vingt huit", 28),
+            ("vingt-huit", 28),
+            ("vingt neuf", 29),
+            ("vingt-neuf", 29),
+            ("trente", 30),
+            ("trente et un", 31),
+            ("trente-et-un", 31),
+            ("trente deux", 32),
+            ("trente-deux", 32),
+            ("trente trois", 33),
+            ("trente-trois", 33),
+            ("trente quatre", 34),
+            ("trente-quatre", 34),
+            ("trente cinq", 35),
+            ("trente-cinq", 35),
+            ("trente six", 36),
+            ("trente-six", 36),
+            ("trente sept", 37),
+            ("trente-sept", 37),
+            ("trente huit", 38),
+            ("trente-huit", 38),
+            ("trente neuf", 39),
+            ("trente-neuf", 39),
+            ("quarante", 40),
+            ("quarante et un", 41),
+            ("quarante-et-un", 41),
+            ("quarante deux", 42),
+            ("quarante-duex", 42),
+            ("quarante trois", 43),
+            ("quarante-trois", 43),
+            ("quarante quatre", 44),
+            ("quarante-quatre", 44),
+            ("quarante cinq", 45),
+            ("quarante-cinq", 45),
+            ("quarante six", 46),
+            ("quarante-six", 46),
+            ("quarante sept", 47),
+            ("quarante-sept", 47),
+            ("quarante huit", 48),
+            ("quarante-huit", 48),
+            ("quarante neuf", 49),
+            ("quarante-neuf", 49),
+            ("cinquante", 50),
+            ("cinquante et un", 51),
+            ("cinquante-et-un", 51),
+            ("cinquante deux", 52),
+            ("cinquante-deux", 52),
+            ("cinquante trois", 53),
+            ("cinquante-trois", 53),
+            ("cinquante quatre", 54),
+            ("cinquante-quatre", 54),
+            ("cinquante cinq", 55),
+            ("cinquante-cinq", 55),
+            ("cinquante six", 56),
+            ("cinquante-six", 56),
+            ("cinquante sept", 57),
+            ("cinquante-sept", 57),
+            ("cinquante huit", 58),
+            ("cinquante-huit", 58),
+            ("cinquante neuf", 59),
+            ("cinquante-neuf", 59),
+            ("soixante", 60),
+            ("soixante et un", 61),
+            ("soixante-et-un", 61),
+            ("soixante deux", 62),
+            ("soixante-deux", 62),
+            ("soixante trois", 63),
+            ("soixante-trois", 63),
+            ("soixante quatre", 64),
+            ("soixante-quatre", 64),
+            ("soixante cinq", 65),
+            ("soixante-cinq", 65),
+            ("soixante six", 66),
+            ("soixante-six", 66),
+            ("soixante sept", 67),
+            ("soixante-sept", 67),
+            ("soixante huit", 68),
+            ("soixante-huit", 68),
+            ("soixante neuf", 69),
+            ("soixante-neuf", 69),
+            ("soixante dix", 70),
+            ("soixante-dix", 70),
+            ("soixante et onze", 71),
+            ("soixante-et-onze", 71),
+            ("soixante douze", 72),
+            ("soixante-douze", 72),
+            ("soixante treize", 73),
+            ("soixante-treize", 73),
+            ("soixante quatorze", 74),
+            ("soixante-quatorze", 74),
+            ("soixante quinze", 75),
+            ("soixante-quinze", 75),
+            ("soixante seize", 76),
+            ("soixante-seize", 76),
+            ("soixante dix sept", 77),
+            ("soixante-dix-sept", 77),
+            ("soixante dix huit", 78),
+            ("soixante-dix-huit", 78),
+            ("soixante dix neuf", 79),
+            ("soixante-dix-neuf", 79),
+            ("quatre vingt", 80),
+            ("quatre-vingt", 80),
+            ("quatre vingt un", 81),
+            ("quatre-vingt-un", 81),
+            ("quatre vingt deux", 82),
+            ("quatre-vingt-duex", 82),
+            ("quatre vingt trois", 83),
+            ("quatre-vingt-trois", 83),
+            ("quatre vingt quatre", 84),
+            ("quatre-vingt-quatre", 84),
+            ("quatre vingt cinq", 85),
+            ("quatre-vingt-cinq", 85),
+            ("quatre vingt six", 86),
+            ("quatre-vingt-six", 86),
+            ("quatre vingt sept", 87),
+            ("quatre-vingt-sept", 87),
+            ("quatre vingt huit", 88),
+            ("quatre-vingt-huit", 88),
+            ("quatre vingt neuf", 89),
+            ("quatre-vingt-neuf", 89),
+            ("quatre vingt dix", 90),
+            ("quatre-vingt-dix", 90),
+            ("quatre vingt onze", 91),
+            ("quatre-vingt-onze", 91),
+            ("quatre vingt douze", 92),
+            ("quatre-vingt-douze", 92),
+            ("quatre vingt treize", 93),
+            ("quatre-vingt-treize", 93),
+            ("quatre vingt quatorze", 94),
+            ("quatre-vingt-quatorze", 94),
+            ("quatre vingt quinze", 95),
+            ("quatre-vingt-quinze", 95),
+            ("quatre vingt seize", 96),
+            ("quatre-vingt-seize", 96),
+            ("quatre vingt dix sept", 97),
+            ("quatre-vingt-dix-sept", 97),
+            ("quatre vingt dix huit", 98),
+            ("quatre-vingt-dix-huit", 98),
+            ("quatre vingt dix neuf", 99),
+            ("quatre-vingt-dix-neuf", 99),
+            ("cent", 100),
+        ]
+    )
+    DayOfMonth = dict(
+        [
+            ("1er", 1),
+            ("2e", 2),
+            ("3e", 3),
+            ("4e", 4),
+            ("5e", 5),
+            ("6e", 6),
+            ("7e", 7),
+            ("8e", 8),
+            ("9e", 9),
+            ("10e", 10),
+            ("11e", 11),
+            ("12e", 12),
+            ("13e", 13),
+            ("14e", 14),
+            ("15e", 15),
+            ("16e", 16),
+            ("17e", 17),
+            ("18e", 18),
+            ("19e", 19),
+            ("20e", 20),
+            ("21e", 21),
+            ("22e", 22),
+            ("23e", 23),
+            ("24e", 24),
+            ("25e", 25),
+            ("26e", 26),
+            ("27e", 27),
+            ("28e", 28),
+            ("29e", 29),
+            ("30e", 30),
+            ("31e", 31),
+        ]
+    )
+    DoubleNumbers = dict([("demi", 0.5), ("quart", 0.25)])
+    HolidayNames = dict(
+        [
+            ("fathers", ["peres", "p\u00e8res", "f\u00eatedesp\u00e8res", "fetedesperes"]),
+            ("mothers", ["f\u00eatedesm\u00e8res", "fetedesmeres"]),
+            ("thanksgiving", ["lactiondegrace", "lactiondegr\u00e2ce", "jourdethanksgiving", "thanksgiving"]),
+            ("martinlutherking", ["journeemartinlutherking", "martinlutherkingjr"]),
+            ("washingtonsbirthday", ["washingtonsbirthday", "washingtonbirthday"]),
+            ("canberra", ["canberraday"]),
+            ("labour", ["fetedetravail", "travail", "fetedutravail"]),
+            ("columbus", ["columbusday"]),
+            ("memorial", ["jourcomm\u00e9moratif", "jourcommemoratif"]),
+            ("yuandan", ["yuandan", "nouvelanchinois"]),
+            ("maosbirthday", ["maosbirthday"]),
+            ("teachersday", ["teachersday", "teacherday"]),
+            ("singleday", ["singleday"]),
+            ("allsaintsday", ["allsaintsday"]),
+            ("youthday", ["youthday"]),
+            ("childrenday", ["childrenday", "childday"]),
+            ("femaleday", ["femaleday"]),
+            ("treeplantingday", ["treeplantingday"]),
+            ("arborday", ["arborday"]),
+            ("girlsday", ["girlsday"]),
+            ("whiteloverday", ["whiteloverday"]),
+            ("loverday", ["loverday"]),
+            ("christmas", ["noel", "no\u00ebl"]),
+            ("xmas", ["xmas"]),
+            ("newyear", ["nouvellesannees", "nouvelan"]),
+            ("newyearday", ["jourdunouvelan"]),
+            ("newyearsday", ["jourdel'an", "jourpremierdelannee", "jourpremierdelann\u00e9e"]),
+            ("inaugurationday", ["jourd'inaugueration", "inaugueration"]),
+            ("groundhougday", ["marmotte"]),
+            ("valentinesday", ["lasaint-valentin", "lasaintvalentin"]),
+            ("stpatrickday", ["stpatrickday"]),
+            ("aprilfools", ["poissond'avril"]),
+            ("stgeorgeday", ["stgeorgeday"]),
+            ("mayday", ["premier-mai", "ler-mai", "1-mai"]),
+            ("cincodemayoday", ["cincodemayo"]),
+            ("baptisteday", ["bapteme", "bapt\u00eame"]),
+            ("usindependenceday", ["l'independanceamericaine", "lind\u00e9pendanceam\u00e9ricaine"]),
+            ("independenceday", ["l'ind\u00e9pendance", "lindependance"]),
+            ("bastilleday", ["laprisedelabastille", "bastille"]),
+            ("halloweenday", ["halloween"]),
+            ("allhallowday", ["allhallowday"]),
+            ("allsoulsday", ["allsoulsday"]),
+            ("guyfawkesday", ["guyfawkesday"]),
+            ("veteransday", ["veteransday"]),
+            ("christmaseve", ["reveillondenoel", "r\u00e9veillondeno\u00ebl", "veilledenoel", "veilledeno\u00ebl"]),
+            (
+                "newyeareve",
+                ["r\u00e9veillondenouvelan", "reveillondenouvelan", "lasaint-sylvestre", "lasaintsylvestre"],
+            ),
+        ]
+    )
     NightRegex = '\\b(minuit|nuit)\\b'
     WrittenDecades = dict([("", 0)])
     SpecialDecadeCases = dict([("", 0)])
     DefaultLanguageFallback = 'DMY'
     DurationDateRestrictions = []
-    AmbiguityFiltersDict = dict([("^\\d{4}$", "(\\d\\.\\d{4}|\\d{4}\\.\\d)"),
-                                 ("^([eé]t[eé])$", "(?<!((l\\s*['`]\\s*)|(cet(te)?|en)\\s+))[eé]t[eé]\\b"),
-                                 ("^(mer)$", "(?<!((le|ce)\\s+))mer\\b"),
-                                 ("^(avr|ao[uû]t|d[eé]c|f[eé]vr?|janv?|jui?[ln]|mars?|mai|nov|oct|sept?)$", "([$%£&!?@#])(avr|ao[uû]t|d[eé]c|f[eé]vr?|janv?|jui?[ln]|mars?|mai|nov|oct|sept?)|(avr|ao[uû]t|d[eé]c|f[eé]vr?|janv?|jui?[ln]|mars?|mai|nov|oct|sept?)([$%£&@#])"),
-                                 ("^\\d{1,4}-\\d{1,4}$", "\\d{1,4}-\\d{1,4}-\\d|\\d-\\d{1,4}-\\d{1,4}"),
-                                 ("^\\d{1,4}-\\d{1,4}-\\d{1,4}$", "\\d{1,4}-\\d{1,4}-\\d{1,4}-\\d|\\d-\\d{1,4}-\\d{1,4}-\\d{1,4}")])
+    AmbiguityFiltersDict = dict(
+        [
+            ("^\\d{4}$", "(\\d\\.\\d{4}|\\d{4}\\.\\d)"),
+            ("^([eé]t[eé])$", "(?<!((l\\s*['`]\\s*)|(cet(te)?|en)\\s+))[eé]t[eé]\\b"),
+            ("^(mer)$", "(?<!((le|ce)\\s+))mer\\b"),
+            (
+                "^(avr|ao[uû]t|d[eé]c|f[eé]vr?|janv?|jui?[ln]|mars?|mai|nov|oct|sept?)$",
+                "([$%£&!?@#])(avr|ao[uû]t|d[eé]c|f[eé]vr?|janv?|jui?[ln]|mars?|mai|nov|oct|sept?)|(avr|ao[uû]t|d[eé]c|f[eé]vr?|janv?|jui?[ln]|mars?|mai|nov|oct|sept?)([$%£&@#])",
+            ),
+            ("^\\d{1,4}-\\d{1,4}$", "\\d{1,4}-\\d{1,4}-\\d|\\d-\\d{1,4}-\\d{1,4}"),
+            ("^\\d{1,4}-\\d{1,4}-\\d{1,4}$", "\\d{1,4}-\\d{1,4}-\\d{1,4}-\\d|\\d-\\d{1,4}-\\d{1,4}-\\d{1,4}"),
+        ]
+    )
     AmbiguityTimeFiltersDict = dict([("heures?$", "\\b(pour|durée\\s+de|pendant)\\s+(\\S+\\s+){1,2}heures?\\b")])
     MorningTermList = [r'matinee', r'matin', r'matinée']
     AfternoonTermList = [r'apres-midi', r'apres midi', r'après midi', r'après-midi']
@@ -700,4 +773,6 @@ class FrenchDateTime(BaseDateTimeResource):
     WeekTerms = [r'semaine']
     YearTerms = [r'années', r'ans', r'an', r'l\'annees', r'l\'annee']
     YearToDateTerms = [r'année à ce jour', r'an à ce jour']
+
+
 # pylint: enable=line-too-long

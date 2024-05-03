@@ -50,7 +50,7 @@ class EnglishDatePeriodExtractorConfiguration(DatePeriodExtractorConfiguration):
             RegExpUtility.get_safe_reg_exp(EnglishDateTime.YearPlusNumberRegex),
             RegExpUtility.get_safe_reg_exp(EnglishDateTime.DecadeWithCenturyRegex),
             RegExpUtility.get_safe_reg_exp(EnglishDateTime.RelativeDecadeRegex),
-            RegExpUtility.get_safe_reg_exp(EnglishDateTime.ReferenceDatePeriodRegex)
+            RegExpUtility.get_safe_reg_exp(EnglishDateTime.ReferenceDatePeriodRegex),
         ]
 
     def get_from_token_index(self, source: str) -> MatchedIndex:

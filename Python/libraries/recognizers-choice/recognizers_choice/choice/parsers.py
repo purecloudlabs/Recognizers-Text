@@ -43,17 +43,16 @@ class ChoiceParser(Parser):
         result = ParseResult(ext_result)
         data = ChoiceExtractDataResult(ext_result.data)
         result.value = self.config.resolutions.get(result.type)
-        result.data = ChoiceParseDataResult(
-            data.score, [self.__to_other_match_result(m) for m in data.other_matches])
+        result.data = ChoiceParseDataResult(data.score, [self.__to_other_match_result(m) for m in data.other_matches])
         return result
 
     def __to_other_match_result(self, ext_result):
         parse_result = ParseResult(ext_result)
         ext_data = ChoiceExtractDataResult(ext_result.Data)
 
-        result = OtherMatchParseResult(ext_data.score,
-                                       parse_result.text,
-                                       self.config.resolutions.get(parse_result.type))
+        result = OtherMatchParseResult(
+            ext_data.score, parse_result.text, self.config.resolutions.get(parse_result.type)
+        )
         return result
 
 

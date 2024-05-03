@@ -42,9 +42,9 @@ class BaseNumberExtractor(Extractor):
         match_source = dict()
         matched: List[bool] = [False] * len(source)
 
-        matches_list = list(map(
-            lambda x: MatchesVal(matches=list(regex.finditer(x.re, source)),
-                                 val=x.val), self.regexes))
+        matches_list = list(
+            map(lambda x: MatchesVal(matches=list(regex.finditer(x.re, source)), val=x.val), self.regexes)
+        )
         matches_list = list(filter(lambda x: len(x.matches) > 0, matches_list))
         for ml in matches_list:
             for m in ml.matches:
@@ -61,19 +61,19 @@ class BaseNumberExtractor(Extractor):
                 if i + 1 == len(source) or not matched[i + 1]:
                     start = last + 1
                     length = i - last
-                    substr = source[start:start + length]
-                    src_match = next((x for x in iter(match_source) if (
-                        x.start() == start and (
-                            x.end() - x.start()) == length)), None)
+                    substr = source[start : start + length]
+                    src_match = next(
+                        (x for x in iter(match_source) if (x.start() == start and (x.end() - x.start()) == length)),
+                        None,
+                    )
 
                     # extract negative numbers
                     if self._negative_number_terms is not None:
-                        match = regex.search(self._negative_number_terms,
-                                             source[0:start])
+                        match = regex.search(self._negative_number_terms, source[0:start])
                         if match is not None:
                             start = match.start()
                             length = length + match.end() - match.start()
-                            substr = source[start:start + length]
+                            substr = source[start : start + length]
 
                     if src_match is not None:
                         value = ExtractResult()
@@ -103,16 +103,12 @@ class BaseNumberExtractor(Extractor):
 
         return True
 
-    def _generate_format_regex(self, format_type: LongFormatType,
-                               placeholder: str = None) -> str:
+    def _generate_format_regex(self, format_type: LongFormatType, placeholder: str = None) -> str:
         if placeholder is None:
             placeholder = BaseNumbers.PlaceHolderDefault
 
         if format_type.decimals_mark is None:
-            re_definition = BaseNumbers.IntegerRegexDefinition(
-                placeholder,
-                regex.escape(format_type.thousands_mark)
-            )
+            re_definition = BaseNumbers.IntegerRegexDefinition(placeholder, regex.escape(format_type.thousands_mark))
         else:
             re_definition = BaseNumbers.DoubleRegexDefinition(
                 placeholder,
@@ -122,8 +118,7 @@ class BaseNumberExtractor(Extractor):
         return re_definition
 
 
-SourcePositionResults = namedtuple('SourcePositionResults',
-                                   ['source', 'position', 'results'])
+SourcePositionResults = namedtuple('SourcePositionResults', ['source', 'position', 'results'])
 
 
 class BaseMergedNumberExtractor(Extractor):

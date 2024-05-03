@@ -181,49 +181,25 @@ class ChineseDateTimePeriodExtractorConfiguration(DateTimePeriodExtractorConfigu
 
     def __init__(self):
         super().__init__()
-        self._past_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.PastRegex
-        )
-        self._future_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.FutureRegex
-        )
-        self._number_combined_with_unit = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.NumberCombinedWithUnit
-        )
-        self._this_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.DateThisRegex
-        )
-        self._last_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.DateLastRegex
-        )
-        self._next_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.DateNextRegex
-        )
-        self._zhijian_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.ZhijianRegex
-        )
-        self._hour_num_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.HourNumRegex
-        )
-        self._hour_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.HourRegex
-        )
+        self._past_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.PastRegex)
+        self._future_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.FutureRegex)
+        self._number_combined_with_unit = RegExpUtility.get_safe_reg_exp(ChineseDateTime.NumberCombinedWithUnit)
+        self._this_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.DateThisRegex)
+        self._last_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.DateLastRegex)
+        self._next_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.DateNextRegex)
+        self._zhijian_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.ZhijianRegex)
+        self._hour_num_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.HourNumRegex)
+        self._hour_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.HourRegex)
         self._cardinal_extractor = ChineseCardinalExtractor()
         self._single_date_extractor = ChineseDateExtractor()
         self._single_time_extractor = ChineseTimeExtractor()
         self._single_date_time_extractor = ChineseDateTimeExtractor()
-        self._preposition_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.DateTimePeriodPrepositionRegex)
-        self._till_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.DateTimePeriodTillRegex)
-        self._specific_time_of_day_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.SpecificTimeOfDayRegex)
-        self._time_of_day_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.TimeOfDayRegex)
-        self._followed_unit = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.DateTimePeriodFollowedUnit)
-        self._time_unit_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.DateTimePeriodUnitRegex)
+        self._preposition_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.DateTimePeriodPrepositionRegex)
+        self._till_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.DateTimePeriodTillRegex)
+        self._specific_time_of_day_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.SpecificTimeOfDayRegex)
+        self._time_of_day_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.TimeOfDayRegex)
+        self._followed_unit = RegExpUtility.get_safe_reg_exp(ChineseDateTime.DateTimePeriodFollowedUnit)
+        self._time_unit_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.DateTimePeriodUnitRegex)
         # TODO When the implementation for these properties is added, change the None values to their respective Regexps
         self._check_both_before_after = None
         self._suffix_regex = None

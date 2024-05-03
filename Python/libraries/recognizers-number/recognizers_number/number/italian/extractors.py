@@ -21,11 +21,9 @@ class ItalianNumberExtractor(BaseNumberExtractor):
         cardinal_ex: ItalianCardinalExtractor = None
 
         if self.mode is NumberMode.PURE_NUMBER:
-            cardinal_ex = ItalianCardinalExtractor(
-                ItalianNumeric.PlaceHolderPureNumber)
+            cardinal_ex = ItalianCardinalExtractor(ItalianNumeric.PlaceHolderPureNumber)
         elif self.mode is NumberMode.CURRENCY:
-            _regexes.append(ReVal(re=RegExpUtility.get_safe_reg_exp(
-                ItalianNumeric.CurrencyRegex), val='IntegerNum'))
+            _regexes.append(ReVal(re=RegExpUtility.get_safe_reg_exp(ItalianNumeric.CurrencyRegex), val='IntegerNum'))
 
         cardinal_ex = cardinal_ex or ItalianCardinalExtractor()
         _regexes.extend(cardinal_ex.regexes)
@@ -39,8 +37,9 @@ class ItalianNumberExtractor(BaseNumberExtractor):
 
         if self.mode != NumberMode.Unit:
             for key, value in ItalianNumeric.AmbiguityFiltersDict.items():
-                _ambiguity_filters_dict.append(ReRe(reKey=RegExpUtility.get_safe_reg_exp(key),
-                                                    reVal=RegExpUtility.get_safe_reg_exp(value)))
+                _ambiguity_filters_dict.append(
+                    ReRe(reKey=RegExpUtility.get_safe_reg_exp(key), reVal=RegExpUtility.get_safe_reg_exp(value))
+                )
         return _ambiguity_filters_dict
 
     @property
@@ -56,8 +55,7 @@ class ItalianCardinalExtractor(BaseNumberExtractor):
 
     @property
     def regexes(self) -> List[ReVal]:
-        return (ItalianIntegerExtractor(self.placeholder).regexes +
-                ItalianDoubleExtractor(self.placeholder).regexes)
+        return ItalianIntegerExtractor(self.placeholder).regexes + ItalianDoubleExtractor(self.placeholder).regexes
 
     def __init__(self, placeholder: str = ItalianNumeric.PlaceHolderDefault):
         self.placeholder = placeholder
@@ -70,41 +68,38 @@ class ItalianIntegerExtractor(BaseNumberExtractor):
     def regexes(self) -> List[ReVal]:
         return [
             ReVal(
-                re=RegExpUtility.get_safe_reg_exp(
-                    ItalianNumeric.NumbersWithPlaceHolder(self.placeholder)),
-                val='IntegerNum'),
+                re=RegExpUtility.get_safe_reg_exp(ItalianNumeric.NumbersWithPlaceHolder(self.placeholder)),
+                val='IntegerNum',
+            ),
+            ReVal(re=RegExpUtility.get_safe_reg_exp(ItalianNumeric.NumbersWithSuffix, regex.S), val='IntegerNum'),
             ReVal(
                 re=RegExpUtility.get_safe_reg_exp(
-                    ItalianNumeric.NumbersWithSuffix, regex.S),
-                val='IntegerNum'),
-            ReVal(
-                re=RegExpUtility.get_safe_reg_exp(self._generate_format_regex(
-                    LongFormatMode.INTEGER_DOT, self.placeholder)),
-                val='IntegerNum'),
-            ReVal(
-                re=RegExpUtility.get_safe_reg_exp(self._generate_format_regex(
-                    LongFormatMode.INTEGER_BLANK, self.placeholder)),
-                val='IntegerNum'),
-            ReVal(
-                re=RegExpUtility.get_safe_reg_exp(self._generate_format_regex(
-                    LongFormatMode.INTEGER_NO_BREAK_SPACE, self.placeholder)),
-                val='IntegerNum'),
+                    self._generate_format_regex(LongFormatMode.INTEGER_DOT, self.placeholder)
+                ),
+                val='IntegerNum',
+            ),
             ReVal(
                 re=RegExpUtility.get_safe_reg_exp(
-                    ItalianNumeric.RoundNumberIntegerRegexWithLocks),
-                val='IntegerNum'),
+                    self._generate_format_regex(LongFormatMode.INTEGER_BLANK, self.placeholder)
+                ),
+                val='IntegerNum',
+            ),
             ReVal(
                 re=RegExpUtility.get_safe_reg_exp(
-                    ItalianNumeric.NumbersWithDozenSuffix),
-                val='IntegerNum'),
+                    self._generate_format_regex(LongFormatMode.INTEGER_NO_BREAK_SPACE, self.placeholder)
+                ),
+                val='IntegerNum',
+            ),
+            ReVal(re=RegExpUtility.get_safe_reg_exp(ItalianNumeric.RoundNumberIntegerRegexWithLocks), val='IntegerNum'),
+            ReVal(re=RegExpUtility.get_safe_reg_exp(ItalianNumeric.NumbersWithDozenSuffix), val='IntegerNum'),
             ReVal(
-                re=RegExpUtility.get_safe_reg_exp(
-                    ItalianNumeric.AllIntRegexWithLocks),
-                val=f'Integer{ItalianNumeric.LangMarker}'),
+                re=RegExpUtility.get_safe_reg_exp(ItalianNumeric.AllIntRegexWithLocks),
+                val=f'Integer{ItalianNumeric.LangMarker}',
+            ),
             ReVal(
-                re=RegExpUtility.get_safe_reg_exp(
-                    ItalianNumeric.AllIntRegexWithDozenSuffixLocks),
-                val=f'Integer{ItalianNumeric.LangMarker}')
+                re=RegExpUtility.get_safe_reg_exp(ItalianNumeric.AllIntRegexWithDozenSuffixLocks),
+                val=f'Integer{ItalianNumeric.LangMarker}',
+            ),
         ]
 
     def __init__(self, placeholder: str = ItalianNumeric.PlaceHolderDefault):
@@ -118,41 +113,37 @@ class ItalianDoubleExtractor(BaseNumberExtractor):
     def regexes(self) -> List[ReVal]:
         return [
             ReVal(
-                re=RegExpUtility.get_safe_reg_exp(
-                    ItalianNumeric.DoubleDecimalPointRegex(self.placeholder)),
-                val='DoubleNum'),
+                re=RegExpUtility.get_safe_reg_exp(ItalianNumeric.DoubleDecimalPointRegex(self.placeholder)),
+                val='DoubleNum',
+            ),
+            ReVal(
+                re=RegExpUtility.get_safe_reg_exp(ItalianNumeric.DoubleWithoutIntegralRegex(self.placeholder)),
+                val='DoubleNum',
+            ),
             ReVal(
                 re=RegExpUtility.get_safe_reg_exp(
-                    ItalianNumeric.DoubleWithoutIntegralRegex(self.placeholder)),
-                val='DoubleNum'),
-            ReVal(
-                re=RegExpUtility.get_safe_reg_exp(self._generate_format_regex(
-                    LongFormatMode.DOUBLE_COMMA_DOT, self.placeholder)),
-                val='DoubleNum'),
-            ReVal(
-                re=RegExpUtility.get_safe_reg_exp(self._generate_format_regex(
-                    LongFormatMode.DOUBLE_NO_BREAK_SPACE_DOT, self.placeholder)),
-                val='DoubleNum'),
+                    self._generate_format_regex(LongFormatMode.DOUBLE_COMMA_DOT, self.placeholder)
+                ),
+                val='DoubleNum',
+            ),
             ReVal(
                 re=RegExpUtility.get_safe_reg_exp(
-                    ItalianNumeric.DoubleWithMultiplierRegex, regex.S),
-                val='DoubleNum'),
+                    self._generate_format_regex(LongFormatMode.DOUBLE_NO_BREAK_SPACE_DOT, self.placeholder)
+                ),
+                val='DoubleNum',
+            ),
             ReVal(
-                re=RegExpUtility.get_safe_reg_exp(
-                    ItalianNumeric.DoubleWithRoundNumber),
-                val='DoubleNum'),
+                re=RegExpUtility.get_safe_reg_exp(ItalianNumeric.DoubleWithMultiplierRegex, regex.S), val='DoubleNum'
+            ),
+            ReVal(re=RegExpUtility.get_safe_reg_exp(ItalianNumeric.DoubleWithRoundNumber), val='DoubleNum'),
             ReVal(
-                re=RegExpUtility.get_safe_reg_exp(
-                    ItalianNumeric.DoubleAllFloatRegex),
-                val=f'Double{ItalianNumeric.LangMarker}'),
+                re=RegExpUtility.get_safe_reg_exp(ItalianNumeric.DoubleAllFloatRegex),
+                val=f'Double{ItalianNumeric.LangMarker}',
+            ),
+            ReVal(re=RegExpUtility.get_safe_reg_exp(ItalianNumeric.DoubleExponentialNotationRegex), val='DoublePow'),
             ReVal(
-                re=RegExpUtility.get_safe_reg_exp(
-                    ItalianNumeric.DoubleExponentialNotationRegex),
-                val='DoublePow'),
-            ReVal(
-                re=RegExpUtility.get_safe_reg_exp(
-                    ItalianNumeric.DoubleCaretExponentialNotationRegex),
-                val='DoublePow')
+                re=RegExpUtility.get_safe_reg_exp(ItalianNumeric.DoubleCaretExponentialNotationRegex), val='DoublePow'
+            ),
         ]
 
     def __init__(self, placeholder: str = ItalianNumeric.PlaceHolderDefault):
@@ -165,30 +156,25 @@ class ItalianFractionExtractor(BaseNumberExtractor):
     @property
     def regexes(self) -> List[ReVal]:
         _regexes = [
+            ReVal(re=RegExpUtility.get_safe_reg_exp(ItalianNumeric.FractionNotationWithSpacesRegex), val='FracNum'),
+            ReVal(re=RegExpUtility.get_safe_reg_exp(ItalianNumeric.FractionNotationRegex), val='FracNum'),
             ReVal(
-                re=RegExpUtility.get_safe_reg_exp(
-                    ItalianNumeric.FractionNotationWithSpacesRegex),
-                val='FracNum'),
+                re=RegExpUtility.get_safe_reg_exp(ItalianNumeric.FractionNounRegex),
+                val=f'Frac{ItalianNumeric.LangMarker}',
+            ),
             ReVal(
-                re=RegExpUtility.get_safe_reg_exp(
-                    ItalianNumeric.FractionNotationRegex),
-                val='FracNum'),
-            ReVal(
-                re=RegExpUtility.get_safe_reg_exp(
-                    ItalianNumeric.FractionNounRegex),
-                val=f'Frac{ItalianNumeric.LangMarker}'),
-            ReVal(
-                re=RegExpUtility.get_safe_reg_exp(
-                    ItalianNumeric.FractionNounWithArticleRegex),
-                val=f'Frac{ItalianNumeric.LangMarker}')
+                re=RegExpUtility.get_safe_reg_exp(ItalianNumeric.FractionNounWithArticleRegex),
+                val=f'Frac{ItalianNumeric.LangMarker}',
+            ),
         ]
 
         if self.mode != NumberMode.Unit:
             _regexes.append(
                 ReVal(
-                    re=RegExpUtility.get_safe_reg_exp(
-                        ItalianNumeric.FractionPrepositionRegex),
-                    val=f'Frac{ItalianNumeric.LangMarker}'))
+                    re=RegExpUtility.get_safe_reg_exp(ItalianNumeric.FractionPrepositionRegex),
+                    val=f'Frac{ItalianNumeric.LangMarker}',
+                )
+            )
         return _regexes
 
     def __init__(self, mode: NumberMode = NumberMode.DEFAULT):
@@ -201,18 +187,10 @@ class ItalianOrdinalExtractor(BaseNumberExtractor):
     @property
     def regexes(self) -> List[ReVal]:
         return [
-            ReVal(
-                re=ItalianNumeric.OrdinalSuffixRegex,
-                val='OrdinalNum'),
-            ReVal(
-                re=ItalianNumeric.OrdinalNumericRegex,
-                val='OrdinalNum'),
-            ReVal(
-                re=ItalianNumeric.OrdinalItalianRegex,
-                val=f'Ord{ItalianNumeric.LangMarker}'),
-            ReVal(
-                re=ItalianNumeric.OrdinalRoundNumberRegex,
-                val=f'Ord{ItalianNumeric.LangMarker}')
+            ReVal(re=ItalianNumeric.OrdinalSuffixRegex, val='OrdinalNum'),
+            ReVal(re=ItalianNumeric.OrdinalNumericRegex, val='OrdinalNum'),
+            ReVal(re=ItalianNumeric.OrdinalItalianRegex, val=f'Ord{ItalianNumeric.LangMarker}'),
+            ReVal(re=ItalianNumeric.OrdinalRoundNumberRegex, val=f'Ord{ItalianNumeric.LangMarker}'),
         ]
 
 

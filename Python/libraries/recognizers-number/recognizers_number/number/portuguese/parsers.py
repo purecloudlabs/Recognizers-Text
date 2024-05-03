@@ -56,14 +56,14 @@ class PortugueseNumberParserConfiguration(BaseNumberParserConfiguration):
             if any(suffix for suffix in PortugueseNumeric.WrittenFractionSuffix if temp_word.endswith(suffix)):
                 orig_temp_word = temp_word
                 new_length = len(orig_temp_word)
-                temp_word = orig_temp_word[0:new_length - 3]
+                temp_word = orig_temp_word[0 : new_length - 3]
                 if not temp_word:
                     break
                 elif temp_word in self.cardinal_number_map:
                     result.append(temp_word)
                     break
                 else:
-                    temp_word = orig_temp_word[0:new_length - 2]
+                    temp_word = orig_temp_word[0 : new_length - 2]
                     if temp_word in self.cardinal_number_map:
                         result.append(temp_word)
                         break
@@ -74,8 +74,10 @@ class PortugueseNumberParserConfiguration(BaseNumberParserConfiguration):
         # It works by inserting the numerator 'um' ('a') in the list result
         # so that the pattern is correctly processed.
         if len(result) > 2:
-            if result[len(result) - 1] == PortugueseNumeric.OneHalfTokens[1] and \
-                    result[len(result) - 2] == PortugueseNumeric.WordSeparatorToken:
+            if (
+                result[len(result) - 1] == PortugueseNumeric.OneHalfTokens[1]
+                and result[len(result) - 2] == PortugueseNumeric.WordSeparatorToken
+            ):
                 result[len(result) - 2] = PortugueseNumeric.WrittenFractionSeparatorTexts[0]
                 result.insert(len(result) - 1, PortugueseNumeric.OneHalfTokens[0])
 

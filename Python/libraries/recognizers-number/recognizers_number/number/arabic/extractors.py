@@ -37,8 +37,7 @@ class ArabicNumberExtractor(BaseNumberExtractor):
         if self.mode is NumberMode.PURE_NUMBER:
             cardinal_ex = ArabicCardinalExtractor(ArabicNumeric.PlaceHolderDefault)
         elif self.mode is NumberMode.CURRENCY:
-            _regexes.append(
-                ReVal(re=RegExpUtility.get_safe_reg_exp(ArabicNumeric.CurrencyRegex), val='IntegerNum'))
+            _regexes.append(ReVal(re=RegExpUtility.get_safe_reg_exp(ArabicNumeric.CurrencyRegex), val='IntegerNum'))
 
         cardinal_ex = cardinal_ex or ArabicCardinalExtractor()
         _regexes.extend(cardinal_ex.regexes)
@@ -63,8 +62,7 @@ class ArabicCardinalExtractor(BaseNumberExtractor):
 
     @property
     def regexes(self) -> List[ReVal]:
-        return (ArabicIntegerExtractor(self.placeholder).regexes +
-                ArabicDoubleExtractor(self.placeholder).regexes)
+        return ArabicIntegerExtractor(self.placeholder).regexes + ArabicDoubleExtractor(self.placeholder).regexes
 
     def __init__(self, placeholder: str = ArabicNumeric.PlaceHolderDefault):
         self.placeholder = placeholder
@@ -77,64 +75,43 @@ class ArabicIntegerExtractor(BaseNumberExtractor):
     def regexes(self) -> List[ReVal]:
         return [
             ReVal(
-                re=RegExpUtility.get_safe_reg_exp(
-                    ArabicNumeric.NumbersWithPlaceHolder(self.placeholder)
-                ),
-                val='IntegerNum'
+                re=RegExpUtility.get_safe_reg_exp(ArabicNumeric.NumbersWithPlaceHolder(self.placeholder)),
+                val='IntegerNum',
+            ),
+            ReVal(re=RegExpUtility.get_safe_reg_exp(ArabicNumeric.NumbersWithSuffix, regex.S), val='IntegerNum'),
+            ReVal(re=RegExpUtility.get_safe_reg_exp(ArabicNumeric.RoundNumberIntegerRegexWithLocks), val='IntegerNum'),
+            ReVal(re=RegExpUtility.get_safe_reg_exp(ArabicNumeric.NumbersWithDozenSuffix), val='IntegerNum'),
+            ReVal(
+                re=RegExpUtility.get_safe_reg_exp(ArabicNumeric.AllIntRegexWithLocks),
+                val=f'Integer{ArabicNumeric.LangMarker}',
             ),
             ReVal(
-                re=RegExpUtility.get_safe_reg_exp(
-                    ArabicNumeric.NumbersWithSuffix, regex.S
-                ),
-                val='IntegerNum'
-            ),
-            ReVal(
-                re=RegExpUtility.get_safe_reg_exp(
-                    ArabicNumeric.RoundNumberIntegerRegexWithLocks
-                ),
-                val='IntegerNum'
-            ),
-            ReVal(
-                re=RegExpUtility.get_safe_reg_exp(
-                    ArabicNumeric.NumbersWithDozenSuffix
-                ),
-                val='IntegerNum'
-            ),
-            ReVal(
-                re=RegExpUtility.get_safe_reg_exp(
-                    ArabicNumeric.AllIntRegexWithLocks
-                ),
-                val=f'Integer{ArabicNumeric.LangMarker}'
-            ),
-            ReVal(
-                re=RegExpUtility.get_safe_reg_exp(
-                    ArabicNumeric.AllIntRegexWithDozenSuffixLocks
-                ),
-                val=f'Integer{ArabicNumeric.LangMarker}'
+                re=RegExpUtility.get_safe_reg_exp(ArabicNumeric.AllIntRegexWithDozenSuffixLocks),
+                val=f'Integer{ArabicNumeric.LangMarker}',
             ),
             ReVal(
                 re=RegExpUtility.get_safe_reg_exp(
                     self._generate_format_regex(LongFormatMode.INTEGER_COMMA, self.placeholder)
                 ),
-                val='IntegerNum'
+                val='IntegerNum',
             ),
             ReVal(
                 re=RegExpUtility.get_safe_reg_exp(
                     self._generate_format_regex(LongFormatMode.INTEGER_DOT, self.placeholder)
                 ),
-                val='IntegerNum'
+                val='IntegerNum',
             ),
             ReVal(
                 re=RegExpUtility.get_safe_reg_exp(
                     self._generate_format_regex(LongFormatMode.INTEGER_BLANK, self.placeholder)
                 ),
-                val='IntegerNum'
+                val='IntegerNum',
             ),
             ReVal(
                 re=RegExpUtility.get_safe_reg_exp(
                     self._generate_format_regex(LongFormatMode.INTEGER_NO_BREAK_SPACE, self.placeholder)
                 ),
-                val='IntegerNum'
+                val='IntegerNum',
             ),
         ]
 
@@ -149,70 +126,44 @@ class ArabicDoubleExtractor(BaseNumberExtractor):
     def regexes(self) -> List[ReVal]:
         return [
             ReVal(
-                re=RegExpUtility.get_safe_reg_exp(
-                    ArabicNumeric.DoubleDecimalPointRegex(self.placeholder)
-                ),
-                val='DoubleNum'
+                re=RegExpUtility.get_safe_reg_exp(ArabicNumeric.DoubleDecimalPointRegex(self.placeholder)),
+                val='DoubleNum',
             ),
             ReVal(
-                re=RegExpUtility.get_safe_reg_exp(
-                    ArabicNumeric.DoubleWithoutIntegralRegex(self.placeholder)
-                ),
-                val='DoubleNum'
+                re=RegExpUtility.get_safe_reg_exp(ArabicNumeric.DoubleWithoutIntegralRegex(self.placeholder)),
+                val='DoubleNum',
             ),
+            ReVal(re=RegExpUtility.get_safe_reg_exp(ArabicNumeric.DoubleWithMultiplierRegex), val='DoubleNum'),
+            ReVal(re=RegExpUtility.get_safe_reg_exp(ArabicNumeric.DoubleWithRoundNumber), val='DoubleNum'),
             ReVal(
-                re=RegExpUtility.get_safe_reg_exp(
-                    ArabicNumeric.DoubleWithMultiplierRegex
-                ),
-                val='DoubleNum'
+                re=RegExpUtility.get_safe_reg_exp(ArabicNumeric.DoubleAllFloatRegex),
+                val=f'Double{ArabicNumeric.LangMarker}',
             ),
+            ReVal(re=RegExpUtility.get_safe_reg_exp(ArabicNumeric.DoubleExponentialNotationRegex), val='DoubleNum'),
             ReVal(
-                re=RegExpUtility.get_safe_reg_exp(
-                    ArabicNumeric.DoubleWithRoundNumber
-                ),
-                val='DoubleNum'
-            ),
-            ReVal(
-                re=RegExpUtility.get_safe_reg_exp(
-                    ArabicNumeric.DoubleAllFloatRegex
-                ),
-                val=f'Double{ArabicNumeric.LangMarker}'
-            ),
-            ReVal(
-                re=RegExpUtility.get_safe_reg_exp(
-                    ArabicNumeric.DoubleExponentialNotationRegex
-                ),
-                val='DoubleNum'
-            ),
-            ReVal(
-                re=RegExpUtility.get_safe_reg_exp(
-                    ArabicNumeric.DoubleCaretExponentialNotationRegex
-                ),
-                val='DoubleNum'
+                re=RegExpUtility.get_safe_reg_exp(ArabicNumeric.DoubleCaretExponentialNotationRegex), val='DoubleNum'
             ),
             ReVal(
                 re=RegExpUtility.get_safe_reg_exp(
                     self._generate_format_regex(LongFormatMode.DOUBLE_COMMA_DOT, self.placeholder)
                 ),
-                val='DoubleNum'
+                val='DoubleNum',
             ),
             ReVal(
                 re=RegExpUtility.get_safe_reg_exp(
                     self._generate_format_regex(LongFormatMode.DOUBLE_NUM_BLANK_DOT, self.placeholder)
                 ),
-                val='DoubleNum'
+                val='DoubleNum',
             ),
             ReVal(
                 re=RegExpUtility.get_safe_reg_exp(
                     self._generate_format_regex(LongFormatMode.DOUBLE_NO_BREAK_SPACE_DOT, self.placeholder)
                 ),
-                val='DoubleNum'
+                val='DoubleNum',
             ),
             ReVal(
-                re=RegExpUtility.get_safe_reg_exp(
-                    ArabicNumeric.DoubleWithThousandMarkRegex(self.placeholder)
-                ),
-                val='DoubleNum'
+                re=RegExpUtility.get_safe_reg_exp(ArabicNumeric.DoubleWithThousandMarkRegex(self.placeholder)),
+                val='DoubleNum',
             ),
         ]
 
@@ -226,41 +177,32 @@ class ArabicFractionExtractor(BaseNumberExtractor):
     @property
     def regexes(self) -> List[ReVal]:
         _regexes = [
-            ReVal(
-                re=RegExpUtility.get_safe_reg_exp(ArabicNumeric.FractionNotationWithSpacesRegex),
-                val='FracNum'
-            ),
-            ReVal(
-                re=RegExpUtility.get_safe_reg_exp(ArabicNumeric.FractionNotationWithSpacesRegex2),
-                val='FracNum'
-            ),
-            ReVal(
-                re=RegExpUtility.get_safe_reg_exp(ArabicNumeric.FractionNotationRegex),
-                val='FracNum'
-            ),
+            ReVal(re=RegExpUtility.get_safe_reg_exp(ArabicNumeric.FractionNotationWithSpacesRegex), val='FracNum'),
+            ReVal(re=RegExpUtility.get_safe_reg_exp(ArabicNumeric.FractionNotationWithSpacesRegex2), val='FracNum'),
+            ReVal(re=RegExpUtility.get_safe_reg_exp(ArabicNumeric.FractionNotationRegex), val='FracNum'),
             ReVal(
                 re=RegExpUtility.get_safe_reg_exp(ArabicNumeric.FractionNounRegex),
-                val=f'Frac{ArabicNumeric.LangMarker}'
+                val=f'Frac{ArabicNumeric.LangMarker}',
             ),
             ReVal(
                 re=RegExpUtility.get_safe_reg_exp(ArabicNumeric.FractionNounWithArticleRegex),
-                val=f'Frac{ArabicNumeric.LangMarker}'
+                val=f'Frac{ArabicNumeric.LangMarker}',
             ),
             ReVal(
                 re=RegExpUtility.get_safe_reg_exp(ArabicNumeric.FractionWithOrdinalPrefix),
-                val=f'Frac{ArabicNumeric.LangMarker}'
+                val=f'Frac{ArabicNumeric.LangMarker}',
             ),
             ReVal(
                 re=RegExpUtility.get_safe_reg_exp(ArabicNumeric.FractionWithPartOfPrefix),
-                val=f'Frac{ArabicNumeric.LangMarker}'
-            )
+                val=f'Frac{ArabicNumeric.LangMarker}',
+            ),
         ]
         # Not add FractionPrepositionRegex when the mode is Unit to avoid wrong recognize cases like "$1000 over 3"
         if self.mode is not NumberMode.Unit:
             _regexes.append(
                 ReVal(
                     re=RegExpUtility.get_safe_reg_exp(ArabicNumeric.FractionPrepositionRegex),
-                    val=f'Frac{ArabicNumeric.LangMarker}'
+                    val=f'Frac{ArabicNumeric.LangMarker}',
                 )
             )
         return _regexes
@@ -279,17 +221,14 @@ class ArabicOrdinalExtractor(BaseNumberExtractor):
     @property
     def regexes(self) -> List[ReVal]:
         return [
-            ReVal(
-                re=RegExpUtility.get_safe_reg_exp(ArabicNumeric.OrdinalNumericRegex),
-                val='OrdinalNum'
-            ),
+            ReVal(re=RegExpUtility.get_safe_reg_exp(ArabicNumeric.OrdinalNumericRegex), val='OrdinalNum'),
             ReVal(
                 re=RegExpUtility.get_safe_reg_exp(ArabicNumeric.OrdinalEnglishRegex),
-                val=f'Ordinal{ArabicNumeric.LangMarker}'
+                val=f'Ordinal{ArabicNumeric.LangMarker}',
             ),
             ReVal(
                 re=RegExpUtility.get_safe_reg_exp(ArabicNumeric.OrdinalRoundNumberRegex),
-                val=f'Ordinal{ArabicNumeric.LangMarker}'
+                val=f'Ordinal{ArabicNumeric.LangMarker}',
             ),
         ]
 

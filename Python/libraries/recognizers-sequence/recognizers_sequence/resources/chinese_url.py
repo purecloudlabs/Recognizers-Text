@@ -19,4 +19,6 @@ class ChineseURL:
     UrlPrefixRegex = f'({ExtractionRestrictionRegex}{BaseURL.ProtocolRegex}?|{BaseURL.ProtocolRegex})[a-zA-Z0-9][-a-zA-Z0-9._]{{0,256}}(?<![.])\\.'
     UrlRegex = f'{UrlPrefixRegex}(?<Tld>[a-zA-Z]{{2,18}}){BaseURL.UrlSuffixRegex}'
     IpUrlRegex = f'(?<IPurl>({ExtractionRestrictionRegex}{BaseURL.ProtocolRegex}({BaseIp.Ipv4Regex}|localhost){BaseURL.UrlSuffixRegex}))'
+
+
 # pylint: enable=line-too-long

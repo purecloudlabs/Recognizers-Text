@@ -19,4 +19,6 @@ class ChinesePhoneNumbers:
     EndWordBoundariesRegex = f'(\\b|(?=[\\u0800-\\u9FFF]))'
     ColonPrefixCheckRegex = f'(([a-z]|[\\u4E00-\\u9FA5])\\s*$)'
     ForbiddenPrefixMarkers = [r':', r'%']
+
+
 # pylint: enable=line-too-long

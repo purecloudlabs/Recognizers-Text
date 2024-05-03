@@ -9,7 +9,7 @@ from recognizers_text import RegExpUtility
 
 
 class TimeFunctions:
-    def __init__(self, number_dictionary: Dict[str,int], low_bound_desc: Dict[str, int], day_desc_regex: Pattern):
+    def __init__(self, number_dictionary: Dict[str, int], low_bound_desc: Dict[str, int], day_desc_regex: Pattern):
         self.number_dictionary = number_dictionary
         self.low_bound_desc = low_bound_desc
         self.day_desc_regex = day_desc_regex
@@ -17,8 +17,7 @@ class TimeFunctions:
 
     def handle_less(self, extra: DateTimeExtra) -> TimeResult:
         hour = self.match_to_value(next(iter(extra.named_entity['hour']), ''))
-        quarter = self.match_to_value(
-            next(iter(extra.named_entity['quarter']), ''))
+        quarter = self.match_to_value(next(iter(extra.named_entity['quarter']), ''))
         has_half = next(iter(extra.named_entity['half']), '') == ''
         minute = 30 if not has_half else quarter * 15 if quarter != -1 else 0
         second = self.match_to_value(next(iter(extra.named_entity['sec']), ''))
@@ -34,8 +33,11 @@ class TimeFunctions:
         hour = self.match_to_value(next(iter(extra.named_entity['hour']), ''))
         quarter = self.match_to_value(next(iter(extra.named_entity['quarter']), ''))
         has_half = next(iter(extra.named_entity['half']), '') == ''
-        minute = 30 if not has_half else quarter * 15 if quarter != - \
-            1 else self.match_to_value(next(iter(extra.named_entity['min']), ''))
+        minute = (
+            30
+            if not has_half
+            else quarter * 15 if quarter != -1 else self.match_to_value(next(iter(extra.named_entity['min']), ''))
+        )
         second = self.match_to_value(next(iter(extra.named_entity['sec']), ''))
 
         return TimeResult(hour, minute, second)
@@ -47,8 +49,9 @@ class TimeFunctions:
 
         return TimeResult(hour, minute, second)
 
-    def pack_time_result(self, extra: DateTimeExtra, time_result: TimeResult,
-                         reference: datetime) -> DateTimeResolutionResult:
+    def pack_time_result(
+        self, extra: DateTimeExtra, time_result: TimeResult, reference: datetime
+    ) -> DateTimeResolutionResult:
         result = DateTimeResolutionResult()
 
         #  Find if there is a description
@@ -93,10 +96,8 @@ class TimeFunctions:
         if no_desc and hour <= Constants.HALF_DAY_HOUR_COUNT and hour > Constants.DAY_HOUR_START:
             result.comment = Constants.COMMENT_AMPM
 
-        result.future_value = DateUtils.safe_create_from_min_value(
-            year, month, day, hour, minute, second)
-        result.past_value = DateUtils.safe_create_from_min_value(
-            year, month, day, hour, minute, second)
+        result.future_value = DateUtils.safe_create_from_min_value(year, month, day, hour, minute, second)
+        result.past_value = DateUtils.safe_create_from_min_value(year, month, day, hour, minute, second)
         result.timex = timex
         result.success = True
 
@@ -110,8 +111,9 @@ class TimeFunctions:
 
         if result.hour >= 0 and day_desc in self.low_bound_desc:
             if result.hour < self.low_bound_desc[day_desc] or (
-                    result.hour == Constants.HALF_DAY_HOUR_COUNT and
-                    self.low_bound_desc[day_desc] == Constants.DAY_HOUR_START):
+                result.hour == Constants.HALF_DAY_HOUR_COUNT
+                and self.low_bound_desc[day_desc] == Constants.DAY_HOUR_START
+            ):
                 # cases like "1 in the afternoon", "12 midnight"
                 result.hour += Constants.HALF_DAY_HOUR_COUNT
                 result.low_bound = self.low_bound_desc[day_desc]
@@ -163,6 +165,3 @@ class TimeFunctions:
                 value = value + self.number_dictionary[char]
 
         return value
-
-
-

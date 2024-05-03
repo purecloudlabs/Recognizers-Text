@@ -20,8 +20,12 @@ class CatalanNumeric:
     BelowHundredsRegex = f'(({TenToNineteenIntegerRegex}|{TwentiesIntegerRegex}|({TensNumberIntegerRegex}((\\s?-\\s?|\\s)({TwoToNineIntegerRegex}|u))?)|{ZeroToNineIntegerRegex}))'
     HundredsNumberIntegerRegex = f'(({TwoToNineIntegerRegex}(\\s?-\\s?|\\s))?cent(s?))'
     BelowThousandsRegex = f'({HundredsNumberIntegerRegex}(\\s+{BelowHundredsRegex})?|{BelowHundredsRegex})'
-    SupportThousandsRegex = f'(({BelowThousandsRegex}|{BelowHundredsRegex})\\s+{RoundNumberIntegerRegex}(\\s+{RoundNumberIntegerRegex})?)'
-    SeparaIntRegex = f'({SupportThousandsRegex}(\\s+{SupportThousandsRegex})*(\\s+{BelowThousandsRegex})?|{BelowThousandsRegex})'
+    SupportThousandsRegex = (
+        f'(({BelowThousandsRegex}|{BelowHundredsRegex})\\s+{RoundNumberIntegerRegex}(\\s+{RoundNumberIntegerRegex})?)'
+    )
+    SeparaIntRegex = (
+        f'({SupportThousandsRegex}(\\s+{SupportThousandsRegex})*(\\s+{BelowThousandsRegex})?|{BelowThousandsRegex})'
+    )
     AllIntRegex = f'({SeparaIntRegex}|mil(\\s+{BelowThousandsRegex})?|{RoundNumberIntegerRegex})'
     PlaceHolderPureNumber = '\\b'
     PlaceHolderDefault = '(?=\\D)|\\b'
@@ -45,7 +49,9 @@ class CatalanNumeric:
     FractionNotationRegex = f'{BaseNumbers.FractionNotationRegex}'
     FractionMultiplierRegex = f'(?<fracMultiplier>(\\s+(i|un)\\s+)(i|un(a)?|dues|{TwoToNineIntegerRegex}\\s+)?(mig|quarts?|terç|cinquè|sisè|setena|vuitè|vuitena|novè|desè)s?(\\s+(de|d\'))?)'
     RoundMultiplierWithFraction = f'(?<=(?<!{RoundNumberIntegerRegex}){FractionMultiplierRegex}\\s+)?(?<multiplier>(?:cent|mil|mili[óo]|milion|bili[óo]|mil milions)s?)(?={FractionMultiplierRegex}?$)'
-    RoundMultiplierRegex = f'\\b\\s*((de\\s+)?a\\s+)?({RoundMultiplierWithFraction}|(?<multiplier>(?:cent|mil|milers)s?)$)'
+    RoundMultiplierRegex = (
+        f'\\b\\s*((de\\s+)?a\\s+)?({RoundMultiplierWithFraction}|(?<multiplier>(?:cent|mil|milers)s?)$)'
+    )
     FractionNounRegex = f'(?<=\\b)({AllIntRegex}\\s+(i\\s+)?)?({AllIntRegex}(\\s+((i)\\s)?)(({AllOrdinalNumberRegex}s?|{RoundNumberOrdinalRegex}s?)|(mig|meitats?|terç(os)?|quarts?))|(un\\s+)?(mig|meitats?|terç(os)?|quarts?)(\\s+(de\\s+)?|\\s*-\\s*){RoundNumberIntegerRegex})(?=\\b)'
     FractionNounWithArticleRegex = f'(?<=\\b)(({AllIntRegex}|{RoundNumberIntegerRegexWithLocks})\\s+((i|con)\\s+)?)?((un|i)(\\s+)(({AllOrdinalNumberRegex}))|(i\\s+)?mig|meitats?|quarts?)(?=\\b)'
     FractionPrepositionRegex = f'(?<!{BaseNumbers.CommonCurrencySymbol}\\s*)(?<=\\b)(?<numerator>({AllIntRegex})|((?<![\\.,])\\d+))\\s+(sobre|(?<ambiguousSeparator>en|de))\\s+(?<denominator>({AllIntRegex})|(\\d+)(?![\\.,]))(?=\\b)'
@@ -59,10 +65,16 @@ class CatalanNumeric:
         return f'(?<=\\s|^)(?<!(\\d+))[\\.,]\\d+(?!([\\.,]\\d+))(?={placeholder})'
 
     DoubleWithMultiplierRegex = f'(((?<!\\d+\\s*)-\\s*)|((?<=\\b)(?<!\\d+\\[\\.,])))\\d+[\\.,]\\d+\\s*{BaseNumbers.NumberMultiplierRegex}(?=\\b)'
-    DoubleWithRoundNumber = f'(((?<!\\d+\\s*)-\\s*)|((?<=\\b)(?<!\\d+\\[\\.,])))\\d+[\\.,]\\d+\\s+{RoundNumberIntegerRegex}(?=\\b)'
+    DoubleWithRoundNumber = (
+        f'(((?<!\\d+\\s*)-\\s*)|((?<=\\b)(?<!\\d+\\[\\.,])))\\d+[\\.,]\\d+\\s+{RoundNumberIntegerRegex}(?=\\b)'
+    )
     DoubleAllFloatRegex = f'((?<=\\b){AllFloatRegex}(?=\\b))'
-    DoubleExponentialNotationRegex = '(((?<!\\d+\\s*)-\\s*)|((?<=\\b)(?<!\\d+[\\.,])))(\\d+([\\.,]\\d+)?)e([+-]*[1-9]\\d*)(?=\\b)'
-    DoubleCaretExponentialNotationRegex = '(((?<!\\d+\\s*)-\\s*)|((?<=\\b)(?<!\\d+[\\.,])))(\\d+([\\.,]\\d+)?)\\^([+-]*[1-9]\\d*)(?=\\b)'
+    DoubleExponentialNotationRegex = (
+        '(((?<!\\d+\\s*)-\\s*)|((?<=\\b)(?<!\\d+[\\.,])))(\\d+([\\.,]\\d+)?)e([+-]*[1-9]\\d*)(?=\\b)'
+    )
+    DoubleCaretExponentialNotationRegex = (
+        '(((?<!\\d+\\s*)-\\s*)|((?<=\\b)(?<!\\d+[\\.,])))(\\d+([\\.,]\\d+)?)\\^([+-]*[1-9]\\d*)(?=\\b)'
+    )
     EqualRegex = '(igual a)'
     AmbiguousFractionConnectorsRegex = '(\\b(en|a)\\b)'
     DecimalSeparatorChar = ','
@@ -78,117 +90,131 @@ class CatalanNumeric:
     FractionalTokens = [r'mig', r'quart', r'terç', r'terços', r'cinque']
     HalfADozenRegex = 'mitja\\s+dotzena'
     DigitalNumberRegex = f'((?<=\\b)(cent|milers|mil|milions|mil milions|bili[óo])(?=\\b))|((?<=(\\d|\\b)){BaseNumbers.MultiplierLookupRegex}(?=\\b))'
-    CardinalNumberMap = dict([("zero", 0),
-                              ("una", 1),
-                              ("un", 1),
-                              ("u", 1),
-                              ("dos", 2),
-                              ("tres", 3),
-                              ("quatre", 4),
-                              ("cinc", 5),
-                              ("sis", 6),
-                              ("set", 7),
-                              ("vuit", 8),
-                              ("nou", 9),
-                              ("deu", 10),
-                              ("onze", 11),
-                              ("dotze", 12),
-                              ("dotzena", 12),
-                              ("dotzenes", 12),
-                              ("tretze", 13),
-                              ("catorze", 14),
-                              ("quinze", 15),
-                              ("setze", 16),
-                              ("disset", 17),
-                              ("divuit", 18),
-                              ("dinnou", 19),
-                              ("dinou", 19),
-                              ("vint", 20),
-                              ("trenta", 30),
-                              ("quaranta", 40),
-                              ("cinquanta", 50),
-                              ("seixanta", 60),
-                              ("setanta", 70),
-                              ("vuitanta", 80),
-                              ("noranta", 90),
-                              ("cent", 100),
-                              ("dos-cents", 200),
-                              ("doscents", 200),
-                              ("dos cents", 200),
-                              ("tres-cents", 300),
-                              ("trescents", 300),
-                              ("tres cents", 300),
-                              ("quatre-cents", 400),
-                              ("quatre cents", 400),
-                              ("quatrecents", 400),
-                              ("cinc-cents", 500),
-                              ("cinc cents", 500),
-                              ("cinccents", 500),
-                              ("sis-cents", 600),
-                              ("sis cents", 600),
-                              ("siscents", 600),
-                              ("set-cents", 700),
-                              ("set cents", 700),
-                              ("setcents", 700),
-                              ("vuit-cents", 800),
-                              ("vuit cents", 800),
-                              ("vuitcents", 800),
-                              ("nou-cents", 900),
-                              ("nou cents", 900),
-                              ("noucents", 900),
-                              ("mil", 1000),
-                              ("milions", 1000000),
-                              ("milió", 1000000),
-                              ("bilió", 1000000000000),
-                              ("centenars", 100),
-                              ("milers", 1000),
-                              ("milion", 1000000),
-                              ("mil milions", 1000000000),
-                              ("milers de milions", 1000000000),
-                              ("bilions", 1000000000000)])
-    OrdinalNumberMap = dict([("primer", 1),
-                             ("segon", 2),
-                             ("secundari", 2),
-                             ("mig", 2),
-                             ("la meitat", 2),
-                             ("tercer", 3),
-                             ("terç", 3),
-                             ("quart", 4),
-                             ("cinquè", 5),
-                             ("sisè", 6),
-                             ("setè", 7),
-                             ("vuitè", 8),
-                             ("novè", 9),
-                             ("desè", 10),
-                             ("onzè", 11),
-                             ("dotzè", 12),
-                             ("tretzè", 13),
-                             ("catorzè", 14),
-                             ("quinzè", 15),
-                             ("setze", 16),
-                             ("disset", 17),
-                             ("divuitena", 18),
-                             ("dinovena", 19),
-                             ("vintè", 20),
-                             ("trenta", 30),
-                             ("quaranta", 40),
-                             ("cinquantè", 50),
-                             ("seixanta", 60),
-                             ("setanta", 70),
-                             ("80è", 80),
-                             ("noranta", 90),
-                             ("centèsima", 100),
-                             ("milè", 1000),
-                             ("milionèsima", 1000000),
-                             ("bil·lionèsima", 1000000000000)])
-    RoundNumberMap = dict([("cent", 100),
-                           ("mil", 1000),
-                           ("milions", 1000000),
-                           ("milion", 1000000),
-                           ("milió", 1000000),
-                           ("mln", 1000000),
-                           ("mil milions", 1000000000),
-                           ("bln", 1000000000),
-                           ("bilió", 1000000000000),])
+    CardinalNumberMap = dict(
+        [
+            ("zero", 0),
+            ("una", 1),
+            ("un", 1),
+            ("u", 1),
+            ("dos", 2),
+            ("tres", 3),
+            ("quatre", 4),
+            ("cinc", 5),
+            ("sis", 6),
+            ("set", 7),
+            ("vuit", 8),
+            ("nou", 9),
+            ("deu", 10),
+            ("onze", 11),
+            ("dotze", 12),
+            ("dotzena", 12),
+            ("dotzenes", 12),
+            ("tretze", 13),
+            ("catorze", 14),
+            ("quinze", 15),
+            ("setze", 16),
+            ("disset", 17),
+            ("divuit", 18),
+            ("dinnou", 19),
+            ("dinou", 19),
+            ("vint", 20),
+            ("trenta", 30),
+            ("quaranta", 40),
+            ("cinquanta", 50),
+            ("seixanta", 60),
+            ("setanta", 70),
+            ("vuitanta", 80),
+            ("noranta", 90),
+            ("cent", 100),
+            ("dos-cents", 200),
+            ("doscents", 200),
+            ("dos cents", 200),
+            ("tres-cents", 300),
+            ("trescents", 300),
+            ("tres cents", 300),
+            ("quatre-cents", 400),
+            ("quatre cents", 400),
+            ("quatrecents", 400),
+            ("cinc-cents", 500),
+            ("cinc cents", 500),
+            ("cinccents", 500),
+            ("sis-cents", 600),
+            ("sis cents", 600),
+            ("siscents", 600),
+            ("set-cents", 700),
+            ("set cents", 700),
+            ("setcents", 700),
+            ("vuit-cents", 800),
+            ("vuit cents", 800),
+            ("vuitcents", 800),
+            ("nou-cents", 900),
+            ("nou cents", 900),
+            ("noucents", 900),
+            ("mil", 1000),
+            ("milions", 1000000),
+            ("milió", 1000000),
+            ("bilió", 1000000000000),
+            ("centenars", 100),
+            ("milers", 1000),
+            ("milion", 1000000),
+            ("mil milions", 1000000000),
+            ("milers de milions", 1000000000),
+            ("bilions", 1000000000000),
+        ]
+    )
+    OrdinalNumberMap = dict(
+        [
+            ("primer", 1),
+            ("segon", 2),
+            ("secundari", 2),
+            ("mig", 2),
+            ("la meitat", 2),
+            ("tercer", 3),
+            ("terç", 3),
+            ("quart", 4),
+            ("cinquè", 5),
+            ("sisè", 6),
+            ("setè", 7),
+            ("vuitè", 8),
+            ("novè", 9),
+            ("desè", 10),
+            ("onzè", 11),
+            ("dotzè", 12),
+            ("tretzè", 13),
+            ("catorzè", 14),
+            ("quinzè", 15),
+            ("setze", 16),
+            ("disset", 17),
+            ("divuitena", 18),
+            ("dinovena", 19),
+            ("vintè", 20),
+            ("trenta", 30),
+            ("quaranta", 40),
+            ("cinquantè", 50),
+            ("seixanta", 60),
+            ("setanta", 70),
+            ("80è", 80),
+            ("noranta", 90),
+            ("centèsima", 100),
+            ("milè", 1000),
+            ("milionèsima", 1000000),
+            ("bil·lionèsima", 1000000000000),
+        ]
+    )
+    RoundNumberMap = dict(
+        [
+            ("cent", 100),
+            ("mil", 1000),
+            ("milions", 1000000),
+            ("milion", 1000000),
+            ("milió", 1000000),
+            ("mln", 1000000),
+            ("mil milions", 1000000000),
+            ("bln", 1000000000),
+            ("bilió", 1000000000000),
+        ]
+    )
     AmbiguityFiltersDict = dict([("^[.]", "")])
+
+
 # pylint: enable=line-too-long

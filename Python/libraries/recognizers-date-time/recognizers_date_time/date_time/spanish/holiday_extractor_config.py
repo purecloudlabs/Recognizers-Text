@@ -18,5 +18,5 @@ class SpanishHolidayExtractorConfiguration(HolidayExtractorConfiguration):
         self._holiday_regexes = [
             RegExpUtility.get_safe_reg_exp(SpanishDateTime.HolidayRegex1),
             RegExpUtility.get_safe_reg_exp(SpanishDateTime.HolidayRegex2),
-            RegExpUtility.get_safe_reg_exp(SpanishDateTime.HolidayRegex3)
+            RegExpUtility.get_safe_reg_exp(SpanishDateTime.HolidayRegex3),
         ]

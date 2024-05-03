@@ -38,21 +38,16 @@ class GermanDatePeriodExtractorConfiguration(DatePeriodExtractorConfiguration):
             RegExpUtility.get_safe_reg_exp(GermanDateTime.YearPeriodRegex),
             RegExpUtility.get_safe_reg_exp(GermanDateTime.WeekOfYearRegex),
             RegExpUtility.get_safe_reg_exp(GermanDateTime.WeekDayOfMonthRegex),
-            RegExpUtility.get_safe_reg_exp(
-                    GermanDateTime.MonthFrontBetweenRegex),
-            RegExpUtility.get_safe_reg_exp(
-                    GermanDateTime.MonthFrontSimpleCasesRegex),
+            RegExpUtility.get_safe_reg_exp(GermanDateTime.MonthFrontBetweenRegex),
+            RegExpUtility.get_safe_reg_exp(GermanDateTime.MonthFrontSimpleCasesRegex),
             RegExpUtility.get_safe_reg_exp(GermanDateTime.QuarterRegex),
-            RegExpUtility.get_safe_reg_exp(
-                    GermanDateTime.QuarterRegexYearFront),
+            RegExpUtility.get_safe_reg_exp(GermanDateTime.QuarterRegexYearFront),
             RegExpUtility.get_safe_reg_exp(GermanDateTime.SeasonRegex),
-            RegExpUtility.get_safe_reg_exp(
-                    GermanDateTime.LaterEarlyPeriodRegex),
-            RegExpUtility.get_safe_reg_exp(
-                    GermanDateTime.WeekWithWeekDayRangeRegex),
+            RegExpUtility.get_safe_reg_exp(GermanDateTime.LaterEarlyPeriodRegex),
+            RegExpUtility.get_safe_reg_exp(GermanDateTime.WeekWithWeekDayRangeRegex),
             RegExpUtility.get_safe_reg_exp(GermanDateTime.YearPlusNumberRegex),
             RegExpUtility.get_safe_reg_exp(GermanDateTime.DecadeWithCenturyRegex),
-            RegExpUtility.get_safe_reg_exp(GermanDateTime.RelativeDecadeRegex)
+            RegExpUtility.get_safe_reg_exp(GermanDateTime.RelativeDecadeRegex),
         ]
 
     def get_from_token_index(self, source: str) -> MatchedIndex:

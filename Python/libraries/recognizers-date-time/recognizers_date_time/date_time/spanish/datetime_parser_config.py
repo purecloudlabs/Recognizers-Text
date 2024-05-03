@@ -107,31 +107,23 @@ class SpanishDateTimeParserConfiguration(DateTimeParserConfiguration):
     def __init__(self, config: BaseDateParserConfiguration):
         self._token_before_date = SpanishDateTime.TokenBeforeDate
         self._token_before_time = SpanishDateTime.TokenBeforeTime
-        self._now_regex = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.NowRegex)
-        self._am_time_regex = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.AmTimeRegex)
-        self._pm_time_regex = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.PmTimeRegex)
+        self._now_regex = RegExpUtility.get_safe_reg_exp(SpanishDateTime.NowRegex)
+        self._am_time_regex = RegExpUtility.get_safe_reg_exp(SpanishDateTime.AmTimeRegex)
+        self._pm_time_regex = RegExpUtility.get_safe_reg_exp(SpanishDateTime.PmTimeRegex)
         self._simple_time_of_today_after_regex = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.SimpleTimeOfTodayAfterRegex)
+            SpanishDateTime.SimpleTimeOfTodayAfterRegex
+        )
         self._simple_time_of_today_before_regex = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.SimpleTimeOfTodayBeforeRegex)
-        self._specific_time_of_day_regex = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.SpecificTimeOfDayRegex)
-        self._specific_end_of_regex = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.SpecificEndOfRegex)
-        self._unspecific_end_of_regex = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.UnspecificEndOfRegex)
-        self._unit_regex = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.UnitRegex)
+            SpanishDateTime.SimpleTimeOfTodayBeforeRegex
+        )
+        self._specific_time_of_day_regex = RegExpUtility.get_safe_reg_exp(SpanishDateTime.SpecificTimeOfDayRegex)
+        self._specific_end_of_regex = RegExpUtility.get_safe_reg_exp(SpanishDateTime.SpecificEndOfRegex)
+        self._unspecific_end_of_regex = RegExpUtility.get_safe_reg_exp(SpanishDateTime.UnspecificEndOfRegex)
+        self._unit_regex = RegExpUtility.get_safe_reg_exp(SpanishDateTime.UnitRegex)
 
-        self.next_prefix_regex = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.NextPrefixRegex)
-        self.previous_prefix_regex = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.PreviousPrefixRegex)
-        self.last_night_time_regex = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.LastNightTimeRegex)
+        self.next_prefix_regex = RegExpUtility.get_safe_reg_exp(SpanishDateTime.NextPrefixRegex)
+        self.previous_prefix_regex = RegExpUtility.get_safe_reg_exp(SpanishDateTime.PreviousPrefixRegex)
+        self.last_night_time_regex = RegExpUtility.get_safe_reg_exp(SpanishDateTime.LastNightTimeRegex)
 
         self._date_extractor = config.date_extractor
         self._time_extractor = config.time_extractor
@@ -155,9 +147,11 @@ class SpanishDateTimeParserConfiguration(DateTimeParserConfiguration):
         if source.endswith('ahora') or source.endswith('mismo') or source.endswith('momento'):
             timex = 'PRESENT_REF'
         elif (
-            source.endswith('posible') or source.endswith('pueda') or
-            source.endswith('puedas') or source.endswith('podamos') or
-            source.endswith('puedan')
+            source.endswith('posible')
+            or source.endswith('pueda')
+            or source.endswith('puedas')
+            or source.endswith('podamos')
+            or source.endswith('puedan')
         ):
             timex = 'FUTURE_REF'
         elif source.endswith('mente'):

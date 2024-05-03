@@ -160,89 +160,48 @@ class GermanDateTimePeriodExtractorConfiguration(DateTimePeriodExtractorConfigur
         self._simple_cases_regexes = [
             RegExpUtility.get_safe_reg_exp(GermanDateTime.PureNumFromTo),
             RegExpUtility.get_safe_reg_exp(GermanDateTime.PureNumBetweenAnd),
-            RegExpUtility.get_safe_reg_exp(
-                GermanDateTime.SpecificTimeOfDayRegex)
+            RegExpUtility.get_safe_reg_exp(GermanDateTime.SpecificTimeOfDayRegex),
         ]
 
-        self._preposition_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.PrepositionRegex)
-        self._till_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.TillRegex)
-        self._specific_time_of_day_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.PeriodSpecificTimeOfDayRegex)
-        self._time_of_day_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.PeriodTimeOfDayRegex)
-        self._followed_unit = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.TimeFollowedUnit)
-        self._time_unit_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.TimeUnitRegex)
-        self._past_prefix_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.PastSuffixRegex)
-        self._next_prefix_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.NextPrefixRegex)
-        self._number_combined_with_unit = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.TimeNumberCombinedWithUnit)
-        self._week_day_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.WeekDayRegex)
+        self._preposition_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.PrepositionRegex)
+        self._till_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.TillRegex)
+        self._specific_time_of_day_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.PeriodSpecificTimeOfDayRegex)
+        self._time_of_day_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.PeriodTimeOfDayRegex)
+        self._followed_unit = RegExpUtility.get_safe_reg_exp(GermanDateTime.TimeFollowedUnit)
+        self._time_unit_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.TimeUnitRegex)
+        self._past_prefix_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.PastSuffixRegex)
+        self._next_prefix_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.NextPrefixRegex)
+        self._number_combined_with_unit = RegExpUtility.get_safe_reg_exp(GermanDateTime.TimeNumberCombinedWithUnit)
+        self._week_day_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.WeekDayRegex)
         self._period_time_of_day_with_date_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.PeriodTimeOfDayWithDateRegex)
-        self._relative_time_unit_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.RelativeTimeUnitRegex)
-        self._rest_of_date_time_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.RestOfDateTimeRegex)
-        self._general_ending_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.GeneralEndingRegex)
-        self._middle_pause_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.MiddlePauseRegex)
+            GermanDateTime.PeriodTimeOfDayWithDateRegex
+        )
+        self._relative_time_unit_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.RelativeTimeUnitRegex)
+        self._rest_of_date_time_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.RestOfDateTimeRegex)
+        self._general_ending_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.GeneralEndingRegex)
+        self._middle_pause_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.MiddlePauseRegex)
 
-        self.from_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.FromRegex)
-        self.range_connector_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.RangeConnectorRegex)
+        self.from_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.FromRegex)
+        self.range_connector_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.RangeConnectorRegex)
 
         self._cardinal_extractor = GermanCardinalExtractor()
 
-        self._single_date_extractor = BaseDateExtractor(
-            GermanDateExtractorConfiguration())
-        self._single_time_extractor = BaseTimeExtractor(
-            GermanTimeExtractorConfiguration())
-        self._single_date_time_extractor = BaseDateTimeExtractor(
-            GermanDateTimeExtractorConfiguration())
-        self._duration_extractor = BaseDurationExtractor(
-            GermanDurationExtractorConfiguration())
-        self._time_period_extractor = BaseTimePeriodExtractor(
-            GermanTimePeriodExtractorConfiguration())
-        self._within_next_prefix_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.WithinNextPrefixRegex
-        )
-        self._time_unit_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.TimeUnitRegex
-        )
+        self._single_date_extractor = BaseDateExtractor(GermanDateExtractorConfiguration())
+        self._single_time_extractor = BaseTimeExtractor(GermanTimeExtractorConfiguration())
+        self._single_date_time_extractor = BaseDateTimeExtractor(GermanDateTimeExtractorConfiguration())
+        self._duration_extractor = BaseDurationExtractor(GermanDurationExtractorConfiguration())
+        self._time_period_extractor = BaseTimePeriodExtractor(GermanTimePeriodExtractorConfiguration())
+        self._within_next_prefix_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.WithinNextPrefixRegex)
+        self._time_unit_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.TimeUnitRegex)
         self._token_before_date = GermanDateTime.TokenBeforeDate
-        self._future_suffix_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.FutureSuffixRegex
-        )
-        self._date_unit_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.DateUnitRegex
-        )
-        self._am_desc_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.AmDescRegex
-        )
-        self._pm_desc_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.PmDescRegex
-        )
-        self._prefix_day_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.PrefixDayRegex
-        )
-        self._before_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.BeforeRegex
-        )
-        self._after_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.AfterRegex
-        )
-        self._suffix_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.SuffixRegex
-        )
+        self._future_suffix_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.FutureSuffixRegex)
+        self._date_unit_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.DateUnitRegex)
+        self._am_desc_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.AmDescRegex)
+        self._pm_desc_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.PmDescRegex)
+        self._prefix_day_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.PrefixDayRegex)
+        self._before_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.BeforeRegex)
+        self._after_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.AfterRegex)
+        self._suffix_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.SuffixRegex)
         self._check_both_before_after = GermanDateTime.CheckBothBeforeAfter
 
     def get_from_token_index(self, source: str) -> MatchedIndex:

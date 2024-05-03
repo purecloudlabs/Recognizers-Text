@@ -118,16 +118,14 @@ class BaseCJKDateTimeExtractor(Extractor):
     def basic_regex_match(self, source: str) -> List[Token]:
         tokens: List[Token] = list()
         # handle "now"
-        matches: List[Match] = list(
-            regex.finditer(self.config.now_regex, source))
+        matches: List[Match] = list(regex.finditer(self.config.now_regex, source))
         tokens.extend(map(lambda x: Token(x.start(), x.end()), matches))
         return tokens
 
     # Merge a Date entity and a Time entity, like "明天早上七点"
     def merge_date_and_time(self, source: str, reference: datetime) -> List[Token]:
         tokens: List[Token] = list()
-        ers: List[ExtractResult] = self.config.date_point_extractor.extract(
-            source, reference)
+        ers: List[ExtractResult] = self.config.date_point_extractor.extract(source, reference)
 
         if len(ers) < 1:
             return tokens
@@ -158,8 +156,11 @@ class BaseCJKDateTimeExtractor(Extractor):
 
                 middle = source[middle_begin:middle_end].strip().lower()
 
-                if not middle or RegExpUtility.get_matches(self.config.connector_regex, middle) or \
-                        RegExpUtility.get_matches(self.config.preposition_regex, middle):
+                if (
+                    not middle
+                    or RegExpUtility.get_matches(self.config.connector_regex, middle)
+                    or RegExpUtility.get_matches(self.config.preposition_regex, middle)
+                ):
                     begin = ers[i].start
                     end = ers[j].start + ers[j].length
                     tokens.append(Token(begin, end))
@@ -174,16 +175,16 @@ class BaseCJKDateTimeExtractor(Extractor):
         ers = self.config.time_point_extractor.extract(source, reference)
 
         for er in ers:
-            before = source[:er.start]
+            before = source[: er.start]
             inner_match = regex.search(self.config.night_regex, er.text)
 
             if inner_match is not None and inner_match.start() == 0:
-                before = source[:er.start + len(inner_match.group())]
+                before = source[: er.start + len(inner_match.group())]
             if not before:
                 continue
 
             match = regex.search(self.config.time_of_special_day_regex, before)
-            if match is not None and not before[match.end():].strip():
+            if match is not None and not before[match.end() :].strip():
                 begin = match.start()
                 end = er.start + er.length
                 tokens.append(Token(begin, end))
@@ -193,9 +194,7 @@ class BaseCJKDateTimeExtractor(Extractor):
         match_time_of_day = regex.search(self.config.time_of_day_regex, source)
 
         if match_time_of_today and not match_time_of_day:
-            tokens.append(Token(match_time_of_today.start(),
-                                (match_time_of_today.end())
-                                ))
+            tokens.append(Token(match_time_of_today.start(), (match_time_of_today.end())))
 
         return tokens
 
@@ -211,8 +210,9 @@ class BaseCJKDateTimeExtractor(Extractor):
                 before_match = RegExpUtility.get_matches(self.config.before_regex, suffix)
                 after_match = RegExpUtility.get_matches(self.config.after_regex, suffix)
 
-                if (before_match and suffix.startswith(before_match[0])) \
-                        or (after_match and suffix.startswith(after_match[0])):
+                if (before_match and suffix.startswith(before_match[0])) or (
+                    after_match and suffix.startswith(after_match[0])
+                ):
                     meta_data = MetaData()
                     meta_data.is_duration_with_ago_and_later = True
                     ret.append(Token(er.start, pos + 1, meta_data))
@@ -365,9 +365,11 @@ class BaseCJKDateTimeParser(DateTimeParser):
 
             if inner_result.success:
                 inner_result.future_resolution[TimeTypeConstants.DATETIME] = DateTimeFormatUtil.format_date_time(
-                    inner_result.future_value)
+                    inner_result.future_value
+                )
                 inner_result.past_resolution[TimeTypeConstants.DATETIME] = DateTimeFormatUtil.format_date_time(
-                    inner_result.past_value)
+                    inner_result.past_value
+                )
 
                 inner_result.is_lunar = self.is_lunar_calendar(source_text)
 
@@ -447,19 +449,21 @@ class BaseCJKDateTimeParser(DateTimeParser):
 
         time_str = pr2.timex_str
         if time_str.endswith(Constants.COMMENT_AMPM):
-            time_str = time_str[0:len(time_str) - 4]
+            time_str = time_str[0 : len(time_str) - 4]
 
         ret.timex = pr1.timex_str + time_str
 
         val = pr2.value
-        if hour <= Constants.HALF_DAY_HOUR_COUNT and not self.config.simple_pm_regex.search(source) and not \
-                self.config.simple_am_regex.search(source) and val.comment:
+        if (
+            hour <= Constants.HALF_DAY_HOUR_COUNT
+            and not self.config.simple_pm_regex.search(source)
+            and not self.config.simple_am_regex.search(source)
+            and val.comment
+        ):
             ret.comment = Constants.COMMENT_AMPM
 
-        ret.future_value = datetime(
-            future_date.year, future_date.month, future_date.day, hour, minute, second)
-        ret.past_value = datetime(
-            past_date.year, past_date.month, past_date.day, hour, minute, second)
+        ret.future_value = datetime(future_date.year, future_date.month, future_date.day, hour, minute, second)
+        ret.past_value = datetime(past_date.year, past_date.month, past_date.day, hour, minute, second)
         ret.success = True
 
         return ret
@@ -501,11 +505,13 @@ class BaseCJKDateTimeParser(DateTimeParser):
         if eod and len(ers) != 1:
             if RegExpUtility.get_group(eod, Constants.TOMORROW_GROUP_NAME):
                 tomorrow_date = reference + timedelta(days=1)
-                result = DateTimeFormatUtil.resolve_end_of_day(DateTimeFormatUtil.format_date(tomorrow_date),
-                                                               tomorrow_date, tomorrow_date)
+                result = DateTimeFormatUtil.resolve_end_of_day(
+                    DateTimeFormatUtil.format_date(tomorrow_date), tomorrow_date, tomorrow_date
+                )
             else:
-                result = DateTimeFormatUtil.resolve_end_of_day(DateTimeFormatUtil.format_date(reference),
-                                                               reference, reference)
+                result = DateTimeFormatUtil.resolve_end_of_day(
+                    DateTimeFormatUtil.format_date(reference), reference, reference
+                )
             return result
 
         if len(ers) != 1:
@@ -540,8 +546,7 @@ class BaseCJKDateTimeParser(DateTimeParser):
 
             time_str = Constants.TIME_TIMEX_PREFIX + DateTimeFormatUtil.to_str(hour, 2) + time_str[3:]
             result.timex = DateTimeFormatUtil.format_date(date) + time_str
-            result.future_value = datetime(
-                date.year, date.month, date.day, hour, min, sec)
+            result.future_value = datetime(date.year, date.month, date.day, hour, min, sec)
             result.past_value = result.future_value
             result.success = True
             return result
@@ -588,10 +593,10 @@ class BaseCJKDateTimeParser(DateTimeParser):
 
             match = regex.match(self.config.datetime_period_unit_regex, source)
             if match:
-                suffix = source[duration_result[0].start:match.start() + duration_result[0].length].strip()
+                suffix = source[duration_result[0].start : match.start() + duration_result[0].length].strip()
                 src_unit = RegExpUtility.get_group(match, Constants.UNIT_GROUP_NAME)
 
-                number_str = source[duration_result[0].start:match.start() - duration_result[0].start].strip()
+                number_str = source[duration_result[0].start : match.start() - duration_result[0].start].strip()
                 number = self.convert_CJK_to_num(number_str)
 
                 if src_unit in self.config.unit_map:
@@ -631,8 +636,7 @@ class BaseCJKDateTimeParser(DateTimeParser):
 
     def convert_CJK_to_num(self, num_str: str) -> int:
         num = -1
-        er: ExtractResult = next(
-            iter(self.config.integer_extractor.extract(num_str)), None)
+        er: ExtractResult = next(iter(self.config.integer_extractor.extract(num_str)), None)
         if er and er.type == NumConstants.SYS_NUM_INTEGER:
             try:
                 num = int(self.config.number_parser.parse(er).value)

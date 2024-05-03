@@ -37,25 +37,20 @@ class PortugueseDatePeriodExtractorConfiguration(DatePeriodExtractorConfiguratio
             RegExpUtility.get_safe_reg_exp(PortugueseDateTime.DecadeWithCenturyRegex),
             RegExpUtility.get_safe_reg_exp(PortugueseDateTime.WeekOfMonthRegex),
             RegExpUtility.get_safe_reg_exp(PortugueseDateTime.WeekOfYearRegex),
-            RegExpUtility.get_safe_reg_exp(
-                    PortugueseDateTime.MonthFrontBetweenRegex),
-            RegExpUtility.get_safe_reg_exp(
-                    PortugueseDateTime.MonthFrontSimpleCasesRegex),
+            RegExpUtility.get_safe_reg_exp(PortugueseDateTime.MonthFrontBetweenRegex),
+            RegExpUtility.get_safe_reg_exp(PortugueseDateTime.MonthFrontSimpleCasesRegex),
             RegExpUtility.get_safe_reg_exp(PortugueseDateTime.QuarterRegex),
-            RegExpUtility.get_safe_reg_exp(
-                    PortugueseDateTime.QuarterRegexYearFront),
+            RegExpUtility.get_safe_reg_exp(PortugueseDateTime.QuarterRegexYearFront),
             RegExpUtility.get_safe_reg_exp(PortugueseDateTime.AllHalfYearRegex),
             RegExpUtility.get_safe_reg_exp(PortugueseDateTime.SeasonRegex),
             RegExpUtility.get_safe_reg_exp(PortugueseDateTime.WhichWeekRegex),
             RegExpUtility.get_safe_reg_exp(PortugueseDateTime.RestOfDateRegex),
-            RegExpUtility.get_safe_reg_exp(
-                    PortugueseDateTime.LaterEarlyPeriodRegex),
-            RegExpUtility.get_safe_reg_exp(
-                    PortugueseDateTime.WeekWithWeekDayRangeRegex),
+            RegExpUtility.get_safe_reg_exp(PortugueseDateTime.LaterEarlyPeriodRegex),
+            RegExpUtility.get_safe_reg_exp(PortugueseDateTime.WeekWithWeekDayRangeRegex),
             RegExpUtility.get_safe_reg_exp(PortugueseDateTime.YearPlusNumberRegex),
             RegExpUtility.get_safe_reg_exp(PortugueseDateTime.DecadeWithCenturyRegex),
             RegExpUtility.get_safe_reg_exp(PortugueseDateTime.RelativeDecadeRegex),
-            RegExpUtility.get_safe_reg_exp(PortugueseDateTime.ReferenceDatePeriodRegex)
+            RegExpUtility.get_safe_reg_exp(PortugueseDateTime.ReferenceDatePeriodRegex),
         ]
 
     def get_from_token_index(self, source: str) -> MatchedIndex:

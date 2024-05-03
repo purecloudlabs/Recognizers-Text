@@ -15,4 +15,6 @@
 class BaseGUID:
     GUIDRegexElement = f'(([a-f0-9]{{8}}(-[a-f0-9]{{4}}){{3}}-[a-f0-9]{{12}})|([a-f0-9]{{32}}))'
     GUIDRegex = f'(\\b{GUIDRegexElement}\\b|\\{{{GUIDRegexElement}\\}}|urn:uuid:{GUIDRegexElement}\\b|%7[b]{GUIDRegexElement}%7[d]|[x]\\\'{GUIDRegexElement}\\\')'
+
+
 # pylint: enable=line-too-long

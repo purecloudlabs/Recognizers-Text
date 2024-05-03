@@ -24,4 +24,5 @@ class DateTimeParser(Parser):
     @abstractmethod
     def parse(self, source: ExtractResult, reference: datetime = None) -> Optional[DateTimeParseResult]:
         raise NotImplementedError
+
     # pylint: disable = W0221

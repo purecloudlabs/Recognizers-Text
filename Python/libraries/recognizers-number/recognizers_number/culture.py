@@ -37,8 +37,7 @@ class CultureInfo(BaseCultureInfo):
             result = 'E+'.join(parts)
         long_format = SUPPORTED_CULTURES.get(self.code)
         if long_format:
-            result = ''.join(
-                map(lambda x: self.change_mark(x, long_format), result))
+            result = ''.join(map(lambda x: self.change_mark(x, long_format), result))
         return result
 
     def change_mark(self, source: str, long_format: LongFormatType) -> str:

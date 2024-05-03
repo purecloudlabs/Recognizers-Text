@@ -116,8 +116,9 @@ class BaseCJKDurationExtractor(DateTimeExtractor):
 
         if self.merge:
             result = self.merge_multiple_duration(source, result)
-            result = ExtractResultExtension.filter_ambiguity(result, source,
-                                                             self.config.ambiguity_duration_filters_dict)
+            result = ExtractResultExtension.filter_ambiguity(
+                result, source, self.config.ambiguity_duration_filters_dict
+            )
 
         return result
 
@@ -156,13 +157,16 @@ class BaseCJKDurationExtractor(DateTimeExtractor):
                 if mid_str_begin > mid_str_end:
                     return er
 
-                mid_str = text[mid_str_begin:mid_str_end-mid_str_begin]
+                mid_str = text[mid_str_begin : mid_str_end - mid_str_begin]
                 match = regex.match(self.config.duration_connector_regex, mid_str)
                 if match:
                     # If the second element of a group is a modifier, it should not be merged with subsequent elements.
                     # For example "4 days or more and 1 week or less" should return 2 separate extractions.
-                    if second_extraction_index > 1 and er[second_extraction_index - 1].meta_data and \
-                            er[second_extraction_index - 1].meta_data.has_mod:
+                    if (
+                        second_extraction_index > 1
+                        and er[second_extraction_index - 1].meta_data
+                        and er[second_extraction_index - 1].meta_data.has_mod
+                    ):
                         break
 
                     unit_match = regex.match(unit_regex, er[second_extraction_index].text)
@@ -185,12 +189,14 @@ class BaseCJKDurationExtractor(DateTimeExtractor):
             if second_extraction_index - 1 > first_extraction_index:
                 node = ExtractResult()
                 node.start = er[first_extraction_index].start
-                node.length = er[second_extraction_index - 1].start + er[second_extraction_index - 1].length - node.start
-                node.text = text[node.start: node.length]
+                node.length = (
+                    er[second_extraction_index - 1].start + er[second_extraction_index - 1].length - node.start
+                )
+                node.text = text[node.start : node.length]
                 node.type = er[first_extraction_index].type
 
                 #  Add multiple duration type to extract result
-                type = Constants.MULTIPLE_DURATION_TIME #  Default type
+                type = Constants.MULTIPLE_DURATION_TIME  #  Default type
                 if time_unit == total_unit:
                     type = Constants.MULTIPLE_DURATION_TIME
                 elif time_unit == 0:
@@ -228,7 +234,7 @@ class BaseCJKDurationExtractor(DateTimeExtractor):
             node = ExtractResult()
             node.start = e.start
             node.length = e.length
-            node.text = text[node.start:node.length]
+            node.text = text[node.start : node.length]
             node.type = self.extractor_type_name
             node.meta_data = Metadata()
             node.meta_data.has_mod = True
@@ -301,9 +307,9 @@ class BaseCJKDurationParser(DateTimeParser):
         datetime_parse_result = self.parse_merged_duration(source.text, reference)
 
         if not datetime_parse_result.success:
-            datetime_parse_result = DurationParsingUtil.\
-                parse_inexact_number_with_unit(source.text, self.config.some_regex, self.config.unit_map,
-                                               self.config.unit_value_map, is_cjk=True)
+            datetime_parse_result = DurationParsingUtil.parse_inexact_number_with_unit(
+                source.text, self.config.some_regex, self.config.unit_map, self.config.unit_value_map, is_cjk=True
+            )
 
         if not datetime_parse_result.success:
             datetime_parse_result = self.parse_an_unit(source.text)
@@ -320,19 +326,19 @@ class BaseCJKDurationParser(DateTimeParser):
             else:
                 num = 1
 
-            datetime_parse_result.timex = TimexUtil.generate_duration_timex(num, unit_str,
-                                                                            DurationParsingUtil.is_less_than_day(unit_str))
-            datetime_parse_result.future_value = \
-                datetime_parse_result.past_value = num * self.config.unit_value_map[unit_str]
+            datetime_parse_result.timex = TimexUtil.generate_duration_timex(
+                num, unit_str, DurationParsingUtil.is_less_than_day(unit_str)
+            )
+            datetime_parse_result.future_value = datetime_parse_result.past_value = (
+                num * self.config.unit_value_map[unit_str]
+            )
             datetime_parse_result.success = True
 
             if datetime_parse_result.success:
                 datetime_parse_result.future_resolution = {
                     TimeTypeConstants.DURATION: datetime_parse_result.future_value
                 }
-                datetime_parse_result.past_resolution = {
-                    TimeTypeConstants.DURATION: datetime_parse_result.past_value
-                }
+                datetime_parse_result.past_resolution = {TimeTypeConstants.DURATION: datetime_parse_result.past_value}
 
                 more_or_less_match = regex.match(self.config.more_or_less_regex, source.text)
                 if more_or_less_match:
@@ -371,8 +377,9 @@ class BaseCJKDurationParser(DateTimeParser):
             src_unit = RegExpUtility.get_group(match, Constants.UNIT_GROUP_NAME)
             if src_unit in self.config.unit_map:
                 unit_str = self.config.unit_map[src_unit]
-                ret.timex = TimexUtil.generate_duration_timex(num_val, unit_str,
-                                                              DurationParsingUtil.is_less_than_day(unit_str))
+                ret.timex = TimexUtil.generate_duration_timex(
+                    num_val, unit_str, DurationParsingUtil.is_less_than_day(unit_str)
+                )
                 ret.future_value = ret.past_value = num_val * self.config.unit_value_map[unit_str]
                 ret.success = True
         return ret
@@ -391,7 +398,7 @@ class BaseCJKDurationParser(DateTimeParser):
 
         start = ers[0].start
         if start != 0:
-            before_str = text[0:start-1]
+            before_str = text[0 : start - 1]
             if before_str:
                 return ret
 
@@ -411,8 +418,9 @@ class BaseCJKDurationParser(DateTimeParser):
             if unit_match:
                 pr = self.parse(er)
                 if pr and pr.value:
-                    timex_dict[self.config.unit_map[RegExpUtility.get_group(unit_match, Constants.UNIT_GROUP_NAME)]] \
-                        = pr.timex_str
+                    timex_dict[self.config.unit_map[RegExpUtility.get_group(unit_match, Constants.UNIT_GROUP_NAME)]] = (
+                        pr.timex_str
+                    )
                     prs.append(pr)
         # sort the timex using the granularity of the duration, "P1M23D" for "1 month 23 days" and "23 days 1 month"
         if len(prs) > 0:

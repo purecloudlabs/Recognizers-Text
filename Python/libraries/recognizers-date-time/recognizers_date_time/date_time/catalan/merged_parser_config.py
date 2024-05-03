@@ -54,8 +54,7 @@ class CatalanMergedParserConfiguration(CatalanCommonDateTimeParserConfiguration,
         CatalanCommonDateTimeParserConfiguration.__init__(self)
         self._equal_regex = RegExpUtility.get_safe_reg_exp(BaseDateTime.EqualRegex)
         self._suffix_after = RegExpUtility.get_safe_reg_exp('^[.]')
-        self._year_regex = RegExpUtility.get_safe_reg_exp(
-            CatalanDateTime.YearRegex)
+        self._year_regex = RegExpUtility.get_safe_reg_exp(CatalanDateTime.YearRegex)
         self._around_regex = RegExpUtility.get_safe_reg_exp('^[.]')
         self._before_regex = RegExpUtility.get_safe_reg_exp('^[.]')
         self._after_regex = RegExpUtility.get_safe_reg_exp('^[.]')

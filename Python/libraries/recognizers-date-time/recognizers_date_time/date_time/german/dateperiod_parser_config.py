@@ -210,8 +210,7 @@ class GermanDatePeriodParserConfiguration(DatePeriodParserConfiguration):
         return None
 
     def __init__(self, config: BaseDateParserConfiguration):
-        self._relative_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.RelativeRegex)
+        self._relative_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.RelativeRegex)
         self._later_regex = GermanDateTime.LaterRegex
         self._ago_regex = GermanDateTime.AgoRegex
         self._token_before_date = GermanDateTime.TokenBeforeDate
@@ -222,65 +221,36 @@ class GermanDatePeriodParserConfiguration(DatePeriodParserConfiguration):
         self._duration_parser = config.duration_parser
         self._date_parser = config.date_parser
 
-        self._month_front_between_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.MonthFrontBetweenRegex)
-        self._between_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.BetweenRegex)
-        self._month_front_simple_cases_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.MonthFrontSimpleCasesRegex)
-        self._simple_cases_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.SimpleCasesRegex)
-        self._one_word_period_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.OneWordPeriodRegex)
-        self._month_with_year = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.MonthWithYear)
-        self._month_num_with_year = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.MonthNumWithYear)
-        self._year_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.YearRegex)
-        self._past_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.PastSuffixRegex)
-        self._future_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.NextPrefixRegex)
-        self.number_combined_with_unit = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.NumberCombinedWithDurationUnit)
-        self._week_of_month_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.WeekOfMonthRegex)
-        self._week_of_year_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.WeekOfYearRegex)
-        self._quarter_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.QuarterRegex)
-        self._quarter_regex_year_front = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.QuarterRegexYearFront)
-        self._all_half_year_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.AllHalfYearRegex)
-        self._season_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.SeasonRegex)
-        self._which_week_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.WhichWeekRegex)
-        self._week_of_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.WeekOfRegex)
-        self._month_of_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.MonthOfRegex)
-        self._rest_of_date_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.RestOfDateRegex)
-        self._later_early_period_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.LaterEarlyPeriodRegex)
-        self._week_with_week_day_range_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.WeekWithWeekDayRangeRegex)
-        self._unspecific_end_of_range_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.UnspecificEndOfRangeRegex)
+        self._month_front_between_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.MonthFrontBetweenRegex)
+        self._between_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.BetweenRegex)
+        self._month_front_simple_cases_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.MonthFrontSimpleCasesRegex)
+        self._simple_cases_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.SimpleCasesRegex)
+        self._one_word_period_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.OneWordPeriodRegex)
+        self._month_with_year = RegExpUtility.get_safe_reg_exp(GermanDateTime.MonthWithYear)
+        self._month_num_with_year = RegExpUtility.get_safe_reg_exp(GermanDateTime.MonthNumWithYear)
+        self._year_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.YearRegex)
+        self._past_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.PastSuffixRegex)
+        self._future_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.NextPrefixRegex)
+        self.number_combined_with_unit = RegExpUtility.get_safe_reg_exp(GermanDateTime.NumberCombinedWithDurationUnit)
+        self._week_of_month_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.WeekOfMonthRegex)
+        self._week_of_year_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.WeekOfYearRegex)
+        self._quarter_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.QuarterRegex)
+        self._quarter_regex_year_front = RegExpUtility.get_safe_reg_exp(GermanDateTime.QuarterRegexYearFront)
+        self._all_half_year_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.AllHalfYearRegex)
+        self._season_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.SeasonRegex)
+        self._which_week_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.WhichWeekRegex)
+        self._week_of_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.WeekOfRegex)
+        self._month_of_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.MonthOfRegex)
+        self._rest_of_date_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.RestOfDateRegex)
+        self._later_early_period_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.LaterEarlyPeriodRegex)
+        self._week_with_week_day_range_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.WeekWithWeekDayRangeRegex)
+        self._unspecific_end_of_range_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.UnspecificEndOfRangeRegex)
 
-        self._next_prefix_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.NextPrefixRegex)
-        self._past_prefix_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.PastPrefixRegex)
-        self._this_prefix_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.ThisPrefixRegex)
-        self._next_suffix_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.FutureSuffixRegex)
-        self._past_suffix_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.PastSuffixRegex)
+        self._next_prefix_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.NextPrefixRegex)
+        self._past_prefix_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.PastPrefixRegex)
+        self._this_prefix_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.ThisPrefixRegex)
+        self._next_suffix_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.FutureSuffixRegex)
+        self._past_suffix_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.PastSuffixRegex)
 
         self._in_connector_regex = config.utility_configuration.in_connector_regex
         self._unit_map = config.unit_map
@@ -288,22 +258,12 @@ class GermanDatePeriodParserConfiguration(DatePeriodParserConfiguration):
         self._day_of_month = config.day_of_month
         self._month_of_year = config.month_of_year
         self._season_map = config.season_map
-        self._now_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.NowRegex)
-        self._decade_with_century_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.DecadeWithCenturyRegex)
-        self._complex_dateperiod_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.ComplexDatePeriodRegex
-        )
-        self._relative_decade_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.RelativeDecadeRegex
-        )
-        self._reference_date_period_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.ReferenceDatePeriodRegex
-        )
-        self._less_than_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.LessThanRegex
-        )
+        self._now_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.NowRegex)
+        self._decade_with_century_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.DecadeWithCenturyRegex)
+        self._complex_dateperiod_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.ComplexDatePeriodRegex)
+        self._relative_decade_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.RelativeDecadeRegex)
+        self._reference_date_period_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.ReferenceDatePeriodRegex)
+        self._less_than_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.LessThanRegex)
         self._check_both_before_after = GermanDateTime.CheckBothBeforeAfter
 
     def get_swift_day_or_month(self, source: str) -> int:
@@ -344,12 +304,13 @@ class GermanDatePeriodParserConfiguration(DatePeriodParserConfiguration):
 
     def is_week_only(self, source: str) -> bool:
         trimmed_source = source.strip().lower()
-        return (any(trimmed_source.endswith(o) for o in GermanDateTime.WeekTerms) or
-                (any(trimmed_source.__contains__(o) for o in GermanDateTime.WeekTerms) and
-                 (self._next_suffix_regex.search(trimmed_source) or
-                  self._past_suffix_regex.search(trimmed_source)))) and not\
-            any(trimmed_source.endswith(o)
-                for o in GermanDateTime.WeekendTerms)
+        return (
+            any(trimmed_source.endswith(o) for o in GermanDateTime.WeekTerms)
+            or (
+                any(trimmed_source.__contains__(o) for o in GermanDateTime.WeekTerms)
+                and (self._next_suffix_regex.search(trimmed_source) or self._past_suffix_regex.search(trimmed_source))
+            )
+        ) and not any(trimmed_source.endswith(o) for o in GermanDateTime.WeekendTerms)
 
     def is_weekend(self, source: str) -> bool:
         trimmed_source = source.strip().lower()

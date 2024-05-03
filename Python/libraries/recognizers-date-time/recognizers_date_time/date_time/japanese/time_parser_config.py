@@ -25,14 +25,12 @@ class JapaneseTimeParserConfiguration(CJKTimeParserConfiguration):
         self._time_func = TimeFunctions(
             number_dictionary=JapaneseDateTime.TimeNumberDictionary,
             low_bound_desc=JapaneseDateTime.TimeLowBoundDesc,
-            day_desc_regex=JapaneseTimeExtractorConfiguration().day_desc_regex
+            day_desc_regex=JapaneseTimeExtractorConfiguration().day_desc_regex,
         )
         self._function_map = {
             TimeType.DigitTime: self.time_func.handle_digit,
             TimeType.CJKTime: self.time_func.handle_kanji,
-            TimeType.LessTime: self.time_func.handle_less
+            TimeType.LessTime: self.time_func.handle_less,
         }
 
         self._time_extractor = config.time_extractor
-
-

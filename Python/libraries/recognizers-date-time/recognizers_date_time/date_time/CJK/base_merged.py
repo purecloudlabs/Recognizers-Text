@@ -140,20 +140,13 @@ class BaseCJKMergedExtractor(DateTimeExtractor):
         result = self.config.date_extractor.extract(source, reference)
 
         # The order is important, since there can be conflicts in merging
-        result = self.add_to(
-            result, self.config.time_extractor.extract(source, reference))
-        result = self.add_to(
-            result, self.config.duration_extractor.extract(source, reference))
-        result = self.add_to(
-            result, self.config.date_period_extractor.extract(source, reference))
-        result = self.add_to(
-            result, self.config.date_time_extractor.extract(source, reference))
-        result = self.add_to(
-            result, self.config.time_period_extractor.extract(source, reference))
-        result = self.add_to(
-            result, self.config.date_time_period_extractor.extract(source, reference))
-        result = self.add_to(
-            result, self.config.holiday_extractor.extract(source, reference))
+        result = self.add_to(result, self.config.time_extractor.extract(source, reference))
+        result = self.add_to(result, self.config.duration_extractor.extract(source, reference))
+        result = self.add_to(result, self.config.date_period_extractor.extract(source, reference))
+        result = self.add_to(result, self.config.date_time_extractor.extract(source, reference))
+        result = self.add_to(result, self.config.time_period_extractor.extract(source, reference))
+        result = self.add_to(result, self.config.date_time_period_extractor.extract(source, reference))
+        result = self.add_to(result, self.config.holiday_extractor.extract(source, reference))
 
         result = self.filter_unspecific_date_period(result)
 
@@ -175,14 +168,14 @@ class BaseCJKMergedExtractor(DateTimeExtractor):
     def add_mod(self, extract_results: List[ExtractResult], source: str) -> List[ExtractResult]:
         last_end = 0
         for extract_result in extract_results:
-            before_str = source[last_end:extract_result.start].strip()
-            after_str = source[extract_result.start + extract_result.length:].strip()
+            before_str = source[last_end : extract_result.start].strip()
+            after_str = source[extract_result.start + extract_result.length :].strip()
 
             match = RegExpUtility.match_begin(self.config.before_regex, after_str, True)
             if match:
                 mod_len = match.index + match.length
                 extract_result.length += mod_len
-                extract_result.text = source[extract_result.start:extract_result.start + extract_result.length]
+                extract_result.text = source[extract_result.start : extract_result.start + extract_result.length]
 
                 extract_result.meta_data = self.assign_mod_metadata(extract_result.meta_data)
 
@@ -190,7 +183,7 @@ class BaseCJKMergedExtractor(DateTimeExtractor):
             if match:
                 mod_len = match.index + match.length
                 extract_result.length += mod_len
-                extract_result.text = source[extract_result.start:extract_result.start + extract_result.length]
+                extract_result.text = source[extract_result.start : extract_result.start + extract_result.length]
 
                 extract_result.meta_data = self.assign_mod_metadata(extract_result.meta_data)
 
@@ -199,7 +192,7 @@ class BaseCJKMergedExtractor(DateTimeExtractor):
                 mod_len = len(before_str) - match.index
                 extract_result.length += mod_len
                 extract_result.start -= mod_len
-                extract_result.text = source[extract_result.start:extract_result.start + extract_result.length]
+                extract_result.text = source[extract_result.start : extract_result.start + extract_result.length]
 
                 extract_result.meta_data = self.assign_mod_metadata(extract_result.meta_data)
 
@@ -208,7 +201,7 @@ class BaseCJKMergedExtractor(DateTimeExtractor):
                 mod_len = len(after_str) - match.index
                 extract_result.length += mod_len
                 extract_result.start -= mod_len
-                extract_result.text = source[extract_result.start:extract_result.start + extract_result.length]
+                extract_result.text = source[extract_result.start : extract_result.start + extract_result.length]
 
                 extract_result.meta_data = self.assign_mod_metadata(extract_result.meta_data)
 
@@ -217,7 +210,7 @@ class BaseCJKMergedExtractor(DateTimeExtractor):
                 mod_len = len(before_str) + match.index
                 extract_result.length += mod_len
                 extract_result.start -= mod_len
-                extract_result.text = source[extract_result.start:extract_result.start + extract_result.length]
+                extract_result.text = source[extract_result.start : extract_result.start + extract_result.length]
 
                 extract_result.meta_data = self.assign_mod_metadata(extract_result.meta_data)
 
@@ -226,7 +219,7 @@ class BaseCJKMergedExtractor(DateTimeExtractor):
                 mod_len = len(after_str) + match.index
                 extract_result.length += mod_len
                 extract_result.start -= mod_len
-                extract_result.text = source[extract_result.start:extract_result.start + extract_result.length]
+                extract_result.text = source[extract_result.start : extract_result.start + extract_result.length]
 
                 extract_result.meta_data = self.assign_mod_metadata(extract_result.meta_data)
 
@@ -235,7 +228,7 @@ class BaseCJKMergedExtractor(DateTimeExtractor):
                 mod_len = len(before_str) + match.index
                 extract_result.length += mod_len
                 extract_result.start -= mod_len
-                extract_result.text = source[extract_result.start:extract_result.start + extract_result.length]
+                extract_result.text = source[extract_result.start : extract_result.start + extract_result.length]
 
                 extract_result.meta_data = self.assign_mod_metadata(extract_result.meta_data)
 
@@ -244,7 +237,7 @@ class BaseCJKMergedExtractor(DateTimeExtractor):
                 mod_len = len(after_str) + match.index
                 extract_result.length += mod_len
                 extract_result.start -= mod_len
-                extract_result.text = source[extract_result.start:extract_result.start + extract_result.length]
+                extract_result.text = source[extract_result.start : extract_result.start + extract_result.length]
 
                 extract_result.meta_data = self.assign_mod_metadata(extract_result.meta_data)
 
@@ -253,7 +246,7 @@ class BaseCJKMergedExtractor(DateTimeExtractor):
                 mod_len = len(before_str) + match.index
                 extract_result.length += mod_len
                 extract_result.start -= mod_len
-                extract_result.text = source[extract_result.start:extract_result.start + extract_result.length]
+                extract_result.text = source[extract_result.start : extract_result.start + extract_result.length]
 
                 extract_result.meta_data = self.assign_mod_metadata(extract_result.meta_data)
 
@@ -387,7 +380,7 @@ class BaseCJKMergedParser(DateTimeParser):
                     has_before = True
                     er.length -= before_match.length
                     if er.length > len(er.text):
-                        er.text = er.text[0:er.length]
+                        er.text = er.text[0 : er.length]
                     mod_str = before_match.value if before_match.value != er.text else ''
                     if before_match.get_group(Constants.INCLUDE_GROUP_NAME):
                         has_inclusive_modifier = True
@@ -396,7 +389,7 @@ class BaseCJKMergedParser(DateTimeParser):
                     has_after = True
                     er.length -= after_match.length
                     if er.length > len(er.text):
-                        er.text = er.text[0:er.length]
+                        er.text = er.text[0 : er.length]
                     mod_str = after_match.value
                     if after_match.get_group(Constants.INCLUDE_GROUP_NAME):
                         has_inclusive_modifier = True
@@ -426,7 +419,7 @@ class BaseCJKMergedParser(DateTimeParser):
                     if since_match_suffix:
                         has_since = True
                         er.length -= since_match_suffix.length
-                        er.text = er.text[since_match_suffix.start:]
+                        er.text = er.text[since_match_suffix.start :]
                         mod_str = since_match_suffix.group()
 
                     if around_match_prefix:
@@ -439,7 +432,7 @@ class BaseCJKMergedParser(DateTimeParser):
                     if around_match_suffix:
                         has_around = True
                         er.length -= around_match_suffix.length
-                        er.text = er.text[around_match_suffix.start:]
+                        er.text = er.text[around_match_suffix.start :]
                         mod_str = around_match_suffix.group()
 
         #  Parse extracted datetime mention

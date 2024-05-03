@@ -54,7 +54,7 @@ class GermanNumberParserConfiguration(BaseNumberParserConfiguration):
             pass
         for idx, word in enumerate(frac_words):
             if self.fraction_half_regex.search(word):  # zweieinhalb, dreienhalb etc. case
-                frac_words[idx] = word[0:(len(word)-7)]
+                frac_words[idx] = word[0 : (len(word) - 7)]
                 frac_words.append(self.written_fraction_separator_texts[0])
                 frac_words.append(GermanNumeric.OneHalfTokens[0])
                 frac_words.append(GermanNumeric.OneHalfTokens[1])
@@ -65,8 +65,8 @@ class GermanNumberParserConfiguration(BaseNumberParserConfiguration):
                     frac_words.append(GermanNumeric.OneHalfTokens[0])
                     frac_words.append(GermanNumeric.OneHalfTokens[1])
                 if m.group("quarter"):  # 'dreiviertal' case
-                    frac_words[idx] = word[0:len("drei")]
+                    frac_words[idx] = word[0 : len("drei")]
                     frac_words.append(self.written_fraction_separator_texts[0])
-                    frac_words.append(word[len(frac_words[idx]):len("viertel")+len(frac_words[idx])])
+                    frac_words.append(word[len(frac_words[idx]) : len("viertel") + len(frac_words[idx])])
 
         return frac_words

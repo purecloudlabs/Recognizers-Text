@@ -21,11 +21,9 @@ class EnglishNumberExtractor(BaseNumberExtractor):
         cardinal_ex: EnglishCardinalExtractor = None
 
         if self.mode is NumberMode.PURE_NUMBER:
-            cardinal_ex = EnglishCardinalExtractor(
-                EnglishNumeric.PlaceHolderPureNumber)
+            cardinal_ex = EnglishCardinalExtractor(EnglishNumeric.PlaceHolderPureNumber)
         elif self.mode is NumberMode.CURRENCY:
-            _regexes.append(ReVal(re=RegExpUtility.get_safe_reg_exp(
-                EnglishNumeric.CurrencyRegex), val='IntegerNum'))
+            _regexes.append(ReVal(re=RegExpUtility.get_safe_reg_exp(EnglishNumeric.CurrencyRegex), val='IntegerNum'))
 
         cardinal_ex = cardinal_ex or EnglishCardinalExtractor()
         _regexes.extend(cardinal_ex.regexes)
@@ -39,8 +37,9 @@ class EnglishNumberExtractor(BaseNumberExtractor):
         _ambiguity_filters_dict: List[ReRe] = []
         if self.mode != NumberMode.Unit:
             for key, value in EnglishNumeric.AmbiguityFiltersDict.items():
-                _ambiguity_filters_dict.append(ReRe(reKey=RegExpUtility.get_safe_reg_exp(key),
-                                                    reVal=RegExpUtility.get_safe_reg_exp(value)))
+                _ambiguity_filters_dict.append(
+                    ReRe(reKey=RegExpUtility.get_safe_reg_exp(key), reVal=RegExpUtility.get_safe_reg_exp(value))
+                )
         return _ambiguity_filters_dict
 
     @property
@@ -56,8 +55,7 @@ class EnglishCardinalExtractor(BaseNumberExtractor):
 
     @property
     def regexes(self) -> List[ReVal]:
-        return (EnglishIntegerExtractor(self.placeholder).regexes +
-                EnglishDoubleExtractor(self.placeholder).regexes)
+        return EnglishIntegerExtractor(self.placeholder).regexes + EnglishDoubleExtractor(self.placeholder).regexes
 
     def __init__(self, placeholder: str = EnglishNumeric.PlaceHolderDefault):
         self.placeholder = placeholder
@@ -70,41 +68,32 @@ class EnglishIntegerExtractor(BaseNumberExtractor):
     def regexes(self) -> List[ReVal]:
         return [
             ReVal(
-                re=RegExpUtility.get_safe_reg_exp(
-                    EnglishNumeric.NumbersWithPlaceHolder(self.placeholder)),
-                val='IntegerNum'),
+                re=RegExpUtility.get_safe_reg_exp(EnglishNumeric.NumbersWithPlaceHolder(self.placeholder)),
+                val='IntegerNum',
+            ),
+            ReVal(re=RegExpUtility.get_safe_reg_exp(EnglishNumeric.NumbersWithSuffix, regex.S), val='IntegerNum'),
             ReVal(
                 re=RegExpUtility.get_safe_reg_exp(
-                    EnglishNumeric.NumbersWithSuffix, regex.S),
-                val='IntegerNum'),
-            ReVal(
-                re=RegExpUtility.get_safe_reg_exp(self._generate_format_regex(
-                    LongFormatMode.INTEGER_COMMA, self.placeholder)),
-                val='IntegerNum'),
-            ReVal(
-                re=RegExpUtility.get_safe_reg_exp(self._generate_format_regex(
-                    LongFormatMode.INTEGER_BLANK, self.placeholder)),
-                val='IntegerNum'),
-            ReVal(
-                re=RegExpUtility.get_safe_reg_exp(self._generate_format_regex(
-                    LongFormatMode.INTEGER_NO_BREAK_SPACE, self.placeholder)),
-                val='IntegerNum'),
+                    self._generate_format_regex(LongFormatMode.INTEGER_COMMA, self.placeholder)
+                ),
+                val='IntegerNum',
+            ),
             ReVal(
                 re=RegExpUtility.get_safe_reg_exp(
-                    EnglishNumeric.RoundNumberIntegerRegexWithLocks),
-                val='IntegerNum'),
+                    self._generate_format_regex(LongFormatMode.INTEGER_BLANK, self.placeholder)
+                ),
+                val='IntegerNum',
+            ),
             ReVal(
                 re=RegExpUtility.get_safe_reg_exp(
-                    EnglishNumeric.NumbersWithDozenSuffix),
-                val='IntegerNum'),
-            ReVal(
-                re=RegExpUtility.get_safe_reg_exp(
-                    EnglishNumeric.AllIntRegexWithLocks),
-                val='IntegerEng'),
-            ReVal(
-                re=RegExpUtility.get_safe_reg_exp(
-                    EnglishNumeric.AllIntRegexWithDozenSuffixLocks),
-                val='IntegerEng')
+                    self._generate_format_regex(LongFormatMode.INTEGER_NO_BREAK_SPACE, self.placeholder)
+                ),
+                val='IntegerNum',
+            ),
+            ReVal(re=RegExpUtility.get_safe_reg_exp(EnglishNumeric.RoundNumberIntegerRegexWithLocks), val='IntegerNum'),
+            ReVal(re=RegExpUtility.get_safe_reg_exp(EnglishNumeric.NumbersWithDozenSuffix), val='IntegerNum'),
+            ReVal(re=RegExpUtility.get_safe_reg_exp(EnglishNumeric.AllIntRegexWithLocks), val='IntegerEng'),
+            ReVal(re=RegExpUtility.get_safe_reg_exp(EnglishNumeric.AllIntRegexWithDozenSuffixLocks), val='IntegerEng'),
         ]
 
     def __init__(self, placeholder: str = EnglishNumeric.PlaceHolderDefault):
@@ -118,41 +107,34 @@ class EnglishDoubleExtractor(BaseNumberExtractor):
     def regexes(self) -> List[ReVal]:
         return [
             ReVal(
-                re=RegExpUtility.get_safe_reg_exp(
-                    EnglishNumeric.DoubleDecimalPointRegex(self.placeholder)),
-                val='DoubleNum'),
+                re=RegExpUtility.get_safe_reg_exp(EnglishNumeric.DoubleDecimalPointRegex(self.placeholder)),
+                val='DoubleNum',
+            ),
+            ReVal(
+                re=RegExpUtility.get_safe_reg_exp(EnglishNumeric.DoubleWithoutIntegralRegex(self.placeholder)),
+                val='DoubleNum',
+            ),
             ReVal(
                 re=RegExpUtility.get_safe_reg_exp(
-                    EnglishNumeric.DoubleWithoutIntegralRegex(self.placeholder)),
-                val='DoubleNum'),
-            ReVal(
-                re=RegExpUtility.get_safe_reg_exp(self._generate_format_regex(
-                    LongFormatMode.DOUBLE_COMMA_DOT, self.placeholder)),
-                val='DoubleNum'),
-            ReVal(
-                re=RegExpUtility.get_safe_reg_exp(self._generate_format_regex(
-                    LongFormatMode.DOUBLE_NO_BREAK_SPACE_DOT, self.placeholder)),
-                val='DoubleNum'),
+                    self._generate_format_regex(LongFormatMode.DOUBLE_COMMA_DOT, self.placeholder)
+                ),
+                val='DoubleNum',
+            ),
             ReVal(
                 re=RegExpUtility.get_safe_reg_exp(
-                    EnglishNumeric.DoubleWithMultiplierRegex, regex.S),
-                val='DoubleNum'),
+                    self._generate_format_regex(LongFormatMode.DOUBLE_NO_BREAK_SPACE_DOT, self.placeholder)
+                ),
+                val='DoubleNum',
+            ),
             ReVal(
-                re=RegExpUtility.get_safe_reg_exp(
-                    EnglishNumeric.DoubleWithRoundNumber),
-                val='DoubleNum'),
+                re=RegExpUtility.get_safe_reg_exp(EnglishNumeric.DoubleWithMultiplierRegex, regex.S), val='DoubleNum'
+            ),
+            ReVal(re=RegExpUtility.get_safe_reg_exp(EnglishNumeric.DoubleWithRoundNumber), val='DoubleNum'),
+            ReVal(re=RegExpUtility.get_safe_reg_exp(EnglishNumeric.DoubleAllFloatRegex), val='DoubleEng'),
+            ReVal(re=RegExpUtility.get_safe_reg_exp(EnglishNumeric.DoubleExponentialNotationRegex), val='DoublePow'),
             ReVal(
-                re=RegExpUtility.get_safe_reg_exp(
-                    EnglishNumeric.DoubleAllFloatRegex),
-                val='DoubleEng'),
-            ReVal(
-                re=RegExpUtility.get_safe_reg_exp(
-                    EnglishNumeric.DoubleExponentialNotationRegex),
-                val='DoublePow'),
-            ReVal(
-                re=RegExpUtility.get_safe_reg_exp(
-                    EnglishNumeric.DoubleCaretExponentialNotationRegex),
-                val='DoublePow')
+                re=RegExpUtility.get_safe_reg_exp(EnglishNumeric.DoubleCaretExponentialNotationRegex), val='DoublePow'
+            ),
         ]
 
     def __init__(self, placeholder: str = EnglishNumeric.PlaceHolderDefault):
@@ -165,29 +147,15 @@ class EnglishFractionExtractor(BaseNumberExtractor):
     @property
     def regexes(self) -> List[ReVal]:
         _regexes = [
-            ReVal(
-                re=RegExpUtility.get_safe_reg_exp(
-                    EnglishNumeric.FractionNotationWithSpacesRegex),
-                val='FracNum'),
-            ReVal(
-                re=RegExpUtility.get_safe_reg_exp(
-                    EnglishNumeric.FractionNotationRegex),
-                val='FracNum'),
-            ReVal(
-                re=RegExpUtility.get_safe_reg_exp(
-                    EnglishNumeric.FractionNounRegex),
-                val='FracEng'),
-            ReVal(
-                re=RegExpUtility.get_safe_reg_exp(
-                    EnglishNumeric.FractionNounWithArticleRegex),
-                val='FracEng')
+            ReVal(re=RegExpUtility.get_safe_reg_exp(EnglishNumeric.FractionNotationWithSpacesRegex), val='FracNum'),
+            ReVal(re=RegExpUtility.get_safe_reg_exp(EnglishNumeric.FractionNotationRegex), val='FracNum'),
+            ReVal(re=RegExpUtility.get_safe_reg_exp(EnglishNumeric.FractionNounRegex), val='FracEng'),
+            ReVal(re=RegExpUtility.get_safe_reg_exp(EnglishNumeric.FractionNounWithArticleRegex), val='FracEng'),
         ]
         if self.mode != NumberMode.Unit:
             _regexes.append(
-                ReVal(
-                    re=RegExpUtility.get_safe_reg_exp(
-                        EnglishNumeric.FractionPrepositionRegex),
-                    val='FracEng'))
+                ReVal(re=RegExpUtility.get_safe_reg_exp(EnglishNumeric.FractionPrepositionRegex), val='FracEng')
+            )
         return _regexes
 
     def __init__(self, mode: NumberMode):
@@ -200,18 +168,10 @@ class EnglishOrdinalExtractor(BaseNumberExtractor):
     @property
     def regexes(self) -> List[ReVal]:
         return [
-            ReVal(
-                re=EnglishNumeric.OrdinalSuffixRegex,
-                val='OrdinalNum'),
-            ReVal(
-                re=EnglishNumeric.OrdinalNumericRegex,
-                val='OrdinalNum'),
-            ReVal(
-                re=EnglishNumeric.OrdinalEnglishRegex,
-                val='OrdEng'),
-            ReVal(
-                re=EnglishNumeric.OrdinalRoundNumberRegex,
-                val='OrdEng')
+            ReVal(re=EnglishNumeric.OrdinalSuffixRegex, val='OrdinalNum'),
+            ReVal(re=EnglishNumeric.OrdinalNumericRegex, val='OrdinalNum'),
+            ReVal(re=EnglishNumeric.OrdinalEnglishRegex, val='OrdEng'),
+            ReVal(re=EnglishNumeric.OrdinalRoundNumberRegex, val='OrdEng'),
         ]
 
 

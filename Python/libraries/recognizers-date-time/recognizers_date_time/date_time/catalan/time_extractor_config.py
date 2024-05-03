@@ -33,10 +33,8 @@ class CatalanTimeExtractorConfiguration(TimeExtractorConfiguration):
 
     def __init__(self):
         super().__init__()
-        self._time_regex_list: List[Pattern] = CatalanTimeExtractorConfiguration.get_time_regex_list(
-        )
-        self._at_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            CatalanDateTime.AtRegex)
+        self._time_regex_list: List[Pattern] = CatalanTimeExtractorConfiguration.get_time_regex_list()
+        self._at_regex: Pattern = RegExpUtility.get_safe_reg_exp(CatalanDateTime.AtRegex)
         self._time_before_after_regex: Pattern = RegExpUtility.get_safe_reg_exp('^[.]')
         self._ish_regex: Pattern = None
 
@@ -54,5 +52,5 @@ class CatalanTimeExtractorConfiguration(TimeExtractorConfiguration):
             RegExpUtility.get_safe_reg_exp(CatalanDateTime.TimeRegex9),
             RegExpUtility.get_safe_reg_exp(CatalanDateTime.TimeRegex11),
             RegExpUtility.get_safe_reg_exp(CatalanDateTime.TimeRegex12),
-            RegExpUtility.get_safe_reg_exp(CatalanDateTime.ConnectNumRegex)
+            RegExpUtility.get_safe_reg_exp(CatalanDateTime.ConnectNumRegex),
         ]

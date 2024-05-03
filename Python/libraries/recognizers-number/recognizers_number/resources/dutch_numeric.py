@@ -35,12 +35,15 @@ class DutchNumeric:
 
     def NumbersWithPlaceHolder(placeholder):
         return f'(((?<!\\d+\\s*)-\\s*)|(?<=\\b))\\d+(?!(\\,\\d+[a-zA-Z]))(?={placeholder})'
+
     NumbersWithSuffix = f'(((?<!\\d+\\s*)-\\s*)|(?<=\\b))\\d+\\s*{BaseNumbers.NumberMultiplierRegex}(?=\\b)'
     RoundNumberIntegerRegexWithLocks = f'(?<=\\b)\\d+\\s*{RoundNumberIntegerRegex}(?=\\b)'
     NumbersWithDozenSuffix = '(((?<!\\d+\\s*)-\\s*)|(?<=\\b))\\d+\\s+dozijn(en)?(?=\\b)'
     AllIntRegexWithLocks = f'((?<=\\b){AllIntRegex}(?=\\b))'
     GrossRegex = '(een\\s+)?gros'
-    AllIntRegexWithDozenSuffixLocks = f'(?<=\\b)(((een\\s+)?half\\s+dozijn)|({AllIntRegex}\\s+dozijn(en)?)|{GrossRegex})(?=\\b)'
+    AllIntRegexWithDozenSuffixLocks = (
+        f'(?<=\\b)(((een\\s+)?half\\s+dozijn)|({AllIntRegex}\\s+dozijn(en)?)|{GrossRegex})(?=\\b)'
+    )
     RoundNumberOrdinalRegex = '(honderdste|duizendste|miljoenste|miljardste|biljoenste)'
     BasicOrdinalRegex = '(nulde|eende|eerste|tweede|derde|vierde|vijfd(e|en)|zesde|zevende|achtst(e|en)|negende|tiend(e|en)|elfde|twaalfde|dertiende|veertiende|vijftiende|zestiende|zeventiende|achttiende|negentiende|twintigste|vijfentwintigste|vijventwintigste|dertigste|veertigste|vijftigste|zestigste|zeventigste|tachtigste|negentigste)'
     RelativeOrdinalRegex = '(?<relativeOrdinal>volgende|vorige?|huidige|laatste?|(de\\s+op\\s+één\\s+na\\s+|de\\s+een\\s+voor\\s+de\\s+|die\\s+voor\\s+de\\s+|twee\\s+na\\s+|voor)laatste)'
@@ -66,20 +69,27 @@ class DutchNumeric:
     FractionPrepositionWithinPercentModeRegex = f'(?<!{BaseNumbers.CommonCurrencySymbol}\\s*)(?<=\\b)(?<numerator>({AllIntRegex})|((?<!,)\\d+))\\s+over\\s+(?<denominator>({AllIntRegex})|(\\d+)(?!,))(?=\\b)'
     AllPointRegex = f'((\\s+{ZeroToNineIntegerRegex})+|(\\s+{SeparaIntRegex}))'
     AllFloatRegex = f'{AllIntRegex}(\\s+komma){AllPointRegex}'
-    DoubleWithMultiplierRegex = f'(((?<!\\d+\\s*)-\\s*)|((?<=\\b)(?<!\\d+,)))\\d+,\\d+\\s*{BaseNumbers.NumberMultiplierRegex}(?=\\b)'
+    DoubleWithMultiplierRegex = (
+        f'(((?<!\\d+\\s*)-\\s*)|((?<=\\b)(?<!\\d+,)))\\d+,\\d+\\s*{BaseNumbers.NumberMultiplierRegex}(?=\\b)'
+    )
     DoubleExponentialNotationRegex = '(((?<!\\d+\\s*)-\\s*)|((?<=\\b)(?<!\\d+,)))(\\d+(,\\d+)?)e([+-]*[1-9]\\d*)(?=\\b)'
-    DoubleCaretExponentialNotationRegex = '(((?<!\\d+\\s*)-\\s*)|((?<=\\b)(?<!\\d+,)))(\\d+(,\\d+)?)\\^([+-]*[1-9]\\d*)(?=\\b)'
+    DoubleCaretExponentialNotationRegex = (
+        '(((?<!\\d+\\s*)-\\s*)|((?<=\\b)(?<!\\d+,)))(\\d+(,\\d+)?)\\^([+-]*[1-9]\\d*)(?=\\b)'
+    )
 
     def DoubleDecimalPointRegex(placeholder):
         return f'(?<=\\b)((\\d{{1,3}})(\\.\\d{{3}})*(\\,\\d+)?)(?={placeholder})'
 
     def DoubleWithoutIntegralRegex(placeholder):
         return f'(?<=\\s|^)(?<!(\\d+)),\\d+(?!(,\\d+))(?={placeholder})'
+
     DoubleWithRoundNumber = f'(((?<!\\d+\\s*)-\\s*)|((?<=\\b)(?<!\\d+,)))\\d+,\\d+\\s+{RoundNumberIntegerRegex}(?=\\b)'
     DoubleAllFloatRegex = f'((?<=\\b){AllFloatRegex}(?=\\b))'
     ConnectorRegex = '(?<spacer>en)'
     FractionNumberWithSuffixPercentage = f'(({BaseNumbers.FractionNumberReplaceToken})\\s+van)'
-    NumberWithPrepositionPercentage = f'({BaseNumbers.NumberReplaceToken})\\s*(uit|in|van|van\\s+de)\\s*({BaseNumbers.NumberReplaceToken})'
+    NumberWithPrepositionPercentage = (
+        f'({BaseNumbers.NumberReplaceToken})\\s*(uit|in|van|van\\s+de)\\s*({BaseNumbers.NumberReplaceToken})'
+    )
     TillRegex = '(tot|--|-|—|——|~)'
     IncludeTillRegex = '(tot en met)'
     MoreRegex = '((groter|hoger|meer)((\\s+is)?(\\s+dan|\\s+als))?|boven|over|>)'
@@ -89,11 +99,15 @@ class DutchNumeric:
     MoreOrEqual = f'(({MoreRegex}\\s+of\\s+{EqualRegex})|({EqualRegex}\\s+of\\s+{MoreRegex})|{MoreOrEqualPrefix}(\\s+(of)?\\s+{EqualRegex})?|niet\\s+{LessRegex}|>\\s*=)'
     MoreOrEqualSuffix = '((en|of)\\s+(meer|groter|hoger|grotere)((?!\\s+(dan|als))|(\\s+(dan|als)(?!(\\s*\\d+)))))'
     LessOrEqualPrefix = f'((niet\\s+{MoreRegex})|(hooguit|op zijn hoogst|op zijn meest))'
-    LessOrEqual = f'(({LessRegex}\\s+of\\s+{EqualRegex})|({EqualRegex}\\s+of\\s+{LessRegex})|maximum|niet\\s+{MoreRegex}|<\\s*=)'
+    LessOrEqual = (
+        f'(({LessRegex}\\s+of\\s+{EqualRegex})|({EqualRegex}\\s+of\\s+{LessRegex})|maximum|niet\\s+{MoreRegex}|<\\s*=)'
+    )
     LessOrEqualSuffix = '((en|of)\\s+(minder|lager|kleiner)((?!\\s+(dan|als))|(\\s+(dan|als)(?!(\\s*\\d+)))))'
     NumberSplitMark = '(?![,.](?!\\d+))'
     MoreRegexNoNumberSucceed = '((groter|hoger|meer)((?!\\s+dan)|\\s+(dan(?!(\\s*\\d+))))|(boven|over)(?!(\\s*\\d+)))'
-    LessRegexNoNumberSucceed = '((minder|lager|kleiner)((?!\\s+dan)|\\s+(dan(?!(\\s*\\d+))))|(beneden|onder)(?!(\\s*\\d+)))'
+    LessRegexNoNumberSucceed = (
+        '((minder|lager|kleiner)((?!\\s+dan)|\\s+(dan(?!(\\s*\\d+))))|(beneden|onder)(?!(\\s*\\d+)))'
+    )
     EqualRegexNoNumberSucceed = '(gelijk((?!\\s+(aan|tot))|(\\s+(aan|tot)(?!(\\s*\\d+))))|evenveel(?!(\\s*\\d+)))'
     OneNumberRangeMoreRegex1 = f'({MoreOrEqual}|{MoreRegex})\\s*(de\\s+)?(?<number1>({NumberSplitMark}.)+)'
     OneNumberRangeMoreRegex2 = f'(?<number1>({NumberSplitMark}.)+)\\s*{MoreOrEqualSuffix}'
@@ -102,7 +116,9 @@ class DutchNumeric:
     OneNumberRangeLessRegex2 = f'(?<number2>({NumberSplitMark}.)+)\\s*{LessOrEqualSuffix}'
     OneNumberRangeLessSeparateRegex = f'({EqualRegex}\\s+(?<number1>({NumberSplitMark}.)+)(\\s+of\\s+){LessRegexNoNumberSucceed})|({LessRegex}\\s+(?<number1>({NumberSplitMark}.)+)(\\s+of\\s+){EqualRegexNoNumberSucceed})'
     OneNumberRangeEqualRegex = f'{EqualRegex}\\s*(de\\s+)?(?<number1>({NumberSplitMark}.)+)'
-    TwoNumberRangeRegex1 = f'tussen\\s*(de\\s+)?(?<number1>({NumberSplitMark}.)+)\\s+en\\s+(de\\s+)?(?<number2>({NumberSplitMark}.)+)'
+    TwoNumberRangeRegex1 = (
+        f'tussen\\s*(de\\s+)?(?<number1>({NumberSplitMark}.)+)\\s+en\\s+(de\\s+)?(?<number2>({NumberSplitMark}.)+)'
+    )
     TwoNumberRangeRegex2 = f'({OneNumberRangeMoreRegex1}|{OneNumberRangeMoreRegex2})\\s*(en|(,\\s*)?maar|,)\\s*({OneNumberRangeLessRegex1}|{OneNumberRangeLessRegex2})'
     TwoNumberRangeRegex3 = f'({OneNumberRangeLessRegex1}|{OneNumberRangeLessRegex2})\\s*(en|maar|,)\\s*({OneNumberRangeMoreRegex1}|{OneNumberRangeMoreRegex2})'
     TwoNumberRangeRegex4 = f'(van\\s+)?(?<number1>({AllIntRegex}|{AllFloatRegex}|{AllOrdinalRegex}|{DigitsNumberRegex}))\\s*{TillRegex}\\s*(de\\s+)?(?<number2>({AllIntRegex}|{AllFloatRegex}|{AllOrdinalRegex}|{DigitsNumberRegex}))'
@@ -119,143 +135,165 @@ class DutchNumeric:
     WrittenFractionSeparatorTexts = [r'uit', r'van de', r'op de', r'en']
     HalfADozenRegex = '(een\\s+)?half\\s+dozijn'
     DigitalNumberRegex = f'((?<=\\b)(honderd|duizend|miljoen|miljard|biljoen|dozijn?)(?=\\b))|((?<=(\\d|\\b)){BaseNumbers.MultiplierLookupRegex}(?=\\b))'
-    CardinalNumberMap = dict([("nul", 0),
-                              ("een", 1),
-                              ("één", 1),
-                              ("twee", 2),
-                              ("drie", 3),
-                              ("vier", 4),
-                              ("vijf", 5),
-                              ("zes", 6),
-                              ("zeven", 7),
-                              ("acht", 8),
-                              ("negen", 9),
-                              ("tien", 10),
-                              ("elf", 11),
-                              ("twaalf", 12),
-                              ("dozijn", 12),
-                              ("dertien", 13),
-                              ("veertien", 14),
-                              ("vijftien", 15),
-                              ("zestien", 16),
-                              ("zeventien", 17),
-                              ("achttien", 18),
-                              ("negentien", 19),
-                              ("twintig", 20),
-                              ("dertig", 30),
-                              ("veertig", 40),
-                              ("vijftig", 50),
-                              ("zestig", 60),
-                              ("zeventig", 70),
-                              ("tachtig", 80),
-                              ("negentig", 90),
-                              ("honderd", 100),
-                              ("gros", 144),
-                              ("duizend", 1000),
-                              ("miljoen", 1000000),
-                              ("miljard", 1000000000),
-                              ("biljoen", 1000000000000)])
-    OrdinalNumberMap = dict([("nulde", 0),
-                             ("eerste", 1),
-                             ("eende", 1),
-                             ("tweede", 2),
-                             ("secundair", 2),
-                             ("half", 2),
-                             ("halve", 2),
-                             ("helft", 2),
-                             ("derde", 3),
-                             ("vierde", 4),
-                             ("kwart", 4),
-                             ("vijfde", 5),
-                             ("vijfden", 5),
-                             ("zesde", 6),
-                             ("zevende", 7),
-                             ("achtste", 8),
-                             ("achtsten", 8),
-                             ("negende", 9),
-                             ("tiende", 10),
-                             ("tienden", 10),
-                             ("elfde", 11),
-                             ("twaalfde", 12),
-                             ("dertiende", 13),
-                             ("veertiende", 14),
-                             ("vijftiende", 15),
-                             ("zestiende", 16),
-                             ("zeventiende", 17),
-                             ("achttiende", 18),
-                             ("negentiende", 19),
-                             ("twintigste", 20),
-                             ("eenentwintigste", 21),
-                             ("vijfentwintigste", 25),
-                             ("vijventwintigste", 25),
-                             ("dertigste", 30),
-                             ("vijfendertigste", 35),
-                             ("veertigste", 40),
-                             ("vijfenveertigste", 45),
-                             ("vijftigste", 50),
-                             ("vijfenvijftigste", 55),
-                             ("zestigste", 60),
-                             ("vijfenzestigste", 65),
-                             ("zeventigste", 70),
-                             ("vijfenzeventigste", 75),
-                             ("tachtigste", 80),
-                             ("vijfentachtigste", 85),
-                             ("negentigste", 90),
-                             ("vijfennegentigste", 95),
-                             ("honderdste", 100),
-                             ("duizendste", 1000),
-                             ("miljoenste", 1000000),
-                             ("miljardste", 1000000000),
-                             ("biljoenste", 1000000000000),
-                             ("biljardste", 1000000000000000),
-                             ("triljoenste", 1000000000000000000)])
-    RoundNumberMap = dict([("honderd", 100),
-                           ("duizend", 1000),
-                           ("miljoen", 1000000),
-                           ("miljard", 1000000000),
-                           ("biljoen", 1000000000000),
-                           ("biljard", 1000000000000000),
-                           ("triljard", 1000000000000000000),
-                           ("honderdste", 100),
-                           ("duizendste", 1000),
-                           ("miljoenste", 1000000),
-                           ("miljardste", 1000000000),
-                           ("biljoenste", 1000000000000),
-                           ("biljardste", 1000000000000000),
-                           ("triljoenste", 1000000000000000000),
-                           ("honderdsten", 100),
-                           ("duizendsten", 1000),
-                           ("miljoensten", 1000000),
-                           ("miljardsten", 1000000000),
-                           ("biljoensten", 1000000000000),
-                           ("dozijn", 12),
-                           ("gros", 144),
-                           ("k", 1000),
-                           ("m", 1000000),
-                           ("g", 1000000000),
-                           ("b", 1000000000),
-                           ("t", 1000000000000)])
+    CardinalNumberMap = dict(
+        [
+            ("nul", 0),
+            ("een", 1),
+            ("één", 1),
+            ("twee", 2),
+            ("drie", 3),
+            ("vier", 4),
+            ("vijf", 5),
+            ("zes", 6),
+            ("zeven", 7),
+            ("acht", 8),
+            ("negen", 9),
+            ("tien", 10),
+            ("elf", 11),
+            ("twaalf", 12),
+            ("dozijn", 12),
+            ("dertien", 13),
+            ("veertien", 14),
+            ("vijftien", 15),
+            ("zestien", 16),
+            ("zeventien", 17),
+            ("achttien", 18),
+            ("negentien", 19),
+            ("twintig", 20),
+            ("dertig", 30),
+            ("veertig", 40),
+            ("vijftig", 50),
+            ("zestig", 60),
+            ("zeventig", 70),
+            ("tachtig", 80),
+            ("negentig", 90),
+            ("honderd", 100),
+            ("gros", 144),
+            ("duizend", 1000),
+            ("miljoen", 1000000),
+            ("miljard", 1000000000),
+            ("biljoen", 1000000000000),
+        ]
+    )
+    OrdinalNumberMap = dict(
+        [
+            ("nulde", 0),
+            ("eerste", 1),
+            ("eende", 1),
+            ("tweede", 2),
+            ("secundair", 2),
+            ("half", 2),
+            ("halve", 2),
+            ("helft", 2),
+            ("derde", 3),
+            ("vierde", 4),
+            ("kwart", 4),
+            ("vijfde", 5),
+            ("vijfden", 5),
+            ("zesde", 6),
+            ("zevende", 7),
+            ("achtste", 8),
+            ("achtsten", 8),
+            ("negende", 9),
+            ("tiende", 10),
+            ("tienden", 10),
+            ("elfde", 11),
+            ("twaalfde", 12),
+            ("dertiende", 13),
+            ("veertiende", 14),
+            ("vijftiende", 15),
+            ("zestiende", 16),
+            ("zeventiende", 17),
+            ("achttiende", 18),
+            ("negentiende", 19),
+            ("twintigste", 20),
+            ("eenentwintigste", 21),
+            ("vijfentwintigste", 25),
+            ("vijventwintigste", 25),
+            ("dertigste", 30),
+            ("vijfendertigste", 35),
+            ("veertigste", 40),
+            ("vijfenveertigste", 45),
+            ("vijftigste", 50),
+            ("vijfenvijftigste", 55),
+            ("zestigste", 60),
+            ("vijfenzestigste", 65),
+            ("zeventigste", 70),
+            ("vijfenzeventigste", 75),
+            ("tachtigste", 80),
+            ("vijfentachtigste", 85),
+            ("negentigste", 90),
+            ("vijfennegentigste", 95),
+            ("honderdste", 100),
+            ("duizendste", 1000),
+            ("miljoenste", 1000000),
+            ("miljardste", 1000000000),
+            ("biljoenste", 1000000000000),
+            ("biljardste", 1000000000000000),
+            ("triljoenste", 1000000000000000000),
+        ]
+    )
+    RoundNumberMap = dict(
+        [
+            ("honderd", 100),
+            ("duizend", 1000),
+            ("miljoen", 1000000),
+            ("miljard", 1000000000),
+            ("biljoen", 1000000000000),
+            ("biljard", 1000000000000000),
+            ("triljard", 1000000000000000000),
+            ("honderdste", 100),
+            ("duizendste", 1000),
+            ("miljoenste", 1000000),
+            ("miljardste", 1000000000),
+            ("biljoenste", 1000000000000),
+            ("biljardste", 1000000000000000),
+            ("triljoenste", 1000000000000000000),
+            ("honderdsten", 100),
+            ("duizendsten", 1000),
+            ("miljoensten", 1000000),
+            ("miljardsten", 1000000000),
+            ("biljoensten", 1000000000000),
+            ("dozijn", 12),
+            ("gros", 144),
+            ("k", 1000),
+            ("m", 1000000),
+            ("g", 1000000000),
+            ("b", 1000000000),
+            ("t", 1000000000000),
+        ]
+    )
     AmbiguityFiltersDict = dict([("^[.]", "")])
-    RelativeReferenceOffsetMap = dict([("laatst", "0"),
-                                       ("laatste", "0"),
-                                       ("volgende", "1"),
-                                       ("huidige", "0"),
-                                       ("vorige", "-1"),
-                                       ("vorig", "-1"),
-                                       ("de op één na laatste", "-1"),
-                                       ("de een voor de laatste", "-1"),
-                                       ("die voor de laatste", "-1"),
-                                       ("voorlaatste", "-1"),
-                                       ("twee na laatste", "-2")])
-    RelativeReferenceRelativeToMap = dict([("laatst", "end"),
-                                           ("laatste", "end"),
-                                           ("volgende", "current"),
-                                           ("huidige", "current"),
-                                           ("vorige", "current"),
-                                           ("vorig", "current"),
-                                           ("de op één na laatste", "end"),
-                                           ("de een voor de laatste", "end"),
-                                           ("die voor de laatste", "end"),
-                                           ("voorlaatste", "end"),
-                                           ("twee na laatste", "end")])
+    RelativeReferenceOffsetMap = dict(
+        [
+            ("laatst", "0"),
+            ("laatste", "0"),
+            ("volgende", "1"),
+            ("huidige", "0"),
+            ("vorige", "-1"),
+            ("vorig", "-1"),
+            ("de op één na laatste", "-1"),
+            ("de een voor de laatste", "-1"),
+            ("die voor de laatste", "-1"),
+            ("voorlaatste", "-1"),
+            ("twee na laatste", "-2"),
+        ]
+    )
+    RelativeReferenceRelativeToMap = dict(
+        [
+            ("laatst", "end"),
+            ("laatste", "end"),
+            ("volgende", "current"),
+            ("huidige", "current"),
+            ("vorige", "current"),
+            ("vorig", "current"),
+            ("de op één na laatste", "end"),
+            ("de een voor de laatste", "end"),
+            ("die voor de laatste", "end"),
+            ("voorlaatste", "end"),
+            ("twee na laatste", "end"),
+        ]
+    )
+
+
 # pylint: enable=line-too-long

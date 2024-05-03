@@ -171,34 +171,19 @@ class FrenchCommonDateTimeParserConfiguration(BaseDateParserConfiguration):
         self._integer_extractor = FrenchIntegerExtractor()
         self._ordinal_extractor = FrenchOrdinalExtractor()
 
-        self._day_of_month = {
-            **BaseDateTime.DayOfMonthDictionary, **FrenchDateTime.DayOfMonth}
-        self._number_parser = BaseNumberParser(
-            FrenchNumberParserConfiguration())
-        self._date_extractor = BaseDateExtractor(
-            FrenchDateExtractorConfiguration())
-        self._time_extractor = BaseTimeExtractor(
-            FrenchTimeExtractorConfiguration())
-        self._duration_extractor = BaseDurationExtractor(
-            FrenchDurationExtractorConfiguration())
-        self._date_period_extractor = BaseDatePeriodExtractor(
-            FrenchDatePeriodExtractorConfiguration())
-        self._time_period_extractor = BaseTimePeriodExtractor(
-            FrenchTimePeriodExtractorConfiguration())
-        self._date_time_extractor = BaseDateTimeExtractor(
-            FrenchDateTimeExtractorConfiguration())
-        self._date_time_period_extractor = BaseDateTimePeriodExtractor(
-            FrenchDateTimePeriodExtractorConfiguration())
-        self._duration_parser = BaseDurationParser(
-            FrenchDurationParserConfiguration(self))
+        self._day_of_month = {**BaseDateTime.DayOfMonthDictionary, **FrenchDateTime.DayOfMonth}
+        self._number_parser = BaseNumberParser(FrenchNumberParserConfiguration())
+        self._date_extractor = BaseDateExtractor(FrenchDateExtractorConfiguration())
+        self._time_extractor = BaseTimeExtractor(FrenchTimeExtractorConfiguration())
+        self._duration_extractor = BaseDurationExtractor(FrenchDurationExtractorConfiguration())
+        self._date_period_extractor = BaseDatePeriodExtractor(FrenchDatePeriodExtractorConfiguration())
+        self._time_period_extractor = BaseTimePeriodExtractor(FrenchTimePeriodExtractorConfiguration())
+        self._date_time_extractor = BaseDateTimeExtractor(FrenchDateTimeExtractorConfiguration())
+        self._date_time_period_extractor = BaseDateTimePeriodExtractor(FrenchDateTimePeriodExtractorConfiguration())
+        self._duration_parser = BaseDurationParser(FrenchDurationParserConfiguration(self))
         self._date_parser = BaseDateParser(FrenchDateParserConfiguration(self))
-        self._time_parser = FrenchTimeParser(
-            FrenchTimeParserConfiguration(self))
-        self._date_period_parser = BaseDatePeriodParser(
-            FrenchDatePeriodParserConfiguration(self))
-        self._time_period_parser = BaseTimePeriodParser(
-            FrenchTimePeriodParserConfiguration(self))
-        self._date_time_parser = BaseDateTimeParser(
-            FrenchDateTimeParserConfiguration(self))
-        self._date_time_period_parser = BaseDateTimePeriodParser(
-            FrenchDateTimePeriodParserConfiguration(self))
+        self._time_parser = FrenchTimeParser(FrenchTimeParserConfiguration(self))
+        self._date_period_parser = BaseDatePeriodParser(FrenchDatePeriodParserConfiguration(self))
+        self._time_period_parser = BaseTimePeriodParser(FrenchTimePeriodParserConfiguration(self))
+        self._date_time_parser = BaseDateTimeParser(FrenchDateTimeParserConfiguration(self))
+        self._date_time_period_parser = BaseDateTimePeriodParser(FrenchDateTimePeriodParserConfiguration(self))

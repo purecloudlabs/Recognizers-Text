@@ -25,7 +25,7 @@ date_period_timex_type_to_suffix = {
 
 
 class UnspecificDateTimeTerms(IntEnum):
-    NONE = 0,
+    NONE = (0,)
     NonSpecificYear = 1
     NonSpecificMonth = 2
     NonSpecificDay = 3
@@ -142,14 +142,21 @@ class TimexUtil:
 
         duration_timex = Constants.GENERAL_PERIOD_PREFIX + diff + Constants.TIMEX_DAY
 
-        return f'({DateTimeFormatUtil.luis_date(begin.year, begin.month, begin.day)},' \
-               f'{DateTimeFormatUtil.luis_date(end_date.year, end_date.month, end_date.day)},{duration_timex})'
+        return (
+            f'({DateTimeFormatUtil.luis_date(begin.year, begin.month, begin.day)},'
+            f'{DateTimeFormatUtil.luis_date(end_date.year, end_date.month, end_date.day)},{duration_timex})'
+        )
 
     @staticmethod
-    def generate_date_period_timex(begin: datetime, end: datetime, timex_type: DatePeriodTimexType,
-                                   alternative_begin: datetime = None,
-                                   alternative_end: datetime = None, has_year: bool = True,
-                                   has_month: bool = True):
+    def generate_date_period_timex(
+        begin: datetime,
+        end: datetime,
+        timex_type: DatePeriodTimexType,
+        alternative_begin: datetime = None,
+        alternative_end: datetime = None,
+        has_year: bool = True,
+        has_month: bool = True,
+    ):
         begin_month = begin.month
         end_month = end.month
         begin_day = begin.day
@@ -171,8 +178,10 @@ class TimexUtil:
             unit_count = TimexUtil.generate_date_period_timex_unit_count(begin, end, timex_type)
 
             date_period_timex = f"P{unit_count}{date_period_timex_type_to_suffix[timex_type]}"
-            return f'({DateTimeFormatUtil.luis_date(begin_year, begin_month, begin_day)},' \
-                   f'{DateTimeFormatUtil.luis_date(end_year, end_month, end_day)},{date_period_timex})'
+            return (
+                f'({DateTimeFormatUtil.luis_date(begin_year, begin_month, begin_day)},'
+                f'{DateTimeFormatUtil.luis_date(end_year, end_month, end_day)},{date_period_timex})'
+            )
 
         alternative = False
         if alternative_begin is None and alternative_end is None:
@@ -181,46 +190,61 @@ class TimexUtil:
         else:
             alternative = True
 
-        equal_duration_length = (end - begin).days == (alternative_end - alternative_begin).days or \
-                                alternative == False
+        equal_duration_length = (end - begin).days == (alternative_end - alternative_begin).days or alternative == False
 
         unit_count = TimexUtil.generate_date_period_timex_unit_count(begin, end, timex_type, equal_duration_length)
         date_period_timex = f'P{unit_count}{date_period_timex_type_to_suffix[timex_type]}'
 
         if alternative:
-            return f'({DateTimeFormatUtil.luis_date_from_datetime_with_alternative(begin, alternative_begin)},' \
-                   f'{DateTimeFormatUtil.luis_date_from_datetime_with_alternative(end, alternative_end)},' \
-                   f'{date_period_timex})'
+            return (
+                f'({DateTimeFormatUtil.luis_date_from_datetime_with_alternative(begin, alternative_begin)},'
+                f'{DateTimeFormatUtil.luis_date_from_datetime_with_alternative(end, alternative_end)},'
+                f'{date_period_timex})'
+            )
         else:
-            return f'({DateTimeFormatUtil.luis_date(begin.year, begin.month, begin.day)},' \
-                   f'{DateTimeFormatUtil.luis_date(end.year, end.month, end.day)},{date_period_timex})'
+            return (
+                f'({DateTimeFormatUtil.luis_date(begin.year, begin.month, begin.day)},'
+                f'{DateTimeFormatUtil.luis_date(end.year, end.month, end.day)},{date_period_timex})'
+            )
 
     @staticmethod
     def generate_date_period_timex_with_duration(begin_date: datetime, end_date: datetime, duration_timex: str):
-        return f'({DateTimeFormatUtil.luis_date(begin_date.year, begin_date.month, begin_date.day)},' \
-               f'{DateTimeFormatUtil.luis_date(end_date.year, end_date.month, end_date.day)},{duration_timex})'
+        return (
+            f'({DateTimeFormatUtil.luis_date(begin_date.year, begin_date.month, begin_date.day)},'
+            f'{DateTimeFormatUtil.luis_date(end_date.year, end_date.month, end_date.day)},{duration_timex})'
+        )
 
     @staticmethod
     def generate_split_date_time_period_timex(date_timex: str, time_range_timex: str):
         split = time_range_timex.split(Constants.TIME_TIMEX_PREFIX[0])
         timex: str = None
         if len(split) == 4:
-            timex = split[0] + date_timex + Constants.TIME_TIMEX_PREFIX + split[1] + date_timex + \
-                    Constants.TIME_TIMEX_PREFIX + split[2] + Constants.TIME_TIMEX_PREFIX + split[3]
+            timex = (
+                split[0]
+                + date_timex
+                + Constants.TIME_TIMEX_PREFIX
+                + split[1]
+                + date_timex
+                + Constants.TIME_TIMEX_PREFIX
+                + split[2]
+                + Constants.TIME_TIMEX_PREFIX
+                + split[3]
+            )
         elif len(split) == 2:
             timex = date_timex + time_range_timex
 
         return timex
 
     @staticmethod
-    def generate_relative_unit_date_time_period_timex(begin_date_time: datetime, end_date_time: datetime,
-                                                      reference_time: datetime, unit_str: str, swift: int):
+    def generate_relative_unit_date_time_period_timex(
+        begin_date_time: datetime, end_date_time: datetime, reference_time: datetime, unit_str: str, swift: int
+    ):
         prefix: str = Constants.GENERAL_PERIOD_PREFIX + Constants.TIME_TIMEX_PREFIX
         duration_timex = ''
         if unit_str == Constants.TIMEX_DAY:
-            end_date_time = DateUtils.safe_create_from_value(begin_date_time.year,
-                                                             begin_date_time.month,
-                                                             begin_date_time.day)
+            end_date_time = DateUtils.safe_create_from_value(
+                begin_date_time.year, begin_date_time.month, begin_date_time.day
+            )
             end_date_time = end_date_time + timedelta(days=1, seconds=-1)
             duration_timex = prefix + (end_date_time - begin_date_time).total_seconds() + Constants.TIMEX_SECOND
 
@@ -285,8 +309,8 @@ class TimexUtil:
     @staticmethod
     def parse_number_from_duration_timex(timex: str):
         number_str = timex[
-                     timex.index(Constants.GENERAL_PERIOD_PREFIX) + 1:
-                     timex.index(Constants.DURATION_UNIT_CHAR - 1)]
+            timex.index(Constants.GENERAL_PERIOD_PREFIX) + 1 : timex.index(Constants.DURATION_UNIT_CHAR - 1)
+        ]
 
         return float(number_str)
 
@@ -313,7 +337,7 @@ class TimexUtil:
             end = timex.index(Constants.TIME_TIMEX_CONNECTOR)
         except ValueError:
             end = len(timex)
-        hour = int(timex[start:end - start])
+        hour = int(timex[start : end - start])
         return hour
 
     @staticmethod
@@ -354,8 +378,10 @@ class TimexUtil:
 
     @staticmethod
     def generate_weekday_timex(weekday: int):
-        return f'{Constants.TIMEX_FUZZY_YEAR}{Constants.DATE_TIMEX_CONNECTOR}{Constants.TIMEX_FUZZY_WEEK}' \
-               f'{Constants.DATE_TIMEX_CONNECTOR}{weekday}'
+        return (
+            f'{Constants.TIMEX_FUZZY_YEAR}{Constants.DATE_TIMEX_CONNECTOR}{Constants.TIMEX_FUZZY_WEEK}'
+            f'{Constants.DATE_TIMEX_CONNECTOR}{weekday}'
+        )
 
     @staticmethod
     def generate_decade_timex(begin_year, total_last_year, decade, input_century) -> str:
@@ -392,11 +418,15 @@ class TimexUtil:
     @staticmethod
     def generate_weekend_timex(date: datetime = None):
         if date is None:
-            return f'{Constants.TIMEX_FUZZY_YEAR}{Constants.DATE_TIMEX_CONNECTOR}{Constants.TIMEX_FUZZY_WEEK}' \
-                   f'{Constants.DATE_TIMEX_CONNECTOR}{Constants.TIMEX_WEEKEND}'
+            return (
+                f'{Constants.TIMEX_FUZZY_YEAR}{Constants.DATE_TIMEX_CONNECTOR}{Constants.TIMEX_FUZZY_WEEK}'
+                f'{Constants.DATE_TIMEX_CONNECTOR}{Constants.TIMEX_WEEKEND}'
+            )
         else:
-            return f'{DateTimeFormatUtil.to_iso_week_timex(date)}{Constants.DATE_TIMEX_CONNECTOR}' \
-                   f'{Constants.TIMEX_WEEKEND}'
+            return (
+                f'{DateTimeFormatUtil.to_iso_week_timex(date)}{Constants.DATE_TIMEX_CONNECTOR}'
+                f'{Constants.TIMEX_WEEKEND}'
+            )
 
     @staticmethod
     def generate_month_timex(date: datetime = None):
@@ -425,8 +455,9 @@ class TimexUtil:
             return Constants.GENERAL_PERIOD_PREFIX + str(number) + unit_str
 
     @staticmethod
-    def generate_compound_duration_timex(unit_to_timex_components: Dict[str, str],
-                                         unit_value_map: Dict[str, str]) -> str:
+    def generate_compound_duration_timex(
+        unit_to_timex_components: Dict[str, str], unit_value_map: Dict[str, str]
+    ) -> str:
         unit_list: List[str] = list(unit_to_timex_components.keys())
         unit_list.sort(key=lambda x: unit_value_map[x])
 
@@ -488,4 +519,3 @@ class TimexUtil:
             result.begin_hour = Constants.MEAL_TIME_DINNER_BEGIN_HOUR
             result.end_hour = Constants.MEAL_TIME_DINNER_END_HOUR
         return result
-

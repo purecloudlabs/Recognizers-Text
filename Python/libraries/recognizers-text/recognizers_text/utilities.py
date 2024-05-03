@@ -35,7 +35,7 @@ class StringUtility:
 class ConditionalMatch:
 
     def __init__(self, match: Match, success: bool):
-        self._match = match,
+        self._match = (match,)
         self._success = success
 
     @property
@@ -115,7 +115,7 @@ class RegExpUtility:
         if match is None:
             return None
 
-        str_before = text[0: text.index(match.group())]
+        str_before = text[0 : text.index(match.group())]
 
         if trim:
             str_before = str_before.strip()
@@ -129,7 +129,7 @@ class RegExpUtility:
         if match is None:
             return None
 
-        srt_after = text[text.index(match.group()) + (match.end() - match.start()):]
+        srt_after = text[text.index(match.group()) + (match.end() - match.start()) :]
 
         if trim:
             srt_after = srt_after.strip()
@@ -205,8 +205,7 @@ class QueryProcessor:
 
         matches = QueryProcessor.special_tokens_regex.finditer(input_str)
         for match in matches:
-            QueryProcessor.apply_reverse(
-                match.start(), str_chars, match.group())
+            QueryProcessor.apply_reverse(match.start(), str_chars, match.group())
 
         return ''.join(str_chars)
 

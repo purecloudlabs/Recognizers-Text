@@ -17,12 +17,9 @@ from .duration_extractor import ChineseDurationExtractor
 
 
 class ChineseDateTimeExtractor(BaseDateTimeExtractor):
-    before_regex = RegExpUtility.get_safe_reg_exp(
-        ChineseDateTime.BeforeRegex)
-    after_regex = RegExpUtility.get_safe_reg_exp(
-        ChineseDateTime.AfterRegex)
-    date_time_period_unit_regex = RegExpUtility.get_safe_reg_exp(
-        ChineseDateTime.DateTimePeriodUnitRegex)
+    before_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.BeforeRegex)
+    after_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.AfterRegex)
+    date_time_period_unit_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.DateTimePeriodUnitRegex)
 
     def __init__(self):
         super().__init__(ChineseDateTimeExtractorConfiguration())
@@ -44,8 +41,7 @@ class ChineseDateTimeExtractor(BaseDateTimeExtractor):
 
     def merge_date_and_time(self, source: str, reference: datetime) -> List[Token]:
         tokens: List[Token] = list()
-        ers: List[ExtractResult] = self.config.date_point_extractor.extract(
-            source, reference)
+        ers: List[ExtractResult] = self.config.date_point_extractor.extract(source, reference)
 
         if len(ers) < 1:
             return tokens
@@ -58,8 +54,8 @@ class ChineseDateTimeExtractor(BaseDateTimeExtractor):
         ers = sorted(ers, key=lambda x: x.start)
         i = 0
 
-        while i < len(ers)-1:
-            j = i+1
+        while i < len(ers) - 1:
+            j = i + 1
 
             while j < len(ers) and ers[i].overlap(ers[j]):
                 j += 1
@@ -91,18 +87,17 @@ class ChineseDateTimeExtractor(BaseDateTimeExtractor):
         ers = self.config.time_point_extractor.extract(source, reference)
 
         for er in ers:
-            before = source[:er.start]
+            before = source[: er.start]
             inner_match = regex.search(self.config.night_regex, er.text)
 
             if inner_match is not None and inner_match.start() == 0:
-                before = source[:er.start + len(inner_match.group())]
+                before = source[: er.start + len(inner_match.group())]
 
             if not before:
                 continue
 
-            match = regex.search(
-                self.config.time_of_today_before_regex, before)
-            if match is not None and not before[match.end():].strip():
+            match = regex.search(self.config.time_of_today_before_regex, before)
+            if match is not None and not before[match.end() :].strip():
                 begin = match.start()
                 end = er.start + er.length
                 tokens.append(Token(begin, end))
@@ -120,8 +115,9 @@ class ChineseDateTimeExtractor(BaseDateTimeExtractor):
                 before_match = RegExpUtility.get_matches(self.before_regex, suffix)
                 after_match = RegExpUtility.get_matches(self.after_regex, suffix)
 
-                if (before_match and suffix.startswith(before_match[0])) \
-                        or (after_match and suffix.startswith(after_match[0])):
+                if (before_match and suffix.startswith(before_match[0])) or (
+                    after_match and suffix.startswith(after_match[0])
+                ):
                     meta_data = MetaData()
                     meta_data.is_duration_with_ago_and_later = True
                     ret.append(Token(er.start, pos + 1, meta_data))

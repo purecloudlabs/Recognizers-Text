@@ -96,47 +96,30 @@ class EnglishDurationExtractorConfiguration(DurationExtractorConfiguration):
     def __init__(self):
         super().__init__()
         self._check_both_before_after = EnglishDateTime.CheckBothBeforeAfter
-        self._all_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.AllRegex)
-        self._half_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.HalfRegex)
-        self._followed_unit: Pattern = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.DurationFollowedUnit)
+        self._all_regex: Pattern = RegExpUtility.get_safe_reg_exp(EnglishDateTime.AllRegex)
+        self._half_regex: Pattern = RegExpUtility.get_safe_reg_exp(EnglishDateTime.HalfRegex)
+        self._followed_unit: Pattern = RegExpUtility.get_safe_reg_exp(EnglishDateTime.DurationFollowedUnit)
         self._number_combined_with_unit: Pattern = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.NumberCombinedWithDurationUnit)
-        self._an_unit_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.AnUnitRegex)
+            EnglishDateTime.NumberCombinedWithDurationUnit
+        )
+        self._an_unit_regex: Pattern = RegExpUtility.get_safe_reg_exp(EnglishDateTime.AnUnitRegex)
         self._inexact_number_unit_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.InexactNumberUnitRegex)
-        self._suffix_and_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.SuffixAndRegex)
+            EnglishDateTime.InexactNumberUnitRegex
+        )
+        self._suffix_and_regex: Pattern = RegExpUtility.get_safe_reg_exp(EnglishDateTime.SuffixAndRegex)
         self._relative_duration_unit_regex: Pattern = RegExpUtility.get_safe_reg_exp(
             EnglishDateTime.RelativeDurationUnitRegex
         )
-        self._during_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.DuringRegex
-        )
+        self._during_regex: Pattern = RegExpUtility.get_safe_reg_exp(EnglishDateTime.DuringRegex)
         self._cardinal_extractor: BaseNumberExtractor = EnglishCardinalExtractor()
         self._unit_map = EnglishDateTime.UnitMap
         self._unit_value_map = EnglishDateTime.UnitValueMap
-        self._duration_unit_regex = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.DurationUnitRegex
-        )
-        self._duration_connector_regex = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.DurationConnectorRegex
-        )
-        self._more_than_regex = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.MoreThanRegex
-        )
-        self._less_than_regex = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.LessThanRegex
-        )
-        self._conjunction_regex = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.ConjunctionRegex
-        )
-        self._inexact_number_regex = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.InexactNumberRegex
-        )
+        self._duration_unit_regex = RegExpUtility.get_safe_reg_exp(EnglishDateTime.DurationUnitRegex)
+        self._duration_connector_regex = RegExpUtility.get_safe_reg_exp(EnglishDateTime.DurationConnectorRegex)
+        self._more_than_regex = RegExpUtility.get_safe_reg_exp(EnglishDateTime.MoreThanRegex)
+        self._less_than_regex = RegExpUtility.get_safe_reg_exp(EnglishDateTime.LessThanRegex)
+        self._conjunction_regex = RegExpUtility.get_safe_reg_exp(EnglishDateTime.ConjunctionRegex)
+        self._inexact_number_regex = RegExpUtility.get_safe_reg_exp(EnglishDateTime.InexactNumberRegex)
         self._special_number_with_unit_regex = None
         self._check_both_before_after = EnglishDateTime.CheckBothBeforeAfter
         # TODO When the implementation for these properties is added, change the None values to their respective Regexps

@@ -17,7 +17,7 @@ class JapaneseDurationExtractorConfiguration(CJKDurationExtractorConfiguration):
     @property
     def year_regex(self) -> Pattern:
         return self._year_regex
-    
+
     @property
     def duration_unit_regex(self) -> Pattern:
         return self._duration_unit_regex
@@ -29,7 +29,7 @@ class JapaneseDurationExtractorConfiguration(CJKDurationExtractorConfiguration):
     @property
     def duration_connector_regex(self) -> Pattern:
         return self._duration_connector_regex
-    
+
     @property
     def all_regex(self) -> Pattern:
         return self._all_regex
@@ -104,7 +104,8 @@ class JapaneseDurationExtractorConfiguration(CJKDurationExtractorConfiguration):
         self._all_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.DurationAllRegex)
         self._half_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.DurationHalfRegex)
         self._relative_duration_unit_regex = RegExpUtility.get_safe_reg_exp(
-            JapaneseDateTime.DurationRelativeDurationUnitRegex)
+            JapaneseDateTime.DurationRelativeDurationUnitRegex
+        )
         self._during_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.DurationDuringRegex)
         self._some_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.DurationSomeRegex)
         self._more_or_less_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.DurationMoreOrLessRegex)
@@ -116,5 +117,3 @@ class JapaneseDurationExtractorConfiguration(CJKDurationExtractorConfiguration):
         self._ambiguity_duration_filters_dict = DefinitionLoader.load_ambiguity_filters(
             JapaneseDateTime.AmbiguityDurationFiltersDict
         )
-
-

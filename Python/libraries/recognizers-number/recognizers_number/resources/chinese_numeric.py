@@ -26,104 +26,112 @@ class ChineseNumeric:
     WordSeparatorToken = ''
     ZeroChar = '零'
     PairChar = '对'
-    RoundNumberMap = dict([("k", 1000),
-                           ("m", 1000000),
-                           ("g", 1000000000),
-                           ("t", 1000000000000)])
-    RoundNumberMapChar = dict([("十", 10),
-                               ("百", 100),
-                               ("千", 1000),
-                               ("万", 10000),
-                               ("亿", 100000000),
-                               ("兆", 1000000000000),
-                               ("拾", 10),
-                               ("佰", 100),
-                               ("仟", 1000),
-                               ("萬", 10000),
-                               ("億", 100000000)])
-    ZeroToNineMap = dict([("零", 0),
-                          ("一", 1),
-                          ("二", 2),
-                          ("三", 3),
-                          ("四", 4),
-                          ("五", 5),
-                          ("六", 6),
-                          ("七", 7),
-                          ("八", 8),
-                          ("九", 9),
-                          ("〇", 0),
-                          ("壹", 1),
-                          ("贰", 2),
-                          ("貳", 2),
-                          ("叁", 3),
-                          ("肆", 4),
-                          ("伍", 5),
-                          ("陆", 6),
-                          ("陸", 6),
-                          ("柒", 7),
-                          ("捌", 8),
-                          ("玖", 9),
-                          ("０", 0),
-                          ("１", 1),
-                          ("２", 2),
-                          ("３", 3),
-                          ("４", 4),
-                          ("５", 5),
-                          ("６", 6),
-                          ("７", 7),
-                          ("８", 8),
-                          ("９", 9),
-                          ("0", 0),
-                          ("1", 1),
-                          ("2", 2),
-                          ("3", 3),
-                          ("4", 4),
-                          ("5", 5),
-                          ("6", 6),
-                          ("7", 7),
-                          ("8", 8),
-                          ("9", 9),
-                          ("半", 0.5),
-                          ("两", 2),
-                          ("兩", 2),
-                          ("俩", 2),
-                          ("倆", 2),
-                          ("仨", 3)])
-    FullToHalfMap = dict([("０", "0"),
-                          ("１", "1"),
-                          ("２", "2"),
-                          ("３", "3"),
-                          ("４", "4"),
-                          ("５", "5"),
-                          ("６", "6"),
-                          ("７", "7"),
-                          ("８", "8"),
-                          ("９", "9"),
-                          ("／", "/"),
-                          ("－", "-"),
-                          ("，", "'"),
-                          ("Ｇ", "G"),
-                          ("Ｍ", "M"),
-                          ("Ｔ", "T"),
-                          ("Ｋ", "K"),
-                          ("ｋ", "k"),
-                          ("．", ".")])
-    TratoSimMap = dict([("佰", "百"),
-                        ("點", "点"),
-                        ("個", "个"),
-                        ("幾", "几"),
-                        ("對", "对"),
-                        ("雙", "双")])
-    UnitMap = dict([("萬萬", "億"),
-                    ("億萬", "兆"),
-                    ("萬億", "兆"),
-                    ("万万", "亿"),
-                    ("万亿", "兆"),
-                    ("亿万", "兆"),
-                    (" ", ""),
-                    ("多", ""),
-                    ("余", ""),
-                    ("几", "")])
+    RoundNumberMap = dict([("k", 1000), ("m", 1000000), ("g", 1000000000), ("t", 1000000000000)])
+    RoundNumberMapChar = dict(
+        [
+            ("十", 10),
+            ("百", 100),
+            ("千", 1000),
+            ("万", 10000),
+            ("亿", 100000000),
+            ("兆", 1000000000000),
+            ("拾", 10),
+            ("佰", 100),
+            ("仟", 1000),
+            ("萬", 10000),
+            ("億", 100000000),
+        ]
+    )
+    ZeroToNineMap = dict(
+        [
+            ("零", 0),
+            ("一", 1),
+            ("二", 2),
+            ("三", 3),
+            ("四", 4),
+            ("五", 5),
+            ("六", 6),
+            ("七", 7),
+            ("八", 8),
+            ("九", 9),
+            ("〇", 0),
+            ("壹", 1),
+            ("贰", 2),
+            ("貳", 2),
+            ("叁", 3),
+            ("肆", 4),
+            ("伍", 5),
+            ("陆", 6),
+            ("陸", 6),
+            ("柒", 7),
+            ("捌", 8),
+            ("玖", 9),
+            ("０", 0),
+            ("１", 1),
+            ("２", 2),
+            ("３", 3),
+            ("４", 4),
+            ("５", 5),
+            ("６", 6),
+            ("７", 7),
+            ("８", 8),
+            ("９", 9),
+            ("0", 0),
+            ("1", 1),
+            ("2", 2),
+            ("3", 3),
+            ("4", 4),
+            ("5", 5),
+            ("6", 6),
+            ("7", 7),
+            ("8", 8),
+            ("9", 9),
+            ("半", 0.5),
+            ("两", 2),
+            ("兩", 2),
+            ("俩", 2),
+            ("倆", 2),
+            ("仨", 3),
+        ]
+    )
+    FullToHalfMap = dict(
+        [
+            ("０", "0"),
+            ("１", "1"),
+            ("２", "2"),
+            ("３", "3"),
+            ("４", "4"),
+            ("５", "5"),
+            ("６", "6"),
+            ("７", "7"),
+            ("８", "8"),
+            ("９", "9"),
+            ("／", "/"),
+            ("－", "-"),
+            ("，", "'"),
+            ("Ｇ", "G"),
+            ("Ｍ", "M"),
+            ("Ｔ", "T"),
+            ("Ｋ", "K"),
+            ("ｋ", "k"),
+            ("．", "."),
+        ]
+    )
+    TratoSimMap = dict([("佰", "百"), ("點", "点"), ("個", "个"), ("幾", "几"), ("對", "对"), ("雙", "双")])
+    UnitMap = dict(
+        [
+            ("萬萬", "億"),
+            ("億萬", "兆"),
+            ("萬億", "兆"),
+            ("万万", "亿"),
+            ("万亿", "兆"),
+            ("亿万", "兆"),
+            (" ", ""),
+            ("多", ""),
+            ("余", ""),
+            ("几", ""),
+        ]
+    )
     RoundDirectList = [r'亿', r'兆', r'億']
     TenChars = [r'十', r'拾']
     DigitalNumberRegex = f'((?<=(\\d|\\b)){BaseNumbers.MultiplierLookupRegex}(?=\\b))'
@@ -150,13 +158,21 @@ class ChineseNumeric:
     ContinuouslyNumberRegex = f'({DigitNumPlusRegex}|{RoundNumberIntegerRegex})'
     SingleLiangRegex = f'(?<!{ContinuouslyNumberRegex})两(?!{ContinuouslyNumberRegex})'
     NotSingleRegex = f'((({DigitNumPlusRegex}|[十拾])\\s*(\\s*[多几幾余]?\\s*{RoundNumberIntegerRegex}){{1,2}}|[十拾]|{RoundNumberIntegerRegex}\\s*{ZeroToNineIntegerRegex})\\s*|{ZeroToNineFullHalfRegex})(((({DigitNumPlusRegex})\\s*(\\s*[多几幾余]?\\s*{RoundNumberIntegerRegex}){{1,2}}|零)\\s*)|({ZeroToNineFullHalfRegex}))*({DigitNumPlusRegex})?(?<!两)'
-    SingleRegex = f'((?<!{ZeroToNineIntegerRegex}){ZeroToNineIntegerRegex}(?<!两)|{SingleLiangRegex})(?={AllowListRegex})'
+    SingleRegex = (
+        f'((?<!{ZeroToNineIntegerRegex}){ZeroToNineIntegerRegex}(?<!两)|{SingleLiangRegex})(?={AllowListRegex})'
+    )
     AllIntRegex = f'((((({DigitNumPlusRegex}|[十拾])\\s*(\\s*[多几幾余]?\\s*{RoundNumberIntegerRegex}){{1,2}}|[十拾])\\s*)(((({DigitNumPlusRegex})\\s*(\\s*[多几幾余]?\\s*{RoundNumberIntegerRegex}){{1,2}}|零)\\s*)|({ZeroToNineFullHalfRegex}))*({DigitNumPlusRegex})?|({DigitNumPlusRegex}))(?<!两)|{SingleLiangRegex})'
     PlaceHolderPureNumber = '\\b'
     PlaceHolderDefault = '\\D|\\b'
-    NumbersSpecialsChars = f'(({NegativeNumberTermsRegexNum}|{NegativeNumberTermsRegex})\\s*)?{ZeroToNineFullHalfRegex}+'
-    NumbersSpecialsCharsWithSuffix = f'{NegativeNumberTermsRegexNum}?{ZeroToNineFullHalfRegex}+\\s*{BaseNumbers.NumberMultiplierRegex}'
-    DottedNumbersSpecialsChar = f'{NegativeNumberTermsRegexNum}?{ZeroToNineFullHalfRegex}{{1,3}}([,，]{ZeroToNineFullHalfRegex}{{3}})+'
+    NumbersSpecialsChars = (
+        f'(({NegativeNumberTermsRegexNum}|{NegativeNumberTermsRegex})\\s*)?{ZeroToNineFullHalfRegex}+'
+    )
+    NumbersSpecialsCharsWithSuffix = (
+        f'{NegativeNumberTermsRegexNum}?{ZeroToNineFullHalfRegex}+\\s*{BaseNumbers.NumberMultiplierRegex}'
+    )
+    DottedNumbersSpecialsChar = (
+        f'{NegativeNumberTermsRegexNum}?{ZeroToNineFullHalfRegex}{{1,3}}([,，]{ZeroToNineFullHalfRegex}{{3}})+'
+    )
     NumbersWithHalfDozen = f'半({RoundNumberIntegerRegex}|打)'
     NumbersWithDozen = f'{AllIntRegex}[打](?!{AllIntRegex})'
     PointRegexStr = '[点點\\.．]'
@@ -176,7 +192,9 @@ class ChineseNumeric:
     OrdinalNumbersRegex = f'第{ZeroToNineFullHalfRegex}+'
     AllFractionNumber = f'{NegativeNumberTermsRegex}?(({ZeroToNineFullHalfRegex}+|{AllIntRegex})\\s*又\\s*)?{NegativeNumberTermsRegex}?({ZeroToNineFullHalfRegex}+|{AllIntRegex})\\s*分\\s*之\\s*{NegativeNumberTermsRegex}?({ZeroToNineFullHalfRegex}+|{AllIntRegex})({PointRegexStr}{AllIntRegex}*)?'
     FractionNotationSpecialsCharsRegex = f'({NegativeNumberTermsRegexNum}\\s*)?{ZeroToNineFullHalfRegex}+\\s+{ZeroToNineFullHalfRegex}+[/／]{ZeroToNineFullHalfRegex}+'
-    FractionNotationRegex = f'({NegativeNumberTermsRegexNum}\\s*)?{ZeroToNineFullHalfRegex}+[/／]{ZeroToNineFullHalfRegex}+'
+    FractionNotationRegex = (
+        f'({NegativeNumberTermsRegexNum}\\s*)?{ZeroToNineFullHalfRegex}+[/／]{ZeroToNineFullHalfRegex}+'
+    )
     SpeicalCharBeforeNumber = '(有|是|为)'
     TillRegex = '(到|至|--|-|—|——|~|–)'
     MoreRegex = '((大于|多于|高于|超过|大於|多於|高於|超過|超过)了?|过|>)'
@@ -186,10 +204,14 @@ class ChineseNumeric:
     MoreOrEqualSuffix = '(或|或者)\\s*(次?以上|之上|更[大多高])'
     LessOrEqual = f'(({LessRegex}\\s*(或|或者)?\\s*{EqualRegex})|(至多|最多){SpeicalCharBeforeNumber}?|不{MoreRegex}|≤)'
     LessOrEqualSuffix = '(或|或者)\\s*(以下|之下|更[小少低])'
-    OneNumberRangeMoreRegex1 = f'({MoreOrEqual}|{MoreRegex})\\s*(?<number1>((?!([并且而並的同時时]|([,，](?!\\d+))|。)).)+)'
+    OneNumberRangeMoreRegex1 = (
+        f'({MoreOrEqual}|{MoreRegex})\\s*(?<number1>((?!([并且而並的同時时]|([,，](?!\\d+))|。)).)+)'
+    )
     OneNumberRangeMoreRegex2 = '比\\s*(?<number1>((?!(([,，](?!\\d+))|。)).)+)\\s*更?[大多高]'
     OneNumberRangeMoreRegex3 = '(?<number1>((?!(([,，](?!\\d+))|。|[或者])).)+)\\s*(或|或者)?\\s*([多几余幾餘]|次?以上|之上|更[大多高])([万亿萬億]{0,2})'
-    OneNumberRangeLessRegex1 = f'({LessOrEqual}|{LessRegex})\\s*(?<number2>((?!([并且而並的同時时]|([,，](?!\\d+))|。)).)+)'
+    OneNumberRangeLessRegex1 = (
+        f'({LessOrEqual}|{LessRegex})\\s*(?<number2>((?!([并且而並的同時时]|([,，](?!\\d+))|。)).)+)'
+    )
     OneNumberRangeLessRegex2 = '比\\s*(?<number2>((?!(([,，](?!\\d+))|。)).)+)\\s*更?[小少低]'
     OneNumberRangeLessRegex3 = '(?<number2>((?!(([,，](?!\\d+))|。|[或者])).)+)\\s*(或|或者)?\\s*(以下|之下|更[小少低])'
     OneNumberRangeMoreSeparateRegex = '^[.]'
@@ -198,13 +220,21 @@ class ChineseNumeric:
     TwoNumberRangeRegex1 = f'((位于|在|位於)|(?=(\\d|\\+|\\-)))\\s*(?<number1>((?!(([,，](?!\\d+))|。)).)+)\\s*(和|与|與|{TillRegex})\\s*(?<number2>((?!(([,，](?!\\d+))|。))[^之])+)\\s*(之)?(间|間)'
     TwoNumberRangeRegex2 = f'({OneNumberRangeMoreRegex1}|{OneNumberRangeMoreRegex2}|{OneNumberRangeMoreRegex3})\\s*(且|(并|並)且?|而且|((的)?同時)|((的)?同时)|[,，])?\\s*({OneNumberRangeLessRegex1}|{OneNumberRangeLessRegex2}|{OneNumberRangeLessRegex3})'
     TwoNumberRangeRegex3 = f'({OneNumberRangeLessRegex1}|{OneNumberRangeLessRegex2}|{OneNumberRangeLessRegex3})\\s*(且|(并|並)且?|而且|((的)?同時)|((的)?同时)|[,，])?\\s*({OneNumberRangeMoreRegex1}|{OneNumberRangeMoreRegex2}|{OneNumberRangeMoreRegex3})'
-    TwoNumberRangeRegex4 = f'(?<number1>((?!(([,，](?!\\d+))|。)).)+)\\s*{TillRegex}\\s*(?<number2>((?!(([,，](?!\\d+))|。)).)+)'
-    AmbiguityFiltersDict = dict([("十", "十足"),
-                                 ("伍", "队伍|入伍|退伍|伍仁"),
-                                 ("肆", "放肆|肆意|肆无忌惮"),
-                                 ("陆", "大陆|陆地|登陆|海陆"),
-                                 ("拾", "拾取|拾起|收拾|拾到|朝花夕拾")])
+    TwoNumberRangeRegex4 = (
+        f'(?<number1>((?!(([,，](?!\\d+))|。)).)+)\\s*{TillRegex}\\s*(?<number2>((?!(([,，](?!\\d+))|。)).)+)'
+    )
+    AmbiguityFiltersDict = dict(
+        [
+            ("十", "十足"),
+            ("伍", "队伍|入伍|退伍|伍仁"),
+            ("肆", "放肆|肆意|肆无忌惮"),
+            ("陆", "大陆|陆地|登陆|海陆"),
+            ("拾", "拾取|拾起|收拾|拾到|朝花夕拾"),
+        ]
+    )
     AmbiguousFractionConnectorsRegex = '^[.]'
     RelativeReferenceOffsetMap = dict([("", "")])
     RelativeReferenceRelativeToMap = dict([("", "")])
+
+
 # pylint: enable=line-too-long

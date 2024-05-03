@@ -71,7 +71,7 @@ def merge_all_tokens(tokens: List[Token], source: str, extractor_name: str) -> L
     for token in merged_tokens:
         start = token.start
         length = token.length
-        sub_str = source[start: start + length]
+        sub_str = source[start : start + length]
 
         extracted_result = ExtractResult()
         extracted_result.start = start

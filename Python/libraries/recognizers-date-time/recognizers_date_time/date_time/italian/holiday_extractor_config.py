@@ -23,5 +23,5 @@ class ItalianHolidayExtractorConfiguration(HolidayExtractorConfiguration):
         self._holiday_regexes = [
             RegExpUtility.get_safe_reg_exp(ItalianDateTime.HolidayRegex1),
             RegExpUtility.get_safe_reg_exp(ItalianDateTime.HolidayRegex2),
-            RegExpUtility.get_safe_reg_exp(ItalianDateTime.HolidayRegex3)
+            RegExpUtility.get_safe_reg_exp(ItalianDateTime.HolidayRegex3),
         ]

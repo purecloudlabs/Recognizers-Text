@@ -7,4 +7,3 @@ class DateTimeResolutionKey:
     end: str = 'end'
     list: str = 'list'
     source_entity: str = 'sourceEntity'
-    
