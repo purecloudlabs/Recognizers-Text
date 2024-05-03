@@ -13,6 +13,7 @@ from recognizers_text.utilities import RegExpUtility, flatten
 from recognizers_number.number.extractors import ReVal, ReRe, BaseNumberExtractor
 from recognizers_number.number.parsers import BaseNumberParser
 from recognizers_number.number import Constants as NumberConstants
+from recognizers_date_time.resources import BaseDateTime, BaseDateTimeResource
 
 from .constants import Constants, TimeTypeConstants
 from .extractors import DateTimeExtractor
@@ -24,55 +25,58 @@ import calendar
 
 class DateTimeUtilityConfiguration:
 
-    date_unit_regex: Pattern
-    ago_regex: Pattern
-    later_regex: Pattern
-    in_connector_regex: Pattern
-    range_unit_regex: Pattern
-    am_desc_regex: Pattern
-    pm_desc__regex: Pattern
-    am_pm_desc_regex: Pattern
-    range_prefix_regex: Pattern
-    check_both_before_after: bool
+    def __init__(self, resource: BaseDateTimeResource):
+        self.later_regex: Pattern = RegExpUtility.get_safe_reg_exp(resource.LaterRegex)
+        self.ago_regex: Pattern = RegExpUtility.get_safe_reg_exp(resource.AgoRegex)
+        self.in_connector_regex: Pattern = RegExpUtility.get_safe_reg_exp(resource.InConnectorRegex)
+        self.since_year_suffix_regex: Pattern = RegExpUtility.get_safe_reg_exp(resource.SinceYearSuffixRegex)
+        self.within_next_prefix_regex: Pattern = RegExpUtility.get_safe_reg_exp(resource.WithinNextPrefixRegex)
+        self.am_desc_regex: Pattern = RegExpUtility.get_safe_reg_exp(resource.AmDescRegex)
+        self.pm_desc__regex: Pattern = RegExpUtility.get_safe_reg_exp(resource.PmDescRegex)
+        self.am_pm_desc_regex: Pattern = RegExpUtility.get_safe_reg_exp(resource.AmPmDescRegex)
+        self.range_unit_regex: Pattern = RegExpUtility.get_safe_reg_exp(resource.RangeUnitRegex)
+        self.time_unit_regex: Pattern = RegExpUtility.get_safe_reg_exp(resource.TimeUnitRegex)
+        self.date_unit_regex: Pattern = RegExpUtility.get_safe_reg_exp(resource.DateUnitRegex)
+        self.common_date_prefix_regex: Pattern = RegExpUtility.get_safe_reg_exp(resource.CommonDatePrefixRegex)
+        self.range_prefix_regex: Pattern = RegExpUtility.get_safe_reg_exp(resource.RangePrefixRegex)
+        self.check_both_before_after: bool = resource.CheckBothBeforeAfter
 
 
 class DateExtractorConfiguration:
 
-    ordinal_extractor: BaseNumberExtractor
-    integer_extractor: BaseNumberExtractor
-    duration_extractor: DateTimeExtractor
-    number_parser: BaseNumberParser
-    utility_configuration: DateTimeUtilityConfiguration
-    check_both_before_after: bool
-
-    day_of_week: Dict[str, int]
-    month_of_year: Dict[str, int]
-
-    year_suffix: Pattern
-    since_year_suffix_regex: Pattern
-    month_end: Pattern
-    of_month: Pattern
-    relative_month_regex: Pattern
-    week_day_regex: Pattern
-    week_day_end: Pattern
-    week_day_start: Pattern
-    week_day_and_day_of_month_regex: Pattern
-    week_day_and_day_regex: Pattern
-    date_unit_regex: Pattern
-    for_the_regex: Pattern
-    prefix_article_regex: Pattern
-    strict_relative_regex: Pattern
-    range_connector_symbol_regex: Pattern
-    more_than_regex: Pattern
-    less_than_regex: Pattern
-    in_connector_regex: Pattern
-    range_unit_regex: Pattern
-
-    implicit_date_list: List[Pattern]
-
     @property
     def date_regex_list(self) -> List[Pattern]:
         return []
+
+    def __init__(self, resource: BaseDateTimeResource):
+        self.day_of_week: Dict[str, int] = resource.DayOfWeek
+        self.month_of_year: Dict[str, int] = resource.MonthOfYear
+        self.check_both_before_after: bool = resource.CheckBothBeforeAfter
+
+        self.year_suffix: Pattern = RegExpUtility.get_safe_reg_exp(resource.YearSuffix)
+        self.since_year_suffix_regex: Pattern = RegExpUtility.get_safe_reg_exp(resource.SinceYearSuffixRegex)
+        self.month_end: Pattern = RegExpUtility.get_safe_reg_exp(resource.MonthEnd)
+        self.of_month: Pattern = RegExpUtility.get_safe_reg_exp(resource.OfMonth)
+        self.relative_month_regex: Pattern = RegExpUtility.get_safe_reg_exp(resource.RelativeMonthRegex)
+        self.week_day_regex: Pattern = RegExpUtility.get_safe_reg_exp(resource.WeekDayRegex)
+        self.week_day_end: Pattern = RegExpUtility.get_safe_reg_exp(resource.WeekDayEnd)
+        self.week_day_start: Pattern = RegExpUtility.get_safe_reg_exp(resource.WeekDayStart)
+        self.week_day_and_day_of_month_regex: Pattern = RegExpUtility.get_safe_reg_exp(resource.WeekDayAndDayOfMonthRegex)
+        self.week_day_and_day_regex: Pattern = RegExpUtility.get_safe_reg_exp(resource.WeekDayAndDayRegex)
+        self.date_unit_regex: Pattern = RegExpUtility.get_safe_reg_exp(resource.DateUnitRegex)
+        self.for_the_regex: Pattern = RegExpUtility.get_safe_reg_exp(resource.ForTheRegex)
+        self.prefix_article_regex: Pattern = RegExpUtility.get_safe_reg_exp(resource.PrefixArticleRegex)
+        self.strict_relative_regex: Pattern = RegExpUtility.get_safe_reg_exp(resource.StrictRelativeRegex)
+        self.range_connector_symbol_regex: Pattern = RegExpUtility.get_safe_reg_exp(BaseDateTime.RangeConnectorSymbolRegex)
+        self.more_than_regex: Pattern = RegExpUtility.get_safe_reg_exp(resource.MoreThanRegex)
+        self.less_than_regex: Pattern = RegExpUtility.get_safe_reg_exp(resource.LessThanRegex)
+        self.in_connector_regex: Pattern = RegExpUtility.get_safe_reg_exp(resource.InConnectorRegex)
+        self.range_unit_regex: Pattern = RegExpUtility.get_safe_reg_exp(resource.RangeUnitRegex)
+
+        self.year_regex: Pattern = RegExpUtility.get_safe_reg_exp(resource.YearRegex)
+        self.before_after_regex: Pattern = RegExpUtility.get_safe_reg_exp(resource.BeforeAfterRegex)
+        self.month_num_regex: Pattern = RegExpUtility.get_safe_reg_exp(resource.MonthNumRegex)
+        self.month_regex: Pattern = RegExpUtility.get_safe_reg_exp(resource.MonthRegex)
 
 
 class BaseDateExtractor(DateTimeExtractor, AbstractYearExtractor):

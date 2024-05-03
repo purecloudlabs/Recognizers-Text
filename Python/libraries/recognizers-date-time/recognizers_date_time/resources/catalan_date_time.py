@@ -1,10 +1,10 @@
-from .base_date_time import BaseDateTime
+from .base_date_time import BaseDateTime, BaseDateTimeResource
 
 
 # pylint: disable=line-too-long
 
 
-class CatalanDateTime:
+class CatalanDateTime(BaseDateTimeResource):
     LangMarker = 'Cat'
     CheckBothBeforeAfter = False
     TillRegex = f'(?<till>\\bfins\\sa|{BaseDateTime.RangeConnectorSymbolRegex})'
@@ -33,7 +33,7 @@ class CatalanDateTime:
     YearRegex = f'({BaseDateTime.FourDigitYearRegex}|{FullTextYearRegex})'
     MonthRegex = f'\\b(?<month>gener|febrer|mar[çc]|abril|maig|juny|juliol|agost|setembre|octubre|novembre|desembre)'
     MonthSuffixRegex = f'(?<msuf>((a|de)\\s+)?({MonthRegex}))'
-    YearSuffixRegex = f'((\\s?(a|del?|(de\\sl\'|del\\s)any)\\s+)?({YearRegex}|{FullTextYearRegex}))'
+    YearSuffix = f'((\\s?(a|del?|(de\\sl\'|del\\s)any)\\s+)?({YearRegex}|{FullTextYearRegex}))'
     SimpleCasesRegex = f'\\b({RangePrefixRegex}\\s+)?({DayRegex}|{WrittenDayRegex})\\s*{TillRegex}\\s*({DayRegex}|{WrittenDayRegex})\\s+{MonthSuffixRegex}((\\s+|\\s*,\\s*){YearRegex})?\\b'
     MonthFrontSimpleCasesRegex = f'\\b{MonthSuffixRegex}\\s+({RangePrefixRegex}?({DayRegex})\\s*{TillRegex}\\s*({DayRegex})((\\s+|\\s*,\\s*){YearRegex})?\\b'
     MonthFrontBetweenRegex = f'\\b{MonthSuffixRegex}\\s+({RangePrefixRegex}({DayRegex})\\s*{RangeConnectorRegex}\\s*({DayRegex})((\\s+|\\s*,\\s*){YearRegex})?\\b'
@@ -42,6 +42,21 @@ class CatalanDateTime:
     CenturySuffixRegex = f'(^segle)\\b'
     RangeUnitRegex = f'\\b(?<unit>anys?|mesos?|setmanes?)\\b'
     BeforeAfterRegex = f'^[.]'
+    LaterRegex = f'^[.]'
+    AgoRegex = f'^[.]'
+    WithinNextPrefixRegex = f'^[.]'
+    CommonDatePrefixRegex = f'^[.]'
+    DateUnitRegex = f'^[.]'
+    TimeUnitRegex = f'^[.]'
+    ForTheRegex = f'^[.]'
+    RelativeMonthRegex = f'^[.]'
+    StrictRelativeRegex = f'^[.]'
+    SinceYearSuffixRegex = f'^[.]'
+    PrefixArticleRegex = f'^[.]'
+    MoreThanRegex = f'^[.]'
+    LessThanRegex = f'^[.]'
+    MonthEnd = f'^[.]'
+    OfMonth = f'^[.]'
     InConnectorRegex = f'\\b(en)(?=\\s*$)\\b'
     TodayNowRegex = f'\\b(avui|ara)\\b'
     FromRegex = f'((\\bde(s|l)?)(\\s*al?)?)$'

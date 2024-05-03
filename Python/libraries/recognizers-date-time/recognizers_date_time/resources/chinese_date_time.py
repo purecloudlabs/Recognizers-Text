@@ -9,12 +9,13 @@
 # Licensed under the MIT License.
 # ------------------------------------------------------------------------------
 
-from .base_date_time import BaseDateTime
+from .base_date_time import BaseDateTime, BaseDateTimeResource
 # pylint: disable=line-too-long
 
 
-class ChineseDateTime:
+class ChineseDateTime(BaseDateTimeResource):
     LangMarker = 'Chi'
+    CheckBothBeforeAfter = None
     MonthRegex = f'(?<month>正月|一月|二月|三月|四月|五月|六月|七月|八月|九月|十月|十一月|十二月|01月|02月|03月|04月|05月|06月|07月|08月|09月|10月|11月|12月|1月|2月|3月|4月|5月|6月|7月|8月|9月|大年(?!龄|纪|级))'
     DayRegex = f'(?<day>01|02|03|04|05|06|07|08|09|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31|1|2|3|4|5|6|7|8|9)'
     OneToNineIntegerRegex = f'[一二三四五六七八九壹贰叁肆伍陆柒捌玖]'
@@ -140,6 +141,21 @@ class ChineseDateTime:
     DurationDuringRegex = f'^[.]'
     DurationSomeRegex = f'^[.]'
     DurationMoreOrLessRegex = f'^[.]'
+    YearSuffix = f'^[.]'
+    MonthEnd = f'^[.]'
+    OfMonth = f'^[.]'
+    WeekDayStart = f'^[.]'
+    WeekDayEnd = f'^[.]'
+    ForTheRegex = f'^[.]'
+    WeekDayAndDayOfMonthRegex = f'^[.]'
+    RelativeMonthNumRegex = f'^[.]'
+    SinceYearSuffixRegex = f'^[.]'
+    RangeUnitRegex = f'^[.]'
+    InConnectorRegex = f'^[.]'
+    LessThanRegex = f'^[.]'
+    MoreThanRegex = f'^[.]'
+    PrefixArticleRegex = f'^[.]'
+    StrictRelativeRegex = f'^[.]'
     DurationYearRegex = f'((\\d{{3,4}})|0\\d|两千)\\s*年'
     DurationHalfSuffixRegex = f'半'
     DurationSuffixList = dict([("M", "分钟"),
@@ -204,6 +220,8 @@ class ChineseDateTime:
     ParserConfigurationNextMonthRegex = '下一个'
     ParserConfigurationLastMonthRegex = '上一个'
     ParserConfigurationDatePrefix = ' '
+    DayOfWeek = {}
+    MonthOfYear = {}
     ParserConfigurationUnitMap = dict([("年", "Y"),
                                        ("月", "MON"),
                                        ("个月", "MON"),

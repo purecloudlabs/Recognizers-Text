@@ -1,7 +1,7 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from .base_date_time import BaseDateTime
+from .base_date_time import BaseDateTime, BaseDateTimeResource
 from .chinese_date_time import ChineseDateTime
 from .english_date_time import EnglishDateTime
 from .french_date_time import FrenchDateTime

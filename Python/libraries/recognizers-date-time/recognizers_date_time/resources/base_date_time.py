@@ -10,7 +10,7 @@
 # ------------------------------------------------------------------------------
 
 # pylint: disable=line-too-long
-from typing import List
+from typing import Dict, List
 
 
 class BaseDateTimeResource:
@@ -83,6 +83,27 @@ class BaseDateTimeResource:
     DecadeWithCenturyRegex: str
     PreviousPrefixRegex: str
     TimeUnitRegex: str
+    SinceYearSuffixRegex: str
+    AmDescRegex: str
+    PmDescRegex: str
+    AmPmDescRegex: str
+    CommonDatePrefixRegex: str
+    RangePrefixRegex: str
+    DayOfWeek: Dict[str, int]
+    MonthOfYear: Dict[str, int]
+    YearSuffix: str
+    MonthEnd: str
+    OfMonth: str
+    WeekDayEnd: str
+    WeekDayStart: str
+    WeekDayAndDayOfMonthRegex: str
+    WeekDayAndDayRegex: str
+    ForTheRegex: str
+    PrefixArticleRegex: str
+    StrictRelativeRegex: str
+    RangeConnectorSymbolRegex: str
+    BeforeAfterRegex: str
+    MonthRegex: str
 
 
 class BaseDateTime:

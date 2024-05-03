@@ -8,7 +8,7 @@ from recognizers_text.utilities import RegExpUtility
 from ...resources.french_date_time import FrenchDateTime
 from ..extractors import DateTimeExtractor
 from ..base_duration import BaseDurationExtractor
-from ..base_date import DateExtractorConfiguration
+from ..base_date import DateExtractorConfiguration, DateTimeUtilityConfiguration
 from ..utilities import DateTimeUtilityConfiguration
 from .duration_extractor_config import FrenchDurationExtractorConfiguration
 from .base_configs import FrenchDateTimeUtilityConfiguration
@@ -19,47 +19,24 @@ from ..utilities import DateTimeOptions
 
 class FrenchDateExtractorConfiguration(DateExtractorConfiguration):
 
-    ordinal_extractor: BaseNumberExtractor = FrenchOrdinalExtractor()
-    integer_extractor: BaseNumberExtractor = FrenchIntegerExtractor()
-    number_parser: BaseNumberParser = BaseNumberParser(FrenchNumberParserConfiguration())
-    duration_extractor: DateTimeExtractor = BaseDurationExtractor(FrenchDurationExtractorConfiguration())
-    utility_configuration: DateTimeUtilityConfiguration = FrenchDateTimeUtilityConfiguration()
-    check_both_before_after: bool = FrenchDateTime.CheckBothBeforeAfter
-
-    day_of_week: Dict[str, int] = FrenchDateTime.DayOfWeek
-    month_of_year: Dict[str, int] = FrenchDateTime.MonthOfYear
-
-    month_end: Pattern = RegExpUtility.get_safe_reg_exp(FrenchDateTime.MonthEnd)
-    of_month: Pattern = RegExpUtility.get_safe_reg_exp(FrenchDateTime.OfMonth)
-    date_unit_regex: Pattern = RegExpUtility.get_safe_reg_exp(FrenchDateTime.DateUnitRegex)
-    for_the_regex: Pattern = RegExpUtility.get_safe_reg_exp(FrenchDateTime.ForTheRegex)
-    week_day_and_day_of_month_regex: Pattern = RegExpUtility.get_safe_reg_exp(FrenchDateTime.WeekDayAndDayOfMonthRegex)
-    relative_month_regex: Pattern = RegExpUtility.get_safe_reg_exp(FrenchDateTime.RelativeMonthRegex)
-    week_day_regex: Pattern = RegExpUtility.get_safe_reg_exp(FrenchDateTime.WeekDayRegex)
-    range_connector_symbol_regex: Pattern = RegExpUtility.get_safe_reg_exp(BaseDateTime.RangeConnectorSymbolRegex)
-    strict_relative_regex: Pattern = RegExpUtility.get_safe_reg_exp(FrenchDateTime.StrictRelativeRegex)
-    year_suffix: Pattern = RegExpUtility.get_safe_reg_exp(FrenchDateTime.YearSuffix)
-    prefix_article_regex: Pattern = RegExpUtility.get_safe_reg_exp(FrenchDateTime.PrefixArticleRegex)
-    week_day_end: Pattern = RegExpUtility.get_safe_reg_exp(FrenchDateTime.WeekDayEnd)
-    more_than_regex: Pattern = RegExpUtility.get_safe_reg_exp(FrenchDateTime.MoreThanRegex)
-    less_than_regex: Pattern = RegExpUtility.get_safe_reg_exp(FrenchDateTime.LessThanRegex)
-    in_connector_regex: Pattern = RegExpUtility.get_safe_reg_exp(FrenchDateTime.InConnectorRegex)
-    range_unit_regex: Pattern = RegExpUtility.get_safe_reg_exp(FrenchDateTime.RangeUnitRegex)
-    since_year_suffix_regex: Pattern = RegExpUtility.get_safe_reg_exp(FrenchDateTime.SinceYearSuffixRegex)
-    week_day_and_day_regex: Pattern = RegExpUtility.get_safe_reg_exp(FrenchDateTime.WeekDayAndDayRegex)
-    week_day_start: Pattern = RegExpUtility.get_safe_reg_exp(FrenchDateTime.WeekDayStart)
-
-    implicit_date_list: List[Pattern] = [
-        RegExpUtility.get_safe_reg_exp(FrenchDateTime.OnRegex),
-        RegExpUtility.get_safe_reg_exp(FrenchDateTime.RelaxedOnRegex),
-        RegExpUtility.get_safe_reg_exp(FrenchDateTime.SpecialDayRegex),
-        RegExpUtility.get_safe_reg_exp(FrenchDateTime.ThisRegex),
-        RegExpUtility.get_safe_reg_exp(FrenchDateTime.LastDateRegex),
-        RegExpUtility.get_safe_reg_exp(FrenchDateTime.NextDateRegex),
-        RegExpUtility.get_safe_reg_exp(FrenchDateTime.StrictWeekDay),
-        RegExpUtility.get_safe_reg_exp(FrenchDateTime.WeekDayOfMonthRegex),
-        RegExpUtility.get_safe_reg_exp(FrenchDateTime.SpecialDate),
-    ]
+    def __init__(self):
+        super().__init__(FrenchDateTime())
+        self.ordinal_extractor: BaseNumberExtractor = FrenchOrdinalExtractor()
+        self.integer_extractor: BaseNumberExtractor = FrenchIntegerExtractor()
+        self.number_parser: BaseNumberParser = BaseNumberParser(FrenchNumberParserConfiguration())
+        self.duration_extractor: DateTimeExtractor = BaseDurationExtractor(FrenchDurationExtractorConfiguration())
+        self.utility_configuration: DateTimeUtilityConfiguration = FrenchDateTimeUtilityConfiguration()
+        self.implicit_date_list: List[Pattern] = [
+            RegExpUtility.get_safe_reg_exp(FrenchDateTime.OnRegex),
+            RegExpUtility.get_safe_reg_exp(FrenchDateTime.RelaxedOnRegex),
+            RegExpUtility.get_safe_reg_exp(FrenchDateTime.SpecialDayRegex),
+            RegExpUtility.get_safe_reg_exp(FrenchDateTime.ThisRegex),
+            RegExpUtility.get_safe_reg_exp(FrenchDateTime.LastDateRegex),
+            RegExpUtility.get_safe_reg_exp(FrenchDateTime.NextDateRegex),
+            RegExpUtility.get_safe_reg_exp(FrenchDateTime.StrictWeekDay),
+            RegExpUtility.get_safe_reg_exp(FrenchDateTime.WeekDayOfMonthRegex),
+            RegExpUtility.get_safe_reg_exp(FrenchDateTime.SpecialDate),
+        ]
 
     @property
     def date_regex_list(self) -> List[Pattern]:

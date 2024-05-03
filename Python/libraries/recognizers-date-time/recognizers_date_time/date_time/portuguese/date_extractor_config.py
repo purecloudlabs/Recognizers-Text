@@ -8,7 +8,7 @@ from recognizers_text.utilities import RegExpUtility
 from ...resources.portuguese_date_time import PortugueseDateTime
 from ..extractors import DateTimeExtractor
 from ..base_duration import BaseDurationExtractor
-from ..base_date import DateExtractorConfiguration
+from ..base_date import DateExtractorConfiguration, DateTimeUtilityConfiguration
 from ..utilities import DateTimeUtilityConfiguration
 from .duration_extractor_config import PortugueseDurationExtractorConfiguration
 from .base_configs import PortugueseDateTimeUtilityConfiguration
@@ -18,46 +18,24 @@ from ...resources.base_date_time import BaseDateTime
 
 class PortugueseDateExtractorConfiguration(DateExtractorConfiguration):
 
-    ordinal_extractor: BaseNumberExtractor = PortugueseOrdinalExtractor()
-    integer_extractor: BaseNumberExtractor = PortugueseIntegerExtractor()
-    number_parser: BaseNumberParser = BaseNumberParser(PortugueseNumberParserConfiguration())
-    duration_extractor: BaseDurationExtractor = BaseDurationExtractor(PortugueseDurationExtractorConfiguration())
-    utility_configuration: DateTimeUtilityConfiguration = PortugueseDateTimeUtilityConfiguration()
-    check_both_before_after: bool = PortugueseDateTime.CheckBothBeforeAfter
-
-    month_end: Pattern = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.MonthEndRegex)
-    of_month: Pattern = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.OfMonthRegex)
-    date_unit_regex: Pattern = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.DateUnitRegex)
-    for_the_regex: Pattern = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.ForTheRegex)
-    week_day_and_day_of_month_regex: Pattern = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.WeekDayAndDayOfMonthRegex)
-    relative_month_regex: Pattern = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.RelativeMonthRegex)
-    week_day_regex: Pattern = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.WeekDayRegex)
-    day_of_week = PortugueseDateTime.DayOfWeek
-    range_connector_symbol_regex: Pattern = RegExpUtility.get_safe_reg_exp(BaseDateTime.RangeConnectorSymbolRegex)
-    strict_relative_regex: Pattern = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.StrictRelativeRegex)
-    year_suffix: Pattern = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.YearSuffix)
-    month_of_year = PortugueseDateTime.MonthOfYear
-    prefix_article_regex: Pattern = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.PrefixArticleRegex)
-    week_day_end: Pattern = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.WeekDayEnd)
-    more_than_regex: Pattern = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.MoreThanRegex)
-    less_than_regex: Pattern = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.LessThanRegex)
-    in_connector_regex: Pattern = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.InConnectorRegex)
-    range_unit_regex: Pattern = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.RangeUnitRegex)
-    since_year_suffix_regex: Pattern = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.SinceYearSuffixRegex)
-    week_day_and_day_regex: Pattern = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.WeekDayAndDayRegex)
-    week_day_start: Pattern = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.WeekDayStart)
-
-    implicit_date_list: List[Pattern] = [
-        RegExpUtility.get_safe_reg_exp(PortugueseDateTime.OnRegex),
-        RegExpUtility.get_safe_reg_exp(PortugueseDateTime.RelaxedOnRegex),
-        RegExpUtility.get_safe_reg_exp(PortugueseDateTime.SpecialDayRegex),
-        RegExpUtility.get_safe_reg_exp(PortugueseDateTime.ThisRegex),
-        RegExpUtility.get_safe_reg_exp(PortugueseDateTime.LastDateRegex),
-        RegExpUtility.get_safe_reg_exp(PortugueseDateTime.NextDateRegex),
-        RegExpUtility.get_safe_reg_exp(PortugueseDateTime.WeekDayRegex),
-        RegExpUtility.get_safe_reg_exp(PortugueseDateTime.WeekDayOfMonthRegex),
-        RegExpUtility.get_safe_reg_exp(PortugueseDateTime.SpecialDateRegex),
-    ]
+    def __init__(self):
+        super().__init__(PortugueseDateTime())
+        self.ordinal_extractor: BaseNumberExtractor = PortugueseOrdinalExtractor()
+        self.integer_extractor: BaseNumberExtractor = PortugueseIntegerExtractor()
+        self.number_parser: BaseNumberParser = BaseNumberParser(PortugueseNumberParserConfiguration())
+        self.duration_extractor: BaseDurationExtractor = BaseDurationExtractor(PortugueseDurationExtractorConfiguration())
+        self.utility_configuration: DateTimeUtilityConfiguration = PortugueseDateTimeUtilityConfiguration()
+        self.implicit_date_list: List[Pattern] = [
+            RegExpUtility.get_safe_reg_exp(PortugueseDateTime.OnRegex),
+            RegExpUtility.get_safe_reg_exp(PortugueseDateTime.RelaxedOnRegex),
+            RegExpUtility.get_safe_reg_exp(PortugueseDateTime.SpecialDayRegex),
+            RegExpUtility.get_safe_reg_exp(PortugueseDateTime.ThisRegex),
+            RegExpUtility.get_safe_reg_exp(PortugueseDateTime.LastDateRegex),
+            RegExpUtility.get_safe_reg_exp(PortugueseDateTime.NextDateRegex),
+            RegExpUtility.get_safe_reg_exp(PortugueseDateTime.WeekDayRegex),
+            RegExpUtility.get_safe_reg_exp(PortugueseDateTime.WeekDayOfMonthRegex),
+            RegExpUtility.get_safe_reg_exp(PortugueseDateTime.SpecialDateRegex),
+        ]
 
     @property
     def date_regex_list(self) -> List[Pattern]:
