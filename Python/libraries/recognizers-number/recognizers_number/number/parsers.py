@@ -15,123 +15,47 @@ from recognizers_number.number.constants import Constants
 from recognizers_number.number.utilities import precision
 
 
-class NumberParserConfiguration(ABC):
-    @property
-    @abstractmethod
-    def cardinal_number_map(self) -> Dict[str, int]:
-        pass
+class NumberParserConfiguration:
 
-    @property
-    @abstractmethod
-    def ordinal_number_map(self) -> Dict[str, int]:
-        pass
+    culture_info: CultureInfo
+    lang_marker: str
+    is_multi_decimal_separator_culture: bool
 
-    @property
-    @abstractmethod
-    def round_number_map(self) -> Dict[str, int]:
-        pass
+    decimal_separator_char: str
+    fraction_marker_token: str
+    non_decimal_separator_char: str
+    half_a_dozen_text: str
+    word_separator_token: str
+    non_standard_separator_variants: List[str]
 
-    @property
-    @abstractmethod
-    def culture_info(self) -> CultureInfo:
-        pass
+    written_decimal_separator_texts: List[str]
+    written_group_separator_texts: List[str]
+    written_integer_separator_texts: List[str]
+    written_fraction_separator_texts: List[str]
 
-    @property
-    @abstractmethod
-    def digital_number_regex(self) -> Pattern:
-        pass
+    cardinal_number_map: Dict[str, int]
+    ordinal_number_map: Dict[str, int]
+    round_number_map: Dict[str, int]
 
-    @property
-    @abstractmethod
-    def fraction_marker_token(self) -> str:
-        pass
+    half_a_dozen_regex: Pattern
+    digital_number_regex: Pattern
+    negative_number_sign_regex: Pattern
+    round_multiplier_regex: Pattern
 
-    @property
-    @abstractmethod
-    def negative_number_sign_regex(self) -> Pattern:
-        pass
-
-    @property
-    @abstractmethod
-    def half_a_dozen_regex(self) -> Pattern:
-        pass
-
-    @property
-    @abstractmethod
-    def half_a_dozen_text(self) -> str:
-        pass
-
-    @property
-    @abstractmethod
-    def lang_marker(self) -> str:
-        pass
-
-    @property
-    @abstractmethod
-    def non_decimal_separator_char(self) -> str:
-        pass
-
-    @property
-    @abstractmethod
-    def decimal_separator_char(self) -> str:
-        pass
-
-    @property
-    @abstractmethod
-    def word_separator_token(self) -> str:
-        pass
-
-    @property
-    @abstractmethod
-    def written_decimal_separator_texts(self) -> List[str]:
-        pass
-
-    @property
-    @abstractmethod
-    def written_group_separator_texts(self) -> List[str]:
-        pass
-
-    @property
-    @abstractmethod
-    def written_integer_separator_texts(self) -> List[str]:
-        pass
-
-    @property
-    @abstractmethod
-    def written_fraction_separator_texts(self) -> List[str]:
-        pass
-
-    @property
-    @abstractmethod
     def normalize_token_set(self, tokens: List[str], context: ParseResult) -> List[str]:
         pass
 
-    @property
-    @abstractmethod
     def resolve_composite_number(self, number_str: str) -> int:
         pass
 
-    @property
-    @abstractmethod
-    def non_standard_separator_variants(self) -> List[str]:
-        pass
-
-    @property
-    @abstractmethod
-    def is_multi_decimal_separator_culture(self) -> bool:
-        pass
-
-    @property
-    @abstractmethod
-    def round_multiplier_regex(self) -> Pattern:
-        pass
-
-    @abstractmethod
     def get_lang_specific_int_value(self, match_strs: List[str]):
         pass
 
+    def __init__(self, culture_info: Optional[CultureInfo] = None):
+        self.culture_info = culture_info
 
-class BaseNumberParserConfiguration(NumberParserConfiguration, ABC):
+
+class BaseNumberParserConfiguration(NumberParserConfiguration):
 
     def normalize_token_set(self, tokens: List[str], context: ParseResult) -> List[str]:
         frac_words: List[str]= []

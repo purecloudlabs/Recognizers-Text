@@ -2,7 +2,7 @@
 #  Licensed under the MIT License.
 import copy
 from abc import abstractmethod
-from typing import List, Pattern, Dict, Match
+from typing import List, Pattern, Dict, Match, Optional
 from collections import namedtuple
 import regex
 
@@ -19,6 +19,9 @@ MatchesVal = namedtuple('MatchesVal', ['matches', 'val'])
 
 
 class BaseNumberExtractor(Extractor):
+
+    extract_type: str
+
     @property
     @abstractmethod
     def regexes(self) -> List[ReVal]:
@@ -26,16 +29,11 @@ class BaseNumberExtractor(Extractor):
 
     @property
     def ambiguity_filters_dict(self) -> List[ReRe]:
-        pass
+        return []
 
     @property
-    @abstractmethod
-    def _extract_type(self) -> str:
-        raise NotImplementedError
-
-    @property
-    def _negative_number_terms(self) -> Pattern:
-        pass
+    def _negative_number_terms(self) -> Optional[Pattern]:
+        return None
 
     def extract(self, source: str) -> List[ExtractResult]:
         if source is None or len(source.strip()) == 0:
@@ -82,7 +80,7 @@ class BaseNumberExtractor(Extractor):
                         value.start = start
                         value.length = length
                         value.text = substr
-                        value.type = self._extract_type
+                        value.type = self.extract_type
                         value.data = match_source.get(src_match, None)
                         result.append(value)
 
@@ -106,20 +104,21 @@ class BaseNumberExtractor(Extractor):
         return True
 
     def _generate_format_regex(self, format_type: LongFormatType,
-                               placeholder: str = None) -> Pattern:
+                               placeholder: str = None) -> str:
         if placeholder is None:
             placeholder = BaseNumbers.PlaceHolderDefault
 
         if format_type.decimals_mark is None:
-            re_definition = BaseNumbers.IntegerRegexDefinition(placeholder,
-                                                               regex.escape(
-                                                                   format_type.thousands_mark))
+            re_definition = BaseNumbers.IntegerRegexDefinition(
+                placeholder,
+                regex.escape(format_type.thousands_mark)
+            )
         else:
-            re_definition = BaseNumbers.DoubleRegexDefinition(placeholder,
-                                                              regex.escape(
-                                                                  format_type.thousands_mark),
-                                                              regex.escape(
-                                                                  format_type.decimals_mark))
+            re_definition = BaseNumbers.DoubleRegexDefinition(
+                placeholder,
+                regex.escape(format_type.thousands_mark),
+                regex.escape(format_type.decimals_mark),
+            )
         return re_definition
 
 

@@ -1,7 +1,7 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from typing import Dict, Pattern, List
+from typing import Dict, Pattern, List, Optional
 import regex
 
 from recognizers_text.utilities import RegExpUtility
@@ -13,125 +13,44 @@ from recognizers_number.resources.spanish_numeric import SpanishNumeric
 
 
 class SpanishNumberParserConfiguration(BaseNumberParserConfiguration):
-    @property
-    def cardinal_number_map(self) -> Dict[str, int]:
-        return self._cardinal_number_map
+
+    lang_marker: str = SpanishNumeric.LangMarker
+    is_multi_decimal_separator_culture: bool = SpanishNumeric.MultiDecimalSeparatorCulture
+
+    decimal_separator_char: str = SpanishNumeric.DecimalSeparatorChar
+    fraction_marker_token: str = SpanishNumeric.FractionMarkerToken
+    non_decimal_separator_char: str = SpanishNumeric.NonDecimalSeparatorChar
+    half_a_dozen_text: str = SpanishNumeric.HalfADozenText
+    word_separator_token: str = SpanishNumeric.WordSeparatorToken
+
+    written_decimal_separator_texts: List[str] = SpanishNumeric.WrittenDecimalSeparatorTexts
+    written_group_separator_texts: List[str] = SpanishNumeric.WrittenGroupSeparatorTexts
+    written_integer_separator_texts: List[str] = SpanishNumeric.WrittenIntegerSeparatorTexts
+    written_fraction_separator_texts: List[str] = SpanishNumeric.WrittenFractionSeparatorTexts
+    non_standard_separator_variants: List[str] = SpanishNumeric.NonStandardSeparatorVariants
+
+    cardinal_number_map: Dict[str, int] = SpanishNumeric.CardinalNumberMap
+    round_number_map: Dict[str, int] = SpanishNumeric.RoundNumberMap
+
+    negative_number_sign_regex: Pattern = RegExpUtility.get_safe_reg_exp(SpanishNumeric.NegativeNumberSignRegex)
+    half_a_dozen_regex: Pattern = RegExpUtility.get_safe_reg_exp(SpanishNumeric.HalfADozenRegex)
+    digital_number_regex: Pattern = RegExpUtility.get_safe_reg_exp(SpanishNumeric.DigitalNumberRegex)
+    round_multiplier_regex: Pattern = RegExpUtility.get_safe_reg_exp(SpanishNumeric.RoundMultiplierRegex)
 
     @property
     def ordinal_number_map(self) -> Dict[str, int]:
-        return self._ordinal_number_map
-
-    @property
-    def round_number_map(self) -> Dict[str, int]:
-        return self._round_number_map
-
-    @property
-    def culture_info(self):
-        return self._culture_info
-
-    @property
-    def digital_number_regex(self) -> Pattern:
-        return self._digital_number_regex
-
-    @property
-    def fraction_marker_token(self) -> str:
-        return self._fraction_marker_token
-
-    @property
-    def negative_number_sign_regex(self) -> Pattern:
-        return self._negative_number_sign_regex
-
-    @property
-    def half_a_dozen_regex(self) -> Pattern:
-        return self._half_a_dozen_regex
-
-    @property
-    def half_a_dozen_text(self) -> str:
-        return self._half_a_dozen_text
-
-    @property
-    def lang_marker(self) -> str:
-        return self._lang_marker
-
-    @property
-    def non_decimal_separator_char(self) -> str:
-        return self._non_decimal_separator_char
-
-    @property
-    def decimal_separator_char(self) -> str:
-        return self._decimal_separator_char
-
-    @property
-    def word_separator_token(self) -> str:
-        return self._word_separator_token
-
-    @property
-    def written_decimal_separator_texts(self) -> List[str]:
-        return self._written_decimal_separator_texts
-
-    @property
-    def written_group_separator_texts(self) -> List[str]:
-        return self._written_group_separator_texts
-
-    @property
-    def written_integer_separator_texts(self) -> List[str]:
-        return self._written_integer_separator_texts
-
-    @property
-    def written_fraction_separator_texts(self) -> List[str]:
-        return self._written_fraction_separator_texts
-
-    @property
-    def non_standard_separator_variants(self) -> List[str]:
-        return self._non_standard_separator_variants
-
-    @property
-    def is_multi_decimal_separator_culture(self) -> bool:
-        return self._is_multi_decimal_separator_culture
-
-    @property
-    def round_multiplier_regex(self) -> Pattern:
-        return self._round_multiplier_regex
-
-    def __init__(self, culture_info=None):
-        if culture_info is None:
-            culture_info = CultureInfo(Culture.Spanish)
-
-        self._culture_info = culture_info
-        self._lang_marker = SpanishNumeric.LangMarker
-        self._decimal_separator_char = SpanishNumeric.DecimalSeparatorChar
-        self._fraction_marker_token = SpanishNumeric.FractionMarkerToken
-        self._non_decimal_separator_char = SpanishNumeric.NonDecimalSeparatorChar
-        self._half_a_dozen_text = SpanishNumeric.HalfADozenText
-        self._word_separator_token = SpanishNumeric.WordSeparatorToken
-
-        self._written_decimal_separator_texts = SpanishNumeric.WrittenDecimalSeparatorTexts
-        self._written_group_separator_texts = SpanishNumeric.WrittenGroupSeparatorTexts
-        self._written_integer_separator_texts = SpanishNumeric.WrittenIntegerSeparatorTexts
-        self._written_fraction_separator_texts = SpanishNumeric.WrittenFractionSeparatorTexts
-        self._non_standard_separator_variants = SpanishNumeric.NonStandardSeparatorVariants
-        self._is_multi_decimal_separator_culture = SpanishNumeric.MultiDecimalSeparatorCulture
-
-        ordinal_number_map: Dict[str, int] = dict(
-            SpanishNumeric.OrdinalNumberMap)
+        _ordinal_number_map: Dict[str, int] = SpanishNumeric.OrdinalNumberMap
         for prefix_key in SpanishNumeric.PrefixCardinalMap:
             for suffix_key in SpanishNumeric.SuffixOrdinalMap:
-                if prefix_key+suffix_key not in ordinal_number_map:
+                if prefix_key + suffix_key not in _ordinal_number_map:
                     prefix_value = SpanishNumeric.PrefixCardinalMap[prefix_key]
                     suffix_value = SpanishNumeric.SuffixOrdinalMap[suffix_key]
-                    ordinal_number_map[prefix_key +
-                                       suffix_key] = prefix_value*suffix_value
-        self._cardinal_number_map = SpanishNumeric.CardinalNumberMap
-        self._ordinal_number_map = ordinal_number_map
-        self._round_number_map = SpanishNumeric.RoundNumberMap
-        self._negative_number_sign_regex = RegExpUtility.get_safe_reg_exp(
-            SpanishNumeric.NegativeNumberSignRegex)
-        self._half_a_dozen_regex = RegExpUtility.get_safe_reg_exp(
-            SpanishNumeric.HalfADozenRegex)
-        self._digital_number_regex = RegExpUtility.get_safe_reg_exp(
-            SpanishNumeric.DigitalNumberRegex)
-        self._round_multiplier_regex = RegExpUtility.get_safe_reg_exp(
-            SpanishNumeric.RoundMultiplierRegex)
+                    _ordinal_number_map[prefix_key + suffix_key] = prefix_value * suffix_value
+        return _ordinal_number_map
+
+    def __init__(self, culture_info: Optional[CultureInfo] = None):
+        culture_info = culture_info or CultureInfo(Culture.Spanish)
+        super().__init__(culture_info)
 
     def normalize_token_set(self, tokens: List[str], context: ParseResult) -> List[str]:
         result: List[str] = list()

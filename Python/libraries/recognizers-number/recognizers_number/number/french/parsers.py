@@ -1,7 +1,7 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from typing import Dict, Pattern, List
+from typing import Dict, Pattern, List, Optional
 import regex
 
 from recognizers_text.utilities import RegExpUtility
@@ -13,116 +13,34 @@ from recognizers_number.resources.french_numeric import FrenchNumeric
 
 
 class FrenchNumberParserConfiguration(BaseNumberParserConfiguration):
-    @property
-    def cardinal_number_map(self) -> Dict[str, int]:
-        return self._cardinal_number_map
 
-    @property
-    def ordinal_number_map(self) -> Dict[str, int]:
-        return self._ordinal_number_map
+    lang_marker: str = FrenchNumeric.LangMarker
+    is_multi_decimal_separator_culture: bool = FrenchNumeric.MultiDecimalSeparatorCulture
 
-    @property
-    def round_number_map(self) -> Dict[str, int]:
-        return self._round_number_map
+    decimal_separator_char: str = FrenchNumeric.DecimalSeparatorChar
+    fraction_marker_token: str = FrenchNumeric.FractionMarkerToken
+    non_decimal_separator_char: str = FrenchNumeric.NonDecimalSeparatorChar
+    half_a_dozen_text: str = FrenchNumeric.HalfADozenText
+    word_separator_token: str = FrenchNumeric.WordSeparatorToken
 
-    @property
-    def culture_info(self):
-        return self._culture_info
+    written_decimal_separator_texts: List[str] = FrenchNumeric.WrittenDecimalSeparatorTexts
+    written_group_separator_texts: List[str] = FrenchNumeric.WrittenGroupSeparatorTexts
+    written_integer_separator_texts: List[str] = FrenchNumeric.WrittenIntegerSeparatorTexts
+    written_fraction_separator_texts: List[str] = FrenchNumeric.WrittenFractionSeparatorTexts
+    non_standard_separator_variants: List[str] = []
 
-    @property
-    def digital_number_regex(self) -> Pattern:
-        return self._digital_number_regex
+    cardinal_number_map: Dict[str, int] = FrenchNumeric.CardinalNumberMap
+    ordinal_number_map: Dict[str, int] = FrenchNumeric.OrdinalNumberMap
+    round_number_map: Dict[str, int] = FrenchNumeric.RoundNumberMap
 
-    @property
-    def fraction_marker_token(self) -> str:
-        return self._fraction_marker_token
+    negative_number_sign_regex: Pattern = RegExpUtility.get_safe_reg_exp(FrenchNumeric.NegativeNumberSignRegex)
+    half_a_dozen_regex: Pattern = RegExpUtility.get_safe_reg_exp(FrenchNumeric.HalfADozenRegex)
+    digital_number_regex: Pattern = RegExpUtility.get_safe_reg_exp(FrenchNumeric.DigitalNumberRegex)
+    round_multiplier_regex: Pattern = RegExpUtility.get_safe_reg_exp(FrenchNumeric.RoundMultiplierRegex)
 
-    @property
-    def negative_number_sign_regex(self) -> Pattern:
-        return self._negative_number_sign_regex
-
-    @property
-    def half_a_dozen_regex(self) -> Pattern:
-        return self._half_a_dozen_regex
-
-    @property
-    def half_a_dozen_text(self) -> str:
-        return self._half_a_dozen_text
-
-    @property
-    def lang_marker(self) -> str:
-        return self._lang_marker
-
-    @property
-    def non_decimal_separator_char(self) -> str:
-        return self._non_decimal_separator_char
-
-    @property
-    def decimal_separator_char(self) -> str:
-        return self._decimal_separator_char
-
-    @property
-    def word_separator_token(self) -> str:
-        return self._word_separator_token
-
-    @property
-    def written_decimal_separator_texts(self) -> List[str]:
-        return self._written_decimal_separator_texts
-
-    @property
-    def written_group_separator_texts(self) -> List[str]:
-        return self._written_group_separator_texts
-
-    @property
-    def written_integer_separator_texts(self) -> List[str]:
-        return self._written_integer_separator_texts
-
-    @property
-    def written_fraction_separator_texts(self) -> List[str]:
-        return self._written_fraction_separator_texts
-
-    @property
-    def non_standard_separator_variants(self) -> List[str]:
-        return self._non_standard_separator_variants
-
-    @property
-    def is_multi_decimal_separator_culture(self) -> bool:
-        return self._is_multi_decimal_separator_culture
-
-    @property
-    def round_multiplier_regex(self) -> Pattern:
-        return self._round_multiplier_regex
-
-    def __init__(self, culture_info=None):
-        if culture_info is None:
-            culture_info = CultureInfo(Culture.French)
-
-        self._culture_info = culture_info
-        self._lang_marker = FrenchNumeric.LangMarker
-        self._decimal_separator_char = FrenchNumeric.DecimalSeparatorChar
-        self._fraction_marker_token = FrenchNumeric.FractionMarkerToken
-        self._non_decimal_separator_char = FrenchNumeric.NonDecimalSeparatorChar
-        self._half_a_dozen_text = FrenchNumeric.HalfADozenText
-        self._word_separator_token = FrenchNumeric.WordSeparatorToken
-        self._non_standard_separator_variants = []
-        self._is_multi_decimal_separator_culture = FrenchNumeric.MultiDecimalSeparatorCulture
-
-        self._written_decimal_separator_texts = FrenchNumeric.WrittenDecimalSeparatorTexts
-        self._written_group_separator_texts = FrenchNumeric.WrittenGroupSeparatorTexts
-        self._written_integer_separator_texts = FrenchNumeric.WrittenIntegerSeparatorTexts
-        self._written_fraction_separator_texts = FrenchNumeric.WrittenFractionSeparatorTexts
-
-        self._cardinal_number_map = FrenchNumeric.CardinalNumberMap
-        self._ordinal_number_map = FrenchNumeric.OrdinalNumberMap
-        self._round_number_map = FrenchNumeric.RoundNumberMap
-        self._negative_number_sign_regex = RegExpUtility.get_safe_reg_exp(
-            FrenchNumeric.NegativeNumberSignRegex)
-        self._half_a_dozen_regex = RegExpUtility.get_safe_reg_exp(
-            FrenchNumeric.HalfADozenRegex)
-        self._digital_number_regex = RegExpUtility.get_safe_reg_exp(
-            FrenchNumeric.DigitalNumberRegex)
-        self._round_multiplier_regex = RegExpUtility.get_safe_reg_exp(
-            FrenchNumeric.RoundMultiplierRegex)
+    def __init__(self, culture_info: Optional[CultureInfo] = None):
+        culture_info = culture_info or CultureInfo(Culture.French)
+        super().__init__(culture_info)
 
     def normalize_token_set(self, tokens: List[str], context: ParseResult) -> List[str]:
         frac_words: List[str] = super().normalize_token_set(tokens, context)

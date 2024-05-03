@@ -17,54 +17,35 @@ class JapaneseNumberExtractorMode(Enum):
 
 
 class JapaneseNumberExtractor(BaseNumberExtractor):
+    extract_type: str = Constants.SYS_NUM
+
     @property
     def regexes(self) -> List[ReVal]:
-        return self.__regexes
-
-    @property
-    def _extract_type(self) -> str:
-        return Constants.SYS_NUM
+        return (JapaneseCardinalExtractor(self.mode).regexes +
+                JapaneseFractionExtractor().regexes)
 
     def __init__(self, mode: JapaneseNumberExtractorMode = JapaneseNumberExtractorMode.DEFAULT):
-        self.__regexes: List[ReVal] = list()
-
-        cardinal_ex = JapaneseCardinalExtractor(mode)
-        self.__regexes.extend(cardinal_ex.regexes)
-
-        fraction_ex = JapaneseFractionExtractor()
-        self.__regexes.extend(fraction_ex.regexes)
+        self.mode = mode
 
 
 class JapaneseCardinalExtractor(BaseNumberExtractor):
+    extract_type: str = Constants.SYS_NUM_CARDINAL
+
     @property
     def regexes(self) -> List[ReVal]:
-        return self.__regexes
-
-    @property
-    def _extract_type(self) -> str:
-        return Constants.SYS_NUM_CARDINAL
+        return (JapaneseIntegerExtractor(self.mode).regexes +
+                JapaneseDoubleExtractor().regexes)
 
     def __init__(self, mode: JapaneseNumberExtractorMode = JapaneseNumberExtractorMode.DEFAULT):
-        self.__regexes: List[ReVal] = list()
-
-        integer_ex = JapaneseIntegerExtractor(mode)
-        self.__regexes.extend(integer_ex.regexes)
-
-        double_ex = JapaneseDoubleExtractor()
-        self.__regexes.extend(double_ex.regexes)
+        self.mode = mode
 
 
 class JapaneseIntegerExtractor(BaseNumberExtractor):
+    extract_type: str = Constants.SYS_NUM_INTEGER
+
     @property
     def regexes(self) -> List[ReVal]:
-        return self.__regexes
-
-    @property
-    def _extract_type(self) -> str:
-        return Constants.SYS_NUM_INTEGER
-
-    def __init__(self, mode: JapaneseNumberExtractorMode = JapaneseNumberExtractorMode.DEFAULT):
-        self.__regexes = [
+        _regexes = [
             # 123456,  －１２３４５６
             ReVal(
                 re=RegExpUtility.get_safe_reg_exp(
@@ -91,8 +72,8 @@ class JapaneseIntegerExtractor(BaseNumberExtractor):
                     JapaneseNumeric.NumbersWithDozen),
                 val='IntegerJpn')
         ]
-        if mode == JapaneseNumberExtractorMode.DEFAULT:
-            self.__regexes.append(
+        if self.mode == JapaneseNumberExtractorMode.DEFAULT:
+            _regexes.append(
                 # 一百五十五, 负一亿三百二十二. Uses an allow list to avoid extracting "西九条" from "九"
                 ReVal(
                     re=RegExpUtility.get_safe_reg_exp(
@@ -100,8 +81,8 @@ class JapaneseIntegerExtractor(BaseNumberExtractor):
                     val='IntegerJpn'
                 )
             )
-        elif mode == JapaneseNumberExtractorMode.EXTRACT_ALL:
-            self.__regexes.append(
+        elif self.mode == JapaneseNumberExtractorMode.EXTRACT_ALL:
+            _regexes.append(
                 # 一百五十五, 负一亿三百二十二, "西九条" from "九". Uses no allow lists and extracts all potential integers (useful in Units, for example).
                 ReVal(
                     re=RegExpUtility.get_safe_reg_exp(
@@ -109,19 +90,18 @@ class JapaneseIntegerExtractor(BaseNumberExtractor):
                     val='IntegerJpn'
                 )
             )
+        return _regexes
+
+    def __init__(self, mode: JapaneseNumberExtractorMode = JapaneseNumberExtractorMode.DEFAULT):
+        self.mode = mode
 
 
 class JapaneseDoubleExtractor(BaseNumberExtractor):
+    extract_type: str = Constants.SYS_NUM_DOUBLE
+
     @property
     def regexes(self) -> List[ReVal]:
-        return self.__regexes
-
-    @property
-    def _extract_type(self) -> str:
-        return Constants.SYS_NUM_DOUBLE
-
-    def __init__(self):
-        self.__regexes = [
+        return [
             ReVal(
                 re=RegExpUtility.get_safe_reg_exp(
                     JapaneseNumeric.DoubleSpecialsChars),
@@ -160,16 +140,11 @@ class JapaneseDoubleExtractor(BaseNumberExtractor):
 
 
 class JapaneseFractionExtractor(BaseNumberExtractor):
+    extract_type: str = Constants.SYS_NUM_FRACTION
+
     @property
     def regexes(self) -> List[ReVal]:
-        return self.__regexes
-
-    @property
-    def _extract_type(self) -> str:
-        return Constants.SYS_NUM_FRACTION
-
-    def __init__(self):
-        self.__regexes = [
+        return [
             # -4 5/2,  ４ ６／３
             ReVal(
                 re=RegExpUtility.get_safe_reg_exp(
@@ -189,16 +164,11 @@ class JapaneseFractionExtractor(BaseNumberExtractor):
 
 
 class JapaneseOrdinalExtractor(BaseNumberExtractor):
+    extract_type: str = Constants.SYS_NUM_ORDINAL
+
     @property
     def regexes(self) -> List[ReVal]:
-        return self.__regexes
-
-    @property
-    def _extract_type(self) -> str:
-        return Constants.SYS_NUM_ORDINAL
-
-    def __init__(self):
-        self.__regexes = [
+        return [
             # だい一百五十四
             ReVal(
                 re=RegExpUtility.get_safe_reg_exp(
