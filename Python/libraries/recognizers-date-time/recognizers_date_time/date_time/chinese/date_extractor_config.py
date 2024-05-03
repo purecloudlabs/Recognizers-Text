@@ -4,7 +4,7 @@
 from typing import List, Pattern, Dict
 
 from recognizers_text import RegExpUtility
-from recognizers_number import BaseNumberExtractor
+from recognizers_number import BaseNumberExtractor, BaseNumberParser
 from ...resources import ChineseDateTime
 from ..constants import Constants
 from ..extractors import DateTimeExtractor
@@ -14,236 +14,67 @@ from ...resources.base_date_time import BaseDateTime
 
 
 class ChineseDateExtractorConfiguration(DateExtractorConfiguration):
-    @property
-    def week_day_start(self) -> Pattern:
-        pass
 
-    @property
-    def check_both_before_after(self) -> Pattern:
-        pass
+    ordinal_extractor: BaseNumberExtractor = None
+    integer_extractor: BaseNumberExtractor = None
+    number_parser: BaseNumberParser = None
+    duration_extractor: DateTimeExtractor = None
+    utility_configuration: DateTimeUtilityConfiguration = None
+    check_both_before_after: bool = None
 
-    @property
-    def week_day_end(self) -> Pattern:
-        pass
+    day_of_week: Dict[str, int] = {}
+    month_of_year: Dict[str, int] = {}
 
-    @property
-    def number_parser(self):
-        pass
+    range_connector_symbol_regex: Pattern = RegExpUtility.get_safe_reg_exp(BaseDateTime.RangeConnectorSymbolRegex)
+    week_day_start: Pattern = None
+    week_day_end: Pattern = None
+    month_end: Pattern = None
+    of_month: Pattern = None
+    for_the_regex: Pattern = None
+    week_day_and_day_of_month_regex: Pattern = None
+    relative_month_regex: Pattern = None
+    week_day_regex: Pattern = None
+    since_year_suffix_regex: Pattern = None
+    range_unit_regex: Pattern = None
+    in_connector_regex: Pattern = None
+    less_than_regex: Pattern = None
+    more_than_regex: Pattern = None
+    year_suffix: Pattern = None
+    prefix_article_regex: Pattern = None
+    week_day_and_day_regex: Pattern = None
+    strict_relative_regex: Pattern = None
 
-    @property
-    def month_regex(self) -> Pattern:
-        return self._month_regex
+    datetime_period_unit_regex: Pattern = RegExpUtility.get_safe_reg_exp( ChineseDateTime.DateTimePeriodUnitRegex )
+    after_regex: Pattern = RegExpUtility.get_safe_reg_exp( ChineseDateTime.AfterRegex )
+    before_regex: Pattern = RegExpUtility.get_safe_reg_exp( ChineseDateTime.BeforeRegex )
+    date_unit_regex: Pattern = RegExpUtility.get_safe_reg_exp( ChineseDateTime.UnitRegex )
+    next_prefix_regex: Pattern = RegExpUtility.get_safe_reg_exp( ChineseDateTime.NextPrefixRegex )
+    last_prefix_regex: Pattern = RegExpUtility.get_safe_reg_exp( ChineseDateTime.LastPrefixRegex )
+    this_prefix_regex: Pattern = RegExpUtility.get_safe_reg_exp( ChineseDateTime.ThisPrefixRegex )
+    date_year_in_chinese_regex: Pattern = RegExpUtility.get_safe_reg_exp( ChineseDateTime.DateYearInCJKRegex )
+    zero_to_nine_integer_regex_chinese: Pattern = RegExpUtility.get_safe_reg_exp( ChineseDateTime.ZeroToNineIntegerRegexCJK )
+    relative_regex: Pattern = RegExpUtility.get_safe_reg_exp( ChineseDateTime.RelativeRegex )
+    year_regex: Pattern = RegExpUtility.get_safe_reg_exp( ChineseDateTime.YearRegex )
+    month_num_regex: Pattern = RegExpUtility.get_safe_reg_exp( ChineseDateTime.MonthNumRegex )
+    day_regex_num_in_chinese: Pattern = RegExpUtility.get_safe_reg_exp( ChineseDateTime.DayRegexNumInCJK )
+    date_day_regex_in_chinese: Pattern = RegExpUtility.get_safe_reg_exp( ChineseDateTime.DateDayRegexInCJK )
+    day_regex: Pattern = RegExpUtility.get_safe_reg_exp( ChineseDateTime.DayRegex )
+    month_regex: Pattern = RegExpUtility.get_safe_reg_exp( ChineseDateTime.MonthRegex )
 
-    @property
-    def day_regex(self):
-        return self._day_regex
+    implicit_date_list: List[Pattern] = [
+        RegExpUtility.get_safe_reg_exp(ChineseDateTime.LunarRegex),
+        RegExpUtility.get_safe_reg_exp(ChineseDateTime.SpecialDayRegex),
+        RegExpUtility.get_safe_reg_exp(ChineseDateTime.DateThisRegex),
+        RegExpUtility.get_safe_reg_exp(ChineseDateTime.DateLastRegex),
+        RegExpUtility.get_safe_reg_exp(ChineseDateTime.DateNextRegex),
+        RegExpUtility.get_safe_reg_exp(ChineseDateTime.WeekDayRegex),
+        RegExpUtility.get_safe_reg_exp(ChineseDateTime.WeekDayOfMonthRegex),
+        RegExpUtility.get_safe_reg_exp(ChineseDateTime.SpecialDate)
+    ]
 
     @property
     def date_regex_list(self) -> List[Pattern]:
-        return self._date_regex_list
-
-    @property
-    def implicit_date_list(self) -> List[Pattern]:
-        return self._implicit_date_list
-
-    @property
-    def range_connector_symbol_regex(self) -> Pattern:
-        return self._range_connector_symbol_regex
-
-    @property
-    def date_day_regex_in_chinese(self) -> Pattern:
-        return self._date_day_regex_in_chinese
-
-    @property
-    def day_regex_num_in_chinese(self) -> Pattern:
-        return self._day_regex_num_in_chinese
-
-    @property
-    def month_num_regex(self) -> Pattern:
-        return self._month_num_regex
-
-    @property
-    def year_regex(self) -> Pattern:
-        return self._year_regex
-
-    @property
-    def relative_regex(self) -> Pattern:
-        return self._relative_regex
-
-    @property
-    def zero_to_nine_integer_regex_chinese(self) -> Pattern:
-        return self._zero_to_nine_integer_regex_chinese
-
-    @property
-    def date_year_in_chinese_regex(self) -> Pattern:
-        return self._date_year_in_chinese_regex
-
-    @property
-    def this_prefix_regex(self) -> Pattern:
-        return self._this_prefix_regex
-
-    @property
-    def last_prefix_regex(self) -> Pattern:
-        return self._last_prefix_regex
-
-    @property
-    def next_prefix_regex(self) -> Pattern:
-        return self._next_prefix_regex
-
-    @property
-    def date_unit_regex(self) -> Pattern:
-        return self._date_unit_regex
-
-    @property
-    def before_regex(self) -> Pattern:
-        return self._before_regex
-
-    @property
-    def after_regex(self) -> Pattern:
-        return self._after_regex
-
-    @property
-    def datetime_period_unit_regex(self) -> Pattern:
-        return self._datetime_period_unit_regex
-
-    @property
-    def week_day_and_day_regex(self) -> Pattern:
-        return self._week_day_and_day_regex
-
-    @property
-    def prefix_article_regex(self) -> Pattern:
-        return self._prefix_article_regex
-
-    @property
-    def month_of_year(self) -> Dict[str, int]:
-        return self._month_of_year
-
-    @property
-    def year_suffix(self) -> Pattern:
-        return self._year_suffix
-
-    @property
-    def more_than_regex(self) -> Pattern:
-        return self._more_than_regex
-
-    @property
-    def less_than_regex(self) -> Pattern:
-        return self._less_than_regex
-
-    @property
-    def in_connector_regex(self) -> Pattern:
-        return self._in_connector_regex
-
-    @property
-    def range_unit_regex(self) -> Pattern:
-        return self._range_unit_regex
-
-    @property
-    def since_year_suffix_regex(self) -> Pattern:
-        return self._since_year_suffix_regex
-
-    @property
-    def month_end(self) -> Pattern:
-        return None
-
-    @property
-    def of_month(self) -> Pattern:
-        return None
-
-    @property
-    def for_the_regex(self) -> Pattern:
-        return None
-
-    @property
-    def week_day_and_day_of_month_regex(self) -> Pattern:
-        return None
-
-    @property
-    def relative_month_regex(self) -> Pattern:
-        return None
-
-    @property
-    def week_day_regex(self) -> Pattern:
-        return None
-
-    @property
-    def day_of_week(self) -> Dict[str, int]:
-        return None
-
-    @property
-    def ordinal_extractor(self) -> BaseNumberExtractor:
-        return None
-
-    @property
-    def integer_extractor(self) -> BaseNumberExtractor:
-        return None
-
-    @property
-    def duration_extractor(self) -> DateTimeExtractor:
-        return None
-
-    @property
-    def strict_relative_regex(self) -> Pattern:
-        return None
-
-    @property
-    def utility_configuration(self) -> DateTimeUtilityConfiguration:
-        return None
-
-    @property
-    def week_day_end(self) -> Pattern:
-        pass
-
-    def __init__(self):
-        self._datetime_period_unit_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.DateTimePeriodUnitRegex
-        )
-        self._after_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.AfterRegex
-        )
-        self._before_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.BeforeRegex
-        )
-        self._date_unit_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.UnitRegex
-        )
-        self._next_prefix_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.NextPrefixRegex
-        )
-        self._last_prefix_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.LastPrefixRegex
-        )
-        self._this_prefix_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.ThisPrefixRegex
-        )
-        self._date_year_in_chinese_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.DateYearInCJKRegex
-        )
-        self._zero_to_nine_integer_regex_chinese = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.ZeroToNineIntegerRegexCJK
-        )
-        self._relative_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.RelativeRegex
-        )
-        self._year_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.YearRegex
-        )
-        self._month_num_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.MonthNumRegex
-        )
-        self._day_regex_num_in_chinese = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.DayRegexNumInCJK
-        )
-        self._date_day_regex_in_chinese = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.DateDayRegexInCJK
-        )
-        self._day_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.DayRegex
-        )
-        self._month_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.MonthRegex
-        )
-        self._date_regex_list = [
+        return [
             RegExpUtility.get_safe_reg_exp(ChineseDateTime.DateRegexList1),
             RegExpUtility.get_safe_reg_exp(ChineseDateTime.DateRegexList2),
             RegExpUtility.get_safe_reg_exp(ChineseDateTime.DateRegexList3),
@@ -253,28 +84,3 @@ class ChineseDateExtractorConfiguration(DateExtractorConfiguration):
             RegExpUtility.get_safe_reg_exp(ChineseDateTime.DateRegexList7),
             RegExpUtility.get_safe_reg_exp(ChineseDateTime.DateRegexList8)
         ]
-        self._implicit_date_list = [
-            RegExpUtility.get_safe_reg_exp(ChineseDateTime.LunarRegex),
-            RegExpUtility.get_safe_reg_exp(ChineseDateTime.SpecialDayRegex),
-            RegExpUtility.get_safe_reg_exp(ChineseDateTime.DateThisRegex),
-            RegExpUtility.get_safe_reg_exp(ChineseDateTime.DateLastRegex),
-            RegExpUtility.get_safe_reg_exp(ChineseDateTime.DateNextRegex),
-            RegExpUtility.get_safe_reg_exp(ChineseDateTime.WeekDayRegex),
-            RegExpUtility.get_safe_reg_exp(
-                ChineseDateTime.WeekDayOfMonthRegex),
-            RegExpUtility.get_safe_reg_exp(ChineseDateTime.SpecialDate)
-        ]
-        self._range_connector_symbol_regex = RegExpUtility.get_safe_reg_exp(
-            BaseDateTime.RangeConnectorSymbolRegex
-        )
-        self._check_both_before_after = False
-        # TODO When the implementation for these properties is added, change the None values to their respective Regexps
-        self._since_year_suffix_regex = None
-        self._range_unit_regex = None
-        self._in_connector_regex = None
-        self._less_than_regex = None
-        self._more_than_regex = None
-        self._year_suffix = None
-        self._month_of_year = None
-        self._prefix_article_regex = None
-        self._week_day_and_day_regex = None

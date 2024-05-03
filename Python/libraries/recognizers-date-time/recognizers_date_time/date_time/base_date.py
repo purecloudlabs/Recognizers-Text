@@ -10,7 +10,10 @@ from recognizers_date_time.date_time.abstract_year_extractor import AbstractYear
 from datedelta import datedelta
 from recognizers_text.extractor import ExtractResult
 from recognizers_text.utilities import RegExpUtility, flatten
+from recognizers_number.number.extractors import ReVal, ReRe, BaseNumberExtractor
+from recognizers_number.number.parsers import BaseNumberParser
 from recognizers_number.number import Constants as NumberConstants
+
 from .constants import Constants, TimeTypeConstants
 from .extractors import DateTimeExtractor
 from .parsers import DateTimeParser, DateTimeParseResult
@@ -19,203 +22,57 @@ import regex
 import calendar
 
 
-class DateTimeUtilityConfiguration(ABC):
-    @property
-    @abstractmethod
-    def date_unit_regex(self) -> Pattern:
-        raise NotImplementedError
+class DateTimeUtilityConfiguration:
 
-    @property
-    @abstractmethod
-    def ago_regex(self) -> Pattern:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def later_regex(self) -> Pattern:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def in_connector_regex(self) -> Pattern:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def range_unit_regex(self) -> Pattern:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def am_desc_regex(self) -> Pattern:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def pm_desc__regex(self) -> Pattern:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def am_pm_desc_regex(self) -> Pattern:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def check_both_before_after(self) -> Pattern:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def range_prefix_regex(self) -> Pattern:
-        raise NotImplementedError
+    date_unit_regex: Pattern
+    ago_regex: Pattern
+    later_regex: Pattern
+    in_connector_regex: Pattern
+    range_unit_regex: Pattern
+    am_desc_regex: Pattern
+    pm_desc__regex: Pattern
+    am_pm_desc_regex: Pattern
+    range_prefix_regex: Pattern
+    check_both_before_after: bool
 
 
-class DateExtractorConfiguration(ABC):
+class DateExtractorConfiguration:
+
+    ordinal_extractor: BaseNumberExtractor
+    integer_extractor: BaseNumberExtractor
+    duration_extractor: DateTimeExtractor
+    number_parser: BaseNumberParser
+    utility_configuration: DateTimeUtilityConfiguration
+    check_both_before_after: bool
+
+    day_of_week: Dict[str, int]
+    month_of_year: Dict[str, int]
+
+    year_suffix: Pattern
+    since_year_suffix_regex: Pattern
+    month_end: Pattern
+    of_month: Pattern
+    relative_month_regex: Pattern
+    week_day_regex: Pattern
+    week_day_end: Pattern
+    week_day_start: Pattern
+    week_day_and_day_of_month_regex: Pattern
+    week_day_and_day_regex: Pattern
+    date_unit_regex: Pattern
+    for_the_regex: Pattern
+    prefix_article_regex: Pattern
+    strict_relative_regex: Pattern
+    range_connector_symbol_regex: Pattern
+    more_than_regex: Pattern
+    less_than_regex: Pattern
+    in_connector_regex: Pattern
+    range_unit_regex: Pattern
+
+    implicit_date_list: List[Pattern]
+
     @property
-    @abstractmethod
     def date_regex_list(self) -> List[Pattern]:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def implicit_date_list(self) -> List[Pattern]:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def month_end(self) -> Pattern:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def week_day_end(self) -> Pattern:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def week_day_start(self) -> Pattern:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def of_month(self) -> Pattern:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def date_unit_regex(self) -> Pattern:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def for_the_regex(self) -> Pattern:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def week_day_and_day_of_month_regex(self) -> Pattern:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def week_day_and_day_regex(self) -> Pattern:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def relative_month_regex(self) -> Pattern:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def week_day_regex(self) -> Pattern:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def prefix_article_regex(self) -> Pattern:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def day_of_week(self) -> Dict[str, int]:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def month_of_year(self) -> Dict[str, int]:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def ordinal_extractor(self):
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def integer_extractor(self):
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def number_parser(self):
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def duration_extractor(self) -> DateTimeExtractor:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def utility_configuration(self):
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def strict_relative_regex(self) -> Pattern:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def range_connector_symbol_regex(self) -> Pattern:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def year_suffix(self) -> Pattern:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def more_than_regex(self) -> Pattern:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def less_than_regex(self) -> Pattern:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def in_connector_regex(self) -> Pattern:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def range_unit_regex(self) -> Pattern:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def since_year_suffix_regex(self) -> Pattern:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def check_both_before_after(self) -> Pattern:
-        raise NotImplementedError
+        return []
 
 
 class BaseDateExtractor(DateTimeExtractor, AbstractYearExtractor):

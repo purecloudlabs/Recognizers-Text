@@ -163,7 +163,7 @@ class EnglishDateParserConfiguration(DateParserConfiguration):
         self._day_of_week = config.day_of_week
         self._unit_map = config.unit_map
         self._cardinal_map = config.cardinal_map
-        self._date_regex = EnglishDateExtractorConfiguration(dmyDateFormat)._date_regex_list
+        self._date_regex = EnglishDateExtractorConfiguration(dmyDateFormat).date_regex_list
         self._on_regex = RegExpUtility.get_safe_reg_exp(
             EnglishDateTime.OnRegex)
         self._special_day_regex = RegExpUtility.get_safe_reg_exp(
