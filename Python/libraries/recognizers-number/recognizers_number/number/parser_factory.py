@@ -3,11 +3,11 @@
 
 from enum import Enum
 
-from recognizers_number.number.parsers import NumberParserConfiguration, BaseNumberParser
-from recognizers_number.number.constants import Constants
-from recognizers_number.number.cjk_parsers import CJKNumberParser
 from recognizers_number.number.chinese.parsers import ChineseNumberParserConfiguration
+from recognizers_number.number.cjk_parsers import CJKNumberParser
+from recognizers_number.number.constants import Constants
 from recognizers_number.number.japanese.parsers import JapaneseNumberParserConfiguration
+from recognizers_number.number.parsers import BaseNumberParser, NumberParserConfiguration
 
 
 class ParserType(Enum):

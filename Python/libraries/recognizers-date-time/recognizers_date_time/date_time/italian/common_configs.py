@@ -3,35 +3,42 @@
 
 from typing import Dict, Pattern
 
-from recognizers_number import BaseNumberExtractor, ItalianCardinalExtractor, ItalianIntegerExtractor, ItalianOrdinalExtractor, BaseNumberParser, ItalianNumberParserConfiguration
+from recognizers_number import (
+    BaseNumberExtractor,
+    BaseNumberParser,
+    ItalianCardinalExtractor,
+    ItalianIntegerExtractor,
+    ItalianNumberParserConfiguration,
+    ItalianOrdinalExtractor,
+)
 
-from ...resources import ItalianDateTime, BaseDateTime
-from ..extractors import DateTimeExtractor
-from ..parsers import DateTimeParser
+from ...resources import BaseDateTime, ItalianDateTime
 from ..base_configs import BaseDateParserConfiguration, DateTimeUtilityConfiguration
 from ..base_date import BaseDateExtractor, BaseDateParser
-from ..base_time import BaseTimeExtractor
-from ..base_duration import BaseDurationExtractor, BaseDurationParser
 from ..base_dateperiod import BaseDatePeriodExtractor, BaseDatePeriodParser
-from ..base_timeperiod import BaseTimePeriodExtractor, BaseTimePeriodParser
 from ..base_datetime import BaseDateTimeExtractor, BaseDateTimeParser
 from ..base_datetimeperiod import BaseDateTimePeriodExtractor, BaseDateTimePeriodParser
+from ..base_duration import BaseDurationExtractor, BaseDurationParser
+from ..base_time import BaseTimeExtractor
+from ..base_timeperiod import BaseTimePeriodExtractor, BaseTimePeriodParser
+from ..extractors import DateTimeExtractor
+from ..parsers import DateTimeParser
 from .base_configs import ItalianDateTimeUtilityConfiguration
-from .duration_extractor_config import ItalianDurationExtractorConfiguration
 from .date_extractor_config import ItalianDateExtractorConfiguration
-from .time_extractor_config import ItalianTimeExtractorConfiguration
-from .datetime_extractor_config import ItalianDateTimeExtractorConfiguration
-from .dateperiod_extractor_config import ItalianDatePeriodExtractorConfiguration
-from .timeperiod_extractor_config import ItalianTimePeriodExtractorConfiguration
-from .datetimeperiod_extractor_config import ItalianDateTimePeriodExtractorConfiguration
-from .duration_parser_config import ItalianDurationParserConfiguration
 from .date_parser_config import ItalianDateParserConfiguration
-from .time_parser_config import ItalianTimeParserConfiguration
-from .datetime_parser_config import ItalianDateTimeParserConfiguration
+from .dateperiod_extractor_config import ItalianDatePeriodExtractorConfiguration
 from .dateperiod_parser_config import ItalianDatePeriodParserConfiguration
-from .timeperiod_parser_config import ItalianTimePeriodParserConfiguration
+from .datetime_extractor_config import ItalianDateTimeExtractorConfiguration
+from .datetime_parser_config import ItalianDateTimeParserConfiguration
+from .datetimeperiod_extractor_config import ItalianDateTimePeriodExtractorConfiguration
 from .datetimeperiod_parser_config import ItalianDateTimePeriodParserConfiguration
+from .duration_extractor_config import ItalianDurationExtractorConfiguration
+from .duration_parser_config import ItalianDurationParserConfiguration
 from .parsers import ItalianTimeParser
+from .time_extractor_config import ItalianTimeExtractorConfiguration
+from .time_parser_config import ItalianTimeParserConfiguration
+from .timeperiod_extractor_config import ItalianTimePeriodExtractorConfiguration
+from .timeperiod_parser_config import ItalianTimePeriodParserConfiguration
 
 
 class ItalianCommonDateTimeParserConfiguration(BaseDateParserConfiguration):

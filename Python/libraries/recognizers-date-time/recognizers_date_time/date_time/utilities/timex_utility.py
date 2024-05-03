@@ -1,14 +1,20 @@
+from datetime import datetime, timedelta
 from enum import IntEnum
 from typing import Dict, List, Tuple
-from datetime import datetime, timedelta
 
 from datedelta import datedelta
 
-from recognizers_date_time.date_time.constants import Constants
-from recognizers_date_time.date_time.utilities import TimeOfDayResolution, DateUtils, \
-    DateTimeFormatUtil, RangeTimexComponents, DateTimeResolutionKey
-from recognizers_date_time.date_time.data_structures import DatePeriodTimexType
 from datatypes_timex_expression.timex_helpers import TimexHelpers
+from recognizers_date_time.date_time.constants import Constants
+from recognizers_date_time.date_time.data_structures import DatePeriodTimexType
+from recognizers_date_time.date_time.utilities import (
+    DateTimeFormatUtil,
+    DateTimeResolutionKey,
+    DateUtils,
+    RangeTimexComponents,
+    TimeOfDayResolution,
+)
+
 
 date_period_timex_type_to_suffix = {
     0: Constants.TIMEX_DAY,

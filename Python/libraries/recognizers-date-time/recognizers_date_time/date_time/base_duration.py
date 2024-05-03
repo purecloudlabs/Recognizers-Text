@@ -2,18 +2,28 @@
 #  Licensed under the MIT License.
 
 from abc import ABC, abstractmethod
-from typing import List, Optional, Pattern, Dict, Match
 from datetime import datetime
+from typing import Dict, List, Match, Optional, Pattern
+
 import regex
 
-from recognizers_text.utilities import QueryProcessor
-from recognizers_text.extractor import ExtractResult
 from recognizers_number.number.extractors import BaseNumberExtractor
 from recognizers_number.number.parsers import BaseNumberParser
+from recognizers_text.extractor import ExtractResult
+from recognizers_text.utilities import QueryProcessor
+
 from .constants import Constants, TimeTypeConstants
 from .extractors import DateTimeExtractor
 from .parsers import DateTimeParser, DateTimeParseResult
-from .utilities import Token, merge_all_tokens, DateTimeResolutionResult, DateTimeOptionsConfiguration, DateTimeOptions, DurationParsingUtil, RegExpUtility
+from .utilities import (
+    DateTimeOptions,
+    DateTimeOptionsConfiguration,
+    DateTimeResolutionResult,
+    DurationParsingUtil,
+    RegExpUtility,
+    Token,
+    merge_all_tokens,
+)
 
 
 class DurationExtractorConfiguration(DateTimeOptionsConfiguration):

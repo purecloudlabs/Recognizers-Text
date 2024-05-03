@@ -10,13 +10,26 @@ from recognizers_date_time.date_time import Constants
 from recognizers_date_time.date_time.base_date import BaseDateParser
 from recognizers_date_time.date_time.base_dateperiod import BaseDatePeriodParser
 from recognizers_date_time.date_time.parsers import DateTimeParser, DateTimeParseResult
-from recognizers_date_time.date_time.utilities import DateTimeOptionsConfiguration, DateTimeExtractor, \
-    merge_all_tokens, ExtractResultExtension, Token, DateContext, DateTimeResolutionResult, TimeTypeConstants, \
-    DateTimeFormatUtil, DateUtils, TimexUtil, DayOfWeek, DurationParsingUtil, DateTimeOptions
+from recognizers_date_time.date_time.utilities import (
+    DateContext,
+    DateTimeExtractor,
+    DateTimeFormatUtil,
+    DateTimeOptions,
+    DateTimeOptionsConfiguration,
+    DateTimeResolutionResult,
+    DateUtils,
+    DayOfWeek,
+    DurationParsingUtil,
+    ExtractResultExtension,
+    TimeTypeConstants,
+    TimexUtil,
+    Token,
+    merge_all_tokens,
+)
 from recognizers_date_time.date_time.utilities.mod_and_date_result import ModAndDateResult
-from recognizers_number import BaseNumberParser, BaseNumberExtractor
+from recognizers_number import BaseNumberExtractor, BaseNumberParser
 from recognizers_number import Constants as Num_Constants
-from recognizers_text import Metadata, ExtractResult, Extractor, ConditionalMatch, RegExpUtility
+from recognizers_text import ConditionalMatch, Extractor, ExtractResult, Metadata, RegExpUtility
 
 
 class CJKDatePeriodExtractorConfiguration(DateTimeOptionsConfiguration):

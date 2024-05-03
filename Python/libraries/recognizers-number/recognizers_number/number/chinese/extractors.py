@@ -1,14 +1,14 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from typing import List
 from enum import Enum
+from typing import List
 
-from recognizers_number.number.extractors import ReVal, ReRe, BaseNumberExtractor
-from recognizers_text.utilities import RegExpUtility
 from recognizers_number.number.constants import Constants
-from recognizers_number.resources.chinese_numeric import ChineseNumeric
+from recognizers_number.number.extractors import BaseNumberExtractor, ReRe, ReVal
 from recognizers_number.number.models import NumberMode
+from recognizers_number.resources.chinese_numeric import ChineseNumeric
+from recognizers_text.utilities import RegExpUtility
 
 
 class ChineseNumberExtractorMode(Enum):

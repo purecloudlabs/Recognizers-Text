@@ -2,14 +2,16 @@
 #  Licensed under the MIT License.
 import copy
 from abc import abstractmethod
-from typing import List, Pattern, Match, Optional
 from collections import namedtuple
+from typing import List, Match, Optional, Pattern
+
 import regex
 
-from recognizers_text.extractor import Extractor, ExtractResult
-from recognizers_number.resources.base_numbers import BaseNumbers
-from recognizers_number.number.models import LongFormatType
 from recognizers_number.number.constants import Constants
+from recognizers_number.number.models import LongFormatType
+from recognizers_number.resources.base_numbers import BaseNumbers
+from recognizers_text.extractor import Extractor, ExtractResult
+
 
 ReVal = namedtuple('ReVal', ['re', 'val'])
 ReRe = namedtuple('ReRe', ['reKey', 'reVal'])

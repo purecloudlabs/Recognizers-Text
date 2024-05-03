@@ -5,17 +5,17 @@ from typing import Pattern
 
 from recognizers_text import RegExpUtility
 
-from ...resources.chinese_date_time import ChineseDateTime, BaseDateTime
-from ..parsers import DateTimeParser
+from ...resources.chinese_date_time import BaseDateTime, ChineseDateTime
 from ..base_merged import MergedParserConfiguration
-from .duration_parser import ChineseDurationParser
+from ..parsers import DateTimeParser
 from .date_parser import ChineseDateParser
-from .time_parser import ChineseTimeParser
 from .dateperiod_parser import ChineseDatePeriodParser
-from .timeperiod_parser import ChineseTimePeriodParser
 from .datetime_parser import ChineseDateTimeParser
 from .datetimeperiod_parser import ChineseDateTimePeriodParser
+from .duration_parser import ChineseDurationParser
 from .holiday_parser import ChineseHolidayParser
+from .time_parser import ChineseTimeParser
+from .timeperiod_parser import ChineseTimePeriodParser
 
 
 class ChineseMergedParserConfiguration(MergedParserConfiguration):

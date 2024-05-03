@@ -1,7 +1,8 @@
+from typing import List, Pattern
+
 import regex
 
-from typing import List, Pattern
-from recognizers_text.extractor import Metadata, ExtractResult
+from recognizers_text.extractor import ExtractResult, Metadata
 
 
 class Token:

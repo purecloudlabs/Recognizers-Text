@@ -2,11 +2,13 @@
 #  Licensed under the MIT License.
 
 from datetime import datetime
+
 import regex
 
 from recognizers_text.utilities import RegExpUtility
-from ..utilities import DateTimeResolutionResult
+
 from ..base_time import BaseTimeParser
+from ..utilities import DateTimeResolutionResult
 from .time_parser_config import EnglishTimeParserConfiguration
 
 

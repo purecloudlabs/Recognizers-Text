@@ -1,17 +1,22 @@
-from enum import Enum
-from typing import List, Dict, Pattern
 from datetime import datetime, timedelta
+from enum import Enum
+from typing import Dict, List, Pattern
 
-from datedelta import datedelta
 import regex
+from datedelta import datedelta
 
-from recognizers_text.extractor import ExtractResult
-from recognizers_text.utilities import RegExpUtility
-from recognizers_date_time.date_time.constants import TimeTypeConstants, Constants
+from recognizers_date_time.date_time.constants import Constants, TimeTypeConstants
 from recognizers_date_time.date_time.extractors import DateTimeExtractor
 from recognizers_date_time.date_time.parsers import DateTimeParser, DateTimeParseResult
-from recognizers_date_time.date_time.utilities import Token, DateTimeUtilityConfiguration, MatchingUtil, \
-    DateTimeResolutionResult, DateTimeFormatUtil
+from recognizers_date_time.date_time.utilities import (
+    DateTimeFormatUtil,
+    DateTimeResolutionResult,
+    DateTimeUtilityConfiguration,
+    MatchingUtil,
+    Token,
+)
+from recognizers_text.extractor import ExtractResult
+from recognizers_text.utilities import RegExpUtility
 
 
 class AgoLaterMode(Enum):

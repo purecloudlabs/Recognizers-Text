@@ -1,15 +1,15 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from typing import Optional, Dict, List
 from datetime import datetime
+from typing import Dict, List, Optional
 
 from recognizers_text import ExtractResult
 
-from ..utilities import DateTimeOptions, DateTimeResolutionResult, TimexUtil
+from ..base_merged import BaseMergedParser
 from ..constants import Constants, TimeTypeConstants
 from ..parsers import DateTimeParseResult
-from ..base_merged import BaseMergedParser
+from ..utilities import DateTimeOptions, DateTimeResolutionResult, TimexUtil
 from .merged_parser_config import ChineseMergedParserConfiguration
 
 

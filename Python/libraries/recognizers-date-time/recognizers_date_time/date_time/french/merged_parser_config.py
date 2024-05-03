@@ -5,20 +5,20 @@ from typing import Pattern
 
 from recognizers_text.utilities import RegExpUtility
 
-from .holiday_parser_config import FrenchHolidayParserConfiguration
-from .dateperiod_parser_config import FrenchDatePeriodParserConfiguration
-from .timeperiod_parser_config import FrenchTimePeriodParserConfiguration
-from .common_configs import FrenchCommonDateTimeParserConfiguration
+from ...resources.french_date_time import BaseDateTime, FrenchDateTime
 from ..base_date import BaseDateParser
-from ..base_time import BaseTimeParser
-from ..base_datetime import BaseDateTimeParser
-from ..base_holiday import BaseHolidayParser
 from ..base_dateperiod import BaseDatePeriodParser
-from ..base_timeperiod import BaseTimePeriodParser
+from ..base_datetime import BaseDateTimeParser
 from ..base_datetimeperiod import BaseDateTimePeriodParser
 from ..base_duration import BaseDurationParser
+from ..base_holiday import BaseHolidayParser
 from ..base_merged import MergedParserConfiguration
-from ...resources.french_date_time import FrenchDateTime, BaseDateTime
+from ..base_time import BaseTimeParser
+from ..base_timeperiod import BaseTimePeriodParser
+from .common_configs import FrenchCommonDateTimeParserConfiguration
+from .dateperiod_parser_config import FrenchDatePeriodParserConfiguration
+from .holiday_parser_config import FrenchHolidayParserConfiguration
+from .timeperiod_parser_config import FrenchTimePeriodParserConfiguration
 
 
 class FrenchMergedParserConfiguration(FrenchCommonDateTimeParserConfiguration, MergedParserConfiguration):

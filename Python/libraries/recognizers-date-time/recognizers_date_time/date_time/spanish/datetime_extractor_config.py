@@ -2,20 +2,22 @@
 #  Licensed under the MIT License.
 
 from typing import Pattern
+
 import regex
 
 from recognizers_text.utilities import RegExpUtility
+
 from ...resources.spanish_date_time import SpanishDateTime
-from ..extractors import DateTimeExtractor
 from ..base_date import BaseDateExtractor
-from ..base_time import BaseTimeExtractor
-from ..base_duration import BaseDurationExtractor
 from ..base_datetime import DateTimeExtractorConfiguration
+from ..base_duration import BaseDurationExtractor
+from ..base_time import BaseTimeExtractor
+from ..extractors import DateTimeExtractor
+from ..utilities import DateTimeOptions
 from .base_configs import SpanishDateTimeUtilityConfiguration
 from .date_extractor_config import SpanishDateExtractorConfiguration
-from .time_extractor_config import SpanishTimeExtractorConfiguration
 from .duration_extractor_config import SpanishDurationExtractorConfiguration
-from ..utilities import DateTimeOptions
+from .time_extractor_config import SpanishTimeExtractorConfiguration
 
 
 class SpanishDateTimeExtractorConfiguration(DateTimeExtractorConfiguration):

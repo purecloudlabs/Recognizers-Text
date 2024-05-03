@@ -5,20 +5,20 @@ from typing import Pattern
 
 from recognizers_text.utilities import RegExpUtility
 
-from .holiday_parser_config import GermanHolidayParserConfiguration
-from .dateperiod_parser_config import GermanDatePeriodParserConfiguration
-from .timeperiod_parser_config import GermanTimePeriodParserConfiguration
-from .common_configs import GermanCommonDateTimeParserConfiguration
+from ...resources.german_date_time import BaseDateTime, GermanDateTime
 from ..base_date import BaseDateParser
-from ..base_time import BaseTimeParser
-from ..base_datetime import BaseDateTimeParser
-from ..base_holiday import BaseHolidayParser
 from ..base_dateperiod import BaseDatePeriodParser
-from ..base_timeperiod import BaseTimePeriodParser
+from ..base_datetime import BaseDateTimeParser
 from ..base_datetimeperiod import BaseDateTimePeriodParser
 from ..base_duration import BaseDurationParser
+from ..base_holiday import BaseHolidayParser
 from ..base_merged import MergedParserConfiguration
-from ...resources.german_date_time import GermanDateTime, BaseDateTime
+from ..base_time import BaseTimeParser
+from ..base_timeperiod import BaseTimePeriodParser
+from .common_configs import GermanCommonDateTimeParserConfiguration
+from .dateperiod_parser_config import GermanDatePeriodParserConfiguration
+from .holiday_parser_config import GermanHolidayParserConfiguration
+from .timeperiod_parser_config import GermanTimePeriodParserConfiguration
 
 
 class GermanMergedParserConfiguration(GermanCommonDateTimeParserConfiguration, MergedParserConfiguration):

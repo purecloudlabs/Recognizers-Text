@@ -1,18 +1,20 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from typing import Optional
 from datetime import datetime, timedelta
+from typing import Optional
+
+from recognizers_text import ExtractResult, RegExpUtility
+
+from ..base_datetime import BaseDateTimeParser
+from ..constants import Constants, TimeTypeConstants
+from ..parsers import DateTimeParseResult
+from ..utilities import DateTimeFormatUtil, DateTimeResolutionResult
 from .date_extractor import ChineseDateExtractor
 from .date_parser import ChineseDateParser
 from .datetime_extractor import ChineseDateTimeExtractor
-from .duration_extractor import ChineseDurationExtractor
-from ..base_datetime import BaseDateTimeParser
-from ..parsers import DateTimeParseResult
-from ..constants import TimeTypeConstants, Constants
-from recognizers_text import RegExpUtility, ExtractResult
-from ..utilities import DateTimeFormatUtil, DateTimeResolutionResult
 from .datetime_parser_config import ChineseDateTimeParserConfiguration
+from .duration_extractor import ChineseDurationExtractor
 
 
 class ChineseDateTimeParser(BaseDateTimeParser):

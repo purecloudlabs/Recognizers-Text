@@ -2,17 +2,18 @@
 #  Licensed under the MIT License.
 
 
-from recognizers_text.utilities import RegExpUtility
+from recognizers_number import ItalianCardinalExtractor, ItalianOrdinalExtractor
 from recognizers_number.number import BaseNumberParser
-from recognizers_number.number.italian.extractors import ItalianIntegerExtractor, ItalianCardinalExtractor
+from recognizers_number.number.italian.extractors import ItalianCardinalExtractor, ItalianIntegerExtractor
 from recognizers_number.number.italian.parsers import ItalianNumberParserConfiguration
+from recognizers_text.utilities import RegExpUtility
+
 from ...resources.italian_date_time import ItalianDateTime
-from ..base_duration import BaseDurationExtractor
 from ..base_date import BaseDateExtractor
 from ..base_dateperiod import DatePeriodExtractorConfiguration, MatchedIndex
-from .duration_extractor_config import ItalianDurationExtractorConfiguration
+from ..base_duration import BaseDurationExtractor
 from .date_extractor_config import ItalianDateExtractorConfiguration
-from recognizers_number import ItalianOrdinalExtractor, ItalianCardinalExtractor
+from .duration_extractor_config import ItalianDurationExtractorConfiguration
 
 
 class ItalianDatePeriodExtractorConfiguration(DatePeriodExtractorConfiguration):

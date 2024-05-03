@@ -4,6 +4,7 @@
 from typing import List, Pattern
 
 from recognizers_text import RegExpUtility
+
 from ...resources import ChineseDateTime
 from ..base_date import DateExtractorConfiguration
 

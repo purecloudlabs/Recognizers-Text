@@ -1,13 +1,15 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from typing import Pattern, Dict
+from typing import Dict, Pattern
+
 from recognizers_text.utilities import RegExpUtility
+
 from ...resources.german_date_time import GermanDateTime
+from ..base_configs import BaseDateParserConfiguration
 from ..base_datetimeperiod import DateTimePeriodParserConfiguration, MatchedTimeRange
 from ..extractors import DateTimeExtractor
 from ..parsers import DateTimeParser
-from ..base_configs import BaseDateParserConfiguration
 
 
 class GermanDateTimePeriodParserConfiguration(DateTimePeriodParserConfiguration):

@@ -3,20 +3,20 @@
 
 from typing import Pattern
 
-from ...resources.base_date_time import BaseDateTime
 from recognizers_text.utilities import RegExpUtility
 
-from .holiday_parser_config import EnglishHolidayParserConfiguration
+from ...resources.base_date_time import BaseDateTime
+from ...resources.english_date_time import EnglishDateTime
 from ..base_date import BaseDateParser
-from ..base_time import BaseTimeParser
-from ..base_datetime import BaseDateTimeParser
-from ..base_holiday import BaseHolidayParser
 from ..base_dateperiod import BaseDatePeriodParser
-from ..base_timeperiod import BaseTimePeriodParser
+from ..base_datetime import BaseDateTimeParser
 from ..base_datetimeperiod import BaseDateTimePeriodParser
 from ..base_duration import BaseDurationParser
+from ..base_holiday import BaseHolidayParser
 from ..base_merged import MergedParserConfiguration
-from ...resources.english_date_time import EnglishDateTime
+from ..base_time import BaseTimeParser
+from ..base_timeperiod import BaseTimePeriodParser
+from .holiday_parser_config import EnglishHolidayParserConfiguration
 
 
 class EnglishMergedParserConfiguration(MergedParserConfiguration):

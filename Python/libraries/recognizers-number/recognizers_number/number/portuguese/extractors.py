@@ -1,14 +1,15 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-import regex
-from typing import Pattern, List, Optional
+from typing import List, Optional, Pattern
 
-from recognizers_text.utilities import RegExpUtility
-from recognizers_number.number.models import NumberMode, LongFormatMode
-from recognizers_number.resources.portuguese_numeric import PortugueseNumeric
-from recognizers_number.number.extractors import ReVal, ReRe, BaseNumberExtractor
+import regex
+
 from recognizers_number.number.constants import Constants
+from recognizers_number.number.extractors import BaseNumberExtractor, ReRe, ReVal
+from recognizers_number.number.models import LongFormatMode, NumberMode
+from recognizers_number.resources.portuguese_numeric import PortugueseNumeric
+from recognizers_text.utilities import RegExpUtility
 
 
 class PortugueseNumberExtractor(BaseNumberExtractor):

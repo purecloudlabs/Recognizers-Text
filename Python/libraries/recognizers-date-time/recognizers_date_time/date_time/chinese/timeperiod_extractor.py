@@ -2,6 +2,7 @@
 #  Licensed under the MIT License.
 
 from enum import Enum
+
 from recognizers_text import RegExpUtility
 
 from ...resources.chinese_date_time import ChineseDateTime

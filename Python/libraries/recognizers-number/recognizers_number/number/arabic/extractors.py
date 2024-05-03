@@ -3,12 +3,11 @@ from typing import List, Optional
 
 import regex
 
-from recognizers_text.utilities import RegExpUtility
-from recognizers_number.number.extractors import ReVal, ReRe, BaseNumberExtractor, \
-    BaseMergedNumberExtractor
-from recognizers_number.number.models import NumberMode, LongFormatMode
-from recognizers_number.resources.arabic_numeric import ArabicNumeric
 from recognizers_number.number.constants import Constants
+from recognizers_number.number.extractors import BaseMergedNumberExtractor, BaseNumberExtractor, ReRe, ReVal
+from recognizers_number.number.models import LongFormatMode, NumberMode
+from recognizers_number.resources.arabic_numeric import ArabicNumeric
+from recognizers_text.utilities import RegExpUtility
 
 
 class ArabicNumberExtractor(BaseNumberExtractor):

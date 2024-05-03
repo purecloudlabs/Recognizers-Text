@@ -6,6 +6,7 @@ from copy import deepcopy
 from typing import Dict, List, Match, Pattern, Set
 
 import regex
+
 from recognizers_number.culture import CultureInfo
 from recognizers_text.extractor import Extractor, ExtractResult
 from recognizers_text.matcher.match_result import MatchResult

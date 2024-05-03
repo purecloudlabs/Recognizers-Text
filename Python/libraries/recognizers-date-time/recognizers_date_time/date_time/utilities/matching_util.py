@@ -1,10 +1,11 @@
 from typing import List, Pattern
+
 import regex
 
-from recognizers_text.extractor import ExtractResult
-from recognizers_text.utilities import RegExpUtility
-from recognizers_text.matcher.string_matcher import MatchResult
 from recognizers_date_time.resources.base_date_time import BaseDateTime
+from recognizers_text.extractor import ExtractResult
+from recognizers_text.matcher.string_matcher import MatchResult
+from recognizers_text.utilities import RegExpUtility
 
 
 class MatchedIndex:

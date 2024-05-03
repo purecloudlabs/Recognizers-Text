@@ -2,16 +2,17 @@
 #  Licensed under the MIT License.
 
 from abc import ABC, abstractmethod
-from typing import List, Optional, Pattern, Callable, Dict, Match
-from datetime import datetime
 from calendar import Calendar
+from datetime import datetime
+from typing import Callable, Dict, List, Match, Optional, Pattern
 
 from recognizers_text.extractor import ExtractResult, Metadata
+
 from ..resources.base_date_time import BaseDateTime
 from .constants import Constants, TimeTypeConstants
 from .extractors import DateTimeExtractor
 from .parsers import DateTimeParser, DateTimeParseResult
-from .utilities import Token, merge_all_tokens, DateTimeFormatUtil, DayOfWeek, DateTimeResolutionResult, DateUtils
+from .utilities import DateTimeFormatUtil, DateTimeResolutionResult, DateUtils, DayOfWeek, Token, merge_all_tokens
 
 
 class HolidayExtractorConfiguration(ABC):

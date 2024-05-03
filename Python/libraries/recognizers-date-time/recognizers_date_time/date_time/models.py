@@ -2,11 +2,12 @@
 #  Licensed under the MIT License.
 
 import logging
-from typing import List
 from datetime import datetime
+from typing import List
 
 from recognizers_text.model import Model, ModelResult
 from recognizers_text.utilities import QueryProcessor
+
 from .extractors import DateTimeExtractor
 from .parsers import DateTimeParser
 

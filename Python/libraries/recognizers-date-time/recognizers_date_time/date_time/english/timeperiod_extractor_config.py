@@ -3,15 +3,16 @@
 
 from typing import List, Pattern
 
-from recognizers_text.utilities import RegExpUtility
-from recognizers_text.extractor import Extractor
 from recognizers_number.number.english.extractors import EnglishIntegerExtractor
+from recognizers_text.extractor import Extractor
+from recognizers_text.utilities import RegExpUtility
+
 from ...resources.english_date_time import EnglishDateTime
-from ..extractors import DateTimeExtractor
-from ..base_timeperiod import TimePeriodExtractorConfiguration, MatchedIndex
 from ..base_time import BaseTimeExtractor
-from .time_extractor_config import EnglishTimeExtractorConfiguration
+from ..base_timeperiod import MatchedIndex, TimePeriodExtractorConfiguration
+from ..extractors import DateTimeExtractor
 from ..utilities import DateTimeOptions
+from .time_extractor_config import EnglishTimeExtractorConfiguration
 
 
 class EnglishTimePeriodExtractorConfiguration(TimePeriodExtractorConfiguration):

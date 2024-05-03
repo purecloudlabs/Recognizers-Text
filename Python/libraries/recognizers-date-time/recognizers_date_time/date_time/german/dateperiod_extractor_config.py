@@ -2,17 +2,18 @@
 #  Licensed under the MIT License.
 
 
-from recognizers_text.utilities import RegExpUtility
+from recognizers_number import GermanCardinalExtractor, GermanOrdinalExtractor
 from recognizers_number.number import BaseNumberParser
-from recognizers_number.number.german.extractors import GermanIntegerExtractor, GermanCardinalExtractor
+from recognizers_number.number.german.extractors import GermanCardinalExtractor, GermanIntegerExtractor
 from recognizers_number.number.german.parsers import GermanNumberParserConfiguration
+from recognizers_text.utilities import RegExpUtility
+
 from ...resources.german_date_time import GermanDateTime
-from ..base_duration import BaseDurationExtractor
 from ..base_date import BaseDateExtractor
 from ..base_dateperiod import DatePeriodExtractorConfiguration, MatchedIndex
-from .duration_extractor_config import GermanDurationExtractorConfiguration
+from ..base_duration import BaseDurationExtractor
 from .date_extractor_config import GermanDateExtractorConfiguration
-from recognizers_number import GermanOrdinalExtractor, GermanCardinalExtractor
+from .duration_extractor_config import GermanDurationExtractorConfiguration
 
 
 class GermanDatePeriodExtractorConfiguration(DatePeriodExtractorConfiguration):

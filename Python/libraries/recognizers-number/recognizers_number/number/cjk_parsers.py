@@ -1,17 +1,19 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
+import copy
 from abc import abstractmethod
-from typing import List, Dict, Pattern, Optional
 from collections import namedtuple
 from decimal import Decimal, getcontext
-import copy
+from typing import Dict, List, Optional, Pattern
+
 import regex
 
+from recognizers_number.number.parsers import BaseNumberParser, BaseNumberParserConfiguration
 from recognizers_text.culture import Culture
 from recognizers_text.extractor import ExtractResult
 from recognizers_text.parser import ParseResult
-from recognizers_number.number.parsers import BaseNumberParser, BaseNumberParserConfiguration
+
 
 getcontext().prec = 15
 

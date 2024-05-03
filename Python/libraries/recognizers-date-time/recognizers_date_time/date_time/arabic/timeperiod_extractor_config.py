@@ -1,14 +1,14 @@
 from typing import List, Pattern
 
-from recognizers_text.utilities import RegExpUtility
-from recognizers_text.extractor import Extractor
-from recognizers_number.number.arabic.extractors import ArabicIntegerExtractor
-from recognizers_date_time.resources.arabic_date_time import ArabicDateTime
-from recognizers_date_time.date_time.extractors import DateTimeExtractor
-from recognizers_date_time.date_time.base_timeperiod import TimePeriodExtractorConfiguration, MatchedIndex
-from recognizers_date_time.date_time.base_time import BaseTimeExtractor
-from recognizers_date_time.date_time.arabic.time_extractor_config import ArabicTimeExtractorConfiguration
 from recognizers_date_time.date_time.arabic.base_configs import ArabicDateTimeUtilityConfiguration
+from recognizers_date_time.date_time.arabic.time_extractor_config import ArabicTimeExtractorConfiguration
+from recognizers_date_time.date_time.base_time import BaseTimeExtractor
+from recognizers_date_time.date_time.base_timeperiod import MatchedIndex, TimePeriodExtractorConfiguration
+from recognizers_date_time.date_time.extractors import DateTimeExtractor
+from recognizers_date_time.resources.arabic_date_time import ArabicDateTime
+from recognizers_number.number.arabic.extractors import ArabicIntegerExtractor
+from recognizers_text.extractor import Extractor
+from recognizers_text.utilities import RegExpUtility
 
 
 class ArabicTimePeriodExtractorConfiguration(TimePeriodExtractorConfiguration):

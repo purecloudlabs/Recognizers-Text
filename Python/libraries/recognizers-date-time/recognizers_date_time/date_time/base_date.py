@@ -1,24 +1,25 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
+import calendar
 from abc import ABC, abstractmethod
-from typing import List, Optional, Pattern, Dict, Match
 from datetime import datetime, timedelta
+from typing import Dict, List, Match, Optional, Pattern
 
-from dateutil.relativedelta import relativedelta
-from recognizers_date_time.date_time.abstract_year_extractor import AbstractYearExtractor
+import regex
 from datedelta import datedelta
+from dateutil.relativedelta import relativedelta
+
+from recognizers_date_time.date_time.abstract_year_extractor import AbstractYearExtractor
+from recognizers_date_time.resources import BaseDateTime, BaseDateTimeResource
+from recognizers_number.number import Constants as NumberConstants
 from recognizers_text.extractor import ExtractResult
 from recognizers_text.utilities import RegExpUtility, flatten
-from recognizers_number.number import Constants as NumberConstants
-from recognizers_date_time.resources import BaseDateTime, BaseDateTimeResource
 
 from .constants import Constants, TimeTypeConstants
 from .extractors import DateTimeExtractor
 from .parsers import DateTimeParser, DateTimeParseResult
-from .utilities import Token, MatchingUtil
-import regex
-import calendar
+from .utilities import MatchingUtil, Token
 
 
 class DateTimeUtilityConfiguration:
@@ -100,8 +101,7 @@ class BaseDateExtractor(DateTimeExtractor, AbstractYearExtractor):
         return result
 
     def basic_regex_match(self, source: str) -> []:
-        from .utilities import Token
-        from .utilities import RegExpUtility
+        from .utilities import RegExpUtility, Token
         ret: List[Token] = list()
 
         for regexp in self.config.date_regex_list:
@@ -390,8 +390,9 @@ class BaseDateExtractor(DateTimeExtractor, AbstractYearExtractor):
 
     def extend_with_week_day_and_year(self, start_index: int, end_index: int, month: int,
                                       day: int, text: str, reference: datetime):
-        from .utilities import DateUtils
         import calendar
+
+        from .utilities import DateUtils
 
         year = reference.year
 
@@ -817,9 +818,7 @@ class BaseDateParser(DateTimeParser):
         return result
 
     def match_to_date(self, match, reference: datetime):
-        from .utilities import DateTimeResolutionResult
-        from .utilities import DateUtils
-        from .utilities import DateTimeFormatUtil
+        from .utilities import DateTimeFormatUtil, DateTimeResolutionResult, DateUtils
 
         result = DateTimeResolutionResult()
         month = 0
@@ -868,10 +867,7 @@ class BaseDateParser(DateTimeParser):
         return result
 
     def parse_implicit_date(self, source: str, reference: datetime) -> DateTimeParseResult:
-        from .utilities import DateUtils
-        from .utilities import DateTimeFormatUtil
-        from .utilities import DateTimeResolutionResult
-        from .utilities import DayOfWeek
+        from .utilities import DateTimeFormatUtil, DateTimeResolutionResult, DateUtils, DayOfWeek
         trimmed_source = source.strip()
         result = DateTimeResolutionResult()
 
@@ -1158,8 +1154,7 @@ class BaseDateParser(DateTimeParser):
         return result
 
     def parse_weekday_of_month(self, source: str, reference: datetime) -> DateTimeParseResult:
-        from .utilities import DateTimeFormatUtil
-        from .utilities import DateTimeResolutionResult
+        from .utilities import DateTimeFormatUtil, DateTimeResolutionResult
         trimmed_source = source.strip()
         result = DateTimeResolutionResult()
         match = regex.match(
@@ -1215,8 +1210,7 @@ class BaseDateParser(DateTimeParser):
         return result
 
     def _compute_date(self, cardinal: int, weekday, month: int, year: int):
-        from .utilities import DateUtils
-        from .utilities import DayOfWeek
+        from .utilities import DateUtils, DayOfWeek
         first_day = datetime(year, month, 1)
         first_weekday = DateUtils.this(first_day, weekday)
 
@@ -1255,9 +1249,7 @@ class BaseDateParser(DateTimeParser):
         return Constants.INVALID_YEAR
 
     def parse_number_with_month(self, source: str, reference: datetime) -> DateTimeParseResult:
-        from .utilities import DateUtils
-        from .utilities import DateTimeFormatUtil
-        from .utilities import DateTimeResolutionResult
+        from .utilities import DateTimeFormatUtil, DateTimeResolutionResult, DateUtils
         trimmed_source = source.strip()
         ambiguous = True
         result = DateTimeResolutionResult()
@@ -1353,9 +1345,7 @@ class BaseDateParser(DateTimeParser):
         return result
 
     def parse_single_number(self, source: str, reference: datetime) -> DateTimeParseResult:
-        from .utilities import DateUtils
-        from .utilities import DateTimeFormatUtil
-        from .utilities import DateTimeResolutionResult
+        from .utilities import DateTimeFormatUtil, DateTimeResolutionResult, DateUtils
         trimmed_source = source.strip()
         result = DateTimeResolutionResult()
 

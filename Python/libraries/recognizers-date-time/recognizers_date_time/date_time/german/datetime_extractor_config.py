@@ -2,19 +2,21 @@
 #  Licensed under the MIT License.
 
 from typing import Pattern
+
 import regex
 
 from recognizers_text.utilities import RegExpUtility
+
 from ...resources.german_date_time import GermanDateTime
-from ..extractors import DateTimeExtractor
 from ..base_date import BaseDateExtractor
-from ..base_time import BaseTimeExtractor
-from ..base_duration import BaseDurationExtractor
 from ..base_datetime import DateTimeExtractorConfiguration
+from ..base_duration import BaseDurationExtractor
+from ..base_time import BaseTimeExtractor
+from ..extractors import DateTimeExtractor
 from .base_configs import GermanDateTimeUtilityConfiguration
 from .date_extractor_config import GermanDateExtractorConfiguration
-from .time_extractor_config import GermanTimeExtractorConfiguration
 from .duration_extractor_config import GermanDurationExtractorConfiguration
+from .time_extractor_config import GermanTimeExtractorConfiguration
 
 
 class GermanDateTimeExtractorConfiguration(DateTimeExtractorConfiguration):

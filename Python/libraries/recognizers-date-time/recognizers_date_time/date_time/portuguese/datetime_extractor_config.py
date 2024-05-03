@@ -2,19 +2,21 @@
 #  Licensed under the MIT License.
 
 from typing import Pattern
+
 import regex
 
 from recognizers_text.utilities import RegExpUtility
+
 from ...resources.portuguese_date_time import PortugueseDateTime
-from ..extractors import DateTimeExtractor
 from ..base_date import BaseDateExtractor
-from ..base_time import BaseTimeExtractor
-from ..base_duration import BaseDurationExtractor
 from ..base_datetime import DateTimeExtractorConfiguration
+from ..base_duration import BaseDurationExtractor
+from ..base_time import BaseTimeExtractor
+from ..extractors import DateTimeExtractor
 from .base_configs import PortugueseDateTimeUtilityConfiguration
 from .date_extractor_config import PortugueseDateExtractorConfiguration
-from .time_extractor_config import PortugueseTimeExtractorConfiguration
 from .duration_extractor_config import PortugueseDurationExtractorConfiguration
+from .time_extractor_config import PortugueseTimeExtractorConfiguration
 
 
 class PortugueseDateTimeExtractorConfiguration(DateTimeExtractorConfiguration):

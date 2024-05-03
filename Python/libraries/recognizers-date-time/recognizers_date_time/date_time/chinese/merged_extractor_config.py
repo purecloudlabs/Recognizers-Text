@@ -1,22 +1,22 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from typing import Pattern, List
+from typing import List, Pattern
 
 from recognizers_text import RegExpUtility
-from ...resources.chinese_date_time import ChineseDateTime, BaseDateTime
 
-from ..extractors import DateTimeExtractor
-from ..base_merged import MergedExtractorConfiguration
+from ...resources.chinese_date_time import BaseDateTime, ChineseDateTime
 from ..base_holiday import BaseHolidayExtractor
-from .duration_extractor import ChineseDurationExtractor
-from .time_extractor import ChineseTimeExtractor
+from ..base_merged import MergedExtractorConfiguration
+from ..extractors import DateTimeExtractor
 from .date_extractor import ChineseDateExtractor
-from .datetime_extractor import ChineseDateTimeExtractor
-from .timeperiod_extractor import ChineseTimePeriodExtractor
 from .dateperiod_extractor import ChineseDatePeriodExtractor
+from .datetime_extractor import ChineseDateTimeExtractor
 from .datetimeperiod_extractor import ChineseDateTimePeriodExtractor
+from .duration_extractor import ChineseDurationExtractor
 from .holiday_extractor_config import ChineseHolidayExtractorConfiguration
+from .time_extractor import ChineseTimeExtractor
+from .timeperiod_extractor import ChineseTimePeriodExtractor
 
 
 class ChineseMergedExtractorConfiguration(MergedExtractorConfiguration):

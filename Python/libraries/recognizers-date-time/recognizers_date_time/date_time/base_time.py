@@ -2,16 +2,18 @@
 #  Licensed under the MIT License.
 
 from abc import abstractmethod
-from typing import List, Optional, Pattern, Dict, Match
 from datetime import datetime
+from typing import Dict, List, Match, Optional, Pattern
+
 import regex
 
-from recognizers_text.utilities import RegExpUtility
 from recognizers_text.extractor import ExtractResult
+from recognizers_text.utilities import RegExpUtility
+
 from .constants import Constants, TimeTypeConstants
 from .extractors import DateTimeExtractor
 from .parsers import DateTimeParser, DateTimeParseResult
-from .utilities import DateTimeOptionsConfiguration, merge_all_tokens, RegExpUtility
+from .utilities import DateTimeOptionsConfiguration, RegExpUtility, merge_all_tokens
 
 
 class TimeExtractorConfiguration(DateTimeOptionsConfiguration):
@@ -61,6 +63,7 @@ class BaseTimeExtractor(DateTimeExtractor):
 
     def before_after_regex_match(self, source: str) -> []:
         from recognizers_date_time import DateTimeOptions
+
         from .utilities import Token
         result: List[Token] = list()
 

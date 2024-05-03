@@ -1,18 +1,19 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from typing import Pattern, Dict
+from typing import Dict, Pattern
+
 import regex
 
 from recognizers_text import RegExpUtility
 
 from ...resources.chinese_date_time import ChineseDateTime
+from ..base_dateperiod import DatePeriodParserConfiguration
 from ..extractors import DateTimeExtractor
 from ..parsers import DateTimeParser
-from ..base_dateperiod import DatePeriodParserConfiguration
-from .duration_extractor import ChineseDurationExtractor
 from .date_extractor import ChineseDateExtractor
 from .date_parser import ChineseDateParser
+from .duration_extractor import ChineseDurationExtractor
 
 
 class ChineseDatePeriodParserConfiguration(DatePeriodParserConfiguration):

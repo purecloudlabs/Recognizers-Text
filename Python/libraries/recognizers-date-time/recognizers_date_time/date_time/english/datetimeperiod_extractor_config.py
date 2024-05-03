@@ -2,24 +2,26 @@
 #  Licensed under the MIT License.
 
 from typing import List, Pattern
+
 import regex
 
 from recognizers_number import BaseNumberExtractor, EnglishCardinalExtractor
 from recognizers_text.utilities import RegExpUtility
+
 from ...resources.english_date_time import EnglishDateTime
-from ..extractors import DateTimeExtractor
-from ..base_datetimeperiod import DateTimePeriodExtractorConfiguration, MatchedIndex
 from ..base_date import BaseDateExtractor
-from ..base_time import BaseTimeExtractor
-from ..base_duration import BaseDurationExtractor
-from ..base_timeperiod import BaseTimePeriodExtractor
 from ..base_datetime import BaseDateTimeExtractor
-from .date_extractor_config import EnglishDateExtractorConfiguration
-from .time_extractor_config import EnglishTimeExtractorConfiguration
-from .duration_extractor_config import EnglishDurationExtractorConfiguration
-from .timeperiod_extractor_config import EnglishTimePeriodExtractorConfiguration
-from .datetime_extractor_config import EnglishDateTimeExtractorConfiguration
+from ..base_datetimeperiod import DateTimePeriodExtractorConfiguration, MatchedIndex
+from ..base_duration import BaseDurationExtractor
+from ..base_time import BaseTimeExtractor
+from ..base_timeperiod import BaseTimePeriodExtractor
+from ..extractors import DateTimeExtractor
 from ..utilities import DateTimeOptions
+from .date_extractor_config import EnglishDateExtractorConfiguration
+from .datetime_extractor_config import EnglishDateTimeExtractorConfiguration
+from .duration_extractor_config import EnglishDurationExtractorConfiguration
+from .time_extractor_config import EnglishTimeExtractorConfiguration
+from .timeperiod_extractor_config import EnglishTimePeriodExtractorConfiguration
 
 
 class EnglishDateTimePeriodExtractorConfiguration(DateTimePeriodExtractorConfiguration):

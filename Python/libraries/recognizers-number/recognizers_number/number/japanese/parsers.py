@@ -1,14 +1,14 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from typing import List, Dict, Pattern, Optional
+from typing import Dict, List, Optional, Pattern
 
-from recognizers_text.utilities import RegExpUtility
+from recognizers_number.culture import CultureInfo
+from recognizers_number.number.cjk_parsers import CJKNumberParserConfiguration
+from recognizers_number.resources.japanese_numeric import JapaneseNumeric
 from recognizers_text.culture import Culture
 from recognizers_text.parser import ParseResult
-from recognizers_number.resources.japanese_numeric import JapaneseNumeric
-from recognizers_number.number.cjk_parsers import CJKNumberParserConfiguration
-from recognizers_number.culture import CultureInfo
+from recognizers_text.utilities import RegExpUtility
 
 
 class JapaneseNumberParserConfiguration(CJKNumberParserConfiguration):

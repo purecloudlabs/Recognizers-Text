@@ -3,29 +3,30 @@
 
 from typing import List, Pattern
 
-from recognizers_text.extractor import Extractor
-from recognizers_text.utilities import RegExpUtility, DefinitionLoader
 from recognizers_number import FrenchIntegerExtractor
+from recognizers_text.extractor import Extractor
+from recognizers_text.utilities import DefinitionLoader, RegExpUtility
+
+from ...resources.base_date_time import BaseDateTime
 from ...resources.french_date_time import FrenchDateTime
-from ..extractors import DateTimeExtractor
-from ..base_merged import MergedExtractorConfiguration
 from ..base_date import BaseDateExtractor
-from ..base_time import BaseTimeExtractor
-from ..base_duration import BaseDurationExtractor
 from ..base_dateperiod import BaseDatePeriodExtractor
-from ..base_timeperiod import BaseTimePeriodExtractor
 from ..base_datetime import BaseDateTimeExtractor
 from ..base_datetimeperiod import BaseDateTimePeriodExtractor
+from ..base_duration import BaseDurationExtractor
 from ..base_holiday import BaseHolidayExtractor
+from ..base_merged import MergedExtractorConfiguration
+from ..base_time import BaseTimeExtractor
+from ..base_timeperiod import BaseTimePeriodExtractor
+from ..extractors import DateTimeExtractor
 from .date_extractor_config import FrenchDateExtractorConfiguration
-from .time_extractor_config import FrenchTimeExtractorConfiguration
-from .duration_extractor_config import FrenchDurationExtractorConfiguration
 from .dateperiod_extractor_config import FrenchDatePeriodExtractorConfiguration
-from .timeperiod_extractor_config import FrenchTimePeriodExtractorConfiguration
 from .datetime_extractor_config import FrenchDateTimeExtractorConfiguration
 from .datetimeperiod_extractor_config import FrenchDateTimePeriodExtractorConfiguration
+from .duration_extractor_config import FrenchDurationExtractorConfiguration
 from .holiday_extractor_config import FrenchHolidayExtractorConfiguration
-from ...resources.base_date_time import BaseDateTime
+from .time_extractor_config import FrenchTimeExtractorConfiguration
+from .timeperiod_extractor_config import FrenchTimePeriodExtractorConfiguration
 
 
 class FrenchMergedExtractorConfiguration(MergedExtractorConfiguration):

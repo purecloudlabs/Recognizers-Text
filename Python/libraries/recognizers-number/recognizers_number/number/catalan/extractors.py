@@ -1,10 +1,10 @@
 from typing import List
 
-from recognizers_text.utilities import RegExpUtility
-from recognizers_number.number.models import NumberMode, LongFormatMode
-from recognizers_number.resources.catalan_numeric import CatalanNumeric
-from recognizers_number.number.extractors import ReVal, ReRe, BaseNumberExtractor
 from recognizers_number.number.constants import Constants
+from recognizers_number.number.extractors import BaseNumberExtractor, ReRe, ReVal
+from recognizers_number.number.models import LongFormatMode, NumberMode
+from recognizers_number.resources.catalan_numeric import CatalanNumeric
+from recognizers_text.utilities import RegExpUtility
 
 
 class CatalanNumberExtractor(BaseNumberExtractor):

@@ -2,17 +2,18 @@
 #  Licensed under the MIT License.
 
 
-from recognizers_text.utilities import RegExpUtility
 from recognizers_number.number import BaseNumberParser
 from recognizers_number.number.english.extractors import EnglishIntegerExtractor
 from recognizers_number.number.english.parsers import EnglishNumberParserConfiguration
+from recognizers_text.utilities import RegExpUtility
+
 from ...resources.english_date_time import EnglishDateTime
-from ..base_duration import BaseDurationExtractor
 from ..base_date import BaseDateExtractor
 from ..base_dateperiod import DatePeriodExtractorConfiguration, MatchedIndex
-from .duration_extractor_config import EnglishDurationExtractorConfiguration
+from ..base_duration import BaseDurationExtractor
+from .common_configs import EnglishCardinalExtractor, EnglishOrdinalExtractor
 from .date_extractor_config import EnglishDateExtractorConfiguration
-from .common_configs import EnglishOrdinalExtractor, EnglishCardinalExtractor
+from .duration_extractor_config import EnglishDurationExtractorConfiguration
 
 
 class EnglishDatePeriodExtractorConfiguration(DatePeriodExtractorConfiguration):

@@ -3,29 +3,30 @@
 
 from typing import List, Pattern
 
+from recognizers_number import EnglishIntegerExtractor
 from recognizers_text.extractor import Extractor
 from recognizers_text.utilities import RegExpUtility
-from recognizers_number import EnglishIntegerExtractor
+
+from ...resources.base_date_time import BaseDateTime
 from ...resources.english_date_time import EnglishDateTime
-from ..extractors import DateTimeExtractor
-from ..base_merged import MergedExtractorConfiguration
 from ..base_date import BaseDateExtractor
-from ..base_time import BaseTimeExtractor
-from ..base_duration import BaseDurationExtractor
 from ..base_dateperiod import BaseDatePeriodExtractor
-from ..base_timeperiod import BaseTimePeriodExtractor
 from ..base_datetime import BaseDateTimeExtractor
 from ..base_datetimeperiod import BaseDateTimePeriodExtractor
+from ..base_duration import BaseDurationExtractor
 from ..base_holiday import BaseHolidayExtractor
+from ..base_merged import MergedExtractorConfiguration
+from ..base_time import BaseTimeExtractor
+from ..base_timeperiod import BaseTimePeriodExtractor
+from ..extractors import DateTimeExtractor
 from .date_extractor_config import EnglishDateExtractorConfiguration
-from .time_extractor_config import EnglishTimeExtractorConfiguration
-from .duration_extractor_config import EnglishDurationExtractorConfiguration
 from .dateperiod_extractor_config import EnglishDatePeriodExtractorConfiguration
-from .timeperiod_extractor_config import EnglishTimePeriodExtractorConfiguration
 from .datetime_extractor_config import EnglishDateTimeExtractorConfiguration
 from .datetimeperiod_extractor_config import EnglishDateTimePeriodExtractorConfiguration
+from .duration_extractor_config import EnglishDurationExtractorConfiguration
 from .holiday_extractor_config import EnglishHolidayExtractorConfiguration
-from ...resources.base_date_time import BaseDateTime
+from .time_extractor_config import EnglishTimeExtractorConfiguration
+from .timeperiod_extractor_config import EnglishTimePeriodExtractorConfiguration
 
 
 class EnglishMergedExtractorConfiguration(MergedExtractorConfiguration):

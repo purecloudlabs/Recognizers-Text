@@ -4,6 +4,7 @@
 from typing import List, Pattern
 
 from recognizers_text.utilities import RegExpUtility
+
 from ...resources.french_date_time import FrenchDateTime
 from ..base_time import TimeExtractorConfiguration
 from ..utilities import DateTimeOptions

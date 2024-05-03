@@ -4,9 +4,10 @@
 from datetime import datetime
 
 from recognizers_text.utilities import RegExpUtility
+
 from ...resources.italian_date_time import ItalianDateTime
 from ..base_time import BaseTimeParser
-from ..utilities import DateTimeResolutionResult, DateTimeFormatUtil, DateUtils
+from ..utilities import DateTimeFormatUtil, DateTimeResolutionResult, DateUtils
 
 
 class ItalianTimeParser(BaseTimeParser):

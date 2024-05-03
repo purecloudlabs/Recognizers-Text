@@ -2,17 +2,21 @@
 #  Licensed under the MIT License.
 
 
-from recognizers_text.utilities import RegExpUtility
 from recognizers_number.number import BaseNumberParser
-from recognizers_number.number.spanish.extractors import SpanishIntegerExtractor,\
-    SpanishCardinalExtractor, SpanishOrdinalExtractor
+from recognizers_number.number.spanish.extractors import (
+    SpanishCardinalExtractor,
+    SpanishIntegerExtractor,
+    SpanishOrdinalExtractor,
+)
 from recognizers_number.number.spanish.parsers import SpanishNumberParserConfiguration
+from recognizers_text.utilities import RegExpUtility
+
 from ...resources.spanish_date_time import SpanishDateTime
-from ..base_duration import BaseDurationExtractor
 from ..base_date import BaseDateExtractor
 from ..base_dateperiod import DatePeriodExtractorConfiguration, MatchedIndex
-from .duration_extractor_config import SpanishDurationExtractorConfiguration
+from ..base_duration import BaseDurationExtractor
 from .date_extractor_config import SpanishDateExtractorConfiguration
+from .duration_extractor_config import SpanishDurationExtractorConfiguration
 
 
 class SpanishDatePeriodExtractorConfiguration(DatePeriodExtractorConfiguration):

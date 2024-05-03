@@ -4,9 +4,10 @@
 from datetime import datetime
 
 from recognizers_text.utilities import RegExpUtility
+
 from ...resources.german_date_time import GermanDateTime
 from ..base_time import BaseTimeParser
-from ..utilities import DateTimeResolutionResult, DateTimeFormatUtil, DateUtils
+from ..utilities import DateTimeFormatUtil, DateTimeResolutionResult, DateUtils
 
 
 class GermanTimeParser(BaseTimeParser):

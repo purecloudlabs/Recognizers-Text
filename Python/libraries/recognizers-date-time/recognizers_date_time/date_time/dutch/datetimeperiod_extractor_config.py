@@ -5,19 +5,20 @@ from typing import List, Pattern
 
 from recognizers_number import BaseNumberExtractor, DutchCardinalExtractor
 from recognizers_text.utilities import RegExpUtility
+
 from ...resources.dutch_date_time import DutchDateTime
-from ..extractors import DateTimeExtractor
-from ..base_datetimeperiod import DateTimePeriodExtractorConfiguration, MatchedIndex
 from ..base_date import BaseDateExtractor
-from ..base_time import BaseTimeExtractor
-from ..base_duration import BaseDurationExtractor
-from ..base_timeperiod import BaseTimePeriodExtractor
 from ..base_datetime import BaseDateTimeExtractor
+from ..base_datetimeperiod import DateTimePeriodExtractorConfiguration, MatchedIndex
+from ..base_duration import BaseDurationExtractor
+from ..base_time import BaseTimeExtractor
+from ..base_timeperiod import BaseTimePeriodExtractor
+from ..extractors import DateTimeExtractor
 from .date_extractor_config import DutchDateExtractorConfiguration
-from .time_extractor_config import DutchTimeExtractorConfiguration
-from .duration_extractor_config import DutchDurationExtractorConfiguration
-from .timeperiod_extractor_config import DutchTimePeriodExtractorConfiguration
 from .datetime_extractor_config import DutchDateTimeExtractorConfiguration
+from .duration_extractor_config import DutchDurationExtractorConfiguration
+from .time_extractor_config import DutchTimeExtractorConfiguration
+from .timeperiod_extractor_config import DutchTimePeriodExtractorConfiguration
 
 
 class DutchDateTimePeriodExtractorConfiguration(DateTimePeriodExtractorConfiguration):

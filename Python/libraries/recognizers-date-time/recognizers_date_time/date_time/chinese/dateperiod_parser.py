@@ -1,20 +1,21 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from typing import Optional
 from datetime import datetime, timedelta
-from datedelta import datedelta
-import regex
+from typing import Optional
 
-from recognizers_text import RegExpUtility, ExtractResult
-from recognizers_number import ChineseIntegerExtractor, CJKNumberParser, ChineseNumberParserConfiguration, \
-    Constants as NumberConstants
+import regex
+from datedelta import datedelta
+
+from recognizers_number import ChineseIntegerExtractor, ChineseNumberParserConfiguration, CJKNumberParser
+from recognizers_number import Constants as NumberConstants
+from recognizers_text import ExtractResult, RegExpUtility
 
 from ...resources.chinese_date_time import ChineseDateTime
-from ..constants import Constants, TimeTypeConstants
-from ..utilities import DateTimeFormatUtil, DateTimeResolutionResult, DateUtils, DayOfWeek
-from ..parsers import DateTimeParseResult
 from ..base_dateperiod import BaseDatePeriodParser
+from ..constants import Constants, TimeTypeConstants
+from ..parsers import DateTimeParseResult
+from ..utilities import DateTimeFormatUtil, DateTimeResolutionResult, DateUtils, DayOfWeek
 from .dateperiod_parser_config import ChineseDatePeriodParserConfiguration
 
 

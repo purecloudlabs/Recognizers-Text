@@ -1,15 +1,15 @@
-from typing import Pattern, Dict
+from typing import Dict, Pattern
 
-from recognizers_text.utilities import RegExpUtility
-from recognizers_number.number.extractors import BaseNumberExtractor
-from recognizers_number.number.parsers import BaseNumberParser
-from recognizers_date_time.resources.arabic_date_time import ArabicDateTime
-from recognizers_date_time.date_time.extractors import DateTimeExtractor
-from recognizers_date_time.date_time.parsers import DateTimeParser
-from recognizers_date_time.date_time.utilities import DateTimeUtilityConfiguration
 from recognizers_date_time.date_time.base_configs import BaseDateParserConfiguration
 from recognizers_date_time.date_time.base_datetime import DateTimeParserConfiguration, MatchedTimex
 from recognizers_date_time.date_time.constants import Constants
+from recognizers_date_time.date_time.extractors import DateTimeExtractor
+from recognizers_date_time.date_time.parsers import DateTimeParser
+from recognizers_date_time.date_time.utilities import DateTimeUtilityConfiguration
+from recognizers_date_time.resources.arabic_date_time import ArabicDateTime
+from recognizers_number.number.extractors import BaseNumberExtractor
+from recognizers_number.number.parsers import BaseNumberParser
+from recognizers_text.utilities import RegExpUtility
 
 
 class ArabicDateTimeParserConfiguration(DateTimeParserConfiguration):

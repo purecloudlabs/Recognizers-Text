@@ -1,12 +1,15 @@
-from typing import Dict, Pattern, List
+from typing import Dict, List, Pattern
 
-from recognizers_number.culture import CultureInfo, Culture
-from recognizers_text.extractor import Extractor
-from recognizers_text.utilities import RegExpUtility, DefinitionLoader
-from recognizers_date_time.date_time.constants import Constants
 from recognizers_date_time.date_time.CJK import CJKDurationExtractorConfiguration
+from recognizers_date_time.date_time.constants import Constants
 from recognizers_date_time.resources.japanese_date_time import JapaneseDateTime
-from recognizers_number_with_unit.number_with_unit import NumberWithUnitExtractor, JapaneseNumberWithUnitExtractorConfiguration
+from recognizers_number.culture import Culture, CultureInfo
+from recognizers_number_with_unit.number_with_unit import (
+    JapaneseNumberWithUnitExtractorConfiguration,
+    NumberWithUnitExtractor,
+)
+from recognizers_text.extractor import Extractor
+from recognizers_text.utilities import DefinitionLoader, RegExpUtility
 
 
 class JapaneseDurationExtractorConfiguration(CJKDurationExtractorConfiguration):

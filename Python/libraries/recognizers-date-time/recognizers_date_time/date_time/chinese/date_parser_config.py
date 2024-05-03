@@ -1,14 +1,14 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from typing import List, Pattern, Dict
+from typing import Dict, List, Pattern
 
-from recognizers_text import RegExpUtility, Extractor, Parser
-from recognizers_number import CJKNumberParser, ChineseIntegerExtractor, ChineseNumberParserConfiguration
+from recognizers_number import ChineseIntegerExtractor, ChineseNumberParserConfiguration, CJKNumberParser
+from recognizers_text import Extractor, Parser, RegExpUtility
 
 from ...resources.chinese_date_time import ChineseDateTime
-from ..constants import Constants
 from ..base_date import DateParserConfiguration
+from ..constants import Constants
 from ..extractors import DateTimeExtractor
 
 

@@ -3,16 +3,17 @@
 
 from typing import List, Pattern
 
-from recognizers_text.utilities import RegExpUtility
-from recognizers_text.extractor import Extractor
 from recognizers_number.number.spanish.extractors import SpanishIntegerExtractor
+from recognizers_text.extractor import Extractor
+from recognizers_text.utilities import RegExpUtility
+
 from ...resources.spanish_date_time import SpanishDateTime
-from ..extractors import DateTimeExtractor
-from ..base_timeperiod import TimePeriodExtractorConfiguration, MatchedIndex
 from ..base_time import BaseTimeExtractor
-from .time_extractor_config import SpanishTimeExtractorConfiguration
-from .base_configs import SpanishDateTimeUtilityConfiguration
+from ..base_timeperiod import MatchedIndex, TimePeriodExtractorConfiguration
+from ..extractors import DateTimeExtractor
 from ..utilities import DateTimeOptions
+from .base_configs import SpanishDateTimeUtilityConfiguration
+from .time_extractor_config import SpanishTimeExtractorConfiguration
 
 
 class SpanishTimePeriodExtractorConfiguration(TimePeriodExtractorConfiguration):

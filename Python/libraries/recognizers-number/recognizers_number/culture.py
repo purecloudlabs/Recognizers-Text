@@ -2,7 +2,9 @@
 #  Licensed under the MIT License.
 
 from recognizers_text.culture import BaseCultureInfo, Culture
+
 from .number import LongFormatMode, LongFormatType
+
 
 SUPPORTED_CULTURES = {
     Culture.English: LongFormatMode.DOUBLE_COMMA_DOT,

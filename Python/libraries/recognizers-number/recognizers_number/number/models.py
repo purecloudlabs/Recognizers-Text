@@ -2,15 +2,15 @@
 #  Licensed under the MIT License.
 
 from abc import abstractmethod
-from typing import List, Optional
-from enum import Enum
 from collections import namedtuple
+from enum import Enum
+from typing import List, Optional
 
+from recognizers_number.number.constants import Constants
 from recognizers_text import Model, ModelResult
 from recognizers_text.extractor import Extractor, ExtractResult
 from recognizers_text.parser import Parser
 from recognizers_text.utilities import QueryProcessor
-from recognizers_number.number.constants import Constants
 
 
 class NumberMode(Enum):

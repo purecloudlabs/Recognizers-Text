@@ -1,12 +1,19 @@
-from typing import Pattern, List, Optional
-from recognizers_number import (BaseNumberExtractor, BaseNumberParser,
-                                CatalanOrdinalExtractor, CatalanIntegerExtractor, CatalanNumberParserConfiguration)
+from typing import List, Optional, Pattern
+
+from recognizers_number import (
+    BaseNumberExtractor,
+    BaseNumberParser,
+    CatalanIntegerExtractor,
+    CatalanNumberParserConfiguration,
+    CatalanOrdinalExtractor,
+)
 from recognizers_text.utilities import RegExpUtility
+
 from ...resources.catalan_date_time import CatalanDateTime
-from ..extractors import DateTimeExtractor
 from ..base_date import DateExtractorConfiguration, DateTimeUtilityConfiguration
-from .base_configs import CatalanDateTimeUtilityConfiguration
 from ..constants import Constants
+from ..extractors import DateTimeExtractor
+from .base_configs import CatalanDateTimeUtilityConfiguration
 
 
 class CatalanDateExtractorConfiguration(DateExtractorConfiguration):

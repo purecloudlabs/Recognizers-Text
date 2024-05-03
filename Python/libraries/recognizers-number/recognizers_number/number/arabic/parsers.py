@@ -1,12 +1,11 @@
 from re import Pattern
-from typing import List, Dict, Optional
+from typing import Dict, List, Optional
 
-
-from recognizers_text.utilities import RegExpUtility
-from recognizers_text.culture import Culture
 from recognizers_number.culture import CultureInfo
 from recognizers_number.number.parsers import BaseNumberParserConfiguration
 from recognizers_number.resources.arabic_numeric import ArabicNumeric
+from recognizers_text.culture import Culture
+from recognizers_text.utilities import RegExpUtility
 
 
 class ArabicNumberParserConfiguration(BaseNumberParserConfiguration):

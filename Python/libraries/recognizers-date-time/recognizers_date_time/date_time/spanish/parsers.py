@@ -4,9 +4,10 @@
 from datetime import datetime, timedelta
 
 from recognizers_text.utilities import RegExpUtility
-from ..utilities import DateTimeResolutionResult, DateTimeFormatUtil, DateUtils
-from ..base_datetimeperiod import BaseDateTimePeriodParser
+
 from ...resources import SpanishDateTime
+from ..base_datetimeperiod import BaseDateTimePeriodParser
+from ..utilities import DateTimeFormatUtil, DateTimeResolutionResult, DateUtils
 from .datetimeperiod_parser_config import SpanishDateTimePeriodParserConfiguration
 
 

@@ -3,29 +3,30 @@
 
 from typing import List, Pattern
 
+from recognizers_number import PortugueseIntegerExtractor
 from recognizers_text.extractor import Extractor
 from recognizers_text.utilities import RegExpUtility
-from recognizers_number import PortugueseIntegerExtractor
+
+from ...resources.base_date_time import BaseDateTime
 from ...resources.portuguese_date_time import PortugueseDateTime
-from ..extractors import DateTimeExtractor
-from ..base_merged import MergedExtractorConfiguration
 from ..base_date import BaseDateExtractor
-from ..base_time import BaseTimeExtractor
-from ..base_duration import BaseDurationExtractor
 from ..base_dateperiod import BaseDatePeriodExtractor
-from ..base_timeperiod import BaseTimePeriodExtractor
 from ..base_datetime import BaseDateTimeExtractor
 from ..base_datetimeperiod import BaseDateTimePeriodExtractor
+from ..base_duration import BaseDurationExtractor
 from ..base_holiday import BaseHolidayExtractor
+from ..base_merged import MergedExtractorConfiguration
+from ..base_time import BaseTimeExtractor
+from ..base_timeperiod import BaseTimePeriodExtractor
+from ..extractors import DateTimeExtractor
 from .date_extractor_config import PortugueseDateExtractorConfiguration
-from .time_extractor_config import PortugueseTimeExtractorConfiguration
-from .duration_extractor_config import PortugueseDurationExtractorConfiguration
 from .dateperiod_extractor_config import PortugueseDatePeriodExtractorConfiguration
-from .timeperiod_extractor_config import PortugueseTimePeriodExtractorConfiguration
 from .datetime_extractor_config import PortugueseDateTimeExtractorConfiguration
 from .datetimeperiod_extractor_config import PortugueseDateTimePeriodExtractorConfiguration
+from .duration_extractor_config import PortugueseDurationExtractorConfiguration
 from .holiday_extractor_config import PortugueseHolidayExtractorConfiguration
-from ...resources.base_date_time import BaseDateTime
+from .time_extractor_config import PortugueseTimeExtractorConfiguration
+from .timeperiod_extractor_config import PortugueseTimePeriodExtractorConfiguration
 
 
 class PortugueseMergedExtractorConfiguration(MergedExtractorConfiguration):

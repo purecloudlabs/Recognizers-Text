@@ -3,36 +3,42 @@
 
 from typing import Dict, Pattern
 
-from recognizers_number import BaseNumberExtractor, DutchCardinalExtractor, DutchIntegerExtractor, \
-    DutchOrdinalExtractor, BaseNumberParser, DutchNumberParserConfiguration
+from recognizers_number import (
+    BaseNumberExtractor,
+    BaseNumberParser,
+    DutchCardinalExtractor,
+    DutchIntegerExtractor,
+    DutchNumberParserConfiguration,
+    DutchOrdinalExtractor,
+)
 
-from ...resources import DutchDateTime, BaseDateTime
-from ..extractors import DateTimeExtractor
-from ..parsers import DateTimeParser
+from ...resources import BaseDateTime, DutchDateTime
 from ..base_configs import BaseDateParserConfiguration, DateTimeUtilityConfiguration
 from ..base_date import BaseDateExtractor, BaseDateParser
-from ..base_time import BaseTimeExtractor
-from ..base_duration import BaseDurationExtractor, BaseDurationParser
 from ..base_dateperiod import BaseDatePeriodExtractor, BaseDatePeriodParser
-from ..base_timeperiod import BaseTimePeriodExtractor, BaseTimePeriodParser
 from ..base_datetime import BaseDateTimeExtractor, BaseDateTimeParser
 from ..base_datetimeperiod import BaseDateTimePeriodExtractor, BaseDateTimePeriodParser
+from ..base_duration import BaseDurationExtractor, BaseDurationParser
+from ..base_time import BaseTimeExtractor
+from ..base_timeperiod import BaseTimePeriodExtractor, BaseTimePeriodParser
+from ..extractors import DateTimeExtractor
+from ..parsers import DateTimeParser
 from .base_configs import DutchDateTimeUtilityConfiguration
-from .duration_extractor_config import DutchDurationExtractorConfiguration
 from .date_extractor_config import DutchDateExtractorConfiguration
-from .time_extractor_config import DutchTimeExtractorConfiguration
-from .datetime_extractor_config import DutchDateTimeExtractorConfiguration
-from .dateperiod_extractor_config import DutchDatePeriodExtractorConfiguration
-from .timeperiod_extractor_config import DutchTimePeriodExtractorConfiguration
-from .datetimeperiod_extractor_config import DutchDateTimePeriodExtractorConfiguration
-from .duration_parser_config import DutchDurationParserConfiguration
 from .date_parser_config import DutchDateParserConfiguration
-from .time_parser_config import DutchTimeParserConfiguration
-from .datetime_parser_config import DutchDateTimeParserConfiguration
+from .dateperiod_extractor_config import DutchDatePeriodExtractorConfiguration
 from .dateperiod_parser_config import DutchDatePeriodParserConfiguration
-from .timeperiod_parser_config import DutchTimePeriodParserConfiguration
+from .datetime_extractor_config import DutchDateTimeExtractorConfiguration
+from .datetime_parser_config import DutchDateTimeParserConfiguration
+from .datetimeperiod_extractor_config import DutchDateTimePeriodExtractorConfiguration
 from .datetimeperiod_parser_config import DutchDateTimePeriodParserConfiguration
+from .duration_extractor_config import DutchDurationExtractorConfiguration
+from .duration_parser_config import DutchDurationParserConfiguration
 from .parsers import DutchTimeParser
+from .time_extractor_config import DutchTimeExtractorConfiguration
+from .time_parser_config import DutchTimeParserConfiguration
+from .timeperiod_extractor_config import DutchTimePeriodExtractorConfiguration
+from .timeperiod_parser_config import DutchTimePeriodParserConfiguration
 
 
 class DutchCommonDateTimeParserConfiguration(BaseDateParserConfiguration):

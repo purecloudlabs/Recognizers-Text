@@ -1,19 +1,22 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from typing import Optional, Match
 from datetime import datetime, timedelta
+from typing import Match, Optional
+
 from datedelta import datedelta
-from recognizers_number import ChineseIntegerExtractor, AgnosticNumberParserFactory,\
-    ParserType as AgnosticNumberParserType, ChineseNumberParserConfiguration, Constants as NumberConstants
+
+from recognizers_number import AgnosticNumberParserFactory, ChineseIntegerExtractor, ChineseNumberParserConfiguration
+from recognizers_number import Constants as NumberConstants
+from recognizers_number import ParserType as AgnosticNumberParserType
 from recognizers_text.extractor import ExtractResult
 
 from ...resources.chinese_date_time import ChineseDateTime
 from ..base_holiday import BaseHolidayParser
-from ..parsers import DateTimeParseResult
-from .holiday_parser_config import ChineseHolidayParserConfiguration
 from ..constants import TimeTypeConstants
+from ..parsers import DateTimeParseResult
 from ..utilities import DateTimeFormatUtil, DateTimeResolutionResult, RegExpUtility
+from .holiday_parser_config import ChineseHolidayParserConfiguration
 
 
 class ChineseHolidayParser(BaseHolidayParser):

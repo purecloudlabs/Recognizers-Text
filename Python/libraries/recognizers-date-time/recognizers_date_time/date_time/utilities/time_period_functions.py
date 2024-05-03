@@ -1,13 +1,18 @@
-from typing import Match
 from datetime import datetime, timedelta
+from typing import Match
 
+from recognizers_date_time.date_time.data_structures import PeriodType
+from recognizers_date_time.date_time.parsers import DateTimeParser
+from recognizers_date_time.date_time.utilities import (
+    DateTimeExtra,
+    DateTimeResolutionResult,
+    DateUtils,
+    TimeFunctions,
+    TimeResult,
+)
 from recognizers_text import ExtractResult
 
 from ..constants import Constants
-from recognizers_date_time.date_time.utilities import DateTimeResolutionResult, DateUtils, TimeFunctions, \
-    DateTimeExtra, TimeResult
-from recognizers_date_time.date_time.parsers import DateTimeParser
-from recognizers_date_time.date_time.data_structures import PeriodType
 
 
 class TimePeriodFunctions:

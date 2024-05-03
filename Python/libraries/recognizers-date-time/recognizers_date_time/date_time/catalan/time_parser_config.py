@@ -1,10 +1,12 @@
-from typing import List, Pattern, Dict
+from typing import Dict, List, Pattern
+
 import regex
 
 from recognizers_text.utilities import RegExpUtility
+
 from ...resources.catalan_date_time import CatalanDateTime
-from ..base_time import TimeParserConfiguration, AdjustParams
 from ..base_configs import BaseDateParserConfiguration, DateTimeUtilityConfiguration
+from ..base_time import AdjustParams, TimeParserConfiguration
 from .time_extractor_config import CatalanTimeExtractorConfiguration
 
 

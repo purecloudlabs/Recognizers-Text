@@ -3,9 +3,10 @@
 
 from typing import Pattern
 
-from recognizers_text.utilities import RegExpUtility
 from recognizers_number.number.extractors import BaseNumberExtractor
 from recognizers_number.number.german.extractors import GermanCardinalExtractor
+from recognizers_text.utilities import RegExpUtility
+
 from ...resources.german_date_time import GermanDateTime
 from ..base_duration import DurationExtractorConfiguration
 

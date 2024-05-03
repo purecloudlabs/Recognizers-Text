@@ -2,19 +2,30 @@
 #  Licensed under the MIT License.
 
 from abc import abstractmethod
-from typing import List, Optional, Pattern, Dict
-from datetime import datetime, timedelta
 from collections import namedtuple
+from datetime import datetime, timedelta
+from typing import Dict, List, Optional, Pattern
+
 import regex
 
-from recognizers_text.utilities import RegExpUtility, QueryProcessor
-from recognizers_text.extractor import Extractor, ExtractResult, Metadata
 from recognizers_date_time.date_time.base_time import BaseTimeExtractor, BaseTimeParser
+from recognizers_text.extractor import Extractor, ExtractResult, Metadata
+from recognizers_text.utilities import QueryProcessor, RegExpUtility
+
 from .constants import Constants, TimeTypeConstants
 from .extractors import DateTimeExtractor
 from .parsers import DateTimeParser, DateTimeParseResult
-from .utilities import Token, merge_all_tokens, DateTimeResolutionResult, \
-    DateTimeUtilityConfiguration, DateTimeFormatUtil, ResolutionStartEnd, DateTimeOptionsConfiguration, DateTimeOptions
+from .utilities import (
+    DateTimeFormatUtil,
+    DateTimeOptions,
+    DateTimeOptionsConfiguration,
+    DateTimeResolutionResult,
+    DateTimeUtilityConfiguration,
+    ResolutionStartEnd,
+    Token,
+    merge_all_tokens,
+)
+
 
 MatchedIndex = namedtuple('MatchedIndex', ['matched', 'index'])
 

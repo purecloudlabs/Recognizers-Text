@@ -1,11 +1,11 @@
-from typing import Dict, Pattern, List, Optional
+from typing import Dict, List, Optional, Pattern
 
-from recognizers_text.utilities import RegExpUtility
-from recognizers_text.culture import Culture
-from recognizers_text.parser import ParseResult
 from recognizers_number.culture import CultureInfo
 from recognizers_number.number.parsers import BaseNumberParserConfiguration
 from recognizers_number.resources.catalan_numeric import CatalanNumeric
+from recognizers_text.culture import Culture
+from recognizers_text.parser import ParseResult
+from recognizers_text.utilities import RegExpUtility
 
 
 class CatalanNumberParserConfiguration(BaseNumberParserConfiguration):

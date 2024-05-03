@@ -5,20 +5,21 @@ from typing import List, Pattern
 
 from recognizers_number import BaseNumberExtractor, SpanishCardinalExtractor
 from recognizers_text.utilities import RegExpUtility
+
 from ...resources.spanish_date_time import SpanishDateTime
-from ..extractors import DateTimeExtractor
-from ..base_datetimeperiod import DateTimePeriodExtractorConfiguration, MatchedIndex
 from ..base_date import BaseDateExtractor
-from ..base_time import BaseTimeExtractor
-from ..base_duration import BaseDurationExtractor
-from ..base_timeperiod import BaseTimePeriodExtractor
 from ..base_datetime import BaseDateTimeExtractor
-from .date_extractor_config import SpanishDateExtractorConfiguration
-from .time_extractor_config import SpanishTimeExtractorConfiguration
-from .duration_extractor_config import SpanishDurationExtractorConfiguration
-from .timeperiod_extractor_config import SpanishTimePeriodExtractorConfiguration
-from .datetime_extractor_config import SpanishDateTimeExtractorConfiguration
+from ..base_datetimeperiod import DateTimePeriodExtractorConfiguration, MatchedIndex
+from ..base_duration import BaseDurationExtractor
+from ..base_time import BaseTimeExtractor
+from ..base_timeperiod import BaseTimePeriodExtractor
+from ..extractors import DateTimeExtractor
 from ..utilities import DateTimeOptions
+from .date_extractor_config import SpanishDateExtractorConfiguration
+from .datetime_extractor_config import SpanishDateTimeExtractorConfiguration
+from .duration_extractor_config import SpanishDurationExtractorConfiguration
+from .time_extractor_config import SpanishTimeExtractorConfiguration
+from .timeperiod_extractor_config import SpanishTimePeriodExtractorConfiguration
 
 
 class SpanishDateTimePeriodExtractorConfiguration(DateTimePeriodExtractorConfiguration):

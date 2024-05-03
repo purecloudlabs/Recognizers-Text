@@ -5,19 +5,20 @@ from typing import List, Pattern
 
 from recognizers_number import BaseNumberExtractor, FrenchCardinalExtractor
 from recognizers_text.utilities import RegExpUtility
+
 from ...resources.french_date_time import FrenchDateTime
-from ..extractors import DateTimeExtractor
-from ..base_datetimeperiod import DateTimePeriodExtractorConfiguration, MatchedIndex
 from ..base_date import BaseDateExtractor
-from ..base_time import BaseTimeExtractor
-from ..base_duration import BaseDurationExtractor
-from ..base_timeperiod import BaseTimePeriodExtractor
 from ..base_datetime import BaseDateTimeExtractor
+from ..base_datetimeperiod import DateTimePeriodExtractorConfiguration, MatchedIndex
+from ..base_duration import BaseDurationExtractor
+from ..base_time import BaseTimeExtractor
+from ..base_timeperiod import BaseTimePeriodExtractor
+from ..extractors import DateTimeExtractor
 from .date_extractor_config import FrenchDateExtractorConfiguration
-from .time_extractor_config import FrenchTimeExtractorConfiguration
-from .duration_extractor_config import FrenchDurationExtractorConfiguration
-from .timeperiod_extractor_config import FrenchTimePeriodExtractorConfiguration
 from .datetime_extractor_config import FrenchDateTimeExtractorConfiguration
+from .duration_extractor_config import FrenchDurationExtractorConfiguration
+from .time_extractor_config import FrenchTimeExtractorConfiguration
+from .timeperiod_extractor_config import FrenchTimePeriodExtractorConfiguration
 
 
 class FrenchDateTimePeriodExtractorConfiguration(DateTimePeriodExtractorConfiguration):

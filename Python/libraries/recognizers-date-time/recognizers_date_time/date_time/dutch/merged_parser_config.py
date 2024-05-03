@@ -5,20 +5,20 @@ from typing import Pattern
 
 from recognizers_text.utilities import RegExpUtility
 
-from .holiday_parser_config import DutchHolidayParserConfiguration
-from .dateperiod_parser_config import DutchDatePeriodParserConfiguration
-from .timeperiod_parser_config import DutchTimePeriodParserConfiguration
-from .common_configs import DutchCommonDateTimeParserConfiguration
+from ...resources.dutch_date_time import BaseDateTime, DutchDateTime
 from ..base_date import BaseDateParser
-from ..base_time import BaseTimeParser
-from ..base_datetime import BaseDateTimeParser
-from ..base_holiday import BaseHolidayParser
 from ..base_dateperiod import BaseDatePeriodParser
-from ..base_timeperiod import BaseTimePeriodParser
+from ..base_datetime import BaseDateTimeParser
 from ..base_datetimeperiod import BaseDateTimePeriodParser
 from ..base_duration import BaseDurationParser
+from ..base_holiday import BaseHolidayParser
 from ..base_merged import MergedParserConfiguration
-from ...resources.dutch_date_time import DutchDateTime, BaseDateTime
+from ..base_time import BaseTimeParser
+from ..base_timeperiod import BaseTimePeriodParser
+from .common_configs import DutchCommonDateTimeParserConfiguration
+from .dateperiod_parser_config import DutchDatePeriodParserConfiguration
+from .holiday_parser_config import DutchHolidayParserConfiguration
+from .timeperiod_parser_config import DutchTimePeriodParserConfiguration
 
 
 class DutchMergedParserConfiguration(DutchCommonDateTimeParserConfiguration, MergedParserConfiguration):

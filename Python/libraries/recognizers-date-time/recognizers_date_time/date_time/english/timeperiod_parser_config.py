@@ -1,18 +1,19 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from typing import Pattern, Dict
+from typing import Dict, Pattern
 
-from recognizers_text.utilities import RegExpUtility
-from recognizers_text.extractor import Extractor
 from recognizers_number.number.english.extractors import EnglishIntegerExtractor
+from recognizers_text.extractor import Extractor
+from recognizers_text.utilities import RegExpUtility
+
 from ...resources.english_date_time import EnglishDateTime
+from ..base_configs import BaseDateParserConfiguration, DateTimeUtilityConfiguration
+from ..base_timeperiod import MatchedTimeRegex, TimePeriodParserConfiguration
+from ..constants import Constants
 from ..extractors import DateTimeExtractor
 from ..parsers import DateTimeParser
-from ..base_configs import BaseDateParserConfiguration, DateTimeUtilityConfiguration
-from ..base_timeperiod import TimePeriodParserConfiguration, MatchedTimeRegex
 from ..utilities import TimexUtil
-from ..constants import Constants
 
 
 class EnglishTimePeriodParserConfiguration(TimePeriodParserConfiguration):

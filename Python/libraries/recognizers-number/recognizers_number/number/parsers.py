@@ -1,17 +1,19 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 import sys
-from typing import Dict, Pattern, Optional, List
 from decimal import Decimal, getcontext
+from typing import Dict, List, Optional, Pattern
+
 import regex
-from recognizers_text.culture import Culture
-from recognizers_text.utilities import RegExpUtility
-from recognizers_text.extractor import ExtractResult
-from recognizers_text.parser import Parser, ParseResult
-from recognizers_text.meta_data import MetaData
+
 from recognizers_number.culture import CultureInfo
 from recognizers_number.number.constants import Constants
 from recognizers_number.number.utilities import precision
+from recognizers_text.culture import Culture
+from recognizers_text.extractor import ExtractResult
+from recognizers_text.meta_data import MetaData
+from recognizers_text.parser import Parser, ParseResult
+from recognizers_text.utilities import RegExpUtility
 
 
 class NumberParserConfiguration:

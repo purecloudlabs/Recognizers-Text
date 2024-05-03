@@ -1,15 +1,15 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from typing import Pattern, List
+from typing import List, Pattern
+
 import regex
 
-from recognizers_text.utilities import RegExpUtility
-from recognizers_number.number.models import NumberMode, LongFormatMode
-from recognizers_number.resources.italian_numeric import ItalianNumeric
-from recognizers_number.number.extractors import ReVal, ReRe, BaseNumberExtractor, \
-    BaseMergedNumberExtractor
 from recognizers_number.number.constants import Constants
+from recognizers_number.number.extractors import BaseMergedNumberExtractor, BaseNumberExtractor, ReRe, ReVal
+from recognizers_number.number.models import LongFormatMode, NumberMode
+from recognizers_number.resources.italian_numeric import ItalianNumeric
+from recognizers_text.utilities import RegExpUtility
 
 
 class ItalianNumberExtractor(BaseNumberExtractor):

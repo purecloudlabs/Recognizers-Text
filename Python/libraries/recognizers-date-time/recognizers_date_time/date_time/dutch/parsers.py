@@ -4,9 +4,10 @@
 from datetime import datetime
 
 from recognizers_text.utilities import RegExpUtility
+
 from ...resources.dutch_date_time import DutchDateTime
 from ..base_time import BaseTimeParser
-from ..utilities import DateTimeResolutionResult, DateTimeFormatUtil, DateUtils
+from ..utilities import DateTimeFormatUtil, DateTimeResolutionResult, DateUtils
 
 
 class DutchTimeParser(BaseTimeParser):

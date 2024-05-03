@@ -3,16 +3,17 @@
 
 from typing import List, Pattern
 
-from recognizers_text.utilities import RegExpUtility
-from recognizers_text.extractor import Extractor
 from recognizers_number.number.portuguese.extractors import PortugueseIntegerExtractor
+from recognizers_text.extractor import Extractor
+from recognizers_text.utilities import RegExpUtility
+
 from ...resources.portuguese_date_time import PortugueseDateTime
-from ..extractors import DateTimeExtractor
-from ..base_timeperiod import TimePeriodExtractorConfiguration, MatchedIndex
 from ..base_time import BaseTimeExtractor
+from ..base_timeperiod import MatchedIndex, TimePeriodExtractorConfiguration
+from ..extractors import DateTimeExtractor
+from ..utilities import DateTimeOptions
 from .base_configs import PortugueseDateTimeUtilityConfiguration
 from .time_extractor_config import PortugueseTimeExtractorConfiguration
-from ..utilities import DateTimeOptions
 
 
 class PortugueseTimePeriodExtractorConfiguration(TimePeriodExtractorConfiguration):

@@ -1,18 +1,25 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from typing import Pattern, List
-from recognizers_number import (BaseNumberExtractor, BaseNumberParser,
-                                FrenchOrdinalExtractor, FrenchIntegerExtractor, FrenchNumberParserConfiguration)
+from typing import List, Pattern
+
+from recognizers_number import (
+    BaseNumberExtractor,
+    BaseNumberParser,
+    FrenchIntegerExtractor,
+    FrenchNumberParserConfiguration,
+    FrenchOrdinalExtractor,
+)
 from recognizers_text.utilities import RegExpUtility
+
 from ...resources.french_date_time import FrenchDateTime
-from ..extractors import DateTimeExtractor
-from ..base_duration import BaseDurationExtractor
 from ..base_date import DateExtractorConfiguration, DateTimeUtilityConfiguration
-from ..utilities import DateTimeUtilityConfiguration
-from .duration_extractor_config import FrenchDurationExtractorConfiguration
-from .base_configs import FrenchDateTimeUtilityConfiguration
+from ..base_duration import BaseDurationExtractor
 from ..constants import Constants
+from ..extractors import DateTimeExtractor
+from ..utilities import DateTimeUtilityConfiguration
+from .base_configs import FrenchDateTimeUtilityConfiguration
+from .duration_extractor_config import FrenchDurationExtractorConfiguration
 
 
 class FrenchDateExtractorConfiguration(DateExtractorConfiguration):

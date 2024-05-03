@@ -1,8 +1,8 @@
 from typing import List, Pattern
 
-from recognizers_text.utilities import RegExpUtility
 from recognizers_date_time.date_time.CJK import CJKHolidayExtractorConfiguration
 from recognizers_date_time.resources.japanese_date_time import JapaneseDateTime
+from recognizers_text.utilities import RegExpUtility
 
 
 class JapaneseHolidayExtractorConfiguration(CJKHolidayExtractorConfiguration):

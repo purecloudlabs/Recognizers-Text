@@ -3,15 +3,16 @@
 
 from typing import List, Pattern
 
-from recognizers_text.utilities import RegExpUtility
-from recognizers_text.extractor import Extractor
 from recognizers_number.number.german.extractors import GermanIntegerExtractor
+from recognizers_text.extractor import Extractor
+from recognizers_text.utilities import RegExpUtility
+
 from ...resources.german_date_time import GermanDateTime
-from ..extractors import DateTimeExtractor
-from ..base_timeperiod import TimePeriodExtractorConfiguration, MatchedIndex
 from ..base_time import BaseTimeExtractor
-from .time_extractor_config import GermanTimeExtractorConfiguration
+from ..base_timeperiod import MatchedIndex, TimePeriodExtractorConfiguration
+from ..extractors import DateTimeExtractor
 from .base_configs import GermanDateTimeUtilityConfiguration
+from .time_extractor_config import GermanTimeExtractorConfiguration
 
 
 class GermanTimePeriodExtractorConfiguration(TimePeriodExtractorConfiguration):

@@ -4,22 +4,23 @@
 from typing import Pattern
 
 from recognizers_text.utilities import RegExpUtility
-from .holiday_parser_config import SpanishHolidayParserConfiguration
-from .dateperiod_parser_config import SpanishDatePeriodParserConfiguration
-from .timeperiod_parser_config import SpanishTimePeriodParserConfiguration
-from .datetimeperiod_parser_config import SpanishDateTimePeriodParserConfiguration
-from .common_configs import SpanishCommonDateTimeParserConfiguration
-from .parsers import SpanishDateTimePeriodParser
+
+from ...resources.spanish_date_time import BaseDateTime, SpanishDateTime
 from ..base_date import BaseDateParser
-from ..base_time import BaseTimeParser
-from ..base_datetime import BaseDateTimeParser
-from ..base_holiday import BaseHolidayParser
 from ..base_dateperiod import BaseDatePeriodParser
-from ..base_timeperiod import BaseTimePeriodParser
+from ..base_datetime import BaseDateTimeParser
 from ..base_datetimeperiod import BaseDateTimePeriodParser
 from ..base_duration import BaseDurationParser
+from ..base_holiday import BaseHolidayParser
 from ..base_merged import MergedParserConfiguration
-from ...resources.spanish_date_time import SpanishDateTime, BaseDateTime
+from ..base_time import BaseTimeParser
+from ..base_timeperiod import BaseTimePeriodParser
+from .common_configs import SpanishCommonDateTimeParserConfiguration
+from .dateperiod_parser_config import SpanishDatePeriodParserConfiguration
+from .datetimeperiod_parser_config import SpanishDateTimePeriodParserConfiguration
+from .holiday_parser_config import SpanishHolidayParserConfiguration
+from .parsers import SpanishDateTimePeriodParser
+from .timeperiod_parser_config import SpanishTimePeriodParserConfiguration
 
 
 class SpanishMergedParserConfiguration(SpanishCommonDateTimeParserConfiguration, MergedParserConfiguration):

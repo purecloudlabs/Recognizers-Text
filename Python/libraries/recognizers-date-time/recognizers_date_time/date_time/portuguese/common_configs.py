@@ -4,37 +4,40 @@
 from typing import Dict, Pattern
 
 from recognizers_number import BaseNumberExtractor, BaseNumberParser
+from recognizers_number.number.portuguese.extractors import (
+    PortugueseCardinalExtractor,
+    PortugueseIntegerExtractor,
+    PortugueseOrdinalExtractor,
+)
 from recognizers_number.number.portuguese.parsers import PortugueseNumberParserConfiguration
-from recognizers_number.number.portuguese.extractors import PortugueseCardinalExtractor, PortugueseIntegerExtractor, PortugueseOrdinalExtractor
 
 from ...resources.portuguese_date_time import PortugueseDateTime
-from ..extractors import DateTimeExtractor
-from ..parsers import DateTimeParser
 from ..base_configs import BaseDateParserConfiguration, DateTimeUtilityConfiguration
 from ..base_date import BaseDateExtractor, BaseDateParser
-from ..base_time import BaseTimeExtractor
-from ..base_duration import BaseDurationExtractor, BaseDurationParser
 from ..base_dateperiod import BaseDatePeriodExtractor, BaseDatePeriodParser
-from ..base_timeperiod import BaseTimePeriodExtractor, BaseTimePeriodParser
 from ..base_datetime import BaseDateTimeExtractor, BaseDateTimeParser
 from ..base_datetimeperiod import BaseDateTimePeriodExtractor, BaseDateTimePeriodParser
-
+from ..base_duration import BaseDurationExtractor, BaseDurationParser
+from ..base_time import BaseTimeExtractor
+from ..base_timeperiod import BaseTimePeriodExtractor, BaseTimePeriodParser
+from ..extractors import DateTimeExtractor
+from ..parsers import DateTimeParser
 from .base_configs import PortugueseDateTimeUtilityConfiguration
 from .date_extractor_config import PortugueseDateExtractorConfiguration
 from .date_parser_config import PortugueseDateParserConfiguration
-from .time_extractor_config import PortugueseTimeExtractorConfiguration
-from .time_parser_config import PortugueseTimeParserConfiguration
-from .parsers import PortugueseTimeParser
-from .duration_extractor_config import PortugueseDurationExtractorConfiguration
-from .duration_parser_config import PortugueseDurationParserConfiguration
 from .dateperiod_extractor_config import PortugueseDatePeriodExtractorConfiguration
 from .dateperiod_parser_config import PortugueseDatePeriodParserConfiguration
-from .timeperiod_extractor_config import PortugueseTimePeriodExtractorConfiguration
-from .timeperiod_parser_config import PortugueseTimePeriodParserConfiguration
 from .datetime_extractor_config import PortugueseDateTimeExtractorConfiguration
 from .datetime_parser_config import PortugueseDateTimeParserConfiguration
 from .datetimeperiod_extractor_config import PortugueseDateTimePeriodExtractorConfiguration
 from .datetimeperiod_parser_config import PortugueseDateTimePeriodParserConfiguration
+from .duration_extractor_config import PortugueseDurationExtractorConfiguration
+from .duration_parser_config import PortugueseDurationParserConfiguration
+from .parsers import PortugueseTimeParser
+from .time_extractor_config import PortugueseTimeExtractorConfiguration
+from .time_parser_config import PortugueseTimeParserConfiguration
+from .timeperiod_extractor_config import PortugueseTimePeriodExtractorConfiguration
+from .timeperiod_parser_config import PortugueseTimePeriodParserConfiguration
 
 
 class PortugueseCommonDateTimeParserConfiguration(BaseDateParserConfiguration):

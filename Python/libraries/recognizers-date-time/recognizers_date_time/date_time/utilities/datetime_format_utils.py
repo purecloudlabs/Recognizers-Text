@@ -1,10 +1,11 @@
-from typing import List, Pattern, Union
 from datetime import datetime
+from typing import List, Pattern, Union
+
 import regex
 
-from recognizers_text.utilities import RegExpUtility
 from recognizers_date_time.date_time.constants import Constants
 from recognizers_date_time.date_time.utilities import DateTimeResolutionResult
+from recognizers_text.utilities import RegExpUtility
 
 
 class DateTimeFormatUtil:

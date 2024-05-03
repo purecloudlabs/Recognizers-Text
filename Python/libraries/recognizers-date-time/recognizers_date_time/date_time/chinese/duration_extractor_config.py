@@ -3,9 +3,10 @@
 
 from typing import Dict
 
-from recognizers_text import RegExpUtility
 from recognizers_number.culture import Culture, CultureInfo
 from recognizers_number_with_unit import ChineseNumberWithUnitExtractorConfiguration
+from recognizers_text import RegExpUtility
+
 from ...resources.chinese_date_time import ChineseDateTime
 from ..constants import Constants
 

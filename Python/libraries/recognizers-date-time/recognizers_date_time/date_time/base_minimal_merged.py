@@ -1,16 +1,19 @@
-from abc import abstractmethod, ABC
-from typing import List, Optional, Pattern, Dict
-from datetime import datetime
+from abc import ABC, abstractmethod
 from collections import namedtuple
+from datetime import datetime
+from typing import Dict, List, Optional, Pattern
+
 import regex
 
 from recognizers_text.extractor import Extractor, ExtractResult
+
+from .base_date import BaseDateParser
+from .base_time import BaseTimeParser
 from .constants import Constants, TimeTypeConstants
 from .extractors import DateTimeExtractor
 from .parsers import DateTimeParser, DateTimeParseResult
-from .base_date import BaseDateParser
-from .base_time import BaseTimeParser
-from .utilities import Token, merge_all_tokens, DateTimeOptions, DateTimeFormatUtil, DateUtils, RegExpUtility, TimexUtil
+from .utilities import DateTimeFormatUtil, DateTimeOptions, DateUtils, RegExpUtility, TimexUtil, Token, merge_all_tokens
+
 
 MatchedIndex = namedtuple('MatchedIndex', ['matched', 'index'])
 

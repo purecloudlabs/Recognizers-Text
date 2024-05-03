@@ -2,24 +2,26 @@
 #  Licensed under the MIT License.
 
 from typing import List, Pattern
+
 import regex
 
 from recognizers_number import BaseNumberExtractor, PortugueseCardinalExtractor
 from recognizers_text.utilities import RegExpUtility
+
 from ...resources.portuguese_date_time import PortugueseDateTime
-from ..extractors import DateTimeExtractor
-from ..base_datetimeperiod import DateTimePeriodExtractorConfiguration, MatchedIndex
 from ..base_date import BaseDateExtractor
-from ..base_time import BaseTimeExtractor
-from ..base_duration import BaseDurationExtractor
-from ..base_timeperiod import BaseTimePeriodExtractor
 from ..base_datetime import BaseDateTimeExtractor
-from .date_extractor_config import PortugueseDateExtractorConfiguration
-from .time_extractor_config import PortugueseTimeExtractorConfiguration
-from .duration_extractor_config import PortugueseDurationExtractorConfiguration
-from .timeperiod_extractor_config import PortugueseTimePeriodExtractorConfiguration
-from .datetime_extractor_config import PortugueseDateTimeExtractorConfiguration
+from ..base_datetimeperiod import DateTimePeriodExtractorConfiguration, MatchedIndex
+from ..base_duration import BaseDurationExtractor
+from ..base_time import BaseTimeExtractor
+from ..base_timeperiod import BaseTimePeriodExtractor
+from ..extractors import DateTimeExtractor
 from ..utilities import DateTimeOptions
+from .date_extractor_config import PortugueseDateExtractorConfiguration
+from .datetime_extractor_config import PortugueseDateTimeExtractorConfiguration
+from .duration_extractor_config import PortugueseDurationExtractorConfiguration
+from .time_extractor_config import PortugueseTimeExtractorConfiguration
+from .timeperiod_extractor_config import PortugueseTimePeriodExtractorConfiguration
 
 
 class PortugueseDateTimePeriodExtractorConfiguration(DateTimePeriodExtractorConfiguration):

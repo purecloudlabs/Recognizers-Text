@@ -1,21 +1,34 @@
 import calendar
+from abc import ABC, abstractmethod
 from datetime import datetime, timedelta
-from abc import abstractmethod, ABC
+from typing import Dict, List, Match, Pattern
+
 from datedelta import datedelta
 from dateutil.relativedelta import relativedelta
 
-from typing import List, Pattern, Dict, Match
-
-
-from recognizers_number.number import CJKNumberParser, Constants as Num_Constants
 from recognizers_date_time.date_time import Constants as Date_Constants
-from recognizers_date_time.date_time.base_date import BaseDateParser
-from recognizers_date_time.date_time.utilities import DateTimeExtractor, DateTimeParser, \
-    ExtractResultExtension, merge_all_tokens, DateTimeUtilityConfiguration, DateUtils, DateTimeParseResult, \
-    TimeTypeConstants, DateTimeFormatUtil, DateTimeResolutionResult, DurationParsingUtil, DayOfWeek, TimexUtil, Token
-from recognizers_date_time.date_time.CJK import CJKCommonDateTimeParserConfiguration
-from recognizers_text import ExtractResult, RegExpUtility, MetaData
 from recognizers_date_time.date_time.abstract_year_extractor import AbstractYearExtractor
+from recognizers_date_time.date_time.base_date import BaseDateParser
+from recognizers_date_time.date_time.CJK import CJKCommonDateTimeParserConfiguration
+from recognizers_date_time.date_time.utilities import (
+    DateTimeExtractor,
+    DateTimeFormatUtil,
+    DateTimeParser,
+    DateTimeParseResult,
+    DateTimeResolutionResult,
+    DateTimeUtilityConfiguration,
+    DateUtils,
+    DayOfWeek,
+    DurationParsingUtil,
+    ExtractResultExtension,
+    TimeTypeConstants,
+    TimexUtil,
+    Token,
+    merge_all_tokens,
+)
+from recognizers_number.number import CJKNumberParser
+from recognizers_number.number import Constants as Num_Constants
+from recognizers_text import ExtractResult, MetaData, RegExpUtility
 
 
 class CJKDateExtractorConfiguration(ABC):

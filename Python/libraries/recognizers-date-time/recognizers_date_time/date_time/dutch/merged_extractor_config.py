@@ -3,29 +3,30 @@
 
 from typing import List, Pattern
 
-from recognizers_text.extractor import Extractor
-from recognizers_text.utilities import RegExpUtility, DefinitionLoader
 from recognizers_number import DutchIntegerExtractor
+from recognizers_text.extractor import Extractor
+from recognizers_text.utilities import DefinitionLoader, RegExpUtility
+
+from ...resources.base_date_time import BaseDateTime
 from ...resources.dutch_date_time import DutchDateTime
-from ..extractors import DateTimeExtractor
-from ..base_merged import MergedExtractorConfiguration
 from ..base_date import BaseDateExtractor
-from ..base_time import BaseTimeExtractor
-from ..base_duration import BaseDurationExtractor
 from ..base_dateperiod import BaseDatePeriodExtractor
-from ..base_timeperiod import BaseTimePeriodExtractor
 from ..base_datetime import BaseDateTimeExtractor
 from ..base_datetimeperiod import BaseDateTimePeriodExtractor
+from ..base_duration import BaseDurationExtractor
 from ..base_holiday import BaseHolidayExtractor
+from ..base_merged import MergedExtractorConfiguration
+from ..base_time import BaseTimeExtractor
+from ..base_timeperiod import BaseTimePeriodExtractor
+from ..extractors import DateTimeExtractor
 from .date_extractor_config import DutchDateExtractorConfiguration
-from .time_extractor_config import DutchTimeExtractorConfiguration
-from .duration_extractor_config import DutchDurationExtractorConfiguration
 from .dateperiod_extractor_config import DutchDatePeriodExtractorConfiguration
-from .timeperiod_extractor_config import DutchTimePeriodExtractorConfiguration
 from .datetime_extractor_config import DutchDateTimeExtractorConfiguration
 from .datetimeperiod_extractor_config import DutchDateTimePeriodExtractorConfiguration
+from .duration_extractor_config import DutchDurationExtractorConfiguration
 from .holiday_extractor_config import DutchHolidayExtractorConfiguration
-from ...resources.base_date_time import BaseDateTime
+from .time_extractor_config import DutchTimeExtractorConfiguration
+from .timeperiod_extractor_config import DutchTimePeriodExtractorConfiguration
 
 
 class DutchMergedExtractorConfiguration(MergedExtractorConfiguration):

@@ -1,11 +1,13 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from typing import List, Dict, Pattern, Match
 from datetime import datetime
+from typing import Dict, List, Match, Pattern
+
 import regex
 
 from recognizers_text import ExtractResult
+
 from ..extractors import DateTimeExtractor
 
 

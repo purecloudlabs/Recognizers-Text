@@ -4,6 +4,7 @@
 from typing import List, Pattern
 
 from recognizers_text.utilities import RegExpUtility
+
 from ...resources.portuguese_date_time import PortugueseDateTime
 from ..base_time import TimeExtractorConfiguration
 

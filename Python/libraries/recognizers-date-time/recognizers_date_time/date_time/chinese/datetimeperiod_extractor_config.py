@@ -3,15 +3,15 @@
 
 from typing import Pattern
 
-from recognizers_text import Extractor, RegExpUtility
 from recognizers_number import ChineseCardinalExtractor
+from recognizers_text import Extractor, RegExpUtility
 
 from ...resources.chinese_date_time import ChineseDateTime
-from ..extractors import DateTimeExtractor
 from ..base_datetimeperiod import DateTimePeriodExtractorConfiguration, MatchedIndex
+from ..extractors import DateTimeExtractor
 from .date_extractor import ChineseDateExtractor
-from .time_extractor import ChineseTimeExtractor
 from .datetime_extractor import ChineseDateTimeExtractor
+from .time_extractor import ChineseTimeExtractor
 
 
 class ChineseDateTimePeriodExtractorConfiguration(DateTimePeriodExtractorConfiguration):

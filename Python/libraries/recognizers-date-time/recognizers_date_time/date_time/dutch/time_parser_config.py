@@ -1,15 +1,17 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from typing import List, Pattern, Dict
+from typing import Dict, List, Pattern
+
 import regex
 
 from recognizers_text.utilities import RegExpUtility
+
 from ...resources.dutch_date_time import DutchDateTime
-from ..base_time import TimeParserConfiguration, AdjustParams
 from ..base_configs import BaseDateParserConfiguration, DateTimeUtilityConfiguration
-from .time_extractor_config import DutchTimeExtractorConfiguration
+from ..base_time import AdjustParams, TimeParserConfiguration
 from ..constants import Constants
+from .time_extractor_config import DutchTimeExtractorConfiguration
 
 
 class DutchTimeParserConfiguration(TimeParserConfiguration):

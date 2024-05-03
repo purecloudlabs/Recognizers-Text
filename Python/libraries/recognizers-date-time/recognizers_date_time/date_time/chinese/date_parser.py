@@ -1,22 +1,24 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from typing import List, Dict, Optional
-from datedelta import datedelta
 from datetime import datetime, timedelta
-import regex
+from typing import Dict, List, Optional
 
-from recognizers_text import RegExpUtility, ExtractResult
-from recognizers_number import Constants as NumberConstants, ChineseIntegerExtractor
-from .date_extractor import ChineseDateExtractor
-from .duration_extractor import ChineseDurationExtractor
+import regex
+from datedelta import datedelta
+
+from recognizers_number import ChineseIntegerExtractor
+from recognizers_number import Constants as NumberConstants
+from recognizers_text import ExtractResult, RegExpUtility
 
 from ...resources.chinese_date_time import ChineseDateTime
-from ..constants import TimeTypeConstants, Constants
-from ..utilities import DateTimeResolutionResult, DateTimeFormatUtil, DateUtils
-from ..parsers import DateTimeParseResult
 from ..base_date import BaseDateParser
+from ..constants import Constants, TimeTypeConstants
+from ..parsers import DateTimeParseResult
+from ..utilities import DateTimeFormatUtil, DateTimeResolutionResult, DateUtils
+from .date_extractor import ChineseDateExtractor
 from .date_parser_config import ChineseDateParserConfiguration
+from .duration_extractor import ChineseDurationExtractor
 
 
 class ChineseDateParser(BaseDateParser):

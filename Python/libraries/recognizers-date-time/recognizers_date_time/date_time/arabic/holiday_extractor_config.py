@@ -1,8 +1,8 @@
 from typing import List, Pattern
-from recognizers_text.utilities import RegExpUtility
 
 from recognizers_date_time.date_time.base_holiday import HolidayExtractorConfiguration
 from recognizers_date_time.resources.arabic_date_time import ArabicDateTime
+from recognizers_text.utilities import RegExpUtility
 
 
 class ArabicHolidayExtractorConfiguration(HolidayExtractorConfiguration):

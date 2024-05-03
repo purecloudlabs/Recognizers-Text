@@ -1,13 +1,14 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from typing import List, Dict, Callable
 from datetime import datetime
+from typing import Callable, Dict, List
 
 from recognizers_text.utilities import RegExpUtility
-from ..utilities import DateUtils
-from ..base_holiday import BaseHolidayParserConfiguration
+
 from ...resources.italian_date_time import ItalianDateTime
+from ..base_holiday import BaseHolidayParserConfiguration
+from ..utilities import DateUtils
 
 
 class ItalianHolidayParserConfiguration(BaseHolidayParserConfiguration):

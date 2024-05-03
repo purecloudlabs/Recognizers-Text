@@ -2,19 +2,21 @@
 #  Licensed under the MIT License.
 
 from typing import Pattern
+
 import regex
 
 from recognizers_text.utilities import RegExpUtility
+
 from ...resources.french_date_time import FrenchDateTime
-from ..extractors import DateTimeExtractor
 from ..base_date import BaseDateExtractor
-from ..base_time import BaseTimeExtractor
-from ..base_duration import BaseDurationExtractor
 from ..base_datetime import DateTimeExtractorConfiguration
+from ..base_duration import BaseDurationExtractor
+from ..base_time import BaseTimeExtractor
+from ..extractors import DateTimeExtractor
 from .base_configs import FrenchDateTimeUtilityConfiguration
 from .date_extractor_config import FrenchDateExtractorConfiguration
-from .time_extractor_config import FrenchTimeExtractorConfiguration
 from .duration_extractor_config import FrenchDurationExtractorConfiguration
+from .time_extractor_config import FrenchTimeExtractorConfiguration
 
 
 class FrenchDateTimeExtractorConfiguration(DateTimeExtractorConfiguration):

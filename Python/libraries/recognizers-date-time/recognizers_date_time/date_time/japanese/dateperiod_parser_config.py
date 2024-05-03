@@ -1,13 +1,14 @@
-from typing import Pattern, Dict
+from typing import Dict, Pattern
 
-from recognizers_number import JapaneseIntegerExtractor, CJKNumberParser
-from recognizers_text import RegExpUtility
 from recognizers_date_time.date_time.CJK.base_date import BaseCJKDateExtractor, BaseCJKDateParser
-from recognizers_date_time.date_time.japanese.date_extractor_config import JapaneseDateExtractorConfiguration
 from recognizers_date_time.date_time.CJK.base_dateperiod import CJKDatePeriodParserConfiguration
-from recognizers_date_time.date_time.japanese.dateperiod_extractor_config import \
-    JapaneseDatePeriodExtractorConfiguration
+from recognizers_date_time.date_time.japanese.date_extractor_config import JapaneseDateExtractorConfiguration
+from recognizers_date_time.date_time.japanese.dateperiod_extractor_config import (
+    JapaneseDatePeriodExtractorConfiguration,
+)
 from recognizers_date_time.resources.japanese_date_time import JapaneseDateTime
+from recognizers_number import CJKNumberParser, JapaneseIntegerExtractor
+from recognizers_text import RegExpUtility
 
 
 class JapaneseDatePeriodParserConfiguration(CJKDatePeriodParserConfiguration):

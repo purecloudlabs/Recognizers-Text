@@ -5,19 +5,20 @@ from typing import List, Pattern
 
 from recognizers_number import BaseNumberExtractor, ItalianCardinalExtractor
 from recognizers_text.utilities import RegExpUtility
+
 from ...resources.italian_date_time import ItalianDateTime
-from ..extractors import DateTimeExtractor
-from ..base_datetimeperiod import DateTimePeriodExtractorConfiguration, MatchedIndex
 from ..base_date import BaseDateExtractor
-from ..base_time import BaseTimeExtractor
-from ..base_duration import BaseDurationExtractor
-from ..base_timeperiod import BaseTimePeriodExtractor
 from ..base_datetime import BaseDateTimeExtractor
+from ..base_datetimeperiod import DateTimePeriodExtractorConfiguration, MatchedIndex
+from ..base_duration import BaseDurationExtractor
+from ..base_time import BaseTimeExtractor
+from ..base_timeperiod import BaseTimePeriodExtractor
+from ..extractors import DateTimeExtractor
 from .date_extractor_config import ItalianDateExtractorConfiguration
-from .time_extractor_config import ItalianTimeExtractorConfiguration
-from .duration_extractor_config import ItalianDurationExtractorConfiguration
-from .timeperiod_extractor_config import ItalianTimePeriodExtractorConfiguration
 from .datetime_extractor_config import ItalianDateTimeExtractorConfiguration
+from .duration_extractor_config import ItalianDurationExtractorConfiguration
+from .time_extractor_config import ItalianTimeExtractorConfiguration
+from .timeperiod_extractor_config import ItalianTimePeriodExtractorConfiguration
 
 
 class ItalianDateTimePeriodExtractorConfiguration(DateTimePeriodExtractorConfiguration):

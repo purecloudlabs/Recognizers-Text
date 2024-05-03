@@ -1,17 +1,24 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from typing import Pattern, List
-from recognizers_number import (BaseNumberExtractor, BaseNumberParser,
-                                SpanishOrdinalExtractor, SpanishIntegerExtractor, SpanishNumberParserConfiguration)
+from typing import List, Pattern
+
+from recognizers_number import (
+    BaseNumberExtractor,
+    BaseNumberParser,
+    SpanishIntegerExtractor,
+    SpanishNumberParserConfiguration,
+    SpanishOrdinalExtractor,
+)
 from recognizers_text.utilities import RegExpUtility
+
 from ...resources.spanish_date_time import SpanishDateTime
-from ..base_duration import BaseDurationExtractor
 from ..base_date import DateExtractorConfiguration, DateTimeUtilityConfiguration
-from ..utilities import DateTimeUtilityConfiguration
-from .duration_extractor_config import SpanishDurationExtractorConfiguration
-from .base_configs import SpanishDateTimeUtilityConfiguration
+from ..base_duration import BaseDurationExtractor
 from ..constants import Constants
+from ..utilities import DateTimeUtilityConfiguration
+from .base_configs import SpanishDateTimeUtilityConfiguration
+from .duration_extractor_config import SpanishDurationExtractorConfiguration
 
 
 class SpanishDateExtractorConfiguration(DateExtractorConfiguration):

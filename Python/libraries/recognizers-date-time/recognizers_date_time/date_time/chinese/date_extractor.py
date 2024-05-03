@@ -1,14 +1,16 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from typing import List
 from datetime import datetime
-import regex
-from ...resources.chinese_date_time import ChineseDateTime
+from typing import List
 
-from recognizers_text import ExtractResult, RegExpUtility, MetaData
-from ..utilities import merge_all_tokens, Token, get_tokens_from_regex
+import regex
+
+from recognizers_text import ExtractResult, MetaData, RegExpUtility
+
+from ...resources.chinese_date_time import ChineseDateTime
 from ..base_date import BaseDateExtractor
+from ..utilities import Token, get_tokens_from_regex, merge_all_tokens
 from .date_extractor_config import ChineseDateExtractorConfiguration
 from .duration_extractor import ChineseDurationExtractor
 

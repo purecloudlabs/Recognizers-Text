@@ -2,7 +2,9 @@
 #  Licensed under the MIT License.
 
 from typing import List, Pattern
+
 from recognizers_text.utilities import RegExpUtility
+
 from ...resources.spanish_date_time import SpanishDateTime
 from ..base_time import TimeExtractorConfiguration
 

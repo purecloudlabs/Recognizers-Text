@@ -1,28 +1,39 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from abc import abstractmethod, ABC
-from typing import List, Optional, Pattern, Dict, Match
-from datetime import datetime
+from abc import ABC, abstractmethod
 from collections import namedtuple
+from datetime import datetime
+from typing import Dict, List, Match, Optional, Pattern
+
 import regex
 
 from recognizers_text.extractor import Extractor, ExtractResult
 from recognizers_text.meta_data import MetaData
-from .constants import Constants, TimeTypeConstants
-from .extractors import DateTimeExtractor
-from .parsers import DateTimeParser, DateTimeParseResult
+
 from .base_date import BaseDateParser
-from .base_time import BaseTimeParser
-from .base_datetime import BaseDateTimeParser
-from .base_holiday import BaseHolidayParser
 from .base_dateperiod import BaseDatePeriodParser
-from .base_timeperiod import BaseTimePeriodParser
+from .base_datetime import BaseDateTimeParser
 from .base_datetimeperiod import BaseDateTimePeriodParser
 from .base_duration import BaseDurationParser
-from .utilities import Token, merge_all_tokens, DateTimeOptions, DateTimeFormatUtil, DateUtils,\
-    MatchingUtil, RegExpUtility, TimexUtil
+from .base_holiday import BaseHolidayParser
+from .base_time import BaseTimeParser
+from .base_timeperiod import BaseTimePeriodParser
+from .constants import Constants, TimeTypeConstants
 from .datetime_list_extractor import DateTimeListExtractor
+from .extractors import DateTimeExtractor
+from .parsers import DateTimeParser, DateTimeParseResult
+from .utilities import (
+    DateTimeFormatUtil,
+    DateTimeOptions,
+    DateUtils,
+    MatchingUtil,
+    RegExpUtility,
+    TimexUtil,
+    Token,
+    merge_all_tokens,
+)
+
 
 MatchedIndex = namedtuple('MatchedIndex', ['matched', 'index'])
 

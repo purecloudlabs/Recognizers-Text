@@ -2,21 +2,32 @@
 #  Licensed under the MIT License.
 
 from abc import abstractmethod
-from typing import List, Optional, Pattern, Dict, Match
-from datetime import datetime, timedelta
 from collections import namedtuple
+from datetime import datetime, timedelta
+from typing import Dict, List, Match, Optional, Pattern
+
 import regex
 
 from recognizers_date_time.date_time.date_extractor import DateExtractor
-from recognizers_text.extractor import ExtractResult
+from recognizers_number.number.constants import Constants as NumConstants
 from recognizers_number.number.extractors import BaseNumberExtractor
 from recognizers_number.number.parsers import BaseNumberParser
+from recognizers_text.extractor import ExtractResult
+
 from .constants import Constants, TimeTypeConstants
-from recognizers_number.number.constants import Constants as NumConstants
 from .extractors import DateTimeExtractor
 from .parsers import DateTimeParser, DateTimeParseResult
-from .utilities import Token, merge_all_tokens, DateTimeResolutionResult, DateTimeUtilityConfiguration, AgoLaterUtil,\
-    DateTimeFormatUtil, RegExpUtility, DateTimeOptionsConfiguration, DateTimeOptions
+from .utilities import (
+    AgoLaterUtil,
+    DateTimeFormatUtil,
+    DateTimeOptions,
+    DateTimeOptionsConfiguration,
+    DateTimeResolutionResult,
+    DateTimeUtilityConfiguration,
+    RegExpUtility,
+    Token,
+    merge_all_tokens,
+)
 
 
 class DateTimeExtractorConfiguration(DateTimeOptionsConfiguration):

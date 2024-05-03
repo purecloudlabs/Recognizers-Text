@@ -4,6 +4,7 @@
 from typing import List, Pattern
 
 from recognizers_text.utilities import RegExpUtility
+
 from ...resources.dutch_date_time import DutchDateTime
 from ..base_time import TimeExtractorConfiguration
 from ..utilities import DateTimeOptions

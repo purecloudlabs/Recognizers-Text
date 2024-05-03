@@ -1,19 +1,20 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from typing import Pattern, Dict
+from typing import Dict, Pattern
 
-from recognizers_text.utilities import RegExpUtility
 from recognizers_number.number.extractors import BaseNumberExtractor
 from recognizers_number.number.parsers import BaseNumberParser
+from recognizers_text.utilities import RegExpUtility
+
 from ...resources.chinese_date_time import ChineseDateTime
+from ..base_datetime import MatchedTimex
 from ..extractors import DateTimeExtractor
 from ..parsers import DateTimeParser
 from ..utilities import DateTimeUtilityConfiguration
-from ..base_datetime import MatchedTimex
 from .date_extractor import ChineseDateExtractor
-from .time_extractor import ChineseTimeExtractor
 from .date_parser import ChineseDateParser
+from .time_extractor import ChineseTimeExtractor
 from .time_parser import ChineseTimeParser
 
 

@@ -3,22 +3,33 @@
 
 import math
 from abc import ABC, abstractmethod
-from typing import List, Optional, Pattern, Match, Dict
-from datetime import datetime, timedelta
 from collections import namedtuple
+from datetime import datetime, timedelta
+from typing import Dict, List, Match, Optional, Pattern
 
 import regex
 from datedelta import datedelta
 
+from recognizers_date_time.resources.base_date_time import BaseDateTime, BaseDateTimeResource
 from recognizers_text.extractor import ExtractResult, Metadata
+
+from .base_date import BaseDateParser
+from .base_duration import BaseDurationParser
 from .constants import Constants, TimeTypeConstants
 from .extractors import DateTimeExtractor
 from .parsers import DateTimeParser, DateTimeParseResult
-from .base_date import BaseDateParser
-from .base_duration import BaseDurationParser
-from recognizers_date_time.resources.base_date_time import BaseDateTime, BaseDateTimeResource
-from .utilities import Token, merge_all_tokens, DateTimeFormatUtil, DateTimeResolutionResult, DateUtils, DayOfWeek, \
-    RegExpUtility, DateContext, TimexUtil
+from .utilities import (
+    DateContext,
+    DateTimeFormatUtil,
+    DateTimeResolutionResult,
+    DateUtils,
+    DayOfWeek,
+    RegExpUtility,
+    TimexUtil,
+    Token,
+    merge_all_tokens,
+)
+
 
 MatchedIndex = namedtuple('MatchedIndex', ['matched', 'index'])
 

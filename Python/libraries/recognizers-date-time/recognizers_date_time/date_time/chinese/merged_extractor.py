@@ -1,8 +1,9 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from typing import List
 from datetime import datetime
+from typing import List
+
 import regex
 
 from recognizers_text import RegExpUtility

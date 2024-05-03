@@ -1,10 +1,10 @@
 from typing import Pattern
 
-from recognizers_text.utilities import RegExpUtility
-from recognizers_number.number.extractors import BaseNumberExtractor
-from recognizers_number.number.arabic.extractors import ArabicCardinalExtractor
-from recognizers_date_time.resources.arabic_date_time import ArabicDateTime
 from recognizers_date_time.date_time.base_duration import DurationExtractorConfiguration
+from recognizers_date_time.resources.arabic_date_time import ArabicDateTime
+from recognizers_number.number.arabic.extractors import ArabicCardinalExtractor
+from recognizers_number.number.extractors import BaseNumberExtractor
+from recognizers_text.utilities import RegExpUtility
 
 
 class ArabicDurationExtractorConfiguration(DurationExtractorConfiguration):

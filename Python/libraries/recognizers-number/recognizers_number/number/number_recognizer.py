@@ -4,34 +4,32 @@
 from enum import IntFlag
 from typing import List
 
-from recognizers_number.number.arabic.extractors import ArabicOrdinalExtractor, \
-    ArabicMergedNumberExtractor
-from recognizers_number.number.arabic.parsers import ArabicNumberParserConfiguration
-from recognizers_text import Culture, Recognizer, Model
 from recognizers_number.culture import CultureInfo
-from recognizers_number.number.models import NumberMode, NumberModel, OrdinalModel, ModelResult
-from recognizers_number.number.parser_factory import ParserType, AgnosticNumberParserFactory
-from recognizers_number.number.english.extractors import EnglishOrdinalExtractor, \
-    EnglishMergedNumberExtractor
-from recognizers_number.number.english.parsers import EnglishNumberParserConfiguration
-from recognizers_number.number.spanish.extractors import SpanishNumberExtractor, SpanishOrdinalExtractor
+from recognizers_number.number.arabic.extractors import ArabicMergedNumberExtractor, ArabicOrdinalExtractor
+from recognizers_number.number.arabic.parsers import ArabicNumberParserConfiguration
+from recognizers_number.number.catalan.extractors import CatalanNumberExtractor, CatalanOrdinalExtractor
+from recognizers_number.number.catalan.parsers import CatalanNumberParserConfiguration
 from recognizers_number.number.chinese.extractors import ChineseNumberExtractor, ChineseOrdinalExtractor
 from recognizers_number.number.chinese.parsers import ChineseNumberParserConfiguration
-from recognizers_number.number.dutch.extractors import DutchOrdinalExtractor, DutchMergedNumberExtractor
+from recognizers_number.number.dutch.extractors import DutchMergedNumberExtractor, DutchOrdinalExtractor
 from recognizers_number.number.dutch.parsers import DutchNumberParserConfiguration
-from recognizers_number.number.japanese.extractors import JapaneseNumberExtractor, JapaneseOrdinalExtractor
-from recognizers_number.number.japanese.parsers import JapaneseNumberParserConfiguration
-from recognizers_number.number.spanish.parsers import SpanishNumberParserConfiguration
-from recognizers_number.number.portuguese.extractors import PortugueseNumberExtractor, PortugueseOrdinalExtractor
-from recognizers_number.number.portuguese.parsers import PortugueseNumberParserConfiguration
+from recognizers_number.number.english.extractors import EnglishMergedNumberExtractor, EnglishOrdinalExtractor
+from recognizers_number.number.english.parsers import EnglishNumberParserConfiguration
 from recognizers_number.number.french.extractors import FrenchNumberExtractor, FrenchOrdinalExtractor
 from recognizers_number.number.french.parsers import FrenchNumberParserConfiguration
 from recognizers_number.number.german.extractors import GermanMergedNumberExtractor, GermanOrdinalExtractor
 from recognizers_number.number.german.parsers import GermanNumberParserConfiguration
 from recognizers_number.number.italian.extractors import ItalianMergedNumberExtractor, ItalianOrdinalExtractor
 from recognizers_number.number.italian.parsers import ItalianNumberParserConfiguration
-from recognizers_number.number.catalan.extractors import CatalanNumberExtractor, CatalanOrdinalExtractor
-from recognizers_number.number.catalan.parsers import CatalanNumberParserConfiguration
+from recognizers_number.number.japanese.extractors import JapaneseNumberExtractor, JapaneseOrdinalExtractor
+from recognizers_number.number.japanese.parsers import JapaneseNumberParserConfiguration
+from recognizers_number.number.models import ModelResult, NumberMode, NumberModel, OrdinalModel
+from recognizers_number.number.parser_factory import AgnosticNumberParserFactory, ParserType
+from recognizers_number.number.portuguese.extractors import PortugueseNumberExtractor, PortugueseOrdinalExtractor
+from recognizers_number.number.portuguese.parsers import PortugueseNumberParserConfiguration
+from recognizers_number.number.spanish.extractors import SpanishNumberExtractor, SpanishOrdinalExtractor
+from recognizers_number.number.spanish.parsers import SpanishNumberParserConfiguration
+from recognizers_text import Culture, Model, Recognizer
 
 
 class NumberOptions(IntFlag):

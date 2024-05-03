@@ -1,19 +1,19 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from typing import List
 from datetime import datetime
+from typing import List
+
 import regex
-from .duration_extractor import ChineseDurationExtractor
+
+from recognizers_text import ExtractResult, MetaData, RegExpUtility
 
 from ...resources.chinese_date_time import ChineseDateTime
-
-from recognizers_text import ExtractResult, RegExpUtility, MetaData
-
+from ..base_datetime import BaseDateTimeExtractor
 from ..constants import Constants
 from ..utilities import Token, merge_all_tokens
-from ..base_datetime import BaseDateTimeExtractor
 from .datetime_extractor_config import ChineseDateTimeExtractorConfiguration
+from .duration_extractor import ChineseDurationExtractor
 
 
 class ChineseDateTimeExtractor(BaseDateTimeExtractor):

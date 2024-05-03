@@ -1,9 +1,9 @@
-from typing import Pattern, Dict
+from typing import Dict, Pattern
 
-from recognizers_text.utilities import RegExpUtility, DefinitionLoader
-from recognizers_date_time.resources.japanese_date_time import JapaneseDateTime
-from recognizers_date_time.date_time.data_structures import TimeType
 from recognizers_date_time.date_time.CJK.base_time import CJKTimeExtractorConfiguration
+from recognizers_date_time.date_time.data_structures import TimeType
+from recognizers_date_time.resources.japanese_date_time import JapaneseDateTime
+from recognizers_text.utilities import DefinitionLoader, RegExpUtility
 
 
 class JapaneseTimeExtractorConfiguration(CJKTimeExtractorConfiguration):

@@ -2,10 +2,11 @@
 #  Licensed under the MIT License.
 
 from typing import List, Pattern
+
 from recognizers_text.utilities import RegExpUtility
 
-from ..base_holiday import HolidayExtractorConfiguration
 from ...resources.italian_date_time import ItalianDateTime
+from ..base_holiday import HolidayExtractorConfiguration
 
 
 class ItalianHolidayExtractorConfiguration(HolidayExtractorConfiguration):

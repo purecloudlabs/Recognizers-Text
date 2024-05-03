@@ -1,17 +1,17 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from typing import Optional
 from datetime import datetime
+from typing import Optional
 
 from recognizers_number_with_unit import NumberWithUnitParser
 
+from ..base_duration import BaseDurationParser
 from ..constants import TimeTypeConstants
-from ..utilities import DateTimeResolutionResult
 from ..extractors import ExtractResult
 from ..parsers import DateTimeParseResult
-from ..base_duration import BaseDurationParser
-from .duration_parser_config import ChineseDurationParserConfiguration, ChineseDurationNumberWithUnitParserConfiguration
+from ..utilities import DateTimeResolutionResult
+from .duration_parser_config import ChineseDurationNumberWithUnitParserConfiguration, ChineseDurationParserConfiguration
 
 
 class ChineseDurationParser(BaseDurationParser):

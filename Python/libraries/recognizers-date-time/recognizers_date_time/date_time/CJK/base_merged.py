@@ -1,16 +1,23 @@
 from abc import abstractmethod
-from typing import List, Optional, Pattern, Dict
-from datetime import datetime
 from collections import namedtuple
+from datetime import datetime
+from typing import Dict, List, Optional, Pattern
 
-from recognizers_text.extractor import ExtractResult
-from recognizers_text.meta_data import MetaData
+from recognizers_date_time.date_time.CJK.base_configs import CJKCommonDateTimeParserConfiguration
 from recognizers_date_time.date_time.constants import Constants
 from recognizers_date_time.date_time.extractors import DateTimeExtractor
 from recognizers_date_time.date_time.parsers import DateTimeParser, DateTimeParseResult
-from recognizers_date_time.date_time.CJK.base_configs import CJKCommonDateTimeParserConfiguration
-from recognizers_date_time.date_time.utilities import DateTimeOptions, RegExpUtility, ExtractResultExtension, \
-    DateTimeOptionsConfiguration, DateTimeResolutionResult, MergedParserUtil
+from recognizers_date_time.date_time.utilities import (
+    DateTimeOptions,
+    DateTimeOptionsConfiguration,
+    DateTimeResolutionResult,
+    ExtractResultExtension,
+    MergedParserUtil,
+    RegExpUtility,
+)
+from recognizers_text.extractor import ExtractResult
+from recognizers_text.meta_data import MetaData
+
 
 MatchedIndex = namedtuple('MatchedIndex', ['matched', 'index'])
 

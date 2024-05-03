@@ -1,18 +1,29 @@
 from abc import abstractmethod
-from datetime import datetime, timedelta
 from collections import namedtuple
-from typing import List, Pattern, Dict, Match
+from datetime import datetime, timedelta
+from typing import Dict, List, Match, Pattern
 
 import regex
 
-from recognizers_text.extractor import Extractor, ExtractResult
-from recognizers_text.parser import Parser
 from recognizers_date_time.date_time.constants import Constants
 from recognizers_date_time.date_time.extractors import DateTimeExtractor
 from recognizers_date_time.date_time.parsers import DateTimeParser
-from recognizers_date_time.date_time.utilities import DateTimeOptionsConfiguration, Token, merge_all_tokens, \
-    ExtractResultExtension, RegExpUtility, DateTimeParseResult, DateTimeResolutionResult, \
-    TimexUtil, DateUtils, DateTimeFormatUtil, TimeTypeConstants
+from recognizers_date_time.date_time.utilities import (
+    DateTimeFormatUtil,
+    DateTimeOptionsConfiguration,
+    DateTimeParseResult,
+    DateTimeResolutionResult,
+    DateUtils,
+    ExtractResultExtension,
+    RegExpUtility,
+    TimeTypeConstants,
+    TimexUtil,
+    Token,
+    merge_all_tokens,
+)
+from recognizers_text.extractor import Extractor, ExtractResult
+from recognizers_text.parser import Parser
+
 
 MatchedIndex = namedtuple('MatchedIndex', ['matched', 'index'])
 MatchedTimeRegex = namedtuple(

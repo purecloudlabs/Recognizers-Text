@@ -3,9 +3,10 @@
 
 from typing import Pattern
 
-from recognizers_text.utilities import RegExpUtility
 from recognizers_number.number.extractors import BaseNumberExtractor
 from recognizers_number.number.italian.extractors import ItalianCardinalExtractor
+from recognizers_text.utilities import RegExpUtility
+
 from ...resources.italian_date_time import ItalianDateTime
 from ..base_duration import DurationExtractorConfiguration
 

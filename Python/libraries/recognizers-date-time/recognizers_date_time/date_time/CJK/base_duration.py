@@ -1,18 +1,25 @@
 from abc import abstractmethod
-from typing import Dict, List, Pattern, Optional
 from datetime import datetime
+from typing import Dict, List, Optional, Pattern
 
 from regex import regex
 
 from recognizers_date_time.date_time import Constants, TimeTypeConstants
-from recognizers_date_time.date_time.utilities import RegExpUtility, DateTimeOptionsConfiguration,\
-    ExtractResultExtension, DurationParsingUtil, Token, get_tokens_from_regex, Metadata, TimexUtil, \
-    DateTimeResolutionResult
-from recognizers_text.extractor import Extractor
-from recognizers_text.parser import Parser
 from recognizers_date_time.date_time.extractors import DateTimeExtractor
 from recognizers_date_time.date_time.parsers import DateTimeParser, DateTimeParseResult
-from recognizers_text.extractor import ExtractResult
+from recognizers_date_time.date_time.utilities import (
+    DateTimeOptionsConfiguration,
+    DateTimeResolutionResult,
+    DurationParsingUtil,
+    ExtractResultExtension,
+    Metadata,
+    RegExpUtility,
+    TimexUtil,
+    Token,
+    get_tokens_from_regex,
+)
+from recognizers_text.extractor import Extractor, ExtractResult
+from recognizers_text.parser import Parser
 
 
 class CJKDurationExtractorConfiguration(DateTimeOptionsConfiguration):

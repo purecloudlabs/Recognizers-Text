@@ -2,23 +2,34 @@
 #  Licensed under the MIT License.
 
 from abc import abstractmethod
-from typing import List, Optional, Pattern, Dict, Match
-from datetime import datetime, timedelta
 from collections import namedtuple
+from datetime import datetime, timedelta
+from typing import Dict, List, Match, Optional, Pattern
+
 import regex
 
-from recognizers_text.extractor import ExtractResult
 from recognizers_number import BaseNumberExtractor
+from recognizers_text.extractor import ExtractResult
+
 from .base_date import BaseDateExtractor
-from .base_time import BaseTimeExtractor
 from .base_datetime import BaseDateTimeExtractor
 from .base_duration import BaseDurationExtractor
+from .base_time import BaseTimeExtractor
 from .base_timeperiod import BaseTimePeriodExtractor
 from .constants import Constants, TimeTypeConstants
 from .extractors import DateTimeExtractor
 from .parsers import DateTimeParser, DateTimeParseResult
-from .utilities import Token, merge_all_tokens, RegExpUtility, DateTimeFormatUtil, DateTimeResolutionResult, \
-    DateUtils, DateTimeOptionsConfiguration, DateTimeOptions, TimexUtil
+from .utilities import (
+    DateTimeFormatUtil,
+    DateTimeOptions,
+    DateTimeOptionsConfiguration,
+    DateTimeResolutionResult,
+    DateUtils,
+    RegExpUtility,
+    TimexUtil,
+    Token,
+    merge_all_tokens,
+)
 
 
 class MatchedTimeRange:

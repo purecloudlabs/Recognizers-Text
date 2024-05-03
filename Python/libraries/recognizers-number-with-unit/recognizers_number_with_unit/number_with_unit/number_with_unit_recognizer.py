@@ -5,17 +5,29 @@ from recognizers_number.culture import CultureInfo
 from recognizers_text import Culture, Recognizer
 from recognizers_text.model import Model, ModelResult
 
-from .configs import (ArabicCurrencyExtractorConfiguration, ArabicCurrencyParserConfiguration,
-    CatalanCurrencyExtractorConfiguration, CatalanCurrencyParserConfiguration,
-    ChineseCurrencyExtractorConfiguration, ChineseCurrencyParserConfiguration,
-    DutchCurrencyExtractorConfiguration, DutchCurrencyParserConfiguration,
-    EnglishCurrencyExtractorConfiguration, EnglishCurrencyParserConfiguration,
-    FrenchCurrencyExtractorConfiguration, FrenchCurrencyParserConfiguration,
-    GermanCurrencyExtractorConfiguration, GermanCurrencyParserConfiguration,
-    ItalianCurrencyExtractorConfiguration, ItalianCurrencyParserConfiguration,
-    JapaneseCurrencyExtractorConfiguration, JapaneseCurrencyParserConfiguration,
-    PortugueseCurrencyExtractorConfiguration, PortugueseCurrencyParserConfiguration,
-    SpanishCurrencyExtractorConfiguration, SpanishCurrencyParserConfiguration,
+from .configs import (
+    ArabicCurrencyExtractorConfiguration,
+    ArabicCurrencyParserConfiguration,
+    CatalanCurrencyExtractorConfiguration,
+    CatalanCurrencyParserConfiguration,
+    ChineseCurrencyExtractorConfiguration,
+    ChineseCurrencyParserConfiguration,
+    DutchCurrencyExtractorConfiguration,
+    DutchCurrencyParserConfiguration,
+    EnglishCurrencyExtractorConfiguration,
+    EnglishCurrencyParserConfiguration,
+    FrenchCurrencyExtractorConfiguration,
+    FrenchCurrencyParserConfiguration,
+    GermanCurrencyExtractorConfiguration,
+    GermanCurrencyParserConfiguration,
+    ItalianCurrencyExtractorConfiguration,
+    ItalianCurrencyParserConfiguration,
+    JapaneseCurrencyExtractorConfiguration,
+    JapaneseCurrencyParserConfiguration,
+    PortugueseCurrencyExtractorConfiguration,
+    PortugueseCurrencyParserConfiguration,
+    SpanishCurrencyExtractorConfiguration,
+    SpanishCurrencyParserConfiguration,
 )
 from .extractors import BaseMergedUnitExtractor, NumberWithUnitExtractor
 from .models import CurrencyModel, ExtractorParserModel

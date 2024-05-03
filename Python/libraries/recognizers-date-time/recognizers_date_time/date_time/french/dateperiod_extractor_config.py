@@ -2,17 +2,18 @@
 #  Licensed under the MIT License.
 
 
-from recognizers_text.utilities import RegExpUtility
+from recognizers_number import FrenchCardinalExtractor, FrenchOrdinalExtractor
 from recognizers_number.number import BaseNumberParser
-from recognizers_number.number.french.extractors import FrenchIntegerExtractor, FrenchCardinalExtractor
+from recognizers_number.number.french.extractors import FrenchCardinalExtractor, FrenchIntegerExtractor
 from recognizers_number.number.french.parsers import FrenchNumberParserConfiguration
+from recognizers_text.utilities import RegExpUtility
+
 from ...resources.french_date_time import FrenchDateTime
-from ..base_duration import BaseDurationExtractor
 from ..base_date import BaseDateExtractor
 from ..base_dateperiod import DatePeriodExtractorConfiguration, MatchedIndex
-from .duration_extractor_config import FrenchDurationExtractorConfiguration
+from ..base_duration import BaseDurationExtractor
 from .date_extractor_config import FrenchDateExtractorConfiguration
-from recognizers_number import FrenchOrdinalExtractor, FrenchCardinalExtractor
+from .duration_extractor_config import FrenchDurationExtractorConfiguration
 
 
 class FrenchDatePeriodExtractorConfiguration(DatePeriodExtractorConfiguration):

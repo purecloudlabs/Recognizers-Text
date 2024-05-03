@@ -2,17 +2,18 @@
 #  Licensed under the MIT License.
 
 
-from recognizers_text.utilities import RegExpUtility
 from recognizers_number.number import BaseNumberParser
 from recognizers_number.number.portuguese.extractors import PortugueseIntegerExtractor
 from recognizers_number.number.portuguese.parsers import PortugueseNumberParserConfiguration
+from recognizers_text.utilities import RegExpUtility
+
 from ...resources.portuguese_date_time import PortugueseDateTime
-from ..base_duration import BaseDurationExtractor
 from ..base_date import BaseDateExtractor
 from ..base_dateperiod import DatePeriodExtractorConfiguration, MatchedIndex
-from .duration_extractor_config import PortugueseDurationExtractorConfiguration
+from ..base_duration import BaseDurationExtractor
+from .common_configs import PortugueseCardinalExtractor, PortugueseOrdinalExtractor
 from .date_extractor_config import PortugueseDateExtractorConfiguration
-from .common_configs import PortugueseOrdinalExtractor, PortugueseCardinalExtractor
+from .duration_extractor_config import PortugueseDurationExtractorConfiguration
 
 
 class PortugueseDatePeriodExtractorConfiguration(DatePeriodExtractorConfiguration):

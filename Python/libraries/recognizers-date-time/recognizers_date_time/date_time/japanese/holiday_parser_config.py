@@ -1,10 +1,10 @@
 from datetime import datetime
-from typing import List, Pattern, Dict, Callable
+from typing import Callable, Dict, List, Pattern
 
-from recognizers_text.utilities import RegExpUtility
-from recognizers_number import BaseNumberParser, BaseNumberExtractor
-from recognizers_date_time.date_time.CJK import CJKHolidayParserConfiguration, CJKCommonDateTimeParserConfiguration
+from recognizers_date_time.date_time.CJK import CJKCommonDateTimeParserConfiguration, CJKHolidayParserConfiguration
 from recognizers_date_time.resources.japanese_date_time import JapaneseDateTime
+from recognizers_number import BaseNumberExtractor, BaseNumberParser
+from recognizers_text.utilities import RegExpUtility
 
 
 class JapaneseHolidayParserConfiguration(CJKHolidayParserConfiguration):

@@ -4,10 +4,11 @@
 from datetime import datetime
 
 from recognizers_text.utilities import RegExpUtility
-from ..utilities import DateTimeResolutionResult
+
+from ...resources import PortugueseDateTime
 from ..base_datetimeperiod import BaseDateTimePeriodParser
 from ..base_time import BaseTimeParser
-from ...resources import PortugueseDateTime
+from ..utilities import DateTimeResolutionResult
 from .datetimeperiod_parser_config import PortugueseDateTimePeriodParserConfiguration
 
 

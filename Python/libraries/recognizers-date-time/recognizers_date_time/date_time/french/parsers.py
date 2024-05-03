@@ -4,9 +4,10 @@
 from datetime import datetime
 
 from recognizers_text.utilities import RegExpUtility
+
 from ...resources.french_date_time import FrenchDateTime
 from ..base_time import BaseTimeParser
-from ..utilities import DateTimeResolutionResult, DateTimeFormatUtil, DateUtils
+from ..utilities import DateTimeFormatUtil, DateTimeResolutionResult, DateUtils
 
 
 class FrenchTimeParser(BaseTimeParser):

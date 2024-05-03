@@ -1,11 +1,11 @@
 from typing import List, Pattern
 
-from recognizers_text.utilities import RegExpUtility
-from recognizers_date_time.resources.arabic_date_time import ArabicDateTime
+from recognizers_date_time.date_time.arabic.duration_extractor_config import ArabicDurationExtractorConfiguration
+from recognizers_date_time.date_time.base_duration import BaseDurationExtractor
 from recognizers_date_time.date_time.base_time import TimeExtractorConfiguration
 from recognizers_date_time.date_time.utilities import DateTimeOptions
-from recognizers_date_time.date_time.base_duration import BaseDurationExtractor
-from recognizers_date_time.date_time.arabic.duration_extractor_config import ArabicDurationExtractorConfiguration
+from recognizers_date_time.resources.arabic_date_time import ArabicDateTime
+from recognizers_text.utilities import RegExpUtility
 
 
 class ArabicTimeExtractorConfiguration(TimeExtractorConfiguration):

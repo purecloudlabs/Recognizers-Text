@@ -1,16 +1,17 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from typing import List
 from datetime import datetime
+from typing import List
+
 import regex
 
-from recognizers_text import RegExpUtility, ExtractResult
+from recognizers_text import ExtractResult, RegExpUtility
 
 from ...resources.chinese_date_time import ChineseDateTime
-from ..constants import Constants
-from ..utilities import merge_all_tokens, Token
 from ..base_datetimeperiod import BaseDateTimePeriodExtractor
+from ..constants import Constants
+from ..utilities import Token, merge_all_tokens
 from .datetimeperiod_extractor_config import ChineseDateTimePeriodExtractorConfiguration
 
 

@@ -1,20 +1,29 @@
 from abc import abstractmethod
-from typing import List, Optional, Pattern, Dict, Match
-from datetime import datetime, timedelta
 from collections import namedtuple
+from datetime import datetime, timedelta
+from typing import Dict, List, Match, Optional, Pattern
+
 import regex
 
-from recognizers_text import MetaData
-from recognizers_text.extractor import ExtractResult, Extractor
-from recognizers_number.number.extractors import BaseNumberExtractor
-from recognizers_number.number.parsers import BaseNumberParser
 from recognizers_date_time.date_time.constants import Constants, TimeTypeConstants
-from recognizers_number.number.constants import Constants as NumConstants
 from recognizers_date_time.date_time.extractors import DateTimeExtractor
 from recognizers_date_time.date_time.parsers import DateTimeParser, DateTimeParseResult
-from recognizers_date_time.date_time.utilities import Token, merge_all_tokens, DateTimeResolutionResult, \
-    DateTimeFormatUtil, RegExpUtility, DateTimeOptionsConfiguration, TimexUtil, DurationParsingUtil, \
-    ExtractResultExtension
+from recognizers_date_time.date_time.utilities import (
+    DateTimeFormatUtil,
+    DateTimeOptionsConfiguration,
+    DateTimeResolutionResult,
+    DurationParsingUtil,
+    ExtractResultExtension,
+    RegExpUtility,
+    TimexUtil,
+    Token,
+    merge_all_tokens,
+)
+from recognizers_number.number.constants import Constants as NumConstants
+from recognizers_number.number.extractors import BaseNumberExtractor
+from recognizers_number.number.parsers import BaseNumberParser
+from recognizers_text import MetaData
+from recognizers_text.extractor import Extractor, ExtractResult
 
 
 class CJKDateTimeExtractorConfiguration(DateTimeOptionsConfiguration):

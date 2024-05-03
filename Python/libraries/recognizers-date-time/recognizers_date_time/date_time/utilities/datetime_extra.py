@@ -1,4 +1,4 @@
-from typing import List, Dict, Match
+from typing import Dict, List, Match
 
 
 class DateTimeExtra:

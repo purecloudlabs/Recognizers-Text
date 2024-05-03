@@ -1,9 +1,9 @@
+from recognizers_date_time.date_time.CJK.base_configs import CJKCommonDateTimeParserConfiguration
+from recognizers_date_time.date_time.CJK.base_timeperiod import CJKTimePeriodParserConfiguration
 from recognizers_date_time.date_time.constants import Constants
 from recognizers_date_time.date_time.extractors import DateTimeExtractor
-from recognizers_date_time.date_time.parsers import DateTimeParser
-from recognizers_date_time.date_time.CJK.base_timeperiod import CJKTimePeriodParserConfiguration
-from recognizers_date_time.date_time.CJK.base_configs import CJKCommonDateTimeParserConfiguration
 from recognizers_date_time.date_time.japanese.time_extractor_config import JapaneseTimeExtractorConfiguration
+from recognizers_date_time.date_time.parsers import DateTimeParser
 from recognizers_date_time.date_time.utilities import TimeFunctions, TimexUtil
 from recognizers_date_time.resources.japanese_date_time import JapaneseDateTime
 

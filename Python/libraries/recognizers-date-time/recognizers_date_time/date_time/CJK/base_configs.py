@@ -1,10 +1,10 @@
-from typing import Dict
 from abc import abstractmethod
+from typing import Dict
 
-from recognizers_number import BaseNumberExtractor, BaseNumberParser
 from recognizers_date_time.date_time.extractors import DateTimeExtractor
 from recognizers_date_time.date_time.parsers import DateTimeParser
-from recognizers_date_time.date_time.utilities import DateTimeUtilityConfiguration, DateTimeOptionsConfiguration
+from recognizers_date_time.date_time.utilities import DateTimeOptionsConfiguration, DateTimeUtilityConfiguration
+from recognizers_number import BaseNumberExtractor, BaseNumberParser
 
 
 class CJKCommonDateTimeParserConfiguration(DateTimeOptionsConfiguration):

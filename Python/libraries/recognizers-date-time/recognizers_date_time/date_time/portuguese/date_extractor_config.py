@@ -1,17 +1,24 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from typing import Pattern, List
-from recognizers_number import (BaseNumberExtractor, BaseNumberParser,
-                                PortugueseOrdinalExtractor, PortugueseIntegerExtractor, PortugueseNumberParserConfiguration)
+from typing import List, Pattern
+
+from recognizers_number import (
+    BaseNumberExtractor,
+    BaseNumberParser,
+    PortugueseIntegerExtractor,
+    PortugueseNumberParserConfiguration,
+    PortugueseOrdinalExtractor,
+)
 from recognizers_text.utilities import RegExpUtility
+
 from ...resources.portuguese_date_time import PortugueseDateTime
-from ..base_duration import BaseDurationExtractor
 from ..base_date import DateExtractorConfiguration, DateTimeUtilityConfiguration
-from ..utilities import DateTimeUtilityConfiguration
-from .duration_extractor_config import PortugueseDurationExtractorConfiguration
-from .base_configs import PortugueseDateTimeUtilityConfiguration
+from ..base_duration import BaseDurationExtractor
 from ..constants import Constants
+from ..utilities import DateTimeUtilityConfiguration
+from .base_configs import PortugueseDateTimeUtilityConfiguration
+from .duration_extractor_config import PortugueseDurationExtractorConfiguration
 
 
 class PortugueseDateExtractorConfiguration(DateExtractorConfiguration):

@@ -2,19 +2,21 @@
 #  Licensed under the MIT License.
 
 from typing import Pattern
+
 import regex
 
 from recognizers_text.utilities import RegExpUtility
+
 from ...resources.english_date_time import EnglishDateTime
-from ..extractors import DateTimeExtractor
 from ..base_date import BaseDateExtractor
-from ..base_time import BaseTimeExtractor
-from ..base_duration import BaseDurationExtractor
 from ..base_datetime import DateTimeExtractorConfiguration
+from ..base_duration import BaseDurationExtractor
+from ..base_time import BaseTimeExtractor
+from ..extractors import DateTimeExtractor
 from .base_configs import EnglishDateTimeUtilityConfiguration
 from .date_extractor_config import EnglishDateExtractorConfiguration
-from .time_extractor_config import EnglishTimeExtractorConfiguration
 from .duration_extractor_config import EnglishDurationExtractorConfiguration
+from .time_extractor_config import EnglishTimeExtractorConfiguration
 
 
 class EnglishDateTimeExtractorConfiguration(DateTimeExtractorConfiguration):

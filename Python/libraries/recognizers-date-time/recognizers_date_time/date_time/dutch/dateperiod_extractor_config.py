@@ -2,17 +2,18 @@
 #  Licensed under the MIT License.
 
 
-from recognizers_text.utilities import RegExpUtility
+from recognizers_number import DutchCardinalExtractor, DutchOrdinalExtractor
 from recognizers_number.number import BaseNumberParser
-from recognizers_number.number.dutch.extractors import DutchIntegerExtractor, DutchCardinalExtractor
+from recognizers_number.number.dutch.extractors import DutchCardinalExtractor, DutchIntegerExtractor
 from recognizers_number.number.dutch.parsers import DutchNumberParserConfiguration
+from recognizers_text.utilities import RegExpUtility
+
 from ...resources.dutch_date_time import DutchDateTime
-from ..base_duration import BaseDurationExtractor
 from ..base_date import BaseDateExtractor
 from ..base_dateperiod import DatePeriodExtractorConfiguration, MatchedIndex
-from .duration_extractor_config import DutchDurationExtractorConfiguration
+from ..base_duration import BaseDurationExtractor
 from .date_extractor_config import DutchDateExtractorConfiguration
-from recognizers_number import DutchOrdinalExtractor, DutchCardinalExtractor
+from .duration_extractor_config import DutchDurationExtractorConfiguration
 
 
 class DutchDatePeriodExtractorConfiguration(DatePeriodExtractorConfiguration):

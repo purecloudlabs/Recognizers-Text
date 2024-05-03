@@ -1,10 +1,11 @@
 from datetime import datetime
 from typing import Dict, Pattern
+
 import regex
 
-from recognizers_text import RegExpUtility
-from recognizers_date_time.date_time.utilities import DateTimeResolutionResult, DateUtils, TimeResult, DateTimeExtra
 from recognizers_date_time.date_time.constants import Constants
+from recognizers_date_time.date_time.utilities import DateTimeExtra, DateTimeResolutionResult, DateUtils, TimeResult
+from recognizers_text import RegExpUtility
 
 
 class TimeFunctions:

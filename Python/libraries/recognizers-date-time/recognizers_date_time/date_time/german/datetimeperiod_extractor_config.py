@@ -5,19 +5,20 @@ from typing import List, Pattern
 
 from recognizers_number import BaseNumberExtractor, GermanCardinalExtractor
 from recognizers_text.utilities import RegExpUtility
+
 from ...resources.german_date_time import GermanDateTime
-from ..extractors import DateTimeExtractor
-from ..base_datetimeperiod import DateTimePeriodExtractorConfiguration, MatchedIndex
 from ..base_date import BaseDateExtractor
-from ..base_time import BaseTimeExtractor
-from ..base_duration import BaseDurationExtractor
-from ..base_timeperiod import BaseTimePeriodExtractor
 from ..base_datetime import BaseDateTimeExtractor
+from ..base_datetimeperiod import DateTimePeriodExtractorConfiguration, MatchedIndex
+from ..base_duration import BaseDurationExtractor
+from ..base_time import BaseTimeExtractor
+from ..base_timeperiod import BaseTimePeriodExtractor
+from ..extractors import DateTimeExtractor
 from .date_extractor_config import GermanDateExtractorConfiguration
-from .time_extractor_config import GermanTimeExtractorConfiguration
-from .duration_extractor_config import GermanDurationExtractorConfiguration
-from .timeperiod_extractor_config import GermanTimePeriodExtractorConfiguration
 from .datetime_extractor_config import GermanDateTimeExtractorConfiguration
+from .duration_extractor_config import GermanDurationExtractorConfiguration
+from .time_extractor_config import GermanTimeExtractorConfiguration
+from .timeperiod_extractor_config import GermanTimePeriodExtractorConfiguration
 
 
 class GermanDateTimePeriodExtractorConfiguration(DateTimePeriodExtractorConfiguration):

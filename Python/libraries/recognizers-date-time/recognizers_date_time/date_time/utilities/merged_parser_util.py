@@ -1,10 +1,18 @@
 import datetime
-from typing import Dict, Optional, List
-from recognizers_text import ExtractResult, ResolutionKey
-from recognizers_date_time.date_time.parsers import DateTimeParseResult
+from typing import Dict, List, Optional
+
 from recognizers_date_time.date_time import Constants
-from recognizers_date_time.date_time.utilities import DateTimeFormatUtil, DateTimeOptionsConfiguration, \
-    DateTimeResolutionResult, TimexUtil, DateTimeResolutionKey, DateTimeOptions, TimeTypeConstants
+from recognizers_date_time.date_time.parsers import DateTimeParseResult
+from recognizers_date_time.date_time.utilities import (
+    DateTimeFormatUtil,
+    DateTimeOptions,
+    DateTimeOptionsConfiguration,
+    DateTimeResolutionKey,
+    DateTimeResolutionResult,
+    TimeTypeConstants,
+    TimexUtil,
+)
+from recognizers_text import ExtractResult, ResolutionKey
 
 
 class MergedParserUtil:
