@@ -2,7 +2,7 @@
 #  Licensed under the MIT License.
 
 from ...resources.italian_date_time import ItalianDateTime
-from ..base_date import DateTimeUtilityConfiguration
+from ..utilities import DateTimeUtilityConfiguration
 
 
 class ItalianDateTimeUtilityConfiguration(DateTimeUtilityConfiguration):

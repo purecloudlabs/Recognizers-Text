@@ -10,9 +10,10 @@ from recognizers_number import (
 from recognizers_text.utilities import RegExpUtility
 
 from ...resources.catalan_date_time import CatalanDateTime
-from ..base_date import DateExtractorConfiguration, DateTimeUtilityConfiguration
+from ..base_date import DateExtractorConfiguration
 from ..constants import Constants
 from ..extractors import DateTimeExtractor
+from ..utilities import DateTimeUtilityConfiguration
 from .base_configs import CatalanDateTimeUtilityConfiguration
 
 

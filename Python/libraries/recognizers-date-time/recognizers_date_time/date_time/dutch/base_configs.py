@@ -2,7 +2,7 @@
 #  Licensed under the MIT License.
 
 from ...resources.dutch_date_time import DutchDateTime
-from ..base_date import DateTimeUtilityConfiguration
+from ..utilities import DateTimeUtilityConfiguration
 
 
 class DutchDateTimeUtilityConfiguration(DateTimeUtilityConfiguration):

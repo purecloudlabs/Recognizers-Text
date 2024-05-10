@@ -2,7 +2,7 @@
 #  Licensed under the MIT License.
 
 from ...resources.german_date_time import GermanDateTime
-from ..base_date import DateTimeUtilityConfiguration
+from ..utilities import DateTimeUtilityConfiguration
 
 
 class GermanDateTimeUtilityConfiguration(DateTimeUtilityConfiguration):

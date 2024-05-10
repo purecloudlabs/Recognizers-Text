@@ -13,7 +13,7 @@ from recognizers_number import (
 from recognizers_text.utilities import RegExpUtility
 
 from ...resources.english_date_time import EnglishDateTime
-from ..base_date import DateExtractorConfiguration, DateTimeUtilityConfiguration
+from ..base_date import DateExtractorConfiguration
 from ..base_duration import BaseDurationExtractor
 from ..extractors import DateTimeExtractor
 from ..utilities import DateTimeUtilityConfiguration

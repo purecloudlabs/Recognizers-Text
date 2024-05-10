@@ -2,7 +2,7 @@
 #  Licensed under the MIT License.
 
 from ...resources.french_date_time import FrenchDateTime
-from ..base_date import DateTimeUtilityConfiguration
+from ..utilities import DateTimeUtilityConfiguration
 
 
 class FrenchDateTimeUtilityConfiguration(DateTimeUtilityConfiguration):

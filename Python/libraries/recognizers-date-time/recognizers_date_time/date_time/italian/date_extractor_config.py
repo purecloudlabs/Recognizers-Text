@@ -13,7 +13,7 @@ from recognizers_number import (
 from recognizers_text.utilities import RegExpUtility
 
 from ...resources.italian_date_time import ItalianDateTime
-from ..base_date import DateExtractorConfiguration, DateTimeUtilityConfiguration
+from ..base_date import DateExtractorConfiguration
 from ..base_duration import BaseDurationExtractor
 from ..constants import Constants
 from ..utilities import DateTimeUtilityConfiguration

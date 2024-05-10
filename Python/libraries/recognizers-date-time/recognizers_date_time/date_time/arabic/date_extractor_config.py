@@ -2,10 +2,11 @@ from typing import List, Pattern
 
 from recognizers_date_time.date_time.arabic.base_configs import ArabicDateTimeUtilityConfiguration
 from recognizers_date_time.date_time.arabic.duration_extractor_config import ArabicDurationExtractorConfiguration
-from recognizers_date_time.date_time.base_date import DateExtractorConfiguration, DateTimeUtilityConfiguration
+from recognizers_date_time.date_time.base_date import DateExtractorConfiguration
 from recognizers_date_time.date_time.base_duration import BaseDurationExtractor
 from recognizers_date_time.date_time.constants import Constants
 from recognizers_date_time.date_time.extractors import DateTimeExtractor
+from recognizers_date_time.date_time.utilities import DateTimeUtilityConfiguration
 from recognizers_date_time.resources import ArabicDateTime
 from recognizers_number import (
     ArabicIntegerExtractor,
