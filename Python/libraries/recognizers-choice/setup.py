@@ -3,7 +3,7 @@
 
 import os
 
-from setuptools import setup, find_packages
+from setuptools import find_packages, setup
 
 
 def read(fname):
@@ -11,7 +11,7 @@ def read(fname):
 
 
 NAME = 'recognizers-text-choice-genesys'
-VERSION = '1.1.33'
+VERSION = '1.1.34'
 REQUIRES = ['recognizers-text-genesys', 'regex', 'grapheme']
 
 setup(

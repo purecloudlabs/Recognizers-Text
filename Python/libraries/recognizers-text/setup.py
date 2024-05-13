@@ -1,10 +1,11 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from setuptools import setup, find_packages
+from setuptools import find_packages, setup
+
 
 NAME = "recognizers-text-genesys"
-VERSION = "1.1.33"
+VERSION = "1.1.34"
 REQUIRES = ['emoji==1.1.0', 'multipledispatch']
 
 setup(
