@@ -1,17 +1,18 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from typing import Pattern, Dict
+from typing import Dict, Pattern
 
-from recognizers_text.utilities import RegExpUtility
 from recognizers_number.number.extractors import BaseNumberExtractor
 from recognizers_number.number.parsers import BaseNumberParser
+from recognizers_text.utilities import RegExpUtility
+
 from ...resources.portuguese_date_time import PortugueseDateTime
+from ..base_configs import BaseDateParserConfiguration
+from ..base_datetime import DateTimeParserConfiguration, MatchedTimex
 from ..extractors import DateTimeExtractor
 from ..parsers import DateTimeParser
 from ..utilities import DateTimeUtilityConfiguration
-from ..base_configs import BaseDateParserConfiguration
-from ..base_datetime import DateTimeParserConfiguration, MatchedTimex
 
 
 class PortugueseDateTimeParserConfiguration(DateTimeParserConfiguration):
@@ -110,24 +111,19 @@ class PortugueseDateTimeParserConfiguration(DateTimeParserConfiguration):
         self._time_extractor = config.time_extractor
         self._date_parser = config.date_parser
         self._time_parser = config.time_parser
-        self._now_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.NowRegex)
-        self._am_time_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.AmTimeRegex)
-        self._pm_time_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.PmTimeRegex)
+        self._now_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.NowRegex)
+        self._am_time_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.AmTimeRegex)
+        self._pm_time_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.PmTimeRegex)
         self._simple_time_of_today_after_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.SimpleTimeOfTodayAfterRegex)
+            PortugueseDateTime.SimpleTimeOfTodayAfterRegex
+        )
         self._simple_time_of_today_before_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.SimpleTimeOfTodayBeforeRegex)
-        self._specific_time_of_day_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.SpecificTimeOfDayRegex)
-        self._specific_end_of_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.SpecificEndOfRegex)
-        self._unspecific_end_of_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.UnspecificEndOfRegex)
-        self._unit_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.TimeUnitRegex)
+            PortugueseDateTime.SimpleTimeOfTodayBeforeRegex
+        )
+        self._specific_time_of_day_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.SpecificTimeOfDayRegex)
+        self._specific_end_of_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.SpecificEndOfRegex)
+        self._unspecific_end_of_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.UnspecificEndOfRegex)
+        self._unit_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.TimeUnitRegex)
         self._numbers = config.numbers
         self._cardinal_extractor = config.cardinal_extractor
         self._number_parser = config.number_parser
@@ -135,10 +131,8 @@ class PortugueseDateTimeParserConfiguration(DateTimeParserConfiguration):
         self._duration_parser = config.duration_parser
         self._unit_map = config.unit_map
         self._utility_configuration = config.utility_configuration
-        self.previous_prefix_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.PreviousPrefixRegex)
-        self.next_prefix_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.NextPrefixRegex)
+        self.previous_prefix_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.PreviousPrefixRegex)
+        self.next_prefix_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.NextPrefixRegex)
 
     def have_ambiguous_token(self, source: str, matched_text: str) -> bool:
         return False
@@ -149,9 +143,11 @@ class PortugueseDateTimeParserConfiguration(DateTimeParserConfiguration):
         if source.endswith('agora') or source.endswith('mesmo') or source.endswith('momento'):
             return MatchedTimex(True, 'PRESENT_REF')
         elif (
-                source.endswith('possivel') or source.endswith('possa') or
-                source.endswith('possas') or source.endswith('possamos') or
-                source.endswith('possam')
+            source.endswith('possivel')
+            or source.endswith('possa')
+            or source.endswith('possas')
+            or source.endswith('possamos')
+            or source.endswith('possam')
         ):
             timex = 'FUTURE_REF'
         elif source.endswith('mente'):

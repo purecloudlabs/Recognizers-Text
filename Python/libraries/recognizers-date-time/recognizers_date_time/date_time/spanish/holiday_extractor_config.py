@@ -2,10 +2,11 @@
 #  Licensed under the MIT License.
 
 from typing import List, Pattern
+
 from recognizers_text.utilities import RegExpUtility
 
-from ..base_holiday import HolidayExtractorConfiguration
 from ...resources.spanish_date_time import SpanishDateTime
+from ..base_holiday import HolidayExtractorConfiguration
 
 
 class SpanishHolidayExtractorConfiguration(HolidayExtractorConfiguration):
@@ -17,5 +18,5 @@ class SpanishHolidayExtractorConfiguration(HolidayExtractorConfiguration):
         self._holiday_regexes = [
             RegExpUtility.get_safe_reg_exp(SpanishDateTime.HolidayRegex1),
             RegExpUtility.get_safe_reg_exp(SpanishDateTime.HolidayRegex2),
-            RegExpUtility.get_safe_reg_exp(SpanishDateTime.HolidayRegex3)
+            RegExpUtility.get_safe_reg_exp(SpanishDateTime.HolidayRegex3),
         ]

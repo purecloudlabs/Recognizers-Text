@@ -1,13 +1,13 @@
-from typing import List, Pattern, Dict
+from typing import Dict, List, Pattern
 
-from recognizers_text import RegExpUtility
-from recognizers_number import JapaneseIntegerExtractor, CJKNumberParser, JapaneseNumberParserConfiguration
-from recognizers_date_time.date_time.CJK import CJKDateExtractorConfiguration, BaseCJKDurationExtractor
+from recognizers_date_time.date_time.CJK import BaseCJKDurationExtractor, CJKDateExtractorConfiguration
 from recognizers_date_time.date_time.constants import Constants
 from recognizers_date_time.date_time.extractors import DateTimeExtractor
 from recognizers_date_time.date_time.japanese.duration_extractor_config import JapaneseDurationExtractorConfiguration
 from recognizers_date_time.resources import JapaneseDateTime
 from recognizers_date_time.resources.base_date_time import BaseDateTime
+from recognizers_number import CJKNumberParser, JapaneseIntegerExtractor, JapaneseNumberParserConfiguration
+from recognizers_text import RegExpUtility
 
 
 class JapaneseDateExtractorConfiguration(CJKDateExtractorConfiguration):
@@ -173,8 +173,7 @@ class JapaneseDateExtractorConfiguration(CJKDateExtractorConfiguration):
         return self._time_minutes_desc_regex
 
     def __init__(self):
-        self._duration_extractor = BaseCJKDurationExtractor(
-            JapaneseDurationExtractorConfiguration(), False)
+        self._duration_extractor = BaseCJKDurationExtractor(JapaneseDurationExtractorConfiguration(), False)
 
         # ２０１６年１２月１日
         self._date_regex_list_1 = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.DateRegexList1)
@@ -210,8 +209,13 @@ class JapaneseDateExtractorConfiguration(CJKDateExtractorConfiguration):
         # self._date_regex_list_11 = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.DateRegexList11)
 
         self._date_regex_list = [
-            self._date_regex_list_1, self._date_regex_list_10, self._date_regex_list_2, self._date_regex_list_9,
-            self._date_regex_list_3, self._date_regex_list_4, self._date_regex_list_5
+            self._date_regex_list_1,
+            self._date_regex_list_10,
+            self._date_regex_list_2,
+            self._date_regex_list_9,
+            self._date_regex_list_3,
+            self._date_regex_list_4,
+            self._date_regex_list_5,
         ]
 
         # Regex precedence where the order between D and M varies is controlled by DefaultLanguageFallback
@@ -240,12 +244,14 @@ class JapaneseDateExtractorConfiguration(CJKDateExtractorConfiguration):
         self._month_num_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.MonthNumRegex)
         self._week_day_and_day_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.WeekDayAndDayRegex)
         self._duration_relative_duration_unit_regex = RegExpUtility.get_safe_reg_exp(
-            JapaneseDateTime.DurationRelativeDurationUnitRegex)
+            JapaneseDateTime.DurationRelativeDurationUnitRegex
+        )
         self._year_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.YearRegex)
         self._relative_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.RelativeRegex)
         self._relative_month_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.RelativeMonthRegex)
         self._zero_to_nine_integer_regex_cjk = RegExpUtility.get_safe_reg_exp(
-            JapaneseDateTime.ZeroToNineIntegerRegexCJK)
+            JapaneseDateTime.ZeroToNineIntegerRegexCJK
+        )
         self._date_year_in_cjk_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.DateYearInCJKRegex)
         self._this_prefix_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.ThisPrefixRegex)
         self._last_prefix_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.LastPrefixRegex)
@@ -265,6 +271,13 @@ class JapaneseDateExtractorConfiguration(CJKDateExtractorConfiguration):
         self._time_minutes_desc_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.TimeMinuteDescRegex)
 
         self._implicit_date_list = [
-            self.special_day_with_num_regex, self.special_day_regex, self.this_regex, self.last_regex, self.next_regex,
-            self.week_day_regex, self.week_day_of_month_regex, self.special_date_regex, self.week_day_and_day_regex
+            self.special_day_with_num_regex,
+            self.special_day_regex,
+            self.this_regex,
+            self.last_regex,
+            self.next_regex,
+            self.week_day_regex,
+            self.week_day_of_month_regex,
+            self.special_date_regex,
+            self.week_day_and_day_regex,
         ]

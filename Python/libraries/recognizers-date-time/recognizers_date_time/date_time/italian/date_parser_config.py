@@ -1,17 +1,19 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from typing import Pattern, List, Dict
+from typing import Dict, List, Pattern
+
 import regex
 
-from recognizers_text.utilities import RegExpUtility
 from recognizers_number import BaseNumberExtractor, BaseNumberParser
+from recognizers_text.utilities import RegExpUtility
+
 from ...resources.italian_date_time import ItalianDateTime
+from ..base_configs import BaseDateParserConfiguration
+from ..base_date import DateParserConfiguration
 from ..extractors import DateTimeExtractor
 from ..parsers import DateTimeParser
 from ..utilities import DateTimeUtilityConfiguration
-from ..base_date import DateParserConfiguration
-from ..base_configs import BaseDateParserConfiguration
 from .date_extractor_config import ItalianDateExtractorConfiguration
 
 
@@ -140,12 +142,9 @@ class ItalianDateParserConfiguration(DateParserConfiguration):
     def date_token_prefix(self) -> str:
         return self._date_token_prefix
 
-    _relative_day_regex = RegExpUtility.get_safe_reg_exp(
-        ItalianDateTime.RelativeDayRegex)
-    _next_prefix_regex = RegExpUtility.get_safe_reg_exp(
-        ItalianDateTime.NextPrefixRegex)
-    _past_prefix_regex = RegExpUtility.get_safe_reg_exp(
-        ItalianDateTime.PreviousPrefixRegex)
+    _relative_day_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.RelativeDayRegex)
+    _next_prefix_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.NextPrefixRegex)
+    _past_prefix_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.PreviousPrefixRegex)
 
     def __init__(self, config: BaseDateParserConfiguration):
         self._ordinal_extractor = config.ordinal_extractor
@@ -162,36 +161,23 @@ class ItalianDateParserConfiguration(DateParserConfiguration):
         self._cardinal_map = config.cardinal_map
         self._date_regex = (ItalianDateExtractorConfiguration()).date_regex_list
         self._on_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.OnRegex)
-        self._special_day_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.SpecialDayRegex)
-        self._special_day_with_num_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.SpecialDayWithNumRegex)
-        self._next_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.NextDateRegex)
-        self._unit_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.DateUnitRegex)
-        self._month_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.MonthRegex)
-        self._week_day_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.WeekDayRegex)
-        self._strict_week_day = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.StrictWeekDay)
-        self._last_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.LastDateRegex)
-        self._this_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.ThisRegex)
-        self._week_day_of_month_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.WeekDayOfMonthRegex)
-        self._for_the_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.ForTheRegex)
+        self._special_day_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.SpecialDayRegex)
+        self._special_day_with_num_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.SpecialDayWithNumRegex)
+        self._next_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.NextDateRegex)
+        self._unit_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.DateUnitRegex)
+        self._month_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.MonthRegex)
+        self._week_day_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.WeekDayRegex)
+        self._strict_week_day = RegExpUtility.get_safe_reg_exp(ItalianDateTime.StrictWeekDay)
+        self._last_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.LastDateRegex)
+        self._this_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.ThisRegex)
+        self._week_day_of_month_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.WeekDayOfMonthRegex)
+        self._for_the_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.ForTheRegex)
         self._week_day_and_day_of_month_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.WeekDayAndDayOfMonthRegex)
-        self._week_day_and_day_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.WeekDayAndDayRegex)
-        self._relative_month_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.RelativeMonthRegex)
-        self._relative_week_day_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.RelativeWeekDayRegex)
+            ItalianDateTime.WeekDayAndDayOfMonthRegex
+        )
+        self._week_day_and_day_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.WeekDayAndDayRegex)
+        self._relative_month_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.RelativeMonthRegex)
+        self._relative_week_day_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.RelativeWeekDayRegex)
         self._utility_configuration = config.utility_configuration
         self._date_token_prefix = ItalianDateTime.DateTokenPrefix
         self._check_both_before_after = ItalianDateTime.CheckBothBeforeAfter
@@ -199,8 +185,7 @@ class ItalianDateParserConfiguration(DateParserConfiguration):
     def get_swift_day(self, source: str) -> int:
         trimmed_text = source.strip().lower()
         swift = 0
-        matches = regex.search(
-            ItalianDateParserConfiguration._relative_day_regex, source)
+        matches = regex.search(ItalianDateParserConfiguration._relative_day_regex, source)
         if trimmed_text == 'oggi':
             swift = 0
         elif trimmed_text == 'domani':
@@ -226,10 +211,8 @@ class ItalianDateParserConfiguration(DateParserConfiguration):
     def get_swift(self, source: str) -> int:
         trimmed_text = source.strip().lower()
         swift = 0
-        next_prefix_matches = regex.search(
-            ItalianDateParserConfiguration._next_prefix_regex, trimmed_text)
-        past_prefix_matches = regex.search(
-            ItalianDateParserConfiguration._past_prefix_regex, trimmed_text)
+        next_prefix_matches = regex.search(ItalianDateParserConfiguration._next_prefix_regex, trimmed_text)
+        past_prefix_matches = regex.search(ItalianDateParserConfiguration._past_prefix_regex, trimmed_text)
         if next_prefix_matches:
             swift = 1
         elif past_prefix_matches:
@@ -239,4 +222,4 @@ class ItalianDateParserConfiguration(DateParserConfiguration):
 
     def is_cardinal_last(self, source: str) -> bool:
         trimmed_text = source.strip().lower()
-        return not regex.search(ItalianDateParserConfiguration._past_prefix_regex, trimmed_text) is None
+        return regex.search(ItalianDateParserConfiguration._past_prefix_regex, trimmed_text) is not None

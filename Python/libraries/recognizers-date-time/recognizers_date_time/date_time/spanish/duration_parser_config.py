@@ -1,15 +1,15 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from typing import Pattern, Dict
+from typing import Dict, Pattern
 
-from recognizers_text.utilities import RegExpUtility
 from recognizers_number.number.extractors import BaseNumberExtractor
 from recognizers_number.number.parsers import BaseNumberParser
-from ...resources.spanish_date_time import SpanishDateTime
+from recognizers_text.utilities import RegExpUtility
 
+from ...resources.spanish_date_time import SpanishDateTime
+from ..base_duration import BaseDurationExtractor, DurationParserConfiguration
 from ..extractors import DateTimeExtractor
-from ..base_duration import DurationParserConfiguration, BaseDurationExtractor
 from .duration_extractor_config import SpanishDurationExtractorConfiguration
 
 
@@ -67,24 +67,20 @@ class SpanishDurationParserConfiguration(DurationParserConfiguration):
 
     def __init__(self, config):
         self._duration_extractor = None
-        self.duration_extractor = BaseDurationExtractor(
-            SpanishDurationExtractorConfiguration(), False)
+        self.duration_extractor = BaseDurationExtractor(SpanishDurationExtractorConfiguration(), False)
         self._cardinal_extractor: BaseNumberExtractor = config.cardinal_extractor
         self._number_parser: BaseNumberParser = config.number_parser
-        self._followed_unit: Pattern = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.FollowedUnit)
-        self._suffix_and_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.SuffixAndRegex)
+        self._followed_unit: Pattern = RegExpUtility.get_safe_reg_exp(SpanishDateTime.FollowedUnit)
+        self._suffix_and_regex: Pattern = RegExpUtility.get_safe_reg_exp(SpanishDateTime.SuffixAndRegex)
         self._number_combined_with_unit: Pattern = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.DurationNumberCombinedWithUnit)
-        self._an_unit_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.AnUnitRegex)
-        self._all_date_unit_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.AllRegex)
-        self._half_date_unit_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.HalfRegex)
+            SpanishDateTime.DurationNumberCombinedWithUnit
+        )
+        self._an_unit_regex: Pattern = RegExpUtility.get_safe_reg_exp(SpanishDateTime.AnUnitRegex)
+        self._all_date_unit_regex: Pattern = RegExpUtility.get_safe_reg_exp(SpanishDateTime.AllRegex)
+        self._half_date_unit_regex: Pattern = RegExpUtility.get_safe_reg_exp(SpanishDateTime.HalfRegex)
         self._inexact_number_unit_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.InexactNumberUnitRegex)
+            SpanishDateTime.InexactNumberUnitRegex
+        )
         self._unit_map: Dict[str, str] = SpanishDateTime.UnitMap
         self._unit_value_map: Dict[str, int] = SpanishDateTime.UnitValueMap
         self._double_numbers: Dict[str, float] = SpanishDateTime.DoubleNumbers

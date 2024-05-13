@@ -2,24 +2,26 @@
 #  Licensed under the MIT License.
 
 from typing import List, Pattern
+
 import regex
 
 from recognizers_number import BaseNumberExtractor, EnglishCardinalExtractor
 from recognizers_text.utilities import RegExpUtility
+
 from ...resources.english_date_time import EnglishDateTime
-from ..extractors import DateTimeExtractor
-from ..base_datetimeperiod import DateTimePeriodExtractorConfiguration, MatchedIndex
 from ..base_date import BaseDateExtractor
-from ..base_time import BaseTimeExtractor
-from ..base_duration import BaseDurationExtractor
-from ..base_timeperiod import BaseTimePeriodExtractor
 from ..base_datetime import BaseDateTimeExtractor
-from .date_extractor_config import EnglishDateExtractorConfiguration
-from .time_extractor_config import EnglishTimeExtractorConfiguration
-from .duration_extractor_config import EnglishDurationExtractorConfiguration
-from .timeperiod_extractor_config import EnglishTimePeriodExtractorConfiguration
-from .datetime_extractor_config import EnglishDateTimeExtractorConfiguration
+from ..base_datetimeperiod import DateTimePeriodExtractorConfiguration, MatchedIndex
+from ..base_duration import BaseDurationExtractor
+from ..base_time import BaseTimeExtractor
+from ..base_timeperiod import BaseTimePeriodExtractor
+from ..extractors import DateTimeExtractor
 from ..utilities import DateTimeOptions
+from .date_extractor_config import EnglishDateExtractorConfiguration
+from .datetime_extractor_config import EnglishDateTimeExtractorConfiguration
+from .duration_extractor_config import EnglishDurationExtractorConfiguration
+from .time_extractor_config import EnglishTimeExtractorConfiguration
+from .timeperiod_extractor_config import EnglishTimePeriodExtractorConfiguration
 
 
 class EnglishDateTimePeriodExtractorConfiguration(DateTimePeriodExtractorConfiguration):
@@ -158,83 +160,45 @@ class EnglishDateTimePeriodExtractorConfiguration(DateTimePeriodExtractorConfigu
 
     def __init__(self, dmyDateFormat=False):
         super().__init__()
-        self._week_day_regex = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.WeekDayRegex
-        )
+        self._week_day_regex = RegExpUtility.get_safe_reg_exp(EnglishDateTime.WeekDayRegex)
         self._check_both_before_after = EnglishDateTime.CheckBothBeforeAfter
         self._cardinal_extractor = EnglishCardinalExtractor()
-        self._single_date_extractor = BaseDateExtractor(
-            EnglishDateExtractorConfiguration(dmyDateFormat))
-        self._single_time_extractor = BaseTimeExtractor(
-            EnglishTimeExtractorConfiguration())
-        self._single_date_time_extractor = BaseDateTimeExtractor(
-            EnglishDateTimeExtractorConfiguration(dmyDateFormat))
-        self._duration_extractor = BaseDurationExtractor(
-            EnglishDurationExtractorConfiguration())
-        self._time_period_extractor = BaseTimePeriodExtractor(
-            EnglishTimePeriodExtractorConfiguration())
+        self._single_date_extractor = BaseDateExtractor(EnglishDateExtractorConfiguration(dmyDateFormat))
+        self._single_time_extractor = BaseTimeExtractor(EnglishTimeExtractorConfiguration())
+        self._single_date_time_extractor = BaseDateTimeExtractor(EnglishDateTimeExtractorConfiguration(dmyDateFormat))
+        self._duration_extractor = BaseDurationExtractor(EnglishDurationExtractorConfiguration())
+        self._time_period_extractor = BaseTimePeriodExtractor(EnglishTimePeriodExtractorConfiguration())
         self._simple_cases_regexes = [
             RegExpUtility.get_safe_reg_exp(EnglishDateTime.PureNumFromTo),
-            RegExpUtility.get_safe_reg_exp(EnglishDateTime.PureNumBetweenAnd)
+            RegExpUtility.get_safe_reg_exp(EnglishDateTime.PureNumBetweenAnd),
         ]
-        self._preposition_regex = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.PrepositionRegex)
-        self._till_regex = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.TillRegex)
-        self._specific_time_of_day_regex = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.PeriodSpecificTimeOfDayRegex)
-        self._time_of_day_regex = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.PeriodTimeOfDayRegex)
+        self._preposition_regex = RegExpUtility.get_safe_reg_exp(EnglishDateTime.PrepositionRegex)
+        self._till_regex = RegExpUtility.get_safe_reg_exp(EnglishDateTime.TillRegex)
+        self._specific_time_of_day_regex = RegExpUtility.get_safe_reg_exp(EnglishDateTime.PeriodSpecificTimeOfDayRegex)
+        self._time_of_day_regex = RegExpUtility.get_safe_reg_exp(EnglishDateTime.PeriodTimeOfDayRegex)
         self._period_time_of_day_with_date_regex = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.PeriodTimeOfDayWithDateRegex)
-        self._followed_unit = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.TimeFollowedUnit)
-        self._number_combined_with_unit = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.TimeNumberCombinedWithUnit)
-        self._time_unit_regex = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.TimeUnitRegex)
-        self._past_prefix_regex = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.PreviousPrefixRegex)
-        self._next_prefix_regex = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.NextPrefixRegex)
-        self._relative_time_unit_regex = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.RelativeTimeUnitRegex)
-        self._rest_of_date_time_regex = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.RestOfDateTimeRegex)
-        self._general_ending_regex = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.GeneralEndingRegex)
-        self._middle_pause_regex = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.MiddlePauseRegex)
-        self.range_connector_regex = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.RangeConnectorRegex)
+            EnglishDateTime.PeriodTimeOfDayWithDateRegex
+        )
+        self._followed_unit = RegExpUtility.get_safe_reg_exp(EnglishDateTime.TimeFollowedUnit)
+        self._number_combined_with_unit = RegExpUtility.get_safe_reg_exp(EnglishDateTime.TimeNumberCombinedWithUnit)
+        self._time_unit_regex = RegExpUtility.get_safe_reg_exp(EnglishDateTime.TimeUnitRegex)
+        self._past_prefix_regex = RegExpUtility.get_safe_reg_exp(EnglishDateTime.PreviousPrefixRegex)
+        self._next_prefix_regex = RegExpUtility.get_safe_reg_exp(EnglishDateTime.NextPrefixRegex)
+        self._relative_time_unit_regex = RegExpUtility.get_safe_reg_exp(EnglishDateTime.RelativeTimeUnitRegex)
+        self._rest_of_date_time_regex = RegExpUtility.get_safe_reg_exp(EnglishDateTime.RestOfDateTimeRegex)
+        self._general_ending_regex = RegExpUtility.get_safe_reg_exp(EnglishDateTime.GeneralEndingRegex)
+        self._middle_pause_regex = RegExpUtility.get_safe_reg_exp(EnglishDateTime.MiddlePauseRegex)
+        self.range_connector_regex = RegExpUtility.get_safe_reg_exp(EnglishDateTime.RangeConnectorRegex)
         self._token_before_date = EnglishDateTime.TokenBeforeDate
-        self._within_next_prefix_regex = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.WithinNextPrefixRegex
-        )
-        self._future_suffix_regex = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.FutureSuffixRegex
-        )
-        self._date_unit_regex = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.DateUnitRegex
-        )
-        self._am_desc_regex = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.AmDescRegex
-        )
-        self._pm_desc_regex = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.PmDescRegex
-        )
-        self._prefix_day_regex = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.PrefixDayRegex
-        )
-        self._before_regex = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.BeforeRegex
-        )
-        self._after_regex = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.AfterRegex
-        )
-        self._suffix_regex = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.SuffixRegex
-        )
+        self._within_next_prefix_regex = RegExpUtility.get_safe_reg_exp(EnglishDateTime.WithinNextPrefixRegex)
+        self._future_suffix_regex = RegExpUtility.get_safe_reg_exp(EnglishDateTime.FutureSuffixRegex)
+        self._date_unit_regex = RegExpUtility.get_safe_reg_exp(EnglishDateTime.DateUnitRegex)
+        self._am_desc_regex = RegExpUtility.get_safe_reg_exp(EnglishDateTime.AmDescRegex)
+        self._pm_desc_regex = RegExpUtility.get_safe_reg_exp(EnglishDateTime.PmDescRegex)
+        self._prefix_day_regex = RegExpUtility.get_safe_reg_exp(EnglishDateTime.PrefixDayRegex)
+        self._before_regex = RegExpUtility.get_safe_reg_exp(EnglishDateTime.BeforeRegex)
+        self._after_regex = RegExpUtility.get_safe_reg_exp(EnglishDateTime.AfterRegex)
+        self._suffix_regex = RegExpUtility.get_safe_reg_exp(EnglishDateTime.SuffixRegex)
         self._options = DateTimeOptions.NONE
         self._check_both_before_after = EnglishDateTime.CheckBothBeforeAfter
 

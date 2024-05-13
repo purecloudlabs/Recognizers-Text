@@ -3,13 +3,19 @@
 
 from typing import List, Pattern
 
+from recognizers_number import (
+    BaseNumberParser,
+    ChineseCardinalExtractor,
+    ChineseNumberExtractor,
+    ChineseNumberParserConfiguration,
+    ChineseOrdinalExtractor,
+)
 from recognizers_text import Extractor, Parser, RegExpUtility
-from recognizers_number import ChineseNumberExtractor, ChineseNumberParserConfiguration, BaseNumberParser, \
-    ChineseCardinalExtractor, ChineseOrdinalExtractor
+
 from ...resources.base_date_time import BaseDateTime
 from ...resources.chinese_date_time import ChineseDateTime
-from ..extractors import DateTimeExtractor
 from ..base_dateperiod import DatePeriodExtractorConfiguration, MatchedIndex
+from ..extractors import DateTimeExtractor
 from .date_extractor import ChineseDateExtractor
 
 
@@ -199,83 +205,48 @@ class ChineseDatePeriodExtractorConfiguration(DatePeriodExtractorConfiguration):
         return None
 
     def __init__(self):
-        self._season_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.SeasonRegex
-        )
-        self._month_suffix_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.MonthSuffixRegex
-        )
-        self._year_regex_in_number = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.YearRegexInNumber
-        )
-        self._strict_year_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.StrictYearRegex
-        )
-        self._last_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.DatePeriodLastRegex
-        )
-        self._next_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.DatePeriodNextRegex
-        )
-        self._this_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.DatePeriodThisRegex
-        )
-        self._month_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.MonthRegex
-        )
+        self._season_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.SeasonRegex)
+        self._month_suffix_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.MonthSuffixRegex)
+        self._year_regex_in_number = RegExpUtility.get_safe_reg_exp(ChineseDateTime.YearRegexInNumber)
+        self._strict_year_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.StrictYearRegex)
+        self._last_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.DatePeriodLastRegex)
+        self._next_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.DatePeriodNextRegex)
+        self._this_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.DatePeriodThisRegex)
+        self._month_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.MonthRegex)
         self._zero_to_nine_integer_regex_chinese = RegExpUtility.get_safe_reg_exp(
             ChineseDateTime.ZeroToNineIntegerRegexCJK
         )
-        self._relative_month_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.RelativeMonthRegex
-        )
-        self._day_regex_in_chinese = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.DatePeriodDayRegexInCJK
-        )
-        self._day_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.DayRegex
-        )
+        self._relative_month_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.RelativeMonthRegex)
+        self._day_regex_in_chinese = RegExpUtility.get_safe_reg_exp(ChineseDateTime.DatePeriodDayRegexInCJK)
+        self._day_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.DayRegex)
         self._simple_cases_regexes = [
             RegExpUtility.get_safe_reg_exp(ChineseDateTime.SimpleCasesRegex),
             RegExpUtility.get_safe_reg_exp(ChineseDateTime.OneWordPeriodRegex),
             RegExpUtility.get_safe_reg_exp(ChineseDateTime.StrictYearRegex),
             RegExpUtility.get_safe_reg_exp(ChineseDateTime.YearToYear),
-            RegExpUtility.get_safe_reg_exp(
-                ChineseDateTime.YearToYearSuffixRequired),
+            RegExpUtility.get_safe_reg_exp(ChineseDateTime.YearToYearSuffixRequired),
             RegExpUtility.get_safe_reg_exp(ChineseDateTime.MonthToMonth),
             RegExpUtility.get_safe_reg_exp(ChineseDateTime.MonthToMonthSuffixRequired),
             RegExpUtility.get_safe_reg_exp(ChineseDateTime.YearAndMonth),
-            RegExpUtility.get_safe_reg_exp(
-                ChineseDateTime.PureNumYearAndMonth),
-            RegExpUtility.get_safe_reg_exp(
-                ChineseDateTime.DatePeriodYearInCJKRegex),
+            RegExpUtility.get_safe_reg_exp(ChineseDateTime.PureNumYearAndMonth),
+            RegExpUtility.get_safe_reg_exp(ChineseDateTime.DatePeriodYearInCJKRegex),
             RegExpUtility.get_safe_reg_exp(ChineseDateTime.WeekOfMonthRegex),
             RegExpUtility.get_safe_reg_exp(ChineseDateTime.SeasonWithYear),
             RegExpUtility.get_safe_reg_exp(ChineseDateTime.QuarterRegex),
-            RegExpUtility.get_safe_reg_exp(ChineseDateTime.DecadeRegex)
+            RegExpUtility.get_safe_reg_exp(ChineseDateTime.DecadeRegex),
         ]
-        self._illegal_year_regex = RegExpUtility.get_safe_reg_exp(
-            BaseDateTime.IllegalYearRegex)
-        self._year_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.YearRegex)
-        self._till_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.DatePeriodTillRegex)
-        self._followed_unit = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.FollowedUnit)
-        self._number_combined_with_unit = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.NumberCombinedWithUnit)
-        self._past_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.PastRegex)
-        self._future_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.FutureRegex)
+        self._illegal_year_regex = RegExpUtility.get_safe_reg_exp(BaseDateTime.IllegalYearRegex)
+        self._year_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.YearRegex)
+        self._till_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.DatePeriodTillRegex)
+        self._followed_unit = RegExpUtility.get_safe_reg_exp(ChineseDateTime.FollowedUnit)
+        self._number_combined_with_unit = RegExpUtility.get_safe_reg_exp(ChineseDateTime.NumberCombinedWithUnit)
+        self._past_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.PastRegex)
+        self._future_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.FutureRegex)
         self._date_point_extractor = ChineseDateExtractor()
         self._integer_extractor = ChineseNumberExtractor()
-        self._number_parser = BaseNumberParser(
-            ChineseNumberParserConfiguration())
-        self._now_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.NowRegex)
-        self._month_num_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.MonthNumRegex)
+        self._number_parser = BaseNumberParser(ChineseNumberParserConfiguration())
+        self._now_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.NowRegex)
+        self._month_num_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.MonthNumRegex)
         self._cardinal_extractor = ChineseCardinalExtractor()
         self._ordinal_extractor = ChineseOrdinalExtractor()
 

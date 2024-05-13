@@ -1,14 +1,15 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from typing import List, Pattern, Dict
+from typing import Dict, List, Pattern
+
 import regex
-from ..parsers import DateTimeParser
 
 from recognizers_text.utilities import RegExpUtility
+
 from ...resources.english_date_time import EnglishDateTime
-from ..base_time import TimeParserConfiguration, AdjustParams
 from ..base_configs import BaseDateParserConfiguration, DateTimeUtilityConfiguration
+from ..base_time import AdjustParams, TimeParserConfiguration
 
 
 class EnglishTimeParserConfiguration(TimeParserConfiguration):
@@ -38,10 +39,8 @@ class EnglishTimeParserConfiguration(TimeParserConfiguration):
 
     def __init__(self, config: BaseDateParserConfiguration):
         self._time_token_prefix: str = EnglishDateTime.TimeTokenPrefix
-        self._at_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.AtRegex)
-        self._meal_time_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.MealTimeRegex)
+        self._at_regex: Pattern = RegExpUtility.get_safe_reg_exp(EnglishDateTime.AtRegex)
+        self._meal_time_regex: Pattern = RegExpUtility.get_safe_reg_exp(EnglishDateTime.MealTimeRegex)
         self._time_regexes: List[Pattern] = [
             RegExpUtility.get_safe_reg_exp(EnglishDateTime.TimeRegex1),
             RegExpUtility.get_safe_reg_exp(EnglishDateTime.TimeRegex2),
@@ -54,20 +53,15 @@ class EnglishTimeParserConfiguration(TimeParserConfiguration):
             RegExpUtility.get_safe_reg_exp(EnglishDateTime.TimeRegex9),
             RegExpUtility.get_safe_reg_exp(EnglishDateTime.TimeRegex10),
             RegExpUtility.get_safe_reg_exp(EnglishDateTime.TimeRegex11),
-            RegExpUtility.get_safe_reg_exp(EnglishDateTime.ConnectNumRegex)
+            RegExpUtility.get_safe_reg_exp(EnglishDateTime.ConnectNumRegex),
         ]
         self._numbers: Dict[str, int] = EnglishDateTime.Numbers
         self._utility_configuration = config.utility_configuration
-        self.less_than_one_hour = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.LessThanOneHour)
-        self.time_suffix_full = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.TimeSuffixFull)
-        self.lunch_regex = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.LunchRegex)
-        self.night_regex = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.NightRegex)
-        self.ish_regex = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.IshRegex)
+        self.less_than_one_hour = RegExpUtility.get_safe_reg_exp(EnglishDateTime.LessThanOneHour)
+        self.time_suffix_full = RegExpUtility.get_safe_reg_exp(EnglishDateTime.TimeSuffixFull)
+        self.lunch_regex = RegExpUtility.get_safe_reg_exp(EnglishDateTime.LunchRegex)
+        self.night_regex = RegExpUtility.get_safe_reg_exp(EnglishDateTime.NightRegex)
+        self.ish_regex = RegExpUtility.get_safe_reg_exp(EnglishDateTime.IshRegex)
 
     def adjust_by_prefix(self, prefix: str, adjust: AdjustParams):
         delta_min = 0

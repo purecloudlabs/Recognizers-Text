@@ -4,6 +4,7 @@
 from typing import List, Pattern
 
 from recognizers_text.utilities import RegExpUtility
+
 from ...resources.dutch_date_time import DutchDateTime
 from ..base_time import TimeExtractorConfiguration
 from ..utilities import DateTimeOptions
@@ -96,14 +97,10 @@ class DutchTimeExtractorConfiguration(TimeExtractorConfiguration):
 
     def __init__(self):
         super().__init__()
-        self._time_regex_list: List[Pattern] = DutchTimeExtractorConfiguration.get_time_regex_list(
-        )
-        self._at_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.AtRegex)
-        self._ish_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.IshRegex)
-        self._time_before_after_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.TimeBeforeAfterRegex)
+        self._time_regex_list: List[Pattern] = DutchTimeExtractorConfiguration.get_time_regex_list()
+        self._at_regex: Pattern = RegExpUtility.get_safe_reg_exp(DutchDateTime.AtRegex)
+        self._ish_regex: Pattern = RegExpUtility.get_safe_reg_exp(DutchDateTime.IshRegex)
+        self._time_before_after_regex: Pattern = RegExpUtility.get_safe_reg_exp(DutchDateTime.TimeBeforeAfterRegex)
         self._options = DateTimeOptions.NONE
         self._desc_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.DescRegex)
         self._hour_num_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.HourNumRegex)
@@ -138,5 +135,5 @@ class DutchTimeExtractorConfiguration(TimeExtractorConfiguration):
             RegExpUtility.get_safe_reg_exp(DutchDateTime.TimeRegex10),
             RegExpUtility.get_safe_reg_exp(DutchDateTime.TimeRegex11),
             RegExpUtility.get_safe_reg_exp(DutchDateTime.TimeRegex12),
-            RegExpUtility.get_safe_reg_exp(DutchDateTime.ConnectNumRegex)
+            RegExpUtility.get_safe_reg_exp(DutchDateTime.ConnectNumRegex),
         ]

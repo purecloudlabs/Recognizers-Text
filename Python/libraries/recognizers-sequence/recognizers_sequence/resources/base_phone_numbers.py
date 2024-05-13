@@ -48,7 +48,10 @@ class BasePhoneNumbers:
 
     def SpecialPhoneNumberRegex(WordBoundariesRegex, EndWordBoundariesRegex):
         return f'({WordBoundariesRegex}(\\d{{3,4}}[/-]\\d{{1,4}}[/-]\\d{{3,4}}){EndWordBoundariesRegex})'
-    NoAreaCodeUSPhoneNumberRegex = f'(?<!(-|-\\s|\\d|\\)|\\)\\s|\\.))[2-9]\\d{{2}}\\s?[-\\.]\\s?\\d{{4}}(?!(-\\s?\\d))\\b'
+
+    NoAreaCodeUSPhoneNumberRegex = (
+        f'(?<!(-|-\\s|\\d|\\)|\\)\\s|\\.))[2-9]\\d{{2}}\\s?[-\\.]\\s?\\d{{4}}(?!(-\\s?\\d))\\b'
+    )
     InternationDialingPrefixRegex = f'0(0|11)$'
     TypicalDeductionRegexList = [r'^\d{5}-\d{4}$', r'\)\.', r'^0(0|11)(-)']
     PhoneNumberMaskRegex = f'([0-9a-e]{{2}}(\\s[0-9a-e]{{2}}){{7}})'
@@ -63,4 +66,6 @@ class BasePhoneNumbers:
     ForbiddenPrefixMarkers = [r',', r':', r'%']
     ForbiddenSuffixMarkers = [r'/', r'+', r'#', r'*', r':', r'%']
     SSNFilterRegex = f'^\\d{{3}}-\\d{{2}}-\\d{{4}}$'
+
+
 # pylint: enable=line-too-long

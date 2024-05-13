@@ -1,14 +1,17 @@
 from typing import Dict, Pattern
 
-from recognizers_text.utilities import RegExpUtility, DefinitionLoader
+from recognizers_date_time.date_time.CJK import (
+    BaseCJKDateExtractor,
+    BaseCJKDurationExtractor,
+    BaseCJKTimeExtractor,
+    CJKDateTimeExtractorConfiguration,
+)
 from recognizers_date_time.date_time.extractors import DateTimeExtractor
-from recognizers_date_time.date_time.utilities import DateTimeOptionsConfiguration
-from recognizers_date_time.date_time.CJK import CJKDateTimeExtractorConfiguration, BaseCJKDateExtractor, \
-    BaseCJKTimeExtractor, BaseCJKDurationExtractor
 from recognizers_date_time.date_time.japanese.date_extractor_config import JapaneseDateExtractorConfiguration
-from recognizers_date_time.date_time.japanese.time_extractor_config import JapaneseTimeExtractorConfiguration
 from recognizers_date_time.date_time.japanese.duration_extractor_config import JapaneseDurationExtractorConfiguration
+from recognizers_date_time.date_time.japanese.time_extractor_config import JapaneseTimeExtractorConfiguration
 from recognizers_date_time.resources.japanese_date_time import JapaneseDateTime
+from recognizers_text.utilities import DefinitionLoader, RegExpUtility
 
 
 class JapaneseDateTimeExtractorConfiguration(CJKDateTimeExtractorConfiguration):
@@ -87,7 +90,8 @@ class JapaneseDateTimeExtractorConfiguration(CJKDateTimeExtractorConfiguration):
         self._after_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.AfterRegex)
         self._datetime_period_unit_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.DateTimePeriodUnitRegex)
         self._duration_relative_duration_unit_regex = RegExpUtility.get_safe_reg_exp(
-            JapaneseDateTime.DurationRelativeDurationUnitRegex)
+            JapaneseDateTime.DurationRelativeDurationUnitRegex
+        )
         self._ago_later_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.AgoLaterRegex)
         self._connector_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.ConnectorRegex)
 

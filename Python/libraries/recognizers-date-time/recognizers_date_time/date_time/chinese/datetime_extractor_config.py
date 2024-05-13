@@ -2,13 +2,14 @@
 #  Licensed under the MIT License.
 
 from typing import Pattern
+
 import regex
 
 from recognizers_text import RegExpUtility
 
 from ...resources.chinese_date_time import ChineseDateTime
-from ..extractors import DateTimeExtractor
 from ..base_datetime import DateTimeExtractorConfiguration
+from ..extractors import DateTimeExtractor
 from .date_extractor import ChineseDateExtractor
 from .time_extractor import ChineseTimeExtractor
 
@@ -108,25 +109,15 @@ class ChineseDateTimeExtractorConfiguration(DateTimeExtractorConfiguration):
 
     def __init__(self):
         super().__init__()
-        self._datetime_period_unit_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.DateTimePeriodUnitRegex
-        )
-        self._after_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.AfterRegex
-        )
-        self._before_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.BeforeRegex
-        )
+        self._datetime_period_unit_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.DateTimePeriodUnitRegex)
+        self._after_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.AfterRegex)
+        self._before_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.BeforeRegex)
         self._date_point_extractor = ChineseDateExtractor()
         self._time_point_extractor = ChineseTimeExtractor()
-        self._now_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.NowRegex)
-        self._night_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.NightRegex)
-        self._time_of_today_before_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.TimeOfSpecialDayRegex)
-        self._preposition_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.PrepositionRegex)
+        self._now_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.NowRegex)
+        self._night_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.NightRegex)
+        self._time_of_today_before_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.TimeOfSpecialDayRegex)
+        self._preposition_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.PrepositionRegex)
         # TODO When the implementation for these properties is added, change the None values to their respective Regexps
         self._year_regex = None
         self._year_suffix = None

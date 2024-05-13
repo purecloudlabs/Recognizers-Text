@@ -1,13 +1,36 @@
-default_stages: [push]
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+default_language_version:
+    python: python3.8
 repos:
 -   repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v1.2.3
+    rev: v4.6.0
     hooks:
-    - id: flake8
-      args: ['--config=Python/setup.cfg']
-      
--   repo: https://github.com/pre-commit/mirrors-autopep8
-    rev: master
+    -   id: trailing-whitespace
+    -   id: end-of-file-fixer
+    -   id: check-yaml
+    -   id: check-merge-conflict
+    -   id: mixed-line-ending
+    -   id: no-commit-to-branch
+-   repo: https://github.com/asottile/pyupgrade
+    rev: v3.15.2
     hooks:
-    - id: autopep8
-      args: ['--in-place','--global-config=Python/setup.cfg']
+    -   id: pyupgrade
+        args:
+        - --py3-plus
+        - --keep-runtime-typing
+-   repo: https://github.com/charliermarsh/ruff-pre-commit
+    rev: v0.4.2
+    hooks:
+    -   id: ruff
+        args:
+        - --fix
+-   repo: https://github.com/pycqa/isort
+    rev: 5.13.2
+    hooks:
+    -   id: isort
+        name: isort (python)
+-   repo: https://github.com/psf/black
+    rev: 24.4.2
+    hooks:
+    -   id: black

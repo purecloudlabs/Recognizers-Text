@@ -1,22 +1,22 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from typing import Pattern, List
+from typing import List, Pattern
 
 from recognizers_text import RegExpUtility
-from ...resources.chinese_date_time import ChineseDateTime, BaseDateTime
 
-from ..extractors import DateTimeExtractor
-from ..base_merged import MergedExtractorConfiguration
+from ...resources.chinese_date_time import BaseDateTime, ChineseDateTime
 from ..base_holiday import BaseHolidayExtractor
-from .duration_extractor import ChineseDurationExtractor
-from .time_extractor import ChineseTimeExtractor
+from ..base_merged import MergedExtractorConfiguration
+from ..extractors import DateTimeExtractor
 from .date_extractor import ChineseDateExtractor
-from .datetime_extractor import ChineseDateTimeExtractor
-from .timeperiod_extractor import ChineseTimePeriodExtractor
 from .dateperiod_extractor import ChineseDatePeriodExtractor
+from .datetime_extractor import ChineseDateTimeExtractor
 from .datetimeperiod_extractor import ChineseDateTimePeriodExtractor
+from .duration_extractor import ChineseDurationExtractor
 from .holiday_extractor_config import ChineseHolidayExtractorConfiguration
+from .time_extractor import ChineseTimeExtractor
+from .timeperiod_extractor import ChineseTimePeriodExtractor
 
 
 class ChineseMergedExtractorConfiguration(MergedExtractorConfiguration):
@@ -146,24 +146,12 @@ class ChineseMergedExtractorConfiguration(MergedExtractorConfiguration):
         return self._equal_regex
 
     def __init__(self):
-        self._equal_regex = RegExpUtility.get_safe_reg_exp(
-            BaseDateTime.EqualRegex
-        )
-        self._since_suffix_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.ParserConfigurationSinceSuffix
-        )
-        self._since_prefix_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.ParserConfigurationSincePrefix
-        )
-        self._until_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.ParserConfigurationUntil
-        )
-        self._after_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.AfterRegex
-        )
-        self._before_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.BeforeRegex
-        )
+        self._equal_regex = RegExpUtility.get_safe_reg_exp(BaseDateTime.EqualRegex)
+        self._since_suffix_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.ParserConfigurationSinceSuffix)
+        self._since_prefix_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.ParserConfigurationSincePrefix)
+        self._until_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.ParserConfigurationUntil)
+        self._after_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.AfterRegex)
+        self._before_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.BeforeRegex)
         self._ambiguity_filters_dict = ChineseDateTime.AmbiguityFiltersDict
         self._date_extractor = ChineseDateExtractor()
         self._time_extractor = ChineseTimeExtractor()
@@ -171,8 +159,7 @@ class ChineseMergedExtractorConfiguration(MergedExtractorConfiguration):
         self._date_period_extractor = ChineseDatePeriodExtractor()
         self._time_period_extractor = ChineseTimePeriodExtractor()
         self._date_time_period_extractor = ChineseDateTimePeriodExtractor()
-        self._holiday_extractor = BaseHolidayExtractor(
-            ChineseHolidayExtractorConfiguration())
+        self._holiday_extractor = BaseHolidayExtractor(ChineseHolidayExtractorConfiguration())
         self._duration_extractor = ChineseDurationExtractor()
         # TODO When the implementation for these properties is added, change the None values to their respective Regexps
         self._superfluous_word_matcher = None

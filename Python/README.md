@@ -9,6 +9,12 @@ Recognizer's are organized into groups and designed to be used in C#, Node.js, P
     git clone https://github.com/Microsoft/Recognizers-Text.git
     cd Recognizers-Text
 
+## Setting Up the Development Environment
+
+    cd Python
+    pip install -r requirements.txt
+    pre-commit install
+
 ### Manual Build
 
 Open a terminal and run the following commands:
@@ -66,9 +72,9 @@ Once the proper package is installed, you'll need to reference the package:
 ````Python
 from recognizers_text import Culture, ModelResult
 from recognizers_number import NumberRecognizer
-from recognizers_number_with_unit import NumberWithUnitRecognizer 
-from recognizers_date_time import DateTimeRecognizer 
-from recognizers_sequence import SequenceRecognizer 
+from recognizers_number_with_unit import NumberWithUnitRecognizer
+from recognizers_date_time import DateTimeRecognizer
+from recognizers_sequence import SequenceRecognizer
 ````
 
 Or, using the suite package:
@@ -150,7 +156,7 @@ Internally, both methods will cache the instance models to avoid extra costs.
 
 The Recognizers aim to bridge people's spoken language and machine's programming languages.
 As such, Recognizers were designed to facilitate growing the number of supported _cultures_ (i.e. spoken languages) and _platforms_ (i.e. programming languages.)
- 
+
 With this goal in mind, they are designed to disjoint the specific culture's logic from the recognizer's core implementation. A shared set of tools are available at the heart of a *cross-culture & cross-platform* approach that will help with extending the number and range of the recognizers.
 
 

@@ -1,13 +1,13 @@
-from typing import List, Pattern, Dict
+from typing import Dict, List, Pattern
+
 import regex
 
-from recognizers_text.utilities import RegExpUtility
-from recognizers_date_time.resources.arabic_date_time import ArabicDateTime
-from recognizers_date_time.date_time.base_time import TimeParserConfiguration, AdjustParams
-from recognizers_date_time.date_time.base_configs import BaseDateParserConfiguration, DateTimeUtilityConfiguration
 from recognizers_date_time.date_time.arabic.time_extractor_config import ArabicTimeExtractorConfiguration
-from recognizers_date_time.date_time.parsers import DateTimeParser
+from recognizers_date_time.date_time.base_configs import BaseDateParserConfiguration, DateTimeUtilityConfiguration
+from recognizers_date_time.date_time.base_time import AdjustParams, TimeParserConfiguration
 from recognizers_date_time.date_time.constants import Constants
+from recognizers_date_time.resources.arabic_date_time import ArabicDateTime
+from recognizers_text.utilities import RegExpUtility
 
 
 class ArabicTimeParserConfiguration(TimeParserConfiguration):
@@ -81,15 +81,11 @@ class ArabicTimeParserConfiguration(TimeParserConfiguration):
         self.time_suffix = RegExpUtility.get_safe_reg_exp(ArabicDateTime.TimeSuffix)
         self.time_suffix_full_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.TimeSuffixFull)
 
-        self._half_token_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.HalfTokenRegex)
-        self._quarter_token_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.QuarterTokenRegex)
-        self._three_quarter_token_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.ThreeQuarterTokenRegex)
+        self._half_token_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.HalfTokenRegex)
+        self._quarter_token_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.QuarterTokenRegex)
+        self._three_quarter_token_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.ThreeQuarterTokenRegex)
 
-        self._night_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.NightRegex)
+        self._night_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.NightRegex)
         self._lunch_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.LunchRegex)
         self._to_token_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.ToTokenRegex)
         self._to_half_token_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.ToHalfTokenRegex)
@@ -117,8 +113,7 @@ class ArabicTimeParserConfiguration(TimeParserConfiguration):
                 if min_str:
                     delta_min = int(min_str)
                 else:
-                    min_str = RegExpUtility.get_group(
-                        match, 'deltaminnum').lower()
+                    min_str = RegExpUtility.get_group(match, 'deltaminnum').lower()
                     delta_min = self.numbers.get(min_str)
 
         if regex.search(self.to_half_token_regex, trimmed_prefix):
@@ -157,7 +152,7 @@ class ArabicTimeParserConfiguration(TimeParserConfiguration):
                     if regex.search(self.lunch_regex, pm_str):
                         if adjust.hour >= 10 and adjust.hour <= Constants.HALF_DAY_HOUR_COUNT:
                             delta_hour = 0
-                            if (adjust.hour == Constants.HALF_DAY_HOUR_COUNT):
+                            if adjust.hour == Constants.HALF_DAY_HOUR_COUNT:
                                 adjust.has_pm = True
                             else:
                                 adjust.has_am = True

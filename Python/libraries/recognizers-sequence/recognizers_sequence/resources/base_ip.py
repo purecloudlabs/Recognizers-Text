@@ -27,4 +27,6 @@ class BaseIp:
     Ipv6EllipsisRegexOther = f'\\B::\\B|\\B:(:{BasicIpv6Element}){{1,7}}\\b|\\b({BasicIpv6Element}:){{1,7}}:\\B'
     MergedIpv6Regex = f'({BasicIpv6Regex}|{Ipv6EllipsisRegex1}|{Ipv6EllipsisRegex2}|{Ipv6EllipsisRegex3}|{Ipv6EllipsisRegex4}|{Ipv6EllipsisRegex5}|{Ipv6EllipsisRegex6}|{Ipv6EllipsisRegex7}|{Ipv6EllipsisRegex8})'
     Ipv6Regex = f'(\\b{MergedIpv6Regex}\\b)|({Ipv6EllipsisRegexOther})'
+
+
 # pylint: enable=line-too-long

@@ -1,13 +1,14 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from typing import List, Dict, Callable, Pattern
 from datetime import datetime
+from typing import Callable, Dict, List, Pattern
 
 from recognizers_text.utilities import RegExpUtility
-from ..utilities import DateUtils
-from ..base_holiday import BaseHolidayParserConfiguration
+
 from ...resources.dutch_date_time import DutchDateTime
+from ..base_holiday import BaseHolidayParserConfiguration
+from ..utilities import DateUtils
 
 
 class DutchHolidayParserConfiguration(BaseHolidayParserConfiguration):
@@ -30,58 +31,57 @@ class DutchHolidayParserConfiguration(BaseHolidayParserConfiguration):
         ]
         self._holiday_names = DutchDateTime.HolidayNames
 
-        self.next_prefix_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.NextPrefixRegex)
-        self.previous_prefix_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.PreviousPrefixRegex)
-        self.this_prefix_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.ThisPrefixRegex)
+        self.next_prefix_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.NextPrefixRegex)
+        self.previous_prefix_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.PreviousPrefixRegex)
+        self.this_prefix_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.ThisPrefixRegex)
 
     def _init_holiday_funcs(self) -> Dict[str, Callable[[int], datetime]]:
-        local = dict([
-            ("maosbirthday", DutchHolidayParserConfiguration.mao_birthday),
-            ("teachersday", DutchHolidayParserConfiguration.teacher_day),
-            ("singleday", DutchHolidayParserConfiguration.singles_day),
-            ("allsaintsday", DutchHolidayParserConfiguration.halloween_day),
-            ("youthday", DutchHolidayParserConfiguration.youth_day),
-            ("childrenday", DutchHolidayParserConfiguration.children_day),
-            ("femaleday", DutchHolidayParserConfiguration.female_day),
-            ("treeplantingday", DutchHolidayParserConfiguration.tree_plant_day),
-            ("arborday", DutchHolidayParserConfiguration.tree_plant_day),
-            ("girlsday", DutchHolidayParserConfiguration.girls_day),
-            ("whiteloverday", DutchHolidayParserConfiguration.white_lover_day),
-            ("loverday", DutchHolidayParserConfiguration.valentines_day),
-            ("christmas", DutchHolidayParserConfiguration.christmas_day),
-            ("xmas", DutchHolidayParserConfiguration.children_day),
-            ("newyear", DutchHolidayParserConfiguration.new_year),
-            ("newyearday", DutchHolidayParserConfiguration.new_year),
-            ("newyearsday", DutchHolidayParserConfiguration.new_year),
-            ("groundhougday", DutchHolidayParserConfiguration.groundhog_day),
-            ("valentinesday", DutchHolidayParserConfiguration.valentines_day),
-            ("stpatrickday", DutchHolidayParserConfiguration.st_patrick_day),
-            ("aprilfools", DutchHolidayParserConfiguration.fool_day),
-            ("stgeorgeday", DutchHolidayParserConfiguration.st_george_day),
-            ("mayday", DutchHolidayParserConfiguration.mayday),
-            ("cincodemayoday", DutchHolidayParserConfiguration.cinco_de_mayo_day),
-            ("baptisteday", DutchHolidayParserConfiguration.baptiste_day),
-            ("usindependenceday", DutchHolidayParserConfiguration.usa_independence_day),
-            ("independenceday", DutchHolidayParserConfiguration.usa_independence_day),
-            ("bastilleday", DutchHolidayParserConfiguration.bastille_day),
-            ("halloweenday", DutchHolidayParserConfiguration.halloween_day),
-            ("allhallowday", DutchHolidayParserConfiguration.all_hallow_day),
-            ("allsoulsday", DutchHolidayParserConfiguration.all_souls_day),
-            ("guyfawkesday", DutchHolidayParserConfiguration.guyfawkes_day),
-            ("veteransday", DutchHolidayParserConfiguration.veterans_day),
-            ("christmaseve", DutchHolidayParserConfiguration.christmas_eve),
-            ("newyeareve", DutchHolidayParserConfiguration.new_year_eve),
-            ("fathersday", DutchHolidayParserConfiguration.fathers_day),
-            ("mothersday", DutchHolidayParserConfiguration.mothers_day),
-            ("labourday", DutchHolidayParserConfiguration.international_workers_day),
-            ("memorialday", DutchHolidayParserConfiguration.memorial_day),
-            ("easterday", DutchHolidayParserConfiguration.easter_day),
-            ("eastermonday", DutchHolidayParserConfiguration.easter_day),
-            ("mardigras", DutchHolidayParserConfiguration.easter_day),
-        ])
+        local = dict(
+            [
+                ("maosbirthday", DutchHolidayParserConfiguration.mao_birthday),
+                ("teachersday", DutchHolidayParserConfiguration.teacher_day),
+                ("singleday", DutchHolidayParserConfiguration.singles_day),
+                ("allsaintsday", DutchHolidayParserConfiguration.halloween_day),
+                ("youthday", DutchHolidayParserConfiguration.youth_day),
+                ("childrenday", DutchHolidayParserConfiguration.children_day),
+                ("femaleday", DutchHolidayParserConfiguration.female_day),
+                ("treeplantingday", DutchHolidayParserConfiguration.tree_plant_day),
+                ("arborday", DutchHolidayParserConfiguration.tree_plant_day),
+                ("girlsday", DutchHolidayParserConfiguration.girls_day),
+                ("whiteloverday", DutchHolidayParserConfiguration.white_lover_day),
+                ("loverday", DutchHolidayParserConfiguration.valentines_day),
+                ("christmas", DutchHolidayParserConfiguration.christmas_day),
+                ("xmas", DutchHolidayParserConfiguration.children_day),
+                ("newyear", DutchHolidayParserConfiguration.new_year),
+                ("newyearday", DutchHolidayParserConfiguration.new_year),
+                ("newyearsday", DutchHolidayParserConfiguration.new_year),
+                ("groundhougday", DutchHolidayParserConfiguration.groundhog_day),
+                ("valentinesday", DutchHolidayParserConfiguration.valentines_day),
+                ("stpatrickday", DutchHolidayParserConfiguration.st_patrick_day),
+                ("aprilfools", DutchHolidayParserConfiguration.fool_day),
+                ("stgeorgeday", DutchHolidayParserConfiguration.st_george_day),
+                ("mayday", DutchHolidayParserConfiguration.mayday),
+                ("cincodemayoday", DutchHolidayParserConfiguration.cinco_de_mayo_day),
+                ("baptisteday", DutchHolidayParserConfiguration.baptiste_day),
+                ("usindependenceday", DutchHolidayParserConfiguration.usa_independence_day),
+                ("independenceday", DutchHolidayParserConfiguration.usa_independence_day),
+                ("bastilleday", DutchHolidayParserConfiguration.bastille_day),
+                ("halloweenday", DutchHolidayParserConfiguration.halloween_day),
+                ("allhallowday", DutchHolidayParserConfiguration.all_hallow_day),
+                ("allsoulsday", DutchHolidayParserConfiguration.all_souls_day),
+                ("guyfawkesday", DutchHolidayParserConfiguration.guyfawkes_day),
+                ("veteransday", DutchHolidayParserConfiguration.veterans_day),
+                ("christmaseve", DutchHolidayParserConfiguration.christmas_eve),
+                ("newyeareve", DutchHolidayParserConfiguration.new_year_eve),
+                ("fathersday", DutchHolidayParserConfiguration.fathers_day),
+                ("mothersday", DutchHolidayParserConfiguration.mothers_day),
+                ("labourday", DutchHolidayParserConfiguration.international_workers_day),
+                ("memorialday", DutchHolidayParserConfiguration.memorial_day),
+                ("easterday", DutchHolidayParserConfiguration.easter_day),
+                ("eastermonday", DutchHolidayParserConfiguration.easter_day),
+                ("mardigras", DutchHolidayParserConfiguration.easter_day),
+            ]
+        )
 
         return {**super()._init_holiday_funcs(), **local}
 
@@ -233,7 +233,4 @@ class DutchHolidayParserConfiguration(BaseHolidayParserConfiguration):
         return swift
 
     def sanitize_holiday_token(self, holiday: str) -> str:
-        return holiday\
-            .replace(' ', '')\
-            .replace("'", '') \
-            .replace('-', '')
+        return holiday.replace(' ', '').replace("'", '').replace('-', '')

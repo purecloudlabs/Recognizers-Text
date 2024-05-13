@@ -2,7 +2,9 @@
 #  Licensed under the MIT License.
 
 from typing import List, Pattern
+
 from recognizers_text.utilities import RegExpUtility
+
 from ...resources.spanish_date_time import SpanishDateTime
 from ..base_time import TimeExtractorConfiguration
 
@@ -34,12 +36,9 @@ class SpanishTimeExtractorConfiguration(TimeExtractorConfiguration):
 
     def __init__(self):
         super().__init__()
-        self._time_regex_list: List[Pattern] = SpanishTimeExtractorConfiguration.get_time_regex_list(
-        )
-        self._at_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.AtRegex)
-        self._time_before_after_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.TimeBeforeAfterRegex)
+        self._time_regex_list: List[Pattern] = SpanishTimeExtractorConfiguration.get_time_regex_list()
+        self._at_regex: Pattern = RegExpUtility.get_safe_reg_exp(SpanishDateTime.AtRegex)
+        self._time_before_after_regex: Pattern = RegExpUtility.get_safe_reg_exp(SpanishDateTime.TimeBeforeAfterRegex)
         # TODO When the implementation for these properties is added, change the None values to the respective Regexps
         self._ish_regex: Pattern = None
 
@@ -57,5 +56,5 @@ class SpanishTimeExtractorConfiguration(TimeExtractorConfiguration):
             RegExpUtility.get_safe_reg_exp(SpanishDateTime.TimeRegex9),
             RegExpUtility.get_safe_reg_exp(SpanishDateTime.TimeRegex11),
             RegExpUtility.get_safe_reg_exp(SpanishDateTime.TimeRegex12),
-            RegExpUtility.get_safe_reg_exp(SpanishDateTime.ConnectNumRegex)
+            RegExpUtility.get_safe_reg_exp(SpanishDateTime.ConnectNumRegex),
         ]

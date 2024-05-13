@@ -5,19 +5,20 @@ from typing import List, Pattern
 
 from recognizers_number import BaseNumberExtractor, ItalianCardinalExtractor
 from recognizers_text.utilities import RegExpUtility
+
 from ...resources.italian_date_time import ItalianDateTime
-from ..extractors import DateTimeExtractor
-from ..base_datetimeperiod import DateTimePeriodExtractorConfiguration, MatchedIndex
 from ..base_date import BaseDateExtractor
-from ..base_time import BaseTimeExtractor
-from ..base_duration import BaseDurationExtractor
-from ..base_timeperiod import BaseTimePeriodExtractor
 from ..base_datetime import BaseDateTimeExtractor
+from ..base_datetimeperiod import DateTimePeriodExtractorConfiguration, MatchedIndex
+from ..base_duration import BaseDurationExtractor
+from ..base_time import BaseTimeExtractor
+from ..base_timeperiod import BaseTimePeriodExtractor
+from ..extractors import DateTimeExtractor
 from .date_extractor_config import ItalianDateExtractorConfiguration
-from .time_extractor_config import ItalianTimeExtractorConfiguration
-from .duration_extractor_config import ItalianDurationExtractorConfiguration
-from .timeperiod_extractor_config import ItalianTimePeriodExtractorConfiguration
 from .datetime_extractor_config import ItalianDateTimeExtractorConfiguration
+from .duration_extractor_config import ItalianDurationExtractorConfiguration
+from .time_extractor_config import ItalianTimeExtractorConfiguration
+from .timeperiod_extractor_config import ItalianTimePeriodExtractorConfiguration
 
 
 class ItalianDateTimePeriodExtractorConfiguration(DateTimePeriodExtractorConfiguration):
@@ -159,89 +160,48 @@ class ItalianDateTimePeriodExtractorConfiguration(DateTimePeriodExtractorConfigu
         self._simple_cases_regexes = [
             RegExpUtility.get_safe_reg_exp(ItalianDateTime.PureNumFromTo),
             RegExpUtility.get_safe_reg_exp(ItalianDateTime.PureNumBetweenAnd),
-            RegExpUtility.get_safe_reg_exp(
-                ItalianDateTime.SpecificTimeOfDayRegex)
+            RegExpUtility.get_safe_reg_exp(ItalianDateTime.SpecificTimeOfDayRegex),
         ]
 
-        self._preposition_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.PrepositionRegex)
-        self._till_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.TillRegex)
-        self._specific_time_of_day_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.PeriodSpecificTimeOfDayRegex)
-        self._time_of_day_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.PeriodTimeOfDayRegex)
-        self._followed_unit = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.TimeFollowedUnit)
-        self._time_unit_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.TimeUnitRegex)
-        self._past_prefix_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.PastSuffixRegex)
-        self._next_prefix_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.NextSuffixRegex)
-        self._number_combined_with_unit = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.TimeNumberCombinedWithUnit)
-        self._week_day_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.WeekDayRegex)
+        self._preposition_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.PrepositionRegex)
+        self._till_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.TillRegex)
+        self._specific_time_of_day_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.PeriodSpecificTimeOfDayRegex)
+        self._time_of_day_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.PeriodTimeOfDayRegex)
+        self._followed_unit = RegExpUtility.get_safe_reg_exp(ItalianDateTime.TimeFollowedUnit)
+        self._time_unit_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.TimeUnitRegex)
+        self._past_prefix_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.PastSuffixRegex)
+        self._next_prefix_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.NextSuffixRegex)
+        self._number_combined_with_unit = RegExpUtility.get_safe_reg_exp(ItalianDateTime.TimeNumberCombinedWithUnit)
+        self._week_day_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.WeekDayRegex)
         self._period_time_of_day_with_date_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.PeriodTimeOfDayWithDateRegex)
-        self._relative_time_unit_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.RelativeTimeUnitRegex)
-        self._rest_of_date_time_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.RestOfDateTimeRegex)
-        self._general_ending_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.GeneralEndingRegex)
-        self._middle_pause_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.MiddlePauseRegex)
+            ItalianDateTime.PeriodTimeOfDayWithDateRegex
+        )
+        self._relative_time_unit_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.RelativeTimeUnitRegex)
+        self._rest_of_date_time_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.RestOfDateTimeRegex)
+        self._general_ending_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.GeneralEndingRegex)
+        self._middle_pause_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.MiddlePauseRegex)
 
-        self.from_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.FromRegex2)
-        self.connector_and_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.ConnectorAndRegex)
+        self.from_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.FromRegex2)
+        self.connector_and_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.ConnectorAndRegex)
 
         self._cardinal_extractor = ItalianCardinalExtractor()
 
-        self._single_date_extractor = BaseDateExtractor(
-            ItalianDateExtractorConfiguration())
-        self._single_time_extractor = BaseTimeExtractor(
-            ItalianTimeExtractorConfiguration())
-        self._single_date_time_extractor = BaseDateTimeExtractor(
-            ItalianDateTimeExtractorConfiguration())
-        self._duration_extractor = BaseDurationExtractor(
-            ItalianDurationExtractorConfiguration())
-        self._time_period_extractor = BaseTimePeriodExtractor(
-            ItalianTimePeriodExtractorConfiguration())
-        self._within_next_prefix_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.WithinNextPrefixRegex
-        )
-        self._time_unit_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.TimeUnitRegex
-        )
+        self._single_date_extractor = BaseDateExtractor(ItalianDateExtractorConfiguration())
+        self._single_time_extractor = BaseTimeExtractor(ItalianTimeExtractorConfiguration())
+        self._single_date_time_extractor = BaseDateTimeExtractor(ItalianDateTimeExtractorConfiguration())
+        self._duration_extractor = BaseDurationExtractor(ItalianDurationExtractorConfiguration())
+        self._time_period_extractor = BaseTimePeriodExtractor(ItalianTimePeriodExtractorConfiguration())
+        self._within_next_prefix_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.WithinNextPrefixRegex)
+        self._time_unit_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.TimeUnitRegex)
         self._token_before_date = ItalianDateTime.TokenBeforeDate
-        self._future_suffix_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.FutureSuffixRegex
-        )
-        self._date_unit_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.DateUnitRegex
-        )
-        self._am_desc_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.AmDescRegex
-        )
-        self._pm_desc_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.PmDescRegex
-        )
-        self._prefix_day_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.PrefixDayRegex
-        )
-        self._before_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.BeforeRegex
-        )
-        self._after_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.AfterRegex
-        )
-        self._suffix_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.SuffixRegex
-        )
+        self._future_suffix_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.FutureSuffixRegex)
+        self._date_unit_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.DateUnitRegex)
+        self._am_desc_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.AmDescRegex)
+        self._pm_desc_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.PmDescRegex)
+        self._prefix_day_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.PrefixDayRegex)
+        self._before_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.BeforeRegex)
+        self._after_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.AfterRegex)
+        self._suffix_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.SuffixRegex)
         self._check_both_before_after = ItalianDateTime.CheckBothBeforeAfter
 
     def get_from_token_index(self, source: str) -> MatchedIndex:

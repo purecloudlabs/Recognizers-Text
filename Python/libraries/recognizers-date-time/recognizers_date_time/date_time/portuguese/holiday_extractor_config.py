@@ -2,10 +2,11 @@
 #  Licensed under the MIT License.
 
 from typing import List, Pattern
+
 from recognizers_text.utilities import RegExpUtility
 
-from ..base_holiday import HolidayExtractorConfiguration
 from ...resources.portuguese_date_time import PortugueseDateTime
+from ..base_holiday import HolidayExtractorConfiguration
 
 
 class PortugueseHolidayExtractorConfiguration(HolidayExtractorConfiguration):
@@ -18,5 +19,5 @@ class PortugueseHolidayExtractorConfiguration(HolidayExtractorConfiguration):
         self._holiday_regexes = [
             RegExpUtility.get_safe_reg_exp(PortugueseDateTime.HolidayRegex1),
             RegExpUtility.get_safe_reg_exp(PortugueseDateTime.HolidayRegex2),
-            RegExpUtility.get_safe_reg_exp(PortugueseDateTime.HolidayRegex3)
+            RegExpUtility.get_safe_reg_exp(PortugueseDateTime.HolidayRegex3),
         ]

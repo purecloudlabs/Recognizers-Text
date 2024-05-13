@@ -1,17 +1,18 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from typing import Pattern, Dict
+from typing import Dict, Pattern
 
-from recognizers_text.utilities import RegExpUtility
 from recognizers_number.number.extractors import BaseNumberExtractor
 from recognizers_number.number.parsers import BaseNumberParser
+from recognizers_text.utilities import RegExpUtility
+
 from ...resources.italian_date_time import ItalianDateTime
+from ..base_configs import BaseDateParserConfiguration
+from ..base_datetime import DateTimeParserConfiguration, MatchedTimex
 from ..extractors import DateTimeExtractor
 from ..parsers import DateTimeParser
 from ..utilities import DateTimeUtilityConfiguration
-from ..base_configs import BaseDateParserConfiguration
-from ..base_datetime import DateTimeParserConfiguration, MatchedTimex
 
 
 class ItalianDateTimeParserConfiguration(DateTimeParserConfiguration):
@@ -106,29 +107,22 @@ class ItalianDateTimeParserConfiguration(DateTimeParserConfiguration):
     def __init__(self, config: BaseDateParserConfiguration):
         self._token_before_date = ItalianDateTime.TokenBeforeDate
         self._token_before_time = ItalianDateTime.TokenBeforeTime
-        self._now_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.NowRegex)
-        self._am_time_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.AMTimeRegex)
-        self._pm_time_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.PMTimeRegex)
+        self._now_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.NowRegex)
+        self._am_time_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.AMTimeRegex)
+        self._pm_time_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.PMTimeRegex)
         self._simple_time_of_today_after_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.SimpleTimeOfTodayAfterRegex)
+            ItalianDateTime.SimpleTimeOfTodayAfterRegex
+        )
         self._simple_time_of_today_before_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.SimpleTimeOfTodayBeforeRegex)
-        self._specific_time_of_day_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.SpecificTimeOfDayRegex)
-        self._specific_end_of_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.SpecificEndOfRegex)
-        self._unspecific_end_of_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.UnspecificEndOfRegex)
-        self._unit_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.TimeUnitRegex)
+            ItalianDateTime.SimpleTimeOfTodayBeforeRegex
+        )
+        self._specific_time_of_day_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.SpecificTimeOfDayRegex)
+        self._specific_end_of_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.SpecificEndOfRegex)
+        self._unspecific_end_of_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.UnspecificEndOfRegex)
+        self._unit_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.TimeUnitRegex)
 
-        self.next_prefix_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.NextPrefixRegex)
-        self.previous_prefix_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.PreviousPrefixRegex)
+        self.next_prefix_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.NextPrefixRegex)
+        self.previous_prefix_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.PreviousPrefixRegex)
 
         self._date_extractor = config.date_extractor
         self._time_extractor = config.time_extractor
@@ -151,10 +145,7 @@ class ItalianDateTimeParserConfiguration(DateTimeParserConfiguration):
 
         if source.endswith('ora') or source.endswith('adesso') or source.endswith('in questo momento'):
             timex = 'PRESENT_REF'
-        elif (
-            source == 'recentemente' or
-            source == 'precedentemente'
-        ):
+        elif source == 'recentemente' or source == 'precedentemente':
             timex = 'PAST_REF'
         elif source == 'il prima possibile' or source == 'asap':
             timex = 'FUTURE_REF'

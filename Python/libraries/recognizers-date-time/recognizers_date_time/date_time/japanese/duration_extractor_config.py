@@ -1,13 +1,15 @@
-from typing import Dict, Pattern, List
+from typing import Dict, List, Pattern
 
-from recognizers_number.culture import CultureInfo, Culture
-from recognizers_text.extractor import Extractor
-from recognizers_text.utilities import RegExpUtility, DefinitionLoader
-from recognizers_date_time.date_time.constants import Constants
 from recognizers_date_time.date_time.CJK import CJKDurationExtractorConfiguration
+from recognizers_date_time.date_time.constants import Constants
 from recognizers_date_time.resources.japanese_date_time import JapaneseDateTime
-from recognizers_number_with_unit.number_with_unit import NumberWithUnitExtractor
-from recognizers_number_with_unit.number_with_unit.japanese import JapaneseNumberWithUnitExtractorConfiguration
+from recognizers_number.culture import Culture, CultureInfo
+from recognizers_number_with_unit.number_with_unit import (
+    JapaneseNumberWithUnitExtractorConfiguration,
+    NumberWithUnitExtractor,
+)
+from recognizers_text.extractor import Extractor
+from recognizers_text.utilities import DefinitionLoader, RegExpUtility
 
 
 class JapaneseDurationExtractorConfiguration(CJKDurationExtractorConfiguration):
@@ -15,7 +17,7 @@ class JapaneseDurationExtractorConfiguration(CJKDurationExtractorConfiguration):
     @property
     def year_regex(self) -> Pattern:
         return self._year_regex
-    
+
     @property
     def duration_unit_regex(self) -> Pattern:
         return self._duration_unit_regex
@@ -27,7 +29,7 @@ class JapaneseDurationExtractorConfiguration(CJKDurationExtractorConfiguration):
     @property
     def duration_connector_regex(self) -> Pattern:
         return self._duration_connector_regex
-    
+
     @property
     def all_regex(self) -> Pattern:
         return self._all_regex
@@ -102,7 +104,8 @@ class JapaneseDurationExtractorConfiguration(CJKDurationExtractorConfiguration):
         self._all_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.DurationAllRegex)
         self._half_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.DurationHalfRegex)
         self._relative_duration_unit_regex = RegExpUtility.get_safe_reg_exp(
-            JapaneseDateTime.DurationRelativeDurationUnitRegex)
+            JapaneseDateTime.DurationRelativeDurationUnitRegex
+        )
         self._during_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.DurationDuringRegex)
         self._some_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.DurationSomeRegex)
         self._more_or_less_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.DurationMoreOrLessRegex)
@@ -114,5 +117,3 @@ class JapaneseDurationExtractorConfiguration(CJKDurationExtractorConfiguration):
         self._ambiguity_duration_filters_dict = DefinitionLoader.load_ambiguity_filters(
             JapaneseDateTime.AmbiguityDurationFiltersDict
         )
-
-

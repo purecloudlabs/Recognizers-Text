@@ -1,11 +1,11 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from recognizers_text import Extractor
 from recognizers_number import ChineseIntegerExtractor
+from recognizers_text import Extractor
 
-from ..parsers import DateTimeParser
 from ..base_timeperiod import TimePeriodParserConfiguration
+from ..parsers import DateTimeParser
 from .time_parser import ChineseTimeParser
 
 

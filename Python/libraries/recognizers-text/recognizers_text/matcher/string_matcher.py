@@ -7,7 +7,6 @@ from .simple_tokenizer import SimpleTokenizer
 from .matcher import Matcher
 from .trie_tree import TrieTree
 from .ac_automaton import AcAutomaton
-from multipledispatch import dispatch
 from .match_result import MatchResult
 
 
@@ -73,7 +72,7 @@ class StringMatcher:
             end_token = query_tokens[r.start + r.length - 1]
             start = start_token.start
             length = end_token.end - start_token.start
-            r_text = tokenized_query[start: start + length]
+            r_text = tokenized_query[start : start + length]
 
             match_result = MatchResult()
             match_result.start = start

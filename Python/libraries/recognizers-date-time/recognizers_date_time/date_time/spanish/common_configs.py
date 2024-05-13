@@ -4,35 +4,39 @@
 from typing import Dict, Pattern
 
 from recognizers_number import BaseNumberExtractor, BaseNumberParser
+from recognizers_number.number.spanish.extractors import (
+    SpanishCardinalExtractor,
+    SpanishIntegerExtractor,
+    SpanishOrdinalExtractor,
+)
 from recognizers_number.number.spanish.parsers import SpanishNumberParserConfiguration
-from recognizers_number.number.spanish.extractors import SpanishCardinalExtractor, SpanishIntegerExtractor, SpanishOrdinalExtractor
 
 from ...resources.spanish_date_time import SpanishDateTime
-from ..extractors import DateTimeExtractor
-from ..parsers import DateTimeParser
 from ..base_configs import BaseDateParserConfiguration, DateTimeUtilityConfiguration
 from ..base_date import BaseDateExtractor, BaseDateParser
-from ..base_time import BaseTimeExtractor, BaseTimeParser
-from ..base_duration import BaseDurationExtractor, BaseDurationParser
 from ..base_dateperiod import BaseDatePeriodExtractor, BaseDatePeriodParser
-from ..base_timeperiod import BaseTimePeriodExtractor, BaseTimePeriodParser
 from ..base_datetime import BaseDateTimeExtractor, BaseDateTimeParser
 from ..base_datetimeperiod import BaseDateTimePeriodExtractor, BaseDateTimePeriodParser
+from ..base_duration import BaseDurationExtractor, BaseDurationParser
+from ..base_time import BaseTimeExtractor, BaseTimeParser
+from ..base_timeperiod import BaseTimePeriodExtractor, BaseTimePeriodParser
+from ..extractors import DateTimeExtractor
+from ..parsers import DateTimeParser
 from .base_configs import SpanishDateTimeUtilityConfiguration
 from .date_extractor_config import SpanishDateExtractorConfiguration
 from .date_parser_config import SpanishDateParserConfiguration
-from .time_extractor_config import SpanishTimeExtractorConfiguration
-from .time_parser_config import SpanishTimeParserConfiguration
-from .duration_extractor_config import SpanishDurationExtractorConfiguration
-from .duration_parser_config import SpanishDurationParserConfiguration
 from .dateperiod_extractor_config import SpanishDatePeriodExtractorConfiguration
 from .dateperiod_parser_config import SpanishDatePeriodParserConfiguration
-from .timeperiod_extractor_config import SpanishTimePeriodExtractorConfiguration
-from .timeperiod_parser_config import SpanishTimePeriodParserConfiguration
 from .datetime_extractor_config import SpanishDateTimeExtractorConfiguration
 from .datetime_parser_config import SpanishDateTimeParserConfiguration
 from .datetimeperiod_extractor_config import SpanishDateTimePeriodExtractorConfiguration
 from .datetimeperiod_parser_config import SpanishDateTimePeriodParserConfiguration
+from .duration_extractor_config import SpanishDurationExtractorConfiguration
+from .duration_parser_config import SpanishDurationParserConfiguration
+from .time_extractor_config import SpanishTimeExtractorConfiguration
+from .time_parser_config import SpanishTimeParserConfiguration
+from .timeperiod_extractor_config import SpanishTimePeriodExtractorConfiguration
+from .timeperiod_parser_config import SpanishTimePeriodParserConfiguration
 
 
 class SpanishCommonDateTimeParserConfiguration(BaseDateParserConfiguration):
@@ -169,33 +173,18 @@ class SpanishCommonDateTimeParserConfiguration(BaseDateParserConfiguration):
         self._integer_extractor = SpanishIntegerExtractor()
         self._ordinal_extractor = SpanishOrdinalExtractor()
 
-        self._number_parser = BaseNumberParser(
-            SpanishNumberParserConfiguration())
-        self._date_extractor = BaseDateExtractor(
-            SpanishDateExtractorConfiguration())
-        self._time_extractor = BaseTimeExtractor(
-            SpanishTimeExtractorConfiguration())
-        self._duration_extractor = BaseDurationExtractor(
-            SpanishDurationExtractorConfiguration())
-        self._date_period_extractor = BaseDatePeriodExtractor(
-            SpanishDatePeriodExtractorConfiguration())
-        self._time_period_extractor = BaseTimePeriodExtractor(
-            SpanishTimePeriodExtractorConfiguration())
-        self._date_time_extractor = BaseDateTimeExtractor(
-            SpanishDateTimeExtractorConfiguration())
-        self._date_time_period_extractor = BaseDateTimePeriodExtractor(
-            SpanishDateTimePeriodExtractorConfiguration())
-        self._duration_parser = BaseDurationParser(
-            SpanishDurationParserConfiguration(self))
-        self._date_parser = BaseDateParser(
-            SpanishDateParserConfiguration(self))
-        self._time_parser = BaseTimeParser(
-            SpanishTimeParserConfiguration(self))
-        self._date_period_parser = BaseDatePeriodParser(
-            SpanishDatePeriodParserConfiguration(self))
-        self._time_period_parser = BaseTimePeriodParser(
-            SpanishTimePeriodParserConfiguration(self))
-        self._date_time_parser = BaseDateTimeParser(
-            SpanishDateTimeParserConfiguration(self))
-        self._date_time_period_parser = BaseDateTimePeriodParser(
-            SpanishDateTimePeriodParserConfiguration(self))
+        self._number_parser = BaseNumberParser(SpanishNumberParserConfiguration())
+        self._date_extractor = BaseDateExtractor(SpanishDateExtractorConfiguration())
+        self._time_extractor = BaseTimeExtractor(SpanishTimeExtractorConfiguration())
+        self._duration_extractor = BaseDurationExtractor(SpanishDurationExtractorConfiguration())
+        self._date_period_extractor = BaseDatePeriodExtractor(SpanishDatePeriodExtractorConfiguration())
+        self._time_period_extractor = BaseTimePeriodExtractor(SpanishTimePeriodExtractorConfiguration())
+        self._date_time_extractor = BaseDateTimeExtractor(SpanishDateTimeExtractorConfiguration())
+        self._date_time_period_extractor = BaseDateTimePeriodExtractor(SpanishDateTimePeriodExtractorConfiguration())
+        self._duration_parser = BaseDurationParser(SpanishDurationParserConfiguration(self))
+        self._date_parser = BaseDateParser(SpanishDateParserConfiguration(self))
+        self._time_parser = BaseTimeParser(SpanishTimeParserConfiguration(self))
+        self._date_period_parser = BaseDatePeriodParser(SpanishDatePeriodParserConfiguration(self))
+        self._time_period_parser = BaseTimePeriodParser(SpanishTimePeriodParserConfiguration(self))
+        self._date_time_parser = BaseDateTimeParser(SpanishDateTimeParserConfiguration(self))
+        self._date_time_period_parser = BaseDateTimePeriodParser(SpanishDateTimePeriodParserConfiguration(self))

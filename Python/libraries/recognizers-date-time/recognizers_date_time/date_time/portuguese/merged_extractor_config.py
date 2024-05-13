@@ -3,29 +3,30 @@
 
 from typing import List, Pattern
 
+from recognizers_number import PortugueseIntegerExtractor
 from recognizers_text.extractor import Extractor
 from recognizers_text.utilities import RegExpUtility
-from recognizers_number import PortugueseIntegerExtractor
+
+from ...resources.base_date_time import BaseDateTime
 from ...resources.portuguese_date_time import PortugueseDateTime
-from ..extractors import DateTimeExtractor
-from ..base_merged import MergedExtractorConfiguration
 from ..base_date import BaseDateExtractor
-from ..base_time import BaseTimeExtractor
-from ..base_duration import BaseDurationExtractor
 from ..base_dateperiod import BaseDatePeriodExtractor
-from ..base_timeperiod import BaseTimePeriodExtractor
 from ..base_datetime import BaseDateTimeExtractor
 from ..base_datetimeperiod import BaseDateTimePeriodExtractor
+from ..base_duration import BaseDurationExtractor
 from ..base_holiday import BaseHolidayExtractor
+from ..base_merged import MergedExtractorConfiguration
+from ..base_time import BaseTimeExtractor
+from ..base_timeperiod import BaseTimePeriodExtractor
+from ..extractors import DateTimeExtractor
 from .date_extractor_config import PortugueseDateExtractorConfiguration
-from .time_extractor_config import PortugueseTimeExtractorConfiguration
-from .duration_extractor_config import PortugueseDurationExtractorConfiguration
 from .dateperiod_extractor_config import PortugueseDatePeriodExtractorConfiguration
-from .timeperiod_extractor_config import PortugueseTimePeriodExtractorConfiguration
 from .datetime_extractor_config import PortugueseDateTimeExtractorConfiguration
 from .datetimeperiod_extractor_config import PortugueseDateTimePeriodExtractorConfiguration
+from .duration_extractor_config import PortugueseDurationExtractorConfiguration
 from .holiday_extractor_config import PortugueseHolidayExtractorConfiguration
-from ...resources.base_date_time import BaseDateTime
+from .time_extractor_config import PortugueseTimeExtractorConfiguration
+from .timeperiod_extractor_config import PortugueseTimePeriodExtractorConfiguration
 
 
 class PortugueseMergedExtractorConfiguration(MergedExtractorConfiguration):
@@ -143,38 +144,26 @@ class PortugueseMergedExtractorConfiguration(MergedExtractorConfiguration):
 
     def __init__(self):
         self._integer_extractor = PortugueseIntegerExtractor()
-        self._date_extractor = BaseDateExtractor(
-            PortugueseDateExtractorConfiguration())
-        self._time_extractor = BaseTimeExtractor(
-            PortugueseTimeExtractorConfiguration())
-        self._duration_extractor = BaseDurationExtractor(
-            PortugueseDurationExtractorConfiguration())
-        self._date_period_extractor = BaseDatePeriodExtractor(
-            PortugueseDatePeriodExtractorConfiguration())
-        self._time_period_extractor = BaseTimePeriodExtractor(
-            PortugueseTimePeriodExtractorConfiguration())
-        self._date_time_extractor = BaseDateTimeExtractor(
-            PortugueseDateTimeExtractorConfiguration())
-        self._date_time_period_extractor = BaseDateTimePeriodExtractor(
-            PortugueseDateTimePeriodExtractorConfiguration())
-        self._holiday_extractor = BaseHolidayExtractor(
-            PortugueseHolidayExtractorConfiguration())
-        self._after_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.AfterRegex)
-        self._before_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.BeforeRegex)
-        self._since_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.SinceRegex)
-        self._from_to_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.FromToRegex)
+        self._date_extractor = BaseDateExtractor(PortugueseDateExtractorConfiguration())
+        self._time_extractor = BaseTimeExtractor(PortugueseTimeExtractorConfiguration())
+        self._duration_extractor = BaseDurationExtractor(PortugueseDurationExtractorConfiguration())
+        self._date_period_extractor = BaseDatePeriodExtractor(PortugueseDatePeriodExtractorConfiguration())
+        self._time_period_extractor = BaseTimePeriodExtractor(PortugueseTimePeriodExtractorConfiguration())
+        self._date_time_extractor = BaseDateTimeExtractor(PortugueseDateTimeExtractorConfiguration())
+        self._date_time_period_extractor = BaseDateTimePeriodExtractor(PortugueseDateTimePeriodExtractorConfiguration())
+        self._holiday_extractor = BaseHolidayExtractor(PortugueseHolidayExtractorConfiguration())
+        self._after_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.AfterRegex)
+        self._before_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.BeforeRegex)
+        self._since_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.SinceRegex)
+        self._from_to_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.FromToRegex)
         self._single_ambiguous_month_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.SingleAmbiguousMonthRegex)
-        self._preposition_suffix_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.PrepositionSuffixRegex)
+            PortugueseDateTime.SingleAmbiguousMonthRegex
+        )
+        self._preposition_suffix_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.PrepositionSuffixRegex)
         self._ambiguous_range_modifier_prefix = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.AmbiguousRangeModifierPrefix)
-        self._number_ending_pattern = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.NumberEndingPattern)
+            PortugueseDateTime.AmbiguousRangeModifierPrefix
+        )
+        self._number_ending_pattern = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.NumberEndingPattern)
         self._term_filter_regexes = None
         self._unspecified_date_period_regex = RegExpUtility.get_safe_reg_exp(
             PortugueseDateTime.UnspecificDatePeriodRegex
@@ -182,9 +171,7 @@ class PortugueseMergedExtractorConfiguration(MergedExtractorConfiguration):
         self._ambiguity_filters_dict = PortugueseDateTime.AmbiguityFiltersDict
         self._around_regex = PortugueseDateTime.AroundRegex
         self._equal_regex = BaseDateTime.EqualRegex
-        self._suffix_after_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.SuffixAfterRegex
-        )
+        self._suffix_after_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.SuffixAfterRegex)
         self._superfluous_word_matcher = None
         self._fail_fast_regex = None
         self._check_both_before_after = PortugueseDateTime.CheckBothBeforeAfter

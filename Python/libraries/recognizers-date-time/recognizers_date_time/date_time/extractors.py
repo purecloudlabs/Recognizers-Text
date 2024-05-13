@@ -2,8 +2,8 @@
 #  Licensed under the MIT License.
 
 from abc import abstractmethod
-from typing import List
 from datetime import datetime
+from typing import List
 
 from recognizers_text.extractor import Extractor, ExtractResult
 

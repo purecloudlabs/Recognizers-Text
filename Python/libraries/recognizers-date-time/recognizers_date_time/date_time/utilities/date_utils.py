@@ -1,6 +1,6 @@
-from enum import IntEnum
-from datetime import datetime, timedelta
 import calendar
+from datetime import datetime, timedelta
+from enum import IntEnum
 
 from datedelta import datedelta
 
@@ -61,23 +61,31 @@ class DateUtils:
             return value, False
 
     @staticmethod
-    def safe_create_from_value(seed: datetime, year: int, month: int, day: int,
-                               hour: int = 0, minute: int = 0, second: int = 0) -> datetime:
+    def safe_create_from_value(
+        seed: datetime, year: int, month: int, day: int, hour: int = 0, minute: int = 0, second: int = 0
+    ) -> datetime:
         if DateUtils.is_valid_date(year, month, day) and DateUtils.is_valid_time(hour, minute, second):
             return datetime(year, month, day, hour, minute, second)
 
         return seed
 
     @staticmethod
-    def safe_create_from_min_value(year: int, month: int, day: int,
-                                   hour: int = 0, minute: int = 0, second: int = 0) -> datetime:
+    def safe_create_from_min_value(
+        year: int, month: int, day: int, hour: int = 0, minute: int = 0, second: int = 0
+    ) -> datetime:
         return DateUtils.safe_create_from_value(DateUtils.min_value, year, month, day, hour, minute, second)
 
     @staticmethod
     def safe_create_from_min_value_date_time(date: datetime, time: datetime = None) -> datetime:
-        return DateUtils.safe_create_from_value(DateUtils.min_value, date.year, date.month, date.day,
-                                                time.hour if time else 0, time.minute if time else 0,
-                                                time.second if time else 0)
+        return DateUtils.safe_create_from_value(
+            DateUtils.min_value,
+            date.year,
+            date.month,
+            date.day,
+            time.hour if time else 0,
+            time.minute if time else 0,
+            time.second if time else 0,
+        )
 
     @staticmethod
     def is_valid_date(year: int, month: int, day: int) -> bool:
@@ -98,8 +106,7 @@ class DateUtils:
     @staticmethod
     def this(from_date: datetime, day_of_week: DayOfWeek) -> datetime:
         start = from_date.isoweekday()
-        target = day_of_week if day_of_week >= int(
-            DayOfWeek.MONDAY) else int(DayOfWeek.SUNDAY)
+        target = day_of_week if day_of_week >= int(DayOfWeek.MONDAY) else int(DayOfWeek.SUNDAY)
         result = from_date + timedelta(days=target - start)
         return result
 

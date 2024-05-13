@@ -1,15 +1,15 @@
-from typing import Pattern, Dict
+from typing import Dict, Pattern
 
-from recognizers_text.utilities import RegExpUtility
-from recognizers_number.number.extractors import BaseNumberExtractor
-from recognizers_number.number.parsers import BaseNumberParser
-from recognizers_date_time.resources.arabic_date_time import ArabicDateTime
-from recognizers_date_time.date_time.extractors import DateTimeExtractor
-from recognizers_date_time.date_time.parsers import DateTimeParser
-from recognizers_date_time.date_time.utilities import DateTimeUtilityConfiguration
 from recognizers_date_time.date_time.base_configs import BaseDateParserConfiguration
 from recognizers_date_time.date_time.base_datetime import DateTimeParserConfiguration, MatchedTimex
 from recognizers_date_time.date_time.constants import Constants
+from recognizers_date_time.date_time.extractors import DateTimeExtractor
+from recognizers_date_time.date_time.parsers import DateTimeParser
+from recognizers_date_time.date_time.utilities import DateTimeUtilityConfiguration
+from recognizers_date_time.resources.arabic_date_time import ArabicDateTime
+from recognizers_number.number.extractors import BaseNumberExtractor
+from recognizers_number.number.parsers import BaseNumberParser
+from recognizers_text.utilities import RegExpUtility
 
 
 class ArabicDateTimeParserConfiguration(DateTimeParserConfiguration):
@@ -132,24 +132,19 @@ class ArabicDateTimeParserConfiguration(DateTimeParserConfiguration):
         self._time_extractor = config.time_extractor
         self._date_parser = config.date_parser
         self._time_parser = config.time_parser
-        self._now_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.NowRegex)
-        self._am_time_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.AMTimeRegex)
-        self._pm_time_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.PMTimeRegex)
+        self._now_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.NowRegex)
+        self._am_time_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.AMTimeRegex)
+        self._pm_time_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.PMTimeRegex)
         self._simple_time_of_today_after_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.SimpleTimeOfTodayAfterRegex)
+            ArabicDateTime.SimpleTimeOfTodayAfterRegex
+        )
         self._simple_time_of_today_before_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.SimpleTimeOfTodayBeforeRegex)
-        self._specific_time_of_day_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.SpecificTimeOfDayRegex)
-        self._specific_end_of_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.SpecificEndOfRegex)
-        self._unspecific_end_of_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.UnspecificEndOfRegex)
-        self._unit_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.TimeUnitRegex)
+            ArabicDateTime.SimpleTimeOfTodayBeforeRegex
+        )
+        self._specific_time_of_day_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.SpecificTimeOfDayRegex)
+        self._specific_end_of_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.SpecificEndOfRegex)
+        self._unspecific_end_of_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.UnspecificEndOfRegex)
+        self._unit_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.TimeUnitRegex)
         self._numbers = config.numbers
         self._cardinal_extractor = config.cardinal_extractor
         self._number_parser = config.number_parser
@@ -169,8 +164,13 @@ class ArabicDateTimeParserConfiguration(DateTimeParserConfiguration):
 
         if RegExpUtility.match_end(self.am_time_regex, source, False) and hour >= Constants.HALF_DAY_HOUR_COUNT:
             return hour - 12
-        elif not RegExpUtility.match_end(self.am_time_regex, source, False) and hour < Constants.HALF_DAY_HOUR_COUNT and \
-                not (RegExpUtility.match_end(self.pm_time_regex, source, False) and hour < Constants.QUARTER_DAY_HOUR_COUNT):
+        elif (
+            not RegExpUtility.match_end(self.am_time_regex, source, False)
+            and hour < Constants.HALF_DAY_HOUR_COUNT
+            and not (
+                RegExpUtility.match_end(self.pm_time_regex, source, False) and hour < Constants.QUARTER_DAY_HOUR_COUNT
+            )
+        ):
             return hour + 12
 
         return hour
@@ -197,4 +197,3 @@ class ArabicDateTimeParserConfiguration(DateTimeParserConfiguration):
 
     def have_ambiguous_token(self, source: str, matched_text: str) -> bool:
         return False
-

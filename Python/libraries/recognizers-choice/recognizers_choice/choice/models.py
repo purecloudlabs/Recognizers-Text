@@ -50,14 +50,10 @@ class BooleanModel(ChoiceModel):
         return 'boolean'
 
     def get_resolution(self, sources: ParseResult):
-        results = {
-            'value': sources.value,
-            'score': sources.data.score
-        }
+        results = {'value': sources.value, 'score': sources.data.score}
 
         if sources.data.other_matches:
-            results.other_results = [{'text': o.text,
-                                      'value': o.value,
-                                      'score': o.data.score}
-                                     for o in sources.data.other_matches]
+            results.other_results = [
+                {'text': o.text, 'value': o.value, 'score': o.data.score} for o in sources.data.other_matches
+            ]
         return results

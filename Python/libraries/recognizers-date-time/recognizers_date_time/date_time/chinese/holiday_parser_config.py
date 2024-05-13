@@ -1,13 +1,14 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from typing import List, Dict, Callable
 from datetime import datetime
+from typing import Callable, Dict, List
 
 from recognizers_text.utilities import RegExpUtility
-from ..utilities import DateUtils
-from ..base_holiday import BaseHolidayParserConfiguration
+
 from ...resources.chinese_date_time import ChineseDateTime
+from ..base_holiday import BaseHolidayParserConfiguration
+from ..utilities import DateUtils
 
 
 class ChineseHolidayParserConfiguration(BaseHolidayParserConfiguration):
@@ -43,16 +44,18 @@ class ChineseHolidayParserConfiguration(BaseHolidayParserConfiguration):
         self._holiday_regexes = [
             RegExpUtility.get_safe_reg_exp(ChineseDateTime.HolidayRegexList1),
             RegExpUtility.get_safe_reg_exp(ChineseDateTime.HolidayRegexList2),
-            RegExpUtility.get_safe_reg_exp(ChineseDateTime.LunarHolidayRegex)
+            RegExpUtility.get_safe_reg_exp(ChineseDateTime.LunarHolidayRegex),
         ]
         self._variable_holidays_timex_dictionary = ChineseDateTime.HolidayNoFixedTimex
 
     def _init_holiday_funcs(self) -> Dict[str, Callable[[int], datetime]]:
-        local = dict([
-            ('父亲节', BaseHolidayParserConfiguration.fathers_day),
-            ('母亲节', BaseHolidayParserConfiguration.mothers_day),
-            ('感恩节', BaseHolidayParserConfiguration.thanksgiving_day)
-        ])
+        local = dict(
+            [
+                ('父亲节', BaseHolidayParserConfiguration.fathers_day),
+                ('母亲节', BaseHolidayParserConfiguration.mothers_day),
+                ('感恩节', BaseHolidayParserConfiguration.thanksgiving_day),
+            ]
+        )
 
         return {**super()._init_holiday_funcs(), **local}
 

@@ -3,29 +3,30 @@
 
 from typing import List, Pattern
 
+from recognizers_number import EnglishIntegerExtractor
 from recognizers_text.extractor import Extractor
 from recognizers_text.utilities import RegExpUtility
-from recognizers_number import EnglishIntegerExtractor
+
+from ...resources.base_date_time import BaseDateTime
 from ...resources.english_date_time import EnglishDateTime
-from ..extractors import DateTimeExtractor
-from ..base_merged import MergedExtractorConfiguration
 from ..base_date import BaseDateExtractor
-from ..base_time import BaseTimeExtractor
-from ..base_duration import BaseDurationExtractor
 from ..base_dateperiod import BaseDatePeriodExtractor
-from ..base_timeperiod import BaseTimePeriodExtractor
 from ..base_datetime import BaseDateTimeExtractor
 from ..base_datetimeperiod import BaseDateTimePeriodExtractor
+from ..base_duration import BaseDurationExtractor
 from ..base_holiday import BaseHolidayExtractor
+from ..base_merged import MergedExtractorConfiguration
+from ..base_time import BaseTimeExtractor
+from ..base_timeperiod import BaseTimePeriodExtractor
+from ..extractors import DateTimeExtractor
 from .date_extractor_config import EnglishDateExtractorConfiguration
-from .time_extractor_config import EnglishTimeExtractorConfiguration
-from .duration_extractor_config import EnglishDurationExtractorConfiguration
 from .dateperiod_extractor_config import EnglishDatePeriodExtractorConfiguration
-from .timeperiod_extractor_config import EnglishTimePeriodExtractorConfiguration
 from .datetime_extractor_config import EnglishDateTimeExtractorConfiguration
 from .datetimeperiod_extractor_config import EnglishDateTimePeriodExtractorConfiguration
+from .duration_extractor_config import EnglishDurationExtractorConfiguration
 from .holiday_extractor_config import EnglishHolidayExtractorConfiguration
-from ...resources.base_date_time import BaseDateTime
+from .time_extractor_config import EnglishTimeExtractorConfiguration
+from .timeperiod_extractor_config import EnglishTimePeriodExtractorConfiguration
 
 
 class EnglishMergedExtractorConfiguration(MergedExtractorConfiguration):
@@ -143,55 +144,37 @@ class EnglishMergedExtractorConfiguration(MergedExtractorConfiguration):
 
     def __init__(self, dmyDateFormat=False):
         self._integer_extractor = EnglishIntegerExtractor()
-        self._date_extractor = BaseDateExtractor(
-            EnglishDateExtractorConfiguration(dmyDateFormat))
-        self._time_extractor = BaseTimeExtractor(
-            EnglishTimeExtractorConfiguration())
-        self._duration_extractor = BaseDurationExtractor(
-            EnglishDurationExtractorConfiguration())
-        self._date_period_extractor = BaseDatePeriodExtractor(
-            EnglishDatePeriodExtractorConfiguration(dmyDateFormat))
-        self._time_period_extractor = BaseTimePeriodExtractor(
-            EnglishTimePeriodExtractorConfiguration())
-        self._date_time_extractor = BaseDateTimeExtractor(
-            EnglishDateTimeExtractorConfiguration(dmyDateFormat))
+        self._date_extractor = BaseDateExtractor(EnglishDateExtractorConfiguration(dmyDateFormat))
+        self._time_extractor = BaseTimeExtractor(EnglishTimeExtractorConfiguration())
+        self._duration_extractor = BaseDurationExtractor(EnglishDurationExtractorConfiguration())
+        self._date_period_extractor = BaseDatePeriodExtractor(EnglishDatePeriodExtractorConfiguration(dmyDateFormat))
+        self._time_period_extractor = BaseTimePeriodExtractor(EnglishTimePeriodExtractorConfiguration())
+        self._date_time_extractor = BaseDateTimeExtractor(EnglishDateTimeExtractorConfiguration(dmyDateFormat))
         self._date_time_period_extractor = BaseDateTimePeriodExtractor(
-            EnglishDateTimePeriodExtractorConfiguration(dmyDateFormat))
-        self._holiday_extractor = BaseHolidayExtractor(
-            EnglishHolidayExtractorConfiguration())
-        self._after_regex = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.AfterRegex)
-        self._before_regex = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.BeforeRegex)
-        self._since_regex = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.SinceRegex)
-        self._from_to_regex = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.FromToRegex)
-        self._single_ambiguous_month_regex = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.SingleAmbiguousMonthRegex)
-        self._preposition_suffix_regex = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.PrepositionSuffixRegex)
+            EnglishDateTimePeriodExtractorConfiguration(dmyDateFormat)
+        )
+        self._holiday_extractor = BaseHolidayExtractor(EnglishHolidayExtractorConfiguration())
+        self._after_regex = RegExpUtility.get_safe_reg_exp(EnglishDateTime.AfterRegex)
+        self._before_regex = RegExpUtility.get_safe_reg_exp(EnglishDateTime.BeforeRegex)
+        self._since_regex = RegExpUtility.get_safe_reg_exp(EnglishDateTime.SinceRegex)
+        self._from_to_regex = RegExpUtility.get_safe_reg_exp(EnglishDateTime.FromToRegex)
+        self._single_ambiguous_month_regex = RegExpUtility.get_safe_reg_exp(EnglishDateTime.SingleAmbiguousMonthRegex)
+        self._preposition_suffix_regex = RegExpUtility.get_safe_reg_exp(EnglishDateTime.PrepositionSuffixRegex)
         self._ambiguous_range_modifier_prefix = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.AmbiguousRangeModifierPrefix)
-        self._number_ending_pattern = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.NumberEndingPattern)
+            EnglishDateTime.AmbiguousRangeModifierPrefix
+        )
+        self._number_ending_pattern = RegExpUtility.get_safe_reg_exp(EnglishDateTime.NumberEndingPattern)
         self._term_filter_regexes = [
             RegExpUtility.get_safe_reg_exp(EnglishDateTime.OneOnOneRegex),
-            RegExpUtility.get_safe_reg_exp(EnglishDateTime.SingleAmbiguousTermsRegex)
+            RegExpUtility.get_safe_reg_exp(EnglishDateTime.SingleAmbiguousTermsRegex),
         ]
-        self._unspecified_date_period_regex = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.UnspecificDatePeriodRegex
-        )
+        self._unspecified_date_period_regex = RegExpUtility.get_safe_reg_exp(EnglishDateTime.UnspecificDatePeriodRegex)
         self._ambiguity_filters_dict = EnglishDateTime.AmbiguityFiltersDict
         self._around_regex = EnglishDateTime.AroundRegex
         self._equal_regex = BaseDateTime.EqualRegex
-        self._suffix_after_regex = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.SuffixAfterRegex
-        )
+        self._suffix_after_regex = RegExpUtility.get_safe_reg_exp(EnglishDateTime.SuffixAfterRegex)
         self._superfluous_word_matcher = EnglishDateTime.SuperfluousWordList
-        self._fail_fast_regex = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.FailFastRegex
-        )
+        self._fail_fast_regex = RegExpUtility.get_safe_reg_exp(EnglishDateTime.FailFastRegex)
         self._check_both_before_after = EnglishDateTime.CheckBothBeforeAfter
         # TODO When the implementation for these properties is added, change the None values to their respective Regexps
         self._datetime_alt_extractor = None

@@ -1,15 +1,16 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from typing import Pattern, Dict
+from typing import Dict, Pattern
 
 from recognizers_text.utilities import RegExpUtility
+
 from ...resources.spanish_date_time import SpanishDateTime
+from ..base_configs import BaseDateParserConfiguration
 from ..base_datetimeperiod import DateTimePeriodParserConfiguration, MatchedTimeRange
 from ..constants import Constants
 from ..extractors import DateTimeExtractor
 from ..parsers import DateTimeParser
-from ..base_configs import BaseDateParserConfiguration
 
 
 class SpanishDateTimePeriodParserConfiguration(DateTimePeriodParserConfiguration):
@@ -69,35 +70,25 @@ class SpanishDateTimePeriodParserConfiguration(DateTimePeriodParserConfiguration
         self._token_before_date = SpanishDateTime.TokenBeforeDate
         self._token_before_time = SpanishDateTime.TokenBeforeTime
         self._check_both_before_after = SpanishDateTime.CheckBothBeforeAfter
-        self.next_prefix_regex = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.NextPrefixRegex)
-        self._previous_prefix_regex = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.PastRegex)
-        self.this_prefix_regex = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.ThisPrefixRegex)
+        self.next_prefix_regex = RegExpUtility.get_safe_reg_exp(SpanishDateTime.NextPrefixRegex)
+        self._previous_prefix_regex = RegExpUtility.get_safe_reg_exp(SpanishDateTime.PastRegex)
+        self.this_prefix_regex = RegExpUtility.get_safe_reg_exp(SpanishDateTime.ThisPrefixRegex)
 
-        self._pure_number_from_to_regex = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.PureNumFromTo)
-        self._pure_number_between_and_regex = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.PureNumBetweenAnd)
-        self._specific_time_of_day_regex = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.SpecificTimeOfDayRegex)
-        self._time_of_day_regex = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.TimeOfDayRegex)
-        self._past_regex = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.PastRegex)
-        self._future_regex = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.FutureRegex)
+        self._pure_number_from_to_regex = RegExpUtility.get_safe_reg_exp(SpanishDateTime.PureNumFromTo)
+        self._pure_number_between_and_regex = RegExpUtility.get_safe_reg_exp(SpanishDateTime.PureNumBetweenAnd)
+        self._specific_time_of_day_regex = RegExpUtility.get_safe_reg_exp(SpanishDateTime.SpecificTimeOfDayRegex)
+        self._time_of_day_regex = RegExpUtility.get_safe_reg_exp(SpanishDateTime.TimeOfDayRegex)
+        self._past_regex = RegExpUtility.get_safe_reg_exp(SpanishDateTime.PastRegex)
+        self._future_regex = RegExpUtility.get_safe_reg_exp(SpanishDateTime.FutureRegex)
         self.number_combined_with_unit_regex = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.DateTimePeriodNumberCombinedWithUnit)
-        self.unit_regex = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.UnitRegex)
+            SpanishDateTime.DateTimePeriodNumberCombinedWithUnit
+        )
+        self.unit_regex = RegExpUtility.get_safe_reg_exp(SpanishDateTime.UnitRegex)
         self._period_time_of_day_with_date_regex = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.PeriodTimeOfDayWithDateRegex)
-        self._relative_time_unit_regex = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.RelativeTimeUnitRegex)
-        self._rest_of_date_time_regex = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.RestOfDateTimeRegex)
+            SpanishDateTime.PeriodTimeOfDayWithDateRegex
+        )
+        self._relative_time_unit_regex = RegExpUtility.get_safe_reg_exp(SpanishDateTime.RelativeTimeUnitRegex)
+        self._rest_of_date_time_regex = RegExpUtility.get_safe_reg_exp(SpanishDateTime.RestOfDateTimeRegex)
 
     @property
     def before_regex(self):

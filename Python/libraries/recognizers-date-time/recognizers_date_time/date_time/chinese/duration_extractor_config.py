@@ -3,9 +3,10 @@
 
 from typing import Dict
 
-from recognizers_text import RegExpUtility
 from recognizers_number.culture import Culture, CultureInfo
-from recognizers_number_with_unit.number_with_unit.chinese.extractors import ChineseNumberWithUnitExtractorConfiguration
+from recognizers_number_with_unit import ChineseNumberWithUnitExtractorConfiguration
+from recognizers_text import RegExpUtility
+
 from ...resources.chinese_date_time import ChineseDateTime
 from ..constants import Constants
 
@@ -37,12 +38,8 @@ class ChineseDurationExtractorConfiguration(ChineseNumberWithUnitExtractorConfig
 
     def __init__(self):
         super().__init__(CultureInfo(Culture.Chinese))
-        self._year_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.DurationYearRegex
-        )
-        self._half_suffix_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.DurationHalfSuffixRegex
-        )
+        self._year_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.DurationYearRegex)
+        self._half_suffix_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.DurationHalfSuffixRegex)
         self._extract_type = Constants.SYS_DATETIME_DURATION
         self._suffix_list = ChineseDateTime.DurationSuffixList
         self._prefix_list = dict()

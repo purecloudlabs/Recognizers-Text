@@ -4,9 +4,9 @@
 from typing import List, Pattern
 
 from recognizers_text.utilities import RegExpUtility
+
 from ...resources.english_date_time import EnglishDateTime
 from ..base_time import TimeExtractorConfiguration
-from ..extractors import DateTimeExtractor
 
 
 class EnglishTimeExtractorConfiguration(TimeExtractorConfiguration):
@@ -96,57 +96,23 @@ class EnglishTimeExtractorConfiguration(TimeExtractorConfiguration):
 
     def __init__(self):
         super().__init__()
-        self._desc_regex = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.DescRegex
-        )
-        self._hour_num_regex = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.HourNumRegex
-        )
-        self._minute_num_regex = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.MinuteNumRegex
-        )
-        self._oclock_regex = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.OclockRegex
-        )
-        self._pm_regex = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.PmRegex
-        )
-        self._am_regex = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.AmRegex
-        )
-        self._less_than_one_hour = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.LessThanOneHour
-        )
-        self._written_time_regex = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.WrittenTimeRegex
-        )
-        self._time_prefix = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.TimePrefix
-        )
-        self._time_suffix = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.TimeSuffix
-        )
-        self._basic_time = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.BasicTime
-        )
-        self._midnight_regex = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.MidnightRegex
-        )
-        self._midmorning_regex = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.MidmorningRegex
-        )
-        self._midafternoon_regex = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.MidafternoonRegex
-        )
-        self._midday_regex = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.MiddayRegex
-        )
-        self._midtime_regex = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.MidTimeRegex
-        )
-        self._time_unit_regex = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.TimeUnitRegex
-        )
+        self._desc_regex = RegExpUtility.get_safe_reg_exp(EnglishDateTime.DescRegex)
+        self._hour_num_regex = RegExpUtility.get_safe_reg_exp(EnglishDateTime.HourNumRegex)
+        self._minute_num_regex = RegExpUtility.get_safe_reg_exp(EnglishDateTime.MinuteNumRegex)
+        self._oclock_regex = RegExpUtility.get_safe_reg_exp(EnglishDateTime.OclockRegex)
+        self._pm_regex = RegExpUtility.get_safe_reg_exp(EnglishDateTime.PmRegex)
+        self._am_regex = RegExpUtility.get_safe_reg_exp(EnglishDateTime.AmRegex)
+        self._less_than_one_hour = RegExpUtility.get_safe_reg_exp(EnglishDateTime.LessThanOneHour)
+        self._written_time_regex = RegExpUtility.get_safe_reg_exp(EnglishDateTime.WrittenTimeRegex)
+        self._time_prefix = RegExpUtility.get_safe_reg_exp(EnglishDateTime.TimePrefix)
+        self._time_suffix = RegExpUtility.get_safe_reg_exp(EnglishDateTime.TimeSuffix)
+        self._basic_time = RegExpUtility.get_safe_reg_exp(EnglishDateTime.BasicTime)
+        self._midnight_regex = RegExpUtility.get_safe_reg_exp(EnglishDateTime.MidnightRegex)
+        self._midmorning_regex = RegExpUtility.get_safe_reg_exp(EnglishDateTime.MidmorningRegex)
+        self._midafternoon_regex = RegExpUtility.get_safe_reg_exp(EnglishDateTime.MidafternoonRegex)
+        self._midday_regex = RegExpUtility.get_safe_reg_exp(EnglishDateTime.MiddayRegex)
+        self._midtime_regex = RegExpUtility.get_safe_reg_exp(EnglishDateTime.MidTimeRegex)
+        self._time_unit_regex = RegExpUtility.get_safe_reg_exp(EnglishDateTime.TimeUnitRegex)
         self._time_regex_list: List[Pattern] = [
             RegExpUtility.get_safe_reg_exp(EnglishDateTime.TimeRegex1),
             RegExpUtility.get_safe_reg_exp(EnglishDateTime.TimeRegex2),
@@ -159,11 +125,8 @@ class EnglishTimeExtractorConfiguration(TimeExtractorConfiguration):
             RegExpUtility.get_safe_reg_exp(EnglishDateTime.TimeRegex9),
             RegExpUtility.get_safe_reg_exp(EnglishDateTime.TimeRegex10),
             RegExpUtility.get_safe_reg_exp(EnglishDateTime.TimeRegex11),
-            RegExpUtility.get_safe_reg_exp(EnglishDateTime.ConnectNumRegex)
+            RegExpUtility.get_safe_reg_exp(EnglishDateTime.ConnectNumRegex),
         ]
-        self._at_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.AtRegex)
-        self._ish_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.IshRegex)
-        self._time_before_after_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.TimeBeforeAfterRegex)
+        self._at_regex: Pattern = RegExpUtility.get_safe_reg_exp(EnglishDateTime.AtRegex)
+        self._ish_regex: Pattern = RegExpUtility.get_safe_reg_exp(EnglishDateTime.IshRegex)
+        self._time_before_after_regex: Pattern = RegExpUtility.get_safe_reg_exp(EnglishDateTime.TimeBeforeAfterRegex)

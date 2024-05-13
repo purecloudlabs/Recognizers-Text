@@ -2,7 +2,8 @@
 #  Licensed under the MIT License.
 
 import os
-from setuptools import setup, find_packages
+
+from setuptools import find_packages, setup
 
 
 def read(fname):
@@ -10,15 +11,15 @@ def read(fname):
 
 
 NAME = 'recognizers-text-suite-genesys'
-VERSION = '1.1.33'
+VERSION = '1.1.34'
 REQUIRES = [
-    'recognizers-text-genesys==1.1.33',
-    'recognizers-text-number-genesys==1.1.33',
-    'recognizers-text-number-with-unit-genesys==1.1.33',
-    'recognizers-text-date-time-genesys==1.1.33',
-    'recognizers-text-sequence-genesys==1.1.33',
-    'recognizers-text-choice-genesys==1.1.33',
-    'datatypes_timex_expression_genesys==1.1.33'
+    'recognizers-text-genesys==1.1.34',
+    'recognizers-text-number-genesys==1.1.34',
+    'recognizers-text-number-with-unit-genesys==1.1.34',
+    'recognizers-text-date-time-genesys==1.1.34',
+    'recognizers-text-sequence-genesys==1.1.34',
+    'recognizers-text-choice-genesys==1.1.34',
+    'datatypes_timex_expression_genesys==1.1.34',
 ]
 
 setup(
@@ -27,8 +28,7 @@ setup(
     url='https://github.com/Microsoft/Recognizers-Text',
     author='Microsoft',
     description='recognizers-text-suite README',
-    keywords=['nlp', 'nlp-entity-extraction',
-              'entity-extraction', 'parser-library'],
+    keywords=['nlp', 'nlp-entity-extraction', 'entity-extraction', 'parser-library'],
     long_description=read('README.rst'),
     license='MIT',
     packages=find_packages(),
@@ -40,5 +40,5 @@ setup(
         'Operating System :: OS Independent',
         'Development Status :: 3 - Alpha',
         'Topic :: Scientific/Engineering :: Artificial Intelligence',
-    ]
+    ],
 )

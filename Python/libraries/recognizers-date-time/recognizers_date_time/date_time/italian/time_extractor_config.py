@@ -4,6 +4,7 @@
 from typing import List, Pattern
 
 from recognizers_text.utilities import RegExpUtility
+
 from ...resources.italian_date_time import ItalianDateTime
 from ..base_time import TimeExtractorConfiguration
 from ..utilities import DateTimeOptions
@@ -28,14 +29,10 @@ class ItalianTimeExtractorConfiguration(TimeExtractorConfiguration):
 
     def __init__(self):
         super().__init__()
-        self._time_regex_list: List[Pattern] = ItalianTimeExtractorConfiguration.get_time_regex_list(
-        )
-        self._at_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.AtRegex)
-        self._ish_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.IshRegex)
-        self._time_before_after_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.TimeBeforeAfterRegex)
+        self._time_regex_list: List[Pattern] = ItalianTimeExtractorConfiguration.get_time_regex_list()
+        self._at_regex: Pattern = RegExpUtility.get_safe_reg_exp(ItalianDateTime.AtRegex)
+        self._ish_regex: Pattern = RegExpUtility.get_safe_reg_exp(ItalianDateTime.IshRegex)
+        self._time_before_after_regex: Pattern = RegExpUtility.get_safe_reg_exp(ItalianDateTime.TimeBeforeAfterRegex)
         self._options = DateTimeOptions.NONE
 
     @staticmethod
@@ -51,5 +48,5 @@ class ItalianTimeExtractorConfiguration(TimeExtractorConfiguration):
             RegExpUtility.get_safe_reg_exp(ItalianDateTime.TimeRegex8),
             RegExpUtility.get_safe_reg_exp(ItalianDateTime.TimeRegex9),
             RegExpUtility.get_safe_reg_exp(ItalianDateTime.TimeRegex10),
-            RegExpUtility.get_safe_reg_exp(ItalianDateTime.ConnectNumRegex)
+            RegExpUtility.get_safe_reg_exp(ItalianDateTime.ConnectNumRegex),
         ]

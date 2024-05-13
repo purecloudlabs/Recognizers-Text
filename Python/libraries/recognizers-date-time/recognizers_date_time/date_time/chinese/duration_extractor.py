@@ -1,12 +1,14 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from typing import List
 from datetime import datetime
+from typing import List
+
 import regex
 
-from recognizers_text import RegExpUtility, ExtractResult
 from recognizers_number_with_unit import NumberWithUnitExtractor
+from recognizers_text import ExtractResult, RegExpUtility
+
 from ...resources.chinese_date_time import ChineseDateTime
 from ..constants import Constants
 from .base_date_time_extractor import ChineseBaseDateTimeExtractor
@@ -20,12 +22,9 @@ class ChineseDurationExtractor(ChineseBaseDateTimeExtractor):
 
     def __init__(self):
         super().__init__(None)
-        self.extractor = NumberWithUnitExtractor(
-            ChineseDurationExtractorConfiguration())
-        self.year_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.DurationYearRegex)
-        self.half_suffix_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.DurationHalfSuffixRegex)
+        self.extractor = NumberWithUnitExtractor(ChineseDurationExtractorConfiguration())
+        self.year_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.DurationYearRegex)
+        self.half_suffix_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.DurationHalfSuffixRegex)
 
     def extract(self, source: str, reference: datetime = None) -> List[ExtractResult]:
 
@@ -39,7 +38,7 @@ class ChineseDurationExtractor(ChineseBaseDateTimeExtractor):
                 continue
 
             # match suffix
-            suffix = source[er_result.start + er_result.length:]
+            suffix = source[er_result.start + er_result.length :]
             result.append(er_result)
 
         return result

@@ -1,23 +1,24 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from numbers import Number
-from typing import List, Dict, Optional
-from datedelta import datedelta
 from datetime import datetime, timedelta
-import regex
+from typing import Dict, List, Optional
 
-from recognizers_text import RegExpUtility, ExtractResult
-from recognizers_number import Constants as NumberConstants, ChineseIntegerExtractor
-from .date_extractor import ChineseDateExtractor
-from .duration_extractor import ChineseDurationExtractor
+import regex
+from datedelta import datedelta
+
+from recognizers_number import ChineseIntegerExtractor
+from recognizers_number import Constants as NumberConstants
+from recognizers_text import ExtractResult, RegExpUtility
 
 from ...resources.chinese_date_time import ChineseDateTime
-from ..constants import TimeTypeConstants, Constants
-from ..utilities import DateTimeResolutionResult, DateTimeFormatUtil, DateUtils
-from ..parsers import DateTimeParseResult
 from ..base_date import BaseDateParser
+from ..constants import Constants, TimeTypeConstants
+from ..parsers import DateTimeParseResult
+from ..utilities import DateTimeFormatUtil, DateTimeResolutionResult, DateUtils
+from .date_extractor import ChineseDateExtractor
 from .date_parser_config import ChineseDateParserConfiguration
+from .duration_extractor import ChineseDurationExtractor
 
 
 class ChineseDateParser(BaseDateParser):
@@ -25,16 +26,11 @@ class ChineseDateParser(BaseDateParser):
 
     def __init__(self):
         super().__init__(ChineseDateParserConfiguration())
-        self.lunar_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.LunarRegex)
-        self.special_date_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.SpecialDate)
-        self.token_next_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.NextPrefixRegex)
-        self.token_last_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.LastPrefixRegex)
-        self.month_max_days: List[int] = [
-            31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+        self.lunar_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.LunarRegex)
+        self.special_date_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.SpecialDate)
+        self.token_next_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.NextPrefixRegex)
+        self.token_last_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.LastPrefixRegex)
+        self.month_max_days: List[int] = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
         self.duration_extractor = ChineseDurationExtractor()
 
     def parse(self, source: ExtractResult, reference: datetime = None) -> Optional[DateTimeParseResult]:
@@ -51,22 +47,21 @@ class ChineseDateParser(BaseDateParser):
                 inner_result = self.parse_implicit_date(source_text, reference)
 
             if not inner_result.success:
-                inner_result = self.parse_weekday_of_month(
-                    source_text, reference)
+                inner_result = self.parse_weekday_of_month(source_text, reference)
 
             if not inner_result.success:
-                inner_result = self.parser_duration_with_ago_and_later(
-                    source_text, reference)
+                inner_result = self.parser_duration_with_ago_and_later(source_text, reference)
 
             if inner_result.success:
                 inner_result.future_resolution: Dict[str, str] = dict()
                 inner_result.future_resolution[TimeTypeConstants.DATE] = DateTimeFormatUtil.format_date(
-                    inner_result.future_value)
+                    inner_result.future_value
+                )
                 inner_result.past_resolution: Dict[str, str] = dict()
                 inner_result.past_resolution[TimeTypeConstants.DATE] = DateTimeFormatUtil.format_date(
-                    inner_result.past_value)
-                inner_result.is_lunar = self.__parse_lunar_calendar(
-                    source_text)
+                    inner_result.past_value
+                )
+                inner_result.is_lunar = self.__parse_lunar_calendar(source_text)
                 result_value = inner_result
 
         result = DateTimeParseResult(source)
@@ -130,8 +125,7 @@ class ChineseDateParser(BaseDateParser):
                     elif regex.search(self.token_last_regex, year_str):
                         year -= 1
 
-            result.timex = DateTimeFormatUtil.luis_date(
-                year if has_year else -1, month if has_month else -1, day)
+            result.timex = DateTimeFormatUtil.luis_date(year if has_year else -1, month if has_month else -1, day)
 
             if day > self.get_month_max_day(year, month):
                 future_month = month + 1
@@ -147,8 +141,7 @@ class ChineseDateParser(BaseDateParser):
                     past_month = Constants.MAX_MONTH
                     past_year = year - 1
 
-                is_future_valid = DateUtils.is_valid_date(
-                    future_year, future_month, day)
+                is_future_valid = DateUtils.is_valid_date(future_year, future_month, day)
                 is_past_valid = DateUtils.is_valid_date(past_year, past_month, day)
 
                 if is_future_valid and is_past_valid:
@@ -194,8 +187,9 @@ class ChineseDateParser(BaseDateParser):
             value = reference + timedelta(days=swift)
 
             result.timex = DateTimeFormatUtil.luis_date_from_datetime(value)
-            result.future_value = result.past_value = DateUtils.safe_create_from_min_value(value.year, value.month,
-                                                                                           value.day)
+            result.future_value = result.past_value = DateUtils.safe_create_from_min_value(
+                value.year, value.month, value.day
+            )
             result.success = True
             return result
 
@@ -203,8 +197,7 @@ class ChineseDateParser(BaseDateParser):
         match = regex.match(self.config.this_regex, trimmed_source)
         if match and match.start() == 0 and len(match.group()) == len(trimmed_source):
             weekday_str = RegExpUtility.get_group(match, 'weekday')
-            value = DateUtils.this(
-                reference, self.config.day_of_week.get(weekday_str))
+            value = DateUtils.this(reference, self.config.day_of_week.get(weekday_str))
 
             result.timex = DateTimeFormatUtil.luis_date_from_datetime(value)
             result.future_value = value
@@ -216,8 +209,7 @@ class ChineseDateParser(BaseDateParser):
         match = regex.match(self.config.next_regex, trimmed_source)
         if match and match.start() == 0 and len(match.group()) == len(trimmed_source):
             weekday_str = RegExpUtility.get_group(match, 'weekday')
-            value = DateUtils.next(
-                reference, self.config.day_of_week.get(weekday_str))
+            value = DateUtils.next(reference, self.config.day_of_week.get(weekday_str))
 
             result.timex = DateTimeFormatUtil.luis_date_from_datetime(value)
             result.future_value = value
@@ -229,8 +221,7 @@ class ChineseDateParser(BaseDateParser):
         match = regex.match(self.config.last_regex, trimmed_source)
         if match and match.start() == 0 and len(match.group()) == len(trimmed_source):
             weekday_str = RegExpUtility.get_group(match, 'weekday')
-            value = DateUtils.last(
-                reference, self.config.day_of_week.get(weekday_str))
+            value = DateUtils.last(reference, self.config.day_of_week.get(weekday_str))
 
             result.timex = DateTimeFormatUtil.luis_date_from_datetime(value)
             result.future_value = value
@@ -310,8 +301,7 @@ class ChineseDateParser(BaseDateParser):
     # convert Chinese Number to Integer
     def parse_chinese_written_number_to_value(self, source: str) -> int:
         num = -1
-        er: ExtractResult = next(
-            iter(self.integer_extractor.extract(source)), None)
+        er: ExtractResult = next(iter(self.integer_extractor.extract(source)), None)
         if er and er.type == NumberConstants.SYS_NUM_INTEGER:
             num = int(self.config.number_parser.parse(er).value)
 
@@ -319,17 +309,18 @@ class ChineseDateParser(BaseDateParser):
 
     def convert_chinese_year_to_number(self, source: str) -> int:
         year = 0
-        dynasty_year = DateTimeFormatUtil.parse_dynasty_year(source,
-                                                             self.config.dynasty_year_regex,
-                                                             self.config.dynasty_start_year,
-                                                             self.config.dynasty_year_map,
-                                                             self.integer_extractor,
-                                                             self.config.number_parser)
+        dynasty_year = DateTimeFormatUtil.parse_dynasty_year(
+            source,
+            self.config.dynasty_year_regex,
+            self.config.dynasty_start_year,
+            self.config.dynasty_year_map,
+            self.integer_extractor,
+            self.config.number_parser,
+        )
         if dynasty_year is not None:
             return dynasty_year
 
-        er: ExtractResult = next(
-            iter(self.config.integer_extractor.extract(source)), None)
+        er: ExtractResult = next(iter(self.config.integer_extractor.extract(source)), None)
         if er and er.type == NumberConstants.SYS_NUM_INTEGER:
             year = int(self.config.number_parser.parse(er).value)
 
@@ -337,11 +328,9 @@ class ChineseDateParser(BaseDateParser):
             year = 0
             for char in source:
                 year = year * 10
-                er = next(
-                    iter(self.config.integer_extractor.extract(char)), None)
+                er = next(iter(self.config.integer_extractor.extract(char)), None)
                 if er and er.type == NumberConstants.SYS_NUM_INTEGER:
-                    year = year + \
-                           int(self.config.number_parser.parse(er).value)
+                    year = year + int(self.config.number_parser.parse(er).value)
 
         return -1 if year < 10 else year
 
@@ -376,15 +365,18 @@ class ChineseDateParser(BaseDateParser):
     # Handle cases like "三天前"
     def parser_duration_with_ago_and_later(self, source: str, reference: datetime) -> DateTimeResolutionResult:
         result = DateTimeResolutionResult()
-        duration_res = self.duration_extractor.extract(source, reference).pop() if self.duration_extractor.extract(
-            source, reference) else []
+        duration_res = (
+            self.duration_extractor.extract(source, reference).pop()
+            if self.duration_extractor.extract(source, reference)
+            else []
+        )
         if duration_res:
             match = self.config._unit_regex.search(source)
             if match:
-                suffix = source[duration_res.start + duration_res.length:]
+                suffix = source[duration_res.start + duration_res.length :]
                 src_unit = RegExpUtility.get_group(match, 'unit')
 
-                number_str = source[duration_res.start:match.lastindex - duration_res.start + 1]
+                number_str = source[duration_res.start : match.lastindex - duration_res.start + 1]
                 number = self.parse_chinese_written_number_to_value(number_str)
 
                 if src_unit in self.config.unit_map:

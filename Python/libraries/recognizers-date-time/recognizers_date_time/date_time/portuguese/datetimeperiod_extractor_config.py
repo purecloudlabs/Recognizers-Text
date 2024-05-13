@@ -2,24 +2,26 @@
 #  Licensed under the MIT License.
 
 from typing import List, Pattern
+
 import regex
 
 from recognizers_number import BaseNumberExtractor, PortugueseCardinalExtractor
 from recognizers_text.utilities import RegExpUtility
+
 from ...resources.portuguese_date_time import PortugueseDateTime
-from ..extractors import DateTimeExtractor
-from ..base_datetimeperiod import DateTimePeriodExtractorConfiguration, MatchedIndex
 from ..base_date import BaseDateExtractor
-from ..base_time import BaseTimeExtractor
-from ..base_duration import BaseDurationExtractor
-from ..base_timeperiod import BaseTimePeriodExtractor
 from ..base_datetime import BaseDateTimeExtractor
-from .date_extractor_config import PortugueseDateExtractorConfiguration
-from .time_extractor_config import PortugueseTimeExtractorConfiguration
-from .duration_extractor_config import PortugueseDurationExtractorConfiguration
-from .timeperiod_extractor_config import PortugueseTimePeriodExtractorConfiguration
-from .datetime_extractor_config import PortugueseDateTimeExtractorConfiguration
+from ..base_datetimeperiod import DateTimePeriodExtractorConfiguration, MatchedIndex
+from ..base_duration import BaseDurationExtractor
+from ..base_time import BaseTimeExtractor
+from ..base_timeperiod import BaseTimePeriodExtractor
+from ..extractors import DateTimeExtractor
 from ..utilities import DateTimeOptions
+from .date_extractor_config import PortugueseDateExtractorConfiguration
+from .datetime_extractor_config import PortugueseDateTimeExtractorConfiguration
+from .duration_extractor_config import PortugueseDurationExtractorConfiguration
+from .time_extractor_config import PortugueseTimeExtractorConfiguration
+from .timeperiod_extractor_config import PortugueseTimePeriodExtractorConfiguration
 
 
 class PortugueseDateTimePeriodExtractorConfiguration(DateTimePeriodExtractorConfiguration):
@@ -173,83 +175,45 @@ class PortugueseDateTimePeriodExtractorConfiguration(DateTimePeriodExtractorConf
 
     def __init__(self):
         super().__init__()
-        self._week_day_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.WeekDayRegex
-        )
+        self._week_day_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.WeekDayRegex)
         self._check_both_before_after = PortugueseDateTime.CheckBothBeforeAfter
         self._cardinal_extractor = PortugueseCardinalExtractor()
-        self._single_date_extractor = BaseDateExtractor(
-            PortugueseDateExtractorConfiguration())
-        self._single_time_extractor = BaseTimeExtractor(
-            PortugueseTimeExtractorConfiguration())
-        self._single_date_time_extractor = BaseDateTimeExtractor(
-            PortugueseDateTimeExtractorConfiguration())
-        self._duration_extractor = BaseDurationExtractor(
-            PortugueseDurationExtractorConfiguration())
-        self._time_period_extractor = BaseTimePeriodExtractor(
-            PortugueseTimePeriodExtractorConfiguration())
+        self._single_date_extractor = BaseDateExtractor(PortugueseDateExtractorConfiguration())
+        self._single_time_extractor = BaseTimeExtractor(PortugueseTimeExtractorConfiguration())
+        self._single_date_time_extractor = BaseDateTimeExtractor(PortugueseDateTimeExtractorConfiguration())
+        self._duration_extractor = BaseDurationExtractor(PortugueseDurationExtractorConfiguration())
+        self._time_period_extractor = BaseTimePeriodExtractor(PortugueseTimePeriodExtractorConfiguration())
         self._simple_cases_regexes = [
             RegExpUtility.get_safe_reg_exp(PortugueseDateTime.PureNumFromTo),
-            RegExpUtility.get_safe_reg_exp(PortugueseDateTime.PureNumBetweenAnd)
+            RegExpUtility.get_safe_reg_exp(PortugueseDateTime.PureNumBetweenAnd),
         ]
-        self._preposition_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.PrepositionRegex)
-        self._till_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.TillRegex)
-        self._specific_time_of_day_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.SpecificTimeOfDayRegex)
-        self._time_of_day_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.TimeOfDayRegex)
+        self._preposition_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.PrepositionRegex)
+        self._till_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.TillRegex)
+        self._specific_time_of_day_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.SpecificTimeOfDayRegex)
+        self._time_of_day_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.TimeOfDayRegex)
         self._period_time_of_day_with_date_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.PeriodTimeOfDayWithDateRegex)
-        self._followed_unit = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.TimeFollowedUnit)
-        self._number_combined_with_unit = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.TimeNumberCombinedWithUnit)
-        self._time_unit_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.TimeUnitRegex)
-        self._past_prefix_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.PreviousPrefixRegex)
-        self._next_prefix_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.NextPrefixRegex)
-        self._relative_time_unit_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.RelativeTimeUnitRegex)
-        self._rest_of_date_time_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.RestOfDateTimeRegex)
-        self._general_ending_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.GeneralEndingRegex)
-        self._middle_pause_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.MiddlePauseRegex)
-        self.range_connector_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.RangeConnectorRegex)
+            PortugueseDateTime.PeriodTimeOfDayWithDateRegex
+        )
+        self._followed_unit = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.TimeFollowedUnit)
+        self._number_combined_with_unit = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.TimeNumberCombinedWithUnit)
+        self._time_unit_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.TimeUnitRegex)
+        self._past_prefix_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.PreviousPrefixRegex)
+        self._next_prefix_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.NextPrefixRegex)
+        self._relative_time_unit_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.RelativeTimeUnitRegex)
+        self._rest_of_date_time_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.RestOfDateTimeRegex)
+        self._general_ending_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.GeneralEndingRegex)
+        self._middle_pause_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.MiddlePauseRegex)
+        self.range_connector_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.RangeConnectorRegex)
         self._token_before_date = PortugueseDateTime.TokenBeforeDate
-        self._within_next_prefix_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.WithinNextPrefixRegex
-        )
-        self._future_suffix_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.FutureSuffixRegex
-        )
-        self._date_unit_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.DateUnitRegex
-        )
-        self._am_desc_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.AmDescRegex
-        )
-        self._pm_desc_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.PmDescRegex
-        )
-        self._prefix_day_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.PrefixDayRegex
-        )
-        self._before_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.BeforeRegex
-        )
-        self._after_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.AfterRegex
-        )
-        self._suffix_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.SuffixRegex
-        )
+        self._within_next_prefix_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.WithinNextPrefixRegex)
+        self._future_suffix_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.FutureSuffixRegex)
+        self._date_unit_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.DateUnitRegex)
+        self._am_desc_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.AmDescRegex)
+        self._pm_desc_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.PmDescRegex)
+        self._prefix_day_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.PrefixDayRegex)
+        self._before_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.BeforeRegex)
+        self._after_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.AfterRegex)
+        self._suffix_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.SuffixRegex)
         self._options = DateTimeOptions.NONE
         self._check_both_before_after = PortugueseDateTime.CheckBothBeforeAfter
 

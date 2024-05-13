@@ -1,19 +1,26 @@
 from typing import Pattern
 
-from recognizers_text.utilities import RegExpUtility
-from recognizers_number.number.japanese.extractors import JapaneseCardinalExtractor
+from recognizers_date_time.date_time.CJK import (
+    BaseCJKDateExtractor,
+    BaseCJKDateTimeExtractor,
+    BaseCJKDurationExtractor,
+    BaseCJKTimeExtractor,
+    BaseCJKTimePeriodExtractor,
+    CJKDateTimePeriodExtractorConfiguration,
+)
 from recognizers_date_time.date_time.extractors import DateTimeExtractor
-from recognizers_date_time.date_time.CJK import CJKDateTimePeriodExtractorConfiguration, BaseCJKDateExtractor, \
-    BaseCJKTimeExtractor, BaseCJKDateTimeExtractor, BaseCJKDurationExtractor, BaseCJKTimePeriodExtractor
 from recognizers_date_time.date_time.japanese.date_extractor_config import JapaneseDateExtractorConfiguration
-from recognizers_date_time.date_time.japanese.time_extractor_config import JapaneseTimeExtractorConfiguration
 from recognizers_date_time.date_time.japanese.datetime_extractor_config import JapaneseDateTimeExtractorConfiguration
 from recognizers_date_time.date_time.japanese.duration_extractor_config import JapaneseDurationExtractorConfiguration
-from recognizers_date_time.date_time.japanese.timeperiod_extractor_config import \
-    JapaneseTimePeriodExtractorConfiguration
+from recognizers_date_time.date_time.japanese.time_extractor_config import JapaneseTimeExtractorConfiguration
+from recognizers_date_time.date_time.japanese.timeperiod_extractor_config import (
+    JapaneseTimePeriodExtractorConfiguration,
+)
 from recognizers_date_time.date_time.utilities import MatchedIndex
 from recognizers_date_time.resources.japanese_date_time import JapaneseDateTime
+from recognizers_number.number.japanese.extractors import JapaneseCardinalExtractor
 from recognizers_text import Extractor
+from recognizers_text.utilities import RegExpUtility
 
 
 class JapaneseDateTimePeriodExtractorConfiguration(CJKDateTimePeriodExtractorConfiguration):

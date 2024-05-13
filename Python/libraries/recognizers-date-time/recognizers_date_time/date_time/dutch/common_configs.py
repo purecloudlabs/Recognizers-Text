@@ -3,36 +3,42 @@
 
 from typing import Dict, Pattern
 
-from recognizers_number import BaseNumberExtractor, DutchCardinalExtractor, DutchIntegerExtractor, \
-    DutchOrdinalExtractor, BaseNumberParser, DutchNumberParserConfiguration
+from recognizers_number import (
+    BaseNumberExtractor,
+    BaseNumberParser,
+    DutchCardinalExtractor,
+    DutchIntegerExtractor,
+    DutchNumberParserConfiguration,
+    DutchOrdinalExtractor,
+)
 
-from ...resources import DutchDateTime, BaseDateTime
-from ..extractors import DateTimeExtractor
-from ..parsers import DateTimeParser
+from ...resources import BaseDateTime, DutchDateTime
 from ..base_configs import BaseDateParserConfiguration, DateTimeUtilityConfiguration
 from ..base_date import BaseDateExtractor, BaseDateParser
-from ..base_time import BaseTimeExtractor
-from ..base_duration import BaseDurationExtractor, BaseDurationParser
 from ..base_dateperiod import BaseDatePeriodExtractor, BaseDatePeriodParser
-from ..base_timeperiod import BaseTimePeriodExtractor, BaseTimePeriodParser
 from ..base_datetime import BaseDateTimeExtractor, BaseDateTimeParser
 from ..base_datetimeperiod import BaseDateTimePeriodExtractor, BaseDateTimePeriodParser
+from ..base_duration import BaseDurationExtractor, BaseDurationParser
+from ..base_time import BaseTimeExtractor
+from ..base_timeperiod import BaseTimePeriodExtractor, BaseTimePeriodParser
+from ..extractors import DateTimeExtractor
+from ..parsers import DateTimeParser
 from .base_configs import DutchDateTimeUtilityConfiguration
-from .duration_extractor_config import DutchDurationExtractorConfiguration
 from .date_extractor_config import DutchDateExtractorConfiguration
-from .time_extractor_config import DutchTimeExtractorConfiguration
-from .datetime_extractor_config import DutchDateTimeExtractorConfiguration
-from .dateperiod_extractor_config import DutchDatePeriodExtractorConfiguration
-from .timeperiod_extractor_config import DutchTimePeriodExtractorConfiguration
-from .datetimeperiod_extractor_config import DutchDateTimePeriodExtractorConfiguration
-from .duration_parser_config import DutchDurationParserConfiguration
 from .date_parser_config import DutchDateParserConfiguration
-from .time_parser_config import DutchTimeParserConfiguration
-from .datetime_parser_config import DutchDateTimeParserConfiguration
+from .dateperiod_extractor_config import DutchDatePeriodExtractorConfiguration
 from .dateperiod_parser_config import DutchDatePeriodParserConfiguration
-from .timeperiod_parser_config import DutchTimePeriodParserConfiguration
+from .datetime_extractor_config import DutchDateTimeExtractorConfiguration
+from .datetime_parser_config import DutchDateTimeParserConfiguration
+from .datetimeperiod_extractor_config import DutchDateTimePeriodExtractorConfiguration
 from .datetimeperiod_parser_config import DutchDateTimePeriodParserConfiguration
+from .duration_extractor_config import DutchDurationExtractorConfiguration
+from .duration_parser_config import DutchDurationParserConfiguration
 from .parsers import DutchTimeParser
+from .time_extractor_config import DutchTimeExtractorConfiguration
+from .time_parser_config import DutchTimeParserConfiguration
+from .timeperiod_extractor_config import DutchTimePeriodExtractorConfiguration
+from .timeperiod_parser_config import DutchTimePeriodParserConfiguration
 
 
 class DutchCommonDateTimeParserConfiguration(BaseDateParserConfiguration):
@@ -165,34 +171,19 @@ class DutchCommonDateTimeParserConfiguration(BaseDateParserConfiguration):
         self._integer_extractor = DutchIntegerExtractor()
         self._ordinal_extractor = DutchOrdinalExtractor()
 
-        self._day_of_month = {
-            **BaseDateTime.DayOfMonthDictionary, **DutchDateTime.DayOfMonth}
-        self._number_parser = BaseNumberParser(
-            DutchNumberParserConfiguration())
-        self._date_extractor = BaseDateExtractor(
-            DutchDateExtractorConfiguration())
-        self._time_extractor = BaseTimeExtractor(
-            DutchTimeExtractorConfiguration())
-        self._duration_extractor = BaseDurationExtractor(
-            DutchDurationExtractorConfiguration())
-        self._date_period_extractor = BaseDatePeriodExtractor(
-            DutchDatePeriodExtractorConfiguration())
-        self._time_period_extractor = BaseTimePeriodExtractor(
-            DutchTimePeriodExtractorConfiguration())
-        self._date_time_extractor = BaseDateTimeExtractor(
-            DutchDateTimeExtractorConfiguration())
-        self._date_time_period_extractor = BaseDateTimePeriodExtractor(
-            DutchDateTimePeriodExtractorConfiguration())
-        self._duration_parser = BaseDurationParser(
-            DutchDurationParserConfiguration(self))
+        self._day_of_month = {**BaseDateTime.DayOfMonthDictionary, **DutchDateTime.DayOfMonth}
+        self._number_parser = BaseNumberParser(DutchNumberParserConfiguration())
+        self._date_extractor = BaseDateExtractor(DutchDateExtractorConfiguration())
+        self._time_extractor = BaseTimeExtractor(DutchTimeExtractorConfiguration())
+        self._duration_extractor = BaseDurationExtractor(DutchDurationExtractorConfiguration())
+        self._date_period_extractor = BaseDatePeriodExtractor(DutchDatePeriodExtractorConfiguration())
+        self._time_period_extractor = BaseTimePeriodExtractor(DutchTimePeriodExtractorConfiguration())
+        self._date_time_extractor = BaseDateTimeExtractor(DutchDateTimeExtractorConfiguration())
+        self._date_time_period_extractor = BaseDateTimePeriodExtractor(DutchDateTimePeriodExtractorConfiguration())
+        self._duration_parser = BaseDurationParser(DutchDurationParserConfiguration(self))
         self._date_parser = BaseDateParser(DutchDateParserConfiguration(self))
-        self._time_parser = DutchTimeParser(
-            DutchTimeParserConfiguration(self))
-        self._date_period_parser = BaseDatePeriodParser(
-            DutchDatePeriodParserConfiguration(self))
-        self._time_period_parser = BaseTimePeriodParser(
-            DutchTimePeriodParserConfiguration(self))
-        self._date_time_parser = BaseDateTimeParser(
-            DutchDateTimeParserConfiguration(self))
-        self._date_time_period_parser = BaseDateTimePeriodParser(
-            DutchDateTimePeriodParserConfiguration(self))
+        self._time_parser = DutchTimeParser(DutchTimeParserConfiguration(self))
+        self._date_period_parser = BaseDatePeriodParser(DutchDatePeriodParserConfiguration(self))
+        self._time_period_parser = BaseTimePeriodParser(DutchTimePeriodParserConfiguration(self))
+        self._date_time_parser = BaseDateTimeParser(DutchDateTimeParserConfiguration(self))
+        self._date_time_period_parser = BaseDateTimePeriodParser(DutchDateTimePeriodParserConfiguration(self))

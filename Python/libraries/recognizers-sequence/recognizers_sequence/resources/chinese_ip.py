@@ -18,4 +18,6 @@ class ChineseIp:
     Ipv4Regex = f'({PhoneNumbersDefinitions.WordBoundariesRegex}(1\\d{{2}}|2[0-4]\\d|25[0-5]|0?[1-9]\\d|0{{0,2}}\\d)((\\.(1\\d{{2}}|2[0-4]\\d|25[0-5]|0?[1-9]\\d|0{{0,2}}\\d)){{3}}){PhoneNumbersDefinitions.EndWordBoundariesRegex})'
     Ipv6EllipsisRegexOther = f'({PhoneNumbersDefinitions.NonWordBoundariesRegex}::{PhoneNumbersDefinitions.NonWordBoundariesRegex}|{PhoneNumbersDefinitions.NonWordBoundariesRegex}:(:{BaseIp.BasicIpv6Element}){{1,7}}{PhoneNumbersDefinitions.WordBoundariesRegex}|{PhoneNumbersDefinitions.WordBoundariesRegex}({BaseIp.BasicIpv6Element}:){{1,7}}:{PhoneNumbersDefinitions.NonWordBoundariesRegex})'
     Ipv6Regex = f'({PhoneNumbersDefinitions.WordBoundariesRegex}{BaseIp.MergedIpv6Regex}{PhoneNumbersDefinitions.WordBoundariesRegex})|({Ipv6EllipsisRegexOther})'
+
+
 # pylint: enable=line-too-long

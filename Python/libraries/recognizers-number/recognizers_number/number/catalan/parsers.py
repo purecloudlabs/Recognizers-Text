@@ -1,127 +1,42 @@
-from typing import Dict, Pattern, List
-import regex
+from typing import Dict, List, Optional, Pattern
 
-from recognizers_text.utilities import RegExpUtility
-from recognizers_text.culture import Culture
-from recognizers_text.parser import ParseResult
 from recognizers_number.culture import CultureInfo
 from recognizers_number.number.parsers import BaseNumberParserConfiguration
 from recognizers_number.resources.catalan_numeric import CatalanNumeric
+from recognizers_text.culture import Culture
+from recognizers_text.parser import ParseResult
+from recognizers_text.utilities import RegExpUtility
 
 
 class CatalanNumberParserConfiguration(BaseNumberParserConfiguration):
-    @property
-    def cardinal_number_map(self) -> Dict[str, int]:
-        return self._cardinal_number_map
 
-    @property
-    def ordinal_number_map(self) -> Dict[str, int]:
-        return self._ordinal_number_map
+    lang_marker: str = CatalanNumeric.LangMarker
+    is_multi_decimal_separator_culture: bool = CatalanNumeric.MultiDecimalSeparatorCulture
 
-    @property
-    def round_number_map(self) -> Dict[str, int]:
-        return self._round_number_map
+    decimal_separator_char: str = CatalanNumeric.DecimalSeparatorChar
+    fraction_marker_token: str = CatalanNumeric.FractionMarkerToken
+    non_decimal_separator_char: str = CatalanNumeric.NonDecimalSeparatorChar
+    half_a_dozen_text: str = CatalanNumeric.HalfADozenText
+    word_separator_token: str = CatalanNumeric.WordSeparatorToken
 
-    @property
-    def culture_info(self):
-        return self._culture_info
+    written_decimal_separator_texts: List[str] = CatalanNumeric.WrittenDecimalSeparatorTexts
+    written_group_separator_texts: List[str] = CatalanNumeric.WrittenGroupSeparatorTexts
+    written_integer_separator_texts: List[str] = CatalanNumeric.WrittenIntegerSeparatorTexts
+    written_fraction_separator_texts: List[str] = CatalanNumeric.WrittenFractionSeparatorTexts
+    non_standard_separator_variants: List[str] = CatalanNumeric.NonStandardSeparatorVariants
 
-    @property
-    def digital_number_regex(self) -> Pattern:
-        return self._digital_number_regex
+    ordinal_number_map: Dict[str, int] = CatalanNumeric.OrdinalNumberMap
+    cardinal_number_map: Dict[str, int] = CatalanNumeric.CardinalNumberMap
+    round_number_map: Dict[str, int] = CatalanNumeric.RoundNumberMap
 
-    @property
-    def fraction_marker_token(self) -> str:
-        return self._fraction_marker_token
+    negative_number_sign_regex: Pattern = RegExpUtility.get_safe_reg_exp(CatalanNumeric.NegativeNumberSignRegex)
+    half_a_dozen_regex: Pattern = RegExpUtility.get_safe_reg_exp(CatalanNumeric.HalfADozenRegex)
+    digital_number_regex: Pattern = RegExpUtility.get_safe_reg_exp(CatalanNumeric.DigitalNumberRegex)
+    round_multiplier_regex: Pattern = RegExpUtility.get_safe_reg_exp(CatalanNumeric.RoundMultiplierRegex)
 
-    @property
-    def negative_number_sign_regex(self) -> Pattern:
-        return self._negative_number_sign_regex
-
-    @property
-    def half_a_dozen_regex(self) -> Pattern:
-        return self._half_a_dozen_regex
-
-    @property
-    def half_a_dozen_text(self) -> str:
-        return self._half_a_dozen_text
-
-    @property
-    def lang_marker(self) -> str:
-        return self._lang_marker
-
-    @property
-    def non_decimal_separator_char(self) -> str:
-        return self._non_decimal_separator_char
-
-    @property
-    def decimal_separator_char(self) -> str:
-        return self._decimal_separator_char
-
-    @property
-    def word_separator_token(self) -> str:
-        return self._word_separator_token
-
-    @property
-    def written_decimal_separator_texts(self) -> List[str]:
-        return self._written_decimal_separator_texts
-
-    @property
-    def written_group_separator_texts(self) -> List[str]:
-        return self._written_group_separator_texts
-
-    @property
-    def written_integer_separator_texts(self) -> List[str]:
-        return self._written_integer_separator_texts
-
-    @property
-    def written_fraction_separator_texts(self) -> List[str]:
-        return self._written_fraction_separator_texts
-
-    @property
-    def non_standard_separator_variants(self) -> List[str]:
-        return self._non_standard_separator_variants
-
-    @property
-    def is_multi_decimal_separator_culture(self) -> bool:
-        return self._is_multi_decimal_separator_culture
-
-    @property
-    def round_multiplier_regex(self) -> Pattern:
-        return self._round_multiplier_regex
-
-    def __init__(self, culture_info=None):
-        if culture_info is None:
-            culture_info = CultureInfo(Culture.Catalan)
-
-        self._culture_info = culture_info
-        self._lang_marker = CatalanNumeric.LangMarker
-        self._decimal_separator_char = CatalanNumeric.DecimalSeparatorChar
-        self._fraction_marker_token = CatalanNumeric.FractionMarkerToken
-        self._non_decimal_separator_char = CatalanNumeric.NonDecimalSeparatorChar
-        self._half_a_dozen_text = CatalanNumeric.HalfADozenText
-        self._word_separator_token = CatalanNumeric.WordSeparatorToken
-
-        self._written_decimal_separator_texts = CatalanNumeric.WrittenDecimalSeparatorTexts
-        self._written_group_separator_texts = CatalanNumeric.WrittenGroupSeparatorTexts
-        self._written_integer_separator_texts = CatalanNumeric.WrittenIntegerSeparatorTexts
-        self._written_fraction_separator_texts = CatalanNumeric.WrittenFractionSeparatorTexts
-        self._non_standard_separator_variants = CatalanNumeric.NonStandardSeparatorVariants
-        self._is_multi_decimal_separator_culture = CatalanNumeric.MultiDecimalSeparatorCulture
-
-        ordinal_number_map: Dict[str, int] = dict(
-            CatalanNumeric.OrdinalNumberMap)
-        self._cardinal_number_map = CatalanNumeric.CardinalNumberMap
-        self._ordinal_number_map = ordinal_number_map
-        self._round_number_map = CatalanNumeric.RoundNumberMap
-        self._negative_number_sign_regex = RegExpUtility.get_safe_reg_exp(
-            CatalanNumeric.NegativeNumberSignRegex)
-        self._half_a_dozen_regex = RegExpUtility.get_safe_reg_exp(
-            CatalanNumeric.HalfADozenRegex)
-        self._digital_number_regex = RegExpUtility.get_safe_reg_exp(
-            CatalanNumeric.DigitalNumberRegex)
-        self._round_multiplier_regex = RegExpUtility.get_safe_reg_exp(
-            CatalanNumeric.RoundMultiplierRegex)
+    def __init__(self, culture_info: Optional[CultureInfo] = None):
+        culture_info = culture_info or CultureInfo(Culture.Catalan)
+        super().__init__(culture_info)
 
     def normalize_token_set(self, tokens: List[str], context: ParseResult) -> List[str]:
         frac_words: List[str] = super().normalize_token_set(tokens, context)
@@ -131,10 +46,14 @@ class CatalanNumberParserConfiguration(BaseNumberParserConfiguration):
         # It works by inserting the numerator 'un' ('a') in the catalan numbers regex
         # so that the pattern is correctly processed.
         if len(frac_words) >= 2:
-            if frac_words[-1] in CatalanNumeric.FractionalTokens and \
-                    frac_words[-2] == CatalanNumeric.WordSeparatorToken:
+            if (
+                frac_words[-1] in CatalanNumeric.FractionalTokens
+                and frac_words[-2] == CatalanNumeric.WordSeparatorToken
+            ):
                 frac_words.insert(-1, CatalanNumeric.FractionWithoutNumeratorToken)
-            elif frac_words[-1] in CatalanNumeric.WrittenFractionSeparatorTexts and \
-                    frac_words[-2] in CatalanNumeric.FractionalTokens:
+            elif (
+                frac_words[-1] in CatalanNumeric.WrittenFractionSeparatorTexts
+                and frac_words[-2] in CatalanNumeric.FractionalTokens
+            ):
                 frac_words.pop(-1)
         return frac_words

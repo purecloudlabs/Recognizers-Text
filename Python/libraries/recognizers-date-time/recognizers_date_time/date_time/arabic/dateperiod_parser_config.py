@@ -1,11 +1,11 @@
-from typing import Pattern, Dict
+from typing import Dict, Pattern
 
-from recognizers_text.utilities import RegExpUtility
-from recognizers_date_time.resources.arabic_date_time import ArabicDateTime
-from recognizers_date_time.date_time.extractors import DateTimeExtractor
-from recognizers_date_time.date_time.parsers import DateTimeParser
 from recognizers_date_time.date_time.base_configs import BaseDateParserConfiguration
 from recognizers_date_time.date_time.base_dateperiod import DatePeriodParserConfiguration
+from recognizers_date_time.date_time.extractors import DateTimeExtractor
+from recognizers_date_time.date_time.parsers import DateTimeParser
+from recognizers_date_time.resources.arabic_date_time import ArabicDateTime
+from recognizers_text.utilities import RegExpUtility
 
 
 class ArabicDatePeriodParserConfiguration(DatePeriodParserConfiguration):
@@ -239,8 +239,7 @@ class ArabicDatePeriodParserConfiguration(DatePeriodParserConfiguration):
         return self._after_next_suffix_regex
 
     def __init__(self, config: BaseDateParserConfiguration):
-        self._relative_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.RelativeRegex)
+        self._relative_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.RelativeRegex)
         self._later_regex = ArabicDateTime.LaterRegex
         self._ago_regex = ArabicDateTime.AgoRegex
         self._token_before_date = ArabicDateTime.TokenBeforeDate
@@ -251,71 +250,39 @@ class ArabicDatePeriodParserConfiguration(DatePeriodParserConfiguration):
         self._duration_parser = config.duration_parser
         self._date_parser = config.date_parser
 
-        self._after_next_suffix_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.AfterNextSuffixRegex)
-        self._year_plus_number_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.YearPlusNumberRegex)
-        self._year_period_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.YearPeriodRegex)
-        self._month_front_between_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.MonthFrontBetweenRegex)
-        self._between_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.BetweenRegex)
-        self._month_front_simple_cases_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.MonthFrontSimpleCasesRegex)
-        self._simple_cases_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.SimpleCasesRegex)
-        self._one_word_period_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.OneWordPeriodRegex)
-        self._month_with_year = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.MonthWithYear)
-        self._month_num_with_year = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.MonthNumWithYear)
-        self._year_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.YearRegex)
-        self._past_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.PastSuffixRegex)
-        self._future_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.NextPrefixRegex)
-        self.number_combined_with_unit = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.NumberCombinedWithDurationUnit)
-        self._week_of_month_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.WeekOfMonthRegex)
-        self._week_of_year_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.WeekOfYearRegex)
-        self._quarter_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.QuarterRegex)
-        self._quarter_regex_year_front = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.QuarterRegexYearFront)
-        self._all_half_year_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.AllHalfYearRegex)
-        self._season_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.SeasonRegex)
-        self._which_week_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.WhichWeekRegex)
-        self._week_of_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.WeekOfRegex)
-        self._month_of_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.MonthOfRegex)
-        self._rest_of_date_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.RestOfDateRegex)
-        self._later_early_period_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.LaterEarlyPeriodRegex)
-        self._week_with_week_day_range_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.WeekWithWeekDayRangeRegex)
-        self._unspecific_end_of_range_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.UnspecificEndOfRangeRegex)
+        self._after_next_suffix_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.AfterNextSuffixRegex)
+        self._year_plus_number_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.YearPlusNumberRegex)
+        self._year_period_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.YearPeriodRegex)
+        self._month_front_between_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.MonthFrontBetweenRegex)
+        self._between_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.BetweenRegex)
+        self._month_front_simple_cases_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.MonthFrontSimpleCasesRegex)
+        self._simple_cases_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.SimpleCasesRegex)
+        self._one_word_period_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.OneWordPeriodRegex)
+        self._month_with_year = RegExpUtility.get_safe_reg_exp(ArabicDateTime.MonthWithYear)
+        self._month_num_with_year = RegExpUtility.get_safe_reg_exp(ArabicDateTime.MonthNumWithYear)
+        self._year_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.YearRegex)
+        self._past_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.PastSuffixRegex)
+        self._future_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.NextPrefixRegex)
+        self.number_combined_with_unit = RegExpUtility.get_safe_reg_exp(ArabicDateTime.NumberCombinedWithDurationUnit)
+        self._week_of_month_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.WeekOfMonthRegex)
+        self._week_of_year_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.WeekOfYearRegex)
+        self._quarter_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.QuarterRegex)
+        self._quarter_regex_year_front = RegExpUtility.get_safe_reg_exp(ArabicDateTime.QuarterRegexYearFront)
+        self._all_half_year_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.AllHalfYearRegex)
+        self._season_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.SeasonRegex)
+        self._which_week_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.WhichWeekRegex)
+        self._week_of_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.WeekOfRegex)
+        self._month_of_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.MonthOfRegex)
+        self._rest_of_date_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.RestOfDateRegex)
+        self._later_early_period_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.LaterEarlyPeriodRegex)
+        self._week_with_week_day_range_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.WeekWithWeekDayRangeRegex)
+        self._unspecific_end_of_range_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.UnspecificEndOfRangeRegex)
 
-        self._next_prefix_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.NextPrefixRegex)
-        self._past_prefix_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.PreviousPrefixRegex)
-        self._this_prefix_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.ThisPrefixRegex)
-        self._next_suffix_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.FutureSuffixRegex)
-        self._past_suffix_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.PastSuffixRegex)
+        self._next_prefix_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.NextPrefixRegex)
+        self._past_prefix_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.PreviousPrefixRegex)
+        self._this_prefix_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.ThisPrefixRegex)
+        self._next_suffix_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.FutureSuffixRegex)
+        self._past_suffix_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.PastSuffixRegex)
 
         self._in_connector_regex = config.utility_configuration.in_connector_regex
         self._unit_map = config.unit_map
@@ -323,37 +290,17 @@ class ArabicDatePeriodParserConfiguration(DatePeriodParserConfiguration):
         self._day_of_month = config.day_of_month
         self._month_of_year = config.month_of_year
         self._season_map = config.season_map
-        self._now_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.NowRegex)
-        self._decade_with_century_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.DecadeWithCenturyRegex)
-        self._complex_dateperiod_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.ComplexDatePeriodRegex
-        )
-        self._relative_decade_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.RelativeDecadeRegex
-        )
-        self._reference_date_period_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.ReferenceDatePeriodRegex
-        )
-        self._less_than_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.LessThanRegex
-        )
-        self._more_than_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.MoreThanRegex
-        )
-        self._within_next_prefix_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.WithinNextPrefixRegex
-        )
-        self._century_suffix_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.CenturySuffixRegex
-        )
-        self._first_last_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.FirstLastRegex
-        )
-        self._special_day_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.SpecialDayRegex
-        )
+        self._now_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.NowRegex)
+        self._decade_with_century_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.DecadeWithCenturyRegex)
+        self._complex_dateperiod_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.ComplexDatePeriodRegex)
+        self._relative_decade_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.RelativeDecadeRegex)
+        self._reference_date_period_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.ReferenceDatePeriodRegex)
+        self._less_than_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.LessThanRegex)
+        self._more_than_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.MoreThanRegex)
+        self._within_next_prefix_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.WithinNextPrefixRegex)
+        self._century_suffix_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.CenturySuffixRegex)
+        self._first_last_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.FirstLastRegex)
+        self._special_day_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.SpecialDayRegex)
         self._check_both_before_after = ArabicDateTime.CheckBothBeforeAfter
 
     def get_swift_day_or_month(self, source: str) -> int:
@@ -393,9 +340,10 @@ class ArabicDatePeriodParserConfiguration(DatePeriodParserConfiguration):
 
     def is_month_only(self, source: str) -> bool:
         trimmed_source = source.strip().lower()
-        return any(trimmed_source.endswith(o) for o in ArabicDateTime.MonthTerms) or \
-            (trimmed_source in ArabicDateTime.MonthTerms and
-             RegExpUtility.get_matches(self.after_next_suffix_regex, trimmed_source))
+        return any(trimmed_source.endswith(o) for o in ArabicDateTime.MonthTerms) or (
+            trimmed_source in ArabicDateTime.MonthTerms
+            and RegExpUtility.get_matches(self.after_next_suffix_regex, trimmed_source)
+        )
 
     def is_month_to_date(self, source: str) -> bool:
         trimmed_source = source.strip().lower()
@@ -403,26 +351,34 @@ class ArabicDatePeriodParserConfiguration(DatePeriodParserConfiguration):
 
     def is_weekend(self, source: str) -> bool:
         trimmed_source = source.strip().lower()
-        return any(trimmed_source.endswith(o) for o in ArabicDateTime.WeekendTerms) or \
-            (trimmed_source in ArabicDateTime.WeekendTerms and
-             RegExpUtility.get_matches(self.after_next_suffix_regex, trimmed_source))
+        return any(trimmed_source.endswith(o) for o in ArabicDateTime.WeekendTerms) or (
+            trimmed_source in ArabicDateTime.WeekendTerms
+            and RegExpUtility.get_matches(self.after_next_suffix_regex, trimmed_source)
+        )
 
     def is_week_only(self, source: str) -> bool:
         trimmed_source = source.strip().lower()
-        return any(trimmed_source.endswith(o) for o in ArabicDateTime.WeekTerms) or \
-            (trimmed_source in ArabicDateTime.WeekTerms and
-             RegExpUtility.get_matches(self.after_next_suffix_regex, trimmed_source))
+        return any(trimmed_source.endswith(o) for o in ArabicDateTime.WeekTerms) or (
+            trimmed_source in ArabicDateTime.WeekTerms
+            and RegExpUtility.get_matches(self.after_next_suffix_regex, trimmed_source)
+        )
 
     def is_fortnight(self, source: str) -> bool:
         return False
 
     def is_year_only(self, source: str) -> bool:
         trimmed_source = source.strip().lower()
-        return any(trimmed_source.endswith(o) for o in ArabicDateTime.YearTerms) or \
-            (trimmed_source in ArabicDateTime.YearTerms and
-             RegExpUtility.get_matches(self.after_next_suffix_regex, trimmed_source)) or \
-            (any(trimmed_source.endswith(o) for o in ArabicDateTime.GenericYearTerms) and
-             trimmed_source in ArabicDateTime.GenericYearTerms)
+        return (
+            any(trimmed_source.endswith(o) for o in ArabicDateTime.YearTerms)
+            or (
+                trimmed_source in ArabicDateTime.YearTerms
+                and RegExpUtility.get_matches(self.after_next_suffix_regex, trimmed_source)
+            )
+            or (
+                any(trimmed_source.endswith(o) for o in ArabicDateTime.GenericYearTerms)
+                and trimmed_source in ArabicDateTime.GenericYearTerms
+            )
+        )
 
     def is_year_to_date(self, source: str) -> bool:
         trimmed_source = source.strip().lower()

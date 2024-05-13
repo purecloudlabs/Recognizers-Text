@@ -21,8 +21,9 @@ class SimpleTokenizer(Tokenizer):
             c = chars[i]
             if str.isspace(c):
                 if in_token:
-                    tokens.append(Token(token_start, i - token_start,
-                                        input[token_start: token_start + (i - token_start)]))
+                    tokens.append(
+                        Token(token_start, i - token_start, input[token_start : token_start + (i - token_start)])
+                    )
                     in_token = False
             elif not (str.isdigit(c) or str.isalpha(c)) or self.is_cjk(c):
 
@@ -30,11 +31,12 @@ class SimpleTokenizer(Tokenizer):
                 # a single token
                 if in_token:
 
-                    tokens.append(Token(token_start, i - token_start,
-                                        input[token_start: token_start + (i - token_start)]))
+                    tokens.append(
+                        Token(token_start, i - token_start, input[token_start : token_start + (i - token_start)])
+                    )
                     in_token = False
 
-                tokens.append(Token(i, 1, input[i: token_start + (i - token_start) + 1]))
+                tokens.append(Token(i, 1, input[i : token_start + (i - token_start) + 1]))
 
             else:
 
@@ -43,8 +45,11 @@ class SimpleTokenizer(Tokenizer):
                     in_token = True
 
         if in_token:
-            tokens.append(Token(token_start, len(chars) - token_start,
-                                input[token_start: token_start + (len(chars) - token_start)]))
+            tokens.append(
+                Token(
+                    token_start, len(chars) - token_start, input[token_start : token_start + (len(chars) - token_start)]
+                )
+            )
 
         return tokens
 
@@ -57,14 +62,21 @@ class SimpleTokenizer(Tokenizer):
     def is_japanese(self, c: chr):
         uc = ord(c)
         hexa_list = [0x3040, 0x309F, 0x30A0, 0x30FF, 0xFF66, 0xFF9D]
-        return (hexa_list[0] <= uc <= hexa_list[1]) or (hexa_list[2] <= uc <= hexa_list[3]) or \
-               (hexa_list[4] <= uc <= hexa_list[5])
+        return (
+            (hexa_list[0] <= uc <= hexa_list[1])
+            or (hexa_list[2] <= uc <= hexa_list[3])
+            or (hexa_list[4] <= uc <= hexa_list[5])
+        )
 
     def is_korean(self, c: chr):
         uc = ord(c)
         hexa_list = [0xAC00, 0xD7AF, 0x1100, 0x11FF, 0x3130, 0x318F, 0xFFB0, 0xFFDC]
-        return (hexa_list[0] <= uc <= hexa_list[1]) or (hexa_list[2] <= uc <= hexa_list[3]) or \
-               (hexa_list[4] <= uc <= hexa_list[5]) or (hexa_list[6] <= uc <= hexa_list[7])
+        return (
+            (hexa_list[0] <= uc <= hexa_list[1])
+            or (hexa_list[2] <= uc <= hexa_list[3])
+            or (hexa_list[4] <= uc <= hexa_list[5])
+            or (hexa_list[6] <= uc <= hexa_list[7])
+        )
 
     def is_cjk(self, c: chr):
         return self.is_chinese(c) or self.is_japanese(c) or self.is_korean(c)

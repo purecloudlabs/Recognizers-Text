@@ -1,25 +1,24 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from typing import List
 from datetime import datetime
-import regex
-from ...resources.chinese_date_time import ChineseDateTime
+from typing import List
 
-from recognizers_text import ExtractResult, RegExpUtility, MetaData
-from ..utilities import merge_all_tokens, Token, get_tokens_from_regex
+import regex
+
+from recognizers_text import ExtractResult, MetaData, RegExpUtility
+
+from ...resources.chinese_date_time import ChineseDateTime
 from ..base_date import BaseDateExtractor
+from ..utilities import Token, get_tokens_from_regex, merge_all_tokens
 from .date_extractor_config import ChineseDateExtractorConfiguration
 from .duration_extractor import ChineseDurationExtractor
 
 
 class ChineseDateExtractor(BaseDateExtractor):
-    before_regex = RegExpUtility.get_safe_reg_exp(
-        ChineseDateTime.BeforeRegex)
-    after_regex = RegExpUtility.get_safe_reg_exp(
-        ChineseDateTime.AfterRegex)
-    date_time_period_unit_regex = RegExpUtility.get_safe_reg_exp(
-        ChineseDateTime.DateTimePeriodUnitRegex)
+    before_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.BeforeRegex)
+    after_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.AfterRegex)
+    date_time_period_unit_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.DateTimePeriodUnitRegex)
 
     def __init__(self):
         super().__init__(ChineseDateExtractorConfiguration())
@@ -48,8 +47,9 @@ class ChineseDateExtractor(BaseDateExtractor):
                     before_match = RegExpUtility.get_matches(self.before_regex, suffix)
                     after_match = RegExpUtility.get_matches(self.after_regex, suffix)
 
-                    if (before_match and suffix.startswith(before_match[0])) \
-                            or (after_match and suffix.startswith(after_match[0])):
+                    if (before_match and suffix.startswith(before_match[0])) or (
+                        after_match and suffix.startswith(after_match[0])
+                    ):
                         meta_data = MetaData()
                         meta_data.is_duration_with_ago_and_later = True
                         ret.append(Token(er.start, pos + 1, meta_data))

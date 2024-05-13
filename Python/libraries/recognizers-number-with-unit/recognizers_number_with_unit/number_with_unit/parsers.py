@@ -1,7 +1,6 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from abc import ABC, abstractmethod
 from collections import namedtuple
 from typing import Dict, List, Optional
 
@@ -18,21 +17,11 @@ UnitValue = namedtuple('UnitValue', ['number', 'unit'])
 CurrencyUnitValue = namedtuple('UnitValue', ['number', 'unit', 'iso_currency'])
 
 
-class NumberWithUnitParserConfiguration(ABC):
-    @property
-    @abstractmethod
-    def internal_number_parser(self) -> Parser:
-        raise NotImplementedError
+class NumberWithUnitParserConfiguration:
 
-    @property
-    @abstractmethod
-    def internal_number_extractor(self) -> Extractor:
-        raise NotImplementedError
-
-    @property
-    @abstractmethod
-    def connector_token(self) -> str:
-        raise NotImplementedError
+    internal_number_parser: Parser
+    internal_number_extractor: Extractor
+    connector_token: str
 
     def __init__(self, culture_info: CultureInfo):
         self.culture_info: CultureInfo = culture_info
@@ -74,13 +63,11 @@ class NumberWithUnitParser(Parser):
         while i <= len(key):
             if i == len(key):
                 if unit_key_build:
-                    self.__add_if_not_contained(
-                        unit_keys, unit_key_build.strip())
+                    self.__add_if_not_contained(unit_keys, unit_key_build.strip())
             # number_result.start is a relative position
             elif i == number_result.start:
                 if unit_key_build:
-                    self.__add_if_not_contained(
-                        unit_keys, unit_key_build.strip())
+                    self.__add_if_not_contained(unit_keys, unit_key_build.strip())
                     unit_key_build = ''
                 if number_result.length:
                     i = number_result.start + number_result.length - 1
@@ -91,12 +78,11 @@ class NumberWithUnitParser(Parser):
         # Unit type depends on last unit in suffix.
         last_unit = unit_keys[-1]
         if half_result and half_result.text in last_unit:
-            last_unit = last_unit[:-1 * half_result.length]
+            last_unit = last_unit[: -1 * half_result.length]
         normalized_last_unit = last_unit.lower()
         if self.config.connector_token and normalized_last_unit.startswith(self.config.connector_token):
-            normalized_last_unit = normalized_last_unit[len(
-                self.config.connector_token):].strip()
-            last_unit = last_unit[len(self.config.connector_token):].strip()
+            normalized_last_unit = normalized_last_unit[len(self.config.connector_token) :].strip()
+            last_unit = last_unit[len(self.config.connector_token) :].strip()
 
         last_unit = self.__delete_brackets_if_exists(last_unit)
         normalized_last_unit = self.__delete_brackets_if_exists(normalized_last_unit)
@@ -108,17 +94,14 @@ class NumberWithUnitParser(Parser):
             elif normalized_last_unit in self.config.unit_map:
                 unit_value = self.config.unit_map[normalized_last_unit]
             if unit_value:
-                num_value = self.config.internal_number_parser.parse(
-                    number_result) if number_result.text else None
+                num_value = self.config.internal_number_parser.parse(number_result) if number_result.text else None
                 resolution_str = num_value.resolution_str if num_value else None
 
                 if half_result:
                     half_result = self.config.internal_number_parser.parse(half_result)
                     resolution_str += half_result.resolution_str[1:] if half_result else 0
 
-                ret.value = UnitValue(
-                    number=resolution_str,
-                    unit=unit_value)
+                ret.value = UnitValue(number=resolution_str, unit=unit_value)
                 ret.resolution_str = f'{resolution_str} {unit_value}'.strip()
 
         ret.text = ret.text.lower()
@@ -132,20 +115,20 @@ class NumberWithUnitParser(Parser):
     def __delete_brackets_if_exists(self, unit: str):
         has_brackets = False
 
-        if (unit.startswith('(') and unit.endswith(')')):
+        if unit.startswith('(') and unit.endswith(')'):
             has_brackets = True
 
-        if (unit.startswith('[') and unit.endswith(']')):
+        if unit.startswith('[') and unit.endswith(']'):
             has_brackets = True
 
-        if (unit.startswith('{') and unit.endswith('}')):
+        if unit.startswith('{') and unit.endswith('}'):
             has_brackets = True
 
-        if (unit.startswith('<') and unit.endswith('>')):
+        if unit.startswith('<') and unit.endswith('>'):
             has_brackets = True
 
         if has_brackets is True:
-            unit = unit[1: len(unit) - 1]
+            unit = unit[1 : len(unit) - 1]
 
         return unit
 
@@ -161,14 +144,13 @@ class BaseCurrencyParser(Parser):
         else:
             ret = self.number_with_unit_parser.parse(source)
 
-            main_unit_iso_code = self.config.currency_name_to_iso_code_map.get(ret.value.unit,
-                                                                               None) if ret.value else None
+            main_unit_iso_code = (
+                self.config.currency_name_to_iso_code_map.get(ret.value.unit, None) if ret.value else None
+            )
             if main_unit_iso_code and main_unit_iso_code.startswith(Constants.FAKE_ISO_CODE_PREFIX):
-                ret.value = UnitValue(
-                    ret.value.number, ret.value.unit) if ret.value else None
+                ret.value = UnitValue(ret.value.number, ret.value.unit) if ret.value else None
             else:
-                ret.value = CurrencyUnitValue(
-                    ret.value.number, ret.value.unit, main_unit_iso_code)
+                ret.value = CurrencyUnitValue(ret.value.number, ret.value.unit, main_unit_iso_code)
 
         return ret
 
@@ -211,43 +193,47 @@ class BaseCurrencyParser(Parser):
                     number_value = float(parse_result_value.number)
                 result.resolution_str = parse_result.resolution_str
 
-                main_unit_iso_code = self.config.currency_name_to_iso_code_map.get(
-                    unit_value, None)
+                main_unit_iso_code = self.config.currency_name_to_iso_code_map.get(unit_value, None)
                 # If the main unit can't be recognized, finish process this group.
                 if not main_unit_iso_code:
-                    result.value = UnitValue(
-                        self.__get_number_value(number_value), main_unit_value)
+                    result.value = UnitValue(self.__get_number_value(number_value), main_unit_value)
                     results.append(result)
                     result = None
                     idx = idx + 1
                     continue
 
-                fraction_units_string = self.config.currency_fraction_mapping.get(
-                    main_unit_iso_code)
+                fraction_units_string = self.config.currency_fraction_mapping.get(main_unit_iso_code)
             else:
                 if extract_result.type == Constants.SYS_NUM:
-                    number_value = number_value + \
-                        float(parse_result.value) * (1 / 100)
+                    number_value = number_value + float(parse_result.value) * (1 / 100)
                     result.resolution_str = result.resolution_str + ' ' + str(parse_result.resolution_str or '')
                     result.length = parse_result.start + parse_result.length - result.start
                     count = count + 1
                     idx = idx + 1
                     continue
 
-                fraction_unit_code = self.config.currency_fraction_code_list.get(
-                    unit_value, None)
-                fraction_num_value = self.config.currency_fraction_num_map.get(parse_result_value.unit,
-                                                                               None) if parse_result_value else None
+                fraction_unit_code = self.config.currency_fraction_code_list.get(unit_value, None)
+                fraction_num_value = (
+                    self.config.currency_fraction_num_map.get(parse_result_value.unit, None)
+                    if parse_result_value
+                    else None
+                )
 
-                if fraction_unit_code and fraction_num_value != 0 and self.__check_units_string_contains(
-                        fraction_unit_code, fraction_units_string):
+                if (
+                    fraction_unit_code
+                    and fraction_num_value != 0
+                    and self.__check_units_string_contains(fraction_unit_code, fraction_units_string)
+                ):
                     number_value = number_value + (
-                        float(parse_result_value.number) * (1 / fraction_num_value) if parse_result_value else 0)
+                        float(parse_result_value.number) * (1 / fraction_num_value) if parse_result_value else 0
+                    )
                     result.resolution_str = result.resolution_str + ' ' + parse_result.resolution_str
                     result.length = parse_result.start + parse_result.length - result.start
                 else:
                     if result:
-                        result = self.__create_currency_result(result, main_unit_iso_code, number_value, main_unit_value)
+                        result = self.__create_currency_result(
+                            result, main_unit_iso_code, number_value, main_unit_value
+                        )
                         results.append(result)
                         result = None
 
@@ -262,8 +248,7 @@ class BaseCurrencyParser(Parser):
             result = self.__create_currency_result(result, main_unit_iso_code, number_value, main_unit_value)
             results.append(result)
 
-        self.__resolve_text(results, compound_result.text,
-                            compound_result.start)
+        self.__resolve_text(results, compound_result.text, compound_result.start)
 
         ret = ParseResult(compound_result)
 
@@ -272,8 +257,7 @@ class BaseCurrencyParser(Parser):
 
     def __check_units_string_contains(self, fraction_unit_code: str, fraction_units_string: str) -> bool:
         units_map = dict()
-        DictionaryUtility.bind_units_string(
-            units_map, '', fraction_units_string)
+        DictionaryUtility.bind_units_string(units_map, '', fraction_units_string)
         if fraction_unit_code in units_map:
             return True
 
@@ -282,22 +266,23 @@ class BaseCurrencyParser(Parser):
     def __resolve_text(self, prs: List[ParseResult], source: str, bias: int):
         for parse_result in prs:
             if parse_result.start is not None and parse_result.length is not None:
-                parse_result.text = source[parse_result.start - bias:parse_result.start - bias + parse_result.length]
+                parse_result.text = source[parse_result.start - bias : parse_result.start - bias + parse_result.length]
 
     def __get_number_value(self, number_value):
         if number_value:
-            return self.config.culture_info.format(number_value) if self.config.culture_info is not None \
+            return (
+                self.config.culture_info.format(number_value)
+                if self.config.culture_info is not None
                 else repr(number_value)
+            )
         else:
             return None
 
     def __create_currency_result(self, result, main_unit_iso_code, number_value, main_unit_value) -> ParseResult:
         if not main_unit_iso_code or main_unit_iso_code.startswith(Constants.FAKE_ISO_CODE_PREFIX):
-            result.value = UnitValue(
-                self.__get_number_value(number_value), main_unit_value)
+            result.value = UnitValue(self.__get_number_value(number_value), main_unit_value)
         else:
-            result.value = CurrencyUnitValue(
-                self.__get_number_value(number_value), main_unit_value, main_unit_iso_code)
+            result.value = CurrencyUnitValue(self.__get_number_value(number_value), main_unit_value, main_unit_iso_code)
 
         return result
 

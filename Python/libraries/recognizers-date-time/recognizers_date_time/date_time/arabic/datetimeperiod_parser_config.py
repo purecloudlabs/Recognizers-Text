@@ -1,13 +1,14 @@
-from typing import Pattern, Dict
+from typing import Dict, Pattern
+
 import regex
 
-from recognizers_text.utilities import RegExpUtility
-from recognizers_date_time.resources.arabic_date_time import ArabicDateTime
+from recognizers_date_time.date_time.base_configs import BaseDateParserConfiguration
 from recognizers_date_time.date_time.base_datetimeperiod import DateTimePeriodParserConfiguration, MatchedTimeRange
 from recognizers_date_time.date_time.constants import Constants
 from recognizers_date_time.date_time.extractors import DateTimeExtractor
 from recognizers_date_time.date_time.parsers import DateTimeParser
-from recognizers_date_time.date_time.base_configs import BaseDateParserConfiguration
+from recognizers_date_time.resources.arabic_date_time import ArabicDateTime
+from recognizers_text.utilities import RegExpUtility
 
 
 class ArabicDateTimePeriodParserConfiguration(DateTimePeriodParserConfiguration):
@@ -35,22 +36,16 @@ class ArabicDateTimePeriodParserConfiguration(DateTimePeriodParserConfiguration)
         self._token_before_date = ArabicDateTime.TokenBeforeDate
         self._token_before_time = ArabicDateTime.TokenBeforeTime
         self._check_both_before_after = ArabicDateTime.CheckBothBeforeAfter
-        self._pure_number_from_to_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.PureNumFromTo)
-        self._pure_number_between_and_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.PureNumBetweenAnd)
+        self._pure_number_from_to_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.PureNumFromTo)
+        self._pure_number_between_and_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.PureNumBetweenAnd)
         self._period_time_of_day_with_date_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.PeriodTimeOfDayWithDateRegex)
-        self._specific_time_of_day_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.PeriodSpecificTimeOfDayRegex)
-        self._past_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.PreviousPrefixRegex)
-        self._future_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.NextPrefixRegex)
-        self._relative_time_unit_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.RelativeTimeUnitRegex)
-        self._rest_of_date_time_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.RestOfDateTimeRegex)
+            ArabicDateTime.PeriodTimeOfDayWithDateRegex
+        )
+        self._specific_time_of_day_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.PeriodSpecificTimeOfDayRegex)
+        self._past_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.PreviousPrefixRegex)
+        self._future_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.NextPrefixRegex)
+        self._relative_time_unit_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.RelativeTimeUnitRegex)
+        self._rest_of_date_time_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.RestOfDateTimeRegex)
         self._numbers = config.numbers
         self._unit_map = config.unit_map
         self._date_extractor = config.date_extractor
@@ -63,20 +58,13 @@ class ArabicDateTimePeriodParserConfiguration(DateTimePeriodParserConfiguration)
         self._date_time_parser = config.date_time_parser
         self._time_period_parser = config.time_period_parser
         self._duration_parser = config.duration_parser
-        self.morning_start_end_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.MorningStartEndRegex)
-        self.afternoon_start_end_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.AfternoonStartEndRegex)
-        self.evening_start_end_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.EveningStartEndRegex)
-        self.night_start_end_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.NightStartEndRegex)
-        self._prefix_day_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.PrefixDayRegex)
-        self._after_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.AfterRegex)
-        self._before_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.BeforeRegex)
+        self.morning_start_end_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.MorningStartEndRegex)
+        self.afternoon_start_end_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.AfternoonStartEndRegex)
+        self.evening_start_end_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.EveningStartEndRegex)
+        self.night_start_end_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.NightStartEndRegex)
+        self._prefix_day_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.PrefixDayRegex)
+        self._after_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.AfterRegex)
+        self._before_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.BeforeRegex)
 
     @property
     def previous_prefix_regex(self):

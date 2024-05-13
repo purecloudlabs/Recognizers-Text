@@ -1,25 +1,29 @@
-from typing import Dict, Pattern, List
 from datetime import datetime
-from recognizers_text.extractor import ExtractResult
-from recognizers_number import BaseNumberExtractor, BaseNumberParser
-from recognizers_number.number.catalan.parsers import CatalanNumberParserConfiguration
-from recognizers_number.number.catalan.extractors import CatalanCardinalExtractor, CatalanIntegerExtractor, \
-    CatalanOrdinalExtractor
+from typing import Dict, List, Pattern
+
+from recognizers_date_time.date_time.catalan.base_datetime import MinimalDateTimeExtractor, MinimalDateTimeParser
 from recognizers_date_time.resources.base_date_time import BaseDateTime
+from recognizers_number import BaseNumberExtractor, BaseNumberParser
+from recognizers_number.number.catalan.extractors import (
+    CatalanCardinalExtractor,
+    CatalanIntegerExtractor,
+    CatalanOrdinalExtractor,
+)
+from recognizers_number.number.catalan.parsers import CatalanNumberParserConfiguration
+from recognizers_text.extractor import ExtractResult
 
 from ...resources.catalan_date_time import CatalanDateTime
+from ..base_configs import DateTimeUtilityConfiguration
+from ..base_date import BaseDateExtractor, BaseDateParser, DateExtractorConfiguration
+from ..base_minimal_configs import MinimalBaseDateParserConfiguration
+from ..base_time import BaseTimeExtractor, BaseTimeParser
 from ..extractors import DateTimeExtractor
 from ..parsers import DateTimeParser
-from ..base_configs import DateTimeUtilityConfiguration
-from ..base_minimal_configs import MinimalBaseDateParserConfiguration
-from ..base_date import BaseDateExtractor, DateExtractorConfiguration, BaseDateParser
-from ..base_time import BaseTimeExtractor, BaseTimeParser
 from .base_configs import CatalanDateTimeUtilityConfiguration
 from .date_extractor_config import CatalanDateExtractorConfiguration
 from .date_parser_config import CatalanDateParserConfiguration
 from .time_extractor_config import CatalanTimeExtractorConfiguration
 from .time_parser_config import CatalanTimeParserConfiguration
-from recognizers_date_time.date_time.catalan.base_datetime import MinimalDateTimeParser, MinimalDateTimeExtractor
 
 
 class CatalanBaseDateExtractor(BaseDateExtractor):
@@ -29,6 +33,7 @@ class CatalanBaseDateExtractor(BaseDateExtractor):
 
     def extract(self, source: str, reference: datetime = None) -> List[ExtractResult]:
         from ..utilities import merge_all_tokens
+
         if reference is None:
             reference = datetime.now()
 
@@ -120,20 +125,16 @@ class CatalanCommonDateTimeParserConfiguration(MinimalBaseDateParserConfiguratio
         self._utility_configuration = CatalanDateTimeUtilityConfiguration()
         self._day_of_week = CatalanDateTime.DayOfWeek
         self._month_of_year = CatalanDateTime.MonthOfYear
-        self._day_of_month = {
-            **BaseDateTime.DayOfMonthDictionary, **CatalanDateTime.DayOfMonth}
+        self._day_of_month = {**BaseDateTime.DayOfMonthDictionary, **CatalanDateTime.DayOfMonth}
         self._numbers = CatalanDateTime.Numbers
         self._check_both_before_after = CatalanDateTime.CheckBothBeforeAfter
         self._cardinal_extractor = CatalanCardinalExtractor()
         self._integer_extractor = CatalanIntegerExtractor()
         self._ordinal_extractor = CatalanOrdinalExtractor()
-        self._number_parser = BaseNumberParser(
-            CatalanNumberParserConfiguration())
-        self._date_extractor = CatalanBaseDateExtractor(
-            CatalanDateExtractorConfiguration())
+        self._number_parser = BaseNumberParser(CatalanNumberParserConfiguration())
+        self._date_extractor = CatalanBaseDateExtractor(CatalanDateExtractorConfiguration())
         self._time_extractor = BaseTimeExtractor(CatalanTimeExtractorConfiguration())
-        self._date_parser = BaseDateParser(
-            CatalanDateParserConfiguration(self))
+        self._date_parser = BaseDateParser(CatalanDateParserConfiguration(self))
         self._time_parser = BaseTimeParser(CatalanTimeParserConfiguration(self))
         self._date_time_extractor = MinimalDateTimeExtractor()
         self._date_time_parser = MinimalDateTimeParser()

@@ -1,15 +1,16 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from typing import List, Pattern, Dict
+from typing import Dict, List, Pattern
+
 import regex
 
 from recognizers_text.utilities import RegExpUtility
+
 from ...resources.spanish_date_time import SpanishDateTime
-from ..base_time import TimeParserConfiguration, AdjustParams
 from ..base_configs import BaseDateParserConfiguration, DateTimeUtilityConfiguration
+from ..base_time import AdjustParams, TimeParserConfiguration
 from .time_extractor_config import SpanishTimeExtractorConfiguration
-from ..parsers import DateTimeParser
 
 
 class SpanishTimeParserConfiguration(TimeParserConfiguration):
@@ -35,14 +36,10 @@ class SpanishTimeParserConfiguration(TimeParserConfiguration):
 
     def __init__(self, config: BaseDateParserConfiguration):
         self._time_token_prefix: str = SpanishDateTime.TimeTokenPrefix
-        self._at_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.AtRegex)
-        self._time_regexes: List[Pattern] = SpanishTimeExtractorConfiguration.get_time_regex_list(
-        )
-        self.less_than_one_hour = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.LessThanOneHour)
-        self.time_suffix = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.TimeSuffix)
+        self._at_regex: Pattern = RegExpUtility.get_safe_reg_exp(SpanishDateTime.AtRegex)
+        self._time_regexes: List[Pattern] = SpanishTimeExtractorConfiguration.get_time_regex_list()
+        self.less_than_one_hour = RegExpUtility.get_safe_reg_exp(SpanishDateTime.LessThanOneHour)
+        self.time_suffix = RegExpUtility.get_safe_reg_exp(SpanishDateTime.TimeSuffix)
 
         self._utility_configuration = config.utility_configuration
         self._numbers: Dict[str, int] = config.numbers
@@ -66,21 +63,24 @@ class SpanishTimeParserConfiguration(TimeParserConfiguration):
                 if min_str:
                     delta_min = int(min_str)
                 else:
-                    min_str = RegExpUtility.get_group(
-                        match, 'deltaminnum').lower()
+                    min_str = RegExpUtility.get_group(match, 'deltaminnum').lower()
                     delta_min = self.numbers.get(min_str)
 
         if (
-            prefix.endswith('pasadas') or prefix.endswith('pasados') or
-            prefix.endswith('pasadas las') or prefix.endswith('pasados las') or
-            prefix.endswith('pasadas de las') or prefix.endswith(
-                'pasados de las')
+            prefix.endswith('pasadas')
+            or prefix.endswith('pasados')
+            or prefix.endswith('pasadas las')
+            or prefix.endswith('pasados las')
+            or prefix.endswith('pasadas de las')
+            or prefix.endswith('pasados de las')
         ):
             # deltaMin it's positive
             pass
         elif (
-            prefix.endswith('para la') or prefix.endswith('para las') or
-            prefix.endswith('antes de la') or prefix.endswith('antes de las')
+            prefix.endswith('para la')
+            or prefix.endswith('para las')
+            or prefix.endswith('antes de la')
+            or prefix.endswith('antes de las')
         ):
             delta_min = delta_min * -1
 

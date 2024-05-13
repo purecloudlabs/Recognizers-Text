@@ -3,29 +3,30 @@
 
 from typing import List, Pattern
 
-from recognizers_text.extractor import Extractor
-from recognizers_text.utilities import RegExpUtility, DefinitionLoader
 from recognizers_number import SpanishIntegerExtractor
+from recognizers_text.extractor import Extractor
+from recognizers_text.utilities import DefinitionLoader, RegExpUtility
+
+from ...resources.base_date_time import BaseDateTime
 from ...resources.spanish_date_time import SpanishDateTime
-from ..extractors import DateTimeExtractor
-from ..base_merged import MergedExtractorConfiguration
 from ..base_date import BaseDateExtractor
-from ..base_time import BaseTimeExtractor
-from ..base_duration import BaseDurationExtractor
 from ..base_dateperiod import BaseDatePeriodExtractor
-from ..base_timeperiod import BaseTimePeriodExtractor
 from ..base_datetime import BaseDateTimeExtractor
 from ..base_datetimeperiod import BaseDateTimePeriodExtractor
+from ..base_duration import BaseDurationExtractor
 from ..base_holiday import BaseHolidayExtractor
+from ..base_merged import MergedExtractorConfiguration
+from ..base_time import BaseTimeExtractor
+from ..base_timeperiod import BaseTimePeriodExtractor
+from ..extractors import DateTimeExtractor
 from .date_extractor_config import SpanishDateExtractorConfiguration
-from .time_extractor_config import SpanishTimeExtractorConfiguration
-from .duration_extractor_config import SpanishDurationExtractorConfiguration
 from .dateperiod_extractor_config import SpanishDatePeriodExtractorConfiguration
-from .timeperiod_extractor_config import SpanishTimePeriodExtractorConfiguration
 from .datetime_extractor_config import SpanishDateTimeExtractorConfiguration
 from .datetimeperiod_extractor_config import SpanishDateTimePeriodExtractorConfiguration
+from .duration_extractor_config import SpanishDurationExtractorConfiguration
 from .holiday_extractor_config import SpanishHolidayExtractorConfiguration
-from ...resources.base_date_time import BaseDateTime
+from .time_extractor_config import SpanishTimeExtractorConfiguration
+from .timeperiod_extractor_config import SpanishTimePeriodExtractorConfiguration
 
 
 class SpanishMergedExtractorConfiguration(MergedExtractorConfiguration):
@@ -151,48 +152,30 @@ class SpanishMergedExtractorConfiguration(MergedExtractorConfiguration):
         self._fail_fast_regex = None
         self._term_filter_regexes = None
         self._datetime_alt_extractor = None
-        self._before_regex = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.BeforeRegex)
-        self._after_regex = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.AfterRegex)
-        self._since_regex = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.SinceRegex)
-        self._from_to_regex = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.FromToRegex)
-        self._single_ambiguous_month_regex = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.SingleAmbiguousMonthRegex)
-        self._preposition_suffix_regex = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.PrepositionSuffixRegex)
+        self._before_regex = RegExpUtility.get_safe_reg_exp(SpanishDateTime.BeforeRegex)
+        self._after_regex = RegExpUtility.get_safe_reg_exp(SpanishDateTime.AfterRegex)
+        self._since_regex = RegExpUtility.get_safe_reg_exp(SpanishDateTime.SinceRegex)
+        self._from_to_regex = RegExpUtility.get_safe_reg_exp(SpanishDateTime.FromToRegex)
+        self._single_ambiguous_month_regex = RegExpUtility.get_safe_reg_exp(SpanishDateTime.SingleAmbiguousMonthRegex)
+        self._preposition_suffix_regex = RegExpUtility.get_safe_reg_exp(SpanishDateTime.PrepositionSuffixRegex)
         self._ambiguous_range_modifier_prefix = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.AmbiguousRangeModifierPrefix)
-        self._number_ending_pattern = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.NumberEndingPattern)
+            SpanishDateTime.AmbiguousRangeModifierPrefix
+        )
+        self._number_ending_pattern = RegExpUtility.get_safe_reg_exp(SpanishDateTime.NumberEndingPattern)
 
-        self._date_extractor = BaseDateExtractor(
-            SpanishDateExtractorConfiguration())
-        self._time_extractor = BaseTimeExtractor(
-            SpanishTimeExtractorConfiguration())
-        self._date_time_extractor = BaseDateTimeExtractor(
-            SpanishDateTimeExtractorConfiguration())
-        self._date_period_extractor = BaseDatePeriodExtractor(
-            SpanishDatePeriodExtractorConfiguration())
-        self._time_period_extractor = BaseTimePeriodExtractor(
-            SpanishTimePeriodExtractorConfiguration())
-        self._date_time_period_extractor = BaseDateTimePeriodExtractor(
-            SpanishDateTimePeriodExtractorConfiguration())
-        self._duration_extractor = BaseDurationExtractor(
-            SpanishDurationExtractorConfiguration())
-        self._holiday_extractor = BaseHolidayExtractor(
-            SpanishHolidayExtractorConfiguration())
+        self._date_extractor = BaseDateExtractor(SpanishDateExtractorConfiguration())
+        self._time_extractor = BaseTimeExtractor(SpanishTimeExtractorConfiguration())
+        self._date_time_extractor = BaseDateTimeExtractor(SpanishDateTimeExtractorConfiguration())
+        self._date_period_extractor = BaseDatePeriodExtractor(SpanishDatePeriodExtractorConfiguration())
+        self._time_period_extractor = BaseTimePeriodExtractor(SpanishTimePeriodExtractorConfiguration())
+        self._date_time_period_extractor = BaseDateTimePeriodExtractor(SpanishDateTimePeriodExtractorConfiguration())
+        self._duration_extractor = BaseDurationExtractor(SpanishDurationExtractorConfiguration())
+        self._holiday_extractor = BaseHolidayExtractor(SpanishHolidayExtractorConfiguration())
         self._integer_extractor = SpanishIntegerExtractor()
         self._filter_word_regex_list = []
-        self._unspecified_date_period_regex = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.UnspecificDatePeriodRegex
-        )
+        self._unspecified_date_period_regex = RegExpUtility.get_safe_reg_exp(SpanishDateTime.UnspecificDatePeriodRegex)
         self._around_regex = SpanishDateTime.AroundRegex
         self._equal_regex = BaseDateTime.EqualRegex
-        self._suffix_after_regex = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.SuffixAfterRegex
-        )
+        self._suffix_after_regex = RegExpUtility.get_safe_reg_exp(SpanishDateTime.SuffixAfterRegex)
         self._check_both_before_after = SpanishDateTime.CheckBothBeforeAfter
         self._ambiguity_filters_dict = DefinitionLoader.load_ambiguity_filters(SpanishDateTime.AmbiguityFiltersDict)

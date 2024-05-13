@@ -1,6 +1,7 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
+
 class Token(object):
     def __init__(self, start: int, length: int, text: str):
         self.__length = length

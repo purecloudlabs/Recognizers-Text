@@ -1,16 +1,17 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from typing import List, Pattern, Dict
+from typing import Dict, List, Pattern
+
 import regex
 
 from recognizers_text.utilities import RegExpUtility
+
 from ...resources.dutch_date_time import DutchDateTime
-from ..base_time import TimeParserConfiguration, AdjustParams
 from ..base_configs import BaseDateParserConfiguration, DateTimeUtilityConfiguration
-from .time_extractor_config import DutchTimeExtractorConfiguration
-from ..parsers import DateTimeParser
+from ..base_time import AdjustParams, TimeParserConfiguration
 from ..constants import Constants
+from .time_extractor_config import DutchTimeExtractorConfiguration
 
 
 class DutchTimeParserConfiguration(TimeParserConfiguration):
@@ -36,28 +37,20 @@ class DutchTimeParserConfiguration(TimeParserConfiguration):
 
     def __init__(self, config: BaseDateParserConfiguration):
         self._time_token_prefix: str = DutchDateTime.TimeTokenPrefix
-        self._at_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.AtRegex)
-        self._time_regexes: List[Pattern] = DutchTimeExtractorConfiguration.get_time_regex_list(
-        )
-        self.less_than_one_hour = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.LessThanOneHour)
-        self.time_suffix = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.TimeSuffix)
-        self.night_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.NightRegex)
+        self._at_regex: Pattern = RegExpUtility.get_safe_reg_exp(DutchDateTime.AtRegex)
+        self._time_regexes: List[Pattern] = DutchTimeExtractorConfiguration.get_time_regex_list()
+        self.less_than_one_hour = RegExpUtility.get_safe_reg_exp(DutchDateTime.LessThanOneHour)
+        self.time_suffix = RegExpUtility.get_safe_reg_exp(DutchDateTime.TimeSuffix)
+        self.night_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.NightRegex)
         self.time_suffix_full_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.TimeSuffixFull)
         self.lunch_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.LunchRegex)
         self.to_token_regex_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.ToTokenRegex)
         self.to_half_token_regex_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.ToHalfTokenRegex)
         self.for_half_token_regex_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.ForHalfTokenRegex)
 
-        self._half_token_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.HalfTokenRegex)
-        self._quarter_token_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.QuarterTokenRegex)
-        self._three_quarter_token_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.ThreeQuarterTokenRegex)
+        self._half_token_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.HalfTokenRegex)
+        self._quarter_token_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.QuarterTokenRegex)
+        self._three_quarter_token_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.ThreeQuarterTokenRegex)
 
         self._utility_configuration = config.utility_configuration
         self._numbers: Dict[str, int] = config.numbers
@@ -79,14 +72,13 @@ class DutchTimeParserConfiguration(TimeParserConfiguration):
                 if min_str:
                     delta_min = int(min_str)
                 else:
-                    min_str = RegExpUtility.get_group(
-                        match, 'deltaminnum').lower()
+                    min_str = RegExpUtility.get_group(match, 'deltaminnum').lower()
                     delta_min = self.numbers.get(min_str)
 
         if regex.search(self.to_half_token_regex_regex, prefix):
             delta_min = delta_min - 30
         elif regex.search(self.for_half_token_regex_regex, prefix):
-            delta_min = -delta_min -30
+            delta_min = -delta_min - 30
         elif regex.search(self.to_token_regex_regex, prefix):
             delta_min = delta_min * -1
 
@@ -119,7 +111,7 @@ class DutchTimeParserConfiguration(TimeParserConfiguration):
                     if regex.search(self.lunch_regex, pm_str):
                         if adjust.hour >= 10 and adjust.hour <= Constants.HALF_DAY_HOUR_COUNT:
                             delta_hour = 0
-                            if (adjust.hour == Constants.HALF_DAY_HOUR_COUNT):
+                            if adjust.hour == Constants.HALF_DAY_HOUR_COUNT:
                                 adjust.has_pm = True
                             else:
                                 adjust.has_am = True

@@ -1,13 +1,14 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from typing import List, Dict, Callable
 from datetime import datetime
+from typing import Callable, Dict, List
 
 from recognizers_text.utilities import RegExpUtility
-from ..utilities import DateUtils
-from ..base_holiday import BaseHolidayParserConfiguration
+
 from ...resources.french_date_time import FrenchDateTime
+from ..base_holiday import BaseHolidayParserConfiguration
+from ..utilities import DateUtils
 
 
 class FrenchHolidayParserConfiguration(BaseHolidayParserConfiguration):
@@ -29,54 +30,56 @@ class FrenchHolidayParserConfiguration(BaseHolidayParserConfiguration):
             RegExpUtility.get_safe_reg_exp(FrenchDateTime.HolidayRegex1),
             RegExpUtility.get_safe_reg_exp(FrenchDateTime.HolidayRegex2),
             RegExpUtility.get_safe_reg_exp(FrenchDateTime.HolidayRegex3),
-            RegExpUtility.get_safe_reg_exp(FrenchDateTime.HolidayRegex4)
+            RegExpUtility.get_safe_reg_exp(FrenchDateTime.HolidayRegex4),
         ]
         self._holiday_names = FrenchDateTime.HolidayNames
         # self._variable_holidays_timex_dictionary = FrenchDateTime.VariableHolidaysTimexDictionary
 
     def _init_holiday_funcs(self) -> Dict[str, Callable[[int], datetime]]:
-        local = dict([
-            ('maosbirthday', FrenchHolidayParserConfiguration.mao_birthday),
-            ('yuandan', FrenchHolidayParserConfiguration.new_year),
-            ('teachersday', FrenchHolidayParserConfiguration.teacher_day),
-            ('singleday', FrenchHolidayParserConfiguration.singles_day),
-            ('allsaintsday', FrenchHolidayParserConfiguration.halloween_day),
-            ('youthday', FrenchHolidayParserConfiguration.youth_day),
-            ('childrenday', FrenchHolidayParserConfiguration.children_day),
-            ('femaleday', FrenchHolidayParserConfiguration.female_day),
-            ('treeplantingday', FrenchHolidayParserConfiguration.tree_plant_day),
-            ('arborday', FrenchHolidayParserConfiguration.tree_plant_day),
-            ('girlsday', FrenchHolidayParserConfiguration.girls_day),
-            ('whiteloverday', FrenchHolidayParserConfiguration.white_lover_day),
-            ('loverday', FrenchHolidayParserConfiguration.valentines_day),
-            ('christmas', FrenchHolidayParserConfiguration.christmas_day),
-            ('xmas', FrenchHolidayParserConfiguration.christmas_day),
-            ('newyear', FrenchHolidayParserConfiguration.new_year),
-            ('newyearday', FrenchHolidayParserConfiguration.new_year),
-            ('newyearsday', FrenchHolidayParserConfiguration.new_year),
-            ('inaugurationday', FrenchHolidayParserConfiguration.inauguration_day),
-            ('groundhougday', FrenchHolidayParserConfiguration.groundhog_day),
-            ('valentinesday', FrenchHolidayParserConfiguration.valentines_day),
-            ('stpatrickday', FrenchHolidayParserConfiguration.st_patrick_day),
-            ('aprilfools', FrenchHolidayParserConfiguration.fool_day),
-            ('stgeorgeday', FrenchHolidayParserConfiguration.st_george_day),
-            ('mayday', FrenchHolidayParserConfiguration.mayday),
-            ('cincodemayoday', FrenchHolidayParserConfiguration.cinco_de_mayo_day),
-            ('baptisteday', FrenchHolidayParserConfiguration.baptiste_day),
-            ('usindependenceday', FrenchHolidayParserConfiguration.usa_independence_day),
-            ('independenceday', FrenchHolidayParserConfiguration.usa_independence_day),
-            ('bastilleday', FrenchHolidayParserConfiguration.bastille_day),
-            ('halloweenday', FrenchHolidayParserConfiguration.halloween_day),
-            ('allhallowday', FrenchHolidayParserConfiguration.all_hallow_day),
-            ('allsoulsday', FrenchHolidayParserConfiguration.all_souls_day),
-            ('guyfawkesday', FrenchHolidayParserConfiguration.guyfawkes_day),
-            ('veteransday', FrenchHolidayParserConfiguration.veterans_day),
-            ('christmaseve', FrenchHolidayParserConfiguration.christmas_eve),
-            ('newyeareve', FrenchHolidayParserConfiguration.new_year_eve),
-            ('fathersday', FrenchHolidayParserConfiguration.fathers_day),
-            ('mothersday', FrenchHolidayParserConfiguration.mothers_day),
-            ('labourday', FrenchHolidayParserConfiguration.labour_day)
-        ])
+        local = dict(
+            [
+                ('maosbirthday', FrenchHolidayParserConfiguration.mao_birthday),
+                ('yuandan', FrenchHolidayParserConfiguration.new_year),
+                ('teachersday', FrenchHolidayParserConfiguration.teacher_day),
+                ('singleday', FrenchHolidayParserConfiguration.singles_day),
+                ('allsaintsday', FrenchHolidayParserConfiguration.halloween_day),
+                ('youthday', FrenchHolidayParserConfiguration.youth_day),
+                ('childrenday', FrenchHolidayParserConfiguration.children_day),
+                ('femaleday', FrenchHolidayParserConfiguration.female_day),
+                ('treeplantingday', FrenchHolidayParserConfiguration.tree_plant_day),
+                ('arborday', FrenchHolidayParserConfiguration.tree_plant_day),
+                ('girlsday', FrenchHolidayParserConfiguration.girls_day),
+                ('whiteloverday', FrenchHolidayParserConfiguration.white_lover_day),
+                ('loverday', FrenchHolidayParserConfiguration.valentines_day),
+                ('christmas', FrenchHolidayParserConfiguration.christmas_day),
+                ('xmas', FrenchHolidayParserConfiguration.christmas_day),
+                ('newyear', FrenchHolidayParserConfiguration.new_year),
+                ('newyearday', FrenchHolidayParserConfiguration.new_year),
+                ('newyearsday', FrenchHolidayParserConfiguration.new_year),
+                ('inaugurationday', FrenchHolidayParserConfiguration.inauguration_day),
+                ('groundhougday', FrenchHolidayParserConfiguration.groundhog_day),
+                ('valentinesday', FrenchHolidayParserConfiguration.valentines_day),
+                ('stpatrickday', FrenchHolidayParserConfiguration.st_patrick_day),
+                ('aprilfools', FrenchHolidayParserConfiguration.fool_day),
+                ('stgeorgeday', FrenchHolidayParserConfiguration.st_george_day),
+                ('mayday', FrenchHolidayParserConfiguration.mayday),
+                ('cincodemayoday', FrenchHolidayParserConfiguration.cinco_de_mayo_day),
+                ('baptisteday', FrenchHolidayParserConfiguration.baptiste_day),
+                ('usindependenceday', FrenchHolidayParserConfiguration.usa_independence_day),
+                ('independenceday', FrenchHolidayParserConfiguration.usa_independence_day),
+                ('bastilleday', FrenchHolidayParserConfiguration.bastille_day),
+                ('halloweenday', FrenchHolidayParserConfiguration.halloween_day),
+                ('allhallowday', FrenchHolidayParserConfiguration.all_hallow_day),
+                ('allsoulsday', FrenchHolidayParserConfiguration.all_souls_day),
+                ('guyfawkesday', FrenchHolidayParserConfiguration.guyfawkes_day),
+                ('veteransday', FrenchHolidayParserConfiguration.veterans_day),
+                ('christmaseve', FrenchHolidayParserConfiguration.christmas_eve),
+                ('newyeareve', FrenchHolidayParserConfiguration.new_year_eve),
+                ('fathersday', FrenchHolidayParserConfiguration.fathers_day),
+                ('mothersday', FrenchHolidayParserConfiguration.mothers_day),
+                ('labourday', FrenchHolidayParserConfiguration.labour_day),
+            ]
+        )
 
         return {**super()._init_holiday_funcs(), **local}
 

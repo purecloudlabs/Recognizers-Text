@@ -2,11 +2,13 @@
 #  Licensed under the MIT License.
 
 from datetime import datetime
+
 import regex
 
 from recognizers_text.utilities import RegExpUtility
-from ..utilities import DateTimeResolutionResult
+
 from ..base_time import BaseTimeParser
+from ..utilities import DateTimeResolutionResult
 from .time_parser_config import EnglishTimeParserConfiguration
 
 
@@ -33,8 +35,7 @@ class EnglishTimeParser(BaseTimeParser):
             hour = int(hour_str)
 
         result.timex = f'T{hour:02d}'
-        result.future_value = datetime(
-            reference.year, reference.month, reference.day, hour, 0, 0)
+        result.future_value = datetime(reference.year, reference.month, reference.day, hour, 0, 0)
         result.past_value = result.future_value
         result.success = True
         return result

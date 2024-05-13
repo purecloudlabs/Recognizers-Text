@@ -1,16 +1,15 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from typing import Pattern, Dict
-import regex
+from typing import Dict, Pattern
 
 from recognizers_text.utilities import RegExpUtility
+
 from ...resources.portuguese_date_time import PortugueseDateTime
+from ..base_configs import BaseDateParserConfiguration
 from ..base_datetimeperiod import DateTimePeriodParserConfiguration, MatchedTimeRange
-from ..constants import Constants, TimeTypeConstants
 from ..extractors import DateTimeExtractor
 from ..parsers import DateTimeParser
-from ..base_configs import BaseDateParserConfiguration
 
 
 class PortugueseDateTimePeriodParserConfiguration(DateTimePeriodParserConfiguration):
@@ -38,22 +37,16 @@ class PortugueseDateTimePeriodParserConfiguration(DateTimePeriodParserConfigurat
         self._token_before_date = PortugueseDateTime.TokenBeforeDate
         self._token_before_time = PortugueseDateTime.TokenBeforeTime
         self._check_both_before_after = PortugueseDateTime.CheckBothBeforeAfter
-        self._pure_number_from_to_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.PureNumFromTo)
-        self._pure_number_between_and_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.PureNumBetweenAnd)
+        self._pure_number_from_to_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.PureNumFromTo)
+        self._pure_number_between_and_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.PureNumBetweenAnd)
         self._period_time_of_day_with_date_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.PeriodTimeOfDayWithDateRegex)
-        self._specific_time_of_day_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.SpecificTimeOfDayRegex)
-        self._past_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.PreviousPrefixRegex)
-        self._future_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.NextPrefixRegex)
-        self._relative_time_unit_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.RelativeTimeUnitRegex)
-        self._rest_of_date_time_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.RestOfDateTimeRegex)
+            PortugueseDateTime.PeriodTimeOfDayWithDateRegex
+        )
+        self._specific_time_of_day_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.SpecificTimeOfDayRegex)
+        self._past_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.PreviousPrefixRegex)
+        self._future_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.NextPrefixRegex)
+        self._relative_time_unit_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.RelativeTimeUnitRegex)
+        self._rest_of_date_time_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.RestOfDateTimeRegex)
         self._numbers = config.numbers
         self._unit_map = config.unit_map
         self._date_extractor = config.date_extractor
@@ -66,12 +59,9 @@ class PortugueseDateTimePeriodParserConfiguration(DateTimePeriodParserConfigurat
         self._date_time_parser = config.date_time_parser
         self._time_period_parser = config.time_period_parser
         self._duration_parser = config.duration_parser
-        self._prefix_day_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.PrefixDayRegex)
-        self._after_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.AfterRegex)
-        self._before_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.BeforeRegex)
+        self._prefix_day_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.PrefixDayRegex)
+        self._after_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.AfterRegex)
+        self._before_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.BeforeRegex)
 
     @property
     def previous_prefix_regex(self):

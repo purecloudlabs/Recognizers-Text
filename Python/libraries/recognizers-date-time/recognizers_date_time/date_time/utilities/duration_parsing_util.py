@@ -1,7 +1,6 @@
-from typing import Dict, List, Pattern
 from datetime import datetime, timedelta
+from typing import Dict, List, Pattern
 
-from regex import regex
 from recognizers_date_time.date_time.constants import Constants
 from recognizers_date_time.date_time.utilities import DateTimeResolutionResult, RegExpUtility, TimexUtil
 
@@ -56,7 +55,7 @@ class DurationParsingUtil:
                     num_str = duration_str[number_start:idx]
                     try:
                         number = float(num_str)
-                        src_timex_unit = duration_str[idx:idx+1]
+                        src_timex_unit = duration_str[idx : idx + 1]
                         if not is_time and src_timex_unit == Constants.TIMEX_MONTH:
                             src_timex_unit = Constants.TIMEX_MONTH_FULL
                         result[src_timex_unit] = number
@@ -75,21 +74,21 @@ class DurationParsingUtil:
         # (when the reference month and the following month have different numbers of days).
         for unit_str, number in timex_unit_map.items():
             if unit_str == "H":
-                result += timedelta(hours=number*future_or_past)
+                result += timedelta(hours=number * future_or_past)
             elif unit_str == "M":
-                result += timedelta(minutes=number*future_or_past)
+                result += timedelta(minutes=number * future_or_past)
             elif unit_str == "S":
-                result += timedelta(seconds=number*future_or_past)
+                result += timedelta(seconds=number * future_or_past)
             elif unit_str == "H":
-                result += timedelta(hours=number*future_or_past)
+                result += timedelta(hours=number * future_or_past)
             elif unit_str == Constants.TIMEX_DAY:
-                result += timedelta(days=number*future_or_past)
+                result += timedelta(days=number * future_or_past)
             elif unit_str == Constants.TIMEX_WEEK:
-                result += timedelta(days=7*number * future_or_past)
+                result += timedelta(days=7 * number * future_or_past)
             elif unit_str == Constants.TIMEX_MONTH_FULL:
-                result.replace(month=int(number*future_or_past))
+                result.replace(month=int(number * future_or_past))
             elif unit_str == Constants.TIMEX_YEAR:
-                result.replace(year=int(number*future_or_past))
+                result.replace(year=int(number * future_or_past))
             elif unit_str == Constants.TIMEX_BUSINESS_DAY:
                 result = DurationParsingUtil.get_nth_business_day(result, int(number), future)
         return result
@@ -122,9 +121,13 @@ class DurationParsingUtil:
         return len(resolved_timex) > 1
 
     @staticmethod
-    def parse_inexact_number_with_unit(text: str, inexact_number_unit_regex: Pattern,
-                                       unit_map: Dict[str, str], unit_value_map: Dict[str, float],
-                                       is_cjk: bool = False) -> DateTimeResolutionResult:
+    def parse_inexact_number_with_unit(
+        text: str,
+        inexact_number_unit_regex: Pattern,
+        unit_map: Dict[str, str],
+        unit_value_map: Dict[str, float],
+        is_cjk: bool = False,
+    ) -> DateTimeResolutionResult:
         ret = DateTimeResolutionResult()
         match = RegExpUtility.get_matches(inexact_number_unit_regex, text)
         if match:
@@ -137,13 +140,16 @@ class DurationParsingUtil:
             if src_unit in unit_map:
                 unit_str = unit_map[src_unit]
 
-                if num_val > 1000 and (unit_str == Constants.TIMEX_YEAR or
-                                      unit_str == Constants.TIMEX_MONTH_FULL or
-                                      unit_str == Constants.TIMEX_WEEK):
+                if num_val > 1000 and (
+                    unit_str == Constants.TIMEX_YEAR
+                    or unit_str == Constants.TIMEX_MONTH_FULL
+                    or unit_str == Constants.TIMEX_WEEK
+                ):
                     return ret
 
-                ret.timex = TimexUtil.generate_duration_timex(num_val, unit_str,
-                                                              DurationParsingUtil.is_less_than_day(unit_str))
+                ret.timex = TimexUtil.generate_duration_timex(
+                    num_val, unit_str, DurationParsingUtil.is_less_than_day(unit_str)
+                )
 
                 #  In CJK implementation unitValueMap uses the unitMap values as keys while
                 #  in standard implementation unitMap and unitValueMap have the same keys.
@@ -166,4 +172,3 @@ class DurationParsingUtil:
     @staticmethod
     def is_less_than_day(unit: str) -> bool:
         return unit == "S" or unit == "M" or unit == "H"
-

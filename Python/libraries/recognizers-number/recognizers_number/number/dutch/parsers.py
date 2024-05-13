@@ -1,131 +1,47 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from typing import Dict, Pattern, List
+from typing import Dict, List, Optional, Pattern
 
-from recognizers_text.utilities import RegExpUtility
-from recognizers_text.culture import Culture
-from recognizers_text.parser import ParseResult
 from recognizers_number.culture import CultureInfo
 from recognizers_number.number.parsers import BaseNumberParserConfiguration
 from recognizers_number.resources.dutch_numeric import DutchNumeric
+from recognizers_text.culture import Culture
+from recognizers_text.parser import ParseResult
+from recognizers_text.utilities import RegExpUtility
 
 
 class DutchNumberParserConfiguration(BaseNumberParserConfiguration):
-    @property
-    def cardinal_number_map(self) -> Dict[str, int]:
-        return self._cardinal_number_map
 
-    @property
-    def ordinal_number_map(self) -> Dict[str, int]:
-        return self._ordinal_number_map
+    lang_marker: str = DutchNumeric.LangMarker
+    is_multi_decimal_separator_culture: bool = DutchNumeric.MultiDecimalSeparatorCulture
 
-    @property
-    def round_number_map(self) -> Dict[str, int]:
-        return self._round_number_map
+    decimal_separator_char: str = DutchNumeric.DecimalSeparatorChar
+    fraction_marker_token: str = DutchNumeric.FractionMarkerToken
+    non_decimal_separator_char: str = DutchNumeric.NonDecimalSeparatorChar
+    half_a_dozen_text: str = DutchNumeric.HalfADozenText
+    word_separator_token: str = DutchNumeric.WordSeparatorToken
 
-    @property
-    def culture_info(self):
-        return self._culture_info
+    written_decimal_separator_texts: List[str] = DutchNumeric.WrittenDecimalSeparatorTexts
+    written_group_separator_texts: List[str] = DutchNumeric.WrittenGroupSeparatorTexts
+    written_integer_separator_texts: List[str] = DutchNumeric.WrittenIntegerSeparatorTexts
+    written_fraction_separator_texts: List[str] = DutchNumeric.WrittenFractionSeparatorTexts
+    non_standard_separator_variants: List[str] = []
 
-    @property
-    def digital_number_regex(self) -> Pattern:
-        return self._digital_number_regex
+    cardinal_number_map: Dict[str, int] = DutchNumeric.CardinalNumberMap
+    ordinal_number_map: Dict[str, int] = DutchNumeric.OrdinalNumberMap
+    round_number_map: Dict[str, int] = DutchNumeric.RoundNumberMap
 
-    @property
-    def fraction_marker_token(self) -> str:
-        return self._fraction_marker_token
+    negative_number_sign_regex: Pattern = RegExpUtility.get_safe_reg_exp(DutchNumeric.NegativeNumberSignRegex)
+    half_a_dozen_regex: Pattern = RegExpUtility.get_safe_reg_exp(DutchNumeric.HalfADozenRegex)
+    digital_number_regex: Pattern = RegExpUtility.get_safe_reg_exp(DutchNumeric.DigitalNumberRegex)
+    round_multiplier_regex: Pattern = RegExpUtility.get_safe_reg_exp(DutchNumeric.RoundMultiplierRegex)
+    fraction_units_regex: Pattern = RegExpUtility.get_safe_reg_exp(DutchNumeric.FractionUnitsRegex)
+    fraction_half_regex: Pattern = RegExpUtility.get_safe_reg_exp(DutchNumeric.FractionHalfRegex)
 
-    @property
-    def negative_number_sign_regex(self) -> Pattern:
-        return self._negative_number_sign_regex
-
-    @property
-    def half_a_dozen_regex(self) -> Pattern:
-        return self._half_a_dozen_regex
-
-    @property
-    def half_a_dozen_text(self) -> str:
-        return self._half_a_dozen_text
-
-    @property
-    def lang_marker(self) -> str:
-        return self._lang_marker
-
-    @property
-    def non_decimal_separator_char(self) -> str:
-        return self._non_decimal_separator_char
-
-    @property
-    def decimal_separator_char(self) -> str:
-        return self._decimal_separator_char
-
-    @property
-    def word_separator_token(self) -> str:
-        return self._word_separator_token
-
-    @property
-    def written_decimal_separator_texts(self) -> List[str]:
-        return self._written_decimal_separator_texts
-
-    @property
-    def written_group_separator_texts(self) -> List[str]:
-        return self._written_group_separator_texts
-
-    @property
-    def written_integer_separator_texts(self) -> List[str]:
-        return self._written_integer_separator_texts
-
-    @property
-    def written_fraction_separator_texts(self) -> List[str]:
-        return self._written_fraction_separator_texts
-
-    @property
-    def non_standard_separator_variants(self) -> List[str]:
-        return self._non_standard_separator_variants
-
-    @property
-    def is_multi_decimal_separator_culture(self) -> bool:
-        return self._is_multi_decimal_separator_culture
-
-    @property
-    def round_multiplier_regex(self) -> Pattern:
-        return self._round_multiplier_regex
-
-    def __init__(self, culture_info=None):
-        if culture_info is None:
-            culture_info = CultureInfo(Culture.Dutch)
-
-        self._culture_info = culture_info
-        self._lang_marker = DutchNumeric.LangMarker
-        self._decimal_separator_char = DutchNumeric.DecimalSeparatorChar
-        self._fraction_marker_token = DutchNumeric.FractionMarkerToken
-        self._non_decimal_separator_char = DutchNumeric.NonDecimalSeparatorChar
-        self._half_a_dozen_text = DutchNumeric.HalfADozenText
-        self._word_separator_token = DutchNumeric.WordSeparatorToken
-        self._non_standard_separator_variants = []
-        self._is_multi_decimal_separator_culture = DutchNumeric.MultiDecimalSeparatorCulture
-
-        self._written_decimal_separator_texts = DutchNumeric.WrittenDecimalSeparatorTexts
-        self._written_group_separator_texts = DutchNumeric.WrittenGroupSeparatorTexts
-        self._written_integer_separator_texts = DutchNumeric.WrittenIntegerSeparatorTexts
-        self._written_fraction_separator_texts = DutchNumeric.WrittenFractionSeparatorTexts
-
-        self._cardinal_number_map = DutchNumeric.CardinalNumberMap
-        self._ordinal_number_map = DutchNumeric.OrdinalNumberMap
-        self._round_number_map = DutchNumeric.RoundNumberMap
-        self._negative_number_sign_regex = RegExpUtility.get_safe_reg_exp(
-            DutchNumeric.NegativeNumberSignRegex)
-        self._half_a_dozen_regex = RegExpUtility.get_safe_reg_exp(
-            DutchNumeric.HalfADozenRegex)
-        self._digital_number_regex = RegExpUtility.get_safe_reg_exp(
-            DutchNumeric.DigitalNumberRegex)
-        self._round_multiplier_regex = RegExpUtility.get_safe_reg_exp(
-            DutchNumeric.RoundMultiplierRegex)
-        self._fraction_units_regex = RegExpUtility.get_safe_reg_exp(
-            DutchNumeric.FractionUnitsRegex)
-        self._fraction_half_regex = RegExpUtility.get_safe_reg_exp(
-            DutchNumeric.FractionHalfRegex)
+    def __init__(self, culture_info: Optional[CultureInfo] = None):
+        culture_info = culture_info or CultureInfo(Culture.Dutch)
+        super().__init__(culture_info)
 
     # Same behavior as the base but also handles numbers such as tweeënhalf and tweeëneenhalf
     def normalize_token_set(self, tokens: List[str], context: ParseResult) -> List[str]:
@@ -139,30 +55,33 @@ class DutchNumberParserConfiguration(BaseNumberParserConfiguration):
         except ValueError:
             pass
         for idx, word in enumerate(frac_words):
-            if self._fraction_half_regex.search(word):
-                frac_words[idx] = word[0:(len(word) - 6)]
-                frac_words.append(self._written_fraction_separator_texts[0])
+            if self.fraction_half_regex.search(word):
+                frac_words[idx] = word[0 : (len(word) - 6)]
+                frac_words.append(self.written_fraction_separator_texts[0])
                 frac_words.append(DutchNumeric.OneHalfTokens[0])
                 frac_words.append(DutchNumeric.OneHalfTokens[1])
                 length = 4
-            elif m := self._fraction_units_regex.search(word):
+            elif m := self.fraction_units_regex.search(word):
                 if m.group("onehalf"):
                     frac_words[idx] = DutchNumeric.OneHalfTokens[0]
-                    frac_words.append(self._written_fraction_separator_texts[0])
+                    frac_words.append(self.written_fraction_separator_texts[0])
                     frac_words.append(DutchNumeric.OneHalfTokens[0])
                     frac_words.append(DutchNumeric.OneHalfTokens[1])
                     length = 4
                 if m.group("quarter"):
-                    frac_words[idx] = word[0:len("drie")]
-                    frac_words.append(self._written_fraction_separator_texts[0])
-                    frac_words.append(word[len(frac_words[idx]):len("kwartaal") + len(frac_words[idx])])
+                    frac_words[idx] = word[0 : len("drie")]
+                    frac_words.append(self.written_fraction_separator_texts[0])
+                    frac_words.append(word[len(frac_words[idx]) : len("kwartaal") + len(frac_words[idx])])
                     length = 3
 
         fracLen = len(frac_words)
 
         if fracLen > length and frac_words[fracLen - length - 1] != DutchNumeric.WordSeparatorToken:
-            if not (all(i in frac_words for i in ["op", "de"]) or all(i in frac_words for i in ["van", "de"])
-                    or all(i in frac_words for i in ["uit", "de"])):
+            if not (
+                all(i in frac_words for i in ["op", "de"])
+                or all(i in frac_words for i in ["van", "de"])
+                or all(i in frac_words for i in ["uit", "de"])
+            ):
                 frac_words.insert(fracLen - length, DutchNumeric.WordSeparatorToken)
 
         return frac_words
