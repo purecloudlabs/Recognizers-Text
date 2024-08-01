@@ -1,7 +1,8 @@
+from typing import List, Pattern
+
 import regex
 
-from typing import List, Pattern
-from recognizers_text.extractor import Metadata, ExtractResult
+from recognizers_text.extractor import ExtractResult, Metadata
 
 
 class Token:
@@ -70,7 +71,7 @@ def merge_all_tokens(tokens: List[Token], source: str, extractor_name: str) -> L
     for token in merged_tokens:
         start = token.start
         length = token.length
-        sub_str = source[start: start + length]
+        sub_str = source[start : start + length]
 
         extracted_result = ExtractResult()
         extracted_result.start = start

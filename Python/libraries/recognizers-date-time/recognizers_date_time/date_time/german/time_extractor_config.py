@@ -4,6 +4,7 @@
 from typing import List, Pattern
 
 from recognizers_text.utilities import RegExpUtility
+
 from ...resources.german_date_time import GermanDateTime
 from ..base_time import TimeExtractorConfiguration
 from ..utilities import DateTimeOptions
@@ -28,14 +29,10 @@ class GermanTimeExtractorConfiguration(TimeExtractorConfiguration):
 
     def __init__(self):
         super().__init__()
-        self._time_regex_list: List[Pattern] = GermanTimeExtractorConfiguration.get_time_regex_list(
-        )
-        self._at_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.AtRegex)
-        self._ish_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.IshRegex)
-        self._time_before_after_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.TimeBeforeAfterRegex)
+        self._time_regex_list: List[Pattern] = GermanTimeExtractorConfiguration.get_time_regex_list()
+        self._at_regex: Pattern = RegExpUtility.get_safe_reg_exp(GermanDateTime.AtRegex)
+        self._ish_regex: Pattern = RegExpUtility.get_safe_reg_exp(GermanDateTime.IshRegex)
+        self._time_before_after_regex: Pattern = RegExpUtility.get_safe_reg_exp(GermanDateTime.TimeBeforeAfterRegex)
         self._options = DateTimeOptions.NONE
 
     @staticmethod
@@ -51,5 +48,5 @@ class GermanTimeExtractorConfiguration(TimeExtractorConfiguration):
             RegExpUtility.get_safe_reg_exp(GermanDateTime.TimeRegex8),
             RegExpUtility.get_safe_reg_exp(GermanDateTime.TimeRegex9),
             RegExpUtility.get_safe_reg_exp(GermanDateTime.TimeRegex10),
-            RegExpUtility.get_safe_reg_exp(GermanDateTime.ConnectNumRegex)
+            RegExpUtility.get_safe_reg_exp(GermanDateTime.ConnectNumRegex),
         ]

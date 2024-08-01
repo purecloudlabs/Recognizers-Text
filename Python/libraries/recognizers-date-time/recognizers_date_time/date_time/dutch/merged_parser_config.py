@@ -5,20 +5,20 @@ from typing import Pattern
 
 from recognizers_text.utilities import RegExpUtility
 
-from .holiday_parser_config import DutchHolidayParserConfiguration
-from .dateperiod_parser_config import DutchDatePeriodParserConfiguration
-from .timeperiod_parser_config import DutchTimePeriodParserConfiguration
-from .common_configs import DutchCommonDateTimeParserConfiguration
+from ...resources.dutch_date_time import BaseDateTime, DutchDateTime
 from ..base_date import BaseDateParser
-from ..base_time import BaseTimeParser
-from ..base_datetime import BaseDateTimeParser
-from ..base_holiday import BaseHolidayParser
 from ..base_dateperiod import BaseDatePeriodParser
-from ..base_timeperiod import BaseTimePeriodParser
+from ..base_datetime import BaseDateTimeParser
 from ..base_datetimeperiod import BaseDateTimePeriodParser
 from ..base_duration import BaseDurationParser
+from ..base_holiday import BaseHolidayParser
 from ..base_merged import MergedParserConfiguration
-from ...resources.dutch_date_time import DutchDateTime, BaseDateTime
+from ..base_time import BaseTimeParser
+from ..base_timeperiod import BaseTimePeriodParser
+from .common_configs import DutchCommonDateTimeParserConfiguration
+from .dateperiod_parser_config import DutchDatePeriodParserConfiguration
+from .holiday_parser_config import DutchHolidayParserConfiguration
+from .timeperiod_parser_config import DutchTimePeriodParserConfiguration
 
 
 class DutchMergedParserConfiguration(DutchCommonDateTimeParserConfiguration, MergedParserConfiguration):
@@ -84,21 +84,14 @@ class DutchMergedParserConfiguration(DutchCommonDateTimeParserConfiguration, Mer
 
     def __init__(self, config):
         DutchCommonDateTimeParserConfiguration.__init__(self)
-        self._suffix_after = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.SuffixAfterRegex)
+        self._suffix_after = RegExpUtility.get_safe_reg_exp(DutchDateTime.SuffixAfterRegex)
         self._year_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.YearRegex)
         self._equal_regex = RegExpUtility.get_safe_reg_exp(BaseDateTime.EqualRegex)
         self._around_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.AroundRegex)
-        self._before_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.BeforeRegex)
-        self._after_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.AfterRegex)
-        self._since_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.SinceRegex)
+        self._before_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.BeforeRegex)
+        self._after_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.AfterRegex)
+        self._since_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.SinceRegex)
 
-        self._date_period_parser = BaseDatePeriodParser(
-            DutchDatePeriodParserConfiguration(self))
-        self._time_period_parser = BaseTimePeriodParser(
-            DutchTimePeriodParserConfiguration(self))
-        self._holiday_parser = BaseHolidayParser(
-            DutchHolidayParserConfiguration(config))
+        self._date_period_parser = BaseDatePeriodParser(DutchDatePeriodParserConfiguration(self))
+        self._time_period_parser = BaseTimePeriodParser(DutchTimePeriodParserConfiguration(self))
+        self._holiday_parser = BaseHolidayParser(DutchHolidayParserConfiguration(config))

@@ -1,128 +1,47 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from typing import Dict, Pattern, List
+from typing import Dict, List, Optional, Pattern
+
 import regex
 
-from recognizers_text.utilities import RegExpUtility
-from recognizers_text.culture import Culture
-from recognizers_text.parser import ParseResult
 from recognizers_number.culture import CultureInfo
 from recognizers_number.number.parsers import BaseNumberParserConfiguration
 from recognizers_number.resources.portuguese_numeric import PortugueseNumeric
+from recognizers_text.culture import Culture
+from recognizers_text.parser import ParseResult
+from recognizers_text.utilities import RegExpUtility
 
 
 class PortugueseNumberParserConfiguration(BaseNumberParserConfiguration):
-    @property
-    def cardinal_number_map(self) -> Dict[str, int]:
-        return self._cardinal_number_map
 
-    @property
-    def ordinal_number_map(self) -> Dict[str, int]:
-        return self._ordinal_number_map
+    lang_marker: str = PortugueseNumeric.LangMarker
+    is_multi_decimal_separator_culture: bool = PortugueseNumeric.MultiDecimalSeparatorCulture
 
-    @property
-    def round_number_map(self) -> Dict[str, int]:
-        return self._round_number_map
+    decimal_separator_char: str = PortugueseNumeric.DecimalSeparatorChar
+    fraction_marker_token: str = PortugueseNumeric.FractionMarkerToken
+    non_decimal_separator_char: str = PortugueseNumeric.NonDecimalSeparatorChar
+    half_a_dozen_text: str = PortugueseNumeric.HalfADozenText
+    word_separator_token: str = PortugueseNumeric.WordSeparatorToken
 
-    @property
-    def culture_info(self):
-        return self._culture_info
+    written_decimal_separator_texts: List[str] = PortugueseNumeric.WrittenDecimalSeparatorTexts
+    written_group_separator_texts: List[str] = PortugueseNumeric.WrittenGroupSeparatorTexts
+    written_integer_separator_texts: List[str] = PortugueseNumeric.WrittenIntegerSeparatorTexts
+    written_fraction_separator_texts: List[str] = PortugueseNumeric.WrittenFractionSeparatorTexts
+    non_standard_separator_variants: List[str] = []
 
-    @property
-    def digital_number_regex(self) -> Pattern:
-        return self._digital_number_regex
+    cardinal_number_map: Dict[str, int] = PortugueseNumeric.CardinalNumberMap
+    ordinal_number_map: Dict[str, int] = PortugueseNumeric.OrdinalNumberMap
+    round_number_map: Dict[str, int] = PortugueseNumeric.RoundNumberMap
 
-    @property
-    def fraction_marker_token(self) -> str:
-        return self._fraction_marker_token
+    negative_number_sign_regex: Pattern = RegExpUtility.get_safe_reg_exp(PortugueseNumeric.NegativeNumberSignRegex)
+    half_a_dozen_regex: Pattern = RegExpUtility.get_safe_reg_exp(PortugueseNumeric.HalfADozenRegex)
+    digital_number_regex: Pattern = RegExpUtility.get_safe_reg_exp(PortugueseNumeric.DigitalNumberRegex)
+    round_multiplier_regex: Pattern = RegExpUtility.get_safe_reg_exp(PortugueseNumeric.RoundMultiplierRegex)
 
-    @property
-    def negative_number_sign_regex(self) -> Pattern:
-        return self._negative_number_sign_regex
-
-    @property
-    def half_a_dozen_regex(self) -> Pattern:
-        return self._half_a_dozen_regex
-
-    @property
-    def half_a_dozen_text(self) -> str:
-        return self._half_a_dozen_text
-
-    @property
-    def lang_marker(self) -> str:
-        return self._lang_marker
-
-    @property
-    def non_decimal_separator_char(self) -> str:
-        return self._non_decimal_separator_char
-
-    @property
-    def decimal_separator_char(self) -> str:
-        return self._decimal_separator_char
-
-    @property
-    def word_separator_token(self) -> str:
-        return self._word_separator_token
-
-    @property
-    def written_decimal_separator_texts(self) -> List[str]:
-        return self._written_decimal_separator_texts
-
-    @property
-    def written_group_separator_texts(self) -> List[str]:
-        return self._written_group_separator_texts
-
-    @property
-    def written_integer_separator_texts(self) -> List[str]:
-        return self._written_integer_separator_texts
-
-    @property
-    def written_fraction_separator_texts(self) -> List[str]:
-        return self._written_fraction_separator_texts
-
-    @property
-    def non_standard_separator_variants(self) -> List[str]:
-        return self._non_standard_separator_variants
-
-    @property
-    def is_multi_decimal_separator_culture(self) -> bool:
-        return self._is_multi_decimal_separator_culture
-
-    @property
-    def round_multiplier_regex(self) -> Pattern:
-        return self._round_multiplier_regex
-
-    def __init__(self, culture_info=None):
-        if culture_info is None:
-            culture_info = CultureInfo(Culture.Portuguese)
-
-        self._culture_info = culture_info
-        self._lang_marker = PortugueseNumeric.LangMarker
-        self._decimal_separator_char = PortugueseNumeric.DecimalSeparatorChar
-        self._fraction_marker_token = PortugueseNumeric.FractionMarkerToken
-        self._non_decimal_separator_char = PortugueseNumeric.NonDecimalSeparatorChar
-        self._half_a_dozen_text = PortugueseNumeric.HalfADozenText
-        self._word_separator_token = PortugueseNumeric.WordSeparatorToken
-        self._non_standard_separator_variants = []
-        self._is_multi_decimal_separator_culture = PortugueseNumeric.MultiDecimalSeparatorCulture
-
-        self._written_decimal_separator_texts = PortugueseNumeric.WrittenDecimalSeparatorTexts
-        self._written_group_separator_texts = PortugueseNumeric.WrittenGroupSeparatorTexts
-        self._written_integer_separator_texts = PortugueseNumeric.WrittenIntegerSeparatorTexts
-        self._written_fraction_separator_texts = PortugueseNumeric.WrittenFractionSeparatorTexts
-
-        self._cardinal_number_map = PortugueseNumeric.CardinalNumberMap
-        self._ordinal_number_map = PortugueseNumeric.OrdinalNumberMap
-        self._round_number_map = PortugueseNumeric.RoundNumberMap
-        self._negative_number_sign_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseNumeric.NegativeNumberSignRegex)
-        self._half_a_dozen_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseNumeric.HalfADozenRegex)
-        self._digital_number_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseNumeric.DigitalNumberRegex)
-        self._round_multiplier_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseNumeric.RoundMultiplierRegex)
+    def __init__(self, culture_info: Optional[CultureInfo] = None):
+        culture_info = culture_info or CultureInfo(Culture.Portuguese)
+        super().__init__(culture_info)
 
     def normalize_token_set(self, tokens: List[str], context: ParseResult) -> List[str]:
         result = []
@@ -137,14 +56,14 @@ class PortugueseNumberParserConfiguration(BaseNumberParserConfiguration):
             if any(suffix for suffix in PortugueseNumeric.WrittenFractionSuffix if temp_word.endswith(suffix)):
                 orig_temp_word = temp_word
                 new_length = len(orig_temp_word)
-                temp_word = orig_temp_word[0:new_length - 3]
+                temp_word = orig_temp_word[0 : new_length - 3]
                 if not temp_word:
                     break
                 elif temp_word in self.cardinal_number_map:
                     result.append(temp_word)
                     break
                 else:
-                    temp_word = orig_temp_word[0:new_length - 2]
+                    temp_word = orig_temp_word[0 : new_length - 2]
                     if temp_word in self.cardinal_number_map:
                         result.append(temp_word)
                         break
@@ -155,8 +74,10 @@ class PortugueseNumberParserConfiguration(BaseNumberParserConfiguration):
         # It works by inserting the numerator 'um' ('a') in the list result
         # so that the pattern is correctly processed.
         if len(result) > 2:
-            if result[len(result) - 1] == PortugueseNumeric.OneHalfTokens[1] and \
-                    result[len(result) - 2] == PortugueseNumeric.WordSeparatorToken:
+            if (
+                result[len(result) - 1] == PortugueseNumeric.OneHalfTokens[1]
+                and result[len(result) - 2] == PortugueseNumeric.WordSeparatorToken
+            ):
                 result[len(result) - 2] = PortugueseNumeric.WrittenFractionSeparatorTexts[0]
                 result.insert(len(result) - 1, PortugueseNumeric.OneHalfTokens[0])
 

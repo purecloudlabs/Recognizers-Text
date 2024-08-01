@@ -1,43 +1,60 @@
 from typing import Dict
 
-from recognizers_date_time.date_time.utilities.datetime_utility_config import DateTimeUtilityConfiguration
-from recognizers_number import BaseNumberExtractor
-
-from recognizers_number.number.japanese.parsers import JapaneseNumberParserConfiguration
-from recognizers_number.number.japanese.extractors import JapaneseIntegerExtractor, JapaneseOrdinalExtractor, \
-    JapaneseCardinalExtractor
-from recognizers_number.number.cjk_parsers import CJKNumberParser
-
-from recognizers_date_time.resources.japanese_date_time import JapaneseDateTime
-from recognizers_date_time.date_time.CJK import CJKCommonDateTimeParserConfiguration, BaseCJKDateTimeExtractor, \
-    BaseCJKDateTimePeriodExtractor, BaseCJKDurationExtractor, BaseCJKHolidayExtractor, \
-    BaseCJKDateTimeParser, BaseCJKDateTimePeriodParser, BaseCJKDurationParser, BaseCJKHolidayParser, \
-    BaseCJKTimeExtractor, BaseCJKTimePeriodExtractor, BaseCJKTimeParser, \
-    BaseCJKTimePeriodParser, BaseCJKDateParser, BaseCJKDateExtractor, BaseCJKDatePeriodExtractor, \
-    BaseCJKDatePeriodParser
+from recognizers_date_time.date_time.CJK import (
+    BaseCJKDateExtractor,
+    BaseCJKDateParser,
+    BaseCJKDatePeriodExtractor,
+    BaseCJKDatePeriodParser,
+    BaseCJKDateTimeExtractor,
+    BaseCJKDateTimeParser,
+    BaseCJKDateTimePeriodExtractor,
+    BaseCJKDateTimePeriodParser,
+    BaseCJKDurationExtractor,
+    BaseCJKDurationParser,
+    BaseCJKHolidayExtractor,
+    BaseCJKHolidayParser,
+    BaseCJKTimeExtractor,
+    BaseCJKTimeParser,
+    BaseCJKTimePeriodExtractor,
+    BaseCJKTimePeriodParser,
+    CJKCommonDateTimeParserConfiguration,
+)
+from recognizers_date_time.date_time.extractors import DateTimeExtractor
+from recognizers_date_time.date_time.japanese.date_extractor_config import JapaneseDateExtractorConfiguration
+from recognizers_date_time.date_time.japanese.date_parser_config import JapaneseDateParserConfiguration
+from recognizers_date_time.date_time.japanese.dateperiod_extractor_config import (
+    JapaneseDatePeriodExtractorConfiguration,
+)
+from recognizers_date_time.date_time.japanese.dateperiod_parser_config import JapaneseDatePeriodParserConfiguration
 from recognizers_date_time.date_time.japanese.datetime_extractor_config import JapaneseDateTimeExtractorConfiguration
-from recognizers_date_time.date_time.japanese.datetimeperiod_extractor_config import \
-    JapaneseDateTimePeriodExtractorConfiguration
-from recognizers_date_time.date_time.japanese.duration_extractor_config import JapaneseDurationExtractorConfiguration
-from recognizers_date_time.date_time.japanese.holiday_extractor_config import JapaneseHolidayExtractorConfiguration
-
 from recognizers_date_time.date_time.japanese.datetime_parser_config import JapaneseDateTimeParserConfiguration
-from recognizers_date_time.date_time.japanese.datetimeperiod_parser_config import \
-    JapaneseDateTimePeriodParserConfiguration
+from recognizers_date_time.date_time.japanese.datetimeperiod_extractor_config import (
+    JapaneseDateTimePeriodExtractorConfiguration,
+)
+from recognizers_date_time.date_time.japanese.datetimeperiod_parser_config import (
+    JapaneseDateTimePeriodParserConfiguration,
+)
+from recognizers_date_time.date_time.japanese.duration_extractor_config import JapaneseDurationExtractorConfiguration
 from recognizers_date_time.date_time.japanese.duration_parser_config import JapaneseDurationParserConfiguration
+from recognizers_date_time.date_time.japanese.holiday_extractor_config import JapaneseHolidayExtractorConfiguration
 from recognizers_date_time.date_time.japanese.holiday_parser_config import JapaneseHolidayParserConfiguration
 from recognizers_date_time.date_time.japanese.time_extractor_config import JapaneseTimeExtractorConfiguration
-from recognizers_date_time.date_time.japanese.timeperiod_extractor_config import \
-    JapaneseTimePeriodExtractorConfiguration
-from recognizers_date_time.date_time.japanese.timeperiod_parser_config import JapaneseTimePeriodParserConfiguration
 from recognizers_date_time.date_time.japanese.time_parser_config import JapaneseTimeParserConfiguration
-from recognizers_date_time.date_time.japanese.date_extractor_config import JapaneseDateExtractorConfiguration
-from recognizers_date_time.date_time.japanese.dateperiod_extractor_config import \
-    JapaneseDatePeriodExtractorConfiguration
-from recognizers_date_time.date_time.japanese.date_parser_config import JapaneseDateParserConfiguration
-from recognizers_date_time.date_time.japanese.dateperiod_parser_config import JapaneseDatePeriodParserConfiguration
-from recognizers_date_time.date_time.extractors import DateTimeExtractor
+from recognizers_date_time.date_time.japanese.timeperiod_extractor_config import (
+    JapaneseTimePeriodExtractorConfiguration,
+)
+from recognizers_date_time.date_time.japanese.timeperiod_parser_config import JapaneseTimePeriodParserConfiguration
 from recognizers_date_time.date_time.parsers import DateTimeParser
+from recognizers_date_time.date_time.utilities.datetime_utility_config import DateTimeUtilityConfiguration
+from recognizers_date_time.resources.japanese_date_time import JapaneseDateTime
+from recognizers_number import BaseNumberExtractor
+from recognizers_number.number.cjk_parsers import CJKNumberParser
+from recognizers_number.number.japanese.extractors import (
+    JapaneseCardinalExtractor,
+    JapaneseIntegerExtractor,
+    JapaneseOrdinalExtractor,
+)
+from recognizers_number.number.japanese.parsers import JapaneseNumberParserConfiguration
 
 
 class JapaneseCommonDateTimeParserConfiguration(CJKCommonDateTimeParserConfiguration):
@@ -194,16 +211,15 @@ class JapaneseCommonDateTimeParserConfiguration(CJKCommonDateTimeParserConfigura
         self._number_parser = CJKNumberParser(JapaneseNumberParserConfiguration())
 
         # Do not change order. The order of initialization can lead to side effects
-        self._date_extractor = BaseCJKDateExtractor(
-            JapaneseDateExtractorConfiguration())
+        self._date_extractor = BaseCJKDateExtractor(JapaneseDateExtractorConfiguration())
         self._time_extractor = BaseCJKTimeExtractor(JapaneseTimeExtractorConfiguration())
         self._date_time_extractor = BaseCJKDateTimeExtractor(JapaneseDateTimeExtractorConfiguration())
         self._duration_extractor = BaseCJKDurationExtractor(JapaneseDurationExtractorConfiguration())
-        self._date_period_extractor = BaseCJKDatePeriodExtractor(
-            JapaneseDatePeriodExtractorConfiguration())
+        self._date_period_extractor = BaseCJKDatePeriodExtractor(JapaneseDatePeriodExtractorConfiguration())
         self._time_period_extractor = BaseCJKTimePeriodExtractor(JapaneseTimePeriodExtractorConfiguration())
         self._date_time_period_extractor = BaseCJKDateTimePeriodExtractor(
-            JapaneseDateTimePeriodExtractorConfiguration())
+            JapaneseDateTimePeriodExtractorConfiguration()
+        )
         self._holiday_extractor = BaseCJKHolidayExtractor(JapaneseHolidayExtractorConfiguration())
 
         self._duration_parser = BaseCJKDurationParser(JapaneseDurationParserConfiguration(self))

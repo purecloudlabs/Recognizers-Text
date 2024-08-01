@@ -1,18 +1,19 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from typing import Pattern, Dict
+from typing import Dict, Pattern
 
-from recognizers_text.utilities import RegExpUtility
 from recognizers_number.number.extractors import BaseNumberExtractor
 from recognizers_number.number.parsers import BaseNumberParser
+from recognizers_text.utilities import RegExpUtility
+
 from ...resources.dutch_date_time import DutchDateTime
-from ..extractors import DateTimeExtractor
-from ..parsers import DateTimeParser
-from ..utilities import DateTimeUtilityConfiguration
 from ..base_configs import BaseDateParserConfiguration
 from ..base_datetime import DateTimeParserConfiguration, MatchedTimex
 from ..constants import Constants
+from ..extractors import DateTimeExtractor
+from ..parsers import DateTimeParser
+from ..utilities import DateTimeUtilityConfiguration
 
 
 class DutchDateTimeParserConfiguration(DateTimeParserConfiguration):
@@ -124,43 +125,30 @@ class DutchDateTimeParserConfiguration(DateTimeParserConfiguration):
     def asap_time_regex(self) -> Pattern:
         return self._asap_time_regex
 
-
     def __init__(self, config: BaseDateParserConfiguration):
         self._token_before_date = DutchDateTime.TokenBeforeDate
         self._token_before_time = DutchDateTime.TokenBeforeTime
-        self._now_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.NowRegex)
-        self._am_time_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.AMTimeRegex)
-        self._pm_time_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.PMTimeRegex)
+        self._now_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.NowRegex)
+        self._am_time_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.AMTimeRegex)
+        self._pm_time_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.PMTimeRegex)
         self._simple_time_of_today_after_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.SimpleTimeOfTodayAfterRegex)
+            DutchDateTime.SimpleTimeOfTodayAfterRegex
+        )
         self._simple_time_of_today_before_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.SimpleTimeOfTodayBeforeRegex)
-        self._specific_time_of_day_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.SpecificTimeOfDayRegex)
-        self._specific_end_of_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.SpecificEndOfRegex)
-        self._unspecific_end_of_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.UnspecificEndOfRegex)
-        self._unit_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.TimeUnitRegex)
+            DutchDateTime.SimpleTimeOfTodayBeforeRegex
+        )
+        self._specific_time_of_day_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.SpecificTimeOfDayRegex)
+        self._specific_end_of_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.SpecificEndOfRegex)
+        self._unspecific_end_of_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.UnspecificEndOfRegex)
+        self._unit_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.TimeUnitRegex)
 
-        self.next_prefix_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.NextPrefixRegex)
-        self.previous_prefix_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.PreviousPrefixRegex)
-        self._night_time_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.NightTimeRegex)
-        self._morning_time_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.MorningTimeRegex)
-        self._now_time_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.NowTimeRegex)
-        self._recently_time_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.RecentlyTimeRegex)
-        self._asap_time_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.AsapTimeRegex)
+        self.next_prefix_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.NextPrefixRegex)
+        self.previous_prefix_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.PreviousPrefixRegex)
+        self._night_time_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.NightTimeRegex)
+        self._morning_time_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.MorningTimeRegex)
+        self._now_time_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.NowTimeRegex)
+        self._recently_time_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.RecentlyTimeRegex)
+        self._asap_time_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.AsapTimeRegex)
 
         self._date_extractor = config.date_extractor
         self._time_extractor = config.time_extractor
@@ -208,8 +196,10 @@ class DutchDateTimeParserConfiguration(DateTimeParserConfiguration):
 
         if self.morning_time_regex.search(source) and hour >= Constants.HALF_DAY_HOUR_COUNT:
             result -= 12
-        elif not (self.morning_time_regex.search(source) or self.night_time_regex.search(source)) \
-                and hour < Constants.HALF_DAY_HOUR_COUNT:
+        elif (
+            not (self.morning_time_regex.search(source) or self.night_time_regex.search(source))
+            and hour < Constants.HALF_DAY_HOUR_COUNT
+        ):
             result += 12
 
         return result

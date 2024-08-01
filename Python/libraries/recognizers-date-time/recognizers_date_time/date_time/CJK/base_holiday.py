@@ -1,20 +1,29 @@
 from abc import abstractmethod
 from calendar import Calendar
 from datetime import datetime
-from datedelta import datedelta
-import regex
-from typing import List, Pattern, Callable, Dict, Optional, Match
+from typing import Callable, Dict, List, Match, Optional, Pattern
 
+import regex
+from datedelta import datedelta
+
+from recognizers_date_time.date_time.constants import Constants, TimeTypeConstants
+from recognizers_date_time.date_time.extractors import DateTimeExtractor
+from recognizers_date_time.date_time.parsers import DateTimeParser, DateTimeParseResult
+from recognizers_date_time.date_time.utilities import (
+    DateTimeFormatUtil,
+    DateTimeOptionsConfiguration,
+    DateTimeResolutionResult,
+    DateUtils,
+    DayOfWeek,
+    HolidayFunctions,
+    Token,
+    merge_all_tokens,
+)
+from recognizers_number import BaseNumberExtractor, BaseNumberParser
+from recognizers_number import Constants as NumberConstants
 from recognizers_text import Metadata
 from recognizers_text.extractor import ExtractResult
 from recognizers_text.utilities import RegExpUtility
-from recognizers_number import Constants as NumberConstants
-from recognizers_date_time.date_time.constants import Constants, TimeTypeConstants
-from recognizers_date_time.date_time.extractors import DateTimeExtractor
-from recognizers_date_time.date_time.parsers import DateTimeParseResult, DateTimeParser
-from recognizers_date_time.date_time.utilities import DateTimeOptionsConfiguration, Token, merge_all_tokens, \
-    DateTimeFormatUtil, DateTimeResolutionResult, DateUtils, DayOfWeek, HolidayFunctions
-from recognizers_number import BaseNumberExtractor, BaseNumberParser
 
 
 class CJKHolidayExtractorConfiguration(DateTimeOptionsConfiguration):

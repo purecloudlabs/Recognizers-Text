@@ -1,24 +1,24 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from typing import Pattern, Dict
+from typing import Dict, Pattern
 
-from recognizers_text.utilities import RegExpUtility
 from recognizers_number.number.extractors import BaseNumberExtractor
 from recognizers_number.number.parsers import BaseNumberParser
+from recognizers_text.utilities import RegExpUtility
+
 from ...resources.chinese_date_time import ChineseDateTime
+from ..base_datetime import MatchedTimex
 from ..extractors import DateTimeExtractor
 from ..parsers import DateTimeParser
 from ..utilities import DateTimeUtilityConfiguration
-from ..base_configs import BaseDateParserConfiguration
-from ..base_datetime import DateTimeParserConfiguration, MatchedTimex
 from .date_extractor import ChineseDateExtractor
-from .time_extractor import ChineseTimeExtractor
 from .date_parser import ChineseDateParser
+from .time_extractor import ChineseTimeExtractor
 from .time_parser import ChineseTimeParser
 
 
-class ChineseDateTimeParserConfiguration():
+class ChineseDateTimeParserConfiguration:
     @property
     def token_before_date(self) -> str:
         raise NotImplementedError()
@@ -112,14 +112,10 @@ class ChineseDateTimeParserConfiguration():
         self._time_extractor = ChineseTimeExtractor()
         self._date_parser = ChineseDateParser()
         self._time_parser = ChineseTimeParser()
-        self._pm_time_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.DateTimeSimplePmRegex)
-        self._am_time_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.DateTimeSimpleAmRegex)
-        self._specific_time_of_day_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.TimeOfSpecialDayRegex)
-        self._now_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.NowRegex)
+        self._pm_time_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.DateTimeSimplePmRegex)
+        self._am_time_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.DateTimeSimpleAmRegex)
+        self._specific_time_of_day_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.TimeOfSpecialDayRegex)
+        self._now_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.NowRegex)
 
     def have_ambiguous_token(self, source: str, matched_text: str) -> bool:
         return False

@@ -1,13 +1,16 @@
-from typing import List, Pattern, Dict
+from typing import Dict, List, Pattern
 
-from recognizers_text import Extractor, RegExpUtility
-from recognizers_number import JapaneseNumberExtractor
+from recognizers_date_time.date_time.CJK import (
+    BaseCJKDateExtractor,
+    BaseCJKDurationExtractor,
+    CJKDatePeriodExtractorConfiguration,
+)
+from recognizers_date_time.date_time.extractors import DateTimeExtractor
 from recognizers_date_time.date_time.japanese.date_extractor_config import JapaneseDateExtractorConfiguration
 from recognizers_date_time.date_time.japanese.duration_extractor_config import JapaneseDurationExtractorConfiguration
-from recognizers_date_time.date_time.CJK import BaseCJKDateExtractor, CJKDatePeriodExtractorConfiguration, \
-    BaseCJKDurationExtractor
 from recognizers_date_time.resources.japanese_date_time import JapaneseDateTime
-from recognizers_date_time.date_time.extractors import DateTimeExtractor
+from recognizers_number import JapaneseNumberExtractor
+from recognizers_text import Extractor, RegExpUtility
 
 
 class JapaneseDatePeriodExtractorConfiguration(CJKDatePeriodExtractorConfiguration):
@@ -278,11 +281,11 @@ class JapaneseDatePeriodExtractorConfiguration(CJKDatePeriodExtractorConfigurati
         self._followed_unit = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.FollowedUnit)
         self._number_combined_with_unit = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.NumberCombinedWithUnit)
         self._year_to_year = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.YearToYear)
-        self._year_to_year_suffix_required = RegExpUtility.get_safe_reg_exp(
-            JapaneseDateTime.YearToYearSuffixRequired)
+        self._year_to_year_suffix_required = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.YearToYearSuffixRequired)
         self._month_to_month = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.MonthToMonth)
         self._month_to_month_suffix_required = RegExpUtility.get_safe_reg_exp(
-            JapaneseDateTime.MonthToMonthSuffixRequired)
+            JapaneseDateTime.MonthToMonthSuffixRequired
+        )
         self._day_to_day = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.DayToDay)
         self._day_regex_for_period = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.DayRegexForPeriod)
         self._month_day_range = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.MonthDayRange)
@@ -315,23 +318,45 @@ class JapaneseDatePeriodExtractorConfiguration(CJKDatePeriodExtractorConfigurati
         self._year_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.YearRegex)
         self._year_regex_in_number = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.YearRegexInNumber)
         self._zero_to_nine_integer_regex_cjk = RegExpUtility.get_safe_reg_exp(
-            JapaneseDateTime.ZeroToNineIntegerRegexCJK)
+            JapaneseDateTime.ZeroToNineIntegerRegexCJK
+        )
         self._month_suffix_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.MonthSuffixRegex)
         self._unit_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.UnitRegex)
         self._duration_unit_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.DurationUnitRegex)
         self._season_regex = JapaneseDateTime.SeasonRegex
 
         self._simple_cases_regexes = [
-            self._simple_cases_regex, self._one_word_period_regex, self._strict_year_regex, self._year_to_year,
-            self._year_to_year_suffix_required, self._month_to_month, self._day_to_day, self._year_month_range,
-            self._month_day_range, self._year_month_day_range, self._month_to_month_suffix_required, self._year_and_month,
-            self._pure_num_year_and_month, self._year_in_cjk_regex, self._special_month_regex, self._special_year_regex,
-            self._week_of_month_regex, self._week_of_year_regex, self._week_of_date_regex, self._month_of_date_regex,
-            self._which_week_regex, self._later_early_period_regex, self._season_with_year_regex, self._quarter_regex,
-            self._decade_regex, self._century_regex, self._reference_date_period_regex, self._date_point_with_ago_and_later]
+            self._simple_cases_regex,
+            self._one_word_period_regex,
+            self._strict_year_regex,
+            self._year_to_year,
+            self._year_to_year_suffix_required,
+            self._month_to_month,
+            self._day_to_day,
+            self._year_month_range,
+            self._month_day_range,
+            self._year_month_day_range,
+            self._month_to_month_suffix_required,
+            self._year_and_month,
+            self._pure_num_year_and_month,
+            self._year_in_cjk_regex,
+            self._special_month_regex,
+            self._special_year_regex,
+            self._week_of_month_regex,
+            self._week_of_year_regex,
+            self._week_of_date_regex,
+            self._month_of_date_regex,
+            self._which_week_regex,
+            self._later_early_period_regex,
+            self._season_with_year_regex,
+            self._quarter_regex,
+            self._decade_regex,
+            self._century_regex,
+            self._reference_date_period_regex,
+            self._date_point_with_ago_and_later,
+        ]
 
         self._date_point_extractor = BaseCJKDateExtractor(JapaneseDateExtractorConfiguration())
-        self._duration_extractor = BaseCJKDurationExtractor(
-            JapaneseDurationExtractorConfiguration(), False)
+        self._duration_extractor = BaseCJKDurationExtractor(JapaneseDurationExtractorConfiguration(), False)
         self._integer_extractor = JapaneseNumberExtractor()
         self._ambiguity_filters_dict = JapaneseDateTime.AmbiguityFiltersDict

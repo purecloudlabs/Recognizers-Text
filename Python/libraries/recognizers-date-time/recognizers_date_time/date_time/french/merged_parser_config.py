@@ -5,20 +5,20 @@ from typing import Pattern
 
 from recognizers_text.utilities import RegExpUtility
 
-from .holiday_parser_config import FrenchHolidayParserConfiguration
-from .dateperiod_parser_config import FrenchDatePeriodParserConfiguration
-from .timeperiod_parser_config import FrenchTimePeriodParserConfiguration
-from .common_configs import FrenchCommonDateTimeParserConfiguration
+from ...resources.french_date_time import BaseDateTime, FrenchDateTime
 from ..base_date import BaseDateParser
-from ..base_time import BaseTimeParser
-from ..base_datetime import BaseDateTimeParser
-from ..base_holiday import BaseHolidayParser
 from ..base_dateperiod import BaseDatePeriodParser
-from ..base_timeperiod import BaseTimePeriodParser
+from ..base_datetime import BaseDateTimeParser
 from ..base_datetimeperiod import BaseDateTimePeriodParser
 from ..base_duration import BaseDurationParser
+from ..base_holiday import BaseHolidayParser
 from ..base_merged import MergedParserConfiguration
-from ...resources.french_date_time import FrenchDateTime, BaseDateTime
+from ..base_time import BaseTimeParser
+from ..base_timeperiod import BaseTimePeriodParser
+from .common_configs import FrenchCommonDateTimeParserConfiguration
+from .dateperiod_parser_config import FrenchDatePeriodParserConfiguration
+from .holiday_parser_config import FrenchHolidayParserConfiguration
+from .timeperiod_parser_config import FrenchTimePeriodParserConfiguration
 
 
 class FrenchMergedParserConfiguration(FrenchCommonDateTimeParserConfiguration, MergedParserConfiguration):
@@ -84,21 +84,14 @@ class FrenchMergedParserConfiguration(FrenchCommonDateTimeParserConfiguration, M
 
     def __init__(self, config):
         FrenchCommonDateTimeParserConfiguration.__init__(self)
-        self._suffix_after = RegExpUtility.get_safe_reg_exp(
-            FrenchDateTime.SuffixAfterRegex)
+        self._suffix_after = RegExpUtility.get_safe_reg_exp(FrenchDateTime.SuffixAfterRegex)
         self._year_regex = RegExpUtility.get_safe_reg_exp(FrenchDateTime.YearRegex)
         self._equal_regex = RegExpUtility.get_safe_reg_exp(BaseDateTime.EqualRegex)
         self._around_regex = RegExpUtility.get_safe_reg_exp(FrenchDateTime.AroundRegex)
-        self._before_regex = RegExpUtility.get_safe_reg_exp(
-            FrenchDateTime.BeforeRegex)
-        self._after_regex = RegExpUtility.get_safe_reg_exp(
-            FrenchDateTime.AfterRegex)
-        self._since_regex = RegExpUtility.get_safe_reg_exp(
-            FrenchDateTime.SinceRegex)
+        self._before_regex = RegExpUtility.get_safe_reg_exp(FrenchDateTime.BeforeRegex)
+        self._after_regex = RegExpUtility.get_safe_reg_exp(FrenchDateTime.AfterRegex)
+        self._since_regex = RegExpUtility.get_safe_reg_exp(FrenchDateTime.SinceRegex)
 
-        self._date_period_parser = BaseDatePeriodParser(
-            FrenchDatePeriodParserConfiguration(self))
-        self._time_period_parser = BaseTimePeriodParser(
-            FrenchTimePeriodParserConfiguration(self))
-        self._holiday_parser = BaseHolidayParser(
-            FrenchHolidayParserConfiguration(config))
+        self._date_period_parser = BaseDatePeriodParser(FrenchDatePeriodParserConfiguration(self))
+        self._time_period_parser = BaseTimePeriodParser(FrenchTimePeriodParserConfiguration(self))
+        self._holiday_parser = BaseHolidayParser(FrenchHolidayParserConfiguration(config))

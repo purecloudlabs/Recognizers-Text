@@ -1,16 +1,23 @@
 from abc import abstractmethod
-from typing import List, Optional, Pattern, Dict, Match
 from datetime import datetime
+from typing import Dict, List, Match, Optional, Pattern
+
 import regex
 
-from recognizers_text.extractor import ExtractResult
 from recognizers_date_time.date_time.constants import Constants, TimeTypeConstants
+from recognizers_date_time.date_time.data_structures import TimeType
 from recognizers_date_time.date_time.extractors import DateTimeExtractor
 from recognizers_date_time.date_time.parsers import DateTimeParser, DateTimeParseResult
-from recognizers_date_time.date_time.utilities import DateTimeOptionsConfiguration, RegExpUtility, DateTimeFormatUtil, \
-    ExtractResultExtension, DateTimeExtra, TimeFunctions
+from recognizers_date_time.date_time.utilities import (
+    DateTimeExtra,
+    DateTimeFormatUtil,
+    DateTimeOptionsConfiguration,
+    ExtractResultExtension,
+    RegExpUtility,
+    TimeFunctions,
+)
 from recognizers_date_time.resources import BaseDateTime
-from recognizers_date_time.date_time.data_structures import TimeType
+from recognizers_text.extractor import ExtractResult
 
 
 class CJKTimeExtractorConfiguration(DateTimeOptionsConfiguration):
@@ -58,8 +65,7 @@ class BaseCJKTimeExtractor(DateTimeExtractor):
         match_source: Dict[Match, any] = dict()
         matched: List[bool] = [False] * len(source)
 
-        collections = list(map(lambda x: (
-            list(regex.finditer(x[0], source)), x[1]), self.config.regexes.items()))
+        collections = list(map(lambda x: (list(regex.finditer(x[0], source)), x[1]), self.config.regexes.items()))
         collections = list(filter(lambda x: len(x[0]) > 0, collections))
 
         for collection in collections:
@@ -74,9 +80,11 @@ class BaseCJKTimeExtractor(DateTimeExtractor):
                 if i + 1 == len(source) or not matched[i + 1]:
                     start = last + 1
                     length = i - last
-                    text = source[start:start + length].strip()
-                    src_match = next((x for x in iter(match_source) if (
-                            x.start() == start and (x.end() - x.start()) == length)), None)
+                    text = source[start : start + length].strip()
+                    src_match = next(
+                        (x for x in iter(match_source) if (x.start() == start and (x.end() - x.start()) == length)),
+                        None,
+                    )
                     if src_match:
                         value = ExtractResult()
                         value.start = start
@@ -146,9 +154,11 @@ class BaseCJKTimeParser(DateTimeParser):
 
             if parse_result.success:
                 parse_result.future_resolution[TimeTypeConstants.TIME] = DateTimeFormatUtil.format_time(
-                    parse_result.future_value)
+                    parse_result.future_value
+                )
                 parse_result.past_resolution[TimeTypeConstants.TIME] = DateTimeFormatUtil.format_time(
-                    parse_result.past_value)
+                    parse_result.past_value
+                )
 
             result = DateTimeParseResult(source)
             result.value = parse_result

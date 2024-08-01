@@ -1,18 +1,21 @@
-from typing import List, Optional, Match, Pattern
 from datetime import datetime
+from typing import List, Match, Optional, Pattern
+
 import regex
 
-from recognizers_text.extractor import ExtractResult
-from recognizers_date_time.date_time.constants import TimeTypeConstants
-from recognizers_date_time.date_time.parsers import DateTimeParseResult
-from recognizers_date_time.date_time.utilities import Token, merge_all_tokens, DateTimeResolutionResult, \
-    DateTimeFormatUtil
 from recognizers_date_time.date_time.base_datetime import MatchedTimex
-from recognizers_date_time.resources.catalan_date_time import CatalanDateTime
-from recognizers_text.utilities import RegExpUtility
+from recognizers_date_time.date_time.constants import Constants, TimeTypeConstants
 from recognizers_date_time.date_time.extractors import DateTimeExtractor
-from recognizers_date_time.date_time.parsers import DateTimeParser
-from recognizers_date_time.date_time.constants import Constants
+from recognizers_date_time.date_time.parsers import DateTimeParser, DateTimeParseResult
+from recognizers_date_time.date_time.utilities import (
+    DateTimeFormatUtil,
+    DateTimeResolutionResult,
+    Token,
+    merge_all_tokens,
+)
+from recognizers_date_time.resources.catalan_date_time import CatalanDateTime
+from recognizers_text.extractor import ExtractResult
+from recognizers_text.utilities import RegExpUtility
 
 
 class MinimalDateTimeExtractor(DateTimeExtractor):
@@ -33,8 +36,7 @@ class MinimalDateTimeExtractor(DateTimeExtractor):
         tokens: List[Token] = list()
         # handle "now"
         now_regex = RegExpUtility.get_safe_reg_exp(CatalanDateTime.NowRegex)
-        matches: List[Match] = list(
-            regex.finditer(now_regex, source))
+        matches: List[Match] = list(regex.finditer(now_regex, source))
         tokens.extend(map(lambda x: Token(x.start(), x.end()), matches))
         return tokens
 
@@ -56,9 +58,11 @@ class MinimalDateTimeParser(DateTimeParser):
 
             if inner_result.success:
                 inner_result.future_resolution[TimeTypeConstants.DATETIME] = DateTimeFormatUtil.format_date_time(
-                    inner_result.future_value)
+                    inner_result.future_value
+                )
                 inner_result.past_resolution[TimeTypeConstants.DATETIME] = DateTimeFormatUtil.format_date_time(
-                    inner_result.past_value)
+                    inner_result.past_value
+                )
                 result.value = inner_result
                 result.timex_str = inner_result.timex if inner_result else ''
                 result.resolution_str = ''

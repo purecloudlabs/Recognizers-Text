@@ -1,18 +1,19 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from typing import Pattern, Dict
+from typing import Dict, Pattern
+
 import regex
 
 from recognizers_text import RegExpUtility
 
 from ...resources.chinese_date_time import ChineseDateTime
+from ..base_dateperiod import DatePeriodParserConfiguration
 from ..extractors import DateTimeExtractor
 from ..parsers import DateTimeParser
-from ..base_dateperiod import DatePeriodParserConfiguration
-from .duration_extractor import ChineseDurationExtractor
 from .date_extractor import ChineseDateExtractor
 from .date_parser import ChineseDateParser
+from .duration_extractor import ChineseDurationExtractor
 
 
 class ChineseDatePeriodParserConfiguration(DatePeriodParserConfiguration):
@@ -223,46 +224,31 @@ class ChineseDatePeriodParserConfiguration(DatePeriodParserConfiguration):
     def __init__(self):
         self._complex_dateperiod_regex = None
         self._relative_decade_regex = None
-        self._relative_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.RelativeRegex)
+        self._relative_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.RelativeRegex)
         self._date_extractor = ChineseDateExtractor()
         self._date_parser = ChineseDateParser()
         self._duration_extractor = ChineseDurationExtractor()
-        self._simple_cases_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.SimpleCasesRegex)
-        self._one_word_period_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.OneWordPeriodRegex)
-        self._year_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.YearRegex)
-        self._past_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.PastRegex)
-        self._future_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.FutureRegex)
-        self._week_of_month_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.WeekOfMonthRegex)
-        self._quarter_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.QuarterRegex)
-        self._season_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.SeasonRegex)
-        self._next_prefix_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.DatePeriodNextRegex)
-        self._past_prefix_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.DatePeriodLastRegex)
-        self._this_prefix_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.DatePeriodThisRegex)
+        self._simple_cases_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.SimpleCasesRegex)
+        self._one_word_period_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.OneWordPeriodRegex)
+        self._year_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.YearRegex)
+        self._past_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.PastRegex)
+        self._future_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.FutureRegex)
+        self._week_of_month_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.WeekOfMonthRegex)
+        self._quarter_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.QuarterRegex)
+        self._season_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.SeasonRegex)
+        self._next_prefix_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.DatePeriodNextRegex)
+        self._past_prefix_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.DatePeriodLastRegex)
+        self._this_prefix_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.DatePeriodThisRegex)
         self._later_early_period_regex = RegExpUtility.get_safe_reg_exp(r'\0')
-        self._week_with_week_day_range_regex = RegExpUtility.get_safe_reg_exp(
-            r'\0')
+        self._week_with_week_day_range_regex = RegExpUtility.get_safe_reg_exp(r'\0')
         self._token_before_date = ' on '
         self._day_of_month = ChineseDateTime.ParserConfigurationDayOfMonth
         self._month_of_year = ChineseDateTime.ParserConfigurationMonthOfYear
         self._cardinal_map = ChineseDateTime.ParserConfigurationCardinalMap
         self._season_map = ChineseDateTime.ParserConfigurationSeasonMap
         self._unit_map = ChineseDateTime.ParserConfigurationUnitMap
-        self._now_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.NowRegex)
-        self._dynasty_year_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.DynastyYearRegex)
+        self._now_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.NowRegex)
+        self._dynasty_year_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.DynastyYearRegex)
         self._dynasty_year_map = ChineseDateTime.DynastyYearMap
         self._dynasty_start_year = ChineseDateTime.DynastyStartYear
         # TODO When the implementation for these properties is added, change the None values to their respective Regexps

@@ -1,15 +1,16 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from typing import List, Pattern, Dict
+from typing import Dict, List, Pattern
+
 import regex
 
 from recognizers_text.utilities import RegExpUtility
+
 from ...resources.italian_date_time import ItalianDateTime
-from ..base_time import TimeParserConfiguration, AdjustParams
 from ..base_configs import BaseDateParserConfiguration, DateTimeUtilityConfiguration
+from ..base_time import AdjustParams, TimeParserConfiguration
 from .time_extractor_config import ItalianTimeExtractorConfiguration
-from ..parsers import DateTimeParser
 
 
 class ItalianTimeParserConfiguration(TimeParserConfiguration):
@@ -35,16 +36,11 @@ class ItalianTimeParserConfiguration(TimeParserConfiguration):
 
     def __init__(self, config: BaseDateParserConfiguration):
         self._time_token_prefix: str = ItalianDateTime.TimeTokenPrefix
-        self._at_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.AtRegex)
-        self._time_regexes: List[Pattern] = ItalianTimeExtractorConfiguration.get_time_regex_list(
-        )
-        self.less_than_one_hour = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.LessThanOneHour)
-        self.time_suffix = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.TimeSuffix)
-        self.night_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.NightRegex)
+        self._at_regex: Pattern = RegExpUtility.get_safe_reg_exp(ItalianDateTime.AtRegex)
+        self._time_regexes: List[Pattern] = ItalianTimeExtractorConfiguration.get_time_regex_list()
+        self.less_than_one_hour = RegExpUtility.get_safe_reg_exp(ItalianDateTime.LessThanOneHour)
+        self.time_suffix = RegExpUtility.get_safe_reg_exp(ItalianDateTime.TimeSuffix)
+        self.night_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.NightRegex)
 
         self._utility_configuration = config.utility_configuration
         self._numbers: Dict[str, int] = config.numbers
@@ -67,8 +63,7 @@ class ItalianTimeParserConfiguration(TimeParserConfiguration):
                 if min_str:
                     delta_min = int(min_str)
                 else:
-                    min_str = RegExpUtility.get_group(
-                        match, 'deltaminnum').lower()
+                    min_str = RegExpUtility.get_group(match, 'deltaminnum').lower()
                     delta_min = self.numbers.get(min_str)
 
         if trimmed_prefix.startswith('meno') or trimmed_prefix.endswith('alle'):

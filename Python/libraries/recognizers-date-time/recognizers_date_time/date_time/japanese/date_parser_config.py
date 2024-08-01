@@ -1,14 +1,13 @@
-from typing import List, Pattern, Dict
+from typing import Dict, List, Pattern
 
-from recognizers_date_time.date_time.extractors import DateTimeExtractor
-from recognizers_date_time.date_time.parsers import DateTimeParser
 from recognizers_date_time.date_time.CJK.base_configs import CJKCommonDateTimeParserConfiguration
+from recognizers_date_time.date_time.CJK.base_date import CJKDateParserConfiguration
+from recognizers_date_time.date_time.extractors import DateTimeExtractor
+from recognizers_date_time.date_time.japanese.date_extractor_config import JapaneseDateExtractorConfiguration
+from recognizers_date_time.date_time.parsers import DateTimeParser
+from recognizers_date_time.resources.japanese_date_time import JapaneseDateTime
 from recognizers_number import BaseNumberExtractor, BaseNumberParser
 from recognizers_text import RegExpUtility
-from recognizers_date_time.date_time.japanese.date_extractor_config import JapaneseDateExtractorConfiguration
-from recognizers_date_time.date_time.CJK.base_date import CJKDateParserConfiguration
-
-from recognizers_date_time.resources.japanese_date_time import JapaneseDateTime
 
 
 class JapaneseDateParserConfiguration(CJKDateParserConfiguration):
@@ -232,8 +231,9 @@ class JapaneseDateParserConfiguration(CJKDateParserConfiguration):
         self._last_regex = JapaneseDateExtractorConfiguration().last_regex
         self._week_day_of_month_regex = JapaneseDateExtractorConfiguration().week_day_of_month_regex
         self._week_day_and_day_regex = JapaneseDateExtractorConfiguration().week_day_and_day_regex
-        self._duration_relative_duration_unit_regex = \
+        self._duration_relative_duration_unit_regex = (
             JapaneseDateExtractorConfiguration().duration_relative_duration_unit_regex
+        )
         self._special_day_with_num_regex = JapaneseDateExtractorConfiguration().special_day_with_num_regex
 
         self._cardinal_map = config.cardinal_map

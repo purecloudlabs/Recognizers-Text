@@ -1,14 +1,16 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from typing import Pattern, Dict
+from typing import Dict, Pattern
+
 from recognizers_text.utilities import RegExpUtility
+
 from ...resources.dutch_date_time import DutchDateTime
+from ..base_configs import BaseDateParserConfiguration
 from ..base_datetimeperiod import DateTimePeriodParserConfiguration, MatchedTimeRange
+from ..constants import Constants
 from ..extractors import DateTimeExtractor
 from ..parsers import DateTimeParser
-from ..base_configs import BaseDateParserConfiguration
-from ..constants import Constants
 
 
 class DutchDateTimePeriodParserConfiguration(DateTimePeriodParserConfiguration):
@@ -48,48 +50,30 @@ class DutchDateTimePeriodParserConfiguration(DateTimePeriodParserConfiguration):
         self._check_both_before_after = DutchDateTime.CheckBothBeforeAfter
         self._token_before_date = DutchDateTime.TokenBeforeDate
         self._token_before_time = DutchDateTime.TokenBeforeTime
-        self._prefix_day_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.PrefixDayRegex)
-        self._before_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.BeforeRegex)
-        self._after_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.AfterRegex)
-        self.next_prefix_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.NextPrefixRegex)
-        self._previous_prefix_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.PreviousPrefixRegex)
-        self.this_prefix_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.ThisPrefixRegex)
-        self.morning_start_end_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.MorningStartEndRegex)
-        self.afternoon_start_end_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.AfternoonStartEndRegex)
-        self.evening_start_end_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.EveningStartEndRegex)
-        self.night_start_end_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.NightStartEndRegex)
-        self._pure_number_from_to_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.PureNumFromTo)
-        self._pure_number_between_and_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.PureNumBetweenAnd)
-        self._specific_time_of_day_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.SpecificTimeOfDayRegex)
-        self._time_of_day_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.TimeOfDayRegex)
-        self._past_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.PastSuffixRegex)
-        self._future_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.FutureSuffixRegex)
-        self.number_combined_with_unit_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.TimeNumberCombinedWithUnit)
-        self.unit_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.TimeUnitRegex)
+        self._prefix_day_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.PrefixDayRegex)
+        self._before_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.BeforeRegex)
+        self._after_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.AfterRegex)
+        self.next_prefix_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.NextPrefixRegex)
+        self._previous_prefix_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.PreviousPrefixRegex)
+        self.this_prefix_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.ThisPrefixRegex)
+        self.morning_start_end_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.MorningStartEndRegex)
+        self.afternoon_start_end_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.AfternoonStartEndRegex)
+        self.evening_start_end_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.EveningStartEndRegex)
+        self.night_start_end_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.NightStartEndRegex)
+        self._pure_number_from_to_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.PureNumFromTo)
+        self._pure_number_between_and_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.PureNumBetweenAnd)
+        self._specific_time_of_day_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.SpecificTimeOfDayRegex)
+        self._time_of_day_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.TimeOfDayRegex)
+        self._past_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.PastSuffixRegex)
+        self._future_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.FutureSuffixRegex)
+        self.number_combined_with_unit_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.TimeNumberCombinedWithUnit)
+        self.unit_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.TimeUnitRegex)
         self._period_time_of_day_with_date_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.PeriodTimeOfDayWithDateRegex)
-        self._relative_time_unit_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.RelativeTimeUnitRegex)
-        self._rest_of_date_time_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.RestOfDateTimeRegex)
+            DutchDateTime.PeriodTimeOfDayWithDateRegex
+        )
+        self._relative_time_unit_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.RelativeTimeUnitRegex)
+        self._rest_of_date_time_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.RestOfDateTimeRegex)
+
     @property
     def previous_prefix_regex(self):
         return self._previous_prefix_regex

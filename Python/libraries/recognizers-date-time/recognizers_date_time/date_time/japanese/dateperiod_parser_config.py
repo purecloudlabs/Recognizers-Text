@@ -1,13 +1,14 @@
-from typing import Pattern, Dict
+from typing import Dict, Pattern
 
-from recognizers_number import JapaneseIntegerExtractor, CJKNumberParser
-from recognizers_text import RegExpUtility
 from recognizers_date_time.date_time.CJK.base_date import BaseCJKDateExtractor, BaseCJKDateParser
-from recognizers_date_time.date_time.japanese.date_extractor_config import JapaneseDateExtractorConfiguration
 from recognizers_date_time.date_time.CJK.base_dateperiod import CJKDatePeriodParserConfiguration
-from recognizers_date_time.date_time.japanese.dateperiod_extractor_config import \
-    JapaneseDatePeriodExtractorConfiguration
+from recognizers_date_time.date_time.japanese.date_extractor_config import JapaneseDateExtractorConfiguration
+from recognizers_date_time.date_time.japanese.dateperiod_extractor_config import (
+    JapaneseDatePeriodExtractorConfiguration,
+)
 from recognizers_date_time.resources.japanese_date_time import JapaneseDateTime
+from recognizers_number import CJKNumberParser, JapaneseIntegerExtractor
+from recognizers_text import RegExpUtility
 
 
 class JapaneseDatePeriodParserConfiguration(CJKDatePeriodParserConfiguration):
@@ -351,8 +352,9 @@ class JapaneseDatePeriodParserConfiguration(CJKDatePeriodParserConfiguration):
         self._date_period_with_ago_and_later = JapaneseDatePeriodExtractorConfiguration().date_point_with_ago_and_later
         self._reference_date_period_regex = JapaneseDatePeriodExtractorConfiguration().reference_date_period_regex
         self._complex_date_period_regex = JapaneseDatePeriodExtractorConfiguration().complex_date_period_regex
-        self._duration_relative_duration_unit_regex = JapaneseDateExtractorConfiguration().\
-            duration_relative_duration_unit_regex
+        self._duration_relative_duration_unit_regex = (
+            JapaneseDateExtractorConfiguration().duration_relative_duration_unit_regex
+        )
         self._unit_map = JapaneseDateTime.ParserConfigurationUnitMap
         self._cardinal_map = JapaneseDateTime.ParserConfigurationCardinalMap
         self._day_of_month = JapaneseDateTime.ParserConfigurationDayOfMonth
@@ -367,11 +369,13 @@ class JapaneseDatePeriodParserConfiguration(CJKDatePeriodParserConfiguration):
         self._after_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.AfterRegex)
         self._next_month_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.ParserConfigurationNextMonthRegex)
         self._after_next_month_regex = RegExpUtility.get_safe_reg_exp(
-            JapaneseDateTime.ParserConfigurationAfterNextMonthRegex)
+            JapaneseDateTime.ParserConfigurationAfterNextMonthRegex
+        )
         self._last_month_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.ParserConfigurationLastMonthRegex)
         self._next_year_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.ParserConfigurationNextYearRegex)
         self._after_next_year_regex = RegExpUtility.get_safe_reg_exp(
-            JapaneseDateTime.ParserConfigurationAfterNextYearRegex)
+            JapaneseDateTime.ParserConfigurationAfterNextYearRegex
+        )
         self._last_year_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.ParserConfigurationLastYearRegex)
         self._this_year_regex = RegExpUtility.get_safe_reg_exp(JapaneseDateTime.ParserConfigurationThisYearRegex)
         self._two_num_year = int(JapaneseDateTime.TwoNumYear)
@@ -380,8 +384,9 @@ class JapaneseDatePeriodParserConfiguration(CJKDatePeriodParserConfiguration):
         self._duration_parser = config.duration_parser
 
     def to_month_number(self, month_str: str) -> int:
-        return self.month_of_year[month_str] % 12 if self.month_of_year[month_str] > 12 \
-            else self.month_of_year[month_str]
+        return (
+            self.month_of_year[month_str] % 12 if self.month_of_year[month_str] > 12 else self.month_of_year[month_str]
+        )
 
     def is_month_only(self, source: str) -> bool:
         trimmed_source = source.strip().lower()

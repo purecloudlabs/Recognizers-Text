@@ -6,18 +6,18 @@ from typing import Dict, Pattern
 from recognizers_text import RegExpUtility
 
 from ...resources.chinese_date_time import ChineseDateTime
-from ..extractors import DateTimeExtractor
-from ..constants import Constants
-from ..parsers import DateTimeParser
 from ..base_datetimeperiod import DateTimePeriodParserConfiguration, MatchedTimeRange
+from ..constants import Constants
+from ..extractors import DateTimeExtractor
+from ..parsers import DateTimeParser
 from .date_extractor import ChineseDateExtractor
-from .time_extractor import ChineseTimeExtractor
-from .timeperiod_extractor import ChineseTimePeriodExtractor
-from .datetime_extractor import ChineseDateTimeExtractor
 from .date_parser import ChineseDateParser
-from .time_parser import ChineseTimeParser
-from .timeperiod_parser import ChineseTimePeriodParser
+from .datetime_extractor import ChineseDateTimeExtractor
 from .datetime_parser import ChineseDateTimeParser
+from .time_extractor import ChineseTimeExtractor
+from .time_parser import ChineseTimeParser
+from .timeperiod_extractor import ChineseTimePeriodExtractor
+from .timeperiod_parser import ChineseTimePeriodParser
 
 
 class ChineseDateTimePeriodParserConfiguration(DateTimePeriodParserConfiguration):
@@ -149,17 +149,11 @@ class ChineseDateTimePeriodParserConfiguration(DateTimePeriodParserConfiguration
     def __init__(self):
         self._after_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.AfterRegex)
         self._before_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.BeforeRegex)
-        self._specific_time_of_day_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.SpecificTimeOfDayRegex)
-        self._time_of_day_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.TimeOfDayRegex
-        )
-        self._past_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.PastRegex)
-        self._future_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.FutureRegex)
-        self._relative_time_unit_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.TimeOfDayRegex)
+        self._specific_time_of_day_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.SpecificTimeOfDayRegex)
+        self._time_of_day_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.TimeOfDayRegex)
+        self._past_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.PastRegex)
+        self._future_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.FutureRegex)
+        self._relative_time_unit_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.TimeOfDayRegex)
         self._unit_map = ChineseDateTime.ParserConfigurationUnitMap
         self._date_extractor = ChineseDateExtractor()
         self._time_extractor = ChineseTimeExtractor()

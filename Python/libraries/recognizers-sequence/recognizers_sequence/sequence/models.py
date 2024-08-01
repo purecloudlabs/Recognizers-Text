@@ -46,9 +46,7 @@ class AbstractSequenceModel(Model):
 
     @staticmethod
     def get_resolution(data: ParseResult):
-        return {
-            'value': data.resolution_str
-        }
+        return {'value': data.resolution_str}
 
 
 class PhoneNumberModel(AbstractSequenceModel):
@@ -82,10 +80,7 @@ class PhoneNumberModel(AbstractSequenceModel):
         return model_results
 
     def get_resolution(self, data: ParseResult):
-        return {
-            'value': data.resolution_str,
-            'score': '%g' % data.value
-        }
+        return {'value': data.resolution_str, 'score': '%g' % data.value}
 
 
 class EmailModel(AbstractSequenceModel):
@@ -123,10 +118,7 @@ class GUIDModel(AbstractSequenceModel):
         return model_results
 
     def get_resolution(self, data: ParseResult):
-        return {
-            'value': data.resolution_str,
-            'score': '%g' % data.value
-        }
+        return {'value': data.resolution_str, 'score': '%g' % data.value}
 
 
 class HashtagModel(AbstractSequenceModel):
@@ -165,10 +157,7 @@ class IpAddressModel(AbstractSequenceModel):
         return model_results
 
     def get_resolution(self, data: ParseResult):
-        return {
-            'value': data.resolution_str,
-            'score': str(data.value)
-        }
+        return {'value': data.resolution_str, 'score': str(data.value)}
 
 
 class MentionModel(AbstractSequenceModel):

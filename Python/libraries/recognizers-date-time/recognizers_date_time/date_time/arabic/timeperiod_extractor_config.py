@@ -1,14 +1,14 @@
 from typing import List, Pattern
 
-from recognizers_text.utilities import RegExpUtility
-from recognizers_text.extractor import Extractor
-from recognizers_number.number.arabic.extractors import ArabicIntegerExtractor
-from recognizers_date_time.resources.arabic_date_time import ArabicDateTime
-from recognizers_date_time.date_time.extractors import DateTimeExtractor
-from recognizers_date_time.date_time.base_timeperiod import TimePeriodExtractorConfiguration, MatchedIndex
-from recognizers_date_time.date_time.base_time import BaseTimeExtractor
-from recognizers_date_time.date_time.arabic.time_extractor_config import ArabicTimeExtractorConfiguration
 from recognizers_date_time.date_time.arabic.base_configs import ArabicDateTimeUtilityConfiguration
+from recognizers_date_time.date_time.arabic.time_extractor_config import ArabicTimeExtractorConfiguration
+from recognizers_date_time.date_time.base_time import BaseTimeExtractor
+from recognizers_date_time.date_time.base_timeperiod import MatchedIndex, TimePeriodExtractorConfiguration
+from recognizers_date_time.date_time.extractors import DateTimeExtractor
+from recognizers_date_time.resources.arabic_date_time import ArabicDateTime
+from recognizers_number.number.arabic.extractors import ArabicIntegerExtractor
+from recognizers_text.extractor import Extractor
+from recognizers_text.utilities import RegExpUtility
 
 
 class ArabicTimePeriodExtractorConfiguration(TimePeriodExtractorConfiguration):
@@ -132,15 +132,17 @@ class ArabicTimePeriodExtractorConfiguration(TimePeriodExtractorConfiguration):
 
         self._till_regex: Pattern = RegExpUtility.get_safe_reg_exp(ArabicDateTime.TillRegex)
         self._time_of_day_regex: Pattern = RegExpUtility.get_safe_reg_exp(ArabicDateTime.TimeOfDayRegex)
-        self._general_ending_regex: Pattern = RegExpUtility.get_safe_reg_exp( ArabicDateTime.GeneralEndingRegex)
+        self._general_ending_regex: Pattern = RegExpUtility.get_safe_reg_exp(ArabicDateTime.GeneralEndingRegex)
         self._hour_regex: Pattern = RegExpUtility.get_safe_reg_exp(ArabicDateTime.HourRegex)
         self._period_desc_regex: Pattern = RegExpUtility.get_safe_reg_exp(ArabicDateTime.DescRegex)
         self._period_hour_num_regex: Pattern = RegExpUtility.get_safe_reg_exp(ArabicDateTime.PeriodHourNumRegex)
         self._specific_time_of_day_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.SpecificTimeOfDayRegex)
+            ArabicDateTime.SpecificTimeOfDayRegex
+        )
         self._time_followed_unit: Pattern = RegExpUtility.get_safe_reg_exp(ArabicDateTime.TimeFollowedUnit)
         self._time_number_combined_with_unit: Pattern = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.TimeNumberCombinedWithUnit)
+            ArabicDateTime.TimeNumberCombinedWithUnit
+        )
 
         self._time_unit_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.TimeUnitRegex)
         self._specific_time_from_to_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.SpecificTimeFromTo)
@@ -156,7 +158,7 @@ class ArabicTimePeriodExtractorConfiguration(TimePeriodExtractorConfiguration):
             self.pure_num_from_to,
             self.pure_num_between_and,
             self.specific_time_from_to,
-            self.specific_time_between_and
+            self.specific_time_between_and,
         ]
         self._pure_number_regex = [self.pure_num_from_to, self.pure_num_between_and]
 

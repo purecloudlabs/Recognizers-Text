@@ -4,6 +4,7 @@
 from typing import List, Pattern
 
 from recognizers_text.utilities import RegExpUtility
+
 from ...resources.french_date_time import FrenchDateTime
 from ..base_time import TimeExtractorConfiguration
 from ..utilities import DateTimeOptions
@@ -28,14 +29,10 @@ class FrenchTimeExtractorConfiguration(TimeExtractorConfiguration):
 
     def __init__(self):
         super().__init__()
-        self._time_regex_list: List[Pattern] = FrenchTimeExtractorConfiguration.get_time_regex_list(
-        )
-        self._at_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            FrenchDateTime.AtRegex)
-        self._ish_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            FrenchDateTime.IshRegex)
-        self._time_before_after_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            FrenchDateTime.TimeBeforeAfterRegex)
+        self._time_regex_list: List[Pattern] = FrenchTimeExtractorConfiguration.get_time_regex_list()
+        self._at_regex: Pattern = RegExpUtility.get_safe_reg_exp(FrenchDateTime.AtRegex)
+        self._ish_regex: Pattern = RegExpUtility.get_safe_reg_exp(FrenchDateTime.IshRegex)
+        self._time_before_after_regex: Pattern = RegExpUtility.get_safe_reg_exp(FrenchDateTime.TimeBeforeAfterRegex)
         self._options = DateTimeOptions.NONE
 
     @staticmethod
@@ -51,5 +48,5 @@ class FrenchTimeExtractorConfiguration(TimeExtractorConfiguration):
             RegExpUtility.get_safe_reg_exp(FrenchDateTime.TimeRegex8),
             RegExpUtility.get_safe_reg_exp(FrenchDateTime.TimeRegex9),
             RegExpUtility.get_safe_reg_exp(FrenchDateTime.TimeRegex10),
-            RegExpUtility.get_safe_reg_exp(FrenchDateTime.ConnectNumRegex)
+            RegExpUtility.get_safe_reg_exp(FrenchDateTime.ConnectNumRegex),
         ]

@@ -1,18 +1,19 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from typing import Optional, Match
 from datetime import datetime, timedelta
+from typing import Match, Optional
+
 import regex
 
-from recognizers_text import RegExpUtility, ExtractResult
+from recognizers_text import ExtractResult, RegExpUtility
 
 from ...resources.chinese_date_time import ChineseDateTime
+from ..base_timeperiod import BaseTimePeriodParser
 from ..constants import Constants
 from ..parsers import DateTimeParseResult
-from ..utilities import TimeTypeConstants, DateTimeFormatUtil, DateTimeResolutionResult, DateUtils, TimexUtil
-from ..base_timeperiod import BaseTimePeriodParser
-from .base_date_time_extractor import DateTimeExtra, TimeResult, TimeResolutionUtils
+from ..utilities import DateTimeFormatUtil, DateTimeResolutionResult, DateUtils, TimeTypeConstants, TimexUtil
+from .base_date_time_extractor import DateTimeExtra, TimeResolutionUtils, TimeResult
 from .timeperiod_extractor import TimePeriodType
 from .timeperiod_parser_config import ChineseTimePeriodParserConfiguration
 
@@ -20,8 +21,7 @@ from .timeperiod_parser_config import ChineseTimePeriodParserConfiguration
 class ChineseTimePeriodParser(BaseTimePeriodParser):
     def __init__(self):
         super().__init__(ChineseTimePeriodParserConfiguration())
-        self.day_description_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.TimeDayDescRegex)
+        self.day_description_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.TimeDayDescRegex)
         self.only_digit_match = RegExpUtility.get_safe_reg_exp(r'\d+')
         self.numbers_map = ChineseDateTime.TimeNumberDictionary
         self.low_bound_map = ChineseDateTime.TimeLowBoundDesc
@@ -37,21 +37,24 @@ class ChineseTimePeriodParser(BaseTimePeriodParser):
             return result
 
         if source.type is self.parser_type_name:
-            inner_result = self.parse_chinese_time_of_day(
-                source.text, reference)
+            inner_result = self.parse_chinese_time_of_day(source.text, reference)
 
             if inner_result.success is False:
                 inner_result = self.parse_time_period(extra, reference)
 
             if inner_result.success:
                 inner_result.future_resolution[TimeTypeConstants.START_TIME] = DateTimeFormatUtil.format_time(
-                    inner_result.future_value[0])
+                    inner_result.future_value[0]
+                )
                 inner_result.future_resolution[TimeTypeConstants.END_TIME] = DateTimeFormatUtil.format_time(
-                    inner_result.future_value[1])
+                    inner_result.future_value[1]
+                )
                 inner_result.past_resolution[TimeTypeConstants.START_TIME] = DateTimeFormatUtil.format_time(
-                    inner_result.past_value[0])
+                    inner_result.past_value[0]
+                )
                 inner_result.past_resolution[TimeTypeConstants.END_TIME] = DateTimeFormatUtil.format_time(
-                    inner_result.past_value[1])
+                    inner_result.past_value[1]
+                )
 
                 result.value = inner_result
                 result.timex_str = inner_result.timex if inner_result is not None else ''
@@ -72,10 +75,8 @@ class ChineseTimePeriodParser(BaseTimePeriodParser):
 
         result.timex = parameters['timex']
         result.future_value = result.past_value = [
-            DateUtils.safe_create_from_min_value(
-                year, month, day, parameters['begin_hour'], 0, 0),
-            DateUtils.safe_create_from_min_value(
-                year, month, day, parameters['end_hour'], parameters['end_min'], 0)
+            DateUtils.safe_create_from_min_value(year, month, day, parameters['begin_hour'], 0, 0),
+            DateUtils.safe_create_from_min_value(year, month, day, parameters['end_hour'], parameters['end_min'], 0),
         ]
 
         result.success = True
@@ -104,8 +105,13 @@ class ChineseTimePeriodParser(BaseTimePeriodParser):
             timex = None
             matched = False
 
-            return {'matched': matched, 'timex': timex, 'begin_hour': begin_hour,
-                    'end_hour': end_hour, 'end_min': end_min}
+            return {
+                'matched': matched,
+                'timex': timex,
+                'begin_hour': begin_hour,
+                'end_hour': end_hour,
+                'end_min': end_min,
+            }
 
         parse_result = TimexUtil.parse_time_of_day(time_of_day)
         timex = parse_result.timex
@@ -114,8 +120,7 @@ class ChineseTimePeriodParser(BaseTimePeriodParser):
         end_min = parse_result.end_min
 
         matched = True
-        return {'matched': matched, 'timex': timex, 'begin_hour': begin_hour,
-                'end_hour': end_hour, 'end_min': end_min}
+        return {'matched': matched, 'timex': timex, 'begin_hour': begin_hour, 'end_hour': end_hour, 'end_min': end_min}
 
     def parse_time_period(self, extra: DateTimeExtra, reference: datetime) -> DateTimeResolutionResult:
         result = DateTimeResolutionResult()
@@ -123,14 +128,12 @@ class ChineseTimePeriodParser(BaseTimePeriodParser):
         left_entity = next(iter(extra.named_entity['left']), '')
         left_result: TimeResult = None
         if extra.data_type == TimePeriodType.FullTime:
-            left_result = self.get_parse_time_result(
-                left_entity, extra.match, reference)
+            left_result = self.get_parse_time_result(left_entity, extra.match, reference)
         else:
             left_result = self.get_short_left(left_entity)
 
         right_entity = next(iter(extra.named_entity['right']), '')
-        right_result = self.get_parse_time_result(
-            right_entity, extra.match, reference)
+        right_result = self.get_parse_time_result(right_entity, extra.match, reference)
 
         # the right side doesn't contain desc while the left side does
         if right_result.low_bound == -1 and left_result.low_bound != -1 and right_result.hour <= left_result.low_bound:
@@ -171,18 +174,18 @@ class ChineseTimePeriodParser(BaseTimePeriodParser):
         if regex.match(self.day_description_regex, source):
             description = source[:-1]
 
-        hour = TimeResolutionUtils.match_to_value(
-            self.only_digit_match, self.numbers_map, source[-1])
+        hour = TimeResolutionUtils.match_to_value(self.only_digit_match, self.numbers_map, source[-1])
         time_result = TimeResult(hour, -1, -1)
-        TimeResolutionUtils.add_description(
-            time_result, self.low_bound_map, description)
+        TimeResolutionUtils.add_description(time_result, self.low_bound_map, description)
         return time_result
 
     def build_date(self, time: TimeResult, reference: datetime) -> datetime:
         hour = self.__min_with_floor(time.hour)
         minute = self.__min_with_floor(time.minute)
         second = self.__min_with_floor(time.second)
-        return DateUtils.safe_create_from_min_value(reference.year, reference.month, reference.day, hour, minute, second)
+        return DateUtils.safe_create_from_min_value(
+            reference.year, reference.month, reference.day, hour, minute, second
+        )
 
     def __min_with_floor(self, value: int) -> int:
         return value if value > 0 else 0
@@ -217,7 +220,7 @@ class ChineseTimePeriodParser(BaseTimePeriodParser):
         if span_hour < 0:
             span_hour += 24
 
-        span_timex = f'PT'
+        span_timex = 'PT'
         if span_hour != 0:
             span_timex += f'{span_hour}H'
         if span_min != 0:
@@ -229,6 +232,5 @@ class ChineseTimePeriodParser(BaseTimePeriodParser):
 
     def sanitize_time_result(self, source: TimeResult) -> TimeResult:
         return TimeResult(
-            source.hour,
-            0 if source.minute == -1 else source.minute,
-            0 if source.second == -1 else source.second)
+            source.hour, 0 if source.minute == -1 else source.minute, 0 if source.second == -1 else source.second
+        )

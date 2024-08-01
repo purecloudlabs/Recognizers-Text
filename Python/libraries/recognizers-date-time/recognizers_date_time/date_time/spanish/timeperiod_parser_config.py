@@ -1,16 +1,17 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from typing import Pattern, Dict
+from typing import Dict, Pattern
 
-from recognizers_text.utilities import RegExpUtility
 from recognizers_text.extractor import Extractor
+from recognizers_text.utilities import RegExpUtility
+
 from ...resources.spanish_date_time import SpanishDateTime
+from ..base_configs import BaseDateParserConfiguration, DateTimeUtilityConfiguration
+from ..base_timeperiod import MatchedTimeRegex, TimePeriodParserConfiguration
+from ..constants import Constants
 from ..extractors import DateTimeExtractor
 from ..parsers import DateTimeParser
-from ..base_configs import BaseDateParserConfiguration, DateTimeUtilityConfiguration
-from ..base_timeperiod import TimePeriodParserConfiguration, MatchedTimeRegex
-from ..constants import Constants
 from ..utilities import TimexUtil
 
 
@@ -65,18 +66,12 @@ class SpanishTimePeriodParserConfiguration(TimePeriodParserConfiguration):
         self._integer_extractor = config.integer_extractor
         self._numbers = config.numbers
         self._utility_configuration = config.utility_configuration
-        self._pure_number_from_to_regex = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.PureNumFromTo)
-        self._pure_number_between_and_regex = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.PureNumBetweenAnd)
-        self._specific_time_from_to_regex = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.SpecificTimeFromTo)
-        self._specific_time_between_and_regex = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.SpecificTimeBetweenAnd)
-        self._time_of_day_regex = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.TimeOfDayRegex)
-        self._till_regex = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.TillRegex)
+        self._pure_number_from_to_regex = RegExpUtility.get_safe_reg_exp(SpanishDateTime.PureNumFromTo)
+        self._pure_number_between_and_regex = RegExpUtility.get_safe_reg_exp(SpanishDateTime.PureNumBetweenAnd)
+        self._specific_time_from_to_regex = RegExpUtility.get_safe_reg_exp(SpanishDateTime.SpecificTimeFromTo)
+        self._specific_time_between_and_regex = RegExpUtility.get_safe_reg_exp(SpanishDateTime.SpecificTimeBetweenAnd)
+        self._time_of_day_regex = RegExpUtility.get_safe_reg_exp(SpanishDateTime.TimeOfDayRegex)
+        self._till_regex = RegExpUtility.get_safe_reg_exp(SpanishDateTime.TillRegex)
 
     def get_matched_timex_range(self, source: str) -> MatchedTimeRegex:
         trimmed_text = source.strip().lower()
@@ -100,13 +95,7 @@ class SpanishTimePeriodParserConfiguration(TimePeriodParserConfiguration):
         elif any(trimmed_text.endswith(o) for o in SpanishDateTime.NightTermList):
             time_of_day = Constants.NIGHT
         else:
-            return MatchedTimeRegex(
-                matched=False,
-                timex='',
-                begin_hour=0,
-                end_hour=0,
-                end_min=0
-            )
+            return MatchedTimeRegex(matched=False, timex='', begin_hour=0, end_hour=0, end_min=0)
 
         parse_result = TimexUtil.parse_time_of_day(time_of_day)
         timex = parse_result.timex
@@ -114,10 +103,4 @@ class SpanishTimePeriodParserConfiguration(TimePeriodParserConfiguration):
         end_hour = parse_result.end_hour
         end_min = parse_result.end_min
 
-        return MatchedTimeRegex(
-            matched=True,
-            timex=timex,
-            begin_hour=begin_hour,
-            end_hour=end_hour,
-            end_min=end_min
-        )
+        return MatchedTimeRegex(matched=True, timex=timex, begin_hour=begin_hour, end_hour=end_hour, end_min=end_min)

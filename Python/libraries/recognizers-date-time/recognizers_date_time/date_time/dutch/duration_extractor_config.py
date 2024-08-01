@@ -3,9 +3,10 @@
 
 from typing import Pattern
 
-from recognizers_text.utilities import RegExpUtility
-from recognizers_number.number.extractors import BaseNumberExtractor
 from recognizers_number.number.dutch.extractors import DutchCardinalExtractor
+from recognizers_number.number.extractors import BaseNumberExtractor
+from recognizers_text.utilities import RegExpUtility
+
 from ...resources.dutch_date_time import DutchDateTime
 from ..base_duration import DurationExtractorConfiguration
 
@@ -109,49 +110,29 @@ class DutchDurationExtractorConfiguration(DurationExtractorConfiguration):
         self._check_both_before_after = DutchDateTime.CheckBothBeforeAfter
         self._inexact_number_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.InexactNumberRegex)
         self._conjunction_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.ConjunctionRegex)
-        self._all_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.AllRegex)
-        self._half_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.HalfRegex)
-        self._followed_unit: Pattern = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.DurationFollowedUnit)
+        self._all_regex: Pattern = RegExpUtility.get_safe_reg_exp(DutchDateTime.AllRegex)
+        self._half_regex: Pattern = RegExpUtility.get_safe_reg_exp(DutchDateTime.HalfRegex)
+        self._followed_unit: Pattern = RegExpUtility.get_safe_reg_exp(DutchDateTime.DurationFollowedUnit)
         self._number_combined_with_unit: Pattern = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.NumberCombinedWithDurationUnit)
-        self._an_unit_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.AnUnitRegex)
-        self._inexact_number_unit_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.InexactNumberUnitRegex)
-        self._suffix_and_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.SuffixAndRegex)
-        self._relative_duration_unit_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.RelativeDurationUnitRegex)
-        self._more_than_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.MoreThanRegex)
-        self._less_than_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.LessThanOneHour)
-        self._cardinal_extractor: BaseNumberExtractor = DutchCardinalExtractor()
-        self._during_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.DuringRegex
+            DutchDateTime.NumberCombinedWithDurationUnit
         )
+        self._an_unit_regex: Pattern = RegExpUtility.get_safe_reg_exp(DutchDateTime.AnUnitRegex)
+        self._inexact_number_unit_regex: Pattern = RegExpUtility.get_safe_reg_exp(DutchDateTime.InexactNumberUnitRegex)
+        self._suffix_and_regex: Pattern = RegExpUtility.get_safe_reg_exp(DutchDateTime.SuffixAndRegex)
+        self._relative_duration_unit_regex: Pattern = RegExpUtility.get_safe_reg_exp(
+            DutchDateTime.RelativeDurationUnitRegex
+        )
+        self._more_than_regex: Pattern = RegExpUtility.get_safe_reg_exp(DutchDateTime.MoreThanRegex)
+        self._less_than_regex: Pattern = RegExpUtility.get_safe_reg_exp(DutchDateTime.LessThanOneHour)
+        self._cardinal_extractor: BaseNumberExtractor = DutchCardinalExtractor()
+        self._during_regex: Pattern = RegExpUtility.get_safe_reg_exp(DutchDateTime.DuringRegex)
         self._unit_map = DutchDateTime.UnitMap
         self._unit_value_map = DutchDateTime.UnitValueMap
-        self._duration_unit_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.DurationUnitRegex
-        )
-        self._duration_connector_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.DurationConnectorRegex
-        )
-        self._more_than_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.MoreThanRegex
-        )
-        self._less_than_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.LessThanRegex
-        )
-        self._mod_prefix_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.ModPrefixRegex
-        )
-        self._mod_suffix_regex = RegExpUtility.get_safe_reg_exp(
-            DutchDateTime.ModSuffixRegex
-        )
+        self._duration_unit_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.DurationUnitRegex)
+        self._duration_connector_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.DurationConnectorRegex)
+        self._more_than_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.MoreThanRegex)
+        self._less_than_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.LessThanRegex)
+        self._mod_prefix_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.ModPrefixRegex)
+        self._mod_suffix_regex = RegExpUtility.get_safe_reg_exp(DutchDateTime.ModSuffixRegex)
         self._check_both_before_after = DutchDateTime.CheckBothBeforeAfter
         self._special_number_unit_regex = None

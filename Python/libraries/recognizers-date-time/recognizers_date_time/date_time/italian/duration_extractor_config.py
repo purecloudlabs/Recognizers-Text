@@ -3,9 +3,10 @@
 
 from typing import Pattern
 
-from recognizers_text.utilities import RegExpUtility
 from recognizers_number.number.extractors import BaseNumberExtractor
 from recognizers_number.number.italian.extractors import ItalianCardinalExtractor
+from recognizers_text.utilities import RegExpUtility
+
 from ...resources.italian_date_time import ItalianDateTime
 from ..base_duration import DurationExtractorConfiguration
 
@@ -101,43 +102,29 @@ class ItalianDurationExtractorConfiguration(DurationExtractorConfiguration):
         self._check_both_before_after = ItalianDateTime.CheckBothBeforeAfter
         self._inexact_number_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.InexactNumberRegex)
         self._conjunction_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.ConjunctionRegex)
-        self._all_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.AllRegex)
-        self._half_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.HalfRegex)
-        self._followed_unit: Pattern = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.DurationFollowedUnit)
+        self._all_regex: Pattern = RegExpUtility.get_safe_reg_exp(ItalianDateTime.AllRegex)
+        self._half_regex: Pattern = RegExpUtility.get_safe_reg_exp(ItalianDateTime.HalfRegex)
+        self._followed_unit: Pattern = RegExpUtility.get_safe_reg_exp(ItalianDateTime.DurationFollowedUnit)
         self._number_combined_with_unit: Pattern = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.NumberCombinedWithDurationUnit)
-        self._an_unit_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.AnUnitRegex)
-        self._inexact_number_unit_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.InexactNumberUnitRegex)
-        self._suffix_and_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.SuffixAndRegex)
-        self._relative_duration_unit_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.RelativeDurationUnitRegex)
-        self._more_than_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.MoreThanRegex)
-        self._less_than_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.LessThanOneHour)
-        self._cardinal_extractor: BaseNumberExtractor = ItalianCardinalExtractor()
-        self._during_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.DuringRegex
+            ItalianDateTime.NumberCombinedWithDurationUnit
         )
+        self._an_unit_regex: Pattern = RegExpUtility.get_safe_reg_exp(ItalianDateTime.AnUnitRegex)
+        self._inexact_number_unit_regex: Pattern = RegExpUtility.get_safe_reg_exp(
+            ItalianDateTime.InexactNumberUnitRegex
+        )
+        self._suffix_and_regex: Pattern = RegExpUtility.get_safe_reg_exp(ItalianDateTime.SuffixAndRegex)
+        self._relative_duration_unit_regex: Pattern = RegExpUtility.get_safe_reg_exp(
+            ItalianDateTime.RelativeDurationUnitRegex
+        )
+        self._more_than_regex: Pattern = RegExpUtility.get_safe_reg_exp(ItalianDateTime.MoreThanRegex)
+        self._less_than_regex: Pattern = RegExpUtility.get_safe_reg_exp(ItalianDateTime.LessThanOneHour)
+        self._cardinal_extractor: BaseNumberExtractor = ItalianCardinalExtractor()
+        self._during_regex: Pattern = RegExpUtility.get_safe_reg_exp(ItalianDateTime.DuringRegex)
         self._unit_map = ItalianDateTime.UnitMap
         self._unit_value_map = ItalianDateTime.UnitValueMap
-        self._duration_unit_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.DurationUnitRegex
-        )
-        self._duration_connector_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.DurationConnectorRegex
-        )
-        self._more_than_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.MoreThanRegex
-        )
-        self._less_than_regex = RegExpUtility.get_safe_reg_exp(
-            ItalianDateTime.LessThanRegex
-        )
+        self._duration_unit_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.DurationUnitRegex)
+        self._duration_connector_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.DurationConnectorRegex)
+        self._more_than_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.MoreThanRegex)
+        self._less_than_regex = RegExpUtility.get_safe_reg_exp(ItalianDateTime.LessThanRegex)
         self._check_both_before_after = ItalianDateTime.CheckBothBeforeAfter
         self._special_number_unit_regex = None

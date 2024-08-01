@@ -1,14 +1,15 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from typing import List, Dict, Callable
 import re
 from datetime import datetime
+from typing import Callable, Dict, List
 
 from recognizers_text.utilities import RegExpUtility
-from ..utilities import DateUtils
-from ..base_holiday import BaseHolidayParserConfiguration
+
 from ...resources.portuguese_date_time import PortugueseDateTime
+from ..base_holiday import BaseHolidayParserConfiguration
+from ..utilities import DateUtils
 
 
 class PortugueseHolidayParserConfiguration(BaseHolidayParserConfiguration):
@@ -32,35 +33,34 @@ class PortugueseHolidayParserConfiguration(BaseHolidayParserConfiguration):
         self._holiday_regexes = [
             RegExpUtility.get_safe_reg_exp(PortugueseDateTime.HolidayRegex1),
             RegExpUtility.get_safe_reg_exp(PortugueseDateTime.HolidayRegex2),
-            RegExpUtility.get_safe_reg_exp(PortugueseDateTime.HolidayRegex3)
+            RegExpUtility.get_safe_reg_exp(PortugueseDateTime.HolidayRegex3),
         ]
         self._holiday_names = PortugueseDateTime.HolidayNames
         self._variable_holidays_timex_dictionary = PortugueseDateTime.VariableHolidaysTimexDictionary
 
-        self.next_prefix_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.NextPrefixRegex)
-        self.previous_prefix_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.PreviousPrefixRegex)
-        self.this_prefix_regex = RegExpUtility.get_safe_reg_exp(
-            PortugueseDateTime.ThisPrefixRegex)
+        self.next_prefix_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.NextPrefixRegex)
+        self.previous_prefix_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.PreviousPrefixRegex)
+        self.this_prefix_regex = RegExpUtility.get_safe_reg_exp(PortugueseDateTime.ThisPrefixRegex)
 
     def _init_holiday_funcs(self) -> Dict[str, Callable[[int], datetime]]:
-        local = dict([
-            ("pai", PortugueseHolidayParserConfiguration.fathers_day),
-            ("mae", PortugueseHolidayParserConfiguration.mothers_day),
-            ("acaodegracas", PortugueseHolidayParserConfiguration.thanksgiving_day),
-            ("trabalho", PortugueseHolidayParserConfiguration.international_workers_day),
-            ("pascoa", PortugueseHolidayParserConfiguration.easter_day),
-            ("natal", PortugueseHolidayParserConfiguration.christmas_day),
-            ("vesperadenatal", PortugueseHolidayParserConfiguration.christmas_eve),
-            ("anonovo", PortugueseHolidayParserConfiguration.new_year),
-            ("versperadeanonovo", PortugueseHolidayParserConfiguration.new_year_eve),
-            ("yuandan", PortugueseHolidayParserConfiguration.new_year),
-            ("professor", PortugueseHolidayParserConfiguration.teacher_day),
-            ("todosossantos", PortugueseHolidayParserConfiguration.halloween_day),
-            ("crianca", PortugueseHolidayParserConfiguration.children_day),
-            ("mulher", PortugueseHolidayParserConfiguration.female_day)
-        ])
+        local = dict(
+            [
+                ("pai", PortugueseHolidayParserConfiguration.fathers_day),
+                ("mae", PortugueseHolidayParserConfiguration.mothers_day),
+                ("acaodegracas", PortugueseHolidayParserConfiguration.thanksgiving_day),
+                ("trabalho", PortugueseHolidayParserConfiguration.international_workers_day),
+                ("pascoa", PortugueseHolidayParserConfiguration.easter_day),
+                ("natal", PortugueseHolidayParserConfiguration.christmas_day),
+                ("vesperadenatal", PortugueseHolidayParserConfiguration.christmas_eve),
+                ("anonovo", PortugueseHolidayParserConfiguration.new_year),
+                ("versperadeanonovo", PortugueseHolidayParserConfiguration.new_year_eve),
+                ("yuandan", PortugueseHolidayParserConfiguration.new_year),
+                ("professor", PortugueseHolidayParserConfiguration.teacher_day),
+                ("todosossantos", PortugueseHolidayParserConfiguration.halloween_day),
+                ("crianca", PortugueseHolidayParserConfiguration.children_day),
+                ("mulher", PortugueseHolidayParserConfiguration.female_day),
+            ]
+        )
 
         return {**super()._init_holiday_funcs(), **local}
 

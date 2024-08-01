@@ -1,17 +1,19 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
+import copy
 from abc import abstractmethod
-from typing import List, Dict, Pattern, Optional
 from collections import namedtuple
 from decimal import Decimal, getcontext
-import copy
+from typing import Dict, List, Optional, Pattern
+
 import regex
 
+from recognizers_number.number.parsers import BaseNumberParser, BaseNumberParserConfiguration
 from recognizers_text.culture import Culture
 from recognizers_text.extractor import ExtractResult
 from recognizers_text.parser import ParseResult
-from recognizers_number.number.parsers import BaseNumberParser, BaseNumberParserConfiguration
+
 
 getcontext().prec = 15
 
@@ -130,15 +132,13 @@ class CJKNumberParser(BaseNumberParser):
         if 'Per' in extra:
             result = self.per_parse(simplified_source)
         elif 'Num' in extra:
-            simplified_source.text = self.replace_full_with_half(
-                simplified_source.text)
+            simplified_source.text = self.replace_full_with_half(simplified_source.text)
             result = self._digit_number_parse(simplified_source)
             if regex.search(self.config.negative_number_sign_regex, simplified_source.text) and result.value > 0:
                 result.value = result.value * -1
             result.resolution_str = self.__format(result.value)
         elif 'Pow' in extra:
-            simplified_source.text = self.replace_full_with_half(
-                simplified_source.text)
+            simplified_source.text = self.replace_full_with_half(simplified_source.text)
             result = self._power_number_parse(simplified_source)
             result.resolution_str = self.__format(result.value)
         elif 'Frac' in extra:
@@ -170,7 +170,7 @@ class CJKNumberParser(BaseNumberParser):
     def replace_unit(self, source: str) -> str:
         if source is None or not source.strip():
             return source
-        for (k, v) in self.config.unit_map.items():
+        for k, v in self.config.unit_map.items():
             source = source.replace(k, v)
         return source
 
@@ -188,8 +188,7 @@ class CJKNumberParser(BaseNumberParser):
             elif source_text == '10成' or source_text == '10割' or source_text == '十割':
                 result.value = 100
             else:
-                matches = list(regex.finditer(
-                    self.config.spe_get_number_regex, source_text))
+                matches = list(regex.finditer(self.config.spe_get_number_regex, source_text))
                 int_number: int
                 if len(matches) == 2:
                     int_number_char = matches[0].group()[0]
@@ -219,8 +218,7 @@ class CJKNumberParser(BaseNumberParser):
 
                     int_number = self.config.zero_to_nine_map[int_number_char]
 
-                    result.value = (
-                        int_number + point_number + dot_number) * 10
+                    result.value = (int_number + point_number + dot_number) * 10
                 else:
                     int_number_char = matches[0].group()[0]
                     if int_number_char == self.config.pair_char:
@@ -232,8 +230,7 @@ class CJKNumberParser(BaseNumberParser):
                     result.value = int_number * 10
 
         elif 'Num' in source.data:
-            double_match = regex.search(
-                self.config.percentage_regex, source_text)
+            double_match = regex.search(self.config.percentage_regex, source_text)
             double_text = double_match.group()
 
             if any(x for x in ['k', 'K', 'ｋ', 'Ｋ'] if x in double_text):
@@ -247,8 +244,7 @@ class CJKNumberParser(BaseNumberParser):
             result.value = self.get_digit_value(double_text, power)
 
         else:
-            double_match = regex.search(
-                self.config.percentage_regex, source_text)
+            double_match = regex.search(self.config.percentage_regex, source_text)
             double_text = self.replace_unit(double_match.group())
 
             split_result = regex.split(self.config.point_regex, double_text)
@@ -268,7 +264,7 @@ class CJKNumberParser(BaseNumberParser):
             split_result = regex.search(self.config.percentage_num_regex, source_text).group()
             split_result = regex.split(self.config.frac_split_regex, split_result)
             demo_value = self.get_value_from_part(split_result[0])
-            result.value /= (demo_value / 100)
+            result.value /= demo_value / 100
 
         result.resolution_str = self.__format(result.value) + '%'
         return result
@@ -284,17 +280,9 @@ class CJKNumberParser(BaseNumberParser):
         result_part: parts
 
         if len(split_result) == 3:
-            result_part = parts(
-                intval=split_result[0],
-                demo=split_result[1],
-                num=split_result[2]
-            )
+            result_part = parts(intval=split_result[0], demo=split_result[1], num=split_result[2])
         else:
-            result_part = parts(
-                intval=self.config.zero_char,
-                demo=split_result[0],
-                num=split_result[1]
-            )
+            result_part = parts(intval=self.config.zero_char, demo=split_result[0], num=split_result[1])
 
         int_value = Decimal(self.get_value_from_part(result_part.intval))
         num_value = Decimal(self.get_value_from_part(result_part.num))
@@ -329,11 +317,9 @@ class CJKNumberParser(BaseNumberParser):
             if split_result[0] == '':
                 split_result[0] = self.config.zero_char
             if regex.search(self.config.negative_number_sign_regex, split_result[0]) is not None:
-                result.value = self.get_int_value(
-                    split_result[0]) - self.get_point_value(split_result[1])
+                result.value = self.get_int_value(split_result[0]) - self.get_point_value(split_result[1])
             else:
-                result.value = self.get_int_value(
-                    split_result[0]) + self.get_point_value(split_result[1])
+                result.value = self.get_int_value(split_result[0]) + self.get_point_value(split_result[1])
 
         result.resolution_str = self.__format(result.value)
         return result
@@ -365,7 +351,7 @@ class CJKNumberParser(BaseNumberParser):
         result_str = self.replace_full_with_half(result_str)
         result = float(super()._get_digital_value(result_str, power))
         if negative:
-            result = - result
+            result = -result
         return result
 
     def get_int_value(self, source: str) -> float:
@@ -416,15 +402,17 @@ class CJKNumberParser(BaseNumberParser):
                     is_round_before = True
                     part_value += before_value * round_recent
                     round_before = round_recent
-                    if i == len(result_str)-1 or c in self.config.round_direct_list:
+                    if i == len(result_str) - 1 or c in self.config.round_direct_list:
                         int_value += part_value
                         part_value = 0
 
                 round_default = round_recent / 10
             elif c in self.config.zero_to_nine_map:
-                if i != len(result_str)-1:
-                    is_not_round_next = result_str[i + 1] in self.config.ten_chars or result_str[
-                        i + 1] not in self.config.round_number_map_char
+                if i != len(result_str) - 1:
+                    is_not_round_next = (
+                        result_str[i + 1] in self.config.ten_chars
+                        or result_str[i + 1] not in self.config.round_number_map_char
+                    )
                     if c == self.config.zero_char and is_not_round_next:
                         before_value = 1
                         round_default = 1
@@ -451,7 +439,7 @@ class CJKNumberParser(BaseNumberParser):
                     part_value = 0
             has_previous_digits = c.isdigit()
         if negative:
-            int_value = - int_value
+            int_value = -int_value
         if dozen:
             int_value = int_value * 12
         if pair:
@@ -468,6 +456,8 @@ class CJKNumberParser(BaseNumberParser):
         return result
 
     def is_digit(self, source: str) -> bool:
-        return (source is not None
-                and len(source.strip()) > 0
-                and regex.search(self.config.digit_num_regex, source) is not None)
+        return (
+            source is not None
+            and len(source.strip()) > 0
+            and regex.search(self.config.digit_num_regex, source) is not None
+        )

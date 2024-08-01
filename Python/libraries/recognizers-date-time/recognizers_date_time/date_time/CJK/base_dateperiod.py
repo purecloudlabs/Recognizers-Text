@@ -10,13 +10,26 @@ from recognizers_date_time.date_time import Constants
 from recognizers_date_time.date_time.base_date import BaseDateParser
 from recognizers_date_time.date_time.base_dateperiod import BaseDatePeriodParser
 from recognizers_date_time.date_time.parsers import DateTimeParser, DateTimeParseResult
-from recognizers_date_time.date_time.utilities import DateTimeOptionsConfiguration, DateTimeExtractor, \
-    merge_all_tokens, ExtractResultExtension, Token, DateContext, DateTimeResolutionResult, TimeTypeConstants, \
-    DateTimeFormatUtil, DateUtils, TimexUtil, DayOfWeek, DurationParsingUtil, DateTimeOptions
+from recognizers_date_time.date_time.utilities import (
+    DateContext,
+    DateTimeExtractor,
+    DateTimeFormatUtil,
+    DateTimeOptions,
+    DateTimeOptionsConfiguration,
+    DateTimeResolutionResult,
+    DateUtils,
+    DayOfWeek,
+    DurationParsingUtil,
+    ExtractResultExtension,
+    TimeTypeConstants,
+    TimexUtil,
+    Token,
+    merge_all_tokens,
+)
 from recognizers_date_time.date_time.utilities.mod_and_date_result import ModAndDateResult
-from recognizers_number import BaseNumberParser, BaseNumberExtractor
+from recognizers_number import BaseNumberExtractor, BaseNumberParser
 from recognizers_number import Constants as Num_Constants
-from recognizers_text import Metadata, ExtractResult, Extractor, ConditionalMatch, RegExpUtility
+from recognizers_text import ConditionalMatch, Extractor, ExtractResult, Metadata, RegExpUtility
 
 
 class CJKDatePeriodExtractorConfiguration(DateTimeOptionsConfiguration):
@@ -146,12 +159,11 @@ class BaseCJKDatePeriodExtractor(DateTimeExtractor):
             if not date_unit_match:
                 continue
 
-            durations.append(
-                Token(duration_extraction.start, duration_extraction.start + duration_extraction.length))
+            durations.append(Token(duration_extraction.start, duration_extraction.start + duration_extraction.length))
 
         for duration in durations:
-            before_str = source[0:duration.start].lower()
-            after_str = source[duration.start:duration.start + duration.length]
+            before_str = source[0 : duration.start].lower()
+            after_str = source[duration.start : duration.start + duration.length]
 
             if not before_str and not after_str:
                 continue
@@ -191,7 +203,7 @@ class BaseCJKDatePeriodExtractor(DateTimeExtractor):
                 idx += 1
                 continue
 
-            middle_str = source[middle_begin:middle_end - middle_begin].strip()
+            middle_str = source[middle_begin : middle_end - middle_begin].strip()
 
             if RegExpUtility.exact_match(self.config.till_regex, middle_str, trim=True).success:
                 period_begin = er[idx].start
@@ -226,7 +238,7 @@ class BaseCJKDatePeriodExtractor(DateTimeExtractor):
         ers = self.config.integer_extractor.extract(source)
 
         for er in ers:
-            after_str = source[er.start + er.length:]
+            after_str = source[er.start + er.length :]
             match = RegExpUtility.match_begin(self.config.followed_unit, after_str, trim=True)
 
             if match and match.success:
@@ -238,7 +250,7 @@ class BaseCJKDatePeriodExtractor(DateTimeExtractor):
                 durations.append(Token(match.start(), match.end()))
 
         for duration in durations:
-            before_str = source[:duration.start]
+            before_str = source[: duration.start]
 
             if not before_str:
                 continue
@@ -248,7 +260,7 @@ class BaseCJKDatePeriodExtractor(DateTimeExtractor):
 
             if match and match.success:
                 # Check if the unit is compatible (day, week,  month)
-                duration_str = source[duration.start:duration.length]
+                duration_str = source[duration.start : duration.length]
                 unit_match = self.config.unit_regex.match(duration_str)
 
                 if unit_match.group(Constants.UNIT_OF_YEAR_GROUP_NAME):
@@ -270,22 +282,30 @@ class BaseCJKDatePeriodExtractor(DateTimeExtractor):
 
     # Complex cases refer to the combination of daterange and datepoint
     # For Example: from|between {DateRange|DatePoint} to|till|and {DateRange|DatePoint}
-    def match_complex_cases(self, source: str, simple_cases_results: List[ExtractResult], reference: datetime) \
-            -> List[Token]:
+    def match_complex_cases(
+        self, source: str, simple_cases_results: List[ExtractResult], reference: datetime
+    ) -> List[Token]:
         er = self.config.date_point_extractor.extract(source, reference)
 
         # Filter out DateRange results that are part of DatePoint results
         # For example, "Feb 1st 2018" => "Feb" and "2018" should be filtered out here
 
-        er.extend(list(
-            filter(
-                lambda simple_date_range: not any(
-                    list(
-                        filter(
-                            lambda date_point: date_point.start <= simple_date_range.start and date_point.start +
-                                               date_point.length >= simple_date_range.start + simple_date_range.length,
-                            er))),
-                simple_cases_results))
+        er.extend(
+            list(
+                filter(
+                    lambda simple_date_range: not any(
+                        list(
+                            filter(
+                                lambda date_point: date_point.start <= simple_date_range.start
+                                and date_point.start + date_point.length
+                                >= simple_date_range.start + simple_date_range.length,
+                                er,
+                            )
+                        )
+                    ),
+                    simple_cases_results,
+                )
+            )
         )
 
         er = list(sorted(er, key=lambda x: x.start))
@@ -311,14 +331,17 @@ class BaseCJKDatePeriodExtractor(DateTimeExtractor):
                 idx += 1
                 continue
 
-            middle_str = source[middle_begin:middle_end - middle_begin].strip().lower()
+            middle_str = source[middle_begin : middle_end - middle_begin].strip().lower()
             end_point_str = extraction_results[idx + 1].text
             start_point_str = extraction_results[idx].text
 
-            if (RegExpUtility.exact_match(self.config.till_regex, middle_str, trim=True)
-                    or (not middle_str and
-                        (RegExpUtility.match_begin(self.config.till_regex, end_point_str, trim=True) or
-                         RegExpUtility.match_end(self.config.till_regex, start_point_str, trim=True)))):
+            if RegExpUtility.exact_match(self.config.till_regex, middle_str, trim=True) or (
+                not middle_str
+                and (
+                    RegExpUtility.match_begin(self.config.till_regex, end_point_str, trim=True)
+                    or RegExpUtility.match_end(self.config.till_regex, start_point_str, trim=True)
+                )
+            ):
 
                 period_begin = extraction_results[idx].start
                 period_end = extraction_results[idx + 1].start + extraction_results[idx + 1].length
@@ -733,7 +756,9 @@ class BaseCJKDatePeriodParser(DateTimeParser):
 
         year_match_for_end_date = self.config.year_regex.match(end_date_str)
 
-        if year_match_for_end_date and (year_match_for_end_date.end() - year_match_for_end_date.start()) == len(end_date_str):
+        if year_match_for_end_date and (year_match_for_end_date.end() - year_match_for_end_date.start()) == len(
+            end_date_str
+        ):
             is_end_date_pure_year = True
 
         relative_match_for_start_date = self.config.relative_regex.match(start_date_str)
@@ -790,13 +815,11 @@ class BaseCJKDatePeriodParser(DateTimeParser):
                 elif inner_result.future_value and inner_result.past_value:
                     inner_result.future_resolution = {
                         TimeTypeConstants.START_DATE: DateTimeFormatUtil.format_date(inner_result.future_value[0]),
-                        TimeTypeConstants.END_DATE: DateTimeFormatUtil.format_date(
-                            inner_result.future_value[1])
+                        TimeTypeConstants.END_DATE: DateTimeFormatUtil.format_date(inner_result.future_value[1]),
                     }
                     inner_result.past_resolution = {
                         TimeTypeConstants.START_DATE: DateTimeFormatUtil.format_date(inner_result.past_value[0]),
-                        TimeTypeConstants.END_DATE: DateTimeFormatUtil.format_date(
-                            inner_result.past_value[1])
+                        TimeTypeConstants.END_DATE: DateTimeFormatUtil.format_date(inner_result.past_value[1]),
                     }
 
                 else:
@@ -816,8 +839,9 @@ class BaseCJKDatePeriodParser(DateTimeParser):
 
         return ret
 
-    def parse_base_date_period(self, source: str, reference: datetime,
-                               date_context: DateContext = None) -> DateTimeResolutionResult:
+    def parse_base_date_period(
+        self, source: str, reference: datetime, date_context: DateContext = None
+    ) -> DateTimeResolutionResult:
 
         inner_result = self.parse_simple_cases(source, reference)
 
@@ -899,9 +923,11 @@ class BaseCJKDatePeriodParser(DateTimeParser):
                     last_two_year_num = self.config.number_parser.parse(er)
 
                 # Exclude pure number like "nineteen", "twenty four"
-                if (first_two_year_num < 100 and last_two_year_num == 0) or \
-                        (first_two_year_num < 100 and first_two_year_num % 10 == 0 and len(
-                            last_two_year_num_str.strip().split(' ')) == 1):
+                if (first_two_year_num < 100 and last_two_year_num == 0) or (
+                    first_two_year_num < 100
+                    and first_two_year_num % 10 == 0
+                    and len(last_two_year_num_str.strip().split(' ')) == 1
+                ):
                     year = Constants.INVALID_YEAR
                     return year
                 if first_two_year_num >= 100:
@@ -941,12 +967,14 @@ class BaseCJKDatePeriodParser(DateTimeParser):
     def convert_cjk_to_integer(self, year_cjk_str: str) -> int:
         num = 0
 
-        dynasty_year = DateTimeFormatUtil.parse_dynasty_year(year_cjk_str,
-                                                             self.config.dynasty_year_regex,
-                                                             self.config.dynasty_start_year,
-                                                             self.config.dynasty_year_map,
-                                                             self.config.integer_extractor,
-                                                             self.config.number_parser)
+        dynasty_year = DateTimeFormatUtil.parse_dynasty_year(
+            year_cjk_str,
+            self.config.dynasty_year_regex,
+            self.config.dynasty_start_year,
+            self.config.dynasty_year_map,
+            self.config.integer_extractor,
+            self.config.number_parser,
+        )
 
         if dynasty_year and dynasty_year > 0:
             return dynasty_year
@@ -971,8 +999,9 @@ class BaseCJKDatePeriodParser(DateTimeParser):
 
         return -1 if year == 0 else year
 
-    def parse_single_time_point(self, source: str, reference: datetime, date_context: DateContext = None) \
-            -> DateTimeResolutionResult:
+    def parse_single_time_point(
+        self, source: str, reference: datetime, date_context: DateContext = None
+    ) -> DateTimeResolutionResult:
         ret = DateTimeResolutionResult()
         er = self.config.date_extractor.extract(source, reference)[0]
 
@@ -1037,12 +1066,24 @@ class BaseCJKDatePeriodParser(DateTimeParser):
                         month = 12
                         year -= 1
 
-            begin_luis_str = DateTimeFormatUtil.luis_date(year if input_year or self.config.this_regex.match(month_str)
-                                                                  or self.config.next_regex.match(month_str) else -1,
-                                                          month, begin_day)
-            end_luis_str = DateTimeFormatUtil.luis_date(year if input_year or self.config.this_regex.match(month_str)
-                                                                or self.config.next_regex.match(month_str) else -1,
-                                                        month, end_day)
+            begin_luis_str = DateTimeFormatUtil.luis_date(
+                (
+                    year
+                    if input_year or self.config.this_regex.match(month_str) or self.config.next_regex.match(month_str)
+                    else -1
+                ),
+                month,
+                begin_day,
+            )
+            end_luis_str = DateTimeFormatUtil.luis_date(
+                (
+                    year
+                    if input_year or self.config.this_regex.match(month_str) or self.config.next_regex.match(month_str)
+                    else -1
+                ),
+                month,
+                end_day,
+            )
 
         else:
             match = RegExpUtility.exact_match(self.config.special_year_regex, source, trim=True)
@@ -1094,11 +1135,13 @@ class BaseCJKDatePeriodParser(DateTimeParser):
                 if year_match[0].start < year_in_cjk_match[0].start:
                     begin_year = int(year_match[0].get_group(Constants.YEAR_GROUP_NAME))
                     end_year = self.convert_cjk_to_integer(
-                        year_in_cjk_match[0].get_group(Constants.YEAR_CJK_GROUP_NAME))
+                        year_in_cjk_match[0].get_group(Constants.YEAR_CJK_GROUP_NAME)
+                    )
 
                 else:
                     begin_year = self.convert_cjk_to_integer(
-                        year_in_cjk_match[0].get_group(Constants.YEAR_CJK_GROUP_NAME))
+                        year_in_cjk_match[0].get_group(Constants.YEAR_CJK_GROUP_NAME)
+                    )
                     end_year = int(year_match[0].get_group(Constants.YEAR_GROUP_NAME))
 
             if 100 > begin_year >= self.config.two_num_year:
@@ -1201,31 +1244,42 @@ class BaseCJKDatePeriodParser(DateTimeParser):
                     duration_months = begin_month - end_month
 
             if duration_months != 0:
-                begin_date_for_past_resolution = DateUtils.safe_create_from_min_value(begin_year_for_past_resolution,
-                                                                                      begin_month, 1)
-                end_date_for_past_resolution = DateUtils.safe_create_from_min_value(end_year_for_past_resolution,
-                                                                                    end_month, 1)
+                begin_date_for_past_resolution = DateUtils.safe_create_from_min_value(
+                    begin_year_for_past_resolution, begin_month, 1
+                )
+                end_date_for_past_resolution = DateUtils.safe_create_from_min_value(
+                    end_year_for_past_resolution, end_month, 1
+                )
                 begin_date_for_future_resolution = DateUtils.safe_create_from_min_value(
-                    begin_year_for_future_resolution,
-                    begin_month, 1)
-                end_date_for_future_resolution = DateUtils.safe_create_from_min_value(end_year_for_future_resolution,
-                                                                                      end_month, 1)
+                    begin_year_for_future_resolution, begin_month, 1
+                )
+                end_date_for_future_resolution = DateUtils.safe_create_from_min_value(
+                    end_year_for_future_resolution, end_month, 1
+                )
 
                 day_match = RegExpUtility.get_matches(self.config.day_regex_for_period, source)
 
                 # handle cases like 2019年2月1日から3月まで
                 if day_match and match.get_group(Constants.DAY_GROUP_NAME):
-                    ret.timex = TimexUtil.generate_date_period_timex(begin_date_for_future_resolution,
-                                                                     end_date_for_future_resolution, 0,
-                                                                     begin_date_for_past_resolution,
-                                                                     end_date_for_past_resolution, has_year)
+                    ret.timex = TimexUtil.generate_date_period_timex(
+                        begin_date_for_future_resolution,
+                        end_date_for_future_resolution,
+                        0,
+                        begin_date_for_past_resolution,
+                        end_date_for_past_resolution,
+                        has_year,
+                    )
 
                 # If the year is not specified, the combined range timex will use fuzzy years.
                 else:
-                    ret.timex = TimexUtil.generate_date_period_timex(begin_date_for_future_resolution,
-                                                                     end_date_for_future_resolution, 2,
-                                                                     begin_date_for_past_resolution,
-                                                                     end_date_for_past_resolution, has_year)
+                    ret.timex = TimexUtil.generate_date_period_timex(
+                        begin_date_for_future_resolution,
+                        end_date_for_future_resolution,
+                        2,
+                        begin_date_for_past_resolution,
+                        end_date_for_past_resolution,
+                        has_year,
+                    )
 
                 ret.past_value = [begin_date_for_past_resolution, end_date_for_past_resolution]
                 ret.future_value = [begin_date_for_future_resolution, end_date_for_future_resolution]
@@ -1282,8 +1336,11 @@ class BaseCJKDatePeriodParser(DateTimeParser):
             duration_months = duration_days = 0
 
             relative_month = self.config.relative_month_regex.match(source)
-            curr_month = reference + datedelta(months=self.config.get_swift_month(relative_month.value)) \
-                if relative_month else reference.month
+            curr_month = (
+                reference + datedelta(months=self.config.get_swift_month(relative_month.value))
+                if relative_month
+                else reference.month
+            )
 
             begin_month_for_past_resolution = curr_month
             end_month_for_past_resolution = curr_month
@@ -1340,27 +1397,31 @@ class BaseCJKDatePeriodParser(DateTimeParser):
                 duration_days = begin_day - end_day
 
             if duration_days != 0:
-                begin_date_for_past_resolution = DateUtils.safe_create_from_min_value(begin_year_for_past_resolution,
-                                                                                      begin_month_for_past_resolution,
-                                                                                      begin_day)
-                end_date_for_past_resolution = DateUtils.safe_create_from_min_value(end_year_for_past_resolution,
-                                                                                    end_month_for_past_resolution,
-                                                                                    end_day)
+                begin_date_for_past_resolution = DateUtils.safe_create_from_min_value(
+                    begin_year_for_past_resolution, begin_month_for_past_resolution, begin_day
+                )
+                end_date_for_past_resolution = DateUtils.safe_create_from_min_value(
+                    end_year_for_past_resolution, end_month_for_past_resolution, end_day
+                )
                 begin_date_for_future_resolution = DateUtils.safe_create_from_min_value(
-                    begin_year_for_future_resolution,
-                    begin_month_for_future_resolution,
-                    begin_day)
-                end_date_for_future_resolution = DateUtils.safe_create_from_min_value(end_year_for_future_resolution,
-                                                                                      end_month_for_future_resolution,
-                                                                                      end_day)
+                    begin_year_for_future_resolution, begin_month_for_future_resolution, begin_day
+                )
+                end_date_for_future_resolution = DateUtils.safe_create_from_min_value(
+                    end_year_for_future_resolution, end_month_for_future_resolution, end_day
+                )
 
                 if relative_month:
-                    ret.timex = TimexUtil.generate_date_period_timex(begin_date_for_future_resolution,
-                                                                     end_date_for_future_resolution, 0)
+                    ret.timex = TimexUtil.generate_date_period_timex(
+                        begin_date_for_future_resolution, end_date_for_future_resolution, 0
+                    )
                 else:
-                    ret.timex = TimexUtil.generate_date_period_timex(begin_date_for_future_resolution,
-                                                                     end_date_for_future_resolution, 0,
-                                                                     has_year=False, has_month=False)
+                    ret.timex = TimexUtil.generate_date_period_timex(
+                        begin_date_for_future_resolution,
+                        end_date_for_future_resolution,
+                        0,
+                        has_year=False,
+                        has_month=False,
+                    )
 
                 ret.past_value = [begin_date_for_past_resolution, end_date_for_past_resolution]
                 ret.future_value = [begin_date_for_future_resolution, end_date_for_future_resolution]
@@ -1387,13 +1448,13 @@ class BaseCJKDatePeriodParser(DateTimeParser):
 
         if year_num:
             if self.config.is_year_only(year_num):
-                year_num = year_num[:len(year_num) - 1]
+                year_num = year_num[: len(year_num) - 1]
 
             year = self.convert_cjk_to_integer(year_num)
 
         elif year_cjk:
             if self.config.is_year_only(year_cjk):
-                year_cjk = year_cjk[:len(year_num) - 1]
+                year_cjk = year_cjk[: len(year_num) - 1]
 
             year = self.convert_cjk_to_integer(year_cjk)
 
@@ -1516,10 +1577,15 @@ class BaseCJKDatePeriodParser(DateTimeParser):
 
                 if self.config.is_week_only(trimmed_source):
                     monday = DateUtils.this(reference, DayOfWeek.MONDAY) + datedelta(days=7 * swift)
-                    ret.timex = TimexUtil.generate_week_timex() if is_reference_date_period else \
-                        TimexUtil.generate_week_timex(monday)
-                    ret.future_value = ret.past_value = [monday, DateUtils.this(reference, DayOfWeek.SUNDAY)
-                                                         + datedelta(days=7 * swift) + datedelta(days=1)]
+                    ret.timex = (
+                        TimexUtil.generate_week_timex()
+                        if is_reference_date_period
+                        else TimexUtil.generate_week_timex(monday)
+                    )
+                    ret.future_value = ret.past_value = [
+                        monday,
+                        DateUtils.this(reference, DayOfWeek.SUNDAY) + datedelta(days=7 * swift) + datedelta(days=1),
+                    ]
                     ret.success = True
 
                     return ret
@@ -1537,15 +1603,19 @@ class BaseCJKDatePeriodParser(DateTimeParser):
                     begin_date = DateUtils.this(reference, DayOfWeek.SATURDAY) + datedelta(days=7 * swift)
                     end_date = DateUtils.this(reference, DayOfWeek.SUNDAY) + datedelta(days=7 * swift)
 
-                    match = RegExpUtility.exact_match(self.config.reference_date_period_regex, trimmed_source,
-                                                      trim=True)
+                    match = RegExpUtility.exact_match(
+                        self.config.reference_date_period_regex, trimmed_source, trim=True
+                    )
 
                     if match and match.success:
                         is_reference_date_period = True
                         ret.mod = TimeTypeConstants.REF_UNDEF_MOD
 
-                    ret.timex = TimexUtil.generate_weekend_timex() if is_reference_date_period else \
-                        TimexUtil.generate_weekend_timex(begin_date)
+                    ret.timex = (
+                        TimexUtil.generate_weekend_timex()
+                        if is_reference_date_period
+                        else TimexUtil.generate_weekend_timex(begin_date)
+                    )
                     ret.future_value = ret.past_value = [begin_date, end_date + datedelta(days=1)]
                     ret.success = True
                     return ret
@@ -1554,8 +1624,11 @@ class BaseCJKDatePeriodParser(DateTimeParser):
                     month = int(reference.month + swift)
                     year = int(reference.year + swift)
                     ret.timex = DateTimeFormatUtil.luis_date(year, month, reference.day)
-                    ret.timex = TimexUtil.generate_month_timex() if is_reference_date_period else \
-                        DateTimeFormatUtil.luis_date(year, month, 1)
+                    ret.timex = (
+                        TimexUtil.generate_month_timex()
+                        if is_reference_date_period
+                        else DateTimeFormatUtil.luis_date(year, month, 1)
+                    )
                     future_year = past_year = year
 
                 elif self.config.is_year_only(trimmed_source):
@@ -1583,10 +1656,14 @@ class BaseCJKDatePeriodParser(DateTimeParser):
 
         # only "month" will come to here
 
-        ret.future_value = [DateUtils.safe_create_from_min_value(future_year, month, 1),
-                            DateUtils.safe_create_from_min_value(future_year, month, 1) + datedelta(months=1)]
-        ret.past_value = [DateUtils.safe_create_from_min_value(past_year, month, 1),
-                          DateUtils.safe_create_from_min_value(past_year, month, 1) + datedelta(months=1)]
+        ret.future_value = [
+            DateUtils.safe_create_from_min_value(future_year, month, 1),
+            DateUtils.safe_create_from_min_value(future_year, month, 1) + datedelta(months=1),
+        ]
+        ret.past_value = [
+            DateUtils.safe_create_from_min_value(past_year, month, 1),
+            DateUtils.safe_create_from_min_value(past_year, month, 1) + datedelta(months=1),
+        ]
 
         ret.success = True
 
@@ -1690,20 +1767,26 @@ class BaseCJKDatePeriodParser(DateTimeParser):
                     end_day = DayOfWeek.FRIDAY if is_working_week else DayOfWeek.SUNDAY
 
                     begin_date = monday
-                    end_date = DateUtils.this(reference, end_day) + datedelta(days=end_delta) \
-                        if self._inclusive_end_period else \
-                        DateUtils.this(reference, end_day) + datedelta(days=end_delta + 1)
+                    end_date = (
+                        DateUtils.this(reference, end_day) + datedelta(days=end_delta)
+                        if self._inclusive_end_period
+                        else DateUtils.this(reference, end_day) + datedelta(days=end_delta + 1)
+                    )
 
                     if early_prefix:
-                        end_date = DateUtils.this(reference, DayOfWeek.WEDNESDAY) + datedelta(days=end_delta) \
-                            if self._inclusive_end_period else \
-                            DateUtils.this(reference, DayOfWeek.WEDNESDAY) + datedelta(days=end_delta + 1)
+                        end_date = (
+                            DateUtils.this(reference, DayOfWeek.WEDNESDAY) + datedelta(days=end_delta)
+                            if self._inclusive_end_period
+                            else DateUtils.this(reference, DayOfWeek.WEDNESDAY) + datedelta(days=end_delta + 1)
+                        )
 
                     elif mid_prefix:
                         begin_date = DateUtils.this(reference, DayOfWeek.TUESDAY) + datedelta(days=delta)
-                        end_date = DateUtils.this(reference, DayOfWeek.FRIDAY) + datedelta(days=end_delta) \
-                            if self._inclusive_end_period else \
-                            DateUtils.this(reference, DayOfWeek.FRIDAY) + datedelta(days=end_delta + 1)
+                        end_date = (
+                            DateUtils.this(reference, DayOfWeek.FRIDAY) + datedelta(days=end_delta)
+                            if self._inclusive_end_period
+                            else DateUtils.this(reference, DayOfWeek.FRIDAY) + datedelta(days=end_delta + 1)
+                        )
 
                     elif late_prefix:
                         begin_date = DateUtils.this(reference, DayOfWeek.THURSDAY) + datedelta(days=delta)
@@ -1715,8 +1798,11 @@ class BaseCJKDatePeriodParser(DateTimeParser):
                         if begin_date < reference:
                             begin_date = reference
 
-                    ret.timex = TimexUtil.generate_week_timex() if is_reference_date_period else \
-                        TimexUtil.generate_week_timex(monday)
+                    ret.timex = (
+                        TimexUtil.generate_week_timex()
+                        if is_reference_date_period
+                        else TimexUtil.generate_week_timex(monday)
+                    )
 
                     if late_prefix and swift != 0:
                         ret.mod = TimeTypeConstants.LATE_MOD
@@ -1726,12 +1812,17 @@ class BaseCJKDatePeriodParser(DateTimeParser):
                     return ret
 
                 if self.config.is_weekend(trimmed_source):
-                    begin_date = DateUtils.this(reference, DayOfWeek.SATURDAY) + \
-                                 datedelta(days=Constants.WEEK_DAY_COUNT * swift)
-                    end_date = DateUtils.this(reference, DayOfWeek.SUNDAY) + \
-                               datedelta(days=Constants.WEEK_DAY_COUNT * swift)
-                    ret.timex = TimexUtil.generate_weekend_timex() if is_reference_date_period else \
-                        TimexUtil.generate_weekend_timex(begin_date)
+                    begin_date = DateUtils.this(reference, DayOfWeek.SATURDAY) + datedelta(
+                        days=Constants.WEEK_DAY_COUNT * swift
+                    )
+                    end_date = DateUtils.this(reference, DayOfWeek.SUNDAY) + datedelta(
+                        days=Constants.WEEK_DAY_COUNT * swift
+                    )
+                    ret.timex = (
+                        TimexUtil.generate_weekend_timex()
+                        if is_reference_date_period
+                        else TimexUtil.generate_weekend_timex(begin_date)
+                    )
                     end_date = end_date if self._inclusive_end_period else end_date + datedelta(days=1)
                     ret.future_value = ret.past_value = [begin_date, end_date]
                     ret.success = True
@@ -1741,8 +1832,11 @@ class BaseCJKDatePeriodParser(DateTimeParser):
                     date = reference + datedelta(months=swift)
                     month = date.month
                     year = date.year
-                    ret.timex = TimexUtil.generate_month_timex() if is_reference_date_period else \
-                        TimexUtil.generate_month_timex(date)
+                    ret.timex = (
+                        TimexUtil.generate_month_timex()
+                        if is_reference_date_period
+                        else TimexUtil.generate_month_timex(date)
+                    )
                     future_year = past_year = year
 
                 elif self.config.is_year_only(trimmed_source):
@@ -1757,17 +1851,26 @@ class BaseCJKDatePeriodParser(DateTimeParser):
                         return ret
 
                     begin_date = DateUtils.safe_create_from_min_value(year, 1, 1)
-                    end_date = DateUtils.safe_create_from_min_value(year, 12, 31) if self._inclusive_end_period else \
-                        DateUtils.safe_create_from_min_value(year, 12, 31) + datedelta(days=1)
+                    end_date = (
+                        DateUtils.safe_create_from_min_value(year, 12, 31)
+                        if self._inclusive_end_period
+                        else DateUtils.safe_create_from_min_value(year, 12, 31) + datedelta(days=1)
+                    )
 
                     if early_prefix:
-                        end_date = DateUtils.safe_create_from_min_value(year, 6, 30) if self._inclusive_end_period else \
-                            DateUtils.safe_create_from_min_value(year, 6, 30) + datedelta(days=1)
+                        end_date = (
+                            DateUtils.safe_create_from_min_value(year, 6, 30)
+                            if self._inclusive_end_period
+                            else DateUtils.safe_create_from_min_value(year, 6, 30) + datedelta(days=1)
+                        )
 
                     elif mid_prefix:
                         begin_date = DateUtils.safe_create_from_min_value(year, 4, 1)
-                        end_date = DateUtils.safe_create_from_min_value(year, 9, 30) if self._inclusive_end_period else \
-                            DateUtils.safe_create_from_min_value(year, 9, 30) + datedelta(days=1)
+                        end_date = (
+                            DateUtils.safe_create_from_min_value(year, 9, 30)
+                            if self._inclusive_end_period
+                            else DateUtils.safe_create_from_min_value(year, 9, 30) + datedelta(days=1)
+                        )
 
                     elif late_prefix:
                         begin_date = DateUtils.safe_create_from_min_value(year, Constants.WEEK_DAY_COUNT, 1)
@@ -1780,8 +1883,11 @@ class BaseCJKDatePeriodParser(DateTimeParser):
                         if begin_date < reference:
                             begin_date = reference
 
-                    ret.timex = TimexUtil.generate_year_timex() if is_reference_date_period else \
-                        TimexUtil.generate_year_timex(date)
+                    ret.timex = (
+                        TimexUtil.generate_year_timex()
+                        if is_reference_date_period
+                        else TimexUtil.generate_year_timex(date)
+                    )
                     ret.future_value = ret.past_value = [begin_date, end_date]
                     ret.success = True
 
@@ -1793,22 +1899,34 @@ class BaseCJKDatePeriodParser(DateTimeParser):
                     year = int(match.get_group(Constants.FOUR_DIGIT_YEAR_GROUP_NAME))
 
                     begin_date = DateUtils.safe_create_from_min_value(year, 1, 1)
-                    end_date = DateUtils.safe_create_from_min_value(year, 12, 31) if self._inclusive_end_period else \
-                        DateUtils.safe_create_from_min_value(year, 12, 31) + datedelta(days=1)
+                    end_date = (
+                        DateUtils.safe_create_from_min_value(year, 12, 31)
+                        if self._inclusive_end_period
+                        else DateUtils.safe_create_from_min_value(year, 12, 31) + datedelta(days=1)
+                    )
 
                     if early_prefix:
-                        end_date = DateUtils.safe_create_from_min_value(year, 4, 30) if self._inclusive_end_period \
+                        end_date = (
+                            DateUtils.safe_create_from_min_value(year, 4, 30)
+                            if self._inclusive_end_period
                             else DateUtils.safe_create_from_min_value(year, 4, 30) + datedelta(days=1)
+                        )
                     elif mid_prefix:
                         begin_date = DateUtils.safe_create_from_min_value(year, 5, 1)
-                        end_date = DateUtils.safe_create_from_min_value(year, 8, 31) if self._inclusive_end_period \
+                        end_date = (
+                            DateUtils.safe_create_from_min_value(year, 8, 31)
+                            if self._inclusive_end_period
                             else DateUtils.safe_create_from_min_value(year, 8, 31) + datedelta(days=1)
+                        )
 
                     elif late_prefix:
                         begin_date = DateUtils.safe_create_from_min_value(year, 9, 1)
 
-                    ret.timex = TimexUtil.generate_year_timex() if is_reference_date_period else \
-                        TimexUtil.generate_year_timex(begin_date)
+                    ret.timex = (
+                        TimexUtil.generate_year_timex()
+                        if is_reference_date_period
+                        else TimexUtil.generate_year_timex(begin_date)
+                    )
                     ret.future_value = ret.past_value = [begin_date, end_date]
                     ret.success = True
 
@@ -1819,32 +1937,47 @@ class BaseCJKDatePeriodParser(DateTimeParser):
 
         # only "month" will come to here
         future_start = DateUtils.safe_create_from_min_value(future_year, month, 1)
-        future_end = DateUtils.safe_create_from_min_value(future_year, month, 1) + datedelta(months=1) - datedelta(
-            days=1) \
-            if self._inclusive_end_period else DateUtils.safe_create_from_min_value(future_year, month, 1) + datedelta(
-            months=1)
+        future_end = (
+            DateUtils.safe_create_from_min_value(future_year, month, 1) + datedelta(months=1) - datedelta(days=1)
+            if self._inclusive_end_period
+            else DateUtils.safe_create_from_min_value(future_year, month, 1) + datedelta(months=1)
+        )
 
         past_start = DateUtils.safe_create_from_min_value(past_year, month, 1)
-        past_end = DateUtils.safe_create_from_min_value(past_year, month, 1) + datedelta(months=1) - datedelta(days=1) \
-            if self._inclusive_end_period else DateUtils.safe_create_from_min_value(past_year, month, 1) + datedelta(
-            months=1)
+        past_end = (
+            DateUtils.safe_create_from_min_value(past_year, month, 1) + datedelta(months=1) - datedelta(days=1)
+            if self._inclusive_end_period
+            else DateUtils.safe_create_from_min_value(past_year, month, 1) + datedelta(months=1)
+        )
 
         if early_prefix:
-            future_end = DateUtils.safe_create_from_min_value(future_year, month, 15) if self._inclusive_end_period else \
-                DateUtils.safe_create_from_min_value(future_year, month, 15) + datedelta(days=1)
+            future_end = (
+                DateUtils.safe_create_from_min_value(future_year, month, 15)
+                if self._inclusive_end_period
+                else DateUtils.safe_create_from_min_value(future_year, month, 15) + datedelta(days=1)
+            )
 
-            past_end = DateUtils.safe_create_from_min_value(past_year, month, 15) if self._inclusive_end_period else \
-                DateUtils.safe_create_from_min_value(past_year, month, 15) + datedelta(days=1)
+            past_end = (
+                DateUtils.safe_create_from_min_value(past_year, month, 15)
+                if self._inclusive_end_period
+                else DateUtils.safe_create_from_min_value(past_year, month, 15) + datedelta(days=1)
+            )
 
         elif mid_prefix:
             future_start = DateUtils.safe_create_from_min_value(future_year, month, 10)
             past_start = DateUtils.safe_create_from_min_value(past_year, month, 10)
 
-            future_end = DateUtils.safe_create_from_min_value(future_year, month, 20) if self._inclusive_end_period \
+            future_end = (
+                DateUtils.safe_create_from_min_value(future_year, month, 20)
+                if self._inclusive_end_period
                 else DateUtils.safe_create_from_min_value(future_year, month, 20) + datedelta(days=1)
+            )
 
-            past_end = DateUtils.safe_create_from_min_value(past_year, month, 20) if self._inclusive_end_period \
+            past_end = (
+                DateUtils.safe_create_from_min_value(past_year, month, 20)
+                if self._inclusive_end_period
                 else DateUtils.safe_create_from_min_value(past_year, month, 20) + datedelta(days=1)
+            )
 
         elif late_prefix:
             future_start = DateUtils.safe_create_from_min_value(future_year, month, 16)
@@ -1864,18 +1997,25 @@ class BaseCJKDatePeriodParser(DateTimeParser):
 
         return ret
 
-    def handle_with_half_tag(self, source: str, reference: datetime, ret: DateTimeResolutionResult, swift: int) \
-            -> DateTimeResolutionResult:
+    def handle_with_half_tag(
+        self, source: str, reference: datetime, ret: DateTimeResolutionResult, swift: int
+    ) -> DateTimeResolutionResult:
         year = reference.year
         month = reference.month
 
         if self.config.is_week_only(source):
 
             # Handle like "上半周"，"下半周"
-            begin_day = DateUtils.this(reference, DayOfWeek.MONDAY) if swift == -1 else \
+            begin_day = (
+                DateUtils.this(reference, DayOfWeek.MONDAY)
+                if swift == -1
+                else DateUtils.this(reference, DayOfWeek.THURSDAY)
+            )
+            end_day = (
                 DateUtils.this(reference, DayOfWeek.THURSDAY)
-            end_day = DateUtils.this(reference, DayOfWeek.THURSDAY) if swift == -1 else \
-                DateUtils.this(reference, DayOfWeek.SUNDAY) + datedelta(days=1)
+                if swift == -1
+                else DateUtils.this(reference, DayOfWeek.SUNDAY) + datedelta(days=1)
+            )
             ret.timex = TimexUtil.generate_date_period_timex(begin_day, end_day, timex_type=0)
 
         elif self.config.is_month_only(source):
@@ -1891,10 +2031,16 @@ class BaseCJKDatePeriodParser(DateTimeParser):
 
         else:
             # Handle like "上(个)半年"，"下(个)半年"
-            begin_day = DateUtils.safe_create_from_min_value(year, 1, 1) if swift == -1 \
+            begin_day = (
+                DateUtils.safe_create_from_min_value(year, 1, 1)
+                if swift == -1
                 else DateUtils.safe_create_from_min_value(year, 7, 1)
-            end_day = DateUtils.safe_create_from_min_value(year, 7, 1) if swift == -1 \
+            )
+            end_day = (
+                DateUtils.safe_create_from_min_value(year, 7, 1)
+                if swift == -1
                 else DateUtils.safe_create_from_min_value(year + 1, 1, 1)
+            )
             ret.timex = TimexUtil.generate_date_period_timex(begin_day, end_day, timex_type=2)
 
         ret.future_value = ret.past_value = [begin_day, end_day]
@@ -1914,7 +2060,7 @@ class BaseCJKDatePeriodParser(DateTimeParser):
 
             # Trim() to handle extra whitespaces like '07 年'
             if self.config.is_year_only(year_str):
-                year_str = year_str[:len(year_str) - 1]
+                year_str = year_str[: len(year_str) - 1]
 
                 year = self.convert_cjk_to_integer(year_str)
 
@@ -1929,7 +2075,7 @@ class BaseCJKDatePeriodParser(DateTimeParser):
             year_str = self.handle_with_half_year(match, year_str)[0]
 
             if self.config.is_year_only(year_str):
-                year_str = year_str[:len(year_str) - 1]
+                year_str = year_str[: len(year_str) - 1]
 
             if len(year_str) == 1:
                 return ret
@@ -1949,13 +2095,19 @@ class BaseCJKDatePeriodParser(DateTimeParser):
 
         if is_first_half or second_half:
             half_text = first_half if is_first_half else second_half
-            source = source[:len(source) - len(half_text)]
+            source = source[: len(source) - len(half_text)]
             has_half = True
 
         return source.lower(), has_half, is_first_half
 
-    def handle_year_result(self, ret: DateTimeResolutionResult, year: int, is_reference_date_period: bool,
-                           has_half: bool = False, is_first_half: bool = False) -> DateTimeResolutionResult:
+    def handle_year_result(
+        self,
+        ret: DateTimeResolutionResult,
+        year: int,
+        is_reference_date_period: bool,
+        has_half: bool = False,
+        is_first_half: bool = False,
+    ) -> DateTimeResolutionResult:
         if 100 > year >= self.config.two_num_year:
             year += Constants.BASE_YEAR_PAST_CENTURY
         elif year < 100 and year < self.config.two_num_year:
@@ -1964,8 +2116,9 @@ class BaseCJKDatePeriodParser(DateTimeParser):
         begin_day = DateUtils.safe_create_from_min_value(year, 1, 1)
         end_day = DateUtils.safe_create_from_min_value(year + 1, 1, 1)
 
-        ret.timex = TimexUtil.generate_year_timex() if is_reference_date_period else \
-            DateTimeFormatUtil.luis_date(year, 1, 1)
+        ret.timex = (
+            TimexUtil.generate_year_timex() if is_reference_date_period else DateTimeFormatUtil.luis_date(year, 1, 1)
+        )
 
         if has_half:
             if is_first_half:
@@ -2025,8 +2178,10 @@ class BaseCJKDatePeriodParser(DateTimeParser):
                 pr1 = date_context.process_date_entity_parsing_result(pr1)
                 pr2 = date_context.process_date_entity_parsing_result(pr2)
 
-                if date_context.is_empty() and (DateUtils.is_Feb_29th_datetime(pr1.value.future_value) or
-                                                DateUtils.is_Feb_29th_datetime(pr2.value.future_value)):
+                if date_context.is_empty() and (
+                    DateUtils.is_Feb_29th_datetime(pr1.value.future_value)
+                    or DateUtils.is_Feb_29th_datetime(pr2.value.future_value)
+                ):
                     [pr1, pr2] = date_context.sync_year(pr1, pr2)
 
         future_begin = pr1.value.future_value
@@ -2042,9 +2197,11 @@ class BaseCJKDatePeriodParser(DateTimeParser):
 
         ret.timex = TimexUtil.generate_date_period_timex_str(future_begin, future_end, 0, pr1.timex_str, pr2.timex_str)
 
-        if pr1.timex_str.startswith(Constants.TIMEX_FUZZY_YEAR) and \
-                future_begin <= DateUtils.safe_create_from_value(DateUtils.min_value, future_begin.year, 2, 28) and \
-                future_end >= DateUtils.safe_create_from_value(DateUtils.min_value, future_begin.year, 3, 1):
+        if (
+            pr1.timex_str.startswith(Constants.TIMEX_FUZZY_YEAR)
+            and future_begin <= DateUtils.safe_create_from_value(DateUtils.min_value, future_begin.year, 2, 28)
+            and future_end >= DateUtils.safe_create_from_value(DateUtils.min_value, future_begin.year, 3, 1)
+        ):
             # Handle cases like "2月28日到3月1日".
             # There may be different timexes for FutureValue and PastValue due to the different validity of Feb 29th.
 
@@ -2068,7 +2225,7 @@ class BaseCJKDatePeriodParser(DateTimeParser):
         if match:
             src_unit = match.group(Constants.UNIT_GROUP_NAME)
 
-            before_str = source[:match.start()]
+            before_str = source[: match.start()]
 
             if src_unit in self.config.unit_map:
                 unit_str = self.config.unit_map[src_unit]
@@ -2091,9 +2248,11 @@ class BaseCJKDatePeriodParser(DateTimeParser):
                     else:
                         return ret
 
-                    ret.timex = f'({DateTimeFormatUtil.luis_date(begin_date.year, begin_date.month, begin_date.day)},' \
-                                f'{DateTimeFormatUtil.luis_date(end_date.year, end_date.month, end_date.day)},' \
-                                f'P{num_str}{unit_str[0]})'
+                    ret.timex = (
+                        f'({DateTimeFormatUtil.luis_date(begin_date.year, begin_date.month, begin_date.day)},'
+                        f'{DateTimeFormatUtil.luis_date(end_date.year, end_date.month, end_date.day)},'
+                        f'P{num_str}{unit_str[0]})'
+                    )
                     ret.future_value = ret.past_value = [begin_date, end_date]
                     ret.success = True
                     return ret
@@ -2114,9 +2273,11 @@ class BaseCJKDatePeriodParser(DateTimeParser):
                     else:
                         return ret
 
-                    ret.timex = f'({DateTimeFormatUtil.luis_date(begin_date.year, begin_date.month, begin_date.day) + datedelta(days=1)},' \
-                                f'{DateTimeFormatUtil.luis_date(end_date.year, end_date.month, end_date.day) + datedelta(days=1)},' \
-                                f'P{num_str}{unit_str[0]})'
+                    ret.timex = (
+                        f'({DateTimeFormatUtil.luis_date(begin_date.year, begin_date.month, begin_date.day) + datedelta(days=1)},'
+                        f'{DateTimeFormatUtil.luis_date(end_date.year, end_date.month, end_date.day) + datedelta(days=1)},'
+                        f'P{num_str}{unit_str[0]})'
+                    )
                     ret.future_value = ret.past_value = [begin_date + datedelta(days=1), end_date + datedelta(days=1)]
                     ret.success = True
                     return ret
@@ -2138,8 +2299,8 @@ class BaseCJKDatePeriodParser(DateTimeParser):
             return ret
 
         if len(duration_res) > 0:
-            before_str = source[:duration_res[0].start]
-            after_str = source[duration_res[0].start:]
+            before_str = source[: duration_res[0].start]
+            after_str = source[duration_res[0].start :]
 
             matches = list(regex.finditer(self.config.unit_regex, duration_res[0].text))
             # matches = RegExpUtility.get_matches(self.config.unit_regex, duration_res[0].text)
@@ -2147,7 +2308,7 @@ class BaseCJKDatePeriodParser(DateTimeParser):
 
             # handle duration cases like "5 years 1 month 21 days" and "multiple business days"
             if (1 < len(matches) <= 3) or (
-                    matches and match_business_days.get_group(Constants.BUSINESS_DAY_GROUP_NAME)
+                matches and match_business_days.get_group(Constants.BUSINESS_DAY_GROUP_NAME)
             ):
                 ret = self.parse_multiple_dates_duration(source, reference)
                 return ret
@@ -2175,8 +2336,9 @@ class BaseCJKDatePeriodParser(DateTimeParser):
 
                     if self.config.unit_regex.match(src_unit).groups(Constants.UNIT_OF_YEAR_GROUP_NAME):
                         #  Patterns like 'first 2 weeks of 2018' are considered only if the unit is compatible
-                        prefix_match = RegExpUtility.exact_match(self.config.first_last_of_year_regex, before_str,
-                                                                 trim=True)
+                        prefix_match = RegExpUtility.exact_match(
+                            self.config.first_last_of_year_regex, before_str, trim=True
+                        )
 
                     if prefix_match.success:
                         is_of_year_match = prefix_match.success
@@ -2199,8 +2361,9 @@ class BaseCJKDatePeriodParser(DateTimeParser):
                         prefix_match = RegExpUtility.exact_match(self.config.future_regex, after_str, trim=True)
                         is_future = prefix_match.success
 
-                    if is_future and not RegExpUtility.exact_match(self.config.future_regex, after_str, trim=True). \
-                            get_groups(Constants.WITHIN_GROUP_NAME):
+                    if is_future and not RegExpUtility.exact_match(
+                        self.config.future_regex, after_str, trim=True
+                    ).get_groups(Constants.WITHIN_GROUP_NAME):
                         # for the "within" case it should start from the current day
                         begin_date = begin_date + datedelta(days=1)
                         end_date = end_date + datedelta(days=1)
@@ -2224,8 +2387,9 @@ class BaseCJKDatePeriodParser(DateTimeParser):
                         if unit_str == Constants.TIMEX_WEEK:
                             # First/last week of the year is calculated according to ISO definition
                             begin_date = DateUtils.this(DateUtils.get_first_thursday(year), DayOfWeek.MONDAY)
-                            end_date = DateUtils.this(DateUtils.get_last_thursday(year), DayOfWeek.MONDAY) \
-                                       + datedelta(days=7)
+                            end_date = DateUtils.this(DateUtils.get_last_thursday(year), DayOfWeek.MONDAY) + datedelta(
+                                days=7
+                            )
                         else:
                             begin_date = DateUtils.safe_create_from_min_value(year, 1, 1)
                             end_date = DateUtils.safe_create_from_min_value(year, 12, 31) + datedelta(days=1)
@@ -2267,9 +2431,11 @@ class BaseCJKDatePeriodParser(DateTimeParser):
                             else:
                                 return ret
 
-                        ret.timex = f'({DateTimeFormatUtil.luis_date(begin_date.year, begin_date.month, begin_date.day)},\
-                        {DateTimeFormatUtil.luis_date(end_date.year, end_date.month, end_date.day)},' \
-                                    f'P{number}{unit_str[0]})'
+                        ret.timex = (
+                            f'({DateTimeFormatUtil.luis_date(begin_date.year, begin_date.month, begin_date.day)},\
+                        {DateTimeFormatUtil.luis_date(end_date.year, end_date.month, end_date.day)},'
+                            f'P{number}{unit_str[0]})'
+                        )
                         ret.future_value = ret.past_value = [begin_date, end_date]
                         ret.success = True
                         return ret
@@ -2286,7 +2452,7 @@ class BaseCJKDatePeriodParser(DateTimeParser):
 
         if len(duration_ers) > 0:
             duration_pr = self.config.duration_parser.parse(duration_ers[0])
-            before_str = source[:duration_pr.start]
+            before_str = source[: duration_pr.start]
             after_str = source[duration_pr.start + duration_pr.length]
 
             mod_and_date = ModAndDateResult()
@@ -2299,23 +2465,27 @@ class BaseCJKDatePeriodParser(DateTimeParser):
                     return ret
 
                 if self.config.past_regex.match(before_str) or self.config.past_regex.match(after_str):
-                    mod_and_date_result = ModAndDateResult.get_mod_and_date(begin_date, end_date, reference,
-                                                                            duration_result.timex, False)
+                    mod_and_date_result = ModAndDateResult.get_mod_and_date(
+                        begin_date, end_date, reference, duration_result.timex, False
+                    )
 
-                if (RegExpUtility.exact_match(self.config.future_regex, before_str, trim=True) or
-                    RegExpUtility.exact_match(self.config.future_regex, after_str, trim=True)) \
-                        and DurationParsingUtil.is_date_duration(duration_result.timex):
+                if (
+                    RegExpUtility.exact_match(self.config.future_regex, before_str, trim=True)
+                    or RegExpUtility.exact_match(self.config.future_regex, after_str, trim=True)
+                ) and DurationParsingUtil.is_date_duration(duration_result.timex):
 
-                    mod_and_date_result = ModAndDateResult.get_mod_and_date(begin_date, end_date, reference,
-                                                                            duration_result.timex, True)
+                    mod_and_date_result = ModAndDateResult.get_mod_and_date(
+                        begin_date, end_date, reference, duration_result.timex, True
+                    )
                     begin_date = mod_and_date_result.begin_date
                     end_date = mod_and_date_result.end_date
 
                     # In GetModAndDate, this "future" resolution will add one day to beginDate/endDate,
                     # but for the "within" case it should start from the current day.
 
-                    if RegExpUtility.exact_match(self.config.future_regex, after_str, trim=True). \
-                            get_group(Constants.WITHIN_GROUP_NAME):
+                    if RegExpUtility.exact_match(self.config.future_regex, after_str, trim=True).get_group(
+                        Constants.WITHIN_GROUP_NAME
+                    ):
                         begin_date = begin_date - datedelta(days=1)
                         end_date = end_date - datedelta(days=1)
 
@@ -2331,9 +2501,11 @@ class BaseCJKDatePeriodParser(DateTimeParser):
             if (begin_date != end_date) or rest_now_sunday:
                 end_date = end_date - datedelta(days=1) if self._inclusive_end_period else end_date
 
-                ret.timex = f'({DateTimeFormatUtil.luis_date(begin_date.year, begin_date.month, begin_date.day)},' \
-                            f'{DateTimeFormatUtil.luis_date(end_date.year, end_date.month, end_date.day)},' \
-                            f'{duration_timex})'
+                ret.timex = (
+                    f'({DateTimeFormatUtil.luis_date(begin_date.year, begin_date.month, begin_date.day)},'
+                    f'{DateTimeFormatUtil.luis_date(end_date.year, end_date.month, end_date.day)},'
+                    f'{duration_timex})'
+                )
                 ret.future_value = ret.past_value = [begin_date, end_date]
                 ret.success = True
                 return ret
@@ -2444,8 +2616,9 @@ class BaseCJKDatePeriodParser(DateTimeParser):
 
         return ret
 
-    def get_week_of_month(self, cardinal_str: str, month: int, year: int, reference: datetime, no_year: bool) \
-            -> DateTimeResolutionResult:
+    def get_week_of_month(
+        self, cardinal_str: str, month: int, year: int, reference: datetime, no_year: bool
+    ) -> DateTimeResolutionResult:
         ret = DateTimeResolutionResult()
         target_monday = self.get_monday_of_target_week(cardinal_str, month, year)
 
@@ -2469,10 +2642,16 @@ class BaseCJKDatePeriodParser(DateTimeParser):
         week_num = self.get_week_number_for_month(cardinal_str)
         ret.timex = TimexUtil.generate_week_of_month_timex(year, month, week_num)
 
-        ret.future_value = [future_date, future_date + datedelta(days=Constants.WEEK_DAY_COUNT - 1)] if \
-            self._inclusive_end_period else [future_date, future_date + datedelta(days=Constants.WEEK_DAY_COUNT)]
-        ret.past_value = [past_date, past_date + datedelta(days=Constants.WEEK_DAY_COUNT - 1)] if \
-            self._inclusive_end_period else [past_date, past_date + datedelta(days=Constants.WEEK_DAY_COUNT)]
+        ret.future_value = (
+            [future_date, future_date + datedelta(days=Constants.WEEK_DAY_COUNT - 1)]
+            if self._inclusive_end_period
+            else [future_date, future_date + datedelta(days=Constants.WEEK_DAY_COUNT)]
+        )
+        ret.past_value = (
+            [past_date, past_date + datedelta(days=Constants.WEEK_DAY_COUNT - 1)]
+            if self._inclusive_end_period
+            else [past_date, past_date + datedelta(days=Constants.WEEK_DAY_COUNT)]
+        )
         ret.success = True
 
         return ret
@@ -2486,8 +2665,9 @@ class BaseCJKDatePeriodParser(DateTimeParser):
             cardinal = self.get_week_number_for_month(cardinal_str)
             first_thursday = DateUtils.get_first_thursday(year, month)
 
-            result = DateUtils.this(first_thursday, DayOfWeek.MONDAY) + \
-                     datedelta(days=Constants.WEEK_DAY_COUNT * (cardinal - 1))
+            result = DateUtils.this(first_thursday, DayOfWeek.MONDAY) + datedelta(
+                days=Constants.WEEK_DAY_COUNT * (cardinal - 1)
+            )
 
         return result
 
@@ -2531,17 +2711,22 @@ class BaseCJKDatePeriodParser(DateTimeParser):
             ret.timex = TimexUtil.generate_week_timex(target_week_monday)
         else:
             week_num = self.config.cardinal_map[cardinal_str]
-            target_week_monday = DateUtils.this(DateUtils.get_last_thursday(year), DayOfWeek.MONDAY) + \
-                                 datedelta(days=Constants.WEEK_DAY_COUNT * (week_num - 1))
+            target_week_monday = DateUtils.this(DateUtils.get_last_thursday(year), DayOfWeek.MONDAY) + datedelta(
+                days=Constants.WEEK_DAY_COUNT * (week_num - 1)
+            )
             ret.timex = TimexUtil.generate_week_of_year_timex(year, week_num)
 
-        ret.future_value = [target_week_monday, target_week_monday + datedelta(days=Constants.WEEK_DAY_COUNT - 1)] \
-            if self._inclusive_end_period else \
-            [target_week_monday, target_week_monday + datedelta(days=Constants.WEEK_DAY_COUNT)]
+        ret.future_value = (
+            [target_week_monday, target_week_monday + datedelta(days=Constants.WEEK_DAY_COUNT - 1)]
+            if self._inclusive_end_period
+            else [target_week_monday, target_week_monday + datedelta(days=Constants.WEEK_DAY_COUNT)]
+        )
 
-        ret.past_value = [target_week_monday, target_week_monday + datedelta(days=Constants.WEEK_DAY_COUNT - 1)] \
-            if self._inclusive_end_period else \
-            [target_week_monday, target_week_monday + datedelta(days=Constants.WEEK_DAY_COUNT)]
+        ret.past_value = (
+            [target_week_monday, target_week_monday + datedelta(days=Constants.WEEK_DAY_COUNT - 1)]
+            if self._inclusive_end_period
+            else [target_week_monday, target_week_monday + datedelta(days=Constants.WEEK_DAY_COUNT)]
+        )
 
         ret.success = True
 
@@ -2565,14 +2750,14 @@ class BaseCJKDatePeriodParser(DateTimeParser):
                 has_year = True
 
                 if self.config.is_year_only(year_num):
-                    year_num = year_num[:len(year_num) - 1]
+                    year_num = year_num[: len(year_num) - 1]
                 year = int(year_num)
 
             elif year_cjk:
                 has_year = True
 
                 if self.config.is_year_only(year_cjk):
-                    year_cjk = year_cjk[:len(year_cjk) - 1]
+                    year_cjk = year_cjk[: len(year_cjk) - 1]
                 year = self.convert_cjk_to_integer(year_cjk)
 
             elif year_rel:
@@ -2636,13 +2821,13 @@ class BaseCJKDatePeriodParser(DateTimeParser):
 
         if year_num:
             if self.config.is_year_only(year_num):
-                year_num = year_num[:len(year_num) - 1]
+                year_num = year_num[: len(year_num) - 1]
 
             year = int(year_num)
 
         elif year_cjk:
             if self.config.is_year_only(year_cjk):
-                year_cjk = year_cjk[:len(year_cjk) - 1]
+                year_cjk = year_cjk[: len(year_cjk) - 1]
 
             year = self.convert_cjk_to_integer(year_cjk)
 
@@ -2662,24 +2847,30 @@ class BaseCJKDatePeriodParser(DateTimeParser):
         quarter_num = self.config.cardinal_map[cardinal_str]
 
         if year_num or year_rel:
-            begin_date = DateUtils.safe_create_from_value(DateUtils.min_value, year,
-                                                          ((quarter_num - 1) * Constants.TRIMESTER_MONTH_COUNT) + 1, 1)
-            end_date = DateUtils.safe_create_from_value(DateUtils.min_value, year, quarter_num *
-                                                        Constants.TRIMESTER_MONTH_COUNT, 1) + datedelta(months=1)
+            begin_date = DateUtils.safe_create_from_value(
+                DateUtils.min_value, year, ((quarter_num - 1) * Constants.TRIMESTER_MONTH_COUNT) + 1, 1
+            )
+            end_date = DateUtils.safe_create_from_value(
+                DateUtils.min_value, year, quarter_num * Constants.TRIMESTER_MONTH_COUNT, 1
+            ) + datedelta(months=1)
             ret.future_value = ret.past_value = [begin_date, end_date]
             ret.timex = TimexUtil.generate_date_period_timex(begin_date, end_date, 2)
             ret.success = True
         else:
-            begin_date = DateUtils.safe_create_from_value(DateUtils.min_value, year,
-                                                          ((quarter_num - 1) * Constants.TRIMESTER_MONTH_COUNT) + 1, 1)
-            end_date = DateUtils.safe_create_from_value(DateUtils.min_value, year, quarter_num *
-                                                        Constants.TRIMESTER_MONTH_COUNT, 1) + datedelta(months=1)
+            begin_date = DateUtils.safe_create_from_value(
+                DateUtils.min_value, year, ((quarter_num - 1) * Constants.TRIMESTER_MONTH_COUNT) + 1, 1
+            )
+            end_date = DateUtils.safe_create_from_value(
+                DateUtils.min_value, year, quarter_num * Constants.TRIMESTER_MONTH_COUNT, 1
+            ) + datedelta(months=1)
             ret.past_value = [begin_date, end_date]
             ret.timex = TimexUtil.generate_date_period_timex(begin_date, end_date, 2)
-            begin_date = DateUtils.safe_create_from_value(DateUtils.min_value, year + 1,
-                                                          ((quarter_num - 1) * Constants.TRIMESTER_MONTH_COUNT) + 1, 1)
-            end_date = DateUtils.safe_create_from_value(DateUtils.min_value, year + 1, quarter_num *
-                                                        Constants.TRIMESTER_MONTH_COUNT, 1) + datedelta(months=1)
+            begin_date = DateUtils.safe_create_from_value(
+                DateUtils.min_value, year + 1, ((quarter_num - 1) * Constants.TRIMESTER_MONTH_COUNT) + 1, 1
+            )
+            end_date = DateUtils.safe_create_from_value(
+                DateUtils.min_value, year + 1, quarter_num * Constants.TRIMESTER_MONTH_COUNT, 1
+            ) + datedelta(months=1)
             ret.future_value = [begin_date, end_date]
 
         ret.success = True
@@ -2748,10 +2939,14 @@ class BaseCJKDatePeriodParser(DateTimeParser):
         if not input_century and start_date >= reference and not first_two_num_of_year:
             past_year -= 100
 
-        ret.future_value = [DateUtils.safe_create_from_value(DateUtils.min_value, future_year, 1, 1),
-                            DateUtils.safe_create_from_value(DateUtils.min_value, future_year + decade_last_year, 1, 1)]
-        ret.past_value = [DateUtils.safe_create_from_value(DateUtils.min_value, past_year, 1, 1),
-                          DateUtils.safe_create_from_value(DateUtils.min_value, past_year + decade_last_year, 1, 1)]
+        ret.future_value = [
+            DateUtils.safe_create_from_value(DateUtils.min_value, future_year, 1, 1),
+            DateUtils.safe_create_from_value(DateUtils.min_value, future_year + decade_last_year, 1, 1),
+        ]
+        ret.past_value = [
+            DateUtils.safe_create_from_value(DateUtils.min_value, past_year, 1, 1),
+            DateUtils.safe_create_from_value(DateUtils.min_value, past_year + decade_last_year, 1, 1),
+        ]
         ret.success = True
 
         return ret
@@ -2820,8 +3015,9 @@ class BaseCJKDatePeriodParser(DateTimeParser):
                     if start_date != DateUtils.min_value():
                         duration_timex = duration.value.timex
 
-                        ret.timex = TimexUtil.generate_date_period_timex_with_duration(start_date, end_date,
-                                                                                       duration_timex)
+                        ret.timex = TimexUtil.generate_date_period_timex_with_duration(
+                            start_date, end_date, duration_timex
+                        )
                         ret.future_value = ret.past_value = [start_date, end_date]
                         ret.success = True
 
@@ -2856,11 +3052,13 @@ class BaseCJKDatePeriodParser(DateTimeParser):
             is_ambiguous_end = False
 
             ambiguous_res = DateTimeResolutionResult()
-            date_context = self.get_year_context(match.get_group(TimeTypeConstants.START).value,
-                                                 match.get_group(TimeTypeConstants.END).value, source)
+            date_context = self.get_year_context(
+                match.get_group(TimeTypeConstants.START).value, match.get_group(TimeTypeConstants.END).value, source
+            )
 
-            start_resolution = self.parse_single_time_point(match.get_group(TimeTypeConstants.START).value,
-                                                            reference, date_context)
+            start_resolution = self.parse_single_time_point(
+                match.get_group(TimeTypeConstants.START).value, reference, date_context
+            )
 
             if start_resolution.success:
                 future_begin = start_resolution.future_value
@@ -2868,8 +3066,9 @@ class BaseCJKDatePeriodParser(DateTimeParser):
                 is_specific_date = True
 
             if not start_resolution.success:
-                start_resolution = self.parse_base_date_period(match.get_group(TimeTypeConstants.START).value,
-                                                               reference, date_context)
+                start_resolution = self.parse_base_date_period(
+                    match.get_group(TimeTypeConstants.START).value, reference, date_context
+                )
 
                 if start_resolution.success:
                     future_begin = self.shift_resolution(start_resolution.future_value, match, start=True)
@@ -2879,8 +3078,9 @@ class BaseCJKDatePeriodParser(DateTimeParser):
                         is_start_by_week = True
 
             if start_resolution.success:
-                end_resolution = self.parse_single_time_point(match.get_group(TimeTypeConstants.END).value,
-                                                              reference, date_context)
+                end_resolution = self.parse_single_time_point(
+                    match.get_group(TimeTypeConstants.END).value, reference, date_context
+                )
 
                 if end_resolution.success:
                     future_end = end_resolution.future_value
@@ -2888,8 +3088,9 @@ class BaseCJKDatePeriodParser(DateTimeParser):
                     is_specific_date = True
 
                 if not end_resolution.success or is_ambiguous_end:
-                    end_resolution = self.parse_base_date_period(match.get_group(TimeTypeConstants.END).value,
-                                                                 reference, date_context)
+                    end_resolution = self.parse_base_date_period(
+                        match.get_group(TimeTypeConstants.END).value, reference, date_context
+                    )
 
                     if end_resolution.success:
                         # When the end group contains modifiers such as 'end of', 'middle of', the end resolution
@@ -2941,12 +3142,14 @@ class BaseCJKDatePeriodParser(DateTimeParser):
                         # If both begin/end are date ranges in "Week", the Timex should be ByWeek
                         date_period_timex_type = 1
 
-                    has_year = not start_resolution.timex.startswith(Constants.TIMEX_FUZZY_YEAR) or \
-                               not end_resolution.timex.startswith(Constants.TIMEX_FUZZY_YEAR)
+                    has_year = not start_resolution.timex.startswith(
+                        Constants.TIMEX_FUZZY_YEAR
+                    ) or not end_resolution.timex.startswith(Constants.TIMEX_FUZZY_YEAR)
 
                     # If the year is not specified, the combined range timex will use fuzzy years.
-                    ret.timex = TimexUtil.generate_date_period_timex(future_begin, future_end, date_period_timex_type,
-                                                                     past_begin, past_end, has_year)
+                    ret.timex = TimexUtil.generate_date_period_timex(
+                        future_begin, future_end, date_period_timex_type, past_begin, past_end, has_year
+                    )
                     ret.future_value = [future_begin, future_end]
                     ret.past_value = [past_begin, past_end]
                     ret.success = True

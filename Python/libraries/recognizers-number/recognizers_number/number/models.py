@@ -2,15 +2,15 @@
 #  Licensed under the MIT License.
 
 from abc import abstractmethod
-from typing import List, Optional
-from enum import Enum
 from collections import namedtuple
+from enum import Enum
+from typing import List, Optional
 
+from recognizers_number.number.constants import Constants
 from recognizers_text import Model, ModelResult
 from recognizers_text.extractor import Extractor, ExtractResult
 from recognizers_text.parser import Parser
 from recognizers_text.utilities import QueryProcessor
-from recognizers_number.number.constants import Constants
 
 
 class NumberMode(Enum):
@@ -20,24 +20,19 @@ class NumberMode(Enum):
     Unit = 3
 
 
-LongFormatType = namedtuple(
-    'LongFormatType', ['thousands_mark', 'decimals_mark'])
+LongFormatType = namedtuple('LongFormatType', ['thousands_mark', 'decimals_mark'])
 
 
 class LongFormatMode:
     INTEGER_COMMA = LongFormatType(thousands_mark=',', decimals_mark=None)
     INTEGER_DOT = LongFormatType(thousands_mark='.', decimals_mark=None)
     INTEGER_BLANK = LongFormatType(thousands_mark=' ', decimals_mark=None)
-    INTEGER_NO_BREAK_SPACE = LongFormatType(
-        thousands_mark=Constants.NO_BREAK_SPACE, decimals_mark=None)
+    INTEGER_NO_BREAK_SPACE = LongFormatType(thousands_mark=Constants.NO_BREAK_SPACE, decimals_mark=None)
     DOUBLE_COMMA_DOT = LongFormatType(thousands_mark=',', decimals_mark='.')
-    DOUBLE_NO_BREAK_SPACE_DOT = LongFormatType(
-        thousands_mark=Constants.NO_BREAK_SPACE, decimals_mark='.')
+    DOUBLE_NO_BREAK_SPACE_DOT = LongFormatType(thousands_mark=Constants.NO_BREAK_SPACE, decimals_mark='.')
     DOUBLE_DOT_COMMA = LongFormatType(thousands_mark='.', decimals_mark=',')
-    DOUBLE_NO_BREAK_SPACE_COMMA = LongFormatType(
-        thousands_mark=Constants.NO_BREAK_SPACE, decimals_mark=',')
-    DOUBLE_NO_BREAK_SPACE_DOT = LongFormatType(
-        thousands_mark=Constants.NO_BREAK_SPACE, decimals_mark='.')
+    DOUBLE_NO_BREAK_SPACE_COMMA = LongFormatType(thousands_mark=Constants.NO_BREAK_SPACE, decimals_mark=',')
+    DOUBLE_NO_BREAK_SPACE_DOT = LongFormatType(thousands_mark=Constants.NO_BREAK_SPACE, decimals_mark='.')
     DOUBLE_NUM_BLANK_COMMA = LongFormatType(thousands_mark=' ', decimals_mark=',')
     DOUBLE_NUM_BLANK_DOT = LongFormatType(thousands_mark=' ', decimals_mark='.')
 

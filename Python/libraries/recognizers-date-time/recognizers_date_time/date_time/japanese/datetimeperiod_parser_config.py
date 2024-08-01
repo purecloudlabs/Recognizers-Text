@@ -1,25 +1,29 @@
 from typing import Dict, Pattern
 
-from recognizers_text.utilities import RegExpUtility
-from recognizers_text import Parser, Extractor
-from recognizers_number.number.japanese.extractors import JapaneseCardinalExtractor
-from recognizers_number.number import AgnosticNumberParserFactory, JapaneseNumberParserConfiguration, ParserType
+from recognizers_date_time.date_time.CJK import (
+    CJKCommonDateTimeParserConfiguration,
+    CJKDateTimePeriodParserConfiguration,
+    MatchedTimeRegexAndSwift,
+)
 from recognizers_date_time.date_time.constants import Constants
-from recognizers_date_time.date_time.parsers import DateTimeParser
 from recognizers_date_time.date_time.extractors import DateTimeExtractor
-from recognizers_date_time.date_time.CJK import CJKDateTimePeriodParserConfiguration, \
-    CJKCommonDateTimeParserConfiguration, MatchedTimeRegexAndSwift
-from recognizers_date_time.resources.japanese_date_time import JapaneseDateTime
-from recognizers_date_time.date_time.japanese.datetimeperiod_extractor_config import \
-    JapaneseDateTimePeriodExtractorConfiguration
+from recognizers_date_time.date_time.japanese.datetimeperiod_extractor_config import (
+    JapaneseDateTimePeriodExtractorConfiguration,
+)
+from recognizers_date_time.date_time.parsers import DateTimeParser
 from recognizers_date_time.date_time.utilities import TimexUtil
+from recognizers_date_time.resources.japanese_date_time import JapaneseDateTime
+from recognizers_number.number import AgnosticNumberParserFactory, JapaneseNumberParserConfiguration, ParserType
+from recognizers_number.number.japanese.extractors import JapaneseCardinalExtractor
+from recognizers_text import Extractor, Parser
+from recognizers_text.utilities import RegExpUtility
 
 
 class JapaneseDateTimePeriodParserConfiguration(CJKDateTimePeriodParserConfiguration):
     @property
     def mo_regex(self) -> Pattern:
         return self._mo_regex
-    
+
     @property
     def mi_regex(self) -> Pattern:
         return self._mi_regex
@@ -137,7 +141,8 @@ class JapaneseDateTimePeriodParserConfiguration(CJKDateTimePeriodParserConfigura
         super().__init__()
         self._cardinal_extractor = JapaneseCardinalExtractor()
         self._cardinal_parser = AgnosticNumberParserFactory.get_parser(
-                ParserType.NUMBER, JapaneseNumberParserConfiguration())
+            ParserType.NUMBER, JapaneseNumberParserConfiguration()
+        )
 
         self._date_extractor = config.date_extractor
         self._time_extractor = config.time_extractor

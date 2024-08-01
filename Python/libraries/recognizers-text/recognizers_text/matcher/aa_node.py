@@ -7,9 +7,9 @@ from .node import Node
 class AaNode(Node):
 
     def __init__(self, c: [] = [], depth: int = 0, parent=[]):
-        self.__word = c,
-        self.__depth = depth,
-        self.__parent = parent,
+        self.__word = (c,)
+        self.__depth = (depth,)
+        self.__parent = (parent,)
         self.__fail = 0
 
     def __getitem__(self, item):

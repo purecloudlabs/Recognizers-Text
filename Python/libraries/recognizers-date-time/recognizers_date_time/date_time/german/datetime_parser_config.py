@@ -1,17 +1,18 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from typing import Pattern, Dict
+from typing import Dict, Pattern
 
-from recognizers_text.utilities import RegExpUtility
 from recognizers_number.number.extractors import BaseNumberExtractor
 from recognizers_number.number.parsers import BaseNumberParser
+from recognizers_text.utilities import RegExpUtility
+
 from ...resources.german_date_time import GermanDateTime
+from ..base_configs import BaseDateParserConfiguration
+from ..base_datetime import DateTimeParserConfiguration, MatchedTimex
 from ..extractors import DateTimeExtractor
 from ..parsers import DateTimeParser
 from ..utilities import DateTimeUtilityConfiguration
-from ..base_configs import BaseDateParserConfiguration
-from ..base_datetime import DateTimeParserConfiguration, MatchedTimex
 
 
 class GermanDateTimeParserConfiguration(DateTimeParserConfiguration):
@@ -106,29 +107,22 @@ class GermanDateTimeParserConfiguration(DateTimeParserConfiguration):
     def __init__(self, config: BaseDateParserConfiguration):
         self._token_before_date = GermanDateTime.TokenBeforeDate
         self._token_before_time = GermanDateTime.TokenBeforeTime
-        self._now_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.NowRegex)
-        self._am_time_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.AMTimeRegex)
-        self._pm_time_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.PMTimeRegex)
+        self._now_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.NowRegex)
+        self._am_time_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.AMTimeRegex)
+        self._pm_time_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.PMTimeRegex)
         self._simple_time_of_today_after_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.SimpleTimeOfTodayAfterRegex)
+            GermanDateTime.SimpleTimeOfTodayAfterRegex
+        )
         self._simple_time_of_today_before_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.SimpleTimeOfTodayBeforeRegex)
-        self._specific_time_of_day_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.SpecificTimeOfDayRegex)
-        self._specific_end_of_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.SpecificEndOfRegex)
-        self._unspecific_end_of_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.UnspecificEndOfRegex)
-        self._unit_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.TimeUnitRegex)
+            GermanDateTime.SimpleTimeOfTodayBeforeRegex
+        )
+        self._specific_time_of_day_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.SpecificTimeOfDayRegex)
+        self._specific_end_of_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.SpecificEndOfRegex)
+        self._unspecific_end_of_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.UnspecificEndOfRegex)
+        self._unit_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.TimeUnitRegex)
 
-        self.next_prefix_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.NextPrefixRegex)
-        self.previous_prefix_regex = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.PreviousPrefixRegex)
+        self.next_prefix_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.NextPrefixRegex)
+        self.previous_prefix_regex = RegExpUtility.get_safe_reg_exp(GermanDateTime.PreviousPrefixRegex)
 
         self._date_extractor = config.date_extractor
         self._time_extractor = config.time_extractor
@@ -150,26 +144,19 @@ class GermanDateTimeParserConfiguration(DateTimeParserConfiguration):
         timex = ''
 
         if (
-            source.endswith('jetzt') or
-            source.endswith('momentan') or
-            source.endswith('gerade') or
-            source.endswith('aktuell') or
-            source.endswith('aktuelle') or
-            source.endswith('im moment') or
-            source.endswith('in diesem moment') or
-            source.endswith('derzeit')
+            source.endswith('jetzt')
+            or source.endswith('momentan')
+            or source.endswith('gerade')
+            or source.endswith('aktuell')
+            or source.endswith('aktuelle')
+            or source.endswith('im moment')
+            or source.endswith('in diesem moment')
+            or source.endswith('derzeit')
         ):
             timex = 'PRESENT_REF'
-        elif (
-            source == 'neulich' or
-            source == 'vorher' or
-            source == 'vorhin'
-        ):
+        elif source == 'neulich' or source == 'vorher' or source == 'vorhin':
             timex = 'PAST_REF'
-        elif (
-                source == 'so früh wie möglich' or
-                source == 'asap'
-        ):
+        elif source == 'so früh wie möglich' or source == 'asap':
             timex = 'FUTURE_REF'
         else:
             return MatchedTimex(False, None)

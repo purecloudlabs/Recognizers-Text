@@ -1,10 +1,10 @@
-from typing import Pattern, Dict
+from typing import Dict, Pattern
 
-from recognizers_date_time.date_time.data_structures import PeriodType
-from recognizers_text.utilities import RegExpUtility, DefinitionLoader
-from recognizers_date_time.resources.japanese_date_time import JapaneseDateTime
 from recognizers_date_time.date_time.CJK.base_timeperiod import CJKTimePeriodExtractorConfiguration
+from recognizers_date_time.date_time.data_structures import PeriodType
 from recognizers_date_time.date_time.japanese.time_extractor_config import JapaneseTimeExtractorConfiguration
+from recognizers_date_time.resources.japanese_date_time import JapaneseDateTime
+from recognizers_text.utilities import DefinitionLoader, RegExpUtility
 
 
 class JapaneseTimePeriodExtractorConfiguration(CJKTimePeriodExtractorConfiguration):
@@ -76,8 +76,5 @@ class JapaneseTimePeriodExtractorConfiguration(CJKTimePeriodExtractorConfigurati
         self._regexes: Dict[Pattern, PeriodType] = {
             RegExpUtility.get_safe_reg_exp(JapaneseDateTime.TimePeriodRegexes1): PeriodType.FullTime,
             RegExpUtility.get_safe_reg_exp(JapaneseDateTime.TimePeriodRegexes2): PeriodType.ShortTime,
-            RegExpUtility.get_safe_reg_exp(JapaneseDateTime.TimeOfDayRegex): PeriodType.ShortTime
+            RegExpUtility.get_safe_reg_exp(JapaneseDateTime.TimeOfDayRegex): PeriodType.ShortTime,
         }
-
-
-

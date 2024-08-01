@@ -3,8 +3,8 @@
 
 from abc import abstractmethod
 from typing import List
-from recognizers_text.extractor import ExtractResult
-from recognizers_text.extractor import Extractor
+
+from recognizers_text.extractor import Extractor, ExtractResult
 
 
 class DateTimeExtractor(Extractor):

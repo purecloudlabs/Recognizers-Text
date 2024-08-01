@@ -3,9 +3,10 @@
 
 from typing import Pattern
 
-from recognizers_text.utilities import RegExpUtility
 from recognizers_number.number.extractors import BaseNumberExtractor
 from recognizers_number.number.french.extractors import FrenchCardinalExtractor
+from recognizers_text.utilities import RegExpUtility
+
 from ...resources.french_date_time import FrenchDateTime
 from ..base_duration import DurationExtractorConfiguration
 
@@ -101,43 +102,27 @@ class FrenchDurationExtractorConfiguration(DurationExtractorConfiguration):
         self._check_both_before_after = FrenchDateTime.CheckBothBeforeAfter
         self._inexact_number_regex = RegExpUtility.get_safe_reg_exp(FrenchDateTime.InexactNumberRegex)
         self._conjunction_regex = RegExpUtility.get_safe_reg_exp(FrenchDateTime.ConjunctionRegex)
-        self._all_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            FrenchDateTime.AllRegex)
-        self._half_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            FrenchDateTime.HalfRegex)
-        self._followed_unit: Pattern = RegExpUtility.get_safe_reg_exp(
-            FrenchDateTime.DurationFollowedUnit)
+        self._all_regex: Pattern = RegExpUtility.get_safe_reg_exp(FrenchDateTime.AllRegex)
+        self._half_regex: Pattern = RegExpUtility.get_safe_reg_exp(FrenchDateTime.HalfRegex)
+        self._followed_unit: Pattern = RegExpUtility.get_safe_reg_exp(FrenchDateTime.DurationFollowedUnit)
         self._number_combined_with_unit: Pattern = RegExpUtility.get_safe_reg_exp(
-            FrenchDateTime.NumberCombinedWithDurationUnit)
-        self._an_unit_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            FrenchDateTime.AnUnitRegex)
-        self._inexact_number_unit_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            FrenchDateTime.InexactNumberUnitRegex)
-        self._suffix_and_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            FrenchDateTime.SuffixAndRegex)
-        self._relative_duration_unit_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            FrenchDateTime.RelativeDurationUnitRegex)
-        self._more_than_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            FrenchDateTime.MoreThanRegex)
-        self._less_than_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            FrenchDateTime.LessThanOneHour)
-        self._cardinal_extractor: BaseNumberExtractor = FrenchCardinalExtractor()
-        self._during_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            FrenchDateTime.DuringRegex
+            FrenchDateTime.NumberCombinedWithDurationUnit
         )
+        self._an_unit_regex: Pattern = RegExpUtility.get_safe_reg_exp(FrenchDateTime.AnUnitRegex)
+        self._inexact_number_unit_regex: Pattern = RegExpUtility.get_safe_reg_exp(FrenchDateTime.InexactNumberUnitRegex)
+        self._suffix_and_regex: Pattern = RegExpUtility.get_safe_reg_exp(FrenchDateTime.SuffixAndRegex)
+        self._relative_duration_unit_regex: Pattern = RegExpUtility.get_safe_reg_exp(
+            FrenchDateTime.RelativeDurationUnitRegex
+        )
+        self._more_than_regex: Pattern = RegExpUtility.get_safe_reg_exp(FrenchDateTime.MoreThanRegex)
+        self._less_than_regex: Pattern = RegExpUtility.get_safe_reg_exp(FrenchDateTime.LessThanOneHour)
+        self._cardinal_extractor: BaseNumberExtractor = FrenchCardinalExtractor()
+        self._during_regex: Pattern = RegExpUtility.get_safe_reg_exp(FrenchDateTime.DuringRegex)
         self._unit_map = FrenchDateTime.UnitMap
         self._unit_value_map = FrenchDateTime.UnitValueMap
-        self._duration_unit_regex = RegExpUtility.get_safe_reg_exp(
-            FrenchDateTime.DurationUnitRegex
-        )
-        self._duration_connector_regex = RegExpUtility.get_safe_reg_exp(
-            FrenchDateTime.DurationConnectorRegex
-        )
-        self._more_than_regex = RegExpUtility.get_safe_reg_exp(
-            FrenchDateTime.MoreThanRegex
-        )
-        self._less_than_regex = RegExpUtility.get_safe_reg_exp(
-            FrenchDateTime.LessThanRegex
-        )
+        self._duration_unit_regex = RegExpUtility.get_safe_reg_exp(FrenchDateTime.DurationUnitRegex)
+        self._duration_connector_regex = RegExpUtility.get_safe_reg_exp(FrenchDateTime.DurationConnectorRegex)
+        self._more_than_regex = RegExpUtility.get_safe_reg_exp(FrenchDateTime.MoreThanRegex)
+        self._less_than_regex = RegExpUtility.get_safe_reg_exp(FrenchDateTime.LessThanRegex)
         self._check_both_before_after = FrenchDateTime.CheckBothBeforeAfter
         self._special_number_unit_regex = None

@@ -3,7 +3,7 @@
 
 import os
 
-from setuptools import setup, find_packages
+from setuptools import find_packages, setup
 
 
 def read(fname):
@@ -11,7 +11,7 @@ def read(fname):
 
 
 NAME = 'datatypes_timex_expression_genesys'
-VERSION = '1.1.32'
+VERSION = '1.1.34'
 REQUIRES = []
 
 setup(
@@ -32,5 +32,5 @@ setup(
         'Operating System :: OS Independent',
         'Development Status :: 3 - Alpha',
         'Topic :: Scientific/Engineering :: Artificial Intelligence',
-    ]
+    ],
 )

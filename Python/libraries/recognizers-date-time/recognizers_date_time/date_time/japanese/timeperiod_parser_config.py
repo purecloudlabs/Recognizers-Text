@@ -1,9 +1,9 @@
+from recognizers_date_time.date_time.CJK.base_configs import CJKCommonDateTimeParserConfiguration
+from recognizers_date_time.date_time.CJK.base_timeperiod import CJKTimePeriodParserConfiguration
 from recognizers_date_time.date_time.constants import Constants
 from recognizers_date_time.date_time.extractors import DateTimeExtractor
-from recognizers_date_time.date_time.parsers import DateTimeParser
-from recognizers_date_time.date_time.CJK.base_timeperiod import CJKTimePeriodParserConfiguration
-from recognizers_date_time.date_time.CJK.base_configs import CJKCommonDateTimeParserConfiguration
 from recognizers_date_time.date_time.japanese.time_extractor_config import JapaneseTimeExtractorConfiguration
+from recognizers_date_time.date_time.parsers import DateTimeParser
 from recognizers_date_time.date_time.utilities import TimeFunctions, TimexUtil
 from recognizers_date_time.resources.japanese_date_time import JapaneseDateTime
 
@@ -29,7 +29,7 @@ class JapaneseTimePeriodParserConfiguration(CJKTimePeriodParserConfiguration):
         self._time_func = TimeFunctions(
             number_dictionary=JapaneseDateTime.TimeNumberDictionary,
             low_bound_desc=JapaneseDateTime.TimeLowBoundDesc,
-            day_desc_regex=JapaneseTimeExtractorConfiguration().day_desc_regex
+            day_desc_regex=JapaneseTimeExtractorConfiguration().day_desc_regex,
         )
 
     def get_matched_timex_range(self, text: str) -> dict:
@@ -56,8 +56,13 @@ class JapaneseTimePeriodParserConfiguration(CJKTimePeriodParserConfiguration):
             timex = None
             matched = False
 
-            return {'matched': matched, 'timex': timex, 'begin_hour': begin_hour,
-                    'end_hour': end_hour, 'end_min': end_min}
+            return {
+                'matched': matched,
+                'timex': timex,
+                'begin_hour': begin_hour,
+                'end_hour': end_hour,
+                'end_min': end_min,
+            }
 
         parse_result = TimexUtil.parse_time_of_day(time_of_day)
         timex = parse_result.timex
@@ -76,5 +81,4 @@ class JapaneseTimePeriodParserConfiguration(CJKTimePeriodParserConfiguration):
             begin_hour = begin_hour + Constants.HALF_MID_DAY_DURATION_HOUR_COUNT
 
         matched = True
-        return {'matched': matched, 'timex': timex, 'begin_hour': begin_hour,
-                'end_hour': end_hour, 'end_min': end_min}
+        return {'matched': matched, 'timex': timex, 'begin_hour': begin_hour, 'end_hour': end_hour, 'end_min': end_min}

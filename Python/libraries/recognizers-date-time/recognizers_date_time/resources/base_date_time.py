@@ -10,77 +10,181 @@
 # ------------------------------------------------------------------------------
 
 # pylint: disable=line-too-long
+from typing import Dict, List
+
+
+class BaseDateTimeResource:
+    OfYearRegex: str
+    WeekWithWeekDayRangeRegex: str
+    LaterEarlyPeriodRegex: str
+    AllHalfYearRegex: str
+    ComplexDatePeriodRegex: str
+    RestOfDateRegex: str
+    WhichWeekRegex: str
+    NextPrefixRegex: str
+    MonthSuffixRegex: str
+    RelativeMonthRegex: str
+    WrittenMonthRegex: str
+    WeekDayRegex: str
+    DayRegex: str
+    RangeConnectorRegex: str
+    TimeUnitRegex: str
+    FirstLastRegex: str
+    BetweenTokenRegex: str
+    PastSuffixRegex: str
+    WeekOfMonthRegex: str
+    CheckBothBeforeAfter: bool
+    DurationDateRestrictions: List[str]
+    SimpleCasesRegex: str
+    BetweenRegex: str
+    OneWordPeriodRegex: str
+    MonthWithYear: str
+    MonthNumWithYear: str
+    YearRegex: str
+    WeekOfMonthRegex: str
+    WeekOfYearRegex: str
+    MonthFrontBetweenRegex: str
+    MonthFrontSimpleCasesRegex: str
+    QuarterRegex: str
+    QuarterRegexYearFront: str
+    AllHalfYearRegex: str
+    SeasonRegex: str
+    WhichWeekRegex: str
+    RestOfDateRegex: str
+    LaterEarlyPeriodRegex: str
+    WeekWithWeekDayRangeRegex: str
+    YearPlusNumberRegex: str
+    DecadeWithCenturyRegex: str
+    RelativeDecadeRegex: str
+    ReferenceDatePeriodRegex: str
+    YearRegex: str
+    TillRegex: str
+    FollowedDateUnit: str
+    NumberCombinedWithDateUnit: str
+    PreviousPrefixRegex: str
+    NextPrefixRegex: str
+    WeekOfRegex: str
+    MonthOfRegex: str
+    DateUnitRegex: str
+    WithinNextPrefixRegex: str
+    InConnectorRegex: str
+    RangeUnitRegex: str
+    FromRegex: str
+    BeforeRegex: str
+    NowRegex: str
+    FutureSuffixRegex: str
+    AgoRegex: str
+    LaterRegex: str
+    LessThanRegex: str
+    MoreThanRegex: str
+    YearPeriodRegex: str
+    MonthNumRegex: str
+    CenturySuffixRegex: str
+    DecadeWithCenturyRegex: str
+    PreviousPrefixRegex: str
+    TimeUnitRegex: str
+    SinceYearSuffixRegex: str
+    AmDescRegex: str
+    PmDescRegex: str
+    AmPmDescRegex: str
+    CommonDatePrefixRegex: str
+    RangePrefixRegex: str
+    DayOfWeek: Dict[str, int]
+    MonthOfYear: Dict[str, int]
+    YearSuffix: str
+    MonthEnd: str
+    OfMonth: str
+    WeekDayEnd: str
+    WeekDayStart: str
+    WeekDayAndDayOfMonthRegex: str
+    WeekDayAndDayRegex: str
+    ForTheRegex: str
+    PrefixArticleRegex: str
+    StrictRelativeRegex: str
+    RangeConnectorSymbolRegex: str
+    BeforeAfterRegex: str
+    MonthRegex: str
 
 
 class BaseDateTime:
-    HourRegex = f'(?<!\\d[,.])(?<hour>2[0-4]|[0-1]?\\d)(h)?'
-    TwoDigitHourRegex = f'(?<hour>[0-1]\\d|2[0-4])(h)?'
-    MinuteRegex = f'(?<min>[0-5]\\d)(?!\\d)'
-    TwoDigitMinuteRegex = f'(?<min>[0-5]\\d)(?!\\d)'
-    DeltaMinuteRegex = f'(?<deltamin>[0-5]?\\d)'
-    SecondRegex = f'(?<sec>[0-5]?\\d)'
-    FourDigitYearRegex = f'\\b(?<![$])(?<year>((1\\d|20)\\d{{2}})|2100)(?!\\.0\\b)\\b'
-    HyphenDateRegex = f'((?<year1>[0-9]{{4}})-?(?<month1>1[0-2]|0[1-9])-?(?<day1>3[01]|0[1-9]|[12][0-9]))|((?<month2>1[0-2]|0[1-9])-?(?<day2>3[01]|0[1-9]|[12][0-9])-?(?<year2>[0-9]{{4}}))|((?<day3>3[01]|0[1-9]|[12][0-9])-?(?<month3>1[0-2]|0[1-9])-?(?<year3>[0-9]{{4}}))'
+    HourRegex = '(?<!\\d[,.])(?<hour>2[0-4]|[0-1]?\\d)(h)?'
+    TwoDigitHourRegex = '(?<hour>[0-1]\\d|2[0-4])(h)?'
+    MinuteRegex = '(?<min>[0-5]\\d)(?!\\d)'
+    TwoDigitMinuteRegex = '(?<min>[0-5]\\d)(?!\\d)'
+    DeltaMinuteRegex = '(?<deltamin>[0-5]?\\d)'
+    SecondRegex = '(?<sec>[0-5]?\\d)'
+    FourDigitYearRegex = '\\b(?<![$])(?<year>((1\\d|20)\\d{2})|2100)(?!\\.0\\b)\\b'
+    HyphenDateRegex = '((?<year1>[0-9]{4})-?(?<month1>1[0-2]|0[1-9])-?(?<day1>3[01]|0[1-9]|[12][0-9]))|((?<month2>1[0-2]|0[1-9])-?(?<day2>3[01]|0[1-9]|[12][0-9])-?(?<year2>[0-9]{4}))|((?<day3>3[01]|0[1-9]|[12][0-9])-?(?<month3>1[0-2]|0[1-9])-?(?<year3>[0-9]{4}))'
     IllegalYearRegex = f'([-])({FourDigitYearRegex})([-])'
-    InvalidDayNumberPrefix = f'(\\d[.,:]|[$£€]\\s*)$'
-    CheckDecimalRegex = f'(?![,.]\\d)'
-    RangeConnectorSymbolRegex = f'(--|-|—|——|~|–)'
-    BaseAmDescRegex = f'(am\\b|a\\s*\\.\\s*m\\s*\\.|a[\\.]?\\s*m\\b)'
-    BasePmDescRegex = f'(pm\\b|p\\s*\\.\\s*m\\s*\\.|p[\\.]?\\s*m\\b)'
-    BaseAmPmDescRegex = f'(ampm)'
-    EqualRegex = f'(?<!<|>)='
-    BracketRegex = f'^\\s*[\\)\\]]|[\\[\\(]\\s*$'
+    InvalidDayNumberPrefix = '(\\d[.,:]|[$£€]\\s*)$'
+    CheckDecimalRegex = '(?![,.]\\d)'
+    RangeConnectorSymbolRegex = '(--|-|—|——|~|–)'
+    BaseAmDescRegex = '(am\\b|a\\s*\\.\\s*m\\s*\\.|a[\\.]?\\s*m\\b)'
+    BasePmDescRegex = '(pm\\b|p\\s*\\.\\s*m\\s*\\.|p[\\.]?\\s*m\\b)'
+    BaseAmPmDescRegex = '(ampm)'
+    EqualRegex = '(?<!<|>)='
+    BracketRegex = '^\\s*[\\)\\]]|[\\[\\(]\\s*$'
     MinYearNum = '1500'
     MaxYearNum = '2100'
     MaxTwoDigitYearFutureNum = '40'
     MinTwoDigitYearPastNum = '40'
-    DayOfMonthDictionary = dict([("01", 1),
-                                 ("02", 2),
-                                 ("03", 3),
-                                 ("04", 4),
-                                 ("05", 5),
-                                 ("06", 6),
-                                 ("07", 7),
-                                 ("08", 8),
-                                 ("09", 9),
-                                 ("1", 1),
-                                 ("2", 2),
-                                 ("3", 3),
-                                 ("4", 4),
-                                 ("5", 5),
-                                 ("6", 6),
-                                 ("7", 7),
-                                 ("8", 8),
-                                 ("9", 9),
-                                 ("10", 10),
-                                 ("11", 11),
-                                 ("12", 12),
-                                 ("13", 13),
-                                 ("14", 14),
-                                 ("15", 15),
-                                 ("16", 16),
-                                 ("17", 17),
-                                 ("18", 18),
-                                 ("19", 19),
-                                 ("20", 20),
-                                 ("21", 21),
-                                 ("22", 22),
-                                 ("23", 23),
-                                 ("24", 24),
-                                 ("25", 25),
-                                 ("26", 26),
-                                 ("27", 27),
-                                 ("28", 28),
-                                 ("29", 29),
-                                 ("30", 30),
-                                 ("31", 31)])
-    VariableHolidaysTimexDictionary = dict([("fathers", "-06-WXX-7-3"),
-                                            ("mothers", "-05-WXX-7-2"),
-                                            ("thanksgiving", "-11-WXX-4-4"),
-                                            ("martinlutherking", "-01-WXX-1-3"),
-                                            ("washingtonsbirthday", "-02-WXX-1-3"),
-                                            ("canberra", "-03-WXX-1-1"),
-                                            ("labour", "-09-WXX-1-1"),
-                                            ("columbus", "-10-WXX-1-2"),
-                                            ("memorial", "-05-WXX-1-4")])
+    DayOfMonthDictionary = dict(
+        [
+            ("01", 1),
+            ("02", 2),
+            ("03", 3),
+            ("04", 4),
+            ("05", 5),
+            ("06", 6),
+            ("07", 7),
+            ("08", 8),
+            ("09", 9),
+            ("1", 1),
+            ("2", 2),
+            ("3", 3),
+            ("4", 4),
+            ("5", 5),
+            ("6", 6),
+            ("7", 7),
+            ("8", 8),
+            ("9", 9),
+            ("10", 10),
+            ("11", 11),
+            ("12", 12),
+            ("13", 13),
+            ("14", 14),
+            ("15", 15),
+            ("16", 16),
+            ("17", 17),
+            ("18", 18),
+            ("19", 19),
+            ("20", 20),
+            ("21", 21),
+            ("22", 22),
+            ("23", 23),
+            ("24", 24),
+            ("25", 25),
+            ("26", 26),
+            ("27", 27),
+            ("28", 28),
+            ("29", 29),
+            ("30", 30),
+            ("31", 31),
+        ]
+    )
+    VariableHolidaysTimexDictionary = dict(
+        [
+            ("fathers", "-06-WXX-7-3"),
+            ("mothers", "-05-WXX-7-2"),
+            ("thanksgiving", "-11-WXX-4-4"),
+            ("martinlutherking", "-01-WXX-1-3"),
+            ("washingtonsbirthday", "-02-WXX-1-3"),
+            ("canberra", "-03-WXX-1-1"),
+            ("labour", "-09-WXX-1-1"),
+            ("columbus", "-10-WXX-1-2"),
+            ("memorial", "-05-WXX-1-4"),
+        ]
+    )
+
+
 # pylint: enable=line-too-long

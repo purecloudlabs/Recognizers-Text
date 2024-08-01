@@ -1,14 +1,14 @@
-from typing import Pattern, Dict
+from typing import Dict, Pattern
 
-from recognizers_text.utilities import RegExpUtility
-from recognizers_text.extractor import Extractor
-from recognizers_date_time.resources.arabic_date_time import ArabicDateTime
+from recognizers_date_time.date_time.base_configs import BaseDateParserConfiguration, DateTimeUtilityConfiguration
+from recognizers_date_time.date_time.base_timeperiod import MatchedTimeRegex, TimePeriodParserConfiguration
+from recognizers_date_time.date_time.constants import Constants
 from recognizers_date_time.date_time.extractors import DateTimeExtractor
 from recognizers_date_time.date_time.parsers import DateTimeParser
-from recognizers_date_time.date_time.base_configs import BaseDateParserConfiguration, DateTimeUtilityConfiguration
-from recognizers_date_time.date_time.base_timeperiod import TimePeriodParserConfiguration, MatchedTimeRegex
-from recognizers_date_time.date_time.constants import Constants
 from recognizers_date_time.date_time.utilities import TimexUtil
+from recognizers_date_time.resources.arabic_date_time import ArabicDateTime
+from recognizers_text.extractor import Extractor
+from recognizers_text.utilities import RegExpUtility
 
 
 class ArabicTimePeriodParserConfiguration(TimePeriodParserConfiguration):
@@ -61,25 +61,18 @@ class ArabicTimePeriodParserConfiguration(TimePeriodParserConfiguration):
         return self._utility_configuration
 
     def __init__(self, config: BaseDateParserConfiguration):
-        self._general_ending_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.GeneralEndingRegex)
+        self._general_ending_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.GeneralEndingRegex)
         self._time_extractor = config.time_extractor
         self._time_parser = config.time_parser
         self._integer_extractor = config.integer_extractor
         self._numbers = config.numbers
         self._utility_configuration = config.utility_configuration
-        self._pure_number_from_to_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.PureNumFromTo)
-        self._pure_number_between_and_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.PureNumBetweenAnd)
-        self._specific_time_from_to_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.SpecificTimeFromTo)
-        self._specific_time_between_and_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.SpecificTimeBetweenAnd)
-        self._time_of_day_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.TimeOfDayRegex)
-        self._till_regex = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.TillRegex)
+        self._pure_number_from_to_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.PureNumFromTo)
+        self._pure_number_between_and_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.PureNumBetweenAnd)
+        self._specific_time_from_to_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.SpecificTimeFromTo)
+        self._specific_time_between_and_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.SpecificTimeBetweenAnd)
+        self._time_of_day_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.TimeOfDayRegex)
+        self._till_regex = RegExpUtility.get_safe_reg_exp(ArabicDateTime.TillRegex)
 
     def get_matched_timex_range(self, source: str) -> MatchedTimeRegex:
         trimmed_text = source.strip().lower()
@@ -107,13 +100,7 @@ class ArabicTimePeriodParserConfiguration(TimePeriodParserConfiguration):
         elif any(trimmed_text.endswith(o) for o in ArabicDateTime.MealtimeDinnerTermList):
             time_of_day = Constants.MEALTIME_DINNER
         else:
-            return MatchedTimeRegex(
-                matched=False,
-                timex='',
-                begin_hour=0,
-                end_hour=0,
-                end_min=0
-            )
+            return MatchedTimeRegex(matched=False, timex='', begin_hour=0, end_hour=0, end_min=0)
 
         parse_result = TimexUtil.parse_time_of_day(time_of_day)
         timex = parse_result.timex
@@ -121,10 +108,4 @@ class ArabicTimePeriodParserConfiguration(TimePeriodParserConfiguration):
         end_hour = parse_result.end_hour
         end_min = parse_result.end_min
 
-        return MatchedTimeRegex(
-            matched=True,
-            timex=timex,
-            begin_hour=begin_hour,
-            end_hour=end_hour,
-            end_min=end_min
-        )
+        return MatchedTimeRegex(matched=True, timex=timex, begin_hour=begin_hour, end_hour=end_hour, end_min=end_min)

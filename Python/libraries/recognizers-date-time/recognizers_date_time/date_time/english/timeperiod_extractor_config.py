@@ -3,15 +3,16 @@
 
 from typing import List, Pattern
 
-from recognizers_text.utilities import RegExpUtility
-from recognizers_text.extractor import Extractor
 from recognizers_number.number.english.extractors import EnglishIntegerExtractor
+from recognizers_text.extractor import Extractor
+from recognizers_text.utilities import RegExpUtility
+
 from ...resources.english_date_time import EnglishDateTime
-from ..extractors import DateTimeExtractor
-from ..base_timeperiod import TimePeriodExtractorConfiguration, MatchedIndex
 from ..base_time import BaseTimeExtractor
-from .time_extractor_config import EnglishTimeExtractorConfiguration
+from ..base_timeperiod import MatchedIndex, TimePeriodExtractorConfiguration
+from ..extractors import DateTimeExtractor
 from ..utilities import DateTimeOptions
+from .time_extractor_config import EnglishTimeExtractorConfiguration
 
 
 class EnglishTimePeriodExtractorConfiguration(TimePeriodExtractorConfiguration):
@@ -103,16 +104,12 @@ class EnglishTimePeriodExtractorConfiguration(TimePeriodExtractorConfiguration):
             RegExpUtility.get_safe_reg_exp(EnglishDateTime.PureNumFromTo),
             RegExpUtility.get_safe_reg_exp(EnglishDateTime.PureNumBetweenAnd),
             RegExpUtility.get_safe_reg_exp(EnglishDateTime.SpecificTimeFromTo),
-            RegExpUtility.get_safe_reg_exp(EnglishDateTime.SpecificTimeBetweenAnd)
+            RegExpUtility.get_safe_reg_exp(EnglishDateTime.SpecificTimeBetweenAnd),
         ]
-        self._till_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.TillRegex)
-        self._time_of_day_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.TimeOfDayRegex)
-        self._general_ending_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            EnglishDateTime.GeneralEndingRegex)
-        self._single_time_extractor = BaseTimeExtractor(
-            EnglishTimeExtractorConfiguration())
+        self._till_regex: Pattern = RegExpUtility.get_safe_reg_exp(EnglishDateTime.TillRegex)
+        self._time_of_day_regex: Pattern = RegExpUtility.get_safe_reg_exp(EnglishDateTime.TimeOfDayRegex)
+        self._general_ending_regex: Pattern = RegExpUtility.get_safe_reg_exp(EnglishDateTime.GeneralEndingRegex)
+        self._single_time_extractor = BaseTimeExtractor(EnglishTimeExtractorConfiguration())
         self._integer_extractor = EnglishIntegerExtractor()
         self._token_before_date = EnglishDateTime.TokenBeforeDate
         self._pure_number_regex = [EnglishDateTime.PureNumFromTo, EnglishDateTime.PureNumFromTo]

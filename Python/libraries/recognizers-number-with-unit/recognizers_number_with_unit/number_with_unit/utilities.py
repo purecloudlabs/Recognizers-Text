@@ -6,7 +6,7 @@ from typing import Dict, List, Pattern
 from recognizers_text import ExtractResult, RegExpUtility
 
 
-class DictionaryUtility():
+class DictionaryUtility:
     # Safely bind dictionary which contains several key-value pairs to the destination dictionary.
     # This function is used to bind all the prefix and suffix for units.
     @staticmethod
@@ -60,8 +60,9 @@ class Token:
 class CommonUtils:
     #  Expand patterns with 'half' suffix in CJK implementation.
     @staticmethod
-    def expand_half_suffix(source: str, result: List[ExtractResult], numbers: List[ExtractResult],
-                           half_unit_regex: Pattern) -> List[ExtractResult]:
+    def expand_half_suffix(
+        source: str, result: List[ExtractResult], numbers: List[ExtractResult], half_unit_regex: Pattern
+    ) -> List[ExtractResult]:
         if half_unit_regex and numbers:
             match: List[ExtractResult] = []
 
@@ -80,7 +81,7 @@ class CommonUtils:
                             sub_length = int(mr.start) - (start + length)
                         else:
                             sub_length = 0
-                        mid_str = source[start+length:sub_length]
+                        mid_str = source[start + length : sub_length]
                         if not mid_str and int(mr.start) - (start + length) >= 0:
                             match_suffix.append(mr)
 
@@ -88,7 +89,7 @@ class CommonUtils:
                         mr = match_suffix[0]
                         suffix_length = int(mr.start) + int(mr.length) - (start + length)
                         er.length += suffix_length
-                        er.text += source[start+length:suffix_length]
+                        er.text += source[start + length : suffix_length]
                         tmp = ExtractResult()
                         tmp.data = er.data
                         er.data = [tmp, mr]

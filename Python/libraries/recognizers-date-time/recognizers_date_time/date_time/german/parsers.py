@@ -4,9 +4,10 @@
 from datetime import datetime
 
 from recognizers_text.utilities import RegExpUtility
+
 from ...resources.german_date_time import GermanDateTime
 from ..base_time import BaseTimeParser
-from ..utilities import DateTimeResolutionResult, DateTimeFormatUtil, DateUtils
+from ..utilities import DateTimeFormatUtil, DateTimeResolutionResult, DateUtils
 
 
 class GermanTimeParser(BaseTimeParser):
@@ -21,8 +22,7 @@ class GermanTimeParser(BaseTimeParser):
         result = DateTimeResolutionResult()
         trimmed_source = source.strip().lower()
 
-        match = RegExpUtility.get_safe_reg_exp(
-            GermanDateTime.IshRegex).match(source)
+        match = RegExpUtility.get_safe_reg_exp(GermanDateTime.IshRegex).match(source)
         if match and match.end() == len(trimmed_source):
             hour_str = RegExpUtility.get_group(match, 'hour')
             hour = 12
@@ -31,7 +31,8 @@ class GermanTimeParser(BaseTimeParser):
 
             result.timex = 'T' + DateTimeFormatUtil.to_str(hour, 2)
             result.future_value = result.past_value = DateUtils.safe_create_from_min_value(
-                reference.year, reference.month, reference.day, hour, 0, 0)
+                reference.year, reference.month, reference.day, hour, 0, 0
+            )
             result.success = True
 
         return result

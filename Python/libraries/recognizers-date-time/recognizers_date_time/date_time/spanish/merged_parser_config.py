@@ -4,23 +4,23 @@
 from typing import Pattern
 
 from recognizers_text.utilities import RegExpUtility
-from .holiday_parser_config import SpanishHolidayParserConfiguration
-from .dateperiod_parser_config import SpanishDatePeriodParserConfiguration
-from .timeperiod_parser_config import SpanishTimePeriodParserConfiguration
-from .datetimeperiod_parser_config import SpanishDateTimePeriodParserConfiguration
-from .common_configs import SpanishCommonDateTimeParserConfiguration
-from .parsers import SpanishDateTimePeriodParser
+
+from ...resources.spanish_date_time import BaseDateTime, SpanishDateTime
 from ..base_date import BaseDateParser
-from ..base_time import BaseTimeParser
-from ..base_datetime import BaseDateTimeParser
-from ..base_holiday import BaseHolidayParser
 from ..base_dateperiod import BaseDatePeriodParser
-from ..base_timeperiod import BaseTimePeriodParser
+from ..base_datetime import BaseDateTimeParser
 from ..base_datetimeperiod import BaseDateTimePeriodParser
 from ..base_duration import BaseDurationParser
+from ..base_holiday import BaseHolidayParser
 from ..base_merged import MergedParserConfiguration
-from ...resources.spanish_date_time import SpanishDateTime, BaseDateTime
-from ..parsers import DateTimeParser
+from ..base_time import BaseTimeParser
+from ..base_timeperiod import BaseTimePeriodParser
+from .common_configs import SpanishCommonDateTimeParserConfiguration
+from .dateperiod_parser_config import SpanishDatePeriodParserConfiguration
+from .datetimeperiod_parser_config import SpanishDateTimePeriodParserConfiguration
+from .holiday_parser_config import SpanishHolidayParserConfiguration
+from .parsers import SpanishDateTimePeriodParser
+from .timeperiod_parser_config import SpanishTimePeriodParserConfiguration
 
 
 class SpanishMergedParserConfiguration(SpanishCommonDateTimeParserConfiguration, MergedParserConfiguration):
@@ -87,24 +87,14 @@ class SpanishMergedParserConfiguration(SpanishCommonDateTimeParserConfiguration,
     def __init__(self, config):
         SpanishCommonDateTimeParserConfiguration.__init__(self)
         self._equal_regex = RegExpUtility.get_safe_reg_exp(BaseDateTime.EqualRegex)
-        self._suffix_after = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.SuffixAfterRegex)
-        self._year_regex = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.YearRegex)
-        self._around_regex = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.AroundRegex)
-        self._before_regex = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.BeforeRegex)
-        self._after_regex = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.AfterRegex)
-        self._since_regex = RegExpUtility.get_safe_reg_exp(
-            SpanishDateTime.SinceRegex)
+        self._suffix_after = RegExpUtility.get_safe_reg_exp(SpanishDateTime.SuffixAfterRegex)
+        self._year_regex = RegExpUtility.get_safe_reg_exp(SpanishDateTime.YearRegex)
+        self._around_regex = RegExpUtility.get_safe_reg_exp(SpanishDateTime.AroundRegex)
+        self._before_regex = RegExpUtility.get_safe_reg_exp(SpanishDateTime.BeforeRegex)
+        self._after_regex = RegExpUtility.get_safe_reg_exp(SpanishDateTime.AfterRegex)
+        self._since_regex = RegExpUtility.get_safe_reg_exp(SpanishDateTime.SinceRegex)
 
-        self._date_period_parser = BaseDatePeriodParser(
-            SpanishDatePeriodParserConfiguration(self))
-        self._time_period_parser = BaseTimePeriodParser(
-            SpanishTimePeriodParserConfiguration(self))
-        self._date_time_period_parser = SpanishDateTimePeriodParser(
-            SpanishDateTimePeriodParserConfiguration(self))
-        self._holiday_parser = BaseHolidayParser(
-            SpanishHolidayParserConfiguration(config))
+        self._date_period_parser = BaseDatePeriodParser(SpanishDatePeriodParserConfiguration(self))
+        self._time_period_parser = BaseTimePeriodParser(SpanishTimePeriodParserConfiguration(self))
+        self._date_time_period_parser = SpanishDateTimePeriodParser(SpanishDateTimePeriodParserConfiguration(self))
+        self._holiday_parser = BaseHolidayParser(SpanishHolidayParserConfiguration(config))

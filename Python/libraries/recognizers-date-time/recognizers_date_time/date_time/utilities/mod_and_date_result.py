@@ -3,8 +3,8 @@ from typing import List
 
 from datedelta import datedelta
 
-from recognizers_date_time.date_time.utilities import DurationParsingUtil
 from recognizers_date_time.date_time import Constants
+from recognizers_date_time.date_time.utilities import DurationParsingUtil
 
 
 class ModAndDateResult:
@@ -15,8 +15,9 @@ class ModAndDateResult:
         self.begin_date = None
         self.mod = None
 
-    def mod_and_date_result(self, begin_date: datetime, end_date: datetime, mod: str = '',
-                            date_list: [datetime] = None):
+    def mod_and_date_result(
+        self, begin_date: datetime, end_date: datetime, mod: str = '', date_list: [datetime] = None
+    ):
         self.begin_date = begin_date
         self.end_date = end_date
         self.mod = mod
@@ -31,7 +32,7 @@ class ModAndDateResult:
         date_list: List[datetime] = None
 
         if is_business_day:
-            business_day_count = timex[1: len(timex) - 3]
+            business_day_count = timex[1 : len(timex) - 3]
 
         if future:
             mod = Constants.AFTER_MOD
@@ -39,8 +40,9 @@ class ModAndDateResult:
             # For future the beginDate should add 1 first
             if is_business_day:
                 begin_date_result = DurationParsingUtil.get_next_business_day(reference, future)
-                end_date_result = DurationParsingUtil.get_nth_business_day(begin_date_result, business_day_count - 1,
-                                                                           future)
+                end_date_result = DurationParsingUtil.get_nth_business_day(
+                    begin_date_result, business_day_count - 1, future
+                )
                 end_date_result = end_date_result + datedelta(days=1)
                 return self.mod_and_date_result(begin_date_result, end_date_result, mod, date_list)
             else:
@@ -51,8 +53,9 @@ class ModAndDateResult:
             mod = Constants.BEFORE_MOD
 
             if is_business_day:
-                begin_date_result = DurationParsingUtil.get_nth_business_day(end_date_result, business_day_count - 1,
-                                                                             future)
+                begin_date_result = DurationParsingUtil.get_nth_business_day(
+                    end_date_result, business_day_count - 1, future
+                )
                 end_date_result = DurationParsingUtil.get_next_business_day(end_date_result, future)
                 end_date_result = end_date_result + datedelta(days=1)
                 return self.mod_and_date_result(begin_date_result, end_date_result, mod, date_list)

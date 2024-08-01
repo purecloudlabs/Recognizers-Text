@@ -1,9 +1,10 @@
 from datetime import datetime
 
 from datedelta import datedelta
-from recognizers_date_time.date_time.constants import TimeTypeConstants, Constants
+
+from recognizers_date_time.date_time.constants import Constants, TimeTypeConstants
 from recognizers_date_time.date_time.parsers import DateTimeParseResult
-from recognizers_date_time.date_time.utilities import DateTimeResolutionResult, TimexUtil, DateUtils
+from recognizers_date_time.date_time.utilities import DateTimeResolutionResult, DateUtils, TimexUtil
 
 
 class DateContext:
@@ -32,7 +33,9 @@ class DateContext:
             resolution_result.past_value = self.__set_date_with_context(resolution_result.past_value)
         return resolution_result
 
-    def process_date_period_entity_resolution(self, resolution_result: DateTimeResolutionResult) -> DateTimeResolutionResult:
+    def process_date_period_entity_resolution(
+        self, resolution_result: DateTimeResolutionResult
+    ) -> DateTimeResolutionResult:
         if not self.is_empty():
             resolution_result.timex = TimexUtil.set_timex_with_context(resolution_result.timex, self)
             resolution_result.future_value = self.__set_date_range_with_context(resolution_result.future_value)
@@ -45,16 +48,15 @@ class DateContext:
     def __set_date_with_context(self, original_date, year=-1) -> datetime:
         if not DateUtils.is_valid_datetime(original_date):
             return original_date
-        value = DateUtils.safe_create_from_min_value(year=self.year if year == -1 else year, month=original_date.month, day=original_date.day)
+        value = DateUtils.safe_create_from_min_value(
+            year=self.year if year == -1 else year, month=original_date.month, day=original_date.day
+        )
         return value
 
     def __set_date_range_with_context(self, original_date_range):
         start_date = self.__set_date_with_context(original_date_range[0])
         end_date = self.__set_date_with_context(original_date_range[1])
-        result = {
-            TimeTypeConstants.START_DATE: start_date,
-            TimeTypeConstants.END_DATE: end_date
-        }
+        result = {TimeTypeConstants.START_DATE: start_date, TimeTypeConstants.END_DATE: end_date}
 
         return result
 

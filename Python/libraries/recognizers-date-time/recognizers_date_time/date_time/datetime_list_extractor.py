@@ -3,6 +3,7 @@
 
 from abc import abstractmethod
 from typing import List
+
 from recognizers_text.extractor import ExtractResult
 
 

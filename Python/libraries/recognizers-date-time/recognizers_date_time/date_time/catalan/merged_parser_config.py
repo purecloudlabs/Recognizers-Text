@@ -1,12 +1,12 @@
 from typing import Pattern
 
 from recognizers_text.utilities import RegExpUtility
-from .common_configs import CatalanCommonDateTimeParserConfiguration
+
+from ...resources.catalan_date_time import BaseDateTime, CatalanDateTime
 from ..base_date import BaseDateParser
-from ..base_time import BaseTimeParser
 from ..base_minimal_merged import MinimalMergedParserConfiguration
-from ...resources.catalan_date_time import CatalanDateTime, BaseDateTime
-from ..parsers import DateTimeParser
+from ..base_time import BaseTimeParser
+from .common_configs import CatalanCommonDateTimeParserConfiguration
 
 
 class CatalanMergedParserConfiguration(CatalanCommonDateTimeParserConfiguration, MinimalMergedParserConfiguration):
@@ -53,10 +53,9 @@ class CatalanMergedParserConfiguration(CatalanCommonDateTimeParserConfiguration,
     def __init__(self, config):
         CatalanCommonDateTimeParserConfiguration.__init__(self)
         self._equal_regex = RegExpUtility.get_safe_reg_exp(BaseDateTime.EqualRegex)
-        self._suffix_after = RegExpUtility.get_safe_reg_exp(f'^[.]')
-        self._year_regex = RegExpUtility.get_safe_reg_exp(
-            CatalanDateTime.YearRegex)
-        self._around_regex = RegExpUtility.get_safe_reg_exp(f'^[.]')
-        self._before_regex = RegExpUtility.get_safe_reg_exp(f'^[.]')
-        self._after_regex = RegExpUtility.get_safe_reg_exp(f'^[.]')
-        self._since_regex = RegExpUtility.get_safe_reg_exp(f'^[.]')
+        self._suffix_after = RegExpUtility.get_safe_reg_exp('^[.]')
+        self._year_regex = RegExpUtility.get_safe_reg_exp(CatalanDateTime.YearRegex)
+        self._around_regex = RegExpUtility.get_safe_reg_exp('^[.]')
+        self._before_regex = RegExpUtility.get_safe_reg_exp('^[.]')
+        self._after_regex = RegExpUtility.get_safe_reg_exp('^[.]')
+        self._since_regex = RegExpUtility.get_safe_reg_exp('^[.]')

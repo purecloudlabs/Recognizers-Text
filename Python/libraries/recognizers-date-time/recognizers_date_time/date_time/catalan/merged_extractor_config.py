@@ -1,17 +1,18 @@
 from typing import List, Pattern
 
+from recognizers_date_time.date_time.catalan.base_datetime import MinimalDateTimeExtractor
+from recognizers_number import CatalanIntegerExtractor
 from recognizers_text.extractor import Extractor
 from recognizers_text.utilities import RegExpUtility
-from recognizers_number import CatalanIntegerExtractor
+
+from ...resources.base_date_time import BaseDateTime
 from ...resources.catalan_date_time import CatalanDateTime
-from ..extractors import DateTimeExtractor
-from ..base_minimal_merged import MinimalMergedExtractorConfiguration
 from ..base_date import BaseDateExtractor
+from ..base_minimal_merged import MinimalMergedExtractorConfiguration
 from ..base_time import BaseTimeExtractor
+from ..extractors import DateTimeExtractor
 from .date_extractor_config import CatalanDateExtractorConfiguration
 from .time_extractor_config import CatalanTimeExtractorConfiguration
-from ...resources.base_date_time import BaseDateTime
-from recognizers_date_time.date_time.catalan.base_datetime import MinimalDateTimeExtractor
 
 
 class CatalanMergedExtractorConfiguration(MinimalMergedExtractorConfiguration):
@@ -57,12 +58,11 @@ class CatalanMergedExtractorConfiguration(MinimalMergedExtractorConfiguration):
 
     def __init__(self):
         self._ambiguous_range_modifier_prefix = RegExpUtility.get_safe_reg_exp(
-            CatalanDateTime.AmbiguousRangeModifierPrefix)
-        self._number_ending_pattern = RegExpUtility.get_safe_reg_exp(
-            CatalanDateTime.NumberEndingPattern)
+            CatalanDateTime.AmbiguousRangeModifierPrefix
+        )
+        self._number_ending_pattern = RegExpUtility.get_safe_reg_exp(CatalanDateTime.NumberEndingPattern)
 
-        self._date_extractor = BaseDateExtractor(
-            CatalanDateExtractorConfiguration())
+        self._date_extractor = BaseDateExtractor(CatalanDateExtractorConfiguration())
         self._time_extractor = BaseTimeExtractor(CatalanTimeExtractorConfiguration())
         self._date_time_extractor = MinimalDateTimeExtractor()
         self._integer_extractor = CatalanIntegerExtractor()

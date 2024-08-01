@@ -23,8 +23,9 @@ class ExtractResult:
         return (not self.start > other.end) and (not other.start > self.end)
 
     def cover(self, other) -> bool:
-        return (((other.start < self.start) and (other.end >= self.end))
-                or ((other.start <= self.start) and (other.end > self.end)))
+        return ((other.start < self.start) and (other.end >= self.end)) or (
+            (other.start <= self.start) and (other.end > self.end)
+        )
 
     @staticmethod
     def get_from_text(source: str):

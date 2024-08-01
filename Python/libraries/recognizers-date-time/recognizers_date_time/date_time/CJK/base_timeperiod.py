@@ -1,16 +1,25 @@
 from abc import abstractmethod
-from typing import List, Optional, Dict, Match, Pattern
-from datetime import datetime
 from collections import namedtuple
+from datetime import datetime
+from typing import Dict, List, Match, Optional, Pattern
+
 import regex
 
-from recognizers_text.extractor import ExtractResult
 from recognizers_date_time.date_time.constants import Constants, TimeTypeConstants
+from recognizers_date_time.date_time.data_structures import PeriodType
 from recognizers_date_time.date_time.extractors import DateTimeExtractor
 from recognizers_date_time.date_time.parsers import DateTimeParser, DateTimeParseResult
-from recognizers_date_time.date_time.utilities import DateTimeResolutionResult, DateTimeFormatUtil, \
-    DateTimeOptionsConfiguration, ExtractResultExtension, TimeFunctions, DateTimeExtra, TimePeriodFunctions, DateUtils
-from recognizers_date_time.date_time.data_structures import PeriodType
+from recognizers_date_time.date_time.utilities import (
+    DateTimeExtra,
+    DateTimeFormatUtil,
+    DateTimeOptionsConfiguration,
+    DateTimeResolutionResult,
+    DateUtils,
+    ExtractResultExtension,
+    TimeFunctions,
+    TimePeriodFunctions,
+)
+from recognizers_text.extractor import ExtractResult
 
 
 class CJKTimePeriodExtractorConfiguration(DateTimeOptionsConfiguration):
@@ -41,8 +50,7 @@ class BaseCJKTimePeriodExtractor(DateTimeExtractor):
         match_source: Dict[Match, any] = dict()
         matched: List[bool] = [False] * len(source)
 
-        collections = list(map(lambda x: (
-            list(regex.finditer(x[0], source)), x[1]), self.config.regexes.items()))
+        collections = list(map(lambda x: (list(regex.finditer(x[0], source)), x[1]), self.config.regexes.items()))
         collections = list(filter(lambda x: len(x[0]) > 0, collections))
 
         for collection in collections:
@@ -57,9 +65,11 @@ class BaseCJKTimePeriodExtractor(DateTimeExtractor):
                 if i + 1 == len(source) or not matched[i + 1]:
                     start = last + 1
                     length = i - last
-                    text = source[start:start + length].strip()
-                    src_match = next((x for x in iter(match_source) if (
-                            x.start() == start and (x.end() - x.start()) == length)), None)
+                    text = source[start : start + length].strip()
+                    src_match = next(
+                        (x for x in iter(match_source) if (x.start() == start and (x.end() - x.start()) == length)),
+                        None,
+                    )
                     if src_match:
                         value = ExtractResult()
                         value.start = start
@@ -87,8 +97,7 @@ class BaseCJKTimePeriodExtractor(DateTimeExtractor):
         return result
 
 
-MatchedTimeRegex = namedtuple(
-    'MatchedTimeRegex', ['matched', 'timex', 'begin_hour', 'end_hour', 'end_min'])
+MatchedTimeRegex = namedtuple('MatchedTimeRegex', ['matched', 'timex', 'begin_hour', 'end_hour', 'end_min'])
 
 
 class CJKTimePeriodParserConfiguration(DateTimeOptionsConfiguration):
@@ -135,19 +144,23 @@ class BaseCJKTimePeriodParser(DateTimeParser):
             parse_result = self.parse_time_of_day(source.text, reference)
 
             if not parse_result.success:
-                parse_result = TimePeriodFunctions.handle(self.config.time_parser, extra,
-                                                          reference, self.config.time_func)
+                parse_result = TimePeriodFunctions.handle(
+                    self.config.time_parser, extra, reference, self.config.time_func
+                )
 
             if parse_result.success:
                 parse_result.future_resolution[TimeTypeConstants.START_TIME] = DateTimeFormatUtil.format_time(
-                    parse_result.future_value[0])
+                    parse_result.future_value[0]
+                )
                 parse_result.future_resolution[TimeTypeConstants.END_TIME] = DateTimeFormatUtil.format_time(
-                    parse_result.future_value[1])
+                    parse_result.future_value[1]
+                )
                 parse_result.past_resolution[TimeTypeConstants.START_TIME] = DateTimeFormatUtil.format_time(
-                    parse_result.past_value[0])
+                    parse_result.past_value[0]
+                )
                 parse_result.past_resolution[TimeTypeConstants.END_TIME] = DateTimeFormatUtil.format_time(
-                    parse_result.past_value[1])
-
+                    parse_result.past_value[1]
+                )
 
                 result.value = parse_result
                 result.timex_str = parse_result.timex if parse_result is not None else ''
@@ -175,22 +188,24 @@ class BaseCJKTimePeriodParser(DateTimeParser):
         begin_hour = parameters['begin_hour']
 
         # Add "early"/"late" Mod
-        if (end_hour == begin_hour + Constants.HALF_MID_DAY_DURATION_HOUR_COUNT) and \
-                (begin_hour == Constants.MORNING_BEGIN_HOUR or begin_hour == Constants.AFTERNOON_BEGIN_HOUR):
+        if (end_hour == begin_hour + Constants.HALF_MID_DAY_DURATION_HOUR_COUNT) and (
+            begin_hour == Constants.MORNING_BEGIN_HOUR or begin_hour == Constants.AFTERNOON_BEGIN_HOUR
+        ):
             result.comment = Constants.COMMENT_EARLY
             result.mod = TimeTypeConstants.EARLY_MOD
 
-        if (begin_hour == end_hour - Constants.HALF_MID_DAY_DURATION_HOUR_COUNT) and \
-                (end_hour == Constants.MORNING_END_HOUR or end_hour == Constants.AFTERNOON_END_HOUR):
+        if (begin_hour == end_hour - Constants.HALF_MID_DAY_DURATION_HOUR_COUNT) and (
+            end_hour == Constants.MORNING_END_HOUR or end_hour == Constants.AFTERNOON_END_HOUR
+        ):
             result.comment = Constants.COMMENT_LATE
             result.mod = TimeTypeConstants.LATE_MOD
 
         result.timex = parameters['timex']
         result.future_value = result.past_value = [
+            DateUtils.safe_create_from_min_value(year, month, day, parameters['begin_hour'], 0, 0),
             DateUtils.safe_create_from_min_value(
-                year, month, day, parameters['begin_hour'], 0, 0),
-            DateUtils.safe_create_from_min_value(
-                year, month, day, parameters['end_hour'], parameters['end_min'], parameters['end_min'])
+                year, month, day, parameters['end_hour'], parameters['end_min'], parameters['end_min']
+            ),
         ]
 
         result.success = True

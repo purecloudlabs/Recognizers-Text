@@ -1,20 +1,26 @@
-from typing import Match
 from datetime import datetime, timedelta
+from typing import Match
 
+from recognizers_date_time.date_time.data_structures import PeriodType
+from recognizers_date_time.date_time.parsers import DateTimeParser
+from recognizers_date_time.date_time.utilities import (
+    DateTimeExtra,
+    DateTimeResolutionResult,
+    DateUtils,
+    TimeFunctions,
+    TimeResult,
+)
 from recognizers_text import ExtractResult
 
 from ..constants import Constants
-from recognizers_date_time.date_time.utilities import DateTimeResolutionResult, DateUtils, TimeFunctions, \
-    DateTimeExtra, TimeResult
-from recognizers_date_time.date_time.parsers import DateTimeParser
-from recognizers_date_time.date_time.data_structures import PeriodType
 
 
 class TimePeriodFunctions:
 
     @staticmethod
-    def handle(time_parser: DateTimeParser, extra: DateTimeExtra, reference: datetime,
-               time_func: TimeFunctions) -> DateTimeResolutionResult:
+    def handle(
+        time_parser: DateTimeParser, extra: DateTimeExtra, reference: datetime, time_func: TimeFunctions
+    ) -> DateTimeResolutionResult:
         result = DateTimeResolutionResult()
 
         # Left is a time
@@ -22,39 +28,43 @@ class TimePeriodFunctions:
 
         #  下午四点十分到五点十分
         if extra.data_type == PeriodType.FullTime:
-            left_result = TimePeriodFunctions.get_parse_time_result(
-                left_entity, extra.match, reference, time_parser)
+            left_result = TimePeriodFunctions.get_parse_time_result(left_entity, extra.match, reference, time_parser)
         else:
             #  下午四到五点
             left_result = time_func.get_short_left(left_entity)
 
         # Right is a time
         right_entity = next(iter(extra.named_entity.get('right', [])), '')
-        right_result = TimePeriodFunctions.get_parse_time_result(
-            right_entity, extra.match, reference, time_parser)
+        right_result = TimePeriodFunctions.get_parse_time_result(right_entity, extra.match, reference, time_parser)
 
         span_hour = right_result.hour - left_result.hour
         if span_hour < 0 or (span_hour == 0 and left_result.minute > right_result.minute):
             span_hour += Constants.DAY_HOUR_COUNT
 
         # the right side doesn't contain desc while the left side does
-        if right_result.low_bound == -1 and \
-                left_result.low_bound != -1 and \
-                right_result.hour <= Constants.HALF_DAY_HOUR_COUNT and \
-                span_hour > Constants.HALF_DAY_HOUR_COUNT:
+        if (
+            right_result.low_bound == -1
+            and left_result.low_bound != -1
+            and right_result.hour <= Constants.HALF_DAY_HOUR_COUNT
+            and span_hour > Constants.HALF_DAY_HOUR_COUNT
+        ):
             right_result.hour += Constants.HALF_DAY_HOUR_COUNT
 
         # the left side doesn't contain desc while the right side does
-        if left_result.low_bound == -1 and \
-                right_result.low_bound != -1 and \
-                left_result.hour <= Constants.HALF_DAY_HOUR_COUNT and \
-                span_hour > Constants.HALF_DAY_HOUR_COUNT:
+        if (
+            left_result.low_bound == -1
+            and right_result.low_bound != -1
+            and left_result.hour <= Constants.HALF_DAY_HOUR_COUNT
+            and span_hour > Constants.HALF_DAY_HOUR_COUNT
+        ):
             left_result.hour += Constants.HALF_DAY_HOUR_COUNT
 
         #  No 'am' or 'pm' indicator
-        if left_result.low_bound == right_result.low_bound == -1 and \
-            left_result.hour <= Constants.HALF_DAY_HOUR_COUNT and \
-            right_result.hour <= Constants.HALF_DAY_HOUR_COUNT:
+        if (
+            left_result.low_bound == right_result.low_bound == -1
+            and left_result.hour <= Constants.HALF_DAY_HOUR_COUNT
+            and right_result.hour <= Constants.HALF_DAY_HOUR_COUNT
+        ):
 
             if span_hour > Constants.HALF_DAY_HOUR_COUNT:
                 if left_result.hour > right_result.hour:
@@ -91,8 +101,9 @@ class TimePeriodFunctions:
             hour -= Constants.DAY_HOUR_COUNT
             right_swift_day += 1
 
-        right_time = DateUtils.safe_create_from_min_value(reference.year, reference.month, reference.day,
-                                                          hour, minute, second)
+        right_time = DateUtils.safe_create_from_min_value(
+            reference.year, reference.month, reference.day, hour, minute, second
+        )
 
         if right_result.hour < left_result.hour:
             right_time += timedelta(days=1)
@@ -144,7 +155,7 @@ class TimePeriodFunctions:
         if span_hour < 0:
             span_hour += 24
 
-        span_timex = f'PT'
+        span_timex = 'PT'
         if span_hour > 0:
             span_timex += f'{span_hour}H'
         if span_min > 0:
@@ -157,13 +168,13 @@ class TimePeriodFunctions:
     @staticmethod
     def sanitize_time_result(source: TimeResult) -> TimeResult:
         return TimeResult(
-            source.hour,
-            0 if source.minute == -1 else source.minute,
-            0 if source.second == -1 else source.second)
+            source.hour, 0 if source.minute == -1 else source.minute, 0 if source.second == -1 else source.second
+        )
 
     @staticmethod
-    def get_parse_time_result(entity: str, match: Match, reference: datetime,
-                              time_parser: DateTimeParser) -> TimeResult:
+    def get_parse_time_result(
+        entity: str, match: Match, reference: datetime, time_parser: DateTimeParser
+    ) -> TimeResult:
         match_str: str = match.group()
 
         extract_result = ExtractResult()

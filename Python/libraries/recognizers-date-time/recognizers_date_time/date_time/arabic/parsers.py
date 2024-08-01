@@ -1,9 +1,9 @@
 from datetime import datetime
 
-from recognizers_text.utilities import RegExpUtility
-from recognizers_date_time.resources.arabic_date_time import ArabicDateTime
 from recognizers_date_time.date_time.base_time import BaseTimeParser
-from recognizers_date_time.date_time.utilities import DateTimeResolutionResult, DateTimeFormatUtil, DateUtils
+from recognizers_date_time.date_time.utilities import DateTimeFormatUtil, DateTimeResolutionResult, DateUtils
+from recognizers_date_time.resources.arabic_date_time import ArabicDateTime
+from recognizers_text.utilities import RegExpUtility
 
 
 class ArabicTimeParser(BaseTimeParser):
@@ -18,8 +18,7 @@ class ArabicTimeParser(BaseTimeParser):
         result = DateTimeResolutionResult()
         trimmed_source = source.strip().lower()
 
-        match = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.IshRegex).match(source)
+        match = RegExpUtility.get_safe_reg_exp(ArabicDateTime.IshRegex).match(source)
         if match and match.end() == len(trimmed_source):
             hour_str = RegExpUtility.get_group(match, 'hour')
             hour = 12
@@ -28,7 +27,8 @@ class ArabicTimeParser(BaseTimeParser):
 
             result.timex = 'T' + DateTimeFormatUtil.to_str(hour, 2)
             result.future_value = result.past_value = DateUtils.safe_create_from_min_value(
-                reference.year, reference.month, reference.day, hour, 0, 0)
+                reference.year, reference.month, reference.day, hour, 0, 0
+            )
             result.success = True
 
         return result

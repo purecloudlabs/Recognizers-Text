@@ -1,11 +1,11 @@
 from typing import List, Pattern
 
-from recognizers_text.utilities import RegExpUtility
-from recognizers_date_time.resources.arabic_date_time import ArabicDateTime
+from recognizers_date_time.date_time.arabic.duration_extractor_config import ArabicDurationExtractorConfiguration
+from recognizers_date_time.date_time.base_duration import BaseDurationExtractor
 from recognizers_date_time.date_time.base_time import TimeExtractorConfiguration
 from recognizers_date_time.date_time.utilities import DateTimeOptions
-from recognizers_date_time.date_time.base_duration import BaseDurationExtractor
-from recognizers_date_time.date_time.arabic.duration_extractor_config import ArabicDurationExtractorConfiguration
+from recognizers_date_time.resources.arabic_date_time import ArabicDateTime
+from recognizers_text.utilities import RegExpUtility
 
 
 class ArabicTimeExtractorConfiguration(TimeExtractorConfiguration):
@@ -105,14 +105,10 @@ class ArabicTimeExtractorConfiguration(TimeExtractorConfiguration):
     def __init__(self):
         super().__init__()
 
-        self._time_regex_list: List[Pattern] = ArabicTimeExtractorConfiguration.get_time_regex_list(
-        )
-        self._at_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.AtRegex)
-        self._ish_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.IshRegex)
-        self._time_before_after_regex: Pattern = RegExpUtility.get_safe_reg_exp(
-            ArabicDateTime.TimeBeforeAfterRegex)
+        self._time_regex_list: List[Pattern] = ArabicTimeExtractorConfiguration.get_time_regex_list()
+        self._at_regex: Pattern = RegExpUtility.get_safe_reg_exp(ArabicDateTime.AtRegex)
+        self._ish_regex: Pattern = RegExpUtility.get_safe_reg_exp(ArabicDateTime.IshRegex)
+        self._time_before_after_regex: Pattern = RegExpUtility.get_safe_reg_exp(ArabicDateTime.TimeBeforeAfterRegex)
 
         self._options = DateTimeOptions.NONE
         self._duration_extractor = BaseDurationExtractor(ArabicDurationExtractorConfiguration())
@@ -150,5 +146,5 @@ class ArabicTimeExtractorConfiguration(TimeExtractorConfiguration):
             RegExpUtility.get_safe_reg_exp(ArabicDateTime.TimeRegex9),
             RegExpUtility.get_safe_reg_exp(ArabicDateTime.TimeRegex10),
             RegExpUtility.get_safe_reg_exp(ArabicDateTime.TimeRegex11),
-            RegExpUtility.get_safe_reg_exp(ArabicDateTime.ConnectNumRegex)
+            RegExpUtility.get_safe_reg_exp(ArabicDateTime.ConnectNumRegex),
         ]

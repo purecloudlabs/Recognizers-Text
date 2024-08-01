@@ -18,5 +18,5 @@ class ChineseHolidayExtractorConfiguration(HolidayExtractorConfiguration):
         self._holiday_regexes = [
             RegExpUtility.get_safe_reg_exp(ChineseDateTime.HolidayRegexList1),
             RegExpUtility.get_safe_reg_exp(ChineseDateTime.HolidayRegexList2),
-            RegExpUtility.get_safe_reg_exp(ChineseDateTime.LunarHolidayRegex)
+            RegExpUtility.get_safe_reg_exp(ChineseDateTime.LunarHolidayRegex),
         ]

@@ -15,4 +15,6 @@
 class EnglishPhoneNumbers:
     NumberReplaceToken = '@builtin.phonenumber'
     FalsePositivePrefixRegex = f'(account|card)(\\s+(#|number))?(\\s+is)?:?\\s*$'
+
+
 # pylint: enable=line-too-long

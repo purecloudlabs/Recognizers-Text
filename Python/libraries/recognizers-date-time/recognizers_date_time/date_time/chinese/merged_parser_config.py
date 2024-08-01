@@ -5,17 +5,17 @@ from typing import Pattern
 
 from recognizers_text import RegExpUtility
 
-from ...resources.chinese_date_time import ChineseDateTime, BaseDateTime
-from ..parsers import DateTimeParser
+from ...resources.chinese_date_time import BaseDateTime, ChineseDateTime
 from ..base_merged import MergedParserConfiguration
-from .duration_parser import ChineseDurationParser
+from ..parsers import DateTimeParser
 from .date_parser import ChineseDateParser
-from .time_parser import ChineseTimeParser
 from .dateperiod_parser import ChineseDatePeriodParser
-from .timeperiod_parser import ChineseTimePeriodParser
 from .datetime_parser import ChineseDateTimeParser
 from .datetimeperiod_parser import ChineseDateTimePeriodParser
+from .duration_parser import ChineseDurationParser
 from .holiday_parser import ChineseHolidayParser
+from .time_parser import ChineseTimeParser
+from .timeperiod_parser import ChineseTimePeriodParser
 
 
 class ChineseMergedParserConfiguration(MergedParserConfiguration):
@@ -81,15 +81,10 @@ class ChineseMergedParserConfiguration(MergedParserConfiguration):
 
     def __init__(self):
         self._equal_regex = RegExpUtility.get_safe_reg_exp(BaseDateTime.EqualRegex)
-        self._year_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.YearRegex
-        )
-        self._before_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.MergedBeforeRegex)
-        self._after_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.MergedAfterRegex)
-        self._since_regex = RegExpUtility.get_safe_reg_exp(
-            ChineseDateTime.MergedAfterRegex)
+        self._year_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.YearRegex)
+        self._before_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.MergedBeforeRegex)
+        self._after_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.MergedAfterRegex)
+        self._since_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.MergedAfterRegex)
         self._date_parser = ChineseDateParser()
         self._holiday_parser = ChineseHolidayParser()
         self._time_parser = ChineseTimeParser()

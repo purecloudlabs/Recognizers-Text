@@ -1,10 +1,11 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from setuptools import setup, find_packages
+from setuptools import find_packages, setup
+
 
 NAME = "recognizers-text-genesys"
-VERSION = "1.1.32"
+VERSION = "1.1.34"
 REQUIRES = ['emoji==1.1.0', 'multipledispatch']
 
 setup(
@@ -13,8 +14,7 @@ setup(
     url='https://github.com/Microsoft/Recognizers-Text',
     author='Microsoft',
     description='recognizers-text README',
-    keywords=['nlp', 'nlp-entity-extraction',
-              'entity-extraction', 'parser-library'],
+    keywords=['nlp', 'nlp-entity-extraction', 'entity-extraction', 'parser-library'],
     long_description='recognizers-text long README.',
     license='MIT',
     packages=find_packages(),
@@ -26,5 +26,5 @@ setup(
         'Operating System :: OS Independent',
         'Development Status :: 3 - Alpha',
         'Topic :: Scientific/Engineering :: Artificial Intelligence',
-    ]
+    ],
 )

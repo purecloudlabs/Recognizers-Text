@@ -1,7 +1,7 @@
 #  Copyright (c) Microsoft Corporation. All rights reserved.
 #  Licensed under the MIT License.
 
-from recognizers_number import CultureInfo, Culture
+from recognizers_number import Culture, CultureInfo
 from recognizers_number_with_unit import ChineseNumberWithUnitParserConfiguration
 
 from ...resources.chinese_date_time import ChineseDateTime

@@ -1,10 +1,9 @@
-from typing import Pattern, Dict
+from typing import Dict, Pattern
 
-from recognizers_text.utilities import RegExpUtility, DefinitionLoader
-from recognizers_date_time.resources.japanese_date_time import JapaneseDateTime
-from recognizers_date_time.date_time.data_structures import TimeType
 from recognizers_date_time.date_time.CJK.base_time import CJKTimeExtractorConfiguration
-from recognizers_date_time.date_time.utilities import DateTimeOptionsConfiguration
+from recognizers_date_time.date_time.data_structures import TimeType
+from recognizers_date_time.resources.japanese_date_time import JapaneseDateTime
+from recognizers_text.utilities import DefinitionLoader, RegExpUtility
 
 
 class JapaneseTimeExtractorConfiguration(CJKTimeExtractorConfiguration):
@@ -136,10 +135,8 @@ class JapaneseTimeExtractorConfiguration(CJKTimeExtractorConfiguration):
         self._regexes: Dict[Pattern, TimeType] = {
             RegExpUtility.get_safe_reg_exp(JapaneseDateTime.TimeRegexes1): TimeType.CJKTime,
             RegExpUtility.get_safe_reg_exp(JapaneseDateTime.TimeRegexes2): TimeType.DigitTime,
-            RegExpUtility.get_safe_reg_exp(JapaneseDateTime.TimeRegexes3): TimeType.LessTime
+            RegExpUtility.get_safe_reg_exp(JapaneseDateTime.TimeRegexes3): TimeType.LessTime,
         }
         self._ambiguity_time_filters_dict = DefinitionLoader.load_ambiguity_filters(
             JapaneseDateTime.AmbiguityTimeFiltersDict
         )
-
-
