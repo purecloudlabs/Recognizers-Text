@@ -27,9 +27,11 @@ class FrenchNumeric:
     DigitsNumberRegex = '\\d|\\d{1,3}(\\.\\d{3})'
     NegativeNumberTermsRegex = '^[.]'
     NegativeNumberSignRegex = f'^({NegativeNumberTermsRegex}\\s+).*'
-    HundredsNumberIntegerRegex = f'(({ZeroToNineIntegerRegex}(\\s+cent))|cent|((\\s+cent\\s)+{TensNumberIntegerRegex}))'
-    BelowHundredsRegex = f'(({TenToNineteenIntegerRegex}|({TensNumberIntegerRegex}((-|(\\s+et)?\\s+)({TenToNineteenIntegerRegex}|{ZeroToNineIntegerRegex}))?))|{ZeroToNineIntegerRegex})'
-    BelowThousandsRegex = f'(({HundredsNumberIntegerRegex}(\\s+{BelowHundredsRegex})?|{BelowHundredsRegex}|{TenToNineteenIntegerRegex})|cent\\s+{TenToNineteenIntegerRegex})'
+    HundredsNumberIntegerRegex = (
+        f'(({ZeroToNineIntegerRegex}((\\s+|-)cents?))|cent|((\\s+cents?(\\s|-))+{TensNumberIntegerRegex}))'
+    )
+    BelowHundredsRegex = fr'(({TenToNineteenIntegerRegex}|({TensNumberIntegerRegex}((((\s+|-)et)?(\s+|-)|-)({TenToNineteenIntegerRegex}|{ZeroToNineIntegerRegex}))?))|{ZeroToNineIntegerRegex})'
+    BelowThousandsRegex = f'(({HundredsNumberIntegerRegex}((((\\s+|-)et)?(\\s+|-)|-)?{BelowHundredsRegex})?|{BelowHundredsRegex}|{TenToNineteenIntegerRegex})|cents?(\\s+|\\-){TenToNineteenIntegerRegex})'
     SupportThousandsRegex = (
         f'(({BelowThousandsRegex}|{BelowHundredsRegex})\\s+{RoundNumberIntegerRegex}(\\s+{RoundNumberIntegerRegex})?)'
     )
@@ -138,7 +140,7 @@ class FrenchNumeric:
     WrittenFractionSeparatorTexts = [r'et', r'sur']
     OneHalfTokens = [r'un', r'demi']
     HalfADozenRegex = '(?<=\\b)demie?\\s+douzaine'
-    DigitalNumberRegex = f'((?<=\\b)(cent|mille|millions?|milliards?|billions?|douzaines?)(?=\\b))|((?<=(\\d|\\b)){BaseNumbers.MultiplierLookupRegex}(?=\\b))'
+    DigitalNumberRegex = f'((?<=\\b)(cents?|mille|millions?|milliards?|billions?|douzaines?)(?=\\b))|((?<=(\\d|\\b)){BaseNumbers.MultiplierLookupRegex}(?=\\b))'
     AmbiguousFractionConnectorsRegex = '^[.]'
     CardinalNumberMap = dict(
         [
@@ -198,6 +200,14 @@ class FrenchNumeric:
             ("octante", 80),
             ("nonante", 90),
             ("cent", 100),
+            ("deux-cents", 200),
+            ("trois-cents", 300),
+            ("quatre-cents", 400),
+            ("cinq-cents", 500),
+            ("six-cents", 600),
+            ("sept-cents", 700),
+            ("huit-cents", 800),
+            ("neuf-cents", 900),
             ("mille", 1000),
             ("un million", 1000000),
             ("million", 1000000),

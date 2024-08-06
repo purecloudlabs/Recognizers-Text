@@ -4386,5 +4386,95 @@
         "End": 37
       }
     ]
+  },
+  {
+    "Input": "septante",
+    "NotSupported": "java, javascript",
+    "Results": [
+      {
+        "Text": "septante",
+        "TypeName": "number",
+        "Resolution": {
+          "value": "70"
+        },
+        "Start": 0,
+        "End": 7
+      }
+    ]
+  },
+  {
+    "Input": "vingt-et-un",
+    "NotSupported": "java, javascript",
+    "Results": [
+      {
+        "Text": "vingt-et-un",
+        "TypeName": "number",
+        "Resolution": {
+          "value": "21"
+        },
+        "Start": 0,
+        "End": 10
+      }
+    ]
+  },
+  {
+    "Input": "nonante-et-un",
+    "NotSupported": "java, javascript",
+    "Results": [
+      {
+        "Text": "nonante-et-un",
+        "TypeName": "number",
+        "Resolution": {
+          "value": "91"
+        },
+        "Start": 0,
+        "End": 12
+      }
+    ]
+  },
+  {
+    "Input": "cent-et-un",
+    "NotSupported": "java, javascript",
+    "Results": [
+      {
+        "Text": "cent-et-un",
+        "TypeName": "number",
+        "Resolution": {
+          "value": "101"
+        },
+        "Start": 0,
+        "End": 9
+      }
+    ]
+  },
+  {
+    "Input": "cent-vingt",
+    "NotSupported": "java, javascript",
+    "Results": [
+      {
+        "Text": "cent-vingt",
+        "TypeName": "number",
+        "Resolution": {
+          "value": "120"
+        },
+        "Start": 0,
+        "End": 9
+      }
+    ]
+  },
+  {
+    "Input": "deux-cents",
+    "NotSupported": "java, javascript",
+    "Results": [
+      {
+        "Text": "deux-cents",
+        "TypeName": "number",
+        "Resolution": {
+          "value": "200"
+        },
+        "Start": 0,
+        "End": 9
+      }
+    ]
   }
 ]
