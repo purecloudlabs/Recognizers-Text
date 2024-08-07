@@ -30,7 +30,7 @@ class FrenchNumeric:
     HundredsNumberIntegerRegex = (
         f'(({ZeroToNineIntegerRegex}((\\s+|-)cents?))|cent|((\\s+cents?(\\s|-))+{TensNumberIntegerRegex}))'
     )
-    BelowHundredsRegex = fr'(({TenToNineteenIntegerRegex}|({TensNumberIntegerRegex}((((\s+|-)et)?(\s+|-)|-)({TenToNineteenIntegerRegex}|{ZeroToNineIntegerRegex}))?))|{ZeroToNineIntegerRegex})'
+    BelowHundredsRegex = f'(({TenToNineteenIntegerRegex}|({TensNumberIntegerRegex}((((\\s+|-)et)?(\\s+|-)|-)({TenToNineteenIntegerRegex}|{ZeroToNineIntegerRegex}))?))|{ZeroToNineIntegerRegex})'
     BelowThousandsRegex = f'(({HundredsNumberIntegerRegex}((((\\s+|-)et)?(\\s+|-)|-)?{BelowHundredsRegex})?|{BelowHundredsRegex}|{TenToNineteenIntegerRegex})|cents?(\\s+|\\-){TenToNineteenIntegerRegex})'
     SupportThousandsRegex = (
         f'(({BelowThousandsRegex}|{BelowHundredsRegex})\\s+{RoundNumberIntegerRegex}(\\s+{RoundNumberIntegerRegex})?)'
