@@ -4476,5 +4476,35 @@
         "End": 9
       }
     ]
+  },
+  {
+    "Input": "vingt-et-un ou plus",
+    "NotSupported": "java, javascript",
+    "Results": [
+      {
+        "Text": "vingt-et-un",
+        "TypeName": "number",
+        "Resolution": {
+          "value": "21"
+        },
+        "Start": 0,
+        "End": 10
+      }
+    ]
+  },
+  {
+    "Input": "Le nombre correct est cent-et-un",
+    "NotSupported": "java, javascript",
+    "Results": [
+      {
+        "Text": "cent-et-un",
+        "TypeName": "number",
+        "Resolution": {
+          "value": "101"
+        },
+        "Start": 22,
+        "End": 31
+      }
+    ]
   }
 ]
