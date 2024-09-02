@@ -4018,5 +4018,89 @@
         "Length": 10
       }
     ]
+  },
+  {
+    "Input": "2 septembre mille neuf cent nonante-quatre",
+    "NotSupported": "dotnet, javascript, java",
+    "Results": [
+      {
+        "Text": "2 septembre mille neuf cent nonante-quatre",
+        "Type": "date",
+        "Value": {
+          "Timex": "1994-09-02",
+          "FutureResolution": {
+            "date": "1994-09-02"
+          },
+          "PastResolution": {
+            "date": "1994-09-02"
+          }
+        },
+        "Start": 0,
+        "Length": 41
+      }
+    ]
+  },
+  {
+    "Input": "15 janvier mil neuf cent septante-quatre",
+    "NotSupported": "dotnet, javascript, java",
+    "Results": [
+      {
+        "Text": "15 janvier mil neuf cent septante-quatre",
+        "Type": "date",
+        "Value": {
+          "Timex": "1974-01-15",
+          "FutureResolution": {
+            "date": "1974-01-15"
+          },
+          "PastResolution": {
+            "date": "1974-01-15"
+          }
+        },
+        "Start": 0,
+        "Length": 39
+      }
+    ]
+  },
+  {
+    "Input": "c'était le 25 mars mil neuf cent quatre-vingt-dix",
+    "NotSupported": "dotnet, javascript, java",
+    "Results": [
+      {
+        "Text": "25 mars mil neuf cent quatre-vingt-dix",
+        "Type": "date",
+        "Value": {
+          "Timex": "1990-03-25",
+          "FutureResolution": {
+            "date": "1990-03-25"
+          },
+          "PastResolution": {
+            "date": "1990-03-25"
+          }
+        },
+        "Start": 11,
+        "Length": 37
+      }
+    ]
+  },
+  {
+    "Input": "le 17 juillet mil neuf cent nonante",
+    "NotSupported": "dotnet, javascript, java",
+    "Results": [
+      {
+        "Text": "17 juillet mil neuf cent nonante",
+        "Type": "date",
+        "Value": {
+          "Timex": "1990-07-17",
+          "FutureResolution": {
+            "date": "1990-07-17"
+          },
+          "PastResolution": {
+            "date": "1990-07-17"
+          }
+        },
+        "Start": 3,
+        "Length": 31
+      }
+    ]
   }
 ]
