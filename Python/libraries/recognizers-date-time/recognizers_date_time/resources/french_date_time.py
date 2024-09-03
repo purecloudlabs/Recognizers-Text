@@ -39,12 +39,12 @@ class FrenchDateTime(BaseDateTimeResource):
     TwoDigitYearRegex = f'\\b(?<![$])(?<year>([0-9]\\d))(?!(\\s*((\\:\\d)|{AmDescRegex}|{PmDescRegex}|\\.\\d)))\\b'
     WrittenOneToNineRegex = '(?:une?|deux|trois|quatre|cinq|six|sept|huit|neuf)'
     WrittenElevenToNineteenRegex = '(?:(seize|quinze|quatorze|treize|douze|onze)|dix\\W(neuf|huit|sept))'
-    WrittenTensRegex = '(?:quatre\\Wvingt(s|\\Wdix)?|soixante(\\Wdix)?|dix|vingt|trente|quarante|cinquante|septante|octante|huitante|nonante)'
-    WrittenCenturyFullYearRegex = f'(?:(deux\\s+)?mille((\\s+{WrittenOneToNineRegex})?\\s+cents?)?)'
+    WrittenTensRegex = r'(?:quatre(?:[\s-]vingt(?:[\s-]dix)?)?|soixante([\s-]dix)?|dix|vingts?|trente|quarante|cinquante|septante|octante|huitante|nonante)'
+    WrittenCenturyFullYearRegex = f'(?:(deux\\s+)?(mille|mil)((\\s+{WrittenOneToNineRegex})?(\\s+cents?)?)?)'
     WrittenCenturyOrdinalYearRegex = f'({WrittenOneToNineRegex}|{WrittenElevenToNineteenRegex}|dix)'
     CenturyRegex = f'\\b(?<century>{WrittenCenturyFullYearRegex}|{WrittenCenturyOrdinalYearRegex}(\\s+cents?)?)\\b'
     LastTwoYearNumRegex = (
-        f'(({WrittenTensRegex}(\\s+|-))?({WrittenOneToNineRegex}|{WrittenElevenToNineteenRegex})|{WrittenTensRegex})'
+        f'(({WrittenTensRegex}(\\s+|-))({WrittenOneToNineRegex}|{WrittenElevenToNineteenRegex})|{WrittenTensRegex})'
     )
     FullTextYearRegex = f'\\b(?<fullyear>(?<firsttwoyearnum>{CenturyRegex})\\s+(?<lasttwoyearnum>{LastTwoYearNumRegex})\\b|\\b(?<firsttwoyearnum>{WrittenCenturyFullYearRegex}|{WrittenCenturyOrdinalYearRegex}\\s+cents))\\b'
     YearRegex = f'({BaseDateTime.FourDigitYearRegex}|{FullTextYearRegex})'
