@@ -5974,5 +5974,17 @@
         "Length": 8
       }
     ]
+  },
+  {
+    "Input": "Je suis né en deux mille neuf",
+    "NotSupported": "dotnet, javascript, java",
+    "Results": [
+      {
+        "Text": "deux mille neuf",
+        "Type": "daterange",
+        "Start": 14,
+        "Length": 15
+      }
+    ]
   }
 ]

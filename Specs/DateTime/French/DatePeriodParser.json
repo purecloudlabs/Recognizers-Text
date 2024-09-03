@@ -7186,5 +7186,28 @@
         "Length": 8
       }
     ]
+  },
+  {
+    "Input": "Je suis né en deux mille neuf",
+    "NotSupported": "dotnet, javascript, java",
+    "Results": [
+      {
+        "Text": "deux mille neuf",
+        "Type": "daterange",
+        "Value": {
+          "Timex": "2009",
+          "FutureResolution": {
+            "startDate": "2009-01-01",
+            "endDate": "2010-01-01"
+          },
+          "PastResolution": {
+            "startDate": "2009-01-01",
+            "endDate": "2010-01-01"
+          }
+        },
+        "Start": 14,
+        "Length": 15
+      }
+    ]
   }
 ]

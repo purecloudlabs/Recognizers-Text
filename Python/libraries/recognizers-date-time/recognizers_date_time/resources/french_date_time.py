@@ -40,7 +40,7 @@ class FrenchDateTime(BaseDateTimeResource):
     WrittenOneToNineRegex = '(?:une?|deux|trois|quatre|cinq|six|sept|huit|neuf)'
     WrittenElevenToNineteenRegex = '(?:(seize|quinze|quatorze|treize|douze|onze)|dix\\W(neuf|huit|sept))'
     WrittenTensRegex = r'(?:quatre(?:[\s-]vingt(?:[\s-]dix)?)?|soixante([\s-]dix)?|dix|vingts?|trente|quarante|cinquante|septante|octante|huitante|nonante)'
-    WrittenCenturyFullYearRegex = f'(?:(deux\\s+)?(mille|mil)((\\s+{WrittenOneToNineRegex})?\\s+cents?)?)'
+    WrittenCenturyFullYearRegex = f'(?:(deux\\s+)?(mille|mil)((\\s+{WrittenOneToNineRegex})?(\\s+cents?)?)?)'
     WrittenCenturyOrdinalYearRegex = f'({WrittenOneToNineRegex}|{WrittenElevenToNineteenRegex}|dix)'
     CenturyRegex = f'\\b(?<century>{WrittenCenturyFullYearRegex}|{WrittenCenturyOrdinalYearRegex}(\\s+cents?)?)\\b'
     LastTwoYearNumRegex = (
