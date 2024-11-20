@@ -37,6 +37,7 @@ class ChineseDatePeriodParser(BaseDatePeriodParser):
         self.date_this_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.DatePeriodThisRegex)
         self.date_last_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.DatePeriodLastRegex)
         self.date_next_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.DatePeriodNextRegex)
+        self.date_next_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.DatePeriodNextNextRegex)
 
     def parse(self, source: ExtractResult, reference: datetime = None) -> Optional[DateTimeParseResult]:
         result_value = None

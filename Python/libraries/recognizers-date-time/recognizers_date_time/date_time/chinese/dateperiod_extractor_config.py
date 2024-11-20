@@ -211,6 +211,7 @@ class ChineseDatePeriodExtractorConfiguration(DatePeriodExtractorConfiguration):
         self._strict_year_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.StrictYearRegex)
         self._last_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.DatePeriodLastRegex)
         self._next_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.DatePeriodNextRegex)
+        self._next_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.DatePeriodNextNextRegex)
         self._this_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.DatePeriodThisRegex)
         self._month_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.MonthRegex)
         self._zero_to_nine_integer_regex_chinese = RegExpUtility.get_safe_reg_exp(
