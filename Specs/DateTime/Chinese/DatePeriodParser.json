@@ -159,7 +159,7 @@
         "Text": "下周末",
         "Type": "daterange",
         "Value": {
-          "Timex": "2017-W13-WE",
+          "Timex": "2017-W12-WE",
           "FutureResolution": {
             "startDate": "2017-04-01",
             "endDate": "2017-04-03"
@@ -184,7 +184,7 @@
         "Text": "下周",
         "Type": "daterange",
         "Value": {
-          "Timex": "2017-W13",
+          "Timex": "2017-W12",
           "FutureResolution": {
             "startDate": "2017-03-27",
             "endDate": "2017-04-03"
@@ -234,7 +234,7 @@
         "Text": "下周",
         "Type": "daterange",
         "Value": {
-          "Timex": "2017-W13",
+          "Timex": "2017-W12",
           "FutureResolution": {
             "startDate": "2017-03-27",
             "endDate": "2017-04-03"
@@ -1691,7 +1691,7 @@
         "Text": "下下周末",
         "Type": "daterange",
         "Value": {
-          "Timex": "2017-W14-WE",
+          "Timex": "2017-W13-WE",
           "FutureResolution": {
             "startDate": "2017-04-08",
             "endDate": "2017-04-10"
@@ -1717,7 +1717,7 @@
         "Text": "下下周",
         "Type": "daterange",
         "Value": {
-          "Timex": "2017-W14",
+          "Timex": "2017-W13",
           "FutureResolution": {
             "startDate": "2017-04-03",
             "endDate": "2017-04-10"
@@ -1743,7 +1743,7 @@
         "Text": "下下周",
         "Type": "daterange",
         "Value": {
-          "Timex": "2017-W14",
+          "Timex": "2017-W13",
           "FutureResolution": {
             "startDate": "2017-04-03",
             "endDate": "2017-04-10"
