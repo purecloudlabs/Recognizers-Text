@@ -161,12 +161,12 @@
         "Value": {
           "Timex": "2017-W12-WE",
           "FutureResolution": {
-            "startDate": "2017-04-01",
-            "endDate": "2017-04-03"
+            "startDate": "2017-03-25",
+            "endDate": "2017-03-27"
           },
           "PastResolution": {
-            "startDate": "2017-04-01",
-            "endDate": "2017-04-03"
+            "startDate": "2017-03-25",
+            "endDate": "2017-03-27"
           }
         },
         "Start": 0,
@@ -186,12 +186,12 @@
         "Value": {
           "Timex": "2017-W12",
           "FutureResolution": {
-            "startDate": "2017-03-27",
-            "endDate": "2017-04-03"
+            "startDate": "2017-03-20",
+            "endDate": "2017-03-27"
           },
           "PastResolution": {
-            "startDate": "2017-03-27",
-            "endDate": "2017-04-03"
+            "startDate": "2017-03-20",
+            "endDate": "2017-03-27"
           }
         },
         "Start": 3,
@@ -236,12 +236,12 @@
         "Value": {
           "Timex": "2017-W12",
           "FutureResolution": {
-            "startDate": "2017-03-27",
-            "endDate": "2017-04-03"
+            "startDate": "2017-03-20",
+            "endDate": "2017-03-27"
           },
           "PastResolution": {
-            "startDate": "2017-03-27",
-            "endDate": "2017-04-03"
+            "startDate": "2017-03-20",
+            "endDate": "2017-03-27"
           }
         },
         "Start": 0,
@@ -1693,12 +1693,12 @@
         "Value": {
           "Timex": "2017-W13-WE",
           "FutureResolution": {
-            "startDate": "2017-04-08",
-            "endDate": "2017-04-10"
+            "startDate": "2017-04-01",
+            "endDate": "2017-04-03"
           },
           "PastResolution": {
-            "startDate": "2017-04-08",
-            "endDate": "2017-04-10"
+            "startDate": "2017-04-01",
+            "endDate": "2017-04-03"
           }
         },
         "Start": 0,
@@ -1719,12 +1719,12 @@
         "Value": {
           "Timex": "2017-W13",
           "FutureResolution": {
-            "startDate": "2017-04-03",
-            "endDate": "2017-04-10"
+            "startDate": "2017-03-27",
+            "endDate": "2017-04-03"
           },
           "PastResolution": {
-            "startDate": "2017-04-03",
-            "endDate": "2017-04-10"
+            "startDate": "2017-03-27",
+            "endDate": "2017-04-03"
           }
         },
         "Start": 3,
@@ -1745,12 +1745,12 @@
         "Value": {
           "Timex": "2017-W13",
           "FutureResolution": {
-            "startDate": "2017-04-03",
-            "endDate": "2017-04-10"
+            "startDate": "2017-03-27",
+            "endDate": "2017-04-03"
           },
           "PastResolution": {
-            "startDate": "2017-04-03",
-            "endDate": "2017-04-10"
+            "startDate": "2017-03-27",
+            "endDate": "2017-04-03"
           }
         },
         "Start": 0,
