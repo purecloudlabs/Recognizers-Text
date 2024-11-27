@@ -79,21 +79,21 @@ def get_specs(recognizer, entity):
 ENTITY_PATTERN = re.compile('(.*)(Model|Parser|Extractor|Resolver)(.*)')
 
 CULTURES = {
-    # 'Arabic': Culture.Arabic,
+    'Arabic': Culture.Arabic,
     'Chinese': Culture.Chinese,
-    # 'Catalan': Culture.Catalan,
-    # 'Dutch': Culture.Dutch,
-    # 'English': Culture.English,
-    # 'EnglishOthers': Culture.EnglishOthers,
-    # 'French': Culture.French,
-    # 'Italian': Culture.Italian,
-    # 'Japanese': Culture.Japanese,
-    # 'Korean': Culture.Korean,
-    # 'Portuguese': Culture.Portuguese,
-    # 'Spanish': Culture.Spanish,
-    # 'SpanishMexican': Culture.SpanishMexican,
-    # 'Turkish': Culture.Turkish,
-    # 'German': Culture.German,
+    'Catalan': Culture.Catalan,
+    'Dutch': Culture.Dutch,
+    'English': Culture.English,
+    'EnglishOthers': Culture.EnglishOthers,
+    'French': Culture.French,
+    'Italian': Culture.Italian,
+    'Japanese': Culture.Japanese,
+    'Korean': Culture.Korean,
+    'Portuguese': Culture.Portuguese,
+    'Spanish': Culture.Spanish,
+    'SpanishMexican': Culture.SpanishMexican,
+    'Turkish': Culture.Turkish,
+    'German': Culture.German,
 }
 
 SPECS = get_all_specs()
