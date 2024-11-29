@@ -237,7 +237,7 @@ class ChineseDatePeriodParserConfiguration(DatePeriodParserConfiguration):
         self._quarter_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.QuarterRegex)
         self._season_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.SeasonRegex)
         self._next_prefix_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.DatePeriodNextRegex)
-        self._next_prefix_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.DatePeriodNextNextRegex)
+        self._next_next_prefix_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.DatePeriodNextNextRegex)
         self._past_prefix_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.DatePeriodLastRegex)
         self._this_prefix_regex = RegExpUtility.get_safe_reg_exp(ChineseDateTime.DatePeriodThisRegex)
         self._later_early_period_regex = RegExpUtility.get_safe_reg_exp(r'\0')

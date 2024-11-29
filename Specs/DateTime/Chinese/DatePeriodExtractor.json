@@ -642,7 +642,6 @@
   },
   {
     "Input": "下下周如何",
-    "NotSupported": "java, javascript, python",
     "Results": [
       {
         "Text": "下下周",
