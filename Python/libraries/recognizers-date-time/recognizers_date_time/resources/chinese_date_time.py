@@ -74,6 +74,7 @@ class ChineseDateTime(BaseDateTimeResource):
     DatePeriodThisRegex = '这个|这一个|这|这一|本'
     DatePeriodLastRegex = '上个|上一个|上|上一'
     DatePeriodNextRegex = '下个|下一个|下|下一'
+    DatePeriodNextNextRegex = '下下'
     RelativeMonthRegex = f'(?<relmonth>({DatePeriodThisRegex}|{DatePeriodLastRegex}|{DatePeriodNextRegex})\\s*月)'
     HalfYearRegex = '((?<firstHalf>(上|前)半年)|(?<secondHalf>(下|后)半年))'
     YearRegex = f'(({YearNumRegex})(\\s*年)?|({SimpleYearRegex})\\s*年){HalfYearRegex}?'
@@ -87,7 +88,7 @@ class ChineseDateTime(BaseDateTimeResource):
     PureNumYearAndMonth = (
         f'({YearRegexInNumber}\\s*[-\\.\\/]\\s*{MonthNumRegex})|({MonthNumRegex}\\s*\\/\\s*{YearRegexInNumber})'
     )
-    OneWordPeriodRegex = f'(((?<yearrel>(明|今|去)年)\\s*)?{MonthRegex}|({DatePeriodThisRegex}|{DatePeriodLastRegex}|{DatePeriodNextRegex})(?<halfTag>半)?\\s*(周末|周|月|年)|周末|(今|明|去|前|后)年(\\s*{HalfYearRegex})?)'
+    OneWordPeriodRegex = f'(((?<yearrel>(明|今|去)年)\\s*)?{MonthRegex}|({DatePeriodThisRegex}|{DatePeriodLastRegex}|{DatePeriodNextNextRegex}|{DatePeriodNextRegex})(?<halfTag>半)?\\s*(周末|周|月|年)|周末|(今|明|去|前|后)年(\\s*{HalfYearRegex})?)'
     LaterEarlyPeriodRegex = '^[.]'
     DatePointWithAgoAndLater = '^[.]'
     WeekOfMonthRegex = f'(?<wom>{MonthSuffixRegex}的(?<cardinal>第一|第二|第三|第四|第五|最后一)\\s*周\\s*)'
