@@ -1230,7 +1230,7 @@
   {
     "Input": "maandag, tweeëntwintig jan. 2018",
     "NotSupportedByDesign": "javascript,java",
-    "NotSupported": "",
+    "NotSupported": "python",
     "Results": [
       {
         "Text": "maandag, tweeëntwintig jan. 2018",
