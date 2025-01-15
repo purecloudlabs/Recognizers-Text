@@ -1813,5 +1813,17 @@
         "Length": 5
       }
     ]
+  },
+  {
+    "Input": "23h est trop tard pour une heure d'arrive, veuillez prévoir quelque chose plus tôt",
+    "NotSupported": "dotnet, javascript, java",
+    "Results": [
+      {
+        "Text": "23h",
+        "Type": "time",
+        "Start": 0,
+        "Length": 3
+      }
+    ]
   }
 ]

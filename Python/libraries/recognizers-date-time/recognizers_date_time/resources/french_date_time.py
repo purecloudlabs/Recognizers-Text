@@ -116,10 +116,10 @@ class FrenchDateTime(BaseDateTimeResource):
     WeekDayEnd = f'{WeekDayRegex}\\s*,?\\s*$'
     WeekDayStart = '^\\b$'
     RangeUnitRegex = '\\b(?<unit>(l\')?ann[eé]e(s)?|mois|semaines?)\\b'
-    HourNumRegex = '\\b(?<hournum>zero|une?(?=\\s+heure)|deux|trois|quatre|cinq|six|sept|huit|neuf|onze|douze|treize|quatorze|quinze|dix-six|seize|dix(-|\\s+)sept|dix(-|\\s+)huit|dix(-|\\s+)neuf|vingt|vingt(-|\\s+)et(-|\\s+)un|vingt(-|\\s+)deux|vingt(-|\\s+)trois|dix)\\b'
+    HourNumRegex = "\\b(?<hournum>zero|une(?=\\s+heure(?!\\s+d\'))|deux|trois|quatre|cinq|six|sept|huit|neuf|onze|douze|treize|quatorze|quinze|dix-six|seize|dix(-|\\s+)sept|dix(-|\\s+)huit|dix(-|\\s+)neuf|vingt|vingt(-|\\s+)et(-|\\s+)un|vingt(-|\\s+)deux|vingt(-|\\s+)trois|dix)\\b"
     MinuteNumRegex = '(?<minnum>((vingt|trente|quarante|cinquante)(\\s*(et|-)?\\s*))?(un|deux|trois|quatre|cinq|six|sept|huit|neuf)|onze|douze|treize|quatorze|quinze|seize|dix-sept|dix-huit|dix-neuf|vingt|trente|quarante|cinquante|dix)'
     DeltaMinuteNumRegex = '(?<deltaminnum>((vingt|trente|quarante|cinquante)(\\s*(et|-)?\\s*))?(un|deux|trois|quatre|cinq|six|sept|huit|neuf)|onze|douze|treize|quatorze|quinze|seize|dix-sept|dix-huit|dix-neuf|vingt|trente|quarante|cinquante|dix)'
-    OclockRegex = '(?<oclock>heures?|h)'
+    OclockRegex = "(?<oclock>heures?(?!\\s+d\')|h)"
     PmRegex = (
         '(?<pm>(dans l\'\\s*)?apr[eè]s(\\s*|-)midi|(du|ce|de|le)\\s*(soir([ée]e)?)|(dans l[ea]\\s+)?(nuit|soir[eé]e))'
     )
@@ -141,7 +141,7 @@ class FrenchDateTime(BaseDateTimeResource):
     MidTimeRegex = f'(?<mid>({MidnightRegex}|{MidmorningRegex}|{MidafternoonRegex}|{MiddayRegex}))'
     AtRegex = f'\\b(((?<=\\b[àa]\\s+)({WrittenTimeRegex}|{HourNumRegex}(\\s+heures)?|{BaseDateTime.HourRegex}|{MidTimeRegex}))|{MidTimeRegex})\\b'
     IshRegex = f'\\b(peu\\s*pr[èe]s\\s*{BaseDateTime.HourRegex}|peu\\s*pr[èe]s\\s*{WrittenTimeRegex}|peu\\s*pr[èe]s\\s*[àa]\\s*{BaseDateTime.HourRegex}|peu pr[èe]s midi)\\b'
-    TimeUnitRegex = '(?<unit>h|(heure|hr|minute|min|seconde|sec)(?<plural>s)?)\\b'
+    TimeUnitRegex = "(?<unit>h|(heure(?!\\s+d\')|hr|minute|min|seconde|sec)(?<plural>s)?)\\b"
     RestrictedTimeUnitRegex = '(?<unit>huere|minute)\\b'
     ConnectNumRegex = f'{BaseDateTime.HourRegex}(?<min>[0-5][0-9])\\s*{DescRegex}'
     FivesRegex = '(?<tens>(quinze|vingt(\\s*|-*(cinq))?|trente(\\s*|-*(cinq))?|quarante(\\s*|-*(cinq))??|cinquante(\\s*|-*(cinq))?|dix|cinq))\\b'
@@ -200,7 +200,7 @@ class FrenchDateTime(BaseDateTimeResource):
     LessThanRegex = '^\\b$'
     MoreThanRegex = '^\\b$'
     DurationUnitRegex = (
-        '(?<unit>ann[eé]es?|ans?|mois|semaines?|jours?|heures?|hrs?|h|minutes?|mins?|secondes?|secs?|journ[eé]e)\\b'
+        "(?<unit>ann[eé]es?|ans?|mois|semaines?|jours?|heures?(?!\\s+d\')|hrs?|h|minutes?|mins?|secondes?|secs?|journ[eé]e)\\b"
     )
     SuffixAndRegex = '(?<suffix>\\s*(et)\\s+(une?\\s+)?(?<suffix_num>demi|quart))'
     DurationFollowedUnit = f'^\\s*{SuffixAndRegex}?(\\s+|-)?{DurationUnitRegex}'
