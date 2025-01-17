@@ -2611,6 +2611,9 @@
   },
   {
     "Input": "une heure du matin",
+    "Context": {
+      "ReferenceDateTime": "2025-01-15T00:00:00"
+    },
     "NotSupported": "dotnet, javascript, java",
     "Results": [
       {

@@ -1038,5 +1038,133 @@
         "End": 40
       }
     ]
+  },
+  {
+    "Input": "-0e63",
+    "NotSupported": "dotnet, javascript, java",
+    "Results": [
+      {
+        "Text": "-0e63",
+        "TypeName": "number",
+        "Resolution": {
+          "subtype": "power",
+          "value": "0"
+        },
+        "Start": 0,
+        "End": 4
+      }
+    ]
+  },
+  {
+    "Input": "0e49",
+    "NotSupported": "dotnet, javascript, java",
+    "Results": [
+      {
+        "Text": "0e49",
+        "TypeName": "number",
+        "Resolution": {
+          "subtype": "power",
+          "value": "0"
+        },
+        "Start": 0,
+        "End": 3
+      }
+    ]
+  },
+  {
+    "Input": "0e-23",
+    "NotSupported": "dotnet, javascript, java",
+    "Results": [
+      {
+        "Text": "0e-23",
+        "TypeName": "number",
+        "Resolution": {
+          "subtype": "power",
+          "value": "0"
+        },
+        "Start": 0,
+        "End": 4
+      }
+    ]
+  },
+  {
+    "Input": "-0e-17",
+    "NotSupported": "dotnet, javascript, java",
+    "Results": [
+      {
+        "Text": "-0e-17",
+        "TypeName": "number",
+        "Resolution": {
+          "subtype": "power",
+          "value": "0"
+        },
+        "Start": 0,
+        "End": 5
+      }
+    ]
+  },
+  {
+    "Input": "-0^63",
+    "NotSupported": "dotnet, javascript, java",
+    "Results": [
+      {
+        "Text": "-0^63",
+        "TypeName": "number",
+        "Resolution": {
+          "subtype": "power",
+          "value": "0"
+        },
+        "Start": 0,
+        "End": 4
+      }
+    ]
+  },
+  {
+    "Input": "0^49",
+    "NotSupported": "dotnet, javascript, java",
+    "Results": [
+      {
+        "Text": "0^49",
+        "TypeName": "number",
+        "Resolution": {
+          "subtype": "power",
+          "value": "0"
+        },
+        "Start": 0,
+        "End": 3
+      }
+    ]
+  },
+  {
+    "Input": "0^-23",
+    "NotSupported": "dotnet, javascript, java",
+    "Results": [
+      {
+        "Text": "0^-23",
+        "TypeName": "number",
+        "Resolution": {
+          "subtype": "power",
+          "value": "0"
+        },
+        "Start": 0,
+        "End": 4
+      }
+    ]
+  },
+  {
+    "Input": "-0^-17",
+    "NotSupported": "dotnet, javascript, java",
+    "Results": [
+      {
+        "Text": "-0^-17",
+        "TypeName": "number",
+        "Resolution": {
+          "subtype": "power",
+          "value": "0"
+        },
+        "Start": 0,
+        "End": 5
+      }
+    ]
   }
 ]

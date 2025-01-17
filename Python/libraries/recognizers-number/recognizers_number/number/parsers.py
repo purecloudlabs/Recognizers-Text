@@ -435,7 +435,9 @@ class BaseNumberParser(Parser):
         for i in range(len(handle)):
             c = handle[i]
             if c in ['^', 'E']:
-                if negative:
+                if tmp == 0:
+                    call_stack.append(Decimal('0'))
+                elif negative:
                     call_stack.append(-tmp)
                 else:
                     call_stack.append(tmp)
@@ -464,7 +466,10 @@ class BaseNumberParser(Parser):
         result_value = 0
         a = Decimal(call_stack.pop(0))
         b = Decimal(call_stack.pop(0))
-        if exponent:
+
+        if a == Decimal('0'):
+            result_value = Decimal('0')
+        elif exponent:
             result_value = getcontext().multiply(a, getcontext().power(Decimal(10), b))
         else:
             result_value = getcontext().power(a, b)
