@@ -19,7 +19,7 @@ class FrenchNumeric:
     LangMarker = 'Fre'
     CompoundNumberLanguage = False
     MultiDecimalSeparatorCulture = True
-    RoundNumberIntegerRegex = '(cent|mille|millions?|milliards?|billions?)'
+    RoundNumberIntegerRegex = '(cent|mille|mil|millions?|milliards?|billions?)'
     ZeroToNineIntegerRegex = '(une?|deux|trois|quatre|cinq|six|sept|huit|neuf|z[ée]ro)'
     TwoToNineIntegerRegex = '(deux|trois|quatre|cinq|six|sept|huit|neuf)'
     TenToNineteenIntegerRegex = '((seize|quinze|quatorze|treize|douze|onze)|dix(\\Wneuf|\\Whuit|\\Wsept)?)'
@@ -38,7 +38,7 @@ class FrenchNumeric:
     SeparaIntRegex = (
         f'({SupportThousandsRegex}(\\s+{SupportThousandsRegex})*(\\s+{BelowThousandsRegex})?|{BelowThousandsRegex})'
     )
-    AllIntRegex = f'({SeparaIntRegex}|mille(\\s+{BelowThousandsRegex})?)'
+    AllIntRegex = f'({SeparaIntRegex}|(mille|mil)(\\s+{BelowThousandsRegex})?)'
 
     def NumbersWithPlaceHolder(placeholder):
         return f'(((?<!\\d+\\s*)-\\s*)|(?<=\\b))\\d+(?!([,\\.]\\d+[a-zA-Z]))(?={placeholder})'
@@ -55,7 +55,7 @@ class FrenchNumeric:
     SpecialUnderHundredOrdinalRegex = (
         '(di[xz]i|onzi|douzi|treizi|quatorzi|quinzi|seizi|dix[\\s-](septi|huiri|neuvi))[eè]me'
     )
-    TensOrdinalRegex = '(quatre-vingt-di[xz]i[eè]me|quatre-vingti[eè]me|huitanti[eè]me|octanti[eè]me|soixante-dixi[eè]me|septanti[eè]me|soixanti[eè]me|cinquanti[eè]me|quaranti[eè]me|trenti[eè]me|vingti[eè]me)'
+    TensOrdinalRegex = '(quatre-vingt-di[xz]i[eè]me|quatre\\Wvingt\\Wdix|quatre-vingti[eè]me|huitanti[eè]me|octanti[eè]me|soixante-dixi[eè]me|septanti[eè]me|soixanti[eè]me|cinquanti[eè]me|quaranti[eè]me|trenti[eè]me|vingti[eè]me)'
     HundredOrdinalRegex = f'({AllIntRegex}(\\s+(centi[eè]me)))'
     UnderHundredOrdinalRegex = f'(((({AllIntRegex}|{TensNumberIntegerRegex})(\\W)?)?({OneToNineOrdinalRegex}|\\s+et\\s+uni[eè]me))|{SpecialUnderHundredOrdinalRegex}|{TensOrdinalRegex})'
     UnderThousandOrdinalRegex = f'((({HundredOrdinalRegex}(\\s|-)?)?{UnderHundredOrdinalRegex})|(({AllIntRegex}(\\W)?)?{SimpleRoundOrdinalRegex})|{HundredOrdinalRegex})'
@@ -74,7 +74,7 @@ class FrenchNumeric:
     FractionNotationRegex = f'{BaseNumbers.FractionNotationRegex}'
     FractionMultiplierRegex = f'(?<fracMultiplier>\\s+et\\s+(demi[es]?|(une?|{TwoToNineIntegerRegex})\\s+(demie?|tier|quart|(cinqui|sixi|septi|hui[tr]i|neuvi|dixi)[eè]me)s?))'
     RoundMultiplierWithFraction = f'(?<multiplier>(millions?|milliards?|billions?))(?={FractionMultiplierRegex}?$)'
-    RoundMultiplierRegex = f'\\b\\s*({RoundMultiplierWithFraction}|(?<multiplier>(cent|mille))$)'
+    RoundMultiplierRegex = f'\\b\\s*({RoundMultiplierWithFraction}|(?<multiplier>(cent|mille|mil))$)'
     FractionNounRegex = f'(?<=\\b)({AllIntRegex}\\s+((et)\\s+)?)?({AllIntRegex}(\\s+((et)\\s)?)(({AllOrdinalNumberRegex}s?|{SuffixOrdinalRegex}s?)|(demi[es]?|tiers?|quarts?))|(un\\s+)?(demi|tier|quart)(\\s+(de\\s+)?|\\s*-\\s*){RoundNumberIntegerRegex})(?=\\b)'
     FractionNounWithArticleRegex = f'(?<=\\b)(({AllIntRegex}|{RoundNumberIntegerRegexWithLocks})\\s+(et\\s+)?)?((une?)(\\s+)(({AllOrdinalNumberRegex})|({SuffixOrdinalRegex})|(et\\s+)?demi[es]?)|demi[es]?)(?=\\b)'
     FractionPrepositionRegex = f'(?<!{BaseNumbers.CommonCurrencySymbol}\\s*)(?<=\\b)(?<numerator>({AllIntRegex})|((?<!\\.)\\d+))\\s+sur\\s+(?<denominator>({AllIntRegex})|((\\d+)(?!\\.)))(?=\\b)'
@@ -140,7 +140,7 @@ class FrenchNumeric:
     WrittenFractionSeparatorTexts = [r'et', r'sur']
     OneHalfTokens = [r'un', r'demi']
     HalfADozenRegex = '(?<=\\b)demie?\\s+douzaine'
-    DigitalNumberRegex = f'((?<=\\b)(cents?|mille|millions?|milliards?|billions?|douzaines?)(?=\\b))|((?<=(\\d|\\b)){BaseNumbers.MultiplierLookupRegex}(?=\\b))'
+    DigitalNumberRegex = f'((?<=\\b)(cents?|mille|mil|millions?|milliards?|billions?|douzaines?)(?=\\b))|((?<=(\\d|\\b)){BaseNumbers.MultiplierLookupRegex}(?=\\b))'
     AmbiguousFractionConnectorsRegex = '^[.]'
     CardinalNumberMap = dict(
         [
@@ -208,7 +208,9 @@ class FrenchNumeric:
             ("sept-cents", 700),
             ("huit-cents", 800),
             ("neuf-cents", 900),
+            ("neuf cent", 900),
             ("mille", 1000),
+            ("mil", 1000),
             ("un million", 1000000),
             ("million", 1000000),
             ("millions", 1000000),
@@ -385,6 +387,7 @@ class FrenchNumeric:
     RoundNumberMap = dict(
         [
             ("cent", 100),
+            ("mil", 1000),
             ("mille", 1000),
             ("million", 1000000),
             ("millions", 1000000),

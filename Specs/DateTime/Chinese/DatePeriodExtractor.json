@@ -617,5 +617,38 @@
         "Length": 19
       }
     ]
+  },
+  {
+    "Input": "下下周末",
+    "Results": [
+      {
+        "Text": "下下周末",
+        "Type": "daterange",
+        "Start": 0,
+        "Length": 4
+      }
+    ]
+  },
+  {
+    "Input": "会议在下下周",
+    "Results": [
+      {
+        "Text": "下下周",
+        "Type": "daterange",
+        "Start": 3,
+        "Length": 3
+      }
+    ]
+  },
+  {
+    "Input": "下下周如何",
+    "Results": [
+      {
+        "Text": "下下周",
+        "Type": "daterange",
+        "Start": 0,
+        "Length": 3
+      }
+    ]
   }
 ]

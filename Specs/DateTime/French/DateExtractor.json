@@ -2644,5 +2644,53 @@
         "Length": 12
       }
     ]
+  },
+   {
+    "Input": "2 septembre mille neuf cent nonante-quatre",
+    "NotSupported": "dotnet, javascript, java",
+    "Results": [
+      {
+        "Text": "2 septembre mille neuf cent nonante-quatre",
+        "Type": "date",
+        "Start": 0,
+        "Length": 42
+      }
+    ]
+  },
+  {
+    "Input": "15 janvier mil neuf cent septante-quatre",
+    "NotSupported": "dotnet, javascript, java",
+    "Results": [
+      {
+        "Text": "15 janvier mil neuf cent septante-quatre",
+        "Type": "date",
+        "Start": 0,
+        "Length": 40
+      }
+    ]
+  },
+  {
+    "Input": "c'était le 25 mars mil neuf cent quatre-vingt-dix",
+    "NotSupported": "dotnet, javascript, java",
+    "Results": [
+      {
+        "Text": "25 mars mil neuf cent quatre-vingt-dix",
+        "Type": "date",
+        "Start": 11,
+        "Length": 38
+      }
+    ]
+  },
+  {
+    "Input": "le 17 juillet mil neuf cent nonante",
+    "NotSupported": "dotnet, javascript, java",
+    "Results": [
+      {
+        "Text": "17 juillet mil neuf cent nonante",
+        "Type": "date",
+        "Start": 3,
+        "Length": 32
+      }
+    ]
   }
 ]
