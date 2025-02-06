@@ -1166,5 +1166,65 @@
         "End": 5
       }
     ]
+  },
+  {
+    "Input": "100,50",
+    "NotSupported": "dotnet, javascript, java",
+    "Results": [
+      {
+        "Text": "100,50",
+        "TypeName": "number",
+        "Resolution": {
+          "value": "100,5"
+        },
+        "Start": 0,
+        "End": 5
+      }
+    ]
+  },
+  {
+    "Input": "2.000,99",
+    "NotSupported": "dotnet, javascript, java",
+    "Results": [
+      {
+        "Text": "2.000,99",
+        "TypeName": "number",
+        "Resolution": {
+          "value": "2000,99"
+        },
+        "Start": 0,
+        "End": 7
+      }
+    ]
+  },
+  {
+    "Input": "1000,50",
+    "NotSupported": "dotnet, javascript, java",
+    "Results": [
+      {
+        "Text": "1000,50",
+        "TypeName": "number",
+        "Resolution": {
+          "value": "1000,5"
+        },
+        "Start": 0,
+        "End": 6
+      }
+    ]
+  },
+  {
+    "Input": "1000000,50",
+    "NotSupported": "dotnet, javascript, java",
+    "Results": [
+      {
+        "Text": "1000000,50",
+        "TypeName": "number",
+        "Resolution": {
+          "value": "1000000,5"
+        },
+        "Start": 0,
+        "End": 9
+      }
+    ]
   }
 ]
