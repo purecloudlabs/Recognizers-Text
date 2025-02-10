@@ -21,11 +21,11 @@ timeout(150) {
           rm -rf allure-results
           mkdir allure-results
           """
-          withCredentials([usernamePassword(credentialsId: params.CREDENTIALSID, usernameVariable: 'user', passwordVariable: 'password')]) {
+          withCredentials([usernamePassword(credentialsId: params.CREDENTIALSID, usernameVariable: 'username', passwordVariable: 'password')]) {
             sh """
             rm -rf pip.conf
             echo '[global]' >> pip.conf
-            echo 'extra-index-url = https://$user:$password@purecloud.jfrog.io/purecloud/api/pypi/inin-pypi/simple' >> pip.conf
+            echo 'extra-index-url = https://$username:$password@nexus.use1.infra-pure.cloud/repository/inin-pypi/simple' >> pip.conf
             """
           }
 
