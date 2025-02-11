@@ -83,10 +83,10 @@ class GermanNumeric:
     )
 
     def DoubleDecimalPointRegex(placeholder):
-        return f'(?<=\\b)((\\d{{1,3}})(\\.\\d{{3}})*(\\,\\d+)?)(?={placeholder})'
+        return f'(?<=\\b)((\\d{{1,3}})(\\.?\\d{{3}})*(\\,\\d+)?)(?={placeholder})'
 
     def DoubleWithoutIntegralRegex(placeholder):
-        return f'(?<=\\s|^)(?<!(\\d+))\\.\\d+(?!(\\.\\d+))(?={placeholder})'
+        return f'(?<=\\s|^)(?<!(\\d+))\\.?\\d+(?!(\\.\\d+))(?={placeholder})'
 
     DoubleWithRoundNumber = (
         f'(((?<!\\d+\\s*)-\\s*)|((?<=\\b)(?<!\\d+\\,)))\\d+\\,\\d+\\s+{RoundNumberIntegerRegex}(?=\\b)'
