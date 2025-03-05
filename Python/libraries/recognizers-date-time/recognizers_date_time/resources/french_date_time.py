@@ -706,3 +706,4 @@ class FrenchDateTime:
     YearTerms = [r'années', r'ans', r'an', r'l\'annees', r'l\'annee']
     YearToDateTerms = [r'année à ce jour', r'an à ce jour']
 # pylint: enable=line-too-long
+
