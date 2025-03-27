@@ -9,7 +9,6 @@ MultiDecimalSeparatorCulture: !bool true
 NonStandardSeparatorVariants: !list
   types: [ string ]
   entries:
-    - en-za
     - en-na
     - en-zw
 #Integer Regex
