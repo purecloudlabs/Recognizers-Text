@@ -3,10 +3,10 @@
 from unittest import skip
 
 import pytest
-
-from recognizers_number.culture import SUPPORTED_CULTURES
 from runner import get_specs
+
 from recognizers_number.number.number_recognizer import recognize_number, recognize_ordinal
+
 
 MODELFUNCTION = {
     'Number': recognize_number,
@@ -14,10 +14,10 @@ MODELFUNCTION = {
 }
 
 
-@pytest.mark.parametrize('culture, model, options, context, source, expected_results', get_specs(
-    recognizer='Number', entity='Model'))
-def test_number_recognizer(culture, model, options,
-                           context, source, expected_results):
+@pytest.mark.parametrize(
+    'culture, model, options, context, source, expected_results', get_specs(recognizer='Number', entity='Model')
+)
+def test_number_recognizer(culture, model, options, context, source, expected_results):
 
     spec_info = model + "Model : " + source
 
@@ -41,8 +41,7 @@ def get_results(culture, model, source):
 
 
 def assert_verbose(actual, expected, spec_info):
-    assert actual == expected, \
-        "Actual: {} | Expected: {} | Context: {}".format(actual, expected, spec_info)
+    assert actual == expected, "Actual: {} | Expected: {} | Context: {}".format(actual, expected, spec_info)
 
 
 @skip("Used for troubleshooting individual phrases")
@@ -52,3 +51,8 @@ def test_individual_utterance():
     print(f"\nResult: {res}")
     assert len(res) > 0
     assert res[0].resolution.get("value") is not None
+
+
+def test_test():
+    res = recognize_number("750.23", "en-za")
+    print(res[0])
