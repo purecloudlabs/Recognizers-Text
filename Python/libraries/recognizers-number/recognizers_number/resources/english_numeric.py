@@ -19,7 +19,7 @@ class EnglishNumeric:
     LangMarker = 'Eng'
     CompoundNumberLanguage = False
     MultiDecimalSeparatorCulture = True
-    NonStandardSeparatorVariants = [r'en-na', r'en-zw']  # help!
+    NonStandardSeparatorVariants = [r'en-za', r'en-na', r'en-zw']  # South African English and other variants use comma as decimal separator
     RoundNumberIntegerRegex = '(?:hundred|thousand|million|mln|billion|bln|trillion|tln|lakh|crore)s?'
     ZeroToNineIntegerRegex = '(?:three|seven|eight|four|five|zero|n[ao]ught|nine|one|two|six)'
     TwoToNineIntegerRegex = '(?:three|seven|eight|four|five|nine|two|six)'
