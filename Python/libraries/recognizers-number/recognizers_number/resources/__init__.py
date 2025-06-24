@@ -8,7 +8,10 @@ from .dutch_numeric import DutchNumeric
 from .english_numeric import EnglishNumeric
 from .french_numeric import FrenchNumeric
 from .german_numeric import GermanNumeric
+from .hungarian_numeric import HungarianNumeric
 from .italian_numeric import ItalianNumeric
 from .japanese_numeric import JapaneseNumeric
 from .portuguese_numeric import PortugueseNumeric
 from .spanish_numeric import SpanishNumeric
+
+from .arabic_numeric import ArabicNumeric
