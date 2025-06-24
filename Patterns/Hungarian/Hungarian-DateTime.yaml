@@ -1,0 +1,19 @@
+---
+LangMarker: Hun
+DateExtractor: !nestedRegex
+  def: ((({DateTimePrefixRegex})?({DayRegex}\\s*)?{MonthRegex}\\s*{DateSuffix})|({WeekDayRegex}\\s*,?\\s*)?{DayRegex}(-|\\s*)?{MonthSuffixRegex}|({WeekDayRegex}\\s*,?\\s*)?{DayRegex}(-|\\s*)({MonthRegex})|({WeekDayRegex}\\s*,?\\s*)?{MonthRegex}\\s*{DayRegex}((\\s+|\\s*,\\s*|\\s+of\\s+){DateYearRegex})?|{DayRegex}\\s*{MonthSuffixRegex}((\\s+|\\s*,\\s*|\\s+of\\s+){DateYearRegex})?|({WeekDayRegex}\\s*,?\\s*)?{MonthSuffixRegex}\\s*{DayRegex}((\\s+|\\s*,\\s*|\\s+of\\s+){DateYearRegex})?|({WeekDayRegex}\\s*,?\\s*)?{DayRegex}\\s+{MonthRegex},?((\\s+|\\s*,\\s*|\\s+of\\s+){DateYearRegex})?|{MonthRegex}\\s*{DayRegex},?\\s*{DateYearRegex}|{DayRegex}\\s+{MonthRegex}\\s+{DateYearRegex}|{MonthSuffixRegex}\\s*{DayRegex},?\\s*{DateYearRegex}|{DayRegex}\\s+{MonthSuffixRegex}\\s+{DateYearRegex}|{WeekDayRegex}\\s*,?\\s*{MonthRegex}\\s*{DayRegex},?\\s*{DateYearRegex}|{WeekDayRegex}\\s*,?\\s*{DayRegex}\\s+{MonthRegex},?\\s*{DateYearRegex})
+  references: [ DateTimePrefixRegex, DayRegex, MonthRegex, DateSuffix, WeekDayRegex, MonthSuffixRegex, DateYearRegex ]
+MonthRegex: !simpleRegex
+  def: (?<month>január|február|március|április|május|június|július|augusztus|szeptember|október|november|december|jan|feb|márc|ápr|máj|jún|júl|aug|szept|okt|nov|dec)
+MonthSuffixRegex: !simpleRegex
+  def: (?<msuf>((?<=(január|február|március|április|május|június|július|augusztus|szeptember|október|november|december|jan|feb|márc|ápr|máj|jún|júl|aug|szept|okt|nov|dec)\\s+)(?<day>(?:[1-9]|0[1-9]|[12][0-9]|3[01]))(?=\\s*[,.\\-/]?\\s*([0-9]{2,4})?\\s*$))|(?<=\\b(?:[1-9]|0[1-9]|[12][0-9]|3[01])\\s+)(január|február|március|április|május|június|július|augusztus|szeptember|október|november|december|jan|feb|márc|ápr|máj|jún|júl|aug|szept|okt|nov|dec)(?=\\s*[,.\\-/]?\\s*([0-9]{2,4})?\\s*$))
+DayRegex: !simpleRegex
+  def: (?<day>(?:[1-9]|0[1-9]|[12][0-9]|3[01]))(?=\\s*[,.\\-/]?\\s*(?:január|február|március|április|május|június|július|augusztus|szeptember|október|november|december|jan|feb|márc|ápr|máj|jún|júl|aug|szept|okt|nov|dec)\\s*[,.\\-/]?\\s*([0-9]{2,4})?\\s*$)
+DateYearRegex: !simpleRegex
+  def: (?<year>[0-9]{4}|[0-9]{1,2})
+WeekDayRegex: !simpleRegex
+  def: (?<weekday>hétfő|kedd|szerda|csütörtök|péntek|szombat|vasárnap|hét|ke|sze|csüt|pén|szo|vas)
+DateTimePrefixRegex: !simpleRegex
+  def: (?<prefix>\\b(ezen|azon|a|az)\\b)
+DateSuffix: !simpleRegex
+  def: (?<suffix>\\b(nap|napon|napján)\\b)

@@ -1,0 +1,376 @@
+---
+#ISO 639-2 Code
+LangMarker: Hun
+#Does this language use non-whitespace-separated numbers?
+CompoundNumberLanguage: !bool false
+#Does this culture uses period and comma intercheangeably as decimal separator?
+MultiDecimalSeparatorCulture: !bool false
+#List of culture variants that don't follow the default decimal separator
+NonStandardSeparatorVariants: !list
+  types: [ string ]
+  entries:
+#Integer Regex
+RoundNumberIntegerRegex: !simpleRegex
+  def: (?:száz|ezer|millió|milliárd|billió|trilliárd|trillió)
+ZeroToNineIntegerRegex: !simpleRegex
+  def: (?:nulla|egy|kettő|két|három|négy|öt|hat|hét|nyolc|kilenc)
+TwoToNineIntegerRegex: !simpleRegex
+  def: (?:kettő|két|három|négy|öt|hat|hét|nyolc|kilenc)
+NegativeNumberTermsRegex: !simpleRegex
+  def: (?<negTerm>(mínusz|negatív)\s+)
+NegativeNumberSignRegex: !nestedRegex
+  def: ^{NegativeNumberTermsRegex}.*
+  references: [ NegativeNumberTermsRegex ]
+AnIntRegex: !simpleRegex
+  def: (egy)(?=\s)
+TenToNineteenIntegerRegex: !simpleRegex
+  def: (?:tizen(egy|kettő|két|három|négy|öt|hat|hét|nyolc|kilenc)|tíz)
+TensNumberIntegerRegex: !simpleRegex
+  def: (?:kilencven|nyolcvan|hetven|hatvan|ötven|negyven|harminc|húsz)
+SeparaIntRegex: !nestedRegex
+  def: (?:(({TenToNineteenIntegerRegex}|({TensNumberIntegerRegex}(\s+)?{ZeroToNineIntegerRegex})|{TensNumberIntegerRegex}|{ZeroToNineIntegerRegex})(\s+{RoundNumberIntegerRegex})*))|(({AnIntRegex}(\s+{RoundNumberIntegerRegex})+))
+  references: [ TenToNineteenIntegerRegex, TensNumberIntegerRegex, ZeroToNineIntegerRegex, RoundNumberIntegerRegex, AnIntRegex ]
+AllIntRegex: !nestedRegex
+  def: (?:((({TenToNineteenIntegerRegex}|({TensNumberIntegerRegex}(\s+)?{ZeroToNineIntegerRegex})|{TensNumberIntegerRegex}|{ZeroToNineIntegerRegex}|{AnIntRegex})(\s+{RoundNumberIntegerRegex})+)\s+(és\s+)?)*{SeparaIntRegex})
+  references: [ TenToNineteenIntegerRegex, TensNumberIntegerRegex, ZeroToNineIntegerRegex, AnIntRegex, RoundNumberIntegerRegex, SeparaIntRegex ]
+PlaceHolderPureNumber: !simpleRegex
+  def: \b
+PlaceHolderDefault: !simpleRegex
+  def: (?=\D)|\b
+PlaceHolderMixed: !simpleRegex
+  def: \D|\b
+NumbersWithPlaceHolder: !paramsRegex
+  def: (((?<!(\d+(\s*(K|k|M|G|T|B|b))?\s*|\p{L}))-\s*)|(?<={placeholder}))\d+(?!([\.,]\d+[a-zA-Z]))(?={placeholder})
+  params: [ placeholder ]
+NumbersWithSuffix: !nestedRegex
+  def: (((?<!\d+(\s*{BaseNumbers.NumberMultiplierRegex})?\s*)-\s*)|(?<=\b))\d+\s*{BaseNumbers.NumberMultiplierRegex}(?=\b)
+  references: [ BaseNumbers.NumberMultiplierRegex ]
+RoundNumberIntegerRegexWithLocks: !nestedRegex
+  def: (?<=\b)\d+\s+{RoundNumberIntegerRegex}(?=\b)
+  references: [ RoundNumberIntegerRegex ]
+NumbersWithDozenSuffix: !nestedRegex
+  def: (((?<!\d+(\s*{BaseNumbers.NumberMultiplierRegex})?\s*)-\s*)|(?<=\b))\d+\s+(tucat)(?=\b)
+  references: [ BaseNumbers.NumberMultiplierRegex ]
+AllIntRegexWithLocks: !nestedRegex
+  def: ((?<=\b){AllIntRegex}(?=\b))
+  references: [ AllIntRegex ]
+AllIntRegexWithDozenSuffixLocks: !nestedRegex
+  def: (?<=\b)(((fél\s+)?egy\s+tucat)|({AllIntRegex}\s+(tucat)))(?=\b)
+  references: [ AllIntRegex ]
+#Ordinal Regex
+RoundNumberOrdinalRegex: !simpleRegex
+  def: (?:századik|ezredik|milliomodik|milliárdodik|billiomodik|trilliárdodik|trilliomodik)
+NumberOrdinalRegex: !simpleRegex
+  def: (?:első|második|harmadik|negyedik|ötödik|hatodik|hetedik|nyolcadik|kilencedik|tizedik|tizenegyedik|tizenkettedik|tizenharmadik|tizennegyedik|tizenötödik|tizenhatodik|tizenhetedik|tizennyolcadik|tizenkilencedik|huszadik|harmincadik|negyvenedik|ötvenedik|hatvanadik|hetvenedik|nyolcvanadik|kilencvenedik)
+RelativeOrdinalRegex: !simpleRegex
+  def: (?<relativeOrdinal>(következő|előző|jelenlegi|utolsó|utolsó\s+előtti|utolsó\s+előtti\s+egy|utolsó\s+előtti\s+kettő))
+SuffixBasicOrdinalRegex: !nestedRegex
+  def: (?:(((({TensNumberIntegerRegex}(\s+)?{ZeroToNineIntegerRegex})|{TensNumberIntegerRegex}|{ZeroToNineIntegerRegex}|{AnIntRegex})(\s+{RoundNumberIntegerRegex})+)\s+(és\s+)?)*({TensNumberIntegerRegex}(\s+|\s*-\s*))?{NumberOrdinalRegex})
+  references: [ TensNumberIntegerRegex, ZeroToNineIntegerRegex, AnIntRegex, RoundNumberIntegerRegex, NumberOrdinalRegex ]
+SuffixRoundNumberOrdinalRegex: !nestedRegex
+  def: (?:({AllIntRegex}\s+){RoundNumberOrdinalRegex})
+  references: [ AllIntRegex, RoundNumberOrdinalRegex ]
+AllOrdinalNumberRegex: !nestedRegex
+  def: (?:{SuffixBasicOrdinalRegex}|{SuffixRoundNumberOrdinalRegex})
+  references: [ SuffixBasicOrdinalRegex, SuffixRoundNumberOrdinalRegex ]
+AllOrdinalRegex: !nestedRegex
+  def: (?:{AllOrdinalNumberRegex}|{RelativeOrdinalRegex})
+  references: [ AllOrdinalNumberRegex, RelativeOrdinalRegex ]
+OrdinalSuffixRegex: !simpleRegex
+  def: (?<=\b)(?:(\d*(1\.)|(\d*(2|3)\.))|\d*\.?)(?=\b)
+OrdinalNumericRegex: !simpleRegex
+  def: (?<=\b)(?:\d{1,3}(\s*,\s*\d{3})*\s*\.)(?=\b)
+OrdinalRoundNumberRegex: !nestedRegex
+  def: (?<!egy\s+){RoundNumberOrdinalRegex}
+  references: [ RoundNumberOrdinalRegex ]
+OrdinalHungarianRegex: !nestedRegex
+  def: (?<=\b){AllOrdinalRegex}(?=\b)
+  references: [ AllOrdinalRegex ]
+#Fraction Regex
+FractionNotationWithSpacesRegex: !simpleRegex
+  def: (((?<=\W|^)-\s*)|(?<=\b))\d+\s+\d+[/]\d+(?=(\b[^/]|$))
+FractionNotationRegex: !nestedRegex
+  def: '{BaseNumbers.FractionNotationRegex}'
+  references: [ BaseNumbers.FractionNotationRegex ]
+FractionMultiplierRegex: !nestedRegex
+  def: (?<fracMultiplier>\s+és\s+(egy|{TwoToNineIntegerRegex})\s+(fél|negyed|harmad|negyed|ötöd|hatod|heted|nyolcad|kilenced|tized))
+  references: [ TwoToNineIntegerRegex ]
+RoundMultiplierWithFraction: !nestedRegex
+  def: (?<=(?<!{RoundNumberIntegerRegex}){FractionMultiplierRegex}\s+)?(?<multiplier>(?:millió|milliárd|billió|trilliárd|trillió))(?={FractionMultiplierRegex}?$)
+  references: [ RoundNumberIntegerRegex, FractionMultiplierRegex ]
+RoundMultiplierRegex: !nestedRegex
+  def: \b\s*((of\s+)?egy\s+)?({RoundMultiplierWithFraction}|(?<multiplier>(?:száz|ezer)$))
+  references: [ RoundMultiplierWithFraction ]
+FractionNounRegex: !nestedRegex
+  def: (?<=\b)({AllIntRegex}\s+(és\s+)?)?(({AllIntRegex})(\s+|\s*-\s*)((({AllOrdinalNumberRegex})|({RoundNumberOrdinalRegex}))s|fél|negyed)((\s+of\s+a)?\s+{RoundNumberIntegerRegex})?|(fél(\s+a)?|negyed(\s+of\s+a)?)\s+{RoundNumberIntegerRegex})(?=\b)
+  references: [ AllIntRegex, AllOrdinalNumberRegex, RoundNumberOrdinalRegex, RoundNumberIntegerRegex ]
+FractionNounWithArticleRegex: !nestedRegex
+  def: (?<=\b)(((({AllIntRegex}|{RoundNumberIntegerRegexWithLocks})\s+(és\s+)?)?(egy)(\s+|\s*-\s*)(?!\belső\b|\bmásodik\b)(({AllOrdinalNumberRegex})|({RoundNumberOrdinalRegex})|(fél|negyed)(((\s+of)?\s+egy)?\s+{RoundNumberIntegerRegex})?))|(fél))(?=\b)
+  references: [ AllIntRegex, AllOrdinalNumberRegex, RoundNumberOrdinalRegex, RoundNumberIntegerRegex, RoundNumberIntegerRegexWithLocks ]
+FractionPrepositionRegex: !nestedRegex
+  def: (?<!{BaseNumbers.CommonCurrencySymbol}\s*)(?<=\b)(?<numerator>({AllIntRegex})|((?<![\.,])\d+))\s+(per|(?<ambiguousSeparator>in|out\s+of))\s+(?<denominator>({AllIntRegex})|(\d+)(?![\.,]))(?=\b)
+  references: [ AllIntRegex, BaseNumbers.CommonCurrencySymbol ]
+FractionPrepositionWithinPercentModeRegex: !nestedRegex
+  def: (?<!{BaseNumbers.CommonCurrencySymbol}\s*)(?<=\b)(?<numerator>({AllIntRegex})|((?<![\.,])\d+))\s+per\s+(?<denominator>({AllIntRegex})|(\d+)(?![\.,]))(?=\b)
+  references: [ AllIntRegex, BaseNumbers.CommonCurrencySymbol ]
+#Double Regex
+AllPointRegex: !nestedRegex
+  def: ((\s+{ZeroToNineIntegerRegex})+|(\s+{SeparaIntRegex}))
+  references: [ ZeroToNineIntegerRegex, SeparaIntRegex ]
+AllFloatRegex: !nestedRegex
+  def: '{AllIntRegex}(\s+egész){AllPointRegex}'
+  references: [ AllIntRegex, AllPointRegex ]
+DoubleWithMultiplierRegex: !nestedRegex
+  def: (((?<!\d+(\s*{BaseNumbers.NumberMultiplierRegex})?\s*)-\s*)|((?<=\b)(?<!\d+[\.,])))((\d{1,3}(,\d{3})+(\.\d+)?)|(\d+[\.,]\d+))\s*{BaseNumbers.NumberMultiplierRegex}(?=\b)
+  references: [ BaseNumbers.NumberMultiplierRegex ]
+DoubleExponentialNotationRegex: !nestedRegex
+  def: (((?<!\d+(\s*{BaseNumbers.NumberMultiplierRegex})?\s*)-\s*)|((?<=\b)(?<!\d+[\.,])))(\d+([\.,]\d+)?)(e|x10\^)([+-]*[1-9]\d*)(?=\b)
+  references: [ BaseNumbers.NumberMultiplierRegex ]
+DoubleCaretExponentialNotationRegex: !nestedRegex
+  def: (((?<!\d+(\s*{BaseNumbers.NumberMultiplierRegex})?\s*)-\s*)|((?<=\b)(?<!\d+[\.,])))(\d+([\.,]\d+)?)\^([+-]*[1-9]\d*)(?=\b)
+  references: [ BaseNumbers.NumberMultiplierRegex ]
+DoubleDecimalPointRegex: !paramsRegex
+  def: (((?<!(\d+(\s*(K|k|M|G|T|B|b))?\s*|\p{L}))-\s*)|((?<={placeholder})(?<!\d+[\.,])))(\d{1,3}(,\d{3})+(\.\d+)?|\d+[\.,]\d+)(?!([\.,]\d+))(?={placeholder})
+  params: [ placeholder ]
+DoubleWithoutIntegralRegex: !paramsRegex
+  def: (?<=\s|^)(?<!(\d+))[\.,]\d+(?!([\.,]\d+))(?={placeholder})
+  params: [ placeholder ]
+DoubleWithRoundNumber: !nestedRegex
+  def: (((?<!\d+(\s*{BaseNumbers.NumberMultiplierRegex})?\s*)-\s*)|((?<=\b)(?<!\d+[\.,])))(\d{1,3}(,\d{3})+(\.\d+)?|\d+[\.,]\d+)\s+{RoundNumberIntegerRegex}(?=\b)
+  references: [ RoundNumberIntegerRegex, BaseNumbers.NumberMultiplierRegex ]
+DoubleAllFloatRegex: !nestedRegex
+  def: ((?<=\b){AllFloatRegex}(?=\b))
+  references: [ AllFloatRegex ]
+ConnectorRegex: !simpleRegex
+    def: (?<spacer>és)
+#Percentage Regex
+NumberWithSuffixPercentage: !nestedRegex
+  def: (?<!%({BaseNumbers.NumberReplaceToken})?)({BaseNumbers.NumberReplaceToken}(\s*))?(%(?!{BaseNumbers.NumberReplaceToken})|(százalék)\b)
+  references: [ BaseNumbers.NumberReplaceToken ]
+FractionNumberWithSuffixPercentage: !nestedRegex
+  def: (({BaseNumbers.FractionNumberReplaceToken})\s+of)
+  references: [ BaseNumbers.FractionNumberReplaceToken ]
+NumberWithPrefixPercentage: !nestedRegex
+  def: (százalék\s+of)(\s*)({BaseNumbers.NumberReplaceToken})
+  references: [ BaseNumbers.NumberReplaceToken ]
+NumberWithPrepositionPercentage: !nestedRegex
+  def: ({BaseNumbers.NumberReplaceToken})\s*(in|out\s+of)\s*({BaseNumbers.NumberReplaceToken})
+  references: [ BaseNumbers.NumberReplaceToken ]
+#NumberRange Regex
+TillRegex: !simpleRegex
+  def: ((?<!\begyenlő\s+)ig|keresztül|--|-|—|——|~|–)
+MoreRegex: !simpleRegex
+  def: (?:(nagyobb|több|magasabb|nagyobb)(\s+mint)?|fölött|túl|meghalad(ja|va)|túlhalad(ja|va)|(?<!<|=)>)
+LessRegex: !simpleRegex
+  def: (?:(kevesebb|alacsonyabb|kisebb)(\s+mint)?|alatt|(?<!>|=)<)
+EqualRegex: !simpleRegex
+  def: (egyenlő(\s+(vele|mint))?|(?<!<|>)=)
+MoreOrEqualPrefix: !nestedRegex
+  def: ((nem\s+{LessRegex})|(legalább))
+  references: [ LessRegex ]
+MoreOrEqual: !nestedRegex
+  def: (?:({MoreRegex}\s+(vagy)?\s+{EqualRegex})|({EqualRegex}\s+(vagy)?\s+{MoreRegex})|{MoreOrEqualPrefix}(\s+(vagy)?\s+{EqualRegex})?|({EqualRegex}\s+(vagy)?\s+)?{MoreOrEqualPrefix}|>\s*=|≥)
+  references: [ MoreRegex, EqualRegex, LessRegex, MoreOrEqualPrefix ]
+MoreOrEqualSuffix: !simpleRegex
+  def: ((és|vagy)\s+(((több|nagyobb|magasabb|nagyobb)((?!\s+mint)|(\s+mint(?!((\s+vagy\s+egyenlő\s+vele)?\s*\d+)))))|((fölött|túl)(?!\s+mint))))
+LessOrEqualPrefix: !nestedRegex
+  def: ((nem\s+{MoreRegex})|(legfeljebb)|(maximum))
+  references: [ MoreRegex ]
+LessOrEqual: !nestedRegex
+  def: (({LessRegex}\s+(vagy)?\s+{EqualRegex})|({EqualRegex}\s+(vagy)?\s+{LessRegex})|{LessOrEqualPrefix}(\s+(vagy)?\s+{EqualRegex})?|({EqualRegex}\s+(vagy)?\s+)?{LessOrEqualPrefix}|<\s*=|≤)
+  references: [ LessRegex, EqualRegex, MoreRegex, LessOrEqualPrefix ]
+LessOrEqualSuffix: !simpleRegex
+  def: ((és|vagy)\s+(kevesebb|alacsonyabb|kisebb)((?!\s+mint)|(\s+mint(?!(\s*\d+)))))
+NumberSplitMark: !nestedRegex
+  def: (?![,.](?!\d+))(?!\s*\b(és\s+({LessRegex}|{MoreRegex})|de|vagy|ig)\b)
+  references: [ MoreRegex, LessRegex ]
+MoreRegexNoNumberSucceed: !simpleRegex
+  def: ((nagyobb|több|magasabb|nagyobb)((?!\s+mint)|\s+(mint(?!(\s*\d+))))|(fölött|túl)(?!(\s*\d+)))
+LessRegexNoNumberSucceed: !simpleRegex
+  def: ((kevesebb|alacsonyabb|kisebb)((?!\s+mint)|\s+(mint(?!(\s*\d+))))|(alatt)(?!(\s*\d+)))
+EqualRegexNoNumberSucceed: !simpleRegex
+  def: (egyenlő((?!\s+(vele|mint))|(\s+(vele|mint)(?!(\s*\d+)))))
+OneNumberRangeMoreRegex1: !nestedRegex
+  def: ({MoreOrEqual}|{MoreRegex})\s*(a\s+)?(?<number1>({NumberSplitMark}.)+)
+  references: [ MoreOrEqual, MoreRegex, NumberSplitMark ]
+OneNumberRangeMoreRegex1LB: !nestedRegex
+  def: (?<!nem\s+){OneNumberRangeMoreRegex1}
+  references: [ OneNumberRangeMoreRegex1 ]
+OneNumberRangeMoreRegex2: !nestedRegex
+  def: (?<number1>({NumberSplitMark}.)+)\s*{MoreOrEqualSuffix}
+  references: [ MoreOrEqualSuffix, NumberSplitMark ]
+OneNumberRangeMoreSeparateRegex: !nestedRegex
+  def: ({EqualRegex}\s+(?<number1>({NumberSplitMark}.)+)(\s+vagy\s+){MoreRegexNoNumberSucceed})|({MoreRegex}\s+(?<number1>({NumberSplitMark}.)+)(\s+vagy\s+){EqualRegexNoNumberSucceed})
+  references: [ EqualRegex, MoreRegex, EqualRegexNoNumberSucceed, MoreRegexNoNumberSucceed, NumberSplitMark ]
+OneNumberRangeLessRegex1: !nestedRegex
+  def: ({LessOrEqual}|{LessRegex})\s*(a\s+)?(?<number2>({NumberSplitMark}.)+)
+  references: [ LessOrEqual, LessRegex, NumberSplitMark ]
+OneNumberRangeLessRegex1LB: !nestedRegex
+  def: (?<!nem\s+){OneNumberRangeLessRegex1}
+  references: [ OneNumberRangeLessRegex1 ]
+OneNumberRangeLessRegex2: !nestedRegex
+  def: (?<number2>({NumberSplitMark}.)+)\s*{LessOrEqualSuffix}
+  references: [ LessOrEqualSuffix, NumberSplitMark ]
+OneNumberRangeLessSeparateRegex: !nestedRegex
+  def: ({EqualRegex}\s+(?<number1>({NumberSplitMark}.)+)(\s+vagy\s+){LessRegexNoNumberSucceed})|({LessRegex}\s+(?<number1>({NumberSplitMark}.)+)(\s+vagy\s+){EqualRegexNoNumberSucceed})
+  references: [ EqualRegex, LessRegex, EqualRegexNoNumberSucceed, LessRegexNoNumberSucceed, NumberSplitMark ]
+OneNumberRangeEqualRegex: !nestedRegex
+  def: '(?<!\bmint\s+vagy\s+){EqualRegex}\s*(a\s+)?(?<number1>({NumberSplitMark}.)+)'
+  references: [ EqualRegex, NumberSplitMark ]
+TwoNumberRangeRegex1: !nestedRegex
+  def: között\s*(a\s+)?(?<number1>({NumberSplitMark}.)+)\s*és\s*(a\s+)?(?<number2>({NumberSplitMark}.)+)
+  references: [ NumberSplitMark ]
+TwoNumberRangeRegex2: !nestedRegex
+  def: ({OneNumberRangeMoreRegex1}|{OneNumberRangeMoreRegex2})\s*(és|de|,)\s*({OneNumberRangeLessRegex1}|{OneNumberRangeLessRegex2})
+  references: [ OneNumberRangeMoreRegex1, OneNumberRangeMoreRegex2, OneNumberRangeLessRegex1, OneNumberRangeLessRegex2 ]
+TwoNumberRangeRegex3: !nestedRegex
+  def: ({OneNumberRangeLessRegex1}|{OneNumberRangeLessRegex2})\s*(és|de|,)\s*({OneNumberRangeMoreRegex1}|{OneNumberRangeMoreRegex2})
+  references: [ OneNumberRangeMoreRegex1, OneNumberRangeMoreRegex2, OneNumberRangeLessRegex1, OneNumberRangeLessRegex2 ]
+TwoNumberRangeRegex4: !nestedRegex
+  def: (from\s+)?(?<number1>({NumberSplitMark}(?!\bfrom\b).)+)\s*{TillRegex}\s*(a\s+)?(?<number2>({NumberSplitMark}.)+)
+  references: [ TillRegex, NumberSplitMark ]
+AmbiguousFractionConnectorsRegex: !simpleRegex
+  def: (\bin\b)
+#Parser
+DecimalSeparatorChar: !char ','
+FractionMarkerToken: per
+NonDecimalSeparatorChar: !char '.'
+HalfADozenText: hat
+WordSeparatorToken: és
+WrittenDecimalSeparatorTexts: [egész]
+WrittenGroupSeparatorTexts: [pont]
+WrittenIntegerSeparatorTexts: [és]
+WrittenFractionSeparatorTexts: [és]
+HalfADozenRegex: !simpleRegex
+  def: fél\s+tucat
+DigitalNumberRegex: !nestedRegex
+  def: ((?<=\b)(száz|ezer|millió|milliárd|billió|trilliárd|trillió|tucat)(?=\b))|((?<=(\d|\b)){BaseNumbers.MultiplierLookupRegex}(?=\b))
+  references: [ BaseNumbers.MultiplierLookupRegex ]
+CardinalNumberMap: !dictionary
+  types: [ string, long ]
+  entries:
+    nulla: 0
+    egy: 1
+    kettő: 2
+    két: 2
+    három: 3
+    négy: 4
+    öt: 5
+    hat: 6
+    hét: 7
+    nyolc: 8
+    kilenc: 9
+    tíz: 10
+    tizenegy: 11
+    tizenkettő: 12
+    tizenkét: 12
+    tucat: 12
+    tizenhárom: 13
+    tizennégy: 14
+    tizenöt: 15
+    tizenhat: 16
+    tizenhét: 17
+    tizennyolc: 18
+    tizenkilenc: 19
+    húsz: 20
+    harminc: 30
+    negyven: 40
+    ötven: 50
+    hatvan: 60
+    hetven: 70
+    nyolcvan: 80
+    kilencven: 90
+    száz: 100
+    ezer: 1000
+    millió: 1000000
+    milliárd: 1000000000
+    billió: 1000000000000
+    trilliárd: 1000000000000000
+    trillió: 1000000000000000000
+OrdinalNumberMap: !dictionary
+  types: [ string, long ]
+  entries:
+    első: 1
+    második: 2
+    fél: 2
+    harmadik: 3
+    negyedik: 4
+    negyed: 4
+    ötödik: 5
+    hatodik: 6
+    hetedik: 7
+    nyolcadik: 8
+    kilencedik: 9
+    tizedik: 10
+    tizenegyedik: 11
+    tizenkettedik: 12
+    tizenharmadik: 13
+    tizennegyedik: 14
+    tizenötödik: 15
+    tizenhatodik: 16
+    tizenhetedik: 17
+    tizennyolcadik: 18
+    tizenkilencedik: 19
+    huszadik: 20
+    harmincadik: 30
+    negyvenedik: 40
+    ötvenedik: 50
+    hatvanadik: 60
+    hetvenedik: 70
+    nyolcvanadik: 80
+    kilencvenedik: 90
+    századik: 100
+    ezredik: 1000
+    milliomodik: 1000000
+    milliárdodik: 1000000000
+    billiomodik: 1000000000000
+    trilliárdodik: 1000000000000000
+    trilliomodik: 1000000000000000000
+RoundNumberMap: !dictionary
+  types: [ string, long ]
+  entries:
+    száz: 100
+    ezer: 1000
+    millió: 1000000
+    milliárd: 1000000000
+    billió: 1000000000000
+    trilliárd: 1000000000000000
+    trillió: 1000000000000000000
+    századik: 100
+    ezredik: 1000
+    milliomodik: 1000000
+    milliárdodik: 1000000000
+    billiomodik: 1000000000000
+    trilliárdodik: 1000000000000000
+    trilliomodik: 1000000000000000000
+    tucat: 12
+    k: 1000
+    m: 1000000
+    g: 1000000000
+    b: 1000000000
+    t: 1000000000000
+AmbiguityFiltersDict: !dictionary
+  types: [ string, string ]
+  entries:
+    '\begy\b': '\b(a|az|ez|ezt|azt)\s+(egy)\b'
+RelativeReferenceOffsetMap: !dictionary
+  types: [ string, string ]
+  entries:
+    utolsó: 0
+    következő: 1
+    jelenlegi: 0
+    előző: -1
+    utolsó előtti: -1
+    utolsó előtti egy: -1
+    utolsó előtti kettő: -2
+RelativeReferenceRelativeToMap: !dictionary
+  types: [ string, string ]
+  entries:
+    utolsó: end
+    következő: current
+    jelenlegi: current
+    előző: current
+    utolsó előtti: end
+    utolsó előtti egy: end
+    utolsó előtti kettő: end
+...
