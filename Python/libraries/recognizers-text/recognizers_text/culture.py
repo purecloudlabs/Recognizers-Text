@@ -9,6 +9,7 @@ class Culture:
     English: str = 'en-us'
     EnglishOthers: str = 'en-*'
     French: str = 'fr-fr'
+    Hungarian: str = 'hu-hu'
     Italian: str = 'it-it'
     Japanese: str = 'ja-jp'
     Korean: str = 'ko-kr'
@@ -27,6 +28,7 @@ class Culture:
             Culture.Dutch,
             Culture.Chinese,
             Culture.French,
+            Culture.Hungarian,
             Culture.Italian,
             Culture.Japanese,
             Culture.Korean,

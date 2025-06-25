@@ -7,9 +7,18 @@ from typing import List
 from recognizers_number.culture import CultureInfo
 from recognizers_number.number.arabic.extractors import ArabicMergedNumberExtractor, ArabicOrdinalExtractor
 from recognizers_number.number.arabic.parsers import ArabicNumberParserConfiguration
-from recognizers_number.number.catalan.extractors import CatalanNumberExtractor, CatalanOrdinalExtractor
-from recognizers_number.number.catalan.parsers import CatalanNumberParserConfiguration
-from recognizers_number.number.chinese.extractors import ChineseNumberExtractor, ChineseOrdinalExtractor
+from recognizers_number.number.hungarian.extractors import HungarianNumberExtractor, HungarianOrdinalExtractor, \
+    HungarianPercentageExtractor, HungarianMergedNumberExtractor
+from recognizers_number.number.hungarian.parsers import HungarianNumberParserConfiguration
+from recognizers_text import Culture, Recognizer, Model
+from recognizers_number.culture import CultureInfo
+from recognizers_number.number.models import NumberMode, NumberModel, OrdinalModel, PercentModel, ModelResult
+from recognizers_number.number.parser_factory import ParserType, AgnosticNumberParserFactory
+from recognizers_number.number.english.extractors import EnglishNumberExtractor, EnglishOrdinalExtractor, \
+    EnglishPercentageExtractor, EnglishMergedNumberExtractor
+from recognizers_number.number.english.parsers import EnglishNumberParserConfiguration
+from recognizers_number.number.spanish.extractors import SpanishNumberExtractor, SpanishOrdinalExtractor, SpanishPercentageExtractor
+from recognizers_number.number.chinese.extractors import ChineseNumberExtractor, ChineseOrdinalExtractor, ChinesePercentageExtractor
 from recognizers_number.number.chinese.parsers import ChineseNumberParserConfiguration
 from recognizers_number.number.dutch.extractors import DutchMergedNumberExtractor, DutchOrdinalExtractor
 from recognizers_number.number.dutch.parsers import DutchNumberParserConfiguration
@@ -276,6 +285,25 @@ class NumberRecognizer(Recognizer[NumberOptions]):
             ),
         )
         # endregion
+
+        # region Hungarian
+        self.register_model('NumberModel', Culture.Hungarian, lambda options: NumberModel(
+            AgnosticNumberParserFactory.get_parser(
+                ParserType.NUMBER, HungarianNumberParserConfiguration()),
+            HungarianMergedNumberExtractor(NumberMode.PURE_NUMBER)
+        ))
+        self.register_model('OrdinalModel', Culture.Hungarian, lambda options: OrdinalModel(
+            AgnosticNumberParserFactory.get_parser(
+                ParserType.ORDINAL, HungarianNumberParserConfiguration()),
+            HungarianOrdinalExtractor()
+        ))
+        self.register_model('PercentModel', Culture.Hungarian, lambda options: PercentModel(
+            AgnosticNumberParserFactory.get_parser(
+                ParserType.PERCENTAGE, HungarianNumberParserConfiguration()),
+            HungarianPercentageExtractor()
+        ))
+        # endregion
+
 
     def get_number_model(self, culture: str = None, fallback_to_default_culture: bool = True) -> Model:
         return self.get_model('NumberModel', culture, fallback_to_default_culture)
