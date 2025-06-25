@@ -8,4 +8,5 @@ from .extractors import *
 from .parsers import *
 from .english import *
 from .chinese import *
+from .chinese.extractors import *
 from .portuguese import *
