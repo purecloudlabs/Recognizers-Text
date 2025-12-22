@@ -310,7 +310,8 @@ class EnglishNumeric:
             ("t", 1000000000000),
         ]
     )
-    AmbiguityFiltersDict = dict([("\\bone\\b", "\\b(the|this|that|which)\\s+(one)\\b")])
+    AmbiguityFiltersDict = dict([("\\bone\\b", "\\b(the|this|that|which)\\s+(one)\\b"),
+                                 ("^0[678]\\d{8}$", "^0[678]\\d{8}$")])
     RelativeReferenceOffsetMap = dict(
         [
             ("last", "0"),
