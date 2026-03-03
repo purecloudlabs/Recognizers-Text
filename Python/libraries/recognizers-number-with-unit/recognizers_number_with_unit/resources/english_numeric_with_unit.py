@@ -571,6 +571,7 @@ class EnglishNumericWithUnit:
             ("Pul", "PUL"),
             ("Cent", "CENT"),
             ("Qindarkë", "QINDARKE"),
+            ("Pence", "PENCE"),
             ("Penny", "PENNY"),
             ("Santeem", "SANTEEM"),
             ("Cêntimo", "CENTIMO"),

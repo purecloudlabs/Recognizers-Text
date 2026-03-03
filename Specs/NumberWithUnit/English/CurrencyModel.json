@@ -3058,5 +3058,37 @@
         }
       }
     ]
+  },
+  {
+    "Input": "The total is 50 pound and 60 pence",
+    "NotSupported": "java, javascript",
+    "Results": [
+      {
+        "Text": "50 pound and 60 pence",
+        "TypeName": "currency",
+        "Resolution": {
+          "value": "50.6",
+          "unit": "Pound"
+        },
+        "Start": 13,
+        "End": 33
+      }
+    ]
+  },
+  {
+    "Input": "1 pound and 1 penny",
+    "NotSupported": "java, javascript",
+    "Results": [
+      {
+        "Text": "1 pound and 1 penny",
+        "TypeName": "currency",
+        "Resolution": {
+          "value": "1.01",
+          "unit": "Pound"
+        },
+        "Start": 0,
+        "End": 18
+      }
+    ]
   }
 ]
