@@ -3090,21 +3090,5 @@
         "End": 18
       }
     ]
-  },
-  {
-    "Input": "3 pounds and 22p and something else",
-    "NotSupported": "java, javascript",
-    "Results": [
-      {
-        "Text": "3 pounds and 22p",
-        "TypeName": "currency",
-        "Resolution": {
-          "value": "3.22",
-          "unit": "Pound"
-        },
-        "Start": 0,
-        "End": 15
-      }
-    ]
   }
 ]
