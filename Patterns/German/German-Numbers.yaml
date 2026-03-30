@@ -6,8 +6,12 @@ CompoundNumberLanguage: !bool true
 #Does this culture uses period and comma intercheangeably as decimal separator?
 MultiDecimalSeparatorCulture: !bool false
 #Integer Regex
-ZeroToNineIntegerRegex: !simpleRegex
-  def: (drei|sieben|acht|vier|fuenf|fünf|null|neun|eins|(ein(?!($|\.|,|!|\?)))|eine[rn]?|zwei|zwo|sechs)
+ZeroToNineIntegerRegex: !nestedRegex
+  def: \b(drei|sieben|acht|vier|fuenf|fünf|null|neun|eins|zwei|zwo|sechs)\b|\b(ein|eine|einen|einer)(?=\s*(?:[,!?.]|$|\d|{AllNumberWordsRegex}|{ConjunctionRegex})|[a-zäöü])\b|{CompoundNumberRegex}
+  references: [ AllNumberWordsRegex, ConjunctionRegex, CompoundNumberRegex ]
+CompoundNumberRegex: !nestedRegex
+  def: (ein|eine|einen|einer|zwei|drei|vier|fuenf|fünf|sechs|sieben|acht|neun)(?={ConjunctionRegex}|hundert|tausend)
+  references: [ ConjunctionRegex ]
 TwoToNineIntegerRegex: !simpleRegex
   def: (drei|sieben|acht|vier|fuenf|fünf|neun|zwei|zwo|sechs)
 RoundNumberIntegerRegex: !simpleRegex
@@ -137,6 +141,11 @@ DoubleAllFloatRegex: !nestedRegex
   references: [ AllFloatRegex ]
 ConnectorRegex: !simpleRegex
     def: (?<spacer>und)
+ConjunctionRegex: !simpleRegex
+  def: (und|dann|danach|nachher|plus|oder)
+AllNumberWordsRegex: !nestedRegex
+  def: ({TwoToNineIntegerRegex}|{TenToNineteenIntegerRegex}|{TensNumberIntegerRegex}|eins)
+  references: [ TwoToNineIntegerRegex, TenToNineteenIntegerRegex, TensNumberIntegerRegex ]
 #Percentage Regex
 NumberWithSuffixPercentage: !nestedRegex
   def: (?<!%)({BaseNumbers.NumberReplaceToken})(\s*)(%(?!{BaseNumbers.NumberReplaceToken})|prozent(punkte)?\b)
