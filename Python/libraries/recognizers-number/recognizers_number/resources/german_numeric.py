@@ -21,12 +21,12 @@ class GermanNumeric:
     MultiDecimalSeparatorCulture = False
     TwoToNineIntegerRegex = '(drei|sieben|acht|vier|fuenf|fünf|neun|zwei|zwo|sechs)'
     ConjunctionRegex = '(und|dann|danach|nachher|plus|oder)'
-    AllNumberWordsRegex = f'({TwoToNineIntegerRegex}|(siebzehn|dreizehn|vierzehn|achtzehn|neunzehn|fünfzehn|fuenfzehn|sechzehn|elf|zwoelf|zwölf|zehn)|(siebzig|zwanzig|dreißig|achtzig|neunzig|vierzig|fuenfzig|fünfzig|sechzig|hundert|tausend)|eins)'
+    AllNumberWordsRegex = f'({TwoToNineIntegerRegex}|(siebzehn|dreizehn|vierzehn|achtzehn|neunzehn|fünfzehn|fuenfzehn|sechzehn|elf|zwoelf|zwölf|zehn)|(siebzig|zwanzig|dreißig|achtzig|neunzig|vierzig|fuenfzig|fünfzig|sechzig|hundert|tausend)|eins|dutzend(e)?)'
     CompoundNumberRegex = f'(ein|eine|einen|einer|zwei|drei|vier|fuenf|fünf|sechs|sieben|acht|neun)(?={ConjunctionRegex}|hundert|tausend)'
     ZeroToNineIntegerRegex = (
-        f'\\b(drei|sieben|acht|vier|fuenf|fünf|null|neun|eins|zwei|zwo|sechs)\\b'
-        f'|\\b(ein|eine|einen|einer)(?=\\s*(?:[,!?.]|$|\\d|{AllNumberWordsRegex}|{ConjunctionRegex})|[a-zäöü])\\b'
-        f'|{CompoundNumberRegex}'
+        f'((drei|sieben|acht|vier|fuenf|fünf|null|neun|eins|zwei|zwo|sechs)'
+        f'|(ein|eine|einen|einer)(?=\\s*(?:[,!?.]|$|\\d|{AllNumberWordsRegex}|{ConjunctionRegex})|[a-zäöü])'
+        f'|{CompoundNumberRegex})'
     )
     RoundNumberIntegerRegex = '((ein)?hundert|tausend|((million(en)?|mio|milliarden?|mrd|billion(en)?)))'
     AnIntRegex = '(eine?)(?=\\s)'
