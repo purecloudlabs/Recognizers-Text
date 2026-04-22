@@ -19,10 +19,15 @@ class GermanNumeric:
     LangMarker = 'Ger'
     CompoundNumberLanguage = True
     MultiDecimalSeparatorCulture = False
-    ZeroToNineIntegerRegex = (
-        '(drei|sieben|acht|vier|fuenf|fünf|null|neun|eins|(ein(?!($|\\.|,|!|\\?)))|eine[rn]?|zwei|zwo|sechs)'
-    )
     TwoToNineIntegerRegex = '(drei|sieben|acht|vier|fuenf|fünf|neun|zwei|zwo|sechs)'
+    ConjunctionRegex = '(und|dann|danach|nachher|plus|oder)'
+    AllNumberWordsRegex = f'({TwoToNineIntegerRegex}|(siebzehn|dreizehn|vierzehn|achtzehn|neunzehn|fünfzehn|fuenfzehn|sechzehn|elf|zwoelf|zwölf|zehn)|(siebzig|zwanzig|dreißig|achtzig|neunzig|vierzig|fuenfzig|fünfzig|sechzig|hundert|tausend)|eins)'
+    CompoundNumberRegex = f'(ein|eine|einen|einer|zwei|drei|vier|fuenf|fünf|sechs|sieben|acht|neun)(?={ConjunctionRegex}|hundert|tausend)'
+    ZeroToNineIntegerRegex = (
+        f'\\b(drei|sieben|acht|vier|fuenf|fünf|null|neun|eins|zwei|zwo|sechs)\\b'
+        f'|\\b(ein|eine|einen|einer)(?=\\s*(?:[,!?.]|$|\\d|{AllNumberWordsRegex}|{ConjunctionRegex})|[a-zäöü])\\b'
+        f'|{CompoundNumberRegex}'
+    )
     RoundNumberIntegerRegex = '((ein)?hundert|tausend|((million(en)?|mio|milliarden?|mrd|billion(en)?)))'
     AnIntRegex = '(eine?)(?=\\s)'
     TenToNineteenIntegerRegex = (
