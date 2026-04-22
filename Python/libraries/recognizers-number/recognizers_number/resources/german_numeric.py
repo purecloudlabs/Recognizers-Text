@@ -19,15 +19,10 @@ class GermanNumeric:
     LangMarker = 'Ger'
     CompoundNumberLanguage = True
     MultiDecimalSeparatorCulture = False
-    TwoToNineIntegerRegex = '(drei|sieben|acht|vier|fuenf|fünf|neun|zwei|zwo|sechs)'
-    ConjunctionRegex = '(und|dann|danach|nachher|plus|oder)'
-    AllNumberWordsRegex = f'({TwoToNineIntegerRegex}|(siebzehn|dreizehn|vierzehn|achtzehn|neunzehn|fünfzehn|fuenfzehn|sechzehn|elf|zwoelf|zwölf|zehn)|(siebzig|zwanzig|dreißig|achtzig|neunzig|vierzig|fuenfzig|fünfzig|sechzig|hundert|tausend)|eins|dutzend(e)?)'
-    CompoundNumberRegex = f'(ein|eine|einen|einer|zwei|drei|vier|fuenf|fünf|sechs|sieben|acht|neun)(?={ConjunctionRegex}|hundert|tausend)'
     ZeroToNineIntegerRegex = (
-        f'((drei|sieben|acht|vier|fuenf|fünf|null|neun|eins|zwei|zwo|sechs)'
-        f'|(ein|eine|einen|einer)(?=\\s*(?:[,!?.]|$|\\d|{AllNumberWordsRegex}|{ConjunctionRegex})|[a-zäöü])'
-        f'|{CompoundNumberRegex})'
+        '(drei|sieben|acht|vier|fuenf|fünf|null|neun|eins|(ein(?!($|\\.|,|!|\\?)))|eine[rn]?|zwei|zwo|sechs)'
     )
+    TwoToNineIntegerRegex = '(drei|sieben|acht|vier|fuenf|fünf|neun|zwei|zwo|sechs)'
     RoundNumberIntegerRegex = '((ein)?hundert|tausend|((million(en)?|mio|milliarden?|mrd|billion(en)?)))'
     AnIntRegex = '(eine?)(?=\\s)'
     TenToNineteenIntegerRegex = (
@@ -452,7 +447,11 @@ class GermanNumeric:
             (
                 "^(tausend|hundert)$",
                 "(ed(ward(\\s+m(\\.)?)?)?|mary(\\s+c(\\.)?)?|joachim|claudia|franz|maria|klaus|prof(\\.|essor)?|dr(\\.)?|herr|fr[äa]u(lein)?|frl?\\.)\\s+(tausend|hundert)",
-            )
+            ),
+            (
+                "\\b(ein|eine|einen|einer)\\b",
+                "\\b(ein|eine|einen|einer)\\s+(?!(drei|sieben|acht|vier|fuenf|fünf|null|neun|eins|zwei|zwo|sechs|siebzehn|dreizehn|vierzehn|achtzehn|neunzehn|fünfzehn|fuenfzehn|sechzehn|elf|zwoelf|zwölf|zehn|siebzig|zwanzig|dreißig|achtzig|neunzig|vierzig|fuenfzig|fünfzig|sechzig|hundert|tausend|million|milliarde|mrd|mio|billion|dutzend|dutzende|halb|halbe|halbes|halber|hälfte|viertel|und|dann|danach|nachher|plus|oder|ein|eine|einen|einer|eins|wird|wurde|werden|ist|war|hat|hatte|kann|konnte|soll|sollte|muss|musste|darf|mag)\\b|\\d)\\w+",
+            ),
         ]
     )
     RelativeReferenceOffsetMap = dict(
