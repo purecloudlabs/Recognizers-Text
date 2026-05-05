@@ -14,7 +14,6 @@ from .base_numbers import BaseNumbers
 
 # pylint: disable=line-too-long
 
-#test
 class GermanNumeric:
     LangMarker = 'Ger'
     CompoundNumberLanguage = True
