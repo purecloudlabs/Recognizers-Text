@@ -533,6 +533,7 @@ AmbiguityFiltersDict: !dictionary
   types: [ string, string ]
   entries:
     '^(tausend|hundert)$': '(ed(ward(\s+m(\.)?)?)?|mary(\s+c(\.)?)?|joachim|claudia|franz|maria|klaus|prof(\.|essor)?|dr(\.)?|herr|fr[äa]u(lein)?|frl?\.)\s+(tausend|hundert)'
+    '\b(ein|eine|einen|einer)\b': '\b(ein|eine|einen|einer)\b(?!\s*(?:[,!?.]|$|\d|(zwei|drei|vier|fünf|fuenf|sechs|sieben|acht|neun|hundert|tausend|euro|dollar|cent)|(und|dann|danach|nachher|plus|oder)))'
 RelativeReferenceOffsetMap: !dictionary
   types: [ string, string ]
   entries:

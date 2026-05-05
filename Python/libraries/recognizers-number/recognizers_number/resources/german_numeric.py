@@ -19,15 +19,14 @@ class GermanNumeric:
     LangMarker = 'Ger'
     CompoundNumberLanguage = True
     MultiDecimalSeparatorCulture = False
-    GermanNumberContextRegex = '(zwei|drei|vier|fünf|fuenf|sechs|sieben|acht|neun|hundert|tausend)'
+    GermanNumberContextRegex = '(zwei|drei|vier|fünf|fuenf|sechs|sieben|acht|neun|hundert|tausend|euro|dollar|cent)'
     GermanConjunctionRegex = '(und|dann|danach|nachher|plus|oder)'
-    GermanArticleContextRegex = f'\\b(ein|eine|einen|einer)(?=\\s*(?:[,!?.]|$|\\d|{GermanNumberContextRegex}|{GermanConjunctionRegex}))\\b'
     ZeroToNineIntegerRegex = (
-        f'(drei|sieben|acht|vier|fuenf|fünf|null|neun|eins|zwei|zwo|sechs)|{GermanArticleContextRegex}'
+        '(drei|sieben|acht|vier|fuenf|fünf|null|neun|eins|(ein(?!($|\\.|,|!|\\?)))|eine[rn]?|zwei|zwo|sechs)'
     )
     TwoToNineIntegerRegex = '(drei|sieben|acht|vier|fuenf|fünf|neun|zwei|zwo|sechs)'
-    RoundNumberIntegerRegex = '(hundert|tausend|((million(en)?|mio|milliarden?|mrd|billion(en)?)))'
-    AnIntRegex = f'(eine?)(?=\\s*(?:[,!?.]|$|\\d|{GermanNumberContextRegex}|million(en)?|mio|milliarden?|mrd|billion(en)?|{GermanConjunctionRegex}))'
+    RoundNumberIntegerRegex = '((ein)?hundert|tausend|((million(en)?|mio|milliarden?|mrd|billion(en)?)))'
+    AnIntRegex = '(eine?)(?=\\s)'
     TenToNineteenIntegerRegex = (
         '(siebzehn|dreizehn|vierzehn|achtzehn|neunzehn|fünfzehn|fuenfzehn|sechzehn|elf|zwoelf|zwölf|zehn)'
     )
@@ -450,7 +449,11 @@ class GermanNumeric:
             (
                 "^(tausend|hundert)$",
                 "(ed(ward(\\s+m(\\.)?)?)?|mary(\\s+c(\\.)?)?|joachim|claudia|franz|maria|klaus|prof(\\.|essor)?|dr(\\.)?|herr|fr[äa]u(lein)?|frl?\\.)\\s+(tausend|hundert)",
-            )
+            ),
+            (
+                "\\b(ein|eine|einen|einer)\\b",
+                f"\\b(ein|eine|einen|einer)\\b(?!\\s*(?:[,!?.]|$|\\d|{GermanNumberContextRegex}|{GermanConjunctionRegex}))",
+            ),
         ]
     )
     RelativeReferenceOffsetMap = dict(
