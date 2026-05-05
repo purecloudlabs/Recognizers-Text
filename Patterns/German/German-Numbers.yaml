@@ -10,7 +10,7 @@ ZeroToNineIntegerRegex: !nestedRegex
   def: \b(drei|sieben|acht|vier|fuenf|fünf|null|neun|eins|zwei|zwo|sechs)\b|\b(ein|eine|einen|einer)(?=\s*(?:[,!?.]|$|\d|{NumberContextRegex}|{ConjunctionRegex}))\b
   references: [ NumberContextRegex, ConjunctionRegex ]
 NumberContextRegex: !simpleRegex
-  def: (zwei|drei|vier|fünf|fuenf|sechs|sieben|acht|neun|zehn|elf|zwölf|hundert|tausend)
+  def: (zwei|drei|vier|fünf|fuenf|sechs|sieben|acht|neun|hundert|tausend)
 ConjunctionRegex: !simpleRegex
   def: (und|dann|danach|nachher|plus|oder)
 TwoToNineIntegerRegex: !simpleRegex

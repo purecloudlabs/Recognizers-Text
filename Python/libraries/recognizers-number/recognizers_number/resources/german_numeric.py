@@ -19,7 +19,7 @@ class GermanNumeric:
     LangMarker = 'Ger'
     CompoundNumberLanguage = True
     MultiDecimalSeparatorCulture = False
-    GermanNumberContextRegex = '(zwei|drei|vier|fünf|fuenf|sechs|sieben|acht|neun|zehn|elf|zwölf|hundert|tausend)'
+    GermanNumberContextRegex = '(zwei|drei|vier|fünf|fuenf|sechs|sieben|acht|neun|hundert|tausend)'
     GermanConjunctionRegex = '(und|dann|danach|nachher|plus|oder)'
     GermanArticleContextRegex = f'\\b(ein|eine|einen|einer)(?=\\s*(?:[,!?.]|$|\\d|{GermanNumberContextRegex}|{GermanConjunctionRegex}))\\b'
     ZeroToNineIntegerRegex = (
