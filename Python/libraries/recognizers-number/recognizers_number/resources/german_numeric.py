@@ -14,12 +14,11 @@ from .base_numbers import BaseNumbers
 
 # pylint: disable=line-too-long
 
+
 class GermanNumeric:
     LangMarker = 'Ger'
     CompoundNumberLanguage = True
     MultiDecimalSeparatorCulture = False
-    GermanNumberContextRegex = '(zwei|drei|vier|fünf|fuenf|sechs|sieben|acht|neun|hundert|tausend|euro|dollar|cent)'
-    GermanConjunctionRegex = '(und|dann|danach|nachher|plus|oder)'
     ZeroToNineIntegerRegex = (
         '(drei|sieben|acht|vier|fuenf|fünf|null|neun|eins|(ein(?!($|\\.|,|!|\\?)))|eine[rn]?|zwei|zwo|sechs)'
     )
@@ -450,8 +449,8 @@ class GermanNumeric:
                 "(ed(ward(\\s+m(\\.)?)?)?|mary(\\s+c(\\.)?)?|joachim|claudia|franz|maria|klaus|prof(\\.|essor)?|dr(\\.)?|herr|fr[äa]u(lein)?|frl?\\.)\\s+(tausend|hundert)",
             ),
             (
-                "\\b(ein|eine|einen|einer)\\b",
-                f"\\b(ein|eine|einen|einer)\\b(?!\\s*(?:[,!?.]|$|\\d|{GermanNumberContextRegex}|{GermanConjunctionRegex}))",
+                "\\b(einen|eine|ein|einer)\\b",
+                "\\b(einen|eine|ein|einer)\\s+(moment|augenblick)\\b",
             ),
         ]
     )
