@@ -447,7 +447,11 @@ class GermanNumeric:
             (
                 "^(tausend|hundert)$",
                 "(ed(ward(\\s+m(\\.)?)?)?|mary(\\s+c(\\.)?)?|joachim|claudia|franz|maria|klaus|prof(\\.|essor)?|dr(\\.)?|herr|fr[äa]u(lein)?|frl?\\.)\\s+(tausend|hundert)",
-            )
+            ),
+            (
+                "\\b(einen|eine|ein|einer)\\b",
+                "\\b(einen|eine|ein|einer)\\s+(moment|augenblick)\\b",
+            ),
         ]
     )
     RelativeReferenceOffsetMap = dict(
