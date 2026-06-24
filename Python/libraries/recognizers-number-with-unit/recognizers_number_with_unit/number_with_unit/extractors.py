@@ -2,7 +2,6 @@
 #  Licensed under the MIT License.
 
 from collections import namedtuple
-from copy import deepcopy
 from typing import Dict, List, Match, Pattern, Set
 
 import regex
@@ -15,7 +14,7 @@ from recognizers_text.matcher.number_with_unit_tokenizer import NumberWithUnitTo
 from recognizers_text.matcher.string_matcher import StringMatcher
 from recognizers_text.utilities import RegExpUtility
 
-from .constants import *
+from .constants import BaseUnits, Constants
 from .utilities import Token
 
 
@@ -123,7 +122,6 @@ class NumberWithUnitExtractor(Extractor):
         unit_is_prefix = []
 
         mapping_prefix: Dict[float, PrefixUnitResult] = dict()
-        matched = [False] * len(source)
         result = []
         prefix_matched = False
         prefix_match: List[MatchResult] = sorted(self.prefix_matcher.find(source), key=lambda o: o.start)
@@ -242,8 +240,6 @@ class NumberWithUnitExtractor(Extractor):
                             if non_unit_match is None:
                                 non_unit_match = list(self.config.non_unit_regex.finditer(source))
                             for time in non_unit_match:
-                                trimmed_source = source.lower()
-                                index = trimmed_source.index(time.group())
                                 if er.start >= time.start() and er.start + er.length <= time.start() + len(
                                     time.group()
                                 ):
@@ -274,7 +270,7 @@ class NumberWithUnitExtractor(Extractor):
             if non_unit_match is None:
                 try:
                     non_unit_match = list(self.config.non_unit_regex.match(source))
-                except:
+                except Exception:
                     non_unit_match = []
 
             self._extract_separate_units(source, result, non_unit_match)
@@ -302,7 +298,6 @@ class NumberWithUnitExtractor(Extractor):
     def _extract_separate_units(
         self, source: str, num_depend_source: List[ExtractResult], non_unit_matches
     ) -> List[ExtractResult]:
-        result = deepcopy(num_depend_source)
         match_result: List[bool] = [False] * len(source)
         for ex_result in num_depend_source:
             start = ex_result.start
@@ -642,6 +637,22 @@ class BaseMergedUnitExtractor(Extractor):
 
     def __merge_pure_number(self, source: str, ers: List[ExtractResult]) -> List[ExtractResult]:
         num_ers = self.config.unit_num_extractor.extract(source)
+
+        # When no currency units were extracted but there are multiple numbers
+        # separated by a compound connector (e.g., "26663 con 11" in Spanish),
+        # merge them into a compound currency extraction so the parser can
+        # resolve them as a single decimal value (e.g., 26663.11).
+        if not ers and len(num_ers) >= 2:
+            ers = self.__merge_connector_numbers(source, num_ers, ers)
+            if ers:
+                return ers
+
+        # Check for pure numbers that precede an existing currency extraction
+        # and are connected by a compound connector (e.g., "26663 con 11 pesos").
+        # In this case, merge the preceding number into the currency extraction
+        # as the integer portion.
+        ers = self.__merge_preceding_number(source, num_ers, ers)
+
         unit_numbers = []
         i = j = 0
         while i < len(num_ers):
@@ -688,3 +699,153 @@ class BaseMergedUnitExtractor(Extractor):
         ers = sorted(ers, key=lambda e: e.start)
 
         return ers
+
+    def __merge_preceding_number(
+        self, source: str, num_ers: List[ExtractResult], ers: List[ExtractResult]
+    ) -> List[ExtractResult]:
+        """Merge a pure number preceding a currency extraction via compound connector.
+
+        Handles patterns like "26663 con 11 pesos" where "11 pesos" is already
+        extracted as a currency entity, and "26663" precedes it connected by "con".
+        The result should merge 26663 as the integer part of the currency amount.
+        """
+        if not ers or not num_ers:
+            return ers
+
+        modified_ers = list(ers)
+        for idx, er in enumerate(ers):
+            if er.type != Constants.SYS_UNIT_CURRENCY:
+                continue
+
+            # Find a pure number that ends before this extraction starts
+            # and is separated only by a compound connector
+            for num in num_ers:
+                # The number must end before the currency extraction starts
+                num_end = num.start + num.length
+                if num_end >= er.start:
+                    continue
+
+                # Must be an integer
+                if not (isinstance(num.data, str) and num.data.startswith("Integer")):
+                    continue
+
+                # Ensure this number is not already covered by another extraction
+                is_covered = False
+                for other_er in ers:
+                    if other_er.start <= num.start and other_er.start + other_er.length >= num_end:
+                        is_covered = True
+                        break
+                if is_covered:
+                    continue
+
+                # Check if the text between the number and extraction is a connector
+                middle_str = source[num_end : er.start].strip().lower()
+                if not middle_str:
+                    continue
+
+                match = self.config.compound_unit_connector_regex.match(middle_str)
+                if match is None:
+                    continue
+                splitted_match = match.string.split(" ")
+                if not (match.pos == 0 and len(splitted_match[0]) == len(middle_str)):
+                    continue
+
+                # Merge: expand the extraction to include the preceding number
+                # and update data to be a compound list
+                int_er = self.__build_integer_er(num)
+                new_er = ExtractResult()
+                new_er.start = num.start
+                new_er.length = (er.start + er.length) - num.start
+                new_er.text = source[new_er.start : new_er.start + new_er.length]
+                new_er.type = Constants.SYS_UNIT_CURRENCY
+                new_er.data = [int_er, er]
+
+                modified_ers[idx] = new_er
+                break  # Only merge one preceding number per extraction
+
+        return modified_ers
+
+    def __merge_connector_numbers(
+        self, source: str, num_ers: List[ExtractResult], ers: List[ExtractResult]
+    ) -> List[ExtractResult]:
+        """Merge consecutive pure numbers separated by compound unit connectors.
+
+        Handles patterns like "26663 con 11" where no currency prefix/suffix
+        is present but the connector word indicates a decimal relationship
+        between the integer and fractional parts.
+        """
+        i = 0
+        while i < len(num_ers) - 1:
+            current = num_ers[i]
+            next_num = num_ers[i + 1]
+
+            # Check if current number data starts with "Integer"
+            if not (isinstance(current.data, str) and current.data.startswith("Integer")):
+                i += 1
+                continue
+
+            middle_begin = current.start + current.length
+            middle_end = next_num.start
+            middle_str = source[middle_begin:middle_end].strip().lower()
+
+            if not middle_str:
+                i += 1
+                continue
+
+            match = self.config.compound_unit_connector_regex.match(middle_str)
+            if match is not None:
+                splitted_match = match.string.split(" ")
+            else:
+                i += 1
+                continue
+
+            if match and match.pos == 0 and len(splitted_match[0]) == len(middle_str):
+                # Create a compound currency extraction spanning both numbers
+                # and the connector. Store both numbers as a list in data so
+                # the downstream grouping treats this as a compound unit with
+                # an integer portion and a fractional portion.
+                int_er = self.__build_integer_er(current)
+
+                frac_er = ExtractResult()
+                frac_er.start = next_num.start
+                frac_er.length = next_num.length
+                frac_er.text = next_num.text
+                frac_er.type = Constants.SYS_NUM
+                frac_er.data = next_num.data
+
+                er = ExtractResult()
+                er.start = current.start
+                er.length = (next_num.start + next_num.length) - current.start
+                er.text = source[er.start : er.start + er.length]
+                er.type = Constants.SYS_UNIT_CURRENCY
+                er.data = [int_er, frac_er]
+
+                ers.append(er)
+                # Skip the next number since it's now part of this group
+                i += 2
+            else:
+                i += 1
+
+        return ers
+
+    @staticmethod
+    def __build_integer_er(num: ExtractResult) -> ExtractResult:
+        """Build a currency-typed ExtractResult for an integer number.
+
+        Wraps the number with a relative-position inner ExtractResult (start=0)
+        so the parser can extract the numeric value from the text.
+        """
+        inner = ExtractResult()
+        inner.start = 0
+        inner.length = num.length
+        inner.text = num.text
+        inner.type = num.type
+        inner.data = num.data
+
+        er = ExtractResult()
+        er.start = num.start
+        er.length = num.length
+        er.text = num.text
+        er.type = Constants.SYS_UNIT_CURRENCY
+        er.data = inner
+        return er

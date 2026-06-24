@@ -9,7 +9,7 @@ from recognizers_number_with_unit.resources.base_currency import BaseCurrency
 from recognizers_text.extractor import Extractor, ExtractResult
 from recognizers_text.parser import Parser, ParseResult
 
-from .constants import *
+from .constants import Constants
 from .utilities import DictionaryUtility
 
 
@@ -76,6 +76,16 @@ class NumberWithUnitParser(Parser):
             i += 1
 
         # Unit type depends on last unit in suffix.
+        if not unit_keys:
+            # No unit text found — this is a pure number with no currency unit.
+            # Return a result with the parsed number value but no unit.
+            num_value = self.config.internal_number_parser.parse(number_result) if number_result.text else None
+            if num_value:
+                ret.value = UnitValue(number=num_value.resolution_str, unit=None)
+                ret.resolution_str = num_value.resolution_str
+            ret.text = ret.text.lower()
+            return ret
+
         last_unit = unit_keys[-1]
         if half_result and half_result.text in last_unit:
             last_unit = last_unit[: -1 * half_result.length]
@@ -163,7 +173,6 @@ class BaseCurrencyParser(Parser):
         number_value = ''
         main_unit_value = ''
         main_unit_iso_code = ''
-        fraction_unit_string = ''
 
         idx = 0
 
@@ -194,8 +203,71 @@ class BaseCurrencyParser(Parser):
                 result.resolution_str = parse_result.resolution_str
 
                 main_unit_iso_code = self.config.currency_name_to_iso_code_map.get(unit_value, None)
-                # If the main unit can't be recognized, finish process this group.
+                # If the main unit can't be recognized, check if the next element
+                # is a pure number or a currency extraction connected by a compound
+                # connector. If so, treat the current number as the integer portion
+                # and merge with the fractional part.
                 if not main_unit_iso_code:
+                    if idx + 1 < len(compound_unit):
+                        next_elem = compound_unit[idx + 1]
+                        if next_elem.type == Constants.SYS_NUM:
+                            # Merge the fractional part: next number / 100
+                            frac_result = next_elem
+                            frac_parse = self.number_with_unit_parser.parse(frac_result)
+                            frac_value = float(frac_parse.value) if frac_parse.value else 0
+                            number_value = number_value + frac_value * (1 / 100)
+                            result.length = frac_result.start + frac_result.length - result.start
+                            result.text = (
+                                compound_result.text[
+                                    result.start
+                                    - compound_result.start : result.start
+                                    - compound_result.start
+                                    + result.length
+                                ]
+                                if compound_result.start is not None
+                                else result.text
+                            )
+                            result.value = UnitValue(self.__get_number_value(number_value), main_unit_value)
+                            results.append(result)
+                            result = None
+                            idx = idx + 2
+                            count = 0
+                            number_value = ''
+                            continue
+                        elif next_elem.type == Constants.SYS_UNIT_CURRENCY:
+                            # Next element is a full currency extraction (e.g., "11 pesos").
+                            # Parse it to get its number and unit, then combine with
+                            # the preceding integer as: integer + fraction/100.
+                            next_parse = self.number_with_unit_parser.parse(next_elem)
+                            next_value = next_parse.value if next_parse else None
+                            if next_value and next_value.number:
+                                frac_value = float(next_value.number)
+                                number_value = number_value + frac_value * (1 / 100)
+                                merged_unit = next_value.unit
+                                merged_iso = self.config.currency_name_to_iso_code_map.get(merged_unit, None)
+                                result.length = next_elem.start + next_elem.length - result.start
+                                result.text = (
+                                    compound_result.text[
+                                        result.start
+                                        - compound_result.start : result.start
+                                        - compound_result.start
+                                        + result.length
+                                    ]
+                                    if compound_result.start is not None
+                                    else result.text
+                                )
+                                if merged_iso and not merged_iso.startswith(Constants.FAKE_ISO_CODE_PREFIX):
+                                    result.value = CurrencyUnitValue(
+                                        self.__get_number_value(number_value), merged_unit, merged_iso
+                                    )
+                                else:
+                                    result.value = UnitValue(self.__get_number_value(number_value), merged_unit)
+                                results.append(result)
+                                result = None
+                                idx = idx + 2
+                                count = 0
+                                number_value = ''
+                                continue
                     result.value = UnitValue(self.__get_number_value(number_value), main_unit_value)
                     results.append(result)
                     result = None

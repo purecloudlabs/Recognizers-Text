@@ -1914,5 +1914,86 @@
         "End": 24
       }
     ]
+  },
+  {
+    "Input": "26663 con 11",
+    "Comment": "Compound connector 'con' as decimal separator without currency prefix/suffix",
+    "NotSupported": "javascript, java, dotnet",
+    "Results": [
+      {
+        "Text": "26663 con 11",
+        "TypeName": "currency",
+        "Resolution": {
+          "value": "26663,11"
+        },
+        "Start": 0,
+        "End": 11
+      }
+    ]
+  },
+  {
+    "Input": "100 con 50",
+    "Comment": "Compound connector 'con' as decimal separator without currency unit",
+    "NotSupported": "javascript, java, dotnet",
+    "Results": [
+      {
+        "Text": "100 con 50",
+        "TypeName": "currency",
+        "Resolution": {
+          "value": "100,5"
+        },
+        "Start": 0,
+        "End": 9
+      }
+    ]
+  },
+  {
+    "Input": "500 y 25",
+    "Comment": "Compound connector 'y' as decimal separator without currency unit",
+    "NotSupported": "javascript, java, dotnet",
+    "Results": [
+      {
+        "Text": "500 y 25",
+        "TypeName": "currency",
+        "Resolution": {
+          "value": "500,25"
+        },
+        "Start": 0,
+        "End": 7
+      }
+    ]
+  },
+  {
+    "Input": "26663 con 11 pesos",
+    "Comment": "Compound connector 'con' with currency suffix - merges preceding number as integer",
+    "NotSupported": "javascript, java, dotnet",
+    "Results": [
+      {
+        "Text": "26663 con 11 pesos",
+        "TypeName": "currency",
+        "Resolution": {
+          "value": "26663,11",
+          "unit": "Peso"
+        },
+        "Start": 0,
+        "End": 17
+      }
+    ]
+  },
+  {
+    "Input": "el monto es 1500 con 75",
+    "Comment": "Compound connector 'con' without currency unit in a sentence",
+    "NotSupported": "javascript, java, dotnet",
+    "Results": [
+      {
+        "Text": "1500 con 75",
+        "TypeName": "currency",
+        "Resolution": {
+          "value": "1500,75"
+        },
+        "Start": 12,
+        "End": 22
+      }
+    ]
   }
 ]
