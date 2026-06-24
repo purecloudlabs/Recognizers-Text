@@ -203,12 +203,14 @@ class BaseCurrencyParser(Parser):
                 result.resolution_str = parse_result.resolution_str
 
                 main_unit_iso_code = self.config.currency_name_to_iso_code_map.get(unit_value, None)
-                # If the main unit can't be recognized, check if the next element
-                # is a pure number or a currency extraction connected by a compound
-                # connector. If so, treat the current number as the integer portion
-                # and merge with the fractional part.
+                # If the main unit can't be recognized and there's no unit at all,
+                # check if the next element is a pure number or currency extraction
+                # connected by a compound connector. If so, treat the current number
+                # as the integer portion and merge with the fractional part.
+                # Only do this when unit_value is None (no unit detected), not when
+                # the unit exists but simply lacks an ISO code (e.g., "Satoshi").
                 if not main_unit_iso_code:
-                    if idx + 1 < len(compound_unit):
+                    if unit_value is None and idx + 1 < len(compound_unit):
                         next_elem = compound_unit[idx + 1]
                         if next_elem.type == Constants.SYS_NUM:
                             # Merge the fractional part: next number / 100
