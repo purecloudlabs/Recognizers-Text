@@ -315,7 +315,10 @@ class BaseCurrencyParser(Parser):
         return result
 
     def __merge_fraction_currency(self, next_elem, compound_result, result, number_value):
-        """Merge a currency element as a fractional part (e.g., '11 pesos' in '26663 con 11 pesos')."""
+        """Merge a currency element as fractional part.
+
+        E.g., '11 pesos' in '26663 con 11 pesos'.
+        """
         next_parse = self.number_with_unit_parser.parse(next_elem)
         next_value = next_parse.value if next_parse else None
         if not (next_value and next_value.number):
@@ -327,7 +330,11 @@ class BaseCurrencyParser(Parser):
         result.length = next_elem.start + next_elem.length - result.start
         result.text = self.__resolve_compound_text(compound_result, result)
         if merged_iso and not merged_iso.startswith(Constants.FAKE_ISO_CODE_PREFIX):
-            result.value = CurrencyUnitValue(self.__get_number_value(number_value), merged_unit, merged_iso)
+            result.value = CurrencyUnitValue(
+                self.__get_number_value(number_value),
+                merged_unit,
+                merged_iso,
+            )
         else:
             result.value = UnitValue(self.__get_number_value(number_value), merged_unit)
         return result
