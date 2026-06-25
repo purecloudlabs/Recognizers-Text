@@ -270,7 +270,7 @@ class NumberWithUnitExtractor(Extractor):
             if non_unit_match is None:
                 try:
                     non_unit_match = list(self.config.non_unit_regex.match(source))
-                except Exception:
+                except (TypeError, AttributeError):
                     non_unit_match = []
 
             self._extract_separate_units(source, result, non_unit_match)
@@ -717,53 +717,56 @@ class BaseMergedUnitExtractor(Extractor):
             if er.type != Constants.SYS_UNIT_CURRENCY:
                 continue
 
-            # Find a pure number that ends before this extraction starts
-            # and is separated only by a compound connector
-            for num in num_ers:
-                # The number must end before the currency extraction starts
-                num_end = num.start + num.length
-                if num_end >= er.start:
-                    continue
-
-                # Must be an integer
-                if not (isinstance(num.data, str) and num.data.startswith("Integer")):
-                    continue
-
-                # Ensure this number is not already covered by another extraction
-                is_covered = False
-                for other_er in ers:
-                    if other_er.start <= num.start and other_er.start + other_er.length >= num_end:
-                        is_covered = True
-                        break
-                if is_covered:
-                    continue
-
-                # Check if the text between the number and extraction is a connector
-                middle_str = source[num_end : er.start].strip().lower()
-                if not middle_str:
-                    continue
-
-                match = self.config.compound_unit_connector_regex.match(middle_str)
-                if match is None:
-                    continue
-                splitted_match = match.string.split(" ")
-                if not (match.pos == 0 and len(splitted_match[0]) == len(middle_str)):
-                    continue
-
-                # Merge: expand the extraction to include the preceding number
-                # and update data to be a compound list
-                int_er = self.__build_integer_er(num)
-                new_er = ExtractResult()
-                new_er.start = num.start
-                new_er.length = (er.start + er.length) - num.start
-                new_er.text = source[new_er.start : new_er.start + new_er.length]
-                new_er.type = Constants.SYS_UNIT_CURRENCY
-                new_er.data = [int_er, er]
-
-                modified_ers[idx] = new_er
-                break  # Only merge one preceding number per extraction
+            merged = self.__find_preceding_integer(source, num_ers, ers, er)
+            if merged:
+                modified_ers[idx] = merged
 
         return modified_ers
+
+    def __find_preceding_integer(
+        self, source: str, num_ers: List[ExtractResult], ers: List[ExtractResult], er: ExtractResult
+    ) -> ExtractResult:
+        """Find and merge a preceding integer connected by a compound connector."""
+        for num in num_ers:
+            num_end = num.start + num.length
+            if num_end >= er.start:
+                continue
+            if not (isinstance(num.data, str) and num.data.startswith("Integer")):
+                continue
+            if self.__is_covered_by_extraction(num, num_end, ers):
+                continue
+            if not self.__is_connector_between(source, num_end, er.start):
+                continue
+
+            int_er = self.__build_integer_er(num)
+            new_er = ExtractResult()
+            new_er.start = num.start
+            new_er.length = (er.start + er.length) - num.start
+            new_er.text = source[new_er.start : new_er.start + new_er.length]
+            new_er.type = Constants.SYS_UNIT_CURRENCY
+            new_er.data = [int_er, er]
+            return new_er
+
+        return None
+
+    @staticmethod
+    def __is_covered_by_extraction(num: ExtractResult, num_end: int, ers: List[ExtractResult]) -> bool:
+        """Check if a number is already covered by an existing extraction."""
+        for other_er in ers:
+            if other_er.start <= num.start and other_er.start + other_er.length >= num_end:
+                return True
+        return False
+
+    def __is_connector_between(self, source: str, start: int, end: int) -> bool:
+        """Check if text between two positions is a compound unit connector."""
+        middle_str = source[start:end].strip().lower()
+        if not middle_str:
+            return False
+        match = self.config.compound_unit_connector_regex.match(middle_str)
+        if match is None:
+            return False
+        splitted_match = match.string.split(" ")
+        return match.pos == 0 and len(splitted_match[0]) == len(middle_str)
 
     def __merge_connector_numbers(
         self, source: str, num_ers: List[ExtractResult], ers: List[ExtractResult]
@@ -779,52 +782,32 @@ class BaseMergedUnitExtractor(Extractor):
             current = num_ers[i]
             next_num = num_ers[i + 1]
 
-            # Check if current number data starts with "Integer"
             if not (isinstance(current.data, str) and current.data.startswith("Integer")):
                 i += 1
                 continue
 
-            middle_begin = current.start + current.length
-            middle_end = next_num.start
-            middle_str = source[middle_begin:middle_end].strip().lower()
-
-            if not middle_str:
+            if not self.__is_connector_between(source, current.start + current.length, next_num.start):
                 i += 1
                 continue
 
-            match = self.config.compound_unit_connector_regex.match(middle_str)
-            if match is not None:
-                splitted_match = match.string.split(" ")
-            else:
-                i += 1
-                continue
+            int_er = self.__build_integer_er(current)
 
-            if match and match.pos == 0 and len(splitted_match[0]) == len(middle_str):
-                # Create a compound currency extraction spanning both numbers
-                # and the connector. Store both numbers as a list in data so
-                # the downstream grouping treats this as a compound unit with
-                # an integer portion and a fractional portion.
-                int_er = self.__build_integer_er(current)
+            frac_er = ExtractResult()
+            frac_er.start = next_num.start
+            frac_er.length = next_num.length
+            frac_er.text = next_num.text
+            frac_er.type = Constants.SYS_NUM
+            frac_er.data = next_num.data
 
-                frac_er = ExtractResult()
-                frac_er.start = next_num.start
-                frac_er.length = next_num.length
-                frac_er.text = next_num.text
-                frac_er.type = Constants.SYS_NUM
-                frac_er.data = next_num.data
+            er = ExtractResult()
+            er.start = current.start
+            er.length = (next_num.start + next_num.length) - current.start
+            er.text = source[er.start : er.start + er.length]
+            er.type = Constants.SYS_UNIT_CURRENCY
+            er.data = [int_er, frac_er]
 
-                er = ExtractResult()
-                er.start = current.start
-                er.length = (next_num.start + next_num.length) - current.start
-                er.text = source[er.start : er.start + er.length]
-                er.type = Constants.SYS_UNIT_CURRENCY
-                er.data = [int_er, frac_er]
-
-                ers.append(er)
-                # Skip the next number since it's now part of this group
-                i += 2
-            else:
-                i += 1
+            ers.append(er)
+            i += 2
 
         return ers
 
