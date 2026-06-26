@@ -9,7 +9,7 @@ from recognizers_number_with_unit.resources.base_currency import BaseCurrency
 from recognizers_text.extractor import Extractor, ExtractResult
 from recognizers_text.parser import Parser, ParseResult
 
-from .constants import *
+from .constants import Constants
 from .utilities import DictionaryUtility
 
 
@@ -76,6 +76,16 @@ class NumberWithUnitParser(Parser):
             i += 1
 
         # Unit type depends on last unit in suffix.
+        if not unit_keys:
+            # No unit text found — this is a pure number with no currency unit.
+            # Return a result with the parsed number value but no unit.
+            num_value = self.config.internal_number_parser.parse(number_result) if number_result.text else None
+            if num_value:
+                ret.value = UnitValue(number=num_value.resolution_str, unit=None)
+                ret.resolution_str = num_value.resolution_str
+            ret.text = ret.text.lower()
+            return ret
+
         last_unit = unit_keys[-1]
         if half_result and half_result.text in last_unit:
             last_unit = last_unit[: -1 * half_result.length]
@@ -163,7 +173,6 @@ class BaseCurrencyParser(Parser):
         number_value = ''
         main_unit_value = ''
         main_unit_iso_code = ''
-        fraction_unit_string = ''
 
         idx = 0
 
@@ -194,8 +203,24 @@ class BaseCurrencyParser(Parser):
                 result.resolution_str = parse_result.resolution_str
 
                 main_unit_iso_code = self.config.currency_name_to_iso_code_map.get(unit_value, None)
-                # If the main unit can't be recognized, finish process this group.
+                # If the main unit can't be recognized and there's no unit at all,
+                # check if the next element is a pure number or currency extraction
+                # connected by a compound connector. If so, treat the current number
+                # as the integer portion and merge with the fractional part.
+                # Only do this when unit_value is None (no unit detected), not when
+                # the unit exists but simply lacks an ISO code (e.g., "Satoshi").
                 if not main_unit_iso_code:
+                    if unit_value is None and idx + 1 < len(compound_unit):
+                        merged = self.__try_merge_connector_compound(
+                            compound_unit[idx + 1], compound_result, result, number_value
+                        )
+                        if merged:
+                            results.append(merged)
+                            result = None
+                            idx = idx + 2
+                            count = 0
+                            number_value = ''
+                            continue
                     result.value = UnitValue(self.__get_number_value(number_value), main_unit_value)
                     results.append(result)
                     result = None
@@ -267,6 +292,60 @@ class BaseCurrencyParser(Parser):
         for parse_result in prs:
             if parse_result.start is not None and parse_result.length is not None:
                 parse_result.text = source[parse_result.start - bias : parse_result.start - bias + parse_result.length]
+
+    def __try_merge_connector_compound(self, next_elem, compound_result, result, number_value):
+        """Try to merge a following element as a fractional part of a connector compound.
+
+        Returns the merged result or None if merging is not applicable.
+        """
+        if next_elem.type == Constants.SYS_NUM:
+            return self.__merge_fraction_number(next_elem, compound_result, result, number_value)
+        if next_elem.type == Constants.SYS_UNIT_CURRENCY:
+            return self.__merge_fraction_currency(next_elem, compound_result, result, number_value)
+        return None
+
+    def __merge_fraction_number(self, frac_elem, compound_result, result, number_value):
+        """Merge a SYS_NUM element as a fractional part (e.g., '11' in '26663 con 11')."""
+        frac_parse = self.number_with_unit_parser.parse(frac_elem)
+        frac_value = float(frac_parse.value) if frac_parse.value else 0
+        number_value = number_value + frac_value * (1 / 100)
+        result.length = frac_elem.start + frac_elem.length - result.start
+        result.text = self.__resolve_compound_text(compound_result, result)
+        result.value = UnitValue(self.__get_number_value(number_value), None)
+        return result
+
+    def __merge_fraction_currency(self, next_elem, compound_result, result, number_value):
+        """Merge a currency element as fractional part.
+
+        E.g., '11 pesos' in '26663 con 11 pesos'.
+        """
+        next_parse = self.number_with_unit_parser.parse(next_elem)
+        next_value = next_parse.value if next_parse else None
+        if not (next_value and next_value.number):
+            return None
+        frac_value = float(next_value.number)
+        number_value = number_value + frac_value * (1 / 100)
+        merged_unit = next_value.unit
+        merged_iso = self.config.currency_name_to_iso_code_map.get(merged_unit, None)
+        result.length = next_elem.start + next_elem.length - result.start
+        result.text = self.__resolve_compound_text(compound_result, result)
+        if merged_iso and not merged_iso.startswith(Constants.FAKE_ISO_CODE_PREFIX):
+            result.value = CurrencyUnitValue(
+                self.__get_number_value(number_value),
+                merged_unit,
+                merged_iso,
+            )
+        else:
+            result.value = UnitValue(self.__get_number_value(number_value), merged_unit)
+        return result
+
+    @staticmethod
+    def __resolve_compound_text(compound_result, result):
+        """Resolve result text from the compound result source."""
+        if compound_result.start is not None:
+            offset = result.start - compound_result.start
+            return compound_result.text[offset : offset + result.length]
+        return result.text
 
     def __get_number_value(self, number_value):
         if number_value:
