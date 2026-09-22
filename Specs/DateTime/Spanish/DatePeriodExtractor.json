@@ -4622,6 +4622,54 @@
     ]
   },
   {
+    "Input": "la semana que viene",
+    "NotSupportedByDesign": "javascript",
+    "Results": [
+      {
+        "Text": "la semana que viene",
+        "Type": "daterange",
+        "Start": 0,
+        "Length": 19
+      }
+    ]
+  },
+  {
+    "Input": "el mes que viene",
+    "NotSupportedByDesign": "javascript",
+    "Results": [
+      {
+        "Text": "el mes que viene",
+        "Type": "daterange",
+        "Start": 0,
+        "Length": 16
+      }
+    ]
+  },
+  {
+    "Input": "el año que viene",
+    "NotSupportedByDesign": "javascript",
+    "Results": [
+      {
+        "Text": "el año que viene",
+        "Type": "daterange",
+        "Start": 0,
+        "Length": 16
+      }
+    ]
+  },
+  {
+    "Input": "el año pasado",
+    "NotSupportedByDesign": "javascript",
+    "Results": [
+      {
+        "Text": "el año pasado",
+        "Type": "daterange",
+        "Start": 0,
+        "Length": 13
+      }
+    ]
+  },
+  {
     "Input": "entre el 1 de diciembre y el 4 de febrero",
     "Results": [
       {
