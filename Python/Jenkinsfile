@@ -2,7 +2,7 @@
 import com.genesys.jenkins.CI
 
 timeout(150) {
-    node('dev_mesos_v2||dev_shared_v2') {
+    node('dev_x86_small||dev_x86_large') {
         LIBRARY_FOLDER = "Python/libraries"
 
         stage('Clean Checkout') {
