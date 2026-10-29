@@ -35,7 +35,8 @@ timeout(150) {
         stage("Test install package and run tests") {
             dir('Python') {
                 sh """
-                    virtualenv -p python3.8 --clear venv
+                    python3 --version
+                    python3 -m venv --clear venv
                     . venv/bin/activate
                     sh build.sh venv
                     """
@@ -46,7 +47,7 @@ timeout(150) {
             dir(LIBRARY_FOLDER){
             try {
                     sh """
-                    virtualenv -p python3.8 --clear venv
+                    python3 -m venv --clear venv
                     . venv/bin/activate
                     """
                 } catch(Exception e) {
