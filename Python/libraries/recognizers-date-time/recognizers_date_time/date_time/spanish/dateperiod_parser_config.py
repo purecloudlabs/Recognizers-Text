@@ -243,6 +243,8 @@ class SpanishDatePeriodParserConfiguration(DatePeriodParserConfiguration):
 
         self._next_prefix_regex = RegExpUtility.get_safe_reg_exp(SpanishDateTime.NextPrefixRegex)
         self._past_prefix_regex = RegExpUtility.get_safe_reg_exp(SpanishDateTime.PreviousPrefixRegex)
+        self._next_suffix_regex = RegExpUtility.get_safe_reg_exp(SpanishDateTime.NextSuffixRegex)
+        self._past_suffix_regex = RegExpUtility.get_safe_reg_exp(SpanishDateTime.PreviousSuffixRegex)
         self._this_prefix_regex = RegExpUtility.get_safe_reg_exp(SpanishDateTime.ThisPrefixRegex)
 
         self._in_connector_regex = config.utility_configuration.in_connector_regex
@@ -297,23 +299,28 @@ class SpanishDatePeriodParserConfiguration(DatePeriodParserConfiguration):
         trimmed_source = source.strip().lower()
         return any(trimmed_source.endswith(o) for o in SpanishDateTime.MonthToDateTerms)
 
+    def _ends_with_or_has_relative_suffix(self, trimmed_source: str, terms) -> bool:
+        return any(trimmed_source.endswith(o) for o in terms) or (
+            any(o in trimmed_source for o in terms)
+            and (self._next_suffix_regex.search(trimmed_source) or self._past_suffix_regex.search(trimmed_source))
+        )
+
     def is_week_only(self, source: str) -> bool:
         trimmed_source = source.strip().lower()
-        return any(trimmed_source.endswith(o) for o in SpanishDateTime.WeekTerms) and not any(
-            trimmed_source.endswith(o) for o in SpanishDateTime.WeekendTerms
-        )
+        return self._ends_with_or_has_relative_suffix(trimmed_source, SpanishDateTime.WeekTerms) and not\
+            self.is_weekend(trimmed_source)
 
     def is_weekend(self, source: str) -> bool:
         trimmed_source = source.strip().lower()
-        return any(trimmed_source.endswith(o) for o in SpanishDateTime.WeekendTerms)
+        return self._ends_with_or_has_relative_suffix(trimmed_source, SpanishDateTime.WeekendTerms)
 
     def is_month_only(self, source: str) -> bool:
         trimmed_source = source.strip().lower()
-        return any(trimmed_source.endswith(o) for o in SpanishDateTime.MonthTerms)
+        return self._ends_with_or_has_relative_suffix(trimmed_source, SpanishDateTime.MonthTerms)
 
     def is_year_only(self, source: str) -> bool:
         trimmed_source = source.strip().lower()
-        return any(trimmed_source.endswith(o) for o in SpanishDateTime.YearTerms)
+        return self._ends_with_or_has_relative_suffix(trimmed_source, SpanishDateTime.YearTerms)
 
     def is_last_cardinal(self, source: str) -> bool:
         trimmed_source = source.strip().lower()

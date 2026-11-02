@@ -227,3 +227,4 @@ class SpanishDateParserConfiguration(DateParserConfiguration):
 
     def __normalize(self, source: str) -> str:
         return source.replace('á', 'a').replace('é', 'e').replace('í', 'i').replace('ó', 'o').replace('ú', 'u')
+

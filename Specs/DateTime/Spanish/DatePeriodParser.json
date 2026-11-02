@@ -6913,7 +6913,7 @@
       "ReferenceDateTime": "2019-08-21T17:00:00"
     },
     "NotSupportedByDesign": "javascript",
-    "NotSupported": "java, python",
+    "NotSupported": "java",
     "Results": [
       {
         "Text": "la semana pasada",
@@ -6940,7 +6940,7 @@
       "ReferenceDateTime": "2019-08-21T17:00:00"
     },
     "NotSupportedByDesign": "javascript",
-    "NotSupported": "java, python",
+    "NotSupported": "java",
     "Results": [
       {
         "Text": "semana pasada",
@@ -6967,7 +6967,7 @@
       "ReferenceDateTime": "2019-08-21T17:00:00"
     },
     "NotSupportedByDesign": "javascript",
-    "NotSupported": "java, python",
+    "NotSupported": "java",
     "Results": [
       {
         "Text": "el mes pasado",
@@ -6981,6 +6981,114 @@
           "PastResolution": {
             "startDate": "2019-07-01",
             "endDate": "2019-08-01"
+          }
+        },
+        "Start": 0,
+        "Length": 13
+      }
+    ]
+  },
+  {
+    "Input": "la semana que viene",
+    "Context": {
+      "ReferenceDateTime": "2019-08-21T17:00:00"
+    },
+    "NotSupportedByDesign": "javascript",
+    "NotSupported": "java",
+    "Results": [
+      {
+        "Text": "la semana que viene",
+        "Type": "daterange",
+        "Value": {
+          "Timex": "2019-W35",
+          "FutureResolution": {
+            "startDate": "2019-08-26",
+            "endDate": "2019-09-02"
+          },
+          "PastResolution": {
+            "startDate": "2019-08-26",
+            "endDate": "2019-09-02"
+          }
+        },
+        "Start": 0,
+        "Length": 19
+      }
+    ]
+  },
+  {
+    "Input": "el mes que viene",
+    "Context": {
+      "ReferenceDateTime": "2019-08-21T17:00:00"
+    },
+    "NotSupportedByDesign": "javascript",
+    "NotSupported": "java",
+    "Results": [
+      {
+        "Text": "el mes que viene",
+        "Type": "daterange",
+        "Value": {
+          "Timex": "2019-09",
+          "FutureResolution": {
+            "startDate": "2019-09-01",
+            "endDate": "2019-10-01"
+          },
+          "PastResolution": {
+            "startDate": "2019-09-01",
+            "endDate": "2019-10-01"
+          }
+        },
+        "Start": 0,
+        "Length": 16
+      }
+    ]
+  },
+  {
+    "Input": "el año que viene",
+    "Context": {
+      "ReferenceDateTime": "2019-08-21T17:00:00"
+    },
+    "NotSupportedByDesign": "javascript",
+    "NotSupported": "java",
+    "Results": [
+      {
+        "Text": "el año que viene",
+        "Type": "daterange",
+        "Value": {
+          "Timex": "2020",
+          "FutureResolution": {
+            "startDate": "2020-01-01",
+            "endDate": "2021-01-01"
+          },
+          "PastResolution": {
+            "startDate": "2020-01-01",
+            "endDate": "2021-01-01"
+          }
+        },
+        "Start": 0,
+        "Length": 16
+      }
+    ]
+  },
+  {
+    "Input": "el año pasado",
+    "Context": {
+      "ReferenceDateTime": "2019-08-21T17:00:00"
+    },
+    "NotSupportedByDesign": "javascript",
+    "NotSupported": "java",
+    "Results": [
+      {
+        "Text": "el año pasado",
+        "Type": "daterange",
+        "Value": {
+          "Timex": "2018",
+          "FutureResolution": {
+            "startDate": "2018-01-01",
+            "endDate": "2019-01-01"
+          },
+          "PastResolution": {
+            "startDate": "2018-01-01",
+            "endDate": "2019-01-01"
           }
         },
         "Start": 0,
