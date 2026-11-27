@@ -36,7 +36,7 @@ from .italian.merged_parser_config import ItalianMergedParserConfiguration
 from .japanese.common_configs import JapaneseCommonDateTimeParserConfiguration
 from .japanese.merged_extractor_config import JapaneseMergedExtractorConfiguration
 from .japanese.merged_parser_config import JapaneseMergedParserConfiguration
-from .models import DateTimeModel
+from .models import ArabicDateTimeModel, DateTimeModel
 from .portuguese.common_configs import PortugueseCommonDateTimeParserConfiguration
 from .portuguese.merged_extractor_config import PortugueseMergedExtractorConfiguration
 from .portuguese.merged_parser_config import PortugueseMergedParserConfiguration
@@ -164,7 +164,7 @@ class DateTimeRecognizer(Recognizer[DateTimeOptions]):
         self.register_model(
             'DateTimeModel',
             Culture.Arabic,
-            lambda options: DateTimeModel(
+            lambda options: ArabicDateTimeModel(
                 BaseMergedParser(ArabicMergedParserConfiguration(ArabicCommonDateTimeParserConfiguration()), options),
                 BaseMergedExtractor(ArabicMergedExtractorConfiguration(), options),
             ),
