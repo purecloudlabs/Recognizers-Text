@@ -22,6 +22,14 @@ class TestArabicTimeAmPm(unittest.TestCase):
         ("3:00 مساء", "15:00:00"),
         ("3:00 ص", "03:00:00"),
         ("الرابعة بعد الظهر", "16:00:00"),
+        # Arabic-Indic and Extended Arabic-Indic digits
+        ("٣:٠٠ العصر", "15:00:00"),
+        ("٣:٠٠ عصرا", "15:00:00"),
+        ("٣:٠٠ مساء", "15:00:00"),
+        ("٣:٠٠ ص", "03:00:00"),
+        ("١٠:٣٠ صباحا", "10:30:00"),
+        ("الساعة ٣:٣٠ بعد الظهر", "15:30:00"),
+        ("۳:۰۰ العصر", "15:00:00"),
     ]
 
     def test_arabic_time_am_pm(self):
@@ -30,3 +38,10 @@ class TestArabicTimeAmPm(unittest.TestCase):
             with self.subTest(text=text):
                 results = recognize_datetime(text, Culture.Arabic)
                 self.assertEqual(expected, results[0].resolution["values"][0]["value"])
+
+    def test_arabic_indic_digits_keep_original_text(self):
+        """The matched text is returned with the user's original Arabic-Indic digits."""
+        results = recognize_datetime("٣:٠٠ العصر", Culture.Arabic)
+        self.assertEqual("٣:٠٠ العصر", results[0].text)
+        self.assertEqual(0, results[0].start)
+        self.assertEqual(9, results[0].end)

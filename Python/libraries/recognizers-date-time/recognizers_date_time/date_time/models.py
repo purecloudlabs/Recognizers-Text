@@ -57,3 +57,22 @@ class DateTimeModel(Model):
         result.text = parse_result_value.text
         result.type_name = parse_result_value.type
         return result
+
+
+# Arabic-Indic (U+0660-U+0669) and Extended Arabic-Indic (U+06F0-U+06F9) digits mapped to ASCII digits.
+# The mapping is one character to one character, so match offsets stay valid against the original query.
+ARABIC_DIGITS_TRANSLATION = str.maketrans('٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹', '01234567890123456789')
+
+
+class ArabicDateTimeModel(DateTimeModel):
+    """DateTimeModel that also understands Arabic-Indic digits, e.g. '٣:٠٠ العصر'."""
+
+    def parse(self, query: str, reference: datetime = None) -> List[ModelResult]:  # pylint: disable=W0221
+        normalized_query = query.translate(ARABIC_DIGITS_TRANSLATION)
+        results = super().parse(normalized_query, reference)
+        if normalized_query != query:
+            original = QueryProcessor.preprocess(query)
+            if len(original) == len(QueryProcessor.preprocess(normalized_query)):
+                for result in results:
+                    result.text = original[result.start : result.end + 1]
+        return results
