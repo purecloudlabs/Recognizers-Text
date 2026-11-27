@@ -59,8 +59,9 @@ class DateTimeModel(Model):
         return result
 
 
-# Arabic-Indic (U+0660-U+0669) and Extended Arabic-Indic (U+06F0-U+06F9) digits mapped to ASCII digits.
-# The mapping is one character to one character, so match offsets stay valid against the original query.
+# Arabic-Indic (U+0660-U+0669) and Extended Arabic-Indic (U+06F0-U+06F9) digits
+# mapped to ASCII digits. The mapping is one character to one character, so match
+# offsets stay valid against the original query.
 ARABIC_DIGITS_TRANSLATION = str.maketrans('٠١٢٣٤٥٦٧٨٩۰۱۲۳۴۵۶۷۸۹', '01234567890123456789')
 
 
